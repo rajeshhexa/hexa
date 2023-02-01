@@ -1,0 +1,2748 @@
+openapi: 3.0.0
+info:
+  title: EIC-Admin-Exp-Api
+  version: "1"
+servers:
+  -
+    url: api
+paths:
+  /SSADeductExport: {}
+  /SSADeductExport/{UserName}:
+    parameters:
+      -
+        name: UserName
+        description: Unique UserName
+        required: true
+        in: path
+        schema:
+          description: Unique UserName
+          type: string
+    get:
+      operationId: UserName
+      description: Get userName details by providing UserName
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /SSADeductByMemberID/{memberId}:
+    parameters:
+      -
+        name: memberId
+        description: Unique MemberID
+        required: true
+        in: path
+        schema:
+          description: Unique MemberID
+          type: string
+    get:
+      operationId: MemberID
+      description: Get SSADeductExport details by providing MemberID
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member:
+    get:
+      operationId: Member_GetMemberById
+      description: Get member details by providing member unique Id
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: memberId
+          description: Unique member Id
+          required: true
+          in: query
+          schema:
+            description: Unique member Id
+            type: integer
+            format: int64
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+    put:
+      operationId: Member_Put
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+    post:
+      operationId: Member_Post
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/SetGoGreenSubscription:
+    post:
+      operationId: SetGoGreenSubscription_Post
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/gogreenstatus/{nameId}:
+    parameters:
+      -
+        name: nameId
+        description: nameId
+        required: true
+        in: path
+        schema:
+          description: nameId
+          type: string
+    get:
+      operationId: gogreenstatus_Get
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/eob: {}
+  /member/eob/{altmemberid}:
+    parameters:
+      -
+        name: altmemberid
+        description: string
+        required: true
+        in: path
+        schema:
+          description: string
+          type: string
+    get:
+      operationId: EOB_Get
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/eob/document:
+    get:
+      operationId: EOB_GetDocument
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: downloadToken
+          description: string
+          required: true
+          in: query
+          schema:
+            description: string
+            type: string
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/eob/document/{altMemberId}:
+    parameters:
+      -
+        name: altMemberId
+        description: AltMember ID
+        required: true
+        in: path
+        schema:
+          description: AltMember ID
+          type: string
+  /member/eob/document/{altMemberId}/{monthYear}:
+    parameters:
+      -
+        name: altMemberId
+        description: AltMember ID
+        required: true
+        in: path
+        schema:
+          description: AltMember ID
+          type: string
+      -
+        name: monthYear
+        required: true
+        in: path
+        schema:
+          type: string
+    get:
+      operationId: EOB_GetDocumentByAltMemberIdMonthYear
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/SSADeductRequest:
+    post:
+      operationId: SSADeductRequest
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/nameId/{nameId}:
+    parameters:
+      -
+        name: nameId
+        description: nameId
+        required: true
+        in: path
+        schema:
+          description: nameId
+          type: string
+    get:
+      operationId: Member_GetMemberById
+      description: Get member details by providing member unique Id
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/letters/{nameId}:
+    parameters:
+      -
+        name: nameId
+        description: nameId
+        required: true
+        in: path
+        schema:
+          description: nameId
+          type: string
+    get:
+      operationId: Member_GetMemberById
+      description: Get member letters by providing member unique Id
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/Notes/{nameId}:
+    parameters:
+      -
+        name: nameId
+        description: nameId
+        required: true
+        in: path
+        schema:
+          description: nameId
+          type: string
+    get:
+      operationId: Member_GetnotesByNameId
+      description: Get member Notes by providing Name Id
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/MergePhone:
+    post:
+      description: Update Phone number by providing Name Id in request
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/MergeEmail:
+    post:
+      description: Update Phone number by providing Name Id in request
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/notes:
+    post:
+      description: Post member Notes by providing Name Id
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/search:
+    post:
+      operationId: Member_Search
+      description: Get member details by providing member
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Get Member By Details
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/billing/{nameId}:
+    parameters:
+      -
+        name: nameId
+        description: Unique nameId
+        required: true
+        in: path
+        schema:
+          description: Unique nameId
+          type: string
+    get:
+      operationId: Member_nameId
+      description: Get member details by providing member unique nameId
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/{nameId}:
+    parameters:
+      -
+        name: nameId
+        description: Unique nameId
+        required: true
+        in: path
+        schema:
+          description: Unique nameId
+          type: string
+    get:
+      operationId: nameId
+      description: Get member details by providing member unique nameId
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/payment/insertpaymentlog:
+    post:
+      operationId: insertpaymentlog
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/payment/lastvalidpayment/{altMemberId}:
+    parameters:
+      -
+        name: altMemberId
+        required: true
+        in: path
+        schema:
+          type: string
+    get:
+      operationId: lastvalidpayment_GetMemberById
+      description: Get lastvalidpayment details by providing Member unique Id
+      x-amf-is: common.client-id-required
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/ByAltMemberId/{altMemberId}:
+    parameters:
+      -
+        name: altMemberId
+        description: Alt Member Id
+        required: true
+        in: path
+        schema:
+          description: Alt Member Id
+          type: string
+    get:
+      operationId: Member_GetMemberById
+      description: Get member details by providing member unique Id
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/pharmacy:
+    post:
+      operationId: Member_SaveMemberPharmacy
+      description: Add pharmacy details
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Member pharmacy attributes
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/pharmacy/{memberPharmacyId}:
+    parameters:
+      -
+        name: memberPharmacyId
+        description: Member Pharmacy ID
+        required: true
+        in: path
+        schema:
+          description: Member Pharmacy ID
+          type: integer
+          format: int32
+    delete:
+      operationId: Member_DeleteMemberPharmacy
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/pharmacy/visited/{altMemberId}:
+    parameters:
+      -
+        name: altMemberId
+        description: ""
+        required: true
+        in: path
+        schema:
+          description: ""
+          type: string
+    get:
+      operationId: Member_GetVisitedPharmaciesLastNDays
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: lastNDays
+          required: false
+          in: query
+          schema:
+            type: integer
+            format: int32
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/portaluser:
+    post:
+      operationId: Member_Post
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+    put:
+      description: Update Email  by providing Name Id in request
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/validate/about:
+    post:
+      operationId: Member_ValidateMember
+      description: Validates memberid, firstname, lastname, dob
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: MemberRegisterRequest
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /member/addresschange:
+    post:
+      operationId: Member_UpdateAddress
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/addressChangeMHK:
+    post:
+      operationId: Member_addressChangeMHK
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/disenrollment:
+    post:
+      operationId: Member_Disenroll
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/MemberEnrollmentStatus/{medicareNumber}:
+    parameters:
+      -
+        name: medicareNumber
+        description: ""
+        required: true
+        in: path
+        schema:
+          description: ""
+          type: string
+    get:
+      operationId: Member_GetMemberPlanStatus
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                enum:
+                  - Pending
+                  - Active
+                  - Disenrolled
+                  - New
+                  - Error
+                type: string
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/Premium/{memberId}:
+    parameters:
+      -
+        name: memberId
+        description: ""
+        required: true
+        in: path
+        schema:
+          description: ""
+          type: integer
+          format: int64
+    get:
+      operationId: Member_GetMemberPremiumDetails
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/Messages:
+    post:
+      operationId: Member_GetMemberMessages
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Request for Member Messages
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+    put:
+      operationId: Member_GetMemberMessages
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Request for Member Messages
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+    get:
+      operationId: Member_GetMemberMessages
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: ApplicationId
+          required: true
+          in: query
+          schema:
+            type: integer
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/Messages/{MessageId}:
+    parameters:
+      -
+        name: MessageId
+        description: string
+        required: true
+        in: path
+        schema:
+          description: string
+          type: string
+    get:
+      operationId: EOB_Get
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/Messages/Lookups/{MessageId}:
+    parameters:
+      -
+        name: MessageId
+        required: true
+        in: path
+        schema:
+          type: string
+    delete:
+      x-amf-is: common.client-id-required
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/Messages/LookupByMemberID:
+    post:
+      operationId: Member_GetMemberMessagesLookup
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Lookup for Member Messages
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+  /member/Messages/LookupByPlan:
+    post:
+      operationId: Member_GetMemberMessagesLookup
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Lookup for Member Messages
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/Messages/LookupByState:
+    post:
+      operationId: Member_GetMemberMessagesLookup
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Lookup for Member Messages
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/Messages/LookupByZipCodes:
+    post:
+      operationId: Member_GetMemberMessagesLookup
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Lookup for Member Messages
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/pbpChange:
+    post:
+      operationId: pbpChange
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+  /member/portalDetails:
+    get:
+      operationId: Get portalDetails
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: nameId
+          description: nameId
+          required: true
+          in: query
+          schema:
+            description: nameId
+            type: string
+        -
+          name: Role
+          description: Role
+          required: true
+          in: query
+          schema:
+            description: Role
+            type: string
+        -
+          name: ChannelId
+          description: ChannelId
+          required: true
+          in: header
+          schema:
+            description: ChannelId
+            type: integer
+      responses:
+        "200":
+          description: Get portalDetails
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /member/updateEmail:
+    post:
+      description: Update updateEmail by providing Name Id in request
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: ChannelId
+          description: ChannelId
+          required: true
+          in: header
+          schema:
+            description: ChannelId
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /data: {}
+  /data/codelookup:
+    get:
+      operationId: CodeLookup_Get
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: Language
+          required: false
+          in: query
+          schema:
+            type: string
+        -
+          name: TypeCode
+          required: false
+          in: query
+          schema:
+            type: string
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /data/codelookup/{Language}:
+    parameters:
+      -
+        name: Language
+        required: true
+        in: path
+        schema:
+          type: string
+  /data/codelookup/{Language}/{TypeCode}:
+    parameters:
+      -
+        name: Language
+        required: true
+        in: path
+        schema:
+          type: string
+      -
+        name: TypeCode
+        required: true
+        in: path
+        schema:
+          type: string
+    get:
+      operationId: CodeLookup_Get
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /data/sep:
+    get:
+      operationId: SEPReason_Get
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /data/preenrollmenttype:
+    get:
+      operationId: PreEnrollmentType_GetAll
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /user:
+    put:
+      operationId: PortalUser_Put
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+    post:
+      operationId: PortalUser_Post
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /user/getuser:
+    get:
+      operationId: PortalUser_GetUserInfo
+      description: Gets user info by User Name
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: userName
+          description: User search parameters
+          required: true
+          in: query
+          schema:
+            description: User search parameters
+            type: string
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /user/get:
+    get:
+      operationId: PortalUser_GetUser
+      description: Gets user info by User Id
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: userId
+          description: User search parameters
+          required: true
+          in: query
+          schema:
+            description: User search parameters
+            type: integer
+            format: int64
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /user/{userName}:
+    parameters:
+      -
+        name: userName
+        description: User search parameters
+        required: true
+        in: path
+        schema:
+          description: User search parameters
+          type: string
+    get:
+      operationId: PortalUser_GetUserInfo
+      description: Gets user info by User Name
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /user/login:
+    post:
+      operationId: PortalUser_PortalUserLogin
+      description: Gets user login info by User Name
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: User search parameters
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /user/ResetPassword:
+    post:
+      operationId: PortalUser_ResetPassword
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /user/SendPasswordResetMail:
+    post:
+      operationId: PortalUser_SendPasswordResetMail
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+  /user/PortalUserForgetUserName:
+    post:
+      operationId: PortalUser_PortalUserForgotUserName
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /user/Temp:
+    post:
+      operationId: PortalUser_PostTemp
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: The new PortalUser request.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: Validation Errors
+        "500":
+          description: Internal Server Error
+  /user/Validate:
+    get:
+      operationId: ZipCode_Validate
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: zipCode
+          required: true
+          in: query
+          schema:
+            type: string
+        -
+          name: state
+          required: true
+          in: query
+          schema:
+            type: string
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /user/ValidateDob:
+    get:
+      operationId: PortalUser_ValidateDob
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: username
+          description: ""
+          required: true
+          in: query
+          schema:
+            description: ""
+            type: string
+        -
+          name: dob
+          description: ""
+          required: true
+          in: query
+          schema:
+            description: ""
+            type: string
+            format: date-time
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /user/{username}:
+    parameters:
+      -
+        name: username
+        description: ""
+        required: true
+        in: path
+        schema:
+          description: ""
+          type: string
+  /user/{username}/{dob}:
+    parameters:
+      -
+        name: username
+        description: ""
+        required: true
+        in: path
+        schema:
+          description: ""
+          type: string
+      -
+        name: dob
+        description: ""
+        required: true
+        in: path
+        schema:
+          description: ""
+          type: string
+          format: date-time
+    get:
+      operationId: PortalUser_ValidateDob
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /PreEnrollmentRequest:
+    post:
+      operationId: PreEnrollment_Post
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /ZipCodes: {}
+  /ZipCodes/Search:
+    get:
+      operationId: ZipCode_Search
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: zipCode
+          required: false
+          in: query
+          schema:
+            type: string
+        -
+          name: state
+          required: false
+          in: query
+          schema:
+            type: string
+        -
+          name: take
+          required: false
+          in: query
+          schema:
+            type: integer
+            format: int32
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /ZipCodes/Validate:
+    get:
+      operationId: ZipCode_Validate
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: zipCode
+          required: true
+          in: query
+          schema:
+            type: string
+        -
+          name: state
+          required: true
+          in: query
+          schema:
+            type: string
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /CodeLookup: {}
+  /CodeLookup/CallScript/{language}:
+    parameters:
+      -
+        name: language
+        required: true
+        in: path
+        schema:
+          type: string
+    get:
+      operationId: Language
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /CodeLookup/AdminDropDownList/{year}:
+    parameters:
+      -
+        name: year
+        required: true
+        in: path
+        schema:
+          type: integer
+    get:
+      operationId: Year
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /notetypes:
+    get:
+      description: Get member details by providing member unique Id
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /lepAttestation:
+    post:
+      operationId: LEPAttestation_Insert
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /lepAttestations:
+    get:
+      operationId: LEPAttestationsGet
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: complete
+          description: complete
+          required: true
+          in: query
+          schema:
+            description: complete
+            type: boolean
+        -
+          name: assigned
+          description: assigned
+          required: true
+          in: query
+          schema:
+            description: assigned
+            type: boolean
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /LEPAttestation/{ID}:
+    parameters:
+      -
+        name: ID
+        description: LEPAttestationID
+        required: true
+        in: path
+        schema:
+          description: LEPAttestationID
+          type: integer
+    get:
+      operationId: LEPAttestationGetByID
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /LEPAttestation:
+    post:
+      operationId: LEPAttestationUpdate
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /lepAttestationsByMemberId/{memberId}:
+    parameters:
+      -
+        name: memberId
+        description: MemberID
+        required: true
+        in: path
+        schema:
+          description: MemberID
+          type: string
+    get:
+      operationId: Get LEPAttestations By MemberID
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /PrintRequestTypes/{Who}:
+    parameters:
+      -
+        name: Who
+        description: Who
+        required: true
+        in: path
+        schema:
+          description: Who
+          type: string
+    get:
+      operationId: PrintRequestTypes - Who
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /PrintRequest:
+    post:
+      operationId: PrintRequestInsert
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /plan/search:
+    get:
+      operationId: Plan_Get
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: request.planYear
+          required: true
+          in: query
+          schema:
+            type: integer
+            format: int32
+        -
+          name: request.planId
+          required: false
+          in: query
+          schema:
+            type: integer
+        -
+          name: request.state
+          required: false
+          in: query
+          schema:
+            type: string
+        -
+          name: request.pbp
+          required: false
+          in: query
+          schema:
+            type: string
+        -
+          name: request.daysSupply
+          required: false
+          in: query
+          schema:
+            type: integer
+        -
+          name: request.drugTier
+          required: false
+          in: query
+          schema:
+            type: integer
+        -
+          name: request.pharmacyCostType
+          required: false
+          in: query
+          schema:
+            enum:
+              - RetailPreferred
+              - RetailStandard
+              - MailPreferred
+              - MailStandard
+            type: string
+        -
+          name: request.language
+          required: true
+          in: query
+          schema:
+            type: string
+        -
+          name: request.groupId
+          required: false
+          in: query
+          schema:
+            type: string
+        -
+          name: request.isEGWP
+          required: false
+          in: query
+          schema:
+            type: boolean
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /PrintRequestExport:
+    get:
+      operationId: PrintRequestExport
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /AddressChangeRequest:
+    post:
+      operationId: AddressChangeRequestUpdate
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ""
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /AddressChangeRequests:
+    get:
+      operationId: AddressChangeRequest
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: complete
+          required: true
+          in: query
+          schema:
+            type: boolean
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      x-amf-queryParameters:
+        assigned:
+          required: false
+          type: boolean | nil
+        addresstype:
+          required: false
+          type: string | nil
+        requeststartdate:
+          required: false
+          type: string | nil
+        requestenddate:
+          required: false
+          type: string | nil
+        pbpchange:
+          required: false
+          type: boolean | nil
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /AddressChangeRequest/{addressChangeID}:
+    parameters:
+      -
+        name: addressChangeID
+        description: addressChangeID
+        required: true
+        in: path
+        schema:
+          description: addressChangeID
+          type: number
+    get:
+      operationId: AddressChangeRequest by Id
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /login:
+    post:
+      operationId: AdminLoginInsert
+      description: Insert Admin Login details
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: admin login insert parameters
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /DisenrollRequestExport: {}
+  /DisenrollRequestExport/{userName}:
+    parameters:
+      -
+        name: userName
+        description: userName
+        required: true
+        in: path
+        schema:
+          description: userName
+          type: string
+    get:
+      operationId: userName
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /lastLogin/{Username}:
+    parameters:
+      -
+        name: Username
+        description: Username
+        required: true
+        in: path
+        schema:
+          description: Username
+          type: string
+    get:
+      operationId: Username
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /AddressChangeRequest/MemberID/{ID}:
+    parameters:
+      -
+        name: ID
+        required: true
+        in: path
+        schema:
+          type: string
+    get:
+      x-amf-is: common.client-id-required
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /disableLogin:
+    post:
+      operationId: AdminDisabledUsersInsert
+      description: Insert Admin disable Login details
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: TenantIdentifier
+          description: Tenant Identifier
+          required: false
+          in: header
+          schema:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Insert Admin disable Login details
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: Not found
+        "500":
+          description: Internal Server Error
+  /eventlog:
+    post:
+      operationId: EventLog
+      x-amf-is: common.client-id-required
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json: {}
+  /auditLogByNameId:
+    get:
+      x-amf-is: common.client-id-required
+      parameters:
+        -
+          name: NameId
+          required: true
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: Internal Server error
+          content:
+            application/json: {}
