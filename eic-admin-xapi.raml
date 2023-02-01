@@ -1,0 +1,2151 @@
+#%RAML 1.0
+title: EIC-Admin-Exp-Api
+baseUri: api
+version: 1
+
+uses:
+  common: exchange_modules/cc5b37d2-1e82-426d-b07a-e49503aaa954/common-library/1.0.6/common-library.raml
+  eic: exchange_modules/cc5b37d2-1e82-426d-b07a-e49503aaa954/eic-library/1.0.1/eic-data-types.raml
+
+/SSADeductExport:
+  /{UserName}:
+    get:
+      is: common.client-id-required
+      description: Get userName details by providing UserName
+      displayName: UserName    
+      responses:
+        200:
+          body:
+            application/json: 
+              example: !include example/response/SSADeductExportResponse.json
+        500:
+          description: Internal Server Error
+          body:
+            application/json:          
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+    uriParameters:
+      UserName:
+        description: Unique UserName
+        type: string
+/SSADeductByMemberID/{memberId}:
+  get:
+    is: common.client-id-required
+    description: Get SSADeductExport details by providing MemberID
+    displayName: MemberID    
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include example/response/SSADeductByMemberID.json
+      500:
+        description: Internal Server Error
+        body:
+          application/json:          
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+  uriParameters:
+    memberId:
+      description: Unique MemberID
+      type: string 
+/member:
+  get:
+    is: common.client-id-required
+    description: Get member details by providing member unique Id
+    displayName: Member_GetMemberById
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include example/response/getMemberResponse.json
+            type: eic.MemberService
+      404:
+        description: Not found
+      500:
+        description: Internal Server Error
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+    queryParameters:
+      memberId:
+        description: Unique member Id
+        type: integer
+        format: int64
+  put:
+    is: common.client-id-required
+    displayName: Member_Put
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            type: eic.Response_Boolean_
+      500:
+        description: Internal Server Error
+        body:
+          application/json:            
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false        
+    body:
+      application/json:
+        description: 
+        type: eic.Member
+  post:
+    is: common.client-id-required
+    displayName: Member_Post
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            example: !include example/response/memberEnrollmentResponse.json
+            #type: eic.Response_MemberEnrollment_
+      500:
+        description: Internal Server Error
+        body:
+          application/json:            
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        type: string
+        required: false 
+    body:
+      application/json:
+        description: 
+        type: eic.MemberInsertRequest
+        example: !include example/request/memberEnrollmentRequest.json
+  /SetGoGreenSubscription:
+    post:
+      is: common.client-id-required
+      displayName: SetGoGreenSubscription_Post
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/goGreenSubscription.json
+        500:
+          description: Internal Server Error
+          body:
+            application/json:  
+                        
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description: 
+          type: eic.SetGoGreenSubscriptionRequest
+          example: !include example/request/setGoGreenSubscriptionRequest.json   
+  /gogreenstatus/{nameId}: 
+      get:
+        is: common.client-id-required
+        displayName: gogreenstatus_Get
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+                example: !include example/response/gogreenstatusResponse.json
+          500:
+            description: Internal Server Error
+            body:
+              application/json:                
+        headers:
+          TenantIdentifier:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+            required: false
+      uriParameters:
+        nameId:
+          description: nameId
+          type: string                 
+  /eob:
+    /{altmemberid}:
+      get:
+        is: common.client-id-required
+        displayName: EOB_Get
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+                example: !include example/response/eobAltmemberId.json
+                type: array
+                items:
+                  type: eic.EOBResponse
+          500:
+            description: Internal Server Error
+            body:
+              application/json:                  
+        headers:
+          TenantIdentifier:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+            required: false
+      uriParameters:
+        altmemberid:
+          description: string
+          type: string
+    /document:
+      get:
+        is: common.client-id-required
+        displayName: EOB_GetDocument
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+                type: eic.EOBDocumentResponse
+          500:
+            description: Internal Server Error
+            body:
+              application/json:                
+        headers:
+          TenantIdentifier:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+            required: false
+        queryParameters:
+          downloadToken:
+            description: string
+            type: string
+      /{altMemberId}:
+        /{monthYear}:
+          get:
+            is: common.client-id-required
+            displayName: EOB_GetDocumentByAltMemberIdMonthYear
+            responses:
+              200:
+                description: OK
+                body:
+                  application/json:
+                    type: eic.EOBDocumentResponse
+              500:
+                description: Internal Server Error
+                body:
+                  application/json: 
+                                     
+            headers:
+              TenantIdentifier:
+                description: Tenant Identifier
+                default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+                type: string
+                required: false
+        uriParameters:
+          altMemberId:
+            description: AltMember ID
+            type: string 
+      uriParameters:
+        monthYear:
+          description: Month Year 
+          type: string
+  /SSADeductRequest:
+    post:
+      is: common.client-id-required
+      displayName: SSADeductRequest
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/SSADeductResponse.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:    
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          type: eic.MemberSSADeduct
+          example: !include example/request/ssaDeductRequest.json        
+  /nameId/{nameId}:
+    get:
+      is: common.client-id-required
+      description: Get member details by providing member unique Id
+      displayName: Member_GetMemberById
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/retriveMpMemberInfo.json            
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+    uriParameters:
+      nameId:
+        description: nameId
+        type: string
+  /letters/{nameId}:
+    get:
+      is: common.client-id-required
+      description: Get member letters by providing member unique Id
+      displayName: Member_GetMemberById
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/lettersresponse.json  
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          type: string
+          required: false
+    uriParameters:
+      nameId:
+        description: nameId
+        type: string      
+  /Notes/{nameId}:
+    get:
+      is: common.client-id-required
+      description: Get member Notes by providing Name Id
+      displayName: Member_GetnotesByNameId
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/memberNotesResponse.json
+              
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+    uriParameters:
+      nameId:
+        description: nameId
+        type: string 
+
+  /MergePhone:
+      post:
+        is: common.client-id-required
+        description: "Update Phone number by providing Name Id in request"
+        body:
+          application/json:
+            type : eic.MergePhone
+            example: !include example/request/mergePhoneRequest.json
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: !include example/response/mergePhoneResponse.json
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:      
+  /MergeEmail:
+      post:
+        is: common.client-id-required
+        description: "Update Phone number by providing Name Id in request"
+        body:
+          application/json:
+            type : eic.MergeEmail
+            example: !include example/request/mergeEmailRequest.json
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: !include example/response/mergeEmailResponse.json
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:
+  /notes:
+    post:
+        is: common.client-id-required
+        description: "Post member Notes by providing Name Id"
+        body:
+          application/json:
+            example: !include example/request/createNotesRequest.json
+        responses: 
+          200:
+            body: 
+              application/json:
+                example: !include example/response/createNotesResponse.json 
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:                   
+  /search:
+    post:
+      is: common.client-id-required
+      description: Get member details by providing member
+      displayName: Member_Search
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/memberSearch.json
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description: Get Member By Details
+          example: !include example/request/memberSearch.json
+          type: eic.MemberSearch
+  /billing/{nameId}:
+    get:
+      is: common.client-id-required
+      description: Get member details by providing member unique nameId
+      displayName: Member_nameId
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/memberNameIdBillingResponse.json
+              
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+    uriParameters:
+      nameId:
+        description: Unique nameId
+        type: string
+  /{nameId}:
+    get:
+      is: common.client-id-required
+      description: Get member details by providing member unique nameId
+      displayName: nameId
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/memberByNameIdResponse.json
+              
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+    uriParameters:
+      nameId:
+        description: Unique nameId
+        type: string
+  /payment/insertpaymentlog:
+    post:
+      is: common.client-id-required
+      displayName: insertpaymentlog
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      body:
+        application/json:
+          example: !include example/request/insertPaymentlog.json
+          #type: eic.PaymentLog        
+  /payment/lastvalidpayment/{altMemberId}:
+    get:
+      is: common.client-id-required
+      description: Get lastvalidpayment details by providing Member unique Id
+      displayName: lastvalidpayment_GetMemberById
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/lastvalidpaymentAltMemberIdRes.json
+              #type: eic.MemberService
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+  /ByAltMemberId/{altMemberId}:
+    get:
+      is: common.client-id-required
+      description: Get member details by providing member unique Id
+      displayName: Member_GetMemberById
+      responses:
+        200:
+          body:
+            application/json:
+              type: eic.MemberService
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+    uriParameters:
+      altMemberId:
+        description: Alt Member Id
+        type: string
+  
+  /pharmacy:
+    post:
+      is: common.client-id-required
+      description: Add pharmacy details
+      displayName: Member_SaveMemberPharmacy
+      responses:
+        200:
+          body:
+            application/json:
+              type: object
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          description: Member pharmacy attributes
+          type: eic.Request_List_MemberPharmacy__
+    
+    /{memberPharmacyId}:
+      delete:
+        is: common.client-id-required
+        displayName: Member_DeleteMemberPharmacy
+        responses:
+          200:
+            body:
+              application/json:
+                type: object
+          404:
+            description: Not found
+          500:
+            description: Internal Server Error
+        headers:
+          TenantIdentifier:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+            required: false            
+      uriParameters:
+        memberPharmacyId:
+          description: Member Pharmacy ID
+          type: integer
+          format: int32
+            
+    /visited/{altMemberId}:
+      get:
+        is: common.client-id-required
+        displayName: Member_GetVisitedPharmaciesLastNDays
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+                type: array
+                items:
+                  type: eic.Pharmacy
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:
+        headers:
+          TenantIdentifier:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+            required: false            
+        queryParameters:
+          lastNDays:
+            required: false
+            type: integer
+            format: int32
+      uriParameters:
+        altMemberId:
+          description: 
+          type: string
+            
+  /portaluser:
+    post:
+      is: common.client-id-required
+      displayName: Member_Post
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/portalUserCreateResponse.json
+              #type: eic.PortalUser
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          description: 
+          example: !include example/request/portalUserCreateRequest.json
+          type: eic.Request_MemberRegisterRequest_
+    put:
+      is: common.client-id-required
+      description: "Update Email  by providing Name Id in request"
+      body:
+        application/json:
+          type : eic.portalUser
+          example: !include example/request/portalUserPutRequest.json
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: !include example/response/portalUserPutResponse.json          
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:    
+  /validate/about:
+    post:
+      is: common.client-id-required
+      description: Validates memberid, firstname, lastname, dob
+      displayName: Member_ValidateMember
+      responses:
+        200:
+          body:
+            application/json:
+              type: object
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          description: MemberRegisterRequest
+          type: eic.Request_MemberValidateRequest_
+
+  /addresschange:
+    post:
+      is: common.client-id-required
+      displayName: Member_UpdateAddress
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/addressChangeResponse.json
+              #type: eic.Response_Boolean_
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description: 
+          #type: eic.MemberAddressChange
+          example: !include example/request/memberAddressChange.json
+  /addressChangeMHK:
+    post:
+      is: common.client-id-required
+      displayName: Member_addressChangeMHK
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/addressChangeMHKResponse.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description:
+          example: !include example/request/memberAddressChangeMHKRequest.json            
+  /disenrollment:
+    post:
+      is: common.client-id-required
+      displayName: Member_Disenroll
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: eic.Response_Boolean_
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          description: 
+          type: eic.DisenrollmentRequest
+            
+  /MemberEnrollmentStatus/{medicareNumber}:
+    get:
+      is: common.client-id-required
+      displayName: Member_GetMemberPlanStatus
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: string
+              enum:
+                - Pending
+                - Active
+                - Disenrolled
+                - New
+                - Error
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+    uriParameters:
+      medicareNumber:
+        description: 
+        type: string
+
+  /Premium/{memberId}:
+    get:
+      is: common.client-id-required
+      displayName: Member_GetMemberPremiumDetails
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: eic.MemberPremiumDetailsResponse
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+    uriParameters:
+      memberId:
+        description: 
+        type: integer
+        format: int64
+
+  /Messages:
+    post:
+      is: common.client-id-required
+      displayName: Member_GetMemberMessages
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: array
+              items:
+                type: eic.MemberMessage
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          description: Request for Member Messages
+          example: !include example/request/memberMessagesRequest.json
+          type: eic.MemberMessagesRequest
+    put:
+      is: common.client-id-required
+      displayName: Member_GetMemberMessages
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:    
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description: Request for Member Messages
+          type: eic.MemberMessage          
+    get:
+      is: common.client-id-required
+      displayName: Member_GetMemberMessages
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/memberMessagesGetResponse.json 
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      queryParameters:
+        ApplicationId: 
+          type: integer        
+    /{MessageId}:
+      get:
+        is: common.client-id-required
+        displayName: EOB_Get
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:
+        headers:
+          TenantIdentifier:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+            required: false
+      uriParameters:
+        MessageId:
+          description: string
+          type: string
+    /Lookups/{MessageId}:
+      delete:
+        is: common.client-id-required  
+        responses: 
+          200:
+            body: 
+              application/json: 
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:                                 
+      uriParameters:
+        MessageId:
+          type: string
+          required: true                                                                                                  
+    /LookupByMemberID:
+      post:
+        is: common.client-id-required
+        displayName: Member_GetMemberMessagesLookup
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+        body:
+          application/json:
+            description: Lookup for Member Messages
+            type: eic.MemberIdMessage             
+    /LookupByPlan:
+      post:
+        is: common.client-id-required
+        displayName: Member_GetMemberMessagesLookup
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:
+        body:
+          application/json:
+            description: Lookup for Member Messages
+            type: eic.PlanMessage
+    /LookupByState: 
+      post:
+        is: common.client-id-required
+        displayName: Member_GetMemberMessagesLookup
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:
+        body:
+          application/json:
+            description: Lookup for Member Messages
+            type: eic.stateMessage            
+    /LookupByZipCodes:
+      post:
+        is: common.client-id-required
+        displayName: Member_GetMemberMessagesLookup
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:
+        body:
+          application/json:
+            description: Lookup for Member Messages
+            type: eic.ZipCodesMessage         
+  /pbpChange:
+    post:
+      is: common.client-id-required
+      displayName: pbpChange
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/pbpChangeResponse.json 
+              #type: eic.Response_Boolean_
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+                    example: !include example/request/pbpChangeRequest.json
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description: 
+          type: eic.PBPChange
+          example: !include example/request/pbpChange.json
+  /portalDetails: 
+    get:
+      is: common.client-id-required
+      displayName: Get portalDetails 
+      responses:
+        200:
+          description: Get portalDetails
+          body:
+            application/json:
+              example: !include example/response/portalDetailsByNameIdResponse.json
+        500:
+          description: Internal Server Error
+          body:
+            application/json:                
+      queryParameters:
+        nameId:
+          description: nameId
+          type: string
+          required: true   
+        Role:
+          description: Role
+          type: string
+          required: true
+      headers:
+        ChannelId:
+          description: ChannelId
+          type: integer
+          required: true            
+  /updateEmail:
+    post:
+      is: common.client-id-required
+      description: "Update updateEmail by providing Name Id in request"
+      body:
+        application/json:
+          type: eic.updateEmail
+          example: !include example/request/updateEmailRequest.json
+      responses: 
+        200:
+          body: 
+            application/json:
+              #example: !include example/response/updateEmailResponse.json
+        500:
+          description: Internal Server Error
+          body:
+            application/json: 
+      headers:
+        ChannelId:
+          description: ChannelId
+          type: integer
+          required: true          
+                                                              
+/data:
+  /codelookup:
+    get:
+      is: common.client-id-required
+      displayName: CodeLookup_Get
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/codelookupresponse.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      queryParameters:
+        Language:
+          required: false
+          type: string
+        TypeCode:
+          required: false
+          type: string
+
+    /{Language}:
+      /{TypeCode}:
+        get:
+          is: common.client-id-required
+          displayName: CodeLookup_Get
+          responses:
+            200:
+              description: OK
+              body:
+                application/json:
+                  type: object
+            500:
+                description: Internal Server Error
+                body:
+                  application/json:
+          headers:
+            TenantIdentifier:
+              description: Tenant Identifier
+              default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+              type: string
+              required: false              
+        uriParameters:
+          TypeCode:
+            type: string
+      uriParameters:
+        Language:
+          type: string
+
+  /sep:
+    get:
+      is: common.client-id-required
+      displayName: SEPReason_Get
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: array
+              items:
+                type: eic.SEPReason
+              example: !include example/response/sepreasonresponse.json 
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+  /preenrollmenttype:
+    get:
+      is: common.client-id-required
+      displayName: PreEnrollmentType_GetAll
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: array
+              items:
+                type: eic.PreEnrollmentType
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+            
+/user:
+  put:
+    is: common.client-id-required
+    displayName: PortalUser_Put
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            type: object
+      500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false        
+    body:
+      application/json:
+        description: 
+        type: eic.PortalUserUpdateRequest
+  post:
+    is: common.client-id-required
+    displayName: PortalUser_Post
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            type: object
+      500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false        
+    body:
+      application/json:
+        description: 
+        type: eic.Request_PortalUser_
+
+  /getuser:
+    get:
+      is: common.client-id-required
+      description: Gets user info by User Name
+      displayName: PortalUser_GetUserInfo
+      responses:
+        200:
+          body:
+            application/json:
+              type: eic.PortalUser
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      queryParameters:
+        userName:
+          description: User search parameters
+          type: string
+              
+  /get:
+    get:
+      is: common.client-id-required
+      description: Gets user info by User Id
+      displayName: PortalUser_GetUser
+      responses:
+        200:
+          body:
+            application/json:
+              type: eic.PortalUser
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      queryParameters:
+        userId:
+          description: User search parameters
+          type: integer
+          format: int64
+              
+  /{userName}:
+    get:
+      is: common.client-id-required
+      description: Gets user info by User Name
+      displayName: PortalUser_GetUserInfo
+      responses:
+        200:
+          body:
+            application/json:
+              type: eic.PortalUser
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+    uriParameters:
+      userName:
+        description: User search parameters
+        type: string
+          
+  /login:
+    post:
+      is: common.client-id-required
+      description: Gets user login info by User Name
+      displayName: PortalUser_PortalUserLogin
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/adminLoginInsertResponse.json
+              #type: eic.PortalUser
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          description: User search parameters
+          type: eic.PortalUserLoginRequest
+              
+  /ResetPassword:
+    post:
+      is: common.client-id-required
+      displayName: PortalUser_ResetPassword
+      responses:
+        200:
+          body:
+            application/json:
+              type: object
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          description: 
+          type: eic.Request_PortalUserResetPasswordRequest_
+              
+  /SendPasswordResetMail:
+    post:
+      is: common.client-id-required
+      displayName: PortalUser_SendPasswordResetMail
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/sendPasswordResetMailResponse.json
+              #type: object
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+                    example: !include example/request/sendPasswordResetMailRequest.json  
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description: 
+          type: eic.Request_PortalUserSendResetRequest_
+
+  /PortalUserForgetUserName:
+    post:
+      is: common.client-id-required
+      displayName: PortalUser_PortalUserForgotUserName
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: object
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          description: 
+          type: eic.Request_PortalUserForgetUserNameRequest_
+              
+  /Temp:
+    post:
+      is: common.client-id-required
+      displayName: PortalUser_PostTemp
+      responses:
+        200:
+          description: Success
+          body:
+            application/json:
+              type: object
+        404:
+          description: Validation Errors
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      body:
+        application/json:
+          description: The new PortalUser request.
+          type: eic.PortalUserNewUserNameRequest
+              
+  /Validate:
+    get:
+      is: common.client-id-required
+      displayName: ZipCode_Validate
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: boolean
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      queryParameters:
+        zipCode:
+          type: string
+        state:
+          type: string
+              
+  /ValidateDob:
+    get:
+      is: common.client-id-required
+      displayName: PortalUser_ValidateDob
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: object
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      queryParameters:
+        username:
+          description: 
+          type: string
+        dob:
+          description: 
+          type: datetime
+            
+  /{username}:
+    /{dob}:
+      get:
+        is: common.client-id-required
+        displayName: PortalUser_ValidateDob
+        responses:
+          200:
+            description: OK
+            body:
+              application/json:
+                type: object
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:
+        headers:
+          TenantIdentifier:
+            description: Tenant Identifier
+            default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+            type: string
+            required: false            
+      uriParameters:
+        dob:
+          description: 
+          type: datetime
+    uriParameters:
+      username:
+        description: 
+        type: string
+              
+/PreEnrollmentRequest:
+  post:
+    is: common.client-id-required
+    displayName: PreEnrollment_Post
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            type: eic.Response_PreEnrollment_
+      500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false        
+    body:
+      application/json:
+        type: eic.PreEnrollmentInsertRequest
+            
+/ZipCodes:
+  /Search:
+    get:
+      is: common.client-id-required
+      displayName: ZipCode_Search
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: array
+              items:
+                type: eic.ZipCode
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      queryParameters:
+        zipCode:
+          required: false
+          type: string
+        state:
+          required: false
+          type: string
+        take:
+          required: false
+          type: integer
+          format: int32
+  /Validate:
+    get:
+      is: common.client-id-required
+      displayName: ZipCode_Validate
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: boolean
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false          
+      queryParameters:
+        zipCode:
+          type: string
+        state:
+          type: string
+/CodeLookup:          
+  /CallScript/{language}:
+    get: 
+      is: common.client-id-required 
+      displayName: Language
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/CallScriptLanguage.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+    uriParameters:
+      language:
+        type: string
+        required: true
+  /AdminDropDownList/{year}:
+    get:
+      is: common.client-id-required
+      displayName: Year
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/adminDropDownListYear.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+    uriParameters:
+      year:
+        type: integer
+        required: true   
+/notetypes:
+  get:
+    is: common.client-id-required
+    description: Get member details by providing member unique Id
+    responses: 
+      200:
+        body: 
+          application/json:
+      404:
+        description: Not found
+      500:
+        description: Internal Server Error
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+        
+/lepAttestation:
+  post:
+    is: common.client-id-required
+    displayName: LEPAttestation_Insert
+    body:
+        application/json:
+          example: !include example/request/lepAttestationRequest.json
+    responses: 
+        200:
+          body: 
+            application/json:
+              example: !include example/response/lepAttestationResponse.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+/lepAttestations:
+  get:
+    is: common.client-id-required
+    displayName: LEPAttestationsGet
+    responses: 
+        200:
+          body: 
+            application/json:
+              example: !include example/response/lepAttestationResponse.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+    queryParameters:
+      complete:
+        description: complete
+        type: boolean
+      assigned:
+        description: assigned
+        type: boolean        
+/LEPAttestation/{ID}:
+  get:
+    is: common.client-id-required
+    displayName: LEPAttestationGetByID
+    responses: 
+        200:
+          body: 
+            application/json:
+              example: !include example/response/LEPAttestationGetByID.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+  uriParameters:
+    ID:
+      description: LEPAttestationID
+      type: integer
+      required: true
+/LEPAttestation:
+  post:
+    is: common.client-id-required
+    displayName: LEPAttestationUpdate
+    body:
+        application/json:
+          example: !include example/request/LEPAttestationUpdateRequest.json
+    responses: 
+        200:
+          body: 
+            application/json:
+              example: !include example/response/LEPAttestationUpdateResponse.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+/lepAttestationsByMemberId/{memberId}:
+  get:
+    is: common.client-id-required
+    displayName: Get LEPAttestations By MemberID
+    responses: 
+        200:
+          body: 
+            application/json:
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+  uriParameters:
+    memberId:
+      description: MemberID
+      type: string
+      required: true
+/PrintRequestTypes/{Who}:
+  get:
+    is: common.client-id-required
+    displayName: PrintRequestTypes - Who 
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            example: !include example/response/printRequestTypesGet.json
+      404:
+        description: Not found
+      500:
+        description: Internal Server Error
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false          
+  uriParameters:
+    Who:
+      description: Who
+      type: string
+/PrintRequest:
+  post:
+    is: common.client-id-required
+    displayName: PrintRequestInsert
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            example: !include example/response/printRequestinsert.json
+      404:
+        description: Not found
+      500:
+        description: Internal Server Error          
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false          
+    body:
+      application/json:
+        type: eic.PrintRequest       
+        example: !include example/request/printRequest.json  
+/plan/search:
+  get:
+    is: common.client-id-required
+    displayName: Plan_Get
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            example: !include example/response/planSearch.json
+            type: array
+            items:
+              type: eic.Plan
+      500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+    queryParameters:
+      request.planYear:
+        required: true
+        type: integer
+        format: int32
+      request.planId:
+        required: false
+        type: integer
+      request.state:
+        required: false
+        type: string
+      request.pbp:
+        required: false
+        type: string
+      request.daysSupply:
+        required: false
+        type: integer
+      request.drugTier:
+        required: false
+        type: integer
+      request.pharmacyCostType:
+        required: false
+        type: string
+        enum:
+          - RetailPreferred
+          - RetailStandard
+          - MailPreferred
+          - MailStandard        
+      request.language:
+        required: true
+        type: string
+      request.groupId:
+        required: false
+        type: string
+      request.isEGWP:
+        required: false
+        type: boolean
+        
+/PrintRequestExport:
+  get:
+    is: common.client-id-required
+    displayName: PrintRequestExport 
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            example: !include example/response/printRequestExportResponse.json
+      404:
+        description: Not found
+      500:
+        description: Internal Server Error
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false
+
+/AddressChangeRequest:
+    post:
+      is: common.client-id-required
+      displayName: AddressChangeRequestUpdate
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              type: eic.Response_Boolean_
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description: 
+          type: eic.AddressChangeRequests
+          example: !include example/request/addressChangeRequests.json
+          
+/AddressChangeRequests:
+    get:
+      is: common.client-id-required
+      displayName: AddressChangeRequest
+      responses:
+        200:
+          description: OK
+          body:
+            application/json:
+              example: !include example/response/addressChangeResponse.json
+        500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      queryParameters:
+        complete:
+          required: true
+          type: boolean
+        assigned:
+          required: false
+          type: boolean | nil
+        addresstype:
+          required: false
+          type: string | nil
+        requeststartdate:
+          required: false
+          type: string | nil 
+        requestenddate:
+          required: false
+          type: string | nil
+        pbpchange:
+          required: false
+          type: boolean | nil                                                   
+          
+/AddressChangeRequest/{addressChangeID}:
+  get:
+    is: common.client-id-required
+    displayName: AddressChangeRequest by Id 
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+      500:
+                description: Internal Server Error
+                body:
+                  application/json:
+    headers:
+      TenantIdentifier:
+        description: Tenant Identifier
+        default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+        type: string
+        required: false          
+  uriParameters:
+    addressChangeID:
+      description: addressChangeID
+      type: number
+      required: true
+      
+/login:
+    post:
+      is: common.client-id-required
+      description: Insert Admin Login details
+      displayName: AdminLoginInsert
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/adminLoginInsertResponse.json
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description: admin login insert parameters
+          type: eic.AdminLoginInsert    
+          example: !include example/request/adminLoginInsertRequest.json  
+/DisenrollRequestExport:
+  /{userName}:
+    get:
+      is: common.client-id-required
+      displayName: userName
+      responses: 
+          200:
+            body: 
+              application/json:
+                example: !include example/response/DisenrollRequestExport.json
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+    uriParameters:
+      userName:
+        description: userName
+        type: string
+        required: true
+/lastLogin/{Username}:
+    get:
+      is: common.client-id-required
+      displayName: Username
+      responses: 
+          200:
+            body: 
+              application/json:
+                  example: !include example/response/lastLoginResponse.json
+          500:
+                description: Internal Server Error
+                body:
+                  application/json:
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+    uriParameters:
+      Username:
+        description: Username
+        type: string
+        required: true 
+/AddressChangeRequest/MemberID/{ID}:
+  get:
+    is: common.client-id-required
+    responses:
+      200:
+        body:
+          application/json: 
+      500:
+                description: Internal Server Error
+                body:
+                  application/json:
+  uriParameters:
+    ID:
+      type: string
+      required: true        
+/disableLogin:
+    post:
+      is: common.client-id-required
+      description: Insert Admin disable Login details
+      displayName: AdminDisabledUsersInsert
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include example/response/adminDisableLoginInsertResponse.json
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
+      headers:
+        TenantIdentifier:
+          description: Tenant Identifier
+          default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+          type: string
+          required: false
+      body:
+        application/json:
+          description: Insert Admin disable Login details
+          type: eic.AdminDisableLoginInsert           
+          example: !include example/request/admindisableLoginInsertRequest.json  
+                        
+/eventlog:
+  post:
+    is: common.client-id-required
+    displayName: EventLog
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            example: !include example/response/eventlogResponse.json
+      500:
+        description: Internal Server Error
+        body:
+          application/json:    
+    body:
+      application/json:
+        example: !include example/request/eventlogRequest.json
+        type: eic.EventLog   
+/auditLogByNameId:
+  get:
+    is: common.client-id-required
+    queryParameters:
+      NameId: 
+        type: string
+        required: true
+    responses: 
+      200:
+        body: 
+          application/json:
+            #example: !include example/response/memberPharmacyGetByIDResponse.json
+      500:
+        description: Internal Server error
+        body:
+          application/json: 
+                                        
