@@ -1,0 +1,743 @@
+---
+openapi: "3.0.0"
+info:
+  title: "EIC-Portal-User-papi"
+  description: "This API is designed to manage the complex process for Portal User\
+    \ management and process orestration.  \nThis process API layer is designed to\
+    \ handle the more complex process orestration for managing Portal Users.\nWe have\
+    \ intentially followed the same URIs as exposed in the original Swagger / Open\
+    \ API so there is no need for mapping old name to new URI names.\nWhile it would\
+    \ be nice to \"clean up\" some of the unconventional Resource naming to following\
+    \ the RESTful approach more closely, keeping the same URIs makes life much easier\
+    \ for developers to call lower level APIs that match the URIs while using the\
+    \ API-Led approach.  \n"
+  version: "1"
+servers:
+- url: "api"
+paths:
+  /user:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+    put:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/getuser:
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/get:
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/{userName}:
+    parameters:
+    - name: "userName"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  UserId: 8
+                  PortalRole:
+                    RoleId: 2
+                    RoleDescription: "Member"
+                  WritingCode: null
+                  NameId: "N00064200956"
+                  MemberId: null
+                  Member: null
+                  UserName: "Elijah001"
+                  Email: "emikealson@envisionrx.com"
+                  SecretImage: "shutterstock_105916748_LR.jpg"
+                  SecretImageAltText: "small gray cat sleeping on the floor."
+                  LoginAttempt: 0
+                  ResetGuid: null
+                  Url: null
+                  IsValidUser: false
+                  Phone: "123-456-7890"
+                  SecretAnswers: []
+                  SecretQuestions:
+                  - SecretQuestionId: 1
+                    SecretQuestionText: "What is your favorite pet's name?"
+                    EffectiveDate: null
+                    HiddenDate: null
+                  HasAcceptedEula: false
+                  PreferedContactMethod: null
+                  PatientId: null
+                  NPN: null
+                  Broker: null
+                  FirstName: null
+                  LastName: null
+                  Agency: null
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/login:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                UserId: 150305
+                PortalRole:
+                  RoleId: 3
+                  RoleDescription: "Temp"
+                WritingCode: null
+                NameId: null
+                MemberId: null
+                Member: null
+                UserName: null
+                Email: null
+                SecretImage: null
+                SecretImageAltText: null
+                LoginAttempt: null
+                ResetGuid: null
+                Url: null
+                IsValidUser: false
+                Phone: null
+                SecretAnswers: []
+                SecretQuestions: []
+                HasAcceptedEula: false
+                PreferedContactMethod: null
+                PatientId: null
+                NPN: null
+                Broker: null
+                FirstName: null
+                LastName: null
+                Agency: null
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  UserId: 150305
+                  Password: "Password@123"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/ResetPassword:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/SendPasswordResetMail:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/PortalUserForgetUserName:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  RequestDetails:
+                    Dob: -449452800000
+                    AltMemberId: "EIC4501452"
+                    FirstName: "CHRIS"
+                    LastName: "F"
+                    UserRole: "string"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/Temp:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                UserName: "Elijah009"
+                NameId: "N00064200956"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                - RoleId: 4
+                  ResetTs: null
+                  UserId: 7
+                  ResetGUID: null
+                  Password: null
+                  WritingCode: null
+                  RoleDescription: "Temporary Member UserName Reservation"
+                  NameId: "N00064200956"
+                  AttemptTs: null
+                  Email: null
+                  SecretImage: null
+                  UserName: "Elijah009"
+                  LoginAttempt: null
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/Validate:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/ValidateDob:
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /user/{username}/{dob}:
+    parameters:
+    - name: "username"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    - name: "dob"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member: {}
+  /member/portaluser:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  UserId: 8
+                  PortalRole:
+                    RoleId: 2
+                    RoleDescription: null
+                  WritingCode: null
+                  NameId: "N00064200956"
+                  MemberId: null
+                  Member: null
+                  UserName: "Elijah001"
+                  Email: "emikealson@envisionrx.com"
+                  SecretImage: "shutterstock_105916748_LR.jpg"
+                  SecretImageAltText: null
+                  LoginAttempt: null
+                  ResetGuid: null
+                  Url: null
+                  IsValidUser: false
+                  Phone: "123-456-7890"
+                  SecretAnswers:
+                  - QuestionId: 1
+                    Answer: "cat"
+                  SecretQuestions:
+                  - SecretQuestionId: null
+                    SecretQuestionText: null
+                    EffectiveDate: null
+                    HiddenDate: null
+                  HasAcceptedEula: false
+                  PreferedContactMethod: 0
+                  PatientId: null
+                  NPN: null
+                  Broker: null
+                  FirstName: null
+                  LastName: null
+                  Agency: null
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/validate/about:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                RequestDetails:
+                  AltMemberId: "EIC4501025"
+                  FirstName: "Patricn"
+                  LastName: "Bean"
+                  Dob: -620697600000
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /data: {}
+  /data/secretimage:
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                - SecretImageId: 1
+                  SecretImagePath: "shutterstock_100240022_LR.jpg"
+                  EffectiveDate: 1451606400123
+                  HiddenDate: 1451606400123
+                  SecretImageAltText: "small yellow and blue boat on the beach."
+                - SecretImageId: 2
+                  SecretImagePath: "shutterstock_100334195_LR.jpg"
+                  EffectiveDate: 1451606400123
+                  HiddenDate: 1451606400123
+                  SecretImageAltText: "spiral staircase, view from above."
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /data/secretquestion:
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                - SecretQuestionId: 1
+                  SecretQuestionText: "What is your favorite pet's name?"
+                  EffectiveDate: 1451606400000
+                  HiddenDate: null
+                - SecretQuestionId: 2
+                  SecretQuestionText: "What is your mother's maiden name?"
+                  EffectiveDate: 1451606400000
+                  HiddenDate: null
+                - SecretQuestionId: 3
+                  SecretQuestionText: "What is your favorite sports team?"
+                  EffectiveDate: 1451606400000
+                  HiddenDate: null
+                - SecretQuestionId: 4
+                  SecretQuestionText: "What is your father's middle name?"
+                  EffectiveDate: 1451606400000
+                  HiddenDate: null
+                - SecretQuestionId: 5
+                  SecretQuestionText: "What was the make of your first car?"
+                  EffectiveDate: 1451606400000
+                  HiddenDate: null
+                - SecretQuestionId: 6
+                  SecretQuestionText: "In what city were you born?"
+                  EffectiveDate: 1451606400000
+                  HiddenDate: null
+                - SecretQuestionId: 7
+                  SecretQuestionText: "What high school did you attend?"
+                  EffectiveDate: 1451606400000
+                  HiddenDate: null
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /data/secretquestion/{userId}:
+    parameters:
+    - name: "userId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      operationId: "SecretQuestion_GetMH7"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  SecretQuestionText: "What is your favorite pet's name?"
+                  HiddenDate: null
+                  EffectiveDate: 1451606400000
+                  SecretQuestionId: 1
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+components:
+  x-amf-traits:
+    client-id-required:
+      headers:
+        client_id:
+          type: "string"
+          required: true
+        client_secret:
+          type: "string"
+          required: true
+        channelid:
+          required: false
+          type: "integer | nil"
