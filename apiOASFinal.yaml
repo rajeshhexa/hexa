@@ -1,0 +1,49 @@
+---
+openapi: "3.0.0"
+info:
+  title: "Using XML and JSON Schema"
+  version: "1.0"
+paths:
+  /person:
+    get:
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: "object"
+                x-amf-merge:
+                - $ref: "#/components/schemas/PersonInline"
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: "Body Declaration Schema"
+              type: "object"
+              properties:
+                firstName:
+                  type: "string"
+                lastName:
+                  type: "string"
+      responses: {}
+components:
+  schemas:
+    PersonInline:
+      title: "Person Schema"
+      type: "object"
+      required:
+      - "firstName"
+      - "lastName"
+      properties:
+        firstName:
+          type: "string"
+        lastName:
+          type: "string"
+        age:
+          description: "Age in years"
+          type: "integer"
+          minimum: 0
+    PersonInclude:
+      $ref: "person.json"
