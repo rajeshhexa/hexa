@@ -1,0 +1,1445 @@
+---
+openapi: "3.0.0"
+info:
+  title: "EIC-Member-Maintenance-sapi"
+  description: "This system api provides the interface with Market Prominence.  It\
+    \ is also responsible for transforming response messages into the EnvisionRx common\
+    \ data model.\n"
+  version: "1"
+servers:
+- url: "api"
+paths:
+  /member:
+    post:
+      description: "This will call MP API: /app/create"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                source: "WEB APP"
+                planId: "P00063355960"
+                pbp: "014"
+                groupId: ""
+                planYear: "2020"
+                receivedDate: "2016-02-28"
+                effectiveDate: "2020-05-01"
+                electionPeriod: "S"
+                lastName: "Bean"
+                firstName: "Patrick"
+                middleInitial: "M"
+                prefix: "Mr."
+                dateOfBirth: "1950-02-04"
+                gender: "M"
+                homePhoneNumber: "3301234565"
+                altPhoneNumber: "3301234566"
+                cellPhoneNumber: "3301234567"
+                emailAddress: "pbean@envisionrx.com"
+                homeAddress: "123 Main St."
+                homeAddressLine2: "Building A"
+                homeCity: "Twinsburg"
+                homeState: "OH"
+                homeZipcode: "44087"
+                mailingAddress: "123 mail st"
+                mailingAddress2: "mail a"
+                mailingCity: "Twinsburg"
+                mailingState: "OH"
+                mailingZipcode: "44087"
+                emergencyContactInd: "Y"
+                emergencyContactName: "Nikki Emergency"
+                emergencyContactPhoneNumber: "3301234567"
+                emergencyContactRelation: "Spouse"
+                medicareClaimNumber: "487551230A"
+                partAEffectiveDate: "2019-07-01"
+                partBEffectiveDate: "2019-07-01"
+                hasOtherRxCoverage: "Y"
+                otherRxCoverageName: "Other"
+                otherRxCoverageIdNumber: "ID1234"
+                otherRxCoverageGroupNumber: "Group"
+                isMovingIntoOutOfOrLivesLTCF: "Y"
+                longTermCareFacilityName: "Nice Long Term Care Center"
+                longTermCareFacilityAddress: "123 long st"
+                longTermCareFacilityAddress2: "long A"
+                longTermCareFacilityCity: "Twinsburg"
+                longTermCareFacilityState: "OH"
+                longTermCareFacilityZipcode: "44087"
+                longTermCareFacilityPhoneNumber: "3301234567"
+                otherLanguage: "English"
+                IsAuthorizedRep: "Y"
+                authorizedRepName: "Nikki Rep"
+                authorizedRepPhone: "3301234567"
+                authorizedRepRelation: "Spouse"
+                authorizedRepAddress: "123 Rep St"
+                authorizedRepAddress2: "Rep A"
+                authorizedRepCity: "Twinsburg"
+                authorizedRepState: "OH"
+                authorizedRepZipcode: "44087"
+                IsBroker: "Y"
+                brokerWritingCode: "009999"
+                brokerDate: "2019-08-01"
+                brokerLastName: "Bean"
+                brokerFirstName: "Patrick"
+                brokerPhone: "3301234567"
+                brokerAttestationInd: "Y"
+                brokerAttestationType: "IC"
+                loginId: "pbean"
+                sepReason: "LCC"
+                ssaDeductInd: "N"
+                billingOption: "Auto"
+                altFormatRqst: "Braille"
+                selfWorkInd: "Y"
+                spouseWorkInd: "Y"
+              type: "object"
+              additionalProperties: true
+              required:
+              - "planId"
+              - "pbp"
+              - "groupId"
+              - "planYear"
+              - "receivedDate"
+              - "effectiveDate"
+              - "electionPeriod"
+              - "lastName"
+              - "firstName"
+              - "middleInitial"
+              - "prefix"
+              - "dateOfBirth"
+              - "gender"
+              - "homePhoneNumber"
+              - "altPhoneNumber"
+              - "cellPhoneNumber"
+              - "emailAddress"
+              - "homeAddress"
+              - "homeAddressLine2"
+              - "homeCity"
+              - "homeState"
+              - "homeZipcode"
+              - "mailingAddress"
+              - "mailingAddress2"
+              - "mailingCity"
+              - "mailingState"
+              - "mailingZipcode"
+              - "emergencyContactInd"
+              - "emergencyContactName"
+              - "emergencyContactPhoneNumber"
+              - "emergencyContactRelation"
+              - "medicareClaimNumber"
+              - "partAEffectiveDate"
+              - "partBEffectiveDate"
+              - "hasOtherRxCoverage"
+              - "otherRxCoverageName"
+              - "otherRxCoverageIdNumber"
+              - "otherRxCoverageGroupNumber"
+              - "isMovingIntoOutOfOrLivesLTCF"
+              - "longTermCareFacilityName"
+              - "longTermCareFacilityAddress"
+              - "longTermCareFacilityAddress2"
+              - "longTermCareFacilityCity"
+              - "longTermCareFacilityState"
+              - "longTermCareFacilityZipcode"
+              - "longTermCareFacilityPhoneNumber"
+              - "otherLanguage"
+              - "IsAuthorizedRep"
+              - "authorizedRepName"
+              - "authorizedRepPhone"
+              - "authorizedRepRelation"
+              - "authorizedRepAddress"
+              - "authorizedRepAddress2"
+              - "authorizedRepCity"
+              - "authorizedRepState"
+              - "authorizedRepZipcode"
+              - "IsBroker"
+              - "brokerWritingCode"
+              - "brokerDate"
+              - "brokerLastName"
+              - "brokerFirstName"
+              - "brokerPhone"
+              - "brokerAttestationInd"
+              - "brokerAttestationType"
+              - "loginId"
+              - "sepReason"
+              - "ssaDeductInd"
+              - "billingOption"
+              - "altFormatRqst"
+              - "selfWorkInd"
+              - "spouseWorkInd"
+              properties:
+                source:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                planId:
+                  type: "string"
+                pbp:
+                  type: "string"
+                groupId:
+                  type: "string"
+                planYear:
+                  type: "string"
+                receivedDate:
+                  type: "string"
+                effectiveDate:
+                  type: "string"
+                electionPeriod:
+                  type: "string"
+                lastName:
+                  type: "string"
+                firstName:
+                  type: "string"
+                middleInitial:
+                  type: "string"
+                prefix:
+                  type: "string"
+                dateOfBirth:
+                  type: "string"
+                gender:
+                  type: "string"
+                homePhoneNumber:
+                  type: "string"
+                altPhoneNumber:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                cellPhoneNumber:
+                  type: "string"
+                emailAddress:
+                  type: "string"
+                homeAddress:
+                  type: "string"
+                homeAddressLine2:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                homeCity:
+                  type: "string"
+                homeState:
+                  type: "string"
+                homeZipcode:
+                  type: "string"
+                mailingAddress:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                mailingAddress2:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                mailingCity:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                mailingState:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                mailingZipcode:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                emergencyContactInd:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                emergencyContactName:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                emergencyContactPhoneNumber:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                emergencyContactRelation:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                medicareClaimNumber:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                partAEffectiveDate:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                partBEffectiveDate:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                hasOtherRxCoverage:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                otherRxCoverageName:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                otherRxCoverageIdNumber:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                otherRxCoverageGroupNumber:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                isMovingIntoOutOfOrLivesLTCF:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                longTermCareFacilityName:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                longTermCareFacilityAddress:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                longTermCareFacilityAddress2:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                longTermCareFacilityCity:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                longTermCareFacilityState:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                longTermCareFacilityZipcode:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                longTermCareFacilityPhoneNumber:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                otherLanguage:
+                  type: "string"
+                IsAuthorizedRep:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                authorizedRepName:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                authorizedRepPhone:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                authorizedRepRelation:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                authorizedRepAddress:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                authorizedRepAddress2:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                authorizedRepCity:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                authorizedRepState:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                authorizedRepZipcode:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                IsBroker:
+                  type: "string"
+                brokerWritingCode:
+                  type: "string"
+                brokerDate:
+                  type: "string"
+                brokerLastName:
+                  type: "string"
+                brokerFirstName:
+                  type: "string"
+                brokerPhone:
+                  type: "string"
+                brokerAttestationInd:
+                  type: "string"
+                brokerAttestationType:
+                  type: "string"
+                loginId:
+                  type: "string"
+                sepReason:
+                  type: "string"
+                ssaDeductInd:
+                  type: "string"
+                billingOption:
+                  type: "string"
+                altFormatRqst:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                selfWorkInd:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                spouseWorkInd:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  id: "EIC4500974"
+                  rowsAffected: 0
+                  lastUpdatedDate: "0001-01-01T00:00:00"
+                  actionSetCount: 0
+                  nextCardId: null
+                  success: true
+                  statusCode: 200
+                  actionSetErrors: []
+                  errors: []
+                  truthTableErrors: []
+                  userMessages: []
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/search:
+    post:
+      description: "This will call MP API: /members"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                firstName: "Dana"
+                lastName: "Beaner"
+                birthDate: "1954-07-18"
+                phoneNumber: "1234567890"
+                state: "OH"
+                memberId: "EIC4500033"
+                medicareId: "487551234A"
+                brokerWritingCodes: []
+                effectiveStartDate: "2019-07-01"
+                effectiveEndDate: "2020-07-01"
+              type: "object"
+              additionalProperties: true
+              required:
+              - "firstName"
+              - "lastName"
+              - "phoneNumber"
+              - "state"
+              - "memberId"
+              - "medicareId"
+              - "brokerWritingCodes"
+              properties:
+                firstName:
+                  type: "string"
+                lastName:
+                  type: "string"
+                birthDate:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                phoneNumber:
+                  type: "string"
+                state:
+                  type: "string"
+                memberId:
+                  type: "string"
+                medicareId:
+                  type: "string"
+                brokerWritingCodes:
+                  type: "array"
+                  items:
+                    type: "string"
+                effectiveStartDate:
+                  type: "string"
+                effectiveEndDate:
+                  type: "string"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MpStatusCode: 0
+                  data:
+                    results:
+                    - nameId: "N00063378045"
+                      firstName: "Dana"
+                      lastName: "Beaner"
+                      medicareId: "1D18KX3KR84 "
+                      memberId: "EIC4500025"
+                      medicareStatus: "61: Pending Enroll"
+                      programId: "M07"
+                      birthDate: "1954-07-18T00:00:00"
+                      phoneNumber: "7049570480"
+                      phoneType: "Home"
+                      state: "NC"
+                      pbpId: "008"
+                      effectiveDate: "2019-07-01T00:00:00"
+                    - nameId: "N00063396487"
+                      firstName: "Patrick"
+                      lastName: "Bean"
+                      medicareId: "487551234A "
+                      memberId: "EIC4500033"
+                      medicareStatus: "Enrolled"
+                      programId: "M30"
+                      birthDate: "1950-01-02T00:00:00"
+                      phoneNumber: "3301234567"
+                      phoneType: "Home"
+                      state: "OH"
+                      pbpId: "014"
+                      effectiveDate: "2019-10-01T00:00:00"
+                  errors: []
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/MergePhone:
+    post:
+      description: "This will call MP API: /members/{nameId}/merge_phone"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                nameId: "N00063396487"
+                type: "home"
+                phoneNumber: "1234567890"
+                phoneExtension: "93"
+                preferred: true
+                staffId: "pben"
+              type: "object"
+              additionalProperties: true
+              required:
+              - "nameId"
+              - "type"
+              - "phoneNumber"
+              - "phoneExtension"
+              - "preferred"
+              - "staffId"
+              properties:
+                nameId:
+                  type: "string"
+                type:
+                  type: "string"
+                phoneNumber:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                phoneExtension:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                preferred:
+                  type: "boolean"
+                staffId:
+                  type: "string"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MpStatusCode: "number"
+                  data:
+                    nameId: "string"
+                    type: "string"
+                    phoneNumber: "number"
+                    preferred: "true"
+                    staffId: "string"
+                  errors:
+                  - statusCode: "string"
+                    message: "string"
+                    topic: "string"
+                    severityLevel: "number"
+                    severity: "string"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/MergeEmail:
+    post:
+      description: "This will call MP API: /members/{nameId}/merge_email"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                nameId: "N00064199627"
+                type: "Home"
+                emailAddress: "mkumar@envisionrx.com"
+                preferred: true
+                staffId: "pbean"
+              type: "object"
+              additionalProperties: true
+              required:
+              - "nameId"
+              - "type"
+              - "emailAddress"
+              - "preferred"
+              - "staffId"
+              properties:
+                nameId:
+                  type: "string"
+                type:
+                  type: "string"
+                emailAddress:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                preferred:
+                  type: "boolean"
+                staffId:
+                  type: "string"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  nameId: "N00064199627"
+                  type: "Home"
+                  emailAddress: "mkumar1@envisionrx.com"
+                  preferred: false
+                  staffId: "pbean"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/{nameId}:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      description: "This will call MP API: /members/{nameId}/summary"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MemberId: 1
+                  PlanId: 6
+                  PlanName: "EnvisionRxPlus"
+                  GroupId: "EICH"
+                  AltMemberId: "EIC1"
+                  HICN: "123456782A"
+                  MBI: null
+                  MedicareNumber: "123456782A"
+                  FirstName: "TEST1"
+                  LastName: "TEST2A"
+                  Prefix: "MR."
+                  MiddleInitial: "A"
+                  Address1: "663 East Aurora Road"
+                  Address2: null
+                  City: "BROOKLYN"
+                  State: "NY"
+                  ZipCode: "11208"
+                  MAddress1: "Mailing Address"
+                  MAddress2: null
+                  MCity: "City"
+                  MState: "OH"
+                  MZipCode: "44087"
+                  DOB: "1980-01-01T00:00:00"
+                  Gender: "M"
+                  Email: "aathithan@envisionrx.com"
+                  Phone: "724-488-0888"
+                  CellPhone: "752-826-5148"
+                  AltPhone: "751-653-9248"
+                  BWritingCode: "ABCD123"
+                  PrimaryPharmacy:
+                    PharmacyId: 27181898
+                    NABP: "3672070"
+                    ChainCode: "248"
+                    Name: "GIANT EAGLE PHARMACY #6299"
+                    Address:
+                      Latitude: "41.313958"
+                      Longitude: "-81.529006"
+                      Address1: "290 EAST AURORA ROAD"
+                      Address2: ""
+                      City: "NORTHFIELD"
+                      StateCode: null
+                      ZipCode: "44067"
+                    PharmacyTypeId: 1
+                    Phone: "330-468-3263"
+                    IsPrimary: true
+                    IsPreferred: true
+                    IsEPrescribing: true
+                    IsEIC: true
+                    IsEGWP: true
+                    IsPreferredCC: true
+                    Is90DayRetail: true
+                    MemberPharmacyID: 6535
+                    Distance: 0
+                    Year: 0
+                    PreferenceType: 0
+                    IsBrokerPbp: false
+                  Pharmacies: []
+                  MonthlyPremium: 0
+                  CurrentBalance: 0
+                  EnrollmentDate: "2016-06-21T00:00:00"
+                  DisenrollmentDate: null
+                  PbpCode: "003"
+                  PbpId: 0
+                  Year: 2020
+                  GreenEobReasonCode: 1
+                  CMSConfirmationID: null
+                  MailNABPs: null
+                  IsBroker: false
+                  BrokerAttestation: false
+                  BrokerID: 69
+                  Status: "Active"
+                  EGWPDirectBill: false
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/{nameId}/billing:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      description: "This will call MP API: /members/{nameId}/billing"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MpStatusCode: 0
+                  data:
+                    nameId: "N00063396487"
+                    memberBalance: 130.5
+                    billingOption: "I"
+                    premiumWithhold: "D"
+                    premiumDetails:
+                    - effectiveDate: "2020-01-01T00:00:00"
+                      premiumAmount: 14.2
+                      memberExpected: 14.2
+                      lepAmount: null
+                      lisExpected: 0
+                      spapExpected: 0
+                      ssaExpected: 0
+                    transactions:
+                    - billee: "01"
+                      invoiceNumber: "116774"
+                      paymentType: "Premium"
+                      createDate: "2019-08-02T15:44:07"
+                      periodStart: "2019-05-01T00:00:00"
+                      paymentMethod: ""
+                      note: "auto-entry"
+                      totalAmount: 14.5
+                    - billee: "01"
+                      invoiceNumber: "117102"
+                      paymentType: "Premium"
+                      createDate: "2019-08-12T09:36:36"
+                      periodStart: "2019-08-01T00:00:00"
+                      paymentMethod: ""
+                      note: "auto-entry"
+                      totalAmount: 14.5
+                    - billee: "01"
+                      invoiceNumber: "117102"
+                      paymentType: "Premium"
+                      createDate: "2019-08-15T16:02:40"
+                      periodStart: "2019-09-01T00:00:00"
+                      paymentMethod: ""
+                      note: "auto-entry"
+                      totalAmount: 14.5
+                  errors: []
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/{nameId}/notes:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      description: "This will call MP API: /members/{nameId}/notes"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MpStatusCode: 0
+                  data:
+                    nameId: "N00063396487"
+                    notes:
+                    - itemId: "Y00063353800"
+                      typeId: "Y00063338737"
+                      text: "Update complete!!!!"
+                      createdBy: "Alex ZCPS"
+                      createdOn: "2018-03-29T11:48:56"
+                    - itemId: "Y00063369293"
+                      typeId: "Y00063338722"
+                      text: "disenroll cancellation"
+                      createdBy: "Marsha Tobias"
+                      createdOn: "2019-05-29T10:04:55"
+                    - itemId: "Y00063369656"
+                      typeId: "Y00063338726"
+                      text: "member didn't respond"
+                      createdBy: "Marsha Tobias"
+                      createdOn: "2019-06-05T13:35:02"
+                    - itemId: "Y00064049543"
+                      typeId: "Y00063388870"
+                      text: "Test Member Note"
+                      createdBy: "pbean"
+                      createdOn: "2020-05-06T16:54:45"
+                  errors: []
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+    post:
+      description: "This will call MP API: /members/{nameId}/notes"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                nameId: "N00063396487"
+                noteTypeId: "Y00063388870"
+                noteText: "Test Member Note"
+                createdBy: "pbean"
+              type: "object"
+              additionalProperties: true
+              required:
+              - "nameId"
+              - "noteTypeId"
+              - "noteText"
+              - "createdBy"
+              properties:
+                nameId:
+                  type: "string"
+                noteTypeId:
+                  type: "string"
+                noteText:
+                  type: "string"
+                createdBy:
+                  type: "string"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MpStatusCode: 0
+                  data:
+                    nameId: "N00063396487"
+                    itemId: "Y00064049543"
+                  errors: []
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/{nameId}/letters:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      description: "This will call MP API: /members/{nameId}/letters"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MpStatusCode: 0
+                  data:
+                    nameId: "N00063396487"
+                    letters:
+                    - toDoId: "T00063369296"
+                      templateType: "PDP "
+                      templateName: "EP23"
+                      letterName: "EP23 Request Cancel Disenroll"
+                      dateScheduled: "2019-05-29T10:05:13"
+                      dateCompleted: ""
+                      resultPrimary: ""
+                      resultSecondary: ""
+                    - toDoId: "T00063369387"
+                      templateType: "PDP "
+                      templateName: "EP03"
+                      letterName: "EP03 RFI (Enrollment)"
+                      dateScheduled: "2019-05-30T16:09:19"
+                      dateCompleted: ""
+                      resultPrimary: ""
+                      resultSecondary: ""
+                    - toDoId: "T00063369657"
+                      templateType: "PDP "
+                      templateName: "EP06"
+                      letterName: "EP06 Plan Denial of Enrollment"
+                      dateScheduled: "2019-06-05T13:35:24"
+                      dateCompleted: ""
+                      resultPrimary: ""
+                      resultSecondary: ""
+                  errors: []
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/payment/lastvalidpayment/{altMemberId}:
+    parameters:
+    - name: "altMemberId"
+      description: "Alt Member Id"
+      required: true
+      in: "path"
+      schema:
+        description: "Alt Member Id"
+        type: "string"
+    get:
+      operationId: "lastvalidpayment_GetMemberByIdSOM"
+      description: "Get lastvalidpayment details by providing Member unique Id"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: true
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  Log:
+                    Id: 10209
+                    MemberId: 1
+                    CreatedDate: "2020-02-21T15:36:20.687"
+                    TransactionId: "035-0005765296"
+                    Approved: true
+                    Origin: null
+                  NextPaymentAllowedIn: 0
+        "404":
+          description: "Not found"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/app: {}
+  /member/app/pbp:
+    post:
+      description: "This will call MP API: /members/app/pbp"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                nameId: "N123456789"
+                dateOfBirth: "1950-01-02"
+                currentPackageId: "P00063355844"
+                effectiveDate: "2021-01-01"
+                newPackageId: "P00063403972"
+                premiumWithholdType: "D"
+                signatureDate: "2020-10-15"
+                receivedDate: "2020-10-15"
+                electionPeriod: "A"
+                brokerAttestation: "n"
+                loginId: "{{username}}"
+              type: "object"
+              additionalProperties: true
+              properties:
+                nameId:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                dateOfBirth:
+                  x-amf-union:
+                  - type: "string"
+                    format: "date"
+                  - type: "null"
+                  - type: "string"
+                currentPackageId:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                effectiveDate:
+                  x-amf-union:
+                  - type: "string"
+                    format: "date"
+                  - type: "null"
+                  - type: "string"
+                newPackageId:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                premiumWithholdType:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                signatureDate:
+                  x-amf-union:
+                  - type: "string"
+                    format: "date"
+                  - type: "null"
+                  - type: "string"
+                receivedDate:
+                  x-amf-union:
+                  - type: "string"
+                    format: "date"
+                  - type: "null"
+                  - type: "string"
+                electionPeriod:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                brokerAttestation:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                loginId:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  id: "A00356788590"
+                  rowsAffected: 0
+                  lastUpdatedDate: "0001-01-01T00:00:00"
+                  actionSetCount: 0
+                  nextCardId: null
+                  success: false
+                  statusCode: 400
+                  actionSetErrors: []
+                  errors:
+                  - statusCode: "85"
+                    message: "error*app_id*A00356788590|validation*app_source*is blank|validation*plan_id*is\
+                      \ blank|validation*plan_year*is blank|validation*enrollment_date*is\
+                      \ invalid|validation*name_last*is blank - error*app_id*A00356788590|validation*app_source*is\
+                      \ blank|validation*plan_id*is blank|validation*plan_year*is\
+                      \ blank|validation*enrollment_date*is invalid|validation*name_last*is\
+                      \ blank"
+                    topic: ";"
+                    severityLevel: 0
+                    severity: "40"
+                  truthTableErrors: []
+                  userMessages: []
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/{nameId}/update_address:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    post:
+      description: "This will call MP API: /members/{{nameid}}/update_address"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                nameId: "N123456789"
+                id: "C00064191695"
+                type: "Authorized Rep"
+                firstName: "first"
+                lastName: "Last"
+                relationship: "Spouse"
+                address1: "123 Contact St"
+                address2: ""
+                city: "Twinsburg"
+                state: "OH"
+                zip: "44087"
+                county: ""
+                companyName: ""
+                phoneNumber: "3305557412"
+                alternativePhoneNumber: ""
+                startDate: "2020-10-10"
+                endDate: "2020-10-15"
+                staffId: "{{username}}"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  ResponseDetails: true
+                  FaultException:
+                    Success: true
+                    Exceptions: []
+                    Errors: []
+                    Warnings: []
+                    Messages: []
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/{nameId}/mergeContact:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    post:
+      description: "This will call MP API: /members/{nameId}/mergeContact"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                nameId: "N123456789"
+                id: "C00064191695"
+                type: "Authorized Rep"
+                firstName: "first"
+                lastName: "Last"
+                relationship: "Spouse"
+                address1: "123 Contact St"
+                address2: ""
+                city: "Twinsburg"
+                state: "OH"
+                zip: "44087"
+                county: ""
+                companyName: ""
+                phoneNumber: "3305557412"
+                alternativePhoneNumber: ""
+                startDate: "2020-10-10"
+                endDate: "2020-10-15"
+                staffId: "{{username}}"
+              type: "object"
+              additionalProperties: true
+              properties:
+                nameId:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                id:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                type:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                firstName:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                lastName:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                relationship:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                address1:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                address2:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                city:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                state:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                zip:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                county:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                companyName:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                phoneNumber:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                alternativePhoneNumber:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+                startDate:
+                  x-amf-union:
+                  - type: "string"
+                    format: "date"
+                  - type: "null"
+                  - type: "string"
+                endDate:
+                  x-amf-union:
+                  - type: "string"
+                    format: "date"
+                  - type: "null"
+                  - type: "string"
+                staffId:
+                  x-amf-union:
+                  - type: "string"
+                  - type: "null"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  ResponseDetails: true
+                  FaultException:
+                    Success: true
+                    Exceptions: []
+                    Errors: []
+                    Warnings: []
+                    Messages: []
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+x-amf-uses:
+  common: "exchange_modules/cc5b37d2-1e82-426d-b07a-e49503aaa954/common-library/1.0.0/common-library.raml"
+  mp: "exchange_modules/cc5b37d2-1e82-426d-b07a-e49503aaa954/market-prominence-library/1.0.0/market-prominence-library.raml"
