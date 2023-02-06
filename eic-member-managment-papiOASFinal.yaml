@@ -1,0 +1,599 @@
+---
+openapi: "3.0.0"
+info:
+  title: "EIC-Member-Managment-papi"
+  description: "This API is designed to manage the complex process for Portal User\
+    \ management and process orestration.  \nThis process API layer is designed to\
+    \ handle the more complex process orestration for managing Portal Users.\nWe have\
+    \ intentionally followed the same URIs as exposed in the original Swagger / Open\
+    \ API so there is no need for mapping old name to new URI names.\nWhile it would\
+    \ be nice to \"clean up\" some of the unconventional Resource naming to following\
+    \ the RESTful approach more closely, \nkeeping the same URIs makes life much easier\
+    \ for developers to call lower level APIs that match the URIs while using the\
+    \ API-Led approach.  \n"
+  version: "1"
+servers:
+- url: "api"
+paths:
+  /member:
+    get:
+      x-amf-is: "common.client-id-required"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+    post:
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "adminRequest"
+        required: false
+        in: "query"
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+    put:
+      x-amf-is: "common.client-id-required"
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/pbpChange:
+    post:
+      operationId: "pbpChangeRVr"
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/letters/{nameId}:
+    parameters:
+    - name: "nameId"
+      description: "nameId"
+      required: true
+      in: "path"
+      schema:
+        description: "nameId"
+        type: "string"
+    get:
+      operationId: "Member_GetMemberByIdIVe"
+      description: "Get member letters by providing member unique Id"
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: "Not found"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/Notes/{nameId}:
+    parameters:
+    - name: "nameId"
+      description: "Name Id"
+      required: true
+      in: "path"
+      schema:
+        description: "Name Id"
+        type: "string"
+    get:
+      operationId: "Member_GetnotesByNameIdVps"
+      description: "Get member Notes by providing Name Id"
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: "Not found"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/payment/insertpaymentlog:
+    post:
+      operationId: "insertpaymentlogiS1"
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/payment/{nameId}:
+    parameters:
+    - name: "nameId"
+      description: "Name Id"
+      required: true
+      in: "path"
+      schema:
+        description: "Name Id"
+        type: "string"
+    get:
+      operationId: "Member_ByNameIdt8m"
+      description: "Get payment details by providing Name Id"
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: "Not found"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/ByNameID/{nameId}:
+    parameters:
+    - name: "nameId"
+      description: "Name Id"
+      required: true
+      in: "path"
+      schema:
+        description: "Name Id"
+        type: "string"
+    get:
+      operationId: "Member_ByNameId4ur"
+      description: "Get member details by providing Name Id"
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: "Not found"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/nameId/{nameId}:
+    parameters:
+    - name: "nameId"
+      description: "member nameId"
+      required: true
+      in: "path"
+      schema:
+        description: "member nameId"
+        type: "string"
+    get:
+      operationId: "Member_GetnameIdRCX"
+      description: "Get member details by providing nameId"
+      x-amf-is: "common.client-id-required"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: "Not found"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/{nameId}:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      x-amf-is: "common.client-id-required"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/{nameId}/billing:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      description: "This will call MP API: /members/{nameId}/billing"
+      x-amf-is: "common.client-id-required"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/ByAltMemberId/{altMemberId}:
+    parameters:
+    - name: "altMemberId"
+      description: "Alt Member Id"
+      required: true
+      in: "path"
+      schema:
+        description: "Alt Member Id"
+        type: "string"
+    get:
+      operationId: "Member_GetMemberByIdymN"
+      description: "Get member details by providing name unique Id"
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: "Not found"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/payment/lastvalidpayment/{altMemberId}:
+    parameters:
+    - name: "altMemberId"
+      description: "Alt Member Id"
+      required: true
+      in: "path"
+      schema:
+        description: "Alt Member Id"
+        type: "string"
+    get:
+      operationId: "lastvalidpayment_GetMemberByIdC20"
+      description: "Get lastvalidpayment details by providing Member unique Id"
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: "Not found"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/pharmacy:
+    post:
+      x-amf-is: "common.client-id-required"
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json: {}
+  /member/pharmacy/{memberPharmacyId}:
+    parameters:
+    - name: "memberPharmacyId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    delete:
+      x-amf-is: "common.client-id-required"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/billing/{nameId}:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      description: "This will call MP API: /members/{nameId}/billing"
+      x-amf-is: "common.client-id-required"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/billing/{nameId}/visited/{altNameId}:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    - name: "altNameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      x-amf-is: "common.client-id-required"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+  /member/portaluser:
+    post:
+      x-amf-is: "common.client-id-required"
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/validate/about:
+    post:
+      x-amf-is: "common.client-id-required"
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/addresschange:
+    post:
+      x-amf-is: "common.client-id-required"
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/disenrollment:
+    post:
+      x-amf-is: "common.client-id-required"
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/MemberEnrollmentStatus/{medicareNumber}:
+    parameters:
+    - name: "medicareNumber"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      x-amf-is: "common.client-id-required"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/Messages:
+    post:
+      x-amf-is: "common.client-id-required"
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /member/Premium/{nameId}:
+    parameters:
+    - name: "nameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      x-amf-is: "common.client-id-required"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
+  /memberivr/GetBalance:
+    post:
+      operationId: "MemberIvr_GetBalancezcz"
+      x-amf-is: "common.client-id-required"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json: {}
