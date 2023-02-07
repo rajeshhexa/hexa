@@ -1,0 +1,4723 @@
+---
+openapi: "3.0.0"
+info:
+  title: "EIC-Member-Data-Service-sapi"
+  version: "1"
+servers:
+- url: "api"
+paths:
+  /SSADeductExport/{UserName}:
+    parameters:
+    - name: "UserName"
+      description: "Unique userName"
+      required: true
+      in: "path"
+      schema:
+        description: "Unique userName"
+        type: "string"
+    get:
+      operationId: "userNamepu5"
+      description: "Get userName details by providing userName"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  SSADeductRequests:
+                  - NameID: "N00064143695"
+                    RequestDate: 1597717434107
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597717441700
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597717719207
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597717722473
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597719673607
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597719746170
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597719749280
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597720041600
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597720445453
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597720597117
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597727968897
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+                  - NameID: "N00064143695"
+                    RequestDate: 1597728025007
+                    MedicareID: "126787230P"
+                    MemberID: "EIC96284199"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /SSADeductByMemberID/{memberId}:
+    parameters:
+    - name: "memberId"
+      description: "Unique MemberID"
+      required: true
+      in: "path"
+      schema:
+        description: "Unique MemberID"
+        type: "string"
+    get:
+      operationId: "MemberIDKay"
+      description: "Get SSADeductExport details by providing MemberID"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /member: {}
+  /member/SSADeductRequest:
+    post:
+      operationId: "SSADeductRequesttGD"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                NameId: "N00064143695"
+                MemberID: "EIC96284199"
+                MedicareNumber: "126787230P"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  SSADeductID: 1234
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /member/payment/insertpaymentlog:
+    post:
+      operationId: "insertpaymentlogWqi"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                Id: null
+                CreatedDate: null
+                TransactionId: null
+                MemberId: "EIC1"
+                Approved: true
+                Status: null
+                Origin: "Website"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  resultSet1:
+                  - CreatedDate: 1513179532000
+                    Origin: 0
+                    Id: 40461
+                    TransactionId: "2"
+                    MemberId: "EIC1"
+                    Status: null
+                  updateCount1: 1
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /member/payment/lastvalidpayment/{altMemberId}:
+    parameters:
+    - name: "altMemberId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      operationId: "lastvalidpayment_GetMemberById6q8"
+      description: "Get lastvalidpayment details by providing Member unique Id"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                - CreatedDate: 1593445132000
+                  Origin: 1
+                  Id: 730
+                  TransactionId: "222"
+                  MemberId: "EIC1"
+                  Status: 6
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /member/portaluser:
+    post:
+      operationId: "portaluserJ8Z"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                RequestDetails:
+                  AltMemberId: "EIC4501123"
+                  NameId: "N00064200956"
+                  FirstName: "Elijah"
+                  LastName: "Mikealson"
+                  Dob: -1385337600000
+                  UserName: "Elijah001"
+                  Password: "7Nxapqq7sRvwE/O6mjq8Ng=="
+                  SecretImage: "shutterstock_105916748_LR.jpg"
+                  SecretAnswers:
+                  - QuestionId: 1
+                    Answer: "qsxFEqDXZyo="
+                  Email: "emikealson@envisionrx.com"
+                  Phone: "123-456-7890"
+                  PreferredContactMethod: 0
+                  HasAcceptedEula: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  ResponseDetails:
+                    UserId: 150367
+                    PortalRole:
+                      RoleId: 2
+                      RoleDescription: null
+                    WritingCode: null
+                    NameId: "N00064200956"
+                    MemberId: null
+                    Member: null
+                    UserName: "Elijah001"
+                    Email: "emikealson@envisionrx.com"
+                    SecretImage: "shutterstock_105916748_LR.jpg"
+                    SecretImageAltText: null
+                    LoginAttempt: 0
+                    ResetGuid: null
+                    Url: null
+                    IsValidUser: false
+                    Phone: "123-456-7890"
+                    SecretAnswers:
+                    - QuestionId: 1
+                      Answer: "cat"
+                    SecretQuestions:
+                    - SecretQuestionId: null
+                      SecretQuestionText: null
+                      EffectiveDate: null
+                      HiddenDate: null
+                    HasAcceptedEula: false
+                    PreferedContactMethod: 0
+                    PatientId: null
+                    NPN: null
+                    Broker: null
+                    FirstName: null
+                    LastName: null
+                    Agency: null
+                  FaultException:
+                    Success: true
+                    Exceptions: []
+                    Errors: []
+                    Warnings: []
+                    Messages: []
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+    put:
+      operationId: "portalusersQ4"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                RequestDetails:
+                  AltMemberId: "EIC4501123"
+                  NameId: "N00064200956"
+                  FirstName: "Elijah"
+                  LastName: "Mikealson"
+                  Dob: -1385337600000
+                  UserName: "Elijah001"
+                  Password: "7Nxapqq7sRvwE/O6mjq8Ng=="
+                  SecretImage: "shutterstock_105916748_LR.jpg"
+                  SecretAnswers:
+                  - QuestionId: 1
+                    Answer: "qsxFEqDXZyo="
+                  Email: "emikealson@envisionrx.com"
+                  Phone: "123-456-7890"
+                  PreferredContactMethod: 0
+                  HasAcceptedEula: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  ResponseDetails:
+                    UserId: 188610
+                    PortalRole:
+                      RoleId: 2
+                      RoleDescription: null
+                    WritingCode: null
+                    NameId: "N00064200956"
+                    MemberId: null
+                    Member: null
+                    UserName: "Elijah001"
+                    Email: "emikealson@envisionrx.com"
+                    SecretImage: "shutterstock_105916748_LR.jpg"
+                    SecretImageAltText: null
+                    LoginAttempt: 0
+                    ResetGuid: null
+                    Url: null
+                    IsValidUser: false
+                    Phone: "123-456-7890"
+                    SecretAnswers:
+                    - QuestionId: 1
+                      Answer: "cat"
+                    SecretQuestions:
+                    - SecretQuestionId: null
+                      SecretQuestionText: null
+                      EffectiveDate: null
+                      HiddenDate: null
+                    HasAcceptedEula: false
+                    PreferedContactMethod: 0
+                    PatientId: null
+                    NPN: null
+                    Broker: null
+                    FirstName: null
+                    LastName: null
+                    Agency: null
+                  FaultException:
+                    Success: true
+                    Exceptions: []
+                    Errors: []
+                    Warnings: []
+                    Messages: []
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /member/portalusers:
+    put:
+      operationId: "portaluserfcn"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                RequestDetails:
+                  AltMemberId: "EIC4501123"
+                  NameId: "N00064200956"
+                  FirstName: "Elijah"
+                  LastName: "Mikealson"
+                  Dob: -1385337600000
+                  UserName: "Elijah001"
+                  Password: "7Nxapqq7sRvwE/O6mjq8Ng=="
+                  SecretImage: "shutterstock_105916748_LR.jpg"
+                  SecretAnswers:
+                  - QuestionId: 1
+                    Answer: "qsxFEqDXZyo="
+                  Email: "emikealson@envisionrx.com"
+                  Phone: "123-456-7890"
+                  PreferredContactMethod: 0
+                  HasAcceptedEula: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  ResponseDetails:
+                    UserId: 188610
+                    PortalRole:
+                      RoleId: 2
+                      RoleDescription: null
+                    WritingCode: null
+                    NameId: "N00064200956"
+                    MemberId: null
+                    Member: null
+                    UserName: "Elijah001"
+                    Email: "emikealson@envisionrx.com"
+                    SecretImage: "shutterstock_105916748_LR.jpg"
+                    SecretImageAltText: null
+                    LoginAttempt: 0
+                    ResetGuid: null
+                    Url: null
+                    IsValidUser: false
+                    Phone: "123-456-7890"
+                    SecretAnswers:
+                    - QuestionId: 1
+                      Answer: "cat"
+                    SecretQuestions:
+                    - SecretQuestionId: null
+                      SecretQuestionText: null
+                      EffectiveDate: null
+                      HiddenDate: null
+                    HasAcceptedEula: false
+                    PreferedContactMethod: 0
+                    PatientId: null
+                    NPN: null
+                    Broker: null
+                    FirstName: null
+                    LastName: null
+                    Agency: null
+                  FaultException:
+                    Success: true
+                    Exceptions: []
+                    Errors: []
+                    Warnings: []
+                    Messages: []
+  /member/{nameId}:
+    parameters:
+    - name: "nameId"
+      description: "Unique nameId"
+      required: true
+      in: "path"
+      schema:
+        description: "Unique nameId"
+        type: "string"
+    get:
+      operationId: "nameIdQbt"
+      description: "Get member details by providing member unique nameId"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  nameId: "N00064144070"
+                  memberBalance: 0
+                  billingOption: ""
+                  premiumWithhold: "D"
+                  premiumDetails:
+                  - effectiveDate: 1577836800000
+                    premiumAmount: 14.2
+                    memberExpected: 0
+                    lepAmount: null
+                    lisExpected: 0
+                    spapExpected: 0
+                    ssaExpected: 14.2
+                  transactions:
+                  - billee: "01"
+                    invoiceNumber: "134767"
+                    paymentType: "Premium"
+                    createDate: 1594202737000
+                    periodStart: 1593561600000
+                    paymentMethod: ""
+                    note: "auto-entry"
+                    totalAmount: 0
+                  - billee: "01"
+                    invoiceNumber: "137743"
+                    paymentType: "Premium"
+                    createDate: 1595501403000
+                    periodStart: 1588291200000
+                    paymentMethod: ""
+                    note: "auto-entry"
+                    totalAmount: 0
+                  - billee: "01"
+                    invoiceNumber: "136269"
+                    paymentType: "Premium"
+                    createDate: 1595501195000
+                    periodStart: 1590969600000
+                    paymentMethod: ""
+                    note: "auto-entry"
+                    totalAmount: 0
+                  - billee: "02"
+                    invoiceNumber: "134767"
+                    paymentType: "Premium"
+                    createDate: 1594202737000
+                    periodStart: 1593561600000
+                    paymentMethod: ""
+                    note: "auto-entry"
+                    totalAmount: 14.2
+                  - billee: "02"
+                    invoiceNumber: "137743"
+                    paymentType: "Premium"
+                    createDate: 1595501403000
+                    periodStart: 1588291200000
+                    paymentMethod: ""
+                    note: "auto-entry"
+                    totalAmount: 14.2
+                  - billee: "02"
+                    invoiceNumber: "136269"
+                    paymentType: "Premium"
+                    createDate: 1595501195000
+                    periodStart: 1590969600000
+                    paymentMethod: ""
+                    note: "auto-entry"
+                    totalAmount: 14.2
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.3
+                    createDate: 1488499200000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1489363200000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "0008476309"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1491004800000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "3215291"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1493596800000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "3334422"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1493769600000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1496275200000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "3455396"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1498867200000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "3579037"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1501718400000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1504224000000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "3834404"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1504656000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1507075200000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1509494400000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "4102359"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1512086400000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "4240602"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1515024000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1517443200000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "4605203"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1517788800000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1519862400000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "4824513"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1525132800000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "5268829"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1525305600000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1527811200000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "5492597"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1528156800000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1530403200000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "5717489"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1533081600000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "6025945"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1533254400000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1535760000000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "6255416"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1536192000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1541030400000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "6728989"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1543622400000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "6970662"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1543968000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1546300800000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "7116935"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.5
+                    createDate: 1546560000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1548979200000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "7391223"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -29.0
+                    createDate: 1550534400000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1554076800000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "8039057"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1556668800000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "8309268"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.5
+                    createDate: 1556841600000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1559347200000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "8579526"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.5
+                    createDate: 1559692800000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.5
+                    createDate: 1562112000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1564617600000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "9121151"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.5
+                    createDate: 1564963200000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1567296000000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "9499286"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1569888000000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "9667428"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1572566400000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "9943534"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.5
+                    createDate: 1573171200000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1522540800000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "5045418"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1522800000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1483228800000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "2864128"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1484870400000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "0001608539"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.5
+                    createDate: 1554249600000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1499299200000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1538524800000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1506816000000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "3967023"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1509667200000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1488326400000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "3097147"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1496620800000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1520208000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1514764800000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "4455991"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1501545600000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "3705433"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1561939200000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "8849770"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1530748800000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.5
+                    createDate: 1570060800000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.6
+                    createDate: 1512432000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.9
+                    createDate: 1486598400000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "0004602674"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.5
+                    createDate: 1551398400000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "7773108"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 12.6
+                    createDate: 1538352000000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "6490526"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: 14.6
+                    createDate: 1485907200000
+                    paymentType: "Invoice"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "2980185"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -12.6
+                    createDate: 1541376000000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+                  - note: ""
+                    billee: "01"
+                    totalAmount: -14.5
+                    createDate: 1567641600000
+                    paymentType: "Payment"
+                    periodStart: ""
+                    paymentMethod: ""
+                    invoiceNumber: "VISA1958"
+        "404":
+          description: "Not found"
+        "500":
+          description: "Internal Server Error"
+  /member/Messages:
+    post:
+      operationId: "Member_GetMemberMessages0ge"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: "Request for Member Messages"
+              example:
+                EICNumber: "EIC1234"
+                PlanType: "EICM"
+                State: "OH"
+                ZipCode: "44511"
+                ApplicationId: 2
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                - DefaultOrder: 1
+                  EndDate: 1571097600000
+                  Link: ""
+                  MemberMessageId: 1
+                  LinkText: ""
+                  Title: "Test message"
+                  StartDate: 1567994534000
+                  LanguageType: "EN"
+                  Content: "Hi This is a test message"
+                - DefaultOrder: 2
+                  EndDate: 1634256000000
+                  Link: ""
+                  MemberMessageId: 2
+                  LinkText: ""
+                  Title: "Test offers"
+                  StartDate: 1567994534000
+                  LanguageType: "EN"
+                  Content: "Hi This is a test message to test display offers"
+                - DefaultOrder: 2
+                  EndDate: 1634256000000
+                  Link: ""
+                  MemberMessageId: 3
+                  LinkText: ""
+                  Title: "EGWP USERS"
+                  StartDate: 1567994534000
+                  LanguageType: "EN"
+                  Content: "Hi This is a test message to test display offers"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+    get:
+      operationId: "Member_GetMemberMessages1xC"
+      parameters:
+      - name: "ApplicationId"
+        required: true
+        in: "query"
+        schema:
+          type: "integer"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /member/portalDetails:
+    get:
+      operationId: "Get portalDetails0xY"
+      parameters:
+      - name: "nameId"
+        description: "nameId"
+        required: true
+        in: "query"
+        schema:
+          description: "nameId"
+          type: "string"
+      - name: "Role"
+        description: "Role"
+        required: true
+        in: "query"
+        schema:
+          description: "Role"
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "Get portalDetails"
+          content:
+            application/json:
+              schema:
+                example:
+                - NameId: "N00064141085"
+                  UserId: 198648
+                  Email: null
+                  UserName: "emailcheckpopup"
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /member/updateEmail:
+    post:
+      description: "Update updateEmail by providing Name Id in request"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /data: {}
+  /data/planBenefitPackage:
+    get:
+      parameters:
+      - name: "pbp"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/sepReason:
+    description: ""
+    get:
+      parameters:
+      - name: "sepReason"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                - SEPReasonID: 1
+                  Code: "LCC"
+                  Reason: "I recently involuntarily lost my creditable drug coverage."
+                  ActiveFlag: true
+                  MoreInfo: false
+                - SEPReasonID: 2
+                  Code: "LEC"
+                  Reason: "I am losing coverage I had from an employer"
+                  ActiveFlag: true
+                  MoreInfo: false
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/sep:
+    description: ""
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/paymentType:
+    get:
+      parameters:
+      - name: "paymentTypeCode"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/enrollmentType:
+    get:
+      description: "Note -- for description as source"
+      parameters:
+      - name: "enrollmentType"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                - RequestType: 32
+                  Description: "2021 Pre-Enrollment"
+                - RequestType: 28
+                  Description: "2020 Pre-Enrollment"
+                - RequestType: 38
+                  Description: "2022 Pre-Enrollment"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/planYear:
+    get:
+      parameters:
+      - name: "planYearCode"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                - PlanId: 6
+                  Description: "EnvisionRxPlus"
+                  Enabled: true
+                  PlanYearId: 1
+                  Year: 2020
+                  PbpId: 364
+                  PbpCode: "014"
+                  PbpDescription: null
+                  GroupId: "EICH"
+                  StateCode: "OH"
+                  StateName: "Ohio"
+                  LIS25: 3.6
+                  LIS50: 7.1
+                  LIS75: 10.7
+                  LIS100: 14.2
+                  Deductible: 435
+                  Premium: 14.2
+                  Deminimis: false
+                  FormularyId: "20430"
+                  PricingGroupId: "WEBH2020"
+                  IsBrokerPbp: true
+                  IsEGWP: false
+                  TimeZone: "5 "
+                  DayLightSavings: true
+                  SkipDeductable: true
+                  EGWPDirectBill: false
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/member:
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MemberId: 1
+                  PlanId: 6
+                  PlanName: "EnvisionRxPlus"
+                  GroupId: "EICH"
+                  AltMemberId: "EIC1"
+                  HICN: "123456782A"
+                  MBI: null
+                  MedicareNumber: "123456782A"
+                  FirstName: "TEST1"
+                  LastName: "TEST2A"
+                  Prefix: "MR."
+                  MiddleInitial: "A"
+                  Address1: "663 East Aurora Road"
+                  Address2: null
+                  City: "BROOKLYN"
+                  State: "NY"
+                  ZipCode: "11208"
+                  MAddress1: "Mailing Address"
+                  MAddress2: null
+                  MCity: "City"
+                  MState: "OH"
+                  MZipCode: "44087"
+                  DOB: 315532800000
+                  Gender: "M"
+                  Email: "aathithan@envisionrx.com"
+                  Phone: "724-488-0888"
+                  CellPhone: "752-826-5148"
+                  AltPhone: "751-653-9248"
+                  BWritingCode: "ABCD123"
+                  PrimaryPharmacy:
+                    PharmacyId: 27181898
+                    NABP: "3672070"
+                    ChainCode: "248"
+                    Name: "GIANT EAGLE PHARMACY #6299"
+                    Address:
+                      Latitude: "41.313958"
+                      Longitude: "-81.529006"
+                      Address1: "290 EAST AURORA ROAD"
+                      Address2: ""
+                      City: "NORTHFIELD"
+                      StateCode: null
+                      ZipCode: "44067"
+                    PharmacyTypeId: 1
+                    Phone: "330-468-3263"
+                    IsPrimary: true
+                    IsPreferred: true
+                    IsEPrescribing: true
+                    IsEIC: true
+                    IsEGWP: true
+                    IsPreferredCC: true
+                    Is90DayRetail: true
+                    MemberPharmacyID: 6535
+                    Distance: 0
+                    Year: 0
+                    PreferenceType: 0
+                    IsBrokerPbp: false
+                  Pharmacies: []
+                  MonthlyPremium: 0
+                  CurrentBalance: 0
+                  EnrollmentDate: 1466467200000
+                  DisenrollmentDate: null
+                  PbpCode: "003"
+                  PbpId: 0
+                  Year: 2020
+                  GreenEobReasonCode: 1
+                  CMSConfirmationID: null
+                  MailNABPs: null
+                  IsBroker: false
+                  BrokerAttestation: false
+                  BrokerID: 69
+                  Status: "Active"
+                  EGWPDirectBill: false
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/member/ByAltNameId/{altNameId}:
+    parameters:
+    - name: "altNameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MemberId: 1
+                  PlanId: 6
+                  PlanName: "EnvisionRxPlus"
+                  GroupId: "EICH"
+                  AltMemberId: "EIC1"
+                  HICN: "123456782A"
+                  MBI: null
+                  MedicareNumber: "123456782A"
+                  FirstName: "TEST1"
+                  LastName: "TEST2A"
+                  Prefix: "MR."
+                  MiddleInitial: "A"
+                  Address1: "663 East Aurora Road"
+                  Address2: null
+                  City: "BROOKLYN"
+                  State: "NY"
+                  ZipCode: "11208"
+                  MAddress1: "Mailing Address"
+                  MAddress2: null
+                  MCity: "City"
+                  MState: "OH"
+                  MZipCode: "44087"
+                  DOB: 315532800000
+                  Gender: "M"
+                  Email: "aathithan@envisionrx.com"
+                  Phone: "724-488-0888"
+                  CellPhone: "752-826-5148"
+                  AltPhone: "751-653-9248"
+                  BWritingCode: "ABCD123"
+                  PrimaryPharmacy:
+                    PharmacyId: 27181898
+                    NABP: "3672070"
+                    ChainCode: "248"
+                    Name: "GIANT EAGLE PHARMACY #6299"
+                    Address:
+                      Latitude: "41.313958"
+                      Longitude: "-81.529006"
+                      Address1: "290 EAST AURORA ROAD"
+                      Address2: ""
+                      City: "NORTHFIELD"
+                      StateCode: null
+                      ZipCode: "44067"
+                    PharmacyTypeId: 1
+                    Phone: "330-468-3263"
+                    IsPrimary: true
+                    IsPreferred: true
+                    IsEPrescribing: true
+                    IsEIC: true
+                    IsEGWP: true
+                    IsPreferredCC: true
+                    Is90DayRetail: true
+                    MemberPharmacyID: 6535
+                    Distance: 0
+                    Year: 0
+                    PreferenceType: 0
+                    IsBrokerPbp: false
+                  Pharmacies: []
+                  MonthlyPremium: 0
+                  CurrentBalance: 0
+                  EnrollmentDate: 1466467200000
+                  DisenrollmentDate: null
+                  PbpCode: "003"
+                  PbpId: 0
+                  Year: 2020
+                  GreenEobReasonCode: 1
+                  CMSConfirmationID: null
+                  MailNABPs: null
+                  IsBroker: false
+                  BrokerAttestation: false
+                  BrokerID: 69
+                  Status: "Active"
+                  EGWPDirectBill: false
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/member/portaluser:
+    post:
+      description: "assumption that this is mapped to this api but the Patrick's mapping\
+        \ document was uncertain of the mapping.  Please double check this. <<<<<<<<<<<<<<"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/member/addresschange:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                MemberName: "Patrick Bean"
+                MemberID: "EIC123456"
+                DOB: -628646400000
+                HICN: "123456789A"
+                AddressType: "Home"
+                OldAddress1: "123 Main St"
+                OldAddress2: "Apt 2"
+                OldCity: "Twinsburg"
+                OldState: "OH"
+                OldZipCode: "44087"
+                NewAddress1: "123 New St"
+                NewAddress2: ""
+                NewCity: "Erie"
+                NewState: "PA"
+                NewZipCode: "16508"
+                Notes: "Member is moving"
+                EffectiveDate: 1598918400000
+                RequestedBy: "pbean"
+                Attestation: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  ResponseDetails: true
+  /data/member/AddressChangeRequest:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  ResponseDetails: true
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MemberName: "Patrick Bean"
+                  MemberID: "EIC123456"
+                  DOB: -628646400000
+                  HICN: "123456789A"
+                  AddressType: "Home"
+                  OldAddress1: "123 Main St"
+                  OldAddress2: "Apt 2"
+                  OldCity: "Twinsburg"
+                  OldState: "OH"
+                  OldZipCode: "44087"
+                  NewAddress1: "123 New St"
+                  NewAddress2: ""
+                  NewCity: "Erie"
+                  NewState: "PA"
+                  NewZipCode: "16508"
+                  Notes: "Member is moving"
+                  EffectiveDate: 1598918400000
+                  RequestedBy: "pbean"
+                  Attestation: true
+  /data/member/AddressChangeRequests:
+    get:
+      parameters:
+      - name: "complete"
+        required: true
+        in: "query"
+        schema:
+          type: "boolean"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-queryParameters:
+        assigned:
+          required: false
+          type: "boolean | nil"
+        addresstype:
+          required: false
+          type: "string | nil"
+        requeststartdate:
+          required: false
+          type: "string | nil"
+        requestenddate:
+          required: false
+          type: "string | nil"
+        pbpchange:
+          required: false
+          type: "boolean | nil"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/member/AddressChangeRequest/{addressChangeID}:
+    parameters:
+    - name: "addressChangeID"
+      required: true
+      in: "path"
+      schema:
+        type: "number"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/member/disenrollment:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                NameId: null
+                AltMemberId: "EIC59074470"
+                Prefix: "Dr"
+                FirstName: "Patrick"
+                MiddleInitial: null
+                LastName: "bean"
+                Phone: "330-555-4545"
+                DisenrollmentReasonId: 1
+                Comment: "MuleTesting"
+                RequestedBy: "Patrick"
+                RequestedDate: 1605052800000
+                DisenrollmentDate: 1606787428438
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  DisenrollmentRequestId: 20796
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/user: {}
+  /data/user/getuser:
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /data/user/PortalUserForgetUserName:
+    post:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  UserId: 0
+                  PortalRole:
+                    RoleId: 3
+                    RoleDescription: "Temp"
+                  WritingCode: null
+                  MemberId: null
+                  Member: null
+                  UserName: "eicdemo1"
+                  Email: "pbean@envisionrx.com"
+                  SecretImage: null
+                  SecretImageAltText: null
+                  LoginAttempt: null
+                  ResetGuid: null
+                  Url: null
+                  IsValidUser: false
+                  Phone: null
+                  SecretAnswers: []
+                  SecretQuestions: []
+                  HasAcceptedEula: false
+                  PreferedContactMethod: null
+                  PatientId: null
+                  NPN: null
+                  Broker: null
+                  FirstName: null
+                  LastName: null
+                  Agency: null
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /AddressChangeRequest: {}
+  /AddressChangeRequest/MemberID: {}
+  /AddressChangeRequest/MemberID/{ID}:
+    parameters:
+    - name: "ID"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /MarketProminence:
+    get:
+      parameters:
+      - name: "pbp"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "year"
+        required: true
+        in: "query"
+        schema:
+          type: "integer"
+          format: "int32"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /validateuserid:
+    get:
+      parameters:
+      - name: "userId"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "nameId"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /secretquestion: {}
+  /secretquestion/{userId}:
+    parameters:
+    - name: "userId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  UserId: 660
+                  SecretQuestionId: 1
+                  Answer: "cat"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /portaluserexist: {}
+  /portaluserexist/{NameId}:
+    parameters:
+    - name: "NameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  ResponseDetails:
+                    UserId: 150367
+                    PortalRole:
+                      RoleId: 2
+                      RoleDescription: null
+                    WritingCode: null
+                    NameId: "N00064200956"
+                    MemberId: null
+                    Member: null
+                    UserName: "Elijah001"
+                    Email: "emikealson@envisionrx.com"
+                    SecretImage: "shutterstock_105916748_LR.jpg"
+                    SecretImageAltText: null
+                    LoginAttempt: 0
+                    ResetGuid: null
+                    Url: null
+                    IsValidUser: false
+                    Phone: "123-456-7890"
+                    SecretAnswers:
+                    - QuestionId: 1
+                      Answer: "cat"
+                    SecretQuestions:
+                    - SecretQuestionId: null
+                      SecretQuestionText: null
+                      EffectiveDate: null
+                      HiddenDate: null
+                    HasAcceptedEula: false
+                    PreferedContactMethod: 0
+                    PatientId: null
+                    NPN: null
+                    Broker: null
+                    FirstName: null
+                    LastName: null
+                    Agency: null
+                  FaultException:
+                    Success: true
+                    Exceptions: []
+                    Errors: []
+                    Warnings: []
+                    Messages: []
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /CodeLookup: {}
+  /CodeLookup/CallScript/{language}:
+    parameters:
+    - name: "language"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      operationId: "LanguageTeF"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  Language: "English"
+                  PageTitle: "<span class=\"pageTitle\">EnvisionRxPlus Phone Enrollment\
+                    \ Request</span>"
+                  Intro1: "<p>Thank you for calling <span class=\"envisionrxplus\"\
+                    >EnvisionRxPlus</span>. This is < your name>. How may I help you?</p><p\
+                    \ style=\"padding-left: 30px;\">Caller: I would like to enroll\
+                    \ in <span class=\"envisionrxplus\">EnvisionRxPlus</span>.</p><p>Sure,\
+                    \ I can help you with your enrollment. May I have your name and\
+                    \ your phone number in case we are disconnected?</p>"
+                  Intro2: "<p>Before we begin the application process, I need to inform\
+                    \ you that EnvisionInsurance is a Prescription Drug Plan with\
+                    \ a Medicare contract. Enrollment in EnvisionInsurance depends\
+                    \ on contract renewal.</p>"
+                  Intro3: "<p>The plan you have selected is </p>"
+                  Intro4: "<p><strong>To enroll over the phone, Medicare requires\
+                    \ this call to be recorded. Do you object to the call being recorded?</strong></p>"
+                  Intro5: "<p>Ok, letÃ¢â‚¬â„¢s proceed in completing your telephonic\
+                    \ enrollment application. I will be asking you for information\
+                    \ that is required for enrollment, this will take several minutes.</p>"
+                  Intro6: "<p>IÃ¢â‚¬â„¢m sorry, but I will not be able to enroll you\
+                    \ on the phone. You can enroll on our website EnvisionRxPlus.com\
+                    \ or I can mail you a pre-enrollment kit and application.</p>"
+                  QMedicareID: "<p><strong>May I have the Medicare Number from your\
+                    \ Red White and Blue Medicare card?</strong></p>"
+                  QState: "<p><strong>What state do you reside in?</strong></p>"
+                  QEnrollmentYear: "<p><strong>And what benefit plan year are you\
+                    \ enrolling for?</strong></p>"
+                  ScriptEnrollBenefits: ""
+                  QEnrollBenefits: "<p><strong>Does this situation apply to you?</strong></p>"
+                  ScriptElectionPeriod: "<p>The Annual Election Period or AEP occurs\
+                    \ October 15th through December 7th of each year for an effective\
+                    \ date of January 1st of the following year.</p>"
+                  QElectionPeriod: "<p><strong>Are you enrolling for Annual Enrollment?</strong></p>"
+                  ScriptSEP: ""
+                  QSEP: ""
+                  QMemberInfo: "<p><strong>May I have your name?</strong></p>"
+                  QDOB: "<p><strong>May I have your birth date?</strong></p>"
+                  QGender: "<p><strong>May I have your gender?</strong></p>"
+                  QPhone: "<p><strong>May I have your telephone number starting with\
+                    \ area code of where you can be reached?</strong></p>"
+                  QCellPhone: "<p><strong>Do you have a cell phone number that you\
+                    \ would like to provide? (Optional)</strong></p>"
+                  QAltPhone: "<p><strong>Do you have an alternate phone number that\
+                    \ you would like to provide? (Optional)</p></strong></p>"
+                  QMAddress: "<p><strong>Do you have a different mailing address?</strong></p>"
+                  QEContact: "<P><strong>Do you have an emergency contact person to\
+                    \ list? </strong></p>"
+                  QEmail: "<P><strong>Is there an e-mail address you would like to\
+                    \ have on file? (Optional)</strong></p>"
+                  QPartAandB: "<p><strong>May I have the effective date of your Part\
+                    \ A and/or Part B?</strong></p>"
+                  ScriptPremiums: "<p>We will now review the options you have to pay\
+                    \ Part D Plan premium. This payment option is selected for the\
+                    \ payment of your Part D plan premium only. You must continue\
+                    \ to pay your Medicare Part B premium. If you decide to switch\
+                    \ your payment option, it could take up to three months for it\
+                    \ to take effect based on the option you select. In the meantime,\
+                    \ you will be held responsible for those premiums.</p><p>If you\
+                    \ are assessed a Part D-Income Related Monthly Adjustment Amount,\
+                    \ you will be notified by the Social Security Administration.\
+                    \ You will be responsible for paying this extra amount in addition\
+                    \ to your plan premium. You will either have the amount withheld\
+                    \ from your Social Security or Railroad Retirement Board benefit\
+                    \ check or be billed directly by Medicare. Do NOT pay the Part\
+                    \ D-IRMAA extra amount to <span class=\"envisionrxplus\">Envision\
+                    \ Insurance Company</span>.</p>"
+                  QPremiumPayment: "<p><strong>Which premium payment options would\
+                    \ you prefer?</strong></p>"
+                  ScriptPremiumHelp: "<p>If you canÃ¢â‚¬â„¢t afford the monthly plan\
+                    \ premiums, you may be able to get extra help to pay for premiums\
+                    \ and other costs associated with your Part D Plan benefits and\
+                    \ prescription drugs. People with limited incomes may qualify\
+                    \ for extra help to pay for their prescription drug costs. If\
+                    \ you qualify, Medicare could pay for up to 75% or more of your\
+                    \ drug costs including monthly prescription drug premiums, annual\
+                    \ deductibles, and co-insurance. Additionally, those who qualify\
+                    \ will not be subject to the coverage gap or a late enrollment\
+                    \ penalty. Many people are eligible for these savings and donÃ\
+                    ¢â‚¬â„¢t even know it.</p><p>To see if you qualify for extra help,\
+                    \ call:<br/>&nbsp;&nbsp;&nbsp&nbsp;&nbsp;The Social Security Office\
+                    \ at 1-800-772-1213 between 7 a.m.and 7 p.m., Monday through Friday.<br/>&nbsp;&nbsp;&nbsp&nbsp;&nbsp;TTY\
+                    \ users should call, 1-800-325-0778; or<br/>&nbsp;&nbsp;&nbsp&nbsp;&nbsp;Your\
+                    \ State Medicaid Office.</p><p>If you qualify for extra help with\
+                    \ your Medicare prescription drug coverage costs, Medicare will\
+                    \ pay all or part of your plan premium. If Medicare pays only\
+                    \ a portion of this premium, you will be responsible for payment\
+                    \ of the amount that Medicare doesnÃ¢â‚¬â„¢t cover.</p>"
+                  QOtherCoverage: "<p><strong>I have a few more questions to ensure\
+                    \ I get complete information. Do you have other Prescription Drug\
+                    \ Coverage in addition to Envision Insurance Company?</strong></p>"
+                  QLongTermCare: "<p><strong>Are you a resident in a Long Term Care\
+                    \ facility, such as a nursing home?</strong></p>"
+                  QMaterialFormat: "<p><strong>Envision Insurance Company offers materials\
+                    \ in English, Spanish, and Large Print formats. Would you like\
+                    \ your materials sent to you in Spanish or Large Print?</strong></p>"
+                  QNotMember: "<p><strong>Are you enrolling on behalf of yourself\
+                    \ or another person?</strong></p>"
+                  ScriptAuthorized: "<p>By completing this application, you are certifying\
+                    \ that you are authorized under state law to complete this application\
+                    \ and documentation of this authority is available upon request\
+                    \ by Envision Insurance Company or by Medicare. Before continuing\
+                    \ with the application, I need to verify some information for\
+                    \ you.</p>"
+                  QHowYouGotInfo: "<p><strong>May I ask you how you heard about our\
+                    \ plan?</strong></p><p>If broker,  Can you provide the name of<br/>the\
+                    \ agent/broker that referred you to the plan?</p>"
+                  OptSpanish: "Spanish (Espanol)"
+                  OptLargePrint: "Large Print"
+                  OptEndingAtt: "<Strong>Ending Attestation</strong>"
+                  ScriptAttestation: "<p>Please indicate by saying yes that you understand\
+                    \ these statements and wish to enroll in the plan.</p>"
+                  OptYes: true
+                  OptNo: false
+                  btnSearch: "Search"
+                  btnSubmit: "Submit"
+                  btnClose: "Close"
+                  btnCancel: "Cancel"
+                  LabelPrefix: "Prefix:"
+                  LabelFirstName: "First Name:"
+                  LabelMI: "Middle Initial:"
+                  LabelLastName: "Last Name:"
+                  LabelPermAddress1: "Permanent Residence Address Line 1:"
+                  LabelMAddress1: "Mailing Address Line 1:"
+                  LabelAddress2: "Line 2:"
+                  LabelCity: "City:"
+                  LabelState: "State:"
+                  LabelZip: "Zip:"
+                  LabelName: "Name:"
+                  LabelPhone: "Phone:"
+                  LabelRelation: "Relationship:"
+                  LabelPartA: "Part A:"
+                  LabelPartB: "Part B:"
+                  LabelCovName: "Coverage Name:"
+                  LabelCovID: "Coverage ID:"
+                  LabelCovGroup: "Coverage Group#:"
+                  LabelInstitution: "Institution Name:"
+                  popMemberFnd: "<p>If the beneficiary is currently enrolled, the\
+                    \ member record will automatically populate. If the member permanently\
+                    \ resides in DE, DC, MD, NY, or SC confirm with the member if\
+                    \ they would like to switch from the <b>EnvisionRxSecure to EnvisionRxPlus</b>\
+                    \ plan for 2020. <u>Review all benefits for EnvisionRxPlus.</u>\
+                    \ If the member chooses to change plans use the <b>PBP Change\
+                    \ Request Form</b>.</p><p>If current member, in any state, does\
+                    \ not want to change plans, advise the member that a new enrollment\
+                    \ is not needed since they are already enrolled and their enrollment\
+                    \ will automatically be renewed for the next year.</p><p>If the\
+                    \ beneficiary has a term date on their record and wants to enroll,\
+                    \ go over every field on their record and correct anything that\
+                    \ needs to be changed. Read the attestation to the enrollee. Send\
+                    \ the enrollment information to the Medicare Request Inbox</p><p>If\
+                    \ the beneficiary has never been enrolled in <span class=\"envisionrxplus\"\
+                    >EnvisionRxPlus</span>, continue with application</p>"
+                  popSEPNone: "<p>Members may enroll and make changes to their plan\
+                    \ each year during the Annual Election Period, or AEP which occurs\
+                    \ annually from October 15 through December 7. Changes made under\
+                    \ the Annual Election Period will take effect January 1st of the\
+                    \ next year.</p><p>Does this election period apply?</p>"
+                  popSSADeduct: "<p><strong>IF THE BENEFICIARY DOES NOT CURRENTLY\
+                    \ HAVE AN AUTO SSA OR RRB DEDUCT SAY THE FOLLOWING: </strong></p><p>It\
+                    \ can take several months for premiums to start being deducted\
+                    \ from SSA or RRB benefits. Until SSA has your premium deduction\
+                    \ automatically taken from your SSA check, we will be invoicing\
+                    \ you. You must send your premium payments to us. If you do not\
+                    \ pay us, you could potentially be disenrolled. When SSA starts\
+                    \ withholding your payments, youÃ¢â‚¬â„¢ll see a deduction for\
+                    \ all premiums due from you enrollment effective date up to the\
+                    \ point withholding begins. We will reimburse you for any months\
+                    \ you paid out of pocket and were also deducted from your SSA\
+                    \ benefit. If SSA does not approve your request for automatic\
+                    \ deduction, we will continue to send you a paper bill for your\
+                    \ monthly premiums to be paid by credit card or electronic funds\
+                    \ transfer from your checking account.</p><p>It is important that\
+                    \ you call us back or contact Social Security at 1-800-772-1213\
+                    \ after 90 days if you do not see your premiums being withheld\
+                    \ from your SSA or RRB check. If SSA does not process your withholdings\
+                    \ and your cumulative premiums exceed $200, SSA will not set up\
+                    \ your automatic deduct from your check. If this happens, EnvisionRxPlus\
+                    \ will be instructed to continue invoicing you for your premium\
+                    \ payment. Per your direction, we may start the process again\
+                    \ to request your premiums be withheld from your SSA or RRB check.</p><p><strong>IF\
+                    \ THE MEMBER CURRENTLY HAS SSA DEDUCT, BUT IS SWITCHING PLANS\
+                    \ SAY THE FOLLOWING:</strong></p><p>Since you are switching plans,\
+                    \ premiums from your old plan may still be deducted from your\
+                    \ SSA benefits. As soon as the systems are updated, if the difference\
+                    \ in your <script>document.write(new Date().getFullYear())</script>\
+                    \ premium is less than your <script>document.write(new Date().getFullYear()-1)</script>\
+                    \ premium, SSA will refund the difference. If the difference in\
+                    \ your <script>document.write(new Date().getFullYear())</script>\
+                    \ premium is greater than your <script>document.write(new Date().getFullYear()-1)</script>\
+                    \ premium, the difference will be deducted from your SSA payment.\
+                    \ You do not need to do anything.</p><p>We recommend you call\
+                    \ us back or contact Social Security at 1-800-772-1213 after 90\
+                    \ days if you do not see the withholding adjustment (or termination\
+                    \ of withholding) take effect and/or an appropriate refund is\
+                    \ issued.</p>"
+                  popAttestation1: "<span class=\"pageTitle\">Attestation</span><p>To\
+                    \ complete the application, I will read to you several statements.\
+                    \ When I have finished reading these statements, I will ask you\
+                    \ if you understand and agree. You must understand and agree to\
+                    \ these statements in order to complete your enrollment.</p>"
+                  popAttestation2: "<ul><li>If you are a member of a Medicare Advantage\
+                    \ Plan (like an HMO or PPO), you may already have prescription\
+                    \ drug coverage from your Medicare Advantage plan that will meet\
+                    \ your needs. By joining <b>this EnvisionInsurance Medicare Part\
+                    \ D prescription drug plan</b>, your membership in your Medicare\
+                    \ Advantage plan may end. This will affect both your doctor and\
+                    \ hospital coverage as well as your prescription drug coverage.\
+                    \ Read the information that your Medicare Advantage plan sends\
+                    \ you and if you have questions, contact your Medicare Advantage\
+                    \ Plan.</li>"
+                  popAttestation3: "<li>If you currently have health coverage from\
+                    \ an employer or union, joining <b>this EnvisionInsurance Medicare\
+                    \ Part D prescription drug plan</b> could affect your employer\
+                    \ or union health benefits. You could lose your employer or union\
+                    \ health coverage if you join <b>this EnvisionInsurance Medicare\
+                    \ Part D prescription drug plan</b>. Read the communications your\
+                    \ employer or union sends you.</li>"
+                  popAttestation4: "<li>If you have questions, visit their website,\
+                    \ or contact the office listed in their communications. If there\
+                    \ is no information on whom to contact, your benefits administrator\
+                    \ or the office that answers questions about your coverage can\
+                    \ help.</li>"
+                  popAttestation5: "<li><b>EnvisionInsurance</b> is a Part D plan\
+                    \ sponsor and has a contract with the Federal government. This\
+                    \ prescription drug coverage is in addition to your coverage under\
+                    \ Medicare; therefore, you will need to keep your Medicare Part\
+                    \ A or Part B coverage. It is your responsibility to inform EnvisionInsurance\
+                    \ of any prescription drug coverage that you have or may get in\
+                    \ the future. You can only be in one Medicare prescription drug\
+                    \ plan at a time Ã¢â‚¬â€œ if you are currently in a Medicare Prescription\
+                    \ Drug Plan, your enrollment in <b>EnvisionInsurance</b> will\
+                    \ end that enrollment.</li>"
+                  popAttestation6: "<li>Enrollment in this plan is generally for the\
+                    \ entire year. Once you enroll, you may leave this plan or make\
+                    \ changes if an enrollment period is available, generally during\
+                    \ the Annual Enrollment Period (~~DisplayStartDate~~ - ~~DisplayEndDate~~),\
+                    \ unless you qualify for special circumstances.</li>"
+                  popAttestation7: "<li> If you move out of the <b>EnvisionInsurance</b>\
+                    \ service area, you need to notify us so you can disenroll and\
+                    \ find a new plan in your new area. You must use network pharmacies\
+                    \ except in an emergency when you canÃ¢â‚¬â„¢t reasonably use\
+                    \ <b>EnvisionInsurance</b> network pharmacies.</li>"
+                  popAttestation8: "<li>Once you are a member of <b>EnvisionInsurance</b>,\
+                    \ you have the right to appeal plan decisions about payment of\
+                    \ services if you disagree. You agree to read the Evidence of\
+                    \ Coverage document from <b>EnvisionInsurance</b> when you get\
+                    \ it to know which rules you must follow to get coverage with\
+                    \ this Medicare drug plan.</li>"
+                  popAttestation9: "<li>If you leave the plan and donÃ¢â‚¬â„¢t have\
+                    \ or get other Medicare prescription drug coverage or creditable\
+                    \ prescription drug coverage (as good as MedicareÃ¢â‚¬â„¢s), you\
+                    \ may have to pay a late enrollment penalty in addition to your\
+                    \ premium for Medicare prescription drug coverage in the future.</li>"
+                  popAttestation10: "<li>Counseling services may be available in your\
+                    \ state to provide advice concerning Medicare supplement insurance\
+                    \ or other Medicare Advantage or Prescription Drug Plan options,\
+                    \ medical assistance through the state Medicaid program, and the\
+                    \ Medicare Savings Program.</li>"
+                  popAttestation11: "<li>By joining this Medicare prescription drug\
+                    \ plan, you acknowledge that <b>EnvisionInsurance</b> will release\
+                    \ your information to Medicare and other plans as is necessary\
+                    \ for treatment, payment and health care operations. <b>EnvisionInsurance</b>\
+                    \ will release your information, including your prescription drug\
+                    \ event data, to Medicare, who may release it for research and\
+                    \ other purposes which follow all applicable Federal statutes\
+                    \ and regulations. The information on this enrollment form is\
+                    \ correct to the best of your knowledge. If you intentionally\
+                    \ provide false information, you will be disenrolled from the\
+                    \ plan.</li>"
+                  popAttestation12: "<li>Your verbal acknowledgment at the end of\
+                    \ this application process means that you understand the contents\
+                    \ of this application. Additionally, if you are enrolling on behalf\
+                    \ of another, you certify that you are authorized under State\
+                    \ law to complete this enrollment, and documentation of this authority\
+                    \ is available upon request by <b>EnvisionInsurance</b> or by\
+                    \ Medicare.</li><li>Please indicate by saying yes that you understand\
+                    \ these statements and wish to enroll in the plan. We will be\
+                    \ sending you acknowledgment of enrollment into our plan.</li>"
+                  popAttestation14: "<p>This concludes the enrollment application\
+                    \ process.  Your application will be submitted to Medicare for\
+                    \ enrollment into (CSR repeat plan they enrolled beneficiary into).</p><p>Your\
+                    \ confirmation tracking identification number is <b>(EICXXXXXX)</b>.\
+                    \ Please keep this number for your records.</p><p>If you have\
+                    \ any further questions, feel free to contact us at 1-866-250-2005\
+                    \ and for TTY/TDD users 711. Thank you for your enrollment into\
+                    \ <b>EnvisionInsurance</b>.</p><p>Would you like me to send you\
+                    \ any additional information?</p><p>Have I answered all of your\
+                    \ questions today, or would you like formal follow-up?</p>"
+                  popConfirmation: "<p>Confirmation:</p><p>Okay then, this concludes\
+                    \ the enrollment application process. Your application will be\
+                    \ submitted to Medicare for enrollment. You will receive notice\
+                    \ from the Plan acknowledging receipt of the enrollment.</p><p>Your\
+                    \ confirmation tracking identification number is ~~EICXXXXXX~~.\
+                    \ Please keep this number for your records.</p>"
+                  popCallerObjects: "<p>I am sorry, but I will not be able to enroll\
+                    \ you on the phone. You can enroll on our website, www.envisionrxplus.com,\
+                    \ or I can mail you a pre-enrollment kit and application. <a href=\"\
+                    ./request.aspx\">Request for Information</a></p>"
+                  WantToEnrollYes: "Caller Does Not Object"
+                  WantToEnrollNo: "Caller Objects"
+                  popVerifyName: "<p>Please confirm the correct spelling of caller's\
+                    \ name</p>"
+                  QPermanentAddress: "<p><strong>May I have your permanent address,\
+                    \ including city, state, and zip code? Your address needs to be\
+                    \ the place you reside at. We cannot accept a PO Box for a permanent\
+                    \ address for this enrollment.</strong></p>"
+                  popBankAccount: "<p><strong>Thank you. We will collect your payment\
+                    \ information at the end of the application process.</strong></p>"
+                  popCreditCard: "<p><strong>Thank you. We will collect your payment\
+                    \ information at the end of the application process.</strong></p>"
+                  popAttestation9b: ""
+                  BankAccountDesc: "<p>Please provide the following information for\
+                    \ your Checking Account:</p>"
+                  LabelBAName: "Checking Account Holder Name:"
+                  LabelBARouting: "Bank Routing Number:"
+                  LabelBAAccount: "Bank Account Number:"
+                  CreditCardDesc: "<p>Please provide the following information:</p>"
+                  LabelCCType: "Type of Card:"
+                  LabelCCName: "Name of Account Holder:"
+                  LabelCCAccount: "Account Number:"
+                  LabelCCExp: "Expiration Date:"
+                  popUSPSInvalid: "<p>We were unable to validate your address. Please\
+                    \ verify your address is correct before proceeding.</p>"
+                  popUSPSUpdate: "<p>We adjusted your address to match USPS guidelines\
+                    \ Ã¢â‚¬â€œ if this is incorrect, please click Keep Original.</p><p><strong>Original\
+                    \ Address:</strong></p><div id=\"originalAddress\"></div><p><strong>New\
+                    \ Address:</strong></p><div id=\"newAddress\"></div>"
+                  popStateValidate: "<p>Your Permanent Address State must match Enrollment\
+                    \ State.</p>"
+                  popStateValidateAlert: "<div id=\"ValidateStateMessage\"></div>"
+                  IEPMessage: "<p>Members may only enroll in Medicare Part D prescription\
+                    \ drug plans during specific times of the year called election\
+                    \ periods. Based on your Part A and/or Part B effective dates,\
+                    \ you qualify for the Initial Election Period or IEP. This is\
+                    \ the 7 month period surrounding your Medicare eligibility. Your\
+                    \ plan effective date will be the first of the month you are eligible\
+                    \ for Part D or, if the application is received after that date,\
+                    \ the first of the month following receipt of the application.</p>"
+                  AlternateMessage: "<p>Members may only enroll in Medicare Part D\
+                    \ prescription drug plans during specific times of the year called\
+                    \ election periods. Individuals who are no longer in their Initial\
+                    \ Election Period, or IEP, may be eligible for a Special Election\
+                    \ Period, or SEP. Special Election Periods apply through the year,\
+                    \ and will be effective the first day of the month following receipt\
+                    \ of the application. Not everyone can enroll into Part D using\
+                    \ a SEP. You must have a qualifying event within the last 60 days.\
+                    \ I will read to you several qualifying statements, please indicate\
+                    \ if any of these statements apply to you.</p>"
+                  popSEPNoneNotAEP: "<p>I am sorry but I will not be able to enroll\
+                    \ you today because you are not in an eligible election period.\
+                    \ You must enroll during a valid election period.</p>"
+                  popMedicareIdAlert: "The Centers for Medicaid and Medicare Services\
+                    \ (CMS) has completed the New Medicare Card number transition\
+                    \ for all Medicare beneficiaries to a Medicare Beneficiary Identifier\
+                    \ (MBI)  number.  The old Health Insurance Claim Number (HICN)\
+                    \ number is no longer being used by CMS. Please use the beneficiaries\
+                    \ MBI number for enrollment.  This number can be located on the\
+                    \ beneficiaryÃ¢â‚¬â„¢s Red, White and Blue Member ID card."
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /CodeLookup/AdminDropDownList/{year}:
+    parameters:
+    - name: "year"
+      required: true
+      in: "path"
+      schema:
+        type: "integer"
+    get:
+      operationId: "Year7UX"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  States:
+                  - Description: "Alabama"
+                    State: "AL"
+                  - Description: "Alaska"
+                    State: "AK"
+                  - Description: "Arizona"
+                    State: "AZ"
+                  - Description: "Arkansas"
+                    State: "AR"
+                  - Description: "California"
+                    State: "CA"
+                  - Description: "Colorado"
+                    State: "CO"
+                  - Description: "Connecticut"
+                    State: "CT"
+                  - Description: "Delaware"
+                    State: "DE"
+                  - Description: "District of Columbia"
+                    State: "DC"
+                  - Description: "Florida"
+                    State: "FL"
+                  - Description: "Georgia"
+                    State: "GA"
+                  - Description: "Guam"
+                    State: "GU"
+                  - Description: "Hawaii"
+                    State: "HI"
+                  - Description: "Idaho"
+                    State: "ID"
+                  - Description: "Illinois"
+                    State: "IL"
+                  - Description: "Indiana"
+                    State: "IN"
+                  - Description: "Iowa"
+                    State: "IA"
+                  - Description: "Kansas"
+                    State: "KS"
+                  - Description: "Kentucky"
+                    State: "KY"
+                  - Description: "Louisiana"
+                    State: "LA"
+                  - Description: "Maine"
+                    State: "ME"
+                  - Description: "Maryland"
+                    State: "MD"
+                  - Description: "Massachusetts"
+                    State: "MA"
+                  - Description: "Michigan"
+                    State: "MI"
+                  - Description: "Minnesota"
+                    State: "MN"
+                  - Description: "Mississippi"
+                    State: "MS"
+                  - Description: "Missouri"
+                    State: "MO"
+                  - Description: "Montana"
+                    State: "MT"
+                  - Description: "Nebraska"
+                    State: "NE"
+                  - Description: "Nevada"
+                    State: "NV"
+                  - Description: "New Hampshire"
+                    State: "NH"
+                  - Description: "New Jersey"
+                    State: "NJ"
+                  - Description: "New Mexico"
+                    State: "NM"
+                  - Description: "New York"
+                    State: "NY"
+                  - Description: "North Carolina"
+                    State: "NC"
+                  - Description: "North Dakota"
+                    State: "ND"
+                  - Description: "Ohio"
+                    State: "OH"
+                  - Description: "Oklahoma"
+                    State: "OK"
+                  - Description: "Oregon"
+                    State: "OR"
+                  - Description: "Pennsylvania"
+                    State: "PA"
+                  - Description: "Puerto Rico"
+                    State: "PR"
+                  - Description: "Rhode Island"
+                    State: "RI"
+                  - Description: "South Carolina"
+                    State: "SC"
+                  - Description: "South Dakota"
+                    State: "SD"
+                  - Description: "Tennessee"
+                    State: "TN"
+                  - Description: "Texas"
+                    State: "TX"
+                  - Description: "Utah"
+                    State: "UT"
+                  - Description: "Vermont"
+                    State: "VT"
+                  - Description: "Virginia"
+                    State: "VA"
+                  - Description: "Washington"
+                    State: "WA"
+                  - Description: "West Virginia"
+                    State: "WV"
+                  - Description: "Wisconsin"
+                    State: "WI"
+                  - Description: "Wyoming"
+                    State: "WY"
+                  PreenrollmentRequest:
+                  - RequestType: 23
+                    Description: "2019 Pre-Enrollment â€“ EnvisionRx Plus"
+                  - RequestType: 24
+                    Description: "2020 Pre-Enrollment"
+                  DisenrollmentCodes: []
+                  ElectionTypes:
+                  - ElectionType: "A"
+                    Description: "Annual Election Period (AEP)"
+                  - ElectionType: "E"
+                    Description: "Initial Enrollment Period (IEP)"
+                  - ElectionType: "F"
+                    Description: "Aging in / Second Initial Enrollment Period (F)"
+                  - ElectionType: "S"
+                    Description: "Special Enrollment Period (SEP)"
+                  - ElectionType: "X"
+                    Description: "Administrative Override (X)"
+                  - ElectionType: "Z"
+                    Description: "Auto Enrollment (Z)"
+                  RequestLocations: []
+                  EnrollmentTypes:
+                  - Description: "Annual Enrollment"
+                    EnrollmentType: 1
+                  - Description: "Initial Enrollment"
+                    EnrollmentType: 2
+                  - Description: "Special Enrollment"
+                    EnrollmentType: 3
+                  Plans:
+                  - Description: "EnvisionRx Plus Silver"
+                    PlanID: 1
+                  - Description: "EnvisionRx Plus Gold"
+                    PlanID: 2
+                  - Description: "EnvisionRxPlus Employer Group Retiree PDP"
+                    PlanID: 3
+                  - Description: "Rite Aid EnvisionRx Plus"
+                    PlanID: 4
+                  - Description: "EnvisionRx Plus Clear Choice"
+                    PlanID: 5
+                  - Description: "EnvisionRxPlus"
+                    PlanID: 6
+                  - Description: "EnvisionRxSecure"
+                    PlanID: 7
+                  SEPReasons:
+                  - Description: "I recently involuntarily lost my creditable drug\
+                      \ coverage."
+                    SEPReasonID: 1
+                    Enabled: true
+                  - Description: "I am losing coverage I had from an employer"
+                    SEPReasonID: 2
+                    Enabled: true
+                  - Description: "I have both Medicare and Medicaid or my state helps\
+                      \ pay for my Medicare Premiums."
+                    SEPReasonID: 3
+                    Enabled: true
+                  - Description: "I am moving into, live in, or recently moved out\
+                      \ of a Long-Term Care Facility (for example, a nursing home\
+                      \ or rehabilitation hospital)."
+                    SEPReasonID: 4
+                    Enabled: true
+                  - Description: "Beneficiary Changing from Medicare Advantage Plan\
+                      \ to Part D Plan"
+                    SEPReasonID: 5
+                    Enabled: false
+                  - Description: "Related to Eligibility or Status Change"
+                    SEPReasonID: 6
+                    Enabled: false
+                  - Description: "PBP Change"
+                    SEPReasonID: 7
+                    Enabled: false
+                  - Description: "I recently returned to the United States after living\
+                      \ permanently outside of the U.S."
+                    SEPReasonID: 8
+                    Enabled: true
+                  - Description: "I recently â€œleftâ€� a Programs of All-inclusive\
+                      \ Care for the Elderly program."
+                    SEPReasonID: 9
+                    Enabled: true
+                  - Description: "I belong to a pharmacy assistance program provided\
+                      \ by my state, or I am losing or recently lost participation\
+                      \ in such a program."
+                    SEPReasonID: 10
+                    Enabled: true
+                  - Description: "I am currently receiving extra help for Medicare\
+                      \ prescription coverage, but do not have Medicaid"
+                    SEPReasonID: 14
+                    Enabled: true
+                  - Description: "I am in a Medicare Advantage plan with prescription\
+                      \ drug coverage and am still in my 12 month trial period"
+                    SEPReasonID: 15
+                    Enabled: false
+                  - Description: "In the last 12 months, I left a Medigap policy to\
+                      \ join a Medicare Advantage Plan* for the first time (*Medicare\
+                      \ Advantage plan with prescription drug coverage) "
+                    SEPReasonID: 16
+                    Enabled: true
+                  - Description: "In the last 12 months, I joined a Medicare Advantage\
+                      \ plan with prescription drug coverage when I turned 65"
+                    SEPReasonID: 17
+                    Enabled: true
+                  - Description: "I am no longer eligible for extra help paying for\
+                      \ my Medicare prescription drugs"
+                    SEPReasonID: 18
+                    Enabled: true
+                  - Description: "My plan is ending its contract with Medicare"
+                    SEPReasonID: 19
+                    Enabled: false
+                  - Description: "I am disenrolling from a Medicare cost plan and\
+                      \ had Medicare prescription drug coverage from the Medicare\
+                      \ cost plan"
+                    SEPReasonID: 20
+                    Enabled: true
+                  - Description: "I am being disenrolled from a Medicare special needs\
+                      \ plan because I no longer have special needs status"
+                    SEPReasonID: 21
+                    Enabled: true
+                  - Description: "You received a notice from your plan or Medicare\
+                      \ telling you that you are eligible for a Special Enrollment\
+                      \ Period"
+                    SEPReasonID: 22
+                    Enabled: false
+                  - Description: "I am currently enrolled in a Medicare Advantage\
+                      \ Plan and would like to leave my plan to switch to Original\
+                      \ Medicare and join a prescription drug plan"
+                    SEPReasonID: 23
+                    Enabled: false
+                  - Description: "I have had Medicare prior to now, but am now turning\
+                      \ 65"
+                    SEPReasonID: 25
+                    Enabled: true
+                  - Description: "I am enrolling in a 5-star Medicare plan"
+                    SEPReasonID: 26
+                    Enabled: false
+                  - Description: "I recently lost Medicare Part B but I still have\
+                      \ Part A."
+                    SEPReasonID: 27
+                    Enabled: true
+                  - Description: "My plan is being terminated by Medicare"
+                    SEPReasonID: 28
+                    Enabled: false
+                  - Description: "Texas Health Insurance Pool"
+                    SEPReasonID: 29
+                    Enabled: false
+                  - Description: "DUAL DEMO PROGRAM OPT OUT"
+                    SEPReasonID: 30
+                    Enabled: false
+                  - Description: "I am eligible for the Environmental Health Hazards\
+                      \ (EHH) Medicare Pilot Program."
+                    SEPReasonID: 31
+                    Enabled: false
+                  - Description: "I recently moved outside of the service area for\
+                      \ my current plan."
+                    SEPReasonID: 32
+                    Enabled: true
+                  - Description: "I am moving into or out of a Long Term Care Facility\
+                      \ (for example, a nursing home or rehabilitation hospital)."
+                    SEPReasonID: 33
+                    Enabled: false
+                  - Description: "I am a Medicare beneficiary under 65 and have the\
+                      \ opportunity to buy a Medigap policy in Georgia or Tennessee."
+                    SEPReasonID: 34
+                    Enabled: false
+                  - Description: "I live in a Hurricane Katrina Zip Code."
+                    SEPReasonID: 35
+                    Enabled: false
+                  - Description: "I received a letter from my current plan indicating\
+                      \ that I have an opportunity to make a Medicare drug plan selection\
+                      \ until February 14, 2007."
+                    SEPReasonID: 36
+                    Enabled: false
+                  - Description: "I am eligible to join or leave a Medicare Advantage\
+                      \ Plan."
+                    SEPReasonID: 37
+                    Enabled: false
+                  - Description: "Iâ€™m enrolled in the Original Medicare Plan."
+                    SEPReasonID: 38
+                    Enabled: false
+                  - Description: "Other"
+                    SEPReasonID: 39
+                    Enabled: true
+                  - Description: "I am new to Medicare."
+                    SEPReasonID: 40
+                    Enabled: true
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /notetypes:
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  notes:
+                  - itemId: "Y00064201007"
+                    typeId: "Y00063388870"
+                    typeDescription: "Member - Conversion"
+                    text: "test"
+                    createdBy: "pbean"
+                    createdOn: 1594918539000
+                  - itemId: "Y00064201008"
+                    typeId: "Y00063388870"
+                    typeDescription: "Member - Conversion"
+                    text: "test 2"
+                    createdBy: "pbean"
+                    createdOn: 1594918553000
+                  - itemId: "Y00064201199"
+                    typeId: "Y00030001519"
+                    typeDescription: "Department - Enrollment"
+                    text: "Enrollment Department note test"
+                    createdBy: "pbean"
+                    createdOn: 1595321442000
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /PlanInfoGet:
+    get:
+      parameters:
+      - name: "packageId"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "year"
+        required: true
+        in: "query"
+        schema:
+          type: "integer"
+      - name: "groupId"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  nameId: "N00064103312"
+                  demographics:
+                    prefix: "Mr."
+                    firstName: "Patricl"
+                    lastName: "Bean"
+                    middleInitial: "M"
+                    suffix: ""
+                    gender: "M"
+                    birthDate: -625968000000
+                  addresses:
+                  - address1: "123 Main St."
+                    address2: "Building A"
+                    address3: ""
+                    city: "Twinsburg"
+                    state: "OH"
+                    zip: "44087 "
+                    startDate: 1591660800000
+                    endDate: ""
+                    preferred: "x"
+                    type: "Home"
+                  - address1: "123 mail st"
+                    address2: "Mail a"
+                    address3: ""
+                    city: "Twinsburg"
+                    state: "OH"
+                    zip: "44087 "
+                    startDate: 1591660800000
+                    endDate: ""
+                    preferred: "w"
+                    type: "Mailing"
+                  brokers:
+                  - firstName: "Patrick"
+                    lastName: "Bean"
+                    writingCode: "009999"
+                    startDate: 1564617600000
+                    endDate: ""
+                  enrollment:
+                    enrollmentDates:
+                    - startDate: 1596240000000
+                      endDate: ""
+                    applicationDate: 1590969600000
+                    electionType: "S - SEP - Special Enrlmt Period"
+                    type: "B"
+                    state: "61: Pending Enroll"
+                    typeDescription: "Beneficiary Election"
+                    medicareId: "487551238B "
+                    plan: "P00063355960"
+                    planName: "EnvisionRxPlus"
+                    sepReason: "Elig for Env Health Hazards"
+                    language: ""
+                    partAStartDate: 1561939200000
+                    partBStartDate: 1561939200000
+                    partDStartDate: ""
+                    lowIncomeSubsidy:
+                    - startDate: 1596240000000
+                      endDate: ""
+                      level: "000"
+                    longTermCare:
+                    - startDate: 1596240000000
+                      endDate: ""
+                      level: "000"
+                    otherCoverage: {}
+                    memberId: "EIC4500999"
+                    groupNumber: "EICH014"
+                    rxBin: ""
+                    rxPcn: ""
+                    pbp: "014"
+                  phoneNumbers:
+                  - phoneNumber: "3301234565"
+                    extension: ""
+                    type: "Home"
+                    preferred: "x"
+                  - phoneNumber: "3301234566"
+                    extension: ""
+                    type: "Alternative"
+                    preferred: "w"
+                  - phoneNumber: "3305551234"
+                    extension: ""
+                    type: "Cell"
+                    preferred: ""
+                  emailAddresses:
+                  - emailAddress: "pbean@test.com"
+                    preferred: ""
+                    type: "Home"
+                  contacts:
+                  - id: "C00064103315"
+                    type: "Emergency"
+                    firstName: "first"
+                    lastName: "Last"
+                    relationship: "Spouse"
+                    address1: "123 Contact St"
+                    address2: ""
+                    city: "Twinsburg"
+                    state: "OH"
+                    zip: "44087"
+                    phoneNumber: "3305557412"
+                    alternativePhoneNumber: ""
+                  - id: "C00064103316"
+                    type: "Authorized Rep"
+                    firstName: ""
+                    lastName: ""
+                    relationship: "Spouse"
+                    address1: "123 Rep St"
+                    address2: "Rep A"
+                    city: "Twinsburg"
+                    state: "OH"
+                    zip: "44087"
+                    phoneNumber: ""
+                    alternativePhoneNumber: ""
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /EnrollmentSourceGet:
+    get:
+      parameters:
+      - name: "id"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                - RequestType: 32
+                  Description: "2021 Pre-Enrollment"
+                - RequestType: 38
+                  Description: "2022 Pre-Enrollment"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /lepAttestation:
+    post:
+      operationId: "portaluser82x"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                memberID: "EIC4501058"
+                attestedBy: "pbean"
+                lepReasons:
+                - lepReasonID: 1
+                  dateFrom: 1535587200000
+                  dateTo: 1567123200000
+                  reasonName: "Premera Blue Cross"
+                  stateID: null
+                - lepReasonID: 9
+                  dateFrom: 1504051200000
+                  dateTo: 1535587200000
+                  reasonName: ""
+                  stateID: null
+                - lepReasonID: 2
+                  dateFrom: 1472515200000
+                  dateTo: 1504051200000
+                  reasonName: "Aetna"
+                  stateID: "OH"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  lepAttestationID: 6
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /lepAttestations:
+    get:
+      operationId: "LEPAttestationsGetziq"
+      parameters:
+      - name: "complete"
+        description: "complete"
+        required: true
+        in: "query"
+        schema:
+          description: "complete"
+          type: "boolean"
+      - name: "assigned"
+        description: "assigned"
+        required: true
+        in: "query"
+        schema:
+          description: "assigned"
+          type: "boolean"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /LEPAttestation/{ID}:
+    parameters:
+    - name: "ID"
+      description: "LEPAttestationID"
+      required: true
+      in: "path"
+      schema:
+        description: "LEPAttestationID"
+        type: "integer"
+    get:
+      operationId: "LEPAttestationGetByIDoM9"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /LEPAttestation:
+    post:
+      operationId: "LEPAttestationUpdatePUI"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /lepAttestationsByMemberId/{memberId}:
+    parameters:
+    - name: "memberId"
+      description: "MemberID"
+      required: true
+      in: "path"
+      schema:
+        description: "MemberID"
+        type: "string"
+    get:
+      operationId: "Get LEPAttestations By MemberIDGkT"
+      parameters:
+      - name: "TenantIdentifier"
+        description: "Tenant Identifier"
+        required: false
+        in: "header"
+        schema:
+          description: "Tenant Identifier"
+          default: "Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q=="
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /CorrespondenceLogGetByNameId: {}
+  /CorrespondenceLogGetByNameId/{NameId}:
+    parameters:
+    - name: "NameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /PrintRequestTypes/{Who}:
+    parameters:
+    - name: "Who"
+      description: "Who"
+      required: true
+      in: "path"
+      schema:
+        description: "Who"
+        type: "string"
+    get:
+      operationId: "PrintRequestTypes - WhowFn"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  TypeID: "123"
+                  PlanID: "61"
+                  NameID: "N12345"
+                  MemberID: "EIC12345"
+                  MedicareID: "1234A"
+                  Prefix: "Mr."
+                  FirstName: "Vasu"
+                  MI: "H"
+                  LastName: "Badam"
+                  Address1: "123 East 38th st"
+                  Address2: ""
+                  City: "Erie"
+                  State: "PA"
+                  ZipCode: "16508"
+                  Phonenumber: "2015551234"
+                  GroupID: "EICH"
+                  PBP: "006"
+                  DoNotCall: false
+                  Language: "EN"
+                  RequestLocation: ""
+                  RequestMethodID: ""
+                  CreatedBy: "vbadam"
+                  Notes: ""
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /PrintRequest:
+    post:
+      operationId: "PrintRequestInsertBsI"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                PrintRequestId: 1234
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  TypeID: "1"
+                  PlanID: "6"
+                  NameID: "N1234"
+                  MemberID: "EIC1234"
+                  MedicareID: "1234A"
+                  Prefix: "Mr."
+                  FirstName: "Jack"
+                  MI: "H"
+                  LastName: "Baker"
+                  Address1: "123 East 38th st"
+                  Address2: ""
+                  City: "Erie"
+                  State: "PA"
+                  ZipCode: "16508"
+                  Phonenumber: "8145551234"
+                  GroupID: "EICH"
+                  PBP: "006"
+                  DoNotCall: false
+                  Language: "EN"
+                  RequestLocation: ""
+                  RequestMethodID: ""
+                  CreatedBy: "pbean"
+                  Notes: ""
+                  DistributionMethod: "email"
+                  Email: "pbean@elixirsoluions.com"
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /PrintRequestExport:
+    get:
+      operationId: "PrintRequestExportJYQ"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  RequestTypes:
+                  - TypeID: 1
+                    Description: "ID Card Reprint"
+                    SupplementalText: ""
+                    Print: true
+                    Email: true
+                  - TypeID: 2
+                    Description: "2020 Evidence of Coverage"
+                    SupplementalText: ""
+                    Print: true
+                    Email: true
+                  - TypeID: 3
+                    Description: "2020 Abridged Formulary"
+                    SupplementalText: "This form must be completed and mailed back\
+                      \ in order for us to process."
+                    Print: true
+                    Email: false
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /memberPharmacyGetByID:
+    get:
+      parameters:
+      - name: "nameId"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-queryParameters:
+        planId:
+          required: false
+          type: "number | nil"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  NameID: "N00064212367"
+                  MemberId: "EIC4501289"
+                  PlanId: "P00063355960"
+                  PlanName: "EnvisionRxPlus"
+                  GroupId: "EICH014"
+                  HICN: null
+                  MBI: null
+                  MedicareNumber: "2n23n34hh44"
+                  FirstName: "MailingAddress"
+                  LastName: "Test"
+                  Prefix: "Mr."
+                  MiddleInitial: "Y"
+                  Address1: "2124 N HIGH ST"
+                  Address2: ""
+                  City: "Columbus"
+                  State: "OH"
+                  ZipCode: "43201 "
+                  MAddress1: "921 MYRTLE ST NE"
+                  MAddress2: ""
+                  MCity: "Atlanta"
+                  MState: "GA"
+                  MZipCode: "30309 "
+                  DOB: 586396800000
+                  Gender: "M"
+                  Email: null
+                  Phone: "2323222222"
+                  CellPhone: null
+                  AltPhone: null
+                  BWritingCode: null
+                  PrimaryPharmacy:
+                    PharmacyId: 27183779
+                    NABP: "3648194"
+                    ChainCode: "181"
+                    Name: "RITE AID PHARMACY 03163"
+                    Address:
+                      Latitude: 41.41682
+                      Longitude: -81.528221
+                      Address1: "21800 LIBBY ROAD"
+                      Address2: ""
+                      City: "MAPLE HEIGHTS"
+                      StateCode: "OH"
+                      ZipCode: "44137"
+                    PharmacyTypeId: 1
+                    Phone: "216-662-7470"
+                    IsPrimary: false
+                    IsPreferred: true
+                    IsEPrescribing: true
+                    IsEIC: true
+                    IsEGWP: true
+                    IsPreferredCC: true
+                    Is90DayRetail: true
+                    MemberPharmacyID: 1
+                    Distance: null
+                    Year: null
+                    PreferenceType: null
+                    IsBrokerPbp: false
+                  MonthlyPremium: null
+                  CurrentBalance: null
+                  Pharmacies: []
+                  EnrollmentDate: 1598918400000
+                  DisenrollmentDate: ""
+                  PbpCode: "014"
+                  PbpId: 364
+                  Year: 2020
+                  GreenEobReasonCode: 1
+                  CMSConfirmationID: null
+                  MailNABPs: null
+                  IsBroker: false
+                  BrokerAttestation: false
+                  BrokerID: null
+                  Status: "61: Pending Enroll"
+                  EGWPDirectBill: false
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /greenEobPortalGetByNameId:
+    get:
+      parameters:
+      - name: "nameId"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /login:
+    post:
+      operationId: "AdminLoginInsertmHL"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                username: "pbean"
+                ipAddress: "11.1.2.1"
+                success: false
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  response: true
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /SetGoGreenSubscription:
+    post:
+      operationId: "SetGoGreenSubscription3YL"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                NameId: "N00064143695"
+                ReasonCode: "1"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  NameId: "N00064143695"
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /portalUserGetByNameId: {}
+  /portalUserGetByNameId/{NameId}:
+    parameters:
+    - name: "NameId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  MpStatusCode: 0
+                  data:
+                    nameId: "N00064140786"
+                    demographics:
+                      prefix: "Mrs."
+                      firstName: "Faircloth"
+                      lastName: "Koons"
+                      middleInitial: "Y"
+                      suffix: ""
+                      gender: "F"
+                      birthDate: 704160000000
+                    addresses:
+                    - address1: "1914 NS Kennedy Ct"
+                      address2: "Apt No:2"
+                      address3: ""
+                      city: "Reno"
+                      state: "NV"
+                      zip: "89701 "
+                      startDate: 1238544000000
+                      endDate: ""
+                      preferred: "x"
+                      type: "Home"
+                    brokers: []
+                    enrollment:
+                      enrollmentDates:
+                      - startDate: 1238544000000
+                        endDate: ""
+                      applicationDate: 1236816000000
+                      electionType: "E"
+                      state: "Enrolled"
+                      type: ""
+                      medicareId: "126788667A  "
+                      plan: "P00063356106"
+                      sepReason: ""
+                      language: "English"
+                      accessibleMaterials: ""
+                      partAStartDate: ""
+                      partBStartDate: ""
+                      partDStartDate: ""
+                      lowIncomeSubsidy:
+                      - startDate: 1238544000000
+                        endDate: ""
+                        level: "000"
+                      longTermCare: []
+                      otherCoverage:
+                        coverageId: ""
+                        groupNumber: ""
+                        name: ""
+                        prescriptionCoverage: ""
+                      memberId: "EIC57353070"
+                      groupNumber: "EICS029"
+                      rxBin: "012312"
+                      rxPcn: "PartD"
+                      copayCategory:
+                      - startDate: 1238544000000
+                        endDate: ""
+                        copay: "0"
+                      disenrollDate: ""
+                      disenrollReason: ""
+                      pbp: "029"
+                      contractID: "S7694"
+                    phoneNumbers:
+                    - phoneNumber: "2082691302"
+                      extension: ""
+                      type: "Home"
+                      preferred: "w"
+                    - phoneNumber: "4209610956"
+                      extension: ""
+                      type: "Alternative"
+                      preferred: "x"
+                    - phoneNumber: "5003028451"
+                      extension: ""
+                      type: "Cell"
+                      preferred: "w"
+                    emailAddresses: []
+                    contacts:
+                    - id: "C00064185712"
+                      type: "Emergency"
+                      firstName: "Claudio"
+                      lastName: "Claudio"
+                      relationship: "Child"
+                      address1: "2761 S Adams Cir"
+                      address2: "2761 S Adams Cir"
+                      city: "Atlanta"
+                      state: ""
+                      zip: "30301"
+                      phoneNumber: "0865459 7817"
+                      alternativePhoneNumber: ""
+                      startDate: 1577836800000
+                      endDate: ""
+                    - id: "C00064185713"
+                      type: "Authorized Rep"
+                      firstName: "Clary"
+                      lastName: "Clary"
+                      relationship: "Other"
+                      address1: "2760 N Washington Ln"
+                      address2: "2760 N Washington Ln"
+                      city: "Little Rock"
+                      state: ""
+                      zip: "72201"
+                      phoneNumber: "0191246 4018"
+                      alternativePhoneNumber: ""
+                      startDate: 1577836800000
+                      endDate: ""
+                  errors:
+                  - statusCode: 1
+                    message: "No records found"
+                    topic: "membersummary"
+                    severityLevel: 1
+                    severity: "part_a_ind"
+                  - statusCode: 1
+                    message: "No records found"
+                    topic: "membersummary"
+                    severityLevel: 1
+                    severity: "part_b_ind"
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /DisenrollRequestExport: {}
+  /DisenrollRequestExport/{userName}:
+    parameters:
+    - name: "userName"
+      description: "userName"
+      required: true
+      in: "path"
+      schema:
+        description: "userName"
+        type: "string"
+    get:
+      operationId: "userNameK9A"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  DisenrollRequests: []
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+  /lastLogin/{Username}:
+    parameters:
+    - name: "Username"
+      description: "Username"
+      required: true
+      in: "path"
+      schema:
+        description: "Username"
+        type: "string"
+    get:
+      operationId: "lastLoginhE4"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  username: "pbean"
+                  ipAddress: "10.1.1.1"
+                  success: true
+                  loginDate: 1262316016000
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /disableLogin:
+    post:
+      operationId: "AdminDisabledUsersInsertHea"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                username: "pbean"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  AdminDisabledUserID: 15
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /disenrollmentReasons:
+    get:
+      operationId: "disenrollmentReasonsfOA"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  disenrollmentReasons:
+                  - ID: 1
+                    Description: "I recently moved outside of the service area for\
+                      \ my current plan"
+                  - ID: 2
+                    Description: "I have had a change in LIS or dual-eligibility"
+                  - ID: 3
+                    Description: "A contract violation occurred related to my enrollment"
+                  - ID: 4
+                    Description: "I have been informed of a non-renewal or termination"
+                  - ID: 5
+                    Description: "I have involuntarily lost my creditable drug coverage"
+                  - ID: 6
+                    Description: "I was not adequately informed about creditable prescription\
+                      \ drug coverage"
+                  - ID: 7
+                    Description: "A federal employee made an error in my enrollment/non-enrollment\
+                      \ in Part D"
+                  - ID: 8
+                    Description: "Other"
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /errorLog:
+    post:
+      operationId: "AdminDisabledUsersInsert41X"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /Messages:
+    post:
+      operationId: "GetMemberMessagesF4n"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                EICNumber: "EIC1234"
+                PlanType: "EICM"
+                State: "OH"
+                ZipCode: "44511"
+                ApplicationId: 2
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+    put:
+      operationId: "UpsertMemberMessagesajD"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                MesssageId: 8
+                Title: "View your Benefits online test"
+                Content: "With our paperless Explanation of Benefits (EOB) option,\
+                  \ you can see how your benefits were applied. ItÃ¢â‚¬â„¢s easy to\
+                  \ sign up and view your EOB online any time. YouÃ¢â‚¬â„¢ll receive\
+                  \ an email notification when itÃ¢â‚¬â„¢s available."
+                Link: "https://member.envisionrxplus.com/Benefit/GoGreen"
+                LinkText: "Sign up Now"
+                LanguageType: "EN"
+                Image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAIAAACzY+a1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAADaDSURBVHhe7X1/bBzXfeeQnqVnqVl5xubGO7bW0Sim7aFD28taSritc/UWTmv66iASXCMW2lyrpL1WbXBIfIe7RHcIEPf+uItTpBe3aAOnSA9ycLmTDhdBNGo3FGJdycZyuY6pctSsTkN7Gc1E3Gom5EQ7pkfMfT7vzZKymyslAsZ1gf2Gfpp983583/f3982bSd9PfvITpQfdDP3Zvz3oWuixsOuhx8Kuhx4Lux56LOx66LGw66HHwq6HHgu7Hnos7HrosbDrocfCroceC7seeizseuixsOuhx8Kuhx4Lux56LOx66LGw66HHwq6H=="
+                DefaultOrder: 1
+                StartDate: 1546992000000
+                EndDate: 1640908800000
+                UserName: "pbean"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  MessageID: 177
+  /Messages/{MessageId}:
+    parameters:
+    - name: "MessageId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    get:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /Messages/Lookups/{MessageId}:
+    parameters:
+    - name: "MessageId"
+      required: true
+      in: "path"
+      schema:
+        type: "string"
+    delete:
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /Messages/LookupByMemberID:
+    post:
+      operationId: "Member_GetMemberMessagesLookupEog"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /Messages/LookupByPlan:
+    post:
+      operationId: "Member_GetMemberMessagesLookup8O3"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /Messages/LookupByState:
+    post:
+      operationId: "Member_GetMemberMessagesLookupeqr"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /Messages/LookupByZipCodes:
+    post:
+      operationId: "Member_GetMemberMessagesLookupIia"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+  /eventlog:
+    post:
+      operationId: "EventLognV6"
+      parameters:
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                EventTypeId: 12
+                ApplicationId: 1
+                NameId: "N00064302902"
+                CreatedBy: "MemberPortal"
+                CreatedDate: 1634570849333
+                OldValue: ""
+                NewValue: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                example:
+                  updateCount1: 1
+        "500":
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema: {}
+  /auditLogByNameId:
+    get:
+      parameters:
+      - name: "NameId"
+        required: true
+        in: "query"
+        schema:
+          type: "string"
+      - name: "client_id"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      - name: "client_secret"
+        required: true
+        in: "header"
+        schema:
+          type: "string"
+      x-amf-headers:
+        channelid:
+          required: false
+          type: "integer | nil"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema: {}
+        "500":
+          description: "Internal Server error"
+          content:
+            application/json:
+              schema: {}
+x-amf-uses:
+  common: "exchange_modules/cc5b37d2-1e82-426d-b07a-e49503aaa954/common-library/1.0.0/common-library.raml"
