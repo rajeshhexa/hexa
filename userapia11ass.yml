@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: API Title
+  description: API description
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member: 
+   get: 
+    operationId: 9ba8rxrR
+    description: Description of path
+    responses: 
+     '200': 
+      description: Success
+  /member/SetGoGreenSubscription: 
+   post: 
+    operationId: f28TyqLO
+    tags: 
+     - SetGoGreenSubscription_Post
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierParam'
+     - $ref: '#/components/parameters/client_idParam'
+     - $ref: '#/components/parameters/client_secretParam'
+    responses: 
+     '200': 
+      description: Success
+  /member/letters/{nameId}: 
+   get: 
+    operationId: 5CGaxAfv
+    tags: 
+     - Member_GetMemberById
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdParam'
+     - $ref: '#/components/parameters/TenantIdentifierParam'
+     - $ref: '#/components/parameters/client_idParam'
+     - $ref: '#/components/parameters/client_secretParam'
+    responses: 
+     '200': 
+      description: Success
+  /member/pbpChange: 
+   post: 
+    operationId: dIAzaMzm
+    tags: 
+     - pbpChange
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierParam'
+     - $ref: '#/components/parameters/client_idParam'
+     - $ref: '#/components/parameters/client_secretParam'
+    responses: 
+     '200': 
+      description: Success
+components: 
+  parameters: 
+   TenantIdentifierParam: 
+    in: query
+    name: TenantIdentifier
+    required: true
+    schema: 
+     type: string
+    description: Tenant Identifier
+   client_idParam: 
+    in: query
+    name: client_id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   client_secretParam: 
+    in: query
+    name: client_secret
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   nameIdParam: 
+    in: query
+    name: nameId
+    required: true
+    schema: 
+     type: string
+    description: nameId
