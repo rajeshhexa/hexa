@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: API Title
+  description: API description
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member: 
+   get: 
+    operationId: grKcDHiD
+    tags: 
+     - member
+    description: Description of path
+    responses: 
+     '200': 
+      description: Success
+  /member/SetGoGreenSubscription: 
+   post: 
+    operationId: edYIYBCL
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierParam'
+     - $ref: '#/components/parameters/client_idParam'
+     - $ref: '#/components/parameters/client_secretParam'
+    responses: 
+     '200': 
+      description: Success
+      content: 
+       application/json: 
+  /member/letters/{nameId}: 
+   get: 
+    operationId: CWudN06m
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdParam'
+     - $ref: '#/components/parameters/TenantIdentifierParam'
+     - $ref: '#/components/parameters/client_idParam'
+     - $ref: '#/components/parameters/client_secretParam'
+    responses: 
+     '200': 
+      description: Success
+  /member/pbpChange: 
+   post: 
+    operationId: QftGKabp
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierParam'
+     - $ref: '#/components/parameters/client_idParam'
+     - $ref: '#/components/parameters/client_secretParam'
+    responses: 
+     '200': 
+      description: Success
+      content: 
+       application/json: 
+components: 
+  schemas: 
+   edYIYBCL: 
+    type: object
+    properties: 
+     NameId: 
+      type: string
+      description: 
