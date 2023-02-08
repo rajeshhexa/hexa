@@ -1,0 +1,140 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: API Title
+  description: API description
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member: 
+   get: 
+    operationId: QlQnb4Vl
+    tags: 
+     - member
+    description: Description of path
+    responses: 
+     '200': 
+      description: Success
+  /member/SetGoGreenSubscription: 
+   post: 
+    operationId: g4BfF9CG
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierParam'
+     - $ref: '#/components/parameters/client_idParam'
+     - $ref: '#/components/parameters/client_secretParam'
+    responses: 
+     '200': 
+      description: Success
+      content: 
+       application/json: 
+  /member/letters/{nameId}: 
+   get: 
+    operationId: kpQiXQjs
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdParam'
+     - $ref: '#/components/parameters/TenantIdentifierParam'
+     - $ref: '#/components/parameters/client_idParam'
+     - $ref: '#/components/parameters/client_secretParam'
+    responses: 
+     '200': 
+      description: Success
+  /member/pbpChange: 
+   post: 
+    operationId: 0efLp88J
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierParam'
+     - $ref: '#/components/parameters/client_idParam'
+     - $ref: '#/components/parameters/client_secretParam'
+    responses: 
+     '200': 
+      description: Success
+      content: 
+       application/json: 
+components: 
+  schemas: 
+   g4BfF9CG: 
+    type: object
+    properties: 
+     NameId: 
+      type: string
+      description: 
+     ReasonCode: 
+      type: string
+      description: 
+   0efLp88J: 
+    type: object
+    properties: 
+     premiumWithholdType: 
+      type: string
+      description: 
+     nameId: 
+      type: string
+      description: 
+     dateOfBirth: 
+      type: string
+      description: 
+     electionPeriod: 
+      type: string
+      description: 
+     currentPackageId: 
+      type: string
+      description: 
+     newPackageId: 
+      type: string
+      description: 
+     brokerAttestation: 
+      type: string
+      description: 
+     receivedDate: 
+      type: string
+      description: 
+     signatureDate: 
+      type: string
+      description: 
+     effectiveDate: 
+      type: string
+      description: 
+     authorizedRep: 
+      type: object
+     loginId: 
+      type: string
+      description: 
+  parameters: 
+   TenantIdentifierParam: 
+    in: header
+    name: TenantIdentifier
+    required: false
+    schema: 
+     type: string
+    description: Tenant Identifier
+   client_idParam: 
+    in: header
+    name: client_id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   client_secretParam: 
+    in: header
+    name: client_secret
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   nameIdParam: 
+    in: path
+    name: nameId
+    required: true
+    schema: 
+     type: string
+    description: nameId
