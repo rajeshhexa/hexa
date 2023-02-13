@@ -1,0 +1,2236 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: EIC-Member-Managment-papi
+  description: This API is designed to manage the complex process for Portal User management and process orestration.   This process API layer is designed to handle the more complex process orestration for managing Portal Users. We have intentionally followed the same URIs as exposed in the original Swagger / Open API so there is no need for mapping old name to new URI names. While it would be nice to "clean up" some of the unconventional Resource naming to following the RESTful approach more closely,  keeping the same URIs makes life much easier for developers to call lower level APIs that match the URIs while using the API-Led approach.   
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member: 
+   get: 
+    operationId: get_member_1
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_1
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_1_200_res'
+     '500': 
+      description: Internal Server Error
+   post: 
+    operationId: post_member_2
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_2_req'
+    parameters: 
+     - $ref: '#/components/parameters/adminRequestQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_member_2
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_2_201_res'
+     '500': 
+      description: Internal Server Error
+   put: 
+    operationId: put_member_3
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_member_3_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: put_member_3
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_member_3_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/pbpChange: 
+   post: 
+    operationId: post_member_pbpChange_4
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_pbpChange_4_req'
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_pbpChange_4_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/letters/{nameId}: 
+   get: 
+    operationId: get_member_letters_nameId_5
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_letters_nameId_5
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_letters_nameId_5_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/Notes/{nameId}: 
+   get: 
+    operationId: get_member_Notes_nameId_6
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_Notes_nameId_6
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_Notes_nameId_6_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/payment/insertpaymentlog: 
+   post: 
+    operationId: post_member_payment_insertpaymentlog_7
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_payment_insertpaymentlog_7_req'
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_payment_insertpaymentlog_7_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/payment/{nameId}: 
+   get: 
+    operationId: get_member_payment_nameId_8
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_payment_nameId_8
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_member_payment_nameId_8_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/ByNameID/{nameId}: 
+   get: 
+    operationId: get_member_ByNameID_nameId_9
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_ByNameID_nameId_9
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_ByNameID_nameId_9_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/nameId/{nameId}: 
+   get: 
+    operationId: get_member_nameId_nameId_10
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_nameId_10
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_nameId_10_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}: 
+   get: 
+    operationId: get_member_nameId_11
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_11
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_11_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/billing: 
+   get: 
+    operationId: get_member_nameId_billing_12
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_billing_12
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_billing_12_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/ByAltMemberId/{altMemberId}: 
+   get: 
+    operationId: get_member_ByAltMemberId_altMemberId_13
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/altMemberIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_ByAltMemberId_altMemberId_13
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_ByAltMemberId_altMemberId_13_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/payment/lastvalidpayment/{altMemberId}: 
+   get: 
+    operationId: get_member_payment_lastvalidpayment_altMemberId_14
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/altMemberIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_payment_lastvalidpayment_altMemberId_14
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_payment_lastvalidpayment_altMemberId_14_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/pharmacy: 
+   post: 
+    operationId: post_member_pharmacy_15
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_member_pharmacy_15
+  /member/pharmacy/{memberPharmacyId}: 
+   delete: 
+    operationId: delete_member_pharmacy_memberPharmacyId_16
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/memberPharmacyIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: delete_member_pharmacy_memberPharmacyId_16
+     '500': 
+      description: Internal Server Error
+  /member/billing/{nameId}: 
+   get: 
+    operationId: get_member_billing_nameId_17
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_billing_nameId_17
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_billing_nameId_17_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/billing/{nameId}/visited/{altNameId}: 
+   get: 
+    operationId: get_member_billing_nameId_visited_altNameId_18
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/altNameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_billing_nameId_visited_altNameId_18
+  /member/portaluser: 
+   post: 
+    operationId: post_member_portaluser_19
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_member_portaluser_19
+     '500': 
+      description: Internal Server Error
+  /member/validate/about: 
+   post: 
+    operationId: post_member_validate_about_20
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_member_validate_about_20
+     '500': 
+      description: Internal Server Error
+  /member/addresschange: 
+   post: 
+    operationId: post_member_addresschange_21
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_member_addresschange_21
+     '500': 
+      description: Internal Server Error
+  /member/disenrollment: 
+   post: 
+    operationId: post_member_disenrollment_22
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_disenrollment_22
+     '500': 
+      description: Internal Server Error
+  /member/MemberEnrollmentStatus/{medicareNumber}: 
+   get: 
+    operationId: get_member_MemberEnrollmentStatus_medicareNumber_23
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/medicareNumberPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_MemberEnrollmentStatus_medicareNumber_23
+     '500': 
+      description: Internal Server Error
+  /member/Messages: 
+   post: 
+    operationId: post_member_Messages_24
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_member_Messages_24
+     '500': 
+      description: Internal Server Error
+  /member/Premium/{nameId}: 
+   get: 
+    operationId: get_member_Premium_nameId_25
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_Premium_nameId_25
+     '500': 
+      description: Internal Server Error
+  /memberivr/GetBalance: 
+   post: 
+    operationId: post_memberivr_GetBalance_26
+    tags: 
+     - memberivr
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_memberivr_GetBalance_26_req'
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+     '500': 
+      description: Internal Server Error
+components: 
+  schemas: 
+   get_member_1_200_res: 
+    type: object
+    properties: 
+     MemberId: 
+      type: number
+     PlanId: 
+      type: number
+     PlanName: 
+      type: string
+     GroupId: 
+      type: string
+     AltMemberId: 
+      type: string
+     HICN: 
+      type: string
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Prefix: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     MAddress1: 
+      type: string
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+     MState: 
+      type: string
+     MZipCode: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     Gender: 
+      type: string
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     CellPhone: 
+      type: string
+     AltPhone: 
+      type: string
+     BWritingCode: 
+      type: string
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     MonthlyPremium: 
+      type: number
+     CurrentBalance: 
+      type: number
+     EnrollmentDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+     PbpId: 
+      type: number
+     Year: 
+      type: number
+     GreenEobReasonCode: 
+      type: number
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: number
+     Status: 
+      type: string
+     EGWPDirectBill: 
+      type: boolean
+   PrimaryPharmacy: 
+    type: object
+    properties: 
+     PharmacyId: 
+      type: number
+     NABP: 
+      type: string
+     ChainCode: 
+      type: string
+     Name: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     PharmacyTypeId: 
+      type: number
+     Phone: 
+      type: string
+     IsPrimary: 
+      type: boolean
+     IsPreferred: 
+      type: boolean
+     IsEPrescribing: 
+      type: boolean
+     IsEIC: 
+      type: boolean
+     IsEGWP: 
+      type: boolean
+     IsPreferredCC: 
+      type: boolean
+     Is90DayRetail: 
+      type: boolean
+     MemberPharmacyID: 
+      type: number
+     Distance: 
+      type: number
+     Year: 
+      type: number
+     PreferenceType: 
+      type: number
+     IsBrokerPbp: 
+      type: boolean
+   Address: 
+    type: object
+    properties: 
+     Latitude: 
+      type: string
+     Longitude: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     StateCode: 
+      type: string
+     ZipCode: 
+      type: string
+   get_member_1_200_resPharmaciesArray: 
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   post_member_2_201_res: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     rowsAffected: 
+      type: number
+     lastUpdatedDate: 
+      type: string
+      format: date-time
+     actionSetCount: 
+      type: number
+     nextCardId: 
+      type: string
+     success: 
+      type: boolean
+     statusCode: 
+      type: number
+     actionSetErrors: 
+      type: array
+      items: 
+       type: string
+     errors: 
+      type: array
+      items: 
+       type: string
+     truthTableErrors: 
+      type: array
+      items: 
+       type: string
+     userMessages: 
+      type: array
+      items: 
+       type: string
+   post_member_2_201_resactionSetErrorsArray: 
+    type: object
+    properties: 
+     actionSetErrors: 
+      type: string
+   post_member_2_201_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_2_201_restruthTableErrorsArray: 
+    type: object
+    properties: 
+     truthTableErrors: 
+      type: string
+   post_member_2_201_resuserMessagesArray: 
+    type: object
+    properties: 
+     userMessages: 
+      type: string
+   Plan: 
+    type: object
+    properties: 
+     PlanId: 
+      type: integer
+     PlanName: 
+      type: string
+     PlanYear: 
+      type: integer
+     Pbp: 
+      type: string
+     PbpDescription: 
+      type: string
+     IsEGWP: 
+      type: boolean
+     GroupId: 
+      type: string
+     State: 
+      type: string
+     StateName: 
+      type: string
+     Lis25: 
+      type: number
+     Lis50: 
+      type: number
+     Lis75: 
+      type: number
+     Lis100: 
+      type: number
+     Deductible: 
+      type: number
+     DeductibleDescription: 
+      type: string
+     Premium: 
+      type: number
+     Deminimis: 
+      type: boolean
+     PlanDetails: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/PlanPlanDetailsArray'
+     PlanYearStages: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/PlanPlanYearStagesArray'
+     SkipDeductable: 
+      type: boolean
+   PlanPlanDetailsArray: 
+    type: object
+    properties: 
+     PharmacyCostType: 
+      type: string
+     DrugTier: 
+      type: integer
+     DrugTierCaption: 
+      type: string
+     DaysSupply: 
+      type: string
+     CostAmount: 
+      type: number
+     CostPercentage: 
+      type: number
+     MinAmount: 
+      type: number
+     MaxAmount: 
+      type: number
+     Is31DaySupply: 
+      type: boolean
+     DrugCategory: 
+      type: string
+     SubCategory: 
+      type: string
+   PlanPlanYearStagesArray: 
+    type: object
+    properties: 
+     Stage: 
+      type: integer
+     StageDescription: 
+      type: string
+     StageLimit: 
+      type: number
+     StageGenericDescription: 
+      type: string
+     StageBrandDescription: 
+      type: string
+   post_member_2_req: 
+    type: object
+    properties: 
+     Plan: 
+      type: object
+      $ref: '#/components/schemas/Plan'
+     EnrollmentDate: 
+      type: string
+     ElectionType: 
+      type: string
+     LastName: 
+      type: string
+     Firstname: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Prefix: 
+      type: string
+     DateOfBirth: 
+      type: string
+     Gender: 
+      type: string
+     Phone: 
+      type: string
+     AltPhone: 
+      type: string
+     CellPhone: 
+      type: string
+     Email: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     MailingAddress: 
+      type: object
+     HasEmergencyContact: 
+      type: boolean
+     EmergencyContact: 
+      type: object
+      $ref: '#/components/schemas/EmergencyContact'
+     MedicareNumber: 
+      type: string
+     PartAEffDate: 
+      type: string
+     PartBEffDate: 
+      type: string
+     altFormatRqst: 
+      type: string
+     selfWorkInd: 
+      type: boolean
+     spouseWorkInd: 
+      type: boolean
+     HasOtherCoverage: 
+      type: boolean
+     OtherCoverage: 
+      type: object
+      $ref: '#/components/schemas/OtherCoverage'
+     IsLongTermCare: 
+      type: boolean
+     Institution: 
+      type: object
+      $ref: '#/components/schemas/Institution'
+     Language: 
+      type: string
+     IsRepresentative: 
+      type: boolean
+     Representative: 
+      type: object
+      $ref: '#/components/schemas/Representative'
+     HasBroker: 
+      type: boolean
+     Broker: 
+      type: object
+      $ref: '#/components/schemas/Broker'
+     SeparationReasonDescription: 
+      type: string
+     ReferralCode: 
+      type: string
+     SepReason: 
+      type: string
+     EnrollmentType: 
+      type: integer
+     LoginId: 
+      type: integer
+     CmsConfirmationId: 
+      type: string
+     PaymentType: 
+      type: integer
+     DeductSsa: 
+      type: boolean
+     GroupId: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerAttestationType: 
+      type: string
+     UserId: 
+      type: integer
+     StateCode: 
+      type: string
+     ZipCode: 
+      type: string
+     ApplicationId: 
+      type: string
+     ApplicationDate: 
+      type: string
+   EmergencyContact: 
+    type: object
+    properties: 
+     Name: 
+      type: string
+     Relationship: 
+      type: string
+     Phone: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     Email: 
+      type: string
+   OtherCoverage: 
+    type: object
+    properties: 
+     Name: 
+      type: string
+     Id: 
+      type: string
+     Group: 
+      type: string
+     coverageId: 
+      type: string
+     groupNumber: 
+      type: string
+     name: 
+      type: string
+     prescriptionCoverage: 
+      type: string
+   Institution: 
+    type: object
+    properties: 
+     Name: 
+      type: string
+     Relationship: 
+      type: string
+     Phone: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     Email: 
+      type: string
+   Representative: 
+    type: object
+    properties: 
+     Name: 
+      type: string
+     Relationship: 
+      type: string
+     Phone: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     Email: 
+      type: string
+   Broker: 
+    type: object
+    properties: 
+     Id: 
+      type: integer
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Name: 
+      type: string
+     DateOfBirth: 
+      type: string
+     MailAddress1: 
+      type: string
+     WritingCode: 
+      type: string
+     Referral: 
+      type: object
+      $ref: '#/components/schemas/Referral'
+     NPN: 
+      type: string
+     SSN: 
+      type: string
+     AgentSuspended: 
+      type: string
+     LicenseStatus: 
+      type: string
+     LicenseExpirationDate: 
+      type: string
+     Status: 
+      type: integer
+     LicenseState: 
+      type: string
+     Relationship: 
+      type: string
+     Phone: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     Email: 
+      type: string
+   Referral: 
+    type: object
+    properties: 
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Code: 
+      type: string
+     Name: 
+      type: string
+     Relationship: 
+      type: string
+     Phone: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     Email: 
+      type: string
+   put_member_3_200_res: 
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: boolean
+     FaultException: 
+      type: object
+      $ref: '#/components/schemas/FaultException'
+   FaultException: 
+    type: object
+    properties: 
+     Success: 
+      type: boolean
+     Exceptions: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/FaultExceptionExceptionsArray'
+     Errors: 
+      type: array
+      items: 
+       type: string
+     Warnings: 
+      type: array
+      items: 
+       type: string
+     Messages: 
+      type: array
+      items: 
+       type: string
+   FaultExceptionExceptionsArray: 
+    type: object
+    properties: 
+     Exceptions: 
+      type: object
+   FaultExceptionErrorsArray: 
+    type: object
+    properties: 
+     Errors: 
+      type: string
+   FaultExceptionWarningsArray: 
+    type: object
+    properties: 
+     Warnings: 
+      type: string
+   FaultExceptionMessagesArray: 
+    type: object
+    properties: 
+     Messages: 
+      type: string
+   put_member_3_req: 
+    type: object
+    properties: 
+     MemberId: 
+      type: number
+     PlanId: 
+      type: number
+     PlanName: 
+      type: string
+     GroupId: 
+      type: string
+     AltMemberId: 
+      type: string
+     HICN: 
+      type: string
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Prefix: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     MAddress1: 
+      type: string
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+     MState: 
+      type: string
+     MZipCode: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     Gender: 
+      type: string
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     CellPhone: 
+      type: string
+     AltPhone: 
+      type: string
+     BWritingCode: 
+      type: string
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     MonthlyPremium: 
+      type: number
+     CurrentBalance: 
+      type: number
+     EnrollmentDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+     PbpId: 
+      type: number
+     Year: 
+      type: number
+     GreenEobReasonCode: 
+      type: number
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: number
+     Status: 
+      type: string
+     EGWPDirectBill: 
+      type: boolean
+   put_member_3_reqPharmaciesArray: 
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   post_member_pbpChange_4_200_res: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     rowsAffected: 
+      type: number
+     lastUpdatedDate: 
+      type: string
+      format: date-time
+     actionSetCount: 
+      type: number
+     nextCardId: 
+      type: string
+     success: 
+      type: boolean
+     statusCode: 
+      type: number
+     actionSetErrors: 
+      type: array
+      items: 
+       type: string
+     errors: 
+      type: array
+      items: 
+       type: string
+     truthTableErrors: 
+      type: array
+      items: 
+       type: string
+     userMessages: 
+      type: array
+      items: 
+       type: string
+   post_member_pbpChange_4_200_resactionSetErrorsArray: 
+    type: object
+    properties: 
+     actionSetErrors: 
+      type: string
+   post_member_pbpChange_4_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_pbpChange_4_200_restruthTableErrorsArray: 
+    type: object
+    properties: 
+     truthTableErrors: 
+      type: string
+   post_member_pbpChange_4_200_resuserMessagesArray: 
+    type: object
+    properties: 
+     userMessages: 
+      type: string
+   post_member_pbpChange_4_req: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     dateOfBirth: 
+      type: string
+      format: date-time
+     currentPackageId: 
+      type: string
+     effectiveDate: 
+      type: string
+      format: date-time
+     newPackageId: 
+      type: string
+     premiumWithholdType: 
+      type: string
+     signatureDate: 
+      type: string
+      format: date-time
+     receivedDate: 
+      type: string
+      format: date-time
+     electionPeriod: 
+      type: string
+     brokerAttestation: 
+      type: string
+     loginId: 
+      type: string
+   letters: 
+    type: object
+    properties: 
+     toDoId: 
+      type: string
+     templateType: 
+      type: string
+     templateName: 
+      type: string
+     letterName: 
+      type: string
+     dateScheduled: 
+      type: string
+      format: date-time
+     dateCompleted: 
+      type: string
+      format: date-time
+     resultPrimary: 
+      type: string
+     resultSecondary: 
+      type: string
+   get_member_letters_nameId_5_200_reslettersArray: 
+    type: object
+    properties: 
+     letters: 
+      type: object
+      $ref: '#/components/schemas/letters'
+   get_member_letters_nameId_5_200_res: 
+    type: object
+    properties: 
+     letters: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_member_letters_nameId_5_200_reslettersArray'
+   get_member_Notes_nameId_6_200_res: 
+    type: object
+    properties: 
+     MemberId: 
+      type: number
+     PlanId: 
+      type: number
+     PlanName: 
+      type: string
+     GroupId: 
+      type: string
+     AltMemberId: 
+      type: string
+     HICN: 
+      type: string
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Prefix: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     MAddress1: 
+      type: string
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+     MState: 
+      type: string
+     MZipCode: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     Gender: 
+      type: string
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     CellPhone: 
+      type: string
+     AltPhone: 
+      type: string
+     BWritingCode: 
+      type: string
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     MonthlyPremium: 
+      type: number
+     CurrentBalance: 
+      type: number
+     EnrollmentDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+     PbpId: 
+      type: number
+     Year: 
+      type: number
+     GreenEobReasonCode: 
+      type: number
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: number
+     Status: 
+      type: string
+     EGWPDirectBill: 
+      type: boolean
+   get_member_Notes_nameId_6_200_resPharmaciesArray: 
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   resultSet1: 
+    type: object
+    properties: 
+     CreatedDate: 
+      type: string
+      format: date-time
+     Origin: 
+      type: number
+     Id: 
+      type: number
+     TransactionId: 
+      type: string
+     MemberId: 
+      type: string
+     Status: 
+      type: string
+   post_member_payment_insertpaymentlog_7_200_resresultSet1Array: 
+    type: object
+    properties: 
+     resultSet1: 
+      type: object
+      $ref: '#/components/schemas/resultSet1'
+   post_member_payment_insertpaymentlog_7_200_res: 
+    type: object
+    properties: 
+     resultSet1: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/post_member_payment_insertpaymentlog_7_200_resresultSet1Array'
+     updateCount1: 
+      type: number
+   post_member_payment_insertpaymentlog_7_req: 
+    type: object
+    properties: 
+     Id: 
+      type: integer
+     MemberId: 
+      type: string
+     CreatedDate: 
+      type: string
+     TransactionId: 
+      type: string
+     Approved: 
+      type: boolean
+     Status: 
+      type: string
+     Origin: 
+      type: integer
+   get_member_payment_nameId_8_200_res: 
+    type: object
+    properties: 
+     NameId: 
+      type: string
+     PaymentMethodCode: 
+      type: string
+     PaymentType: 
+      type: string
+     BillingId: 
+      type: string
+     StopRequestPending: 
+      type: boolean
+   get_member_ByNameID_nameId_9_200_res: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     demographics: 
+      type: object
+      $ref: '#/components/schemas/demographics'
+     addresses: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_member_ByNameID_nameId_9_200_resaddressesArray'
+     brokers: 
+      type: array
+      items: 
+       type: string
+     enrollment: 
+      type: object
+      $ref: '#/components/schemas/enrollment'
+     phoneNumbers: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_member_ByNameID_nameId_9_200_resphoneNumbersArray'
+     emailAddresses: 
+      type: array
+      items: 
+       type: string
+     contacts: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_member_ByNameID_nameId_9_200_rescontactsArray'
+   demographics: 
+    type: object
+    properties: 
+     prefix: 
+      type: string
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     middleInitial: 
+      type: string
+     suffix: 
+      type: string
+     gender: 
+      type: string
+     birthDate: 
+      type: string
+      format: date-time
+   addresses: 
+    type: object
+    properties: 
+     address1: 
+      type: string
+     address2: 
+      type: string
+     address3: 
+      type: string
+     city: 
+      type: string
+     state: 
+      type: string
+     zip: 
+      type: string
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+      format: date-time
+     preferred: 
+      type: string
+     type: 
+      type: string
+   get_member_ByNameID_nameId_9_200_resaddressesArray: 
+    type: object
+    properties: 
+     addresses: 
+      type: object
+      $ref: '#/components/schemas/addresses'
+   get_member_ByNameID_nameId_9_200_resbrokersArray: 
+    type: object
+    properties: 
+     brokers: 
+      type: string
+   enrollmentDates: 
+    type: object
+    properties: 
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+   enrollmentenrollmentDatesArray: 
+    type: object
+    properties: 
+     enrollmentDates: 
+      type: object
+      $ref: '#/components/schemas/enrollmentDates'
+   enrollment: 
+    type: object
+    properties: 
+     enrollmentDates: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/enrollmentenrollmentDatesArray'
+     applicationDate: 
+      type: string
+      format: date-time
+     electionType: 
+      type: string
+     type: 
+      type: string
+     state: 
+      type: string
+     typeDescription: 
+      type: string
+     medicareId: 
+      type: string
+     plan: 
+      type: string
+     planName: 
+      type: string
+     sepReason: 
+      type: string
+     language: 
+      type: string
+     accessibleMaterials: 
+      type: string
+     partAStartDate: 
+      type: string
+     partBStartDate: 
+      type: string
+     partDStartDate: 
+      type: string
+     lowIncomeSubsidy: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/enrollmentlowIncomeSubsidyArray'
+     longTermCare: 
+      type: array
+      items: 
+       type: string
+     otherCoverage: 
+      type: object
+      $ref: '#/components/schemas/otherCoverage'
+     memberId: 
+      type: string
+     groupNumber: 
+      type: string
+     rxBin: 
+      type: string
+     rxPcn: 
+      type: string
+     copayCategory: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/enrollmentcopayCategoryArray'
+     disenrollDate: 
+      type: string
+     disenrollReason: 
+      type: string
+     pbp: 
+      type: string
+     contractID: 
+      type: string
+   lowIncomeSubsidy: 
+    type: object
+    properties: 
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+     level: 
+      type: string
+   enrollmentlowIncomeSubsidyArray: 
+    type: object
+    properties: 
+     lowIncomeSubsidy: 
+      type: object
+      $ref: '#/components/schemas/lowIncomeSubsidy'
+   enrollmentlongTermCareArray: 
+    type: object
+    properties: 
+     longTermCare: 
+      type: string
+   otherCoverage: 
+    type: object
+    properties: 
+     Name: 
+      type: string
+     Id: 
+      type: string
+     Group: 
+      type: string
+     coverageId: 
+      type: string
+     groupNumber: 
+      type: string
+     name: 
+      type: string
+     prescriptionCoverage: 
+      type: string
+   copayCategory: 
+    type: object
+    properties: 
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+     copay: 
+      type: string
+   enrollmentcopayCategoryArray: 
+    type: object
+    properties: 
+     copayCategory: 
+      type: object
+      $ref: '#/components/schemas/copayCategory'
+   phoneNumbers: 
+    type: object
+    properties: 
+     phoneNumber: 
+      type: string
+     extension: 
+      type: string
+     type: 
+      type: string
+     preferred: 
+      type: string
+   get_member_ByNameID_nameId_9_200_resphoneNumbersArray: 
+    type: object
+    properties: 
+     phoneNumbers: 
+      type: object
+      $ref: '#/components/schemas/phoneNumbers'
+   get_member_ByNameID_nameId_9_200_resemailAddressesArray: 
+    type: object
+    properties: 
+     emailAddresses: 
+      type: string
+   contacts: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     type: 
+      type: string
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     relationship: 
+      type: string
+     address1: 
+      type: string
+     address2: 
+      type: string
+     city: 
+      type: string
+     state: 
+      type: string
+     zip: 
+      type: string
+     phoneNumber: 
+      type: string
+     alternativePhoneNumber: 
+      type: string
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+   get_member_ByNameID_nameId_9_200_rescontactsArray: 
+    type: object
+    properties: 
+     contacts: 
+      type: object
+      $ref: '#/components/schemas/contacts'
+   get_member_nameId_nameId_10_200_res: 
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_member_nameId_nameId_10_200_reserrorsArray'
+   data: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     demographics: 
+      type: object
+      $ref: '#/components/schemas/demographics'
+     addresses: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/dataaddressesArray'
+     brokers: 
+      type: array
+      items: 
+       type: string
+     enrollment: 
+      type: object
+      $ref: '#/components/schemas/enrollment'
+     phoneNumbers: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/dataphoneNumbersArray'
+     emailAddresses: 
+      type: array
+      items: 
+       type: string
+     contacts: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/datacontactsArray'
+   dataaddressesArray: 
+    type: object
+    properties: 
+     addresses: 
+      type: object
+      $ref: '#/components/schemas/addresses'
+   databrokersArray: 
+    type: object
+    properties: 
+     brokers: 
+      type: string
+   dataphoneNumbersArray: 
+    type: object
+    properties: 
+     phoneNumbers: 
+      type: object
+      $ref: '#/components/schemas/phoneNumbers'
+   dataemailAddressesArray: 
+    type: object
+    properties: 
+     emailAddresses: 
+      type: string
+   datacontactsArray: 
+    type: object
+    properties: 
+     contacts: 
+      type: object
+      $ref: '#/components/schemas/contacts'
+   errors: 
+    type: object
+    properties: 
+     statusCode: 
+      type: number
+     message: 
+      type: string
+     topic: 
+      type: string
+     severityLevel: 
+      type: number
+     severity: 
+      type: string
+   get_member_nameId_nameId_10_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: object
+      $ref: '#/components/schemas/errors'
+   get_member_nameId_11_200_res: 
+    type: object
+    properties: 
+     MemberId: 
+      type: number
+     PlanId: 
+      type: number
+     PlanName: 
+      type: string
+     GroupId: 
+      type: string
+     AltMemberId: 
+      type: string
+     HICN: 
+      type: string
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Prefix: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     MAddress1: 
+      type: string
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+     MState: 
+      type: string
+     MZipCode: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     Gender: 
+      type: string
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     CellPhone: 
+      type: string
+     AltPhone: 
+      type: string
+     BWritingCode: 
+      type: string
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     MonthlyPremium: 
+      type: number
+     CurrentBalance: 
+      type: number
+     EnrollmentDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+     PbpId: 
+      type: number
+     Year: 
+      type: number
+     GreenEobReasonCode: 
+      type: number
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: number
+     Status: 
+      type: string
+     EGWPDirectBill: 
+      type: boolean
+   get_member_nameId_11_200_resPharmaciesArray: 
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   get_member_nameId_billing_12_200_res: 
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   get_member_nameId_billing_12_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: string
+   get_member_ByAltMemberId_altMemberId_13_200_res: 
+    type: object
+    properties: 
+     MemberId: 
+      type: number
+     PlanId: 
+      type: number
+     PlanName: 
+      type: string
+     GroupId: 
+      type: string
+     AltMemberId: 
+      type: string
+     HICN: 
+      type: string
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Prefix: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     MAddress1: 
+      type: string
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+     MState: 
+      type: string
+     MZipCode: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     Gender: 
+      type: string
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     CellPhone: 
+      type: string
+     AltPhone: 
+      type: string
+     BWritingCode: 
+      type: string
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     MonthlyPremium: 
+      type: number
+     CurrentBalance: 
+      type: number
+     EnrollmentDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+     PbpId: 
+      type: number
+     Year: 
+      type: number
+     GreenEobReasonCode: 
+      type: number
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: number
+     Status: 
+      type: string
+     EGWPDirectBill: 
+      type: boolean
+   get_member_ByAltMemberId_altMemberId_13_200_resPharmaciesArray: 
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   Log: 
+    type: object
+    properties: 
+     Id: 
+      type: number
+     MemberId: 
+      type: number
+     CreatedDate: 
+      type: string
+      format: date-time
+     TransactionId: 
+      type: string
+     Approved: 
+      type: boolean
+     Origin: 
+      type: string
+   get_member_payment_lastvalidpayment_altMemberId_14_200_res: 
+    type: object
+    properties: 
+     Log: 
+      type: object
+      $ref: '#/components/schemas/Log'
+     NextPaymentAllowedIn: 
+      type: number
+   get_member_billing_nameId_17_200_res: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     memberBalance: 
+      type: number
+     billingOption: 
+      type: string
+     premiumWithhold: 
+      type: string
+     premiumDetails: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_member_billing_nameId_17_200_respremiumDetailsArray'
+     transactions: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_member_billing_nameId_17_200_restransactionsArray'
+   premiumDetails: 
+    type: object
+    properties: 
+     effectiveDate: 
+      type: string
+      format: date-time
+     premiumAmount: 
+      type: number
+     memberExpected: 
+      type: number
+     lepAmount: 
+      type: string
+     lisExpected: 
+      type: number
+     spapExpected: 
+      type: number
+     ssaExpected: 
+      type: number
+   get_member_billing_nameId_17_200_respremiumDetailsArray: 
+    type: object
+    properties: 
+     premiumDetails: 
+      type: object
+      $ref: '#/components/schemas/premiumDetails'
+   transactions: 
+    type: object
+    properties: 
+     billee: 
+      type: string
+     invoiceNumber: 
+      type: string
+     paymentType: 
+      type: string
+     createDate: 
+      type: string
+      format: date-time
+     periodStart: 
+      type: string
+      format: date-time
+     paymentMethod: 
+      type: string
+     note: 
+      type: string
+     totalAmount: 
+      type: number
+   get_member_billing_nameId_17_200_restransactionsArray: 
+    type: object
+    properties: 
+     transactions: 
+      type: object
+      $ref: '#/components/schemas/transactions'
+   post_memberivr_GetBalance_26_req: 
+    type: object
+    properties: 
+     UserName: 
+      type: string
+     Password: 
+      type: string
+     CustomKey: 
+      type: string
+     TransactionId: 
+      type: string
+  parameters: 
+   client_idHeaderParam: 
+    in: header
+    name: client_id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   client_secretHeaderParam: 
+    in: header
+    name: client_secret
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   adminRequestQueryParam: 
+    in: query
+    name: adminRequest
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   TenantIdentifierHeaderParam: 
+    in: header
+    name: TenantIdentifier
+    required: false
+    schema: 
+     type: string
+    description: Tenant Identifier
+   nameIdPathParam: 
+    in: path
+    name: nameId
+    required: true
+    schema: 
+     type: string
+    description: nameId
+   altMemberIdPathParam: 
+    in: path
+    name: altMemberId
+    required: true
+    schema: 
+     type: string
+    description: Alt Member Id
+   memberPharmacyIdPathParam: 
+    in: path
+    name: memberPharmacyId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   altNameIdPathParam: 
+    in: path
+    name: altNameId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   medicareNumberPathParam: 
+    in: path
+    name: medicareNumber
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
