@@ -1,0 +1,1182 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: EIC-Member-Maintenance-sapi
+  description: This system api provides the interface with Market Prominence.  It is also responsible for transforming response messages into the EnvisionRx common data model. 
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member: 
+   post: 
+    operationId: post_member_1
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_1_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_1
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_1_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/search: 
+   post: 
+    operationId: post_member_search_2
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_search_2_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_search_2
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_search_2_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/MergePhone: 
+   post: 
+    operationId: post_member_MergePhone_3
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_MergePhone_3_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_MergePhone_3
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_MergePhone_3_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/MergeEmail: 
+   post: 
+    operationId: post_member_MergeEmail_4
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_MergeEmail_4_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_MergeEmail_4
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_MergeEmail_4_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}: 
+   get: 
+    operationId: get_member_nameId_5
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_5
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_5_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/billing: 
+   get: 
+    operationId: get_member_nameId_billing_6
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_billing_6
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_billing_6_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/notes: 
+   get: 
+    operationId: get_member_nameId_notes_7
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_notes_7
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_notes_7_200_res'
+     '500': 
+      description: Internal Server Error
+   post: 
+    operationId: post_member_nameId_notes_8
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_notes_8_req'
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_nameId_notes_8
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_notes_8_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/letters: 
+   get: 
+    operationId: get_member_nameId_letters_9
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_letters_9
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_letters_9_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/payment/lastvalidpayment/{altMemberId}: 
+   get: 
+    operationId: get_member_payment_lastvalidpayment_altMemberId_10
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/altMemberIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_payment_lastvalidpayment_altMemberId_10
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_payment_lastvalidpayment_altMemberId_10_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/app/pbp: 
+   post: 
+    operationId: post_member_app_pbp_11
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_app_pbp_11_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_app_pbp_11
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_app_pbp_11_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/update_address: 
+   post: 
+    operationId: post_member_nameId_update_address_12
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_update_address_12_req'
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_nameId_update_address_12
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_update_address_12_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/mergeContact: 
+   post: 
+    operationId: post_member_nameId_mergeContact_13
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_mergeContact_13_req'
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_nameId_mergeContact_13
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_mergeContact_13_200_res'
+     '500': 
+      description: Internal Server Error
+components: 
+  schemas: 
+   post_member_1_200_res: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     rowsAffected: 
+      type: number
+     lastUpdatedDate: 
+      type: string
+      format: date-time
+     actionSetCount: 
+      type: number
+     nextCardId: 
+      type: string
+     success: 
+      type: boolean
+     statusCode: 
+      type: number
+     actionSetErrors: 
+      type: array
+      items: 
+       type: string
+     errors: 
+      type: array
+      items: 
+       type: string
+     truthTableErrors: 
+      type: array
+      items: 
+       type: string
+     userMessages: 
+      type: array
+      items: 
+       type: string
+   post_member_1_200_resactionSetErrorsArray: 
+    type: object
+    properties: 
+     actionSetErrors: 
+      type: string
+   post_member_1_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_1_200_restruthTableErrorsArray: 
+    type: object
+    properties: 
+     truthTableErrors: 
+      type: string
+   post_member_1_200_resuserMessagesArray: 
+    type: object
+    properties: 
+     userMessages: 
+      type: string
+   post_member_1_req: 
+    type: object
+    properties: 
+     source: 
+      type: string
+     planId: 
+      type: string
+     pbp: 
+      type: string
+     groupId: 
+      type: string
+     planYear: 
+      type: string
+     receivedDate: 
+      type: string
+     effectiveDate: 
+      type: string
+     electionPeriod: 
+      type: string
+     lastName: 
+      type: string
+     firstName: 
+      type: string
+     middleInitial: 
+      type: string
+     prefix: 
+      type: string
+     dateOfBirth: 
+      type: string
+     gender: 
+      type: string
+     homePhoneNumber: 
+      type: string
+     altPhoneNumber: 
+      type: string
+     cellPhoneNumber: 
+      type: string
+     emailAddress: 
+      type: string
+     homeAddress: 
+      type: string
+     homeAddressLine2: 
+      type: string
+     homeCity: 
+      type: string
+     homeState: 
+      type: string
+     homeZipcode: 
+      type: string
+     mailingAddress: 
+      type: string
+     mailingAddress2: 
+      type: string
+     mailingCity: 
+      type: string
+     mailingState: 
+      type: string
+     mailingZipcode: 
+      type: string
+     emergencyContactInd: 
+      type: string
+     emergencyContactName: 
+      type: string
+     emergencyContactPhoneNumber: 
+      type: string
+     emergencyContactRelation: 
+      type: string
+     medicareClaimNumber: 
+      type: string
+     partAEffectiveDate: 
+      type: string
+     partBEffectiveDate: 
+      type: string
+     hasOtherRxCoverage: 
+      type: string
+     otherRxCoverageName: 
+      type: string
+     otherRxCoverageIdNumber: 
+      type: string
+     otherRxCoverageGroupNumber: 
+      type: string
+     isMovingIntoOutOfOrLivesLTCF: 
+      type: string
+     longTermCareFacilityName: 
+      type: string
+     longTermCareFacilityAddress: 
+      type: string
+     longTermCareFacilityAddress2: 
+      type: string
+     longTermCareFacilityCity: 
+      type: string
+     longTermCareFacilityState: 
+      type: string
+     longTermCareFacilityZipcode: 
+      type: string
+     longTermCareFacilityPhoneNumber: 
+      type: string
+     otherLanguage: 
+      type: string
+     IsAuthorizedRep: 
+      type: string
+     authorizedRepName: 
+      type: string
+     authorizedRepPhone: 
+      type: string
+     authorizedRepRelation: 
+      type: string
+     authorizedRepAddress: 
+      type: string
+     authorizedRepAddress2: 
+      type: string
+     authorizedRepCity: 
+      type: string
+     authorizedRepState: 
+      type: string
+     authorizedRepZipcode: 
+      type: string
+     IsBroker: 
+      type: string
+     brokerWritingCode: 
+      type: string
+     brokerDate: 
+      type: string
+     brokerLastName: 
+      type: string
+     brokerFirstName: 
+      type: string
+     brokerPhone: 
+      type: string
+     brokerAttestationInd: 
+      type: string
+     brokerAttestationType: 
+      type: string
+     loginId: 
+      type: string
+     sepReason: 
+      type: string
+     ssaDeductInd: 
+      type: string
+     billingOption: 
+      type: string
+     altFormatRqst: 
+      type: string
+     selfWorkInd: 
+      type: string
+     spouseWorkInd: 
+      type: string
+   post_member_search_2_200_res: 
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   results: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     medicareId: 
+      type: string
+     memberId: 
+      type: string
+     medicareStatus: 
+      type: string
+     programId: 
+      type: string
+     birthDate: 
+      type: string
+      format: date-time
+     phoneNumber: 
+      type: string
+     phoneType: 
+      type: string
+     state: 
+      type: string
+     pbpId: 
+      type: string
+     effectiveDate: 
+      type: string
+      format: date-time
+   dataresultsArray: 
+    type: object
+    properties: 
+     results: 
+      type: object
+      $ref: '#/components/schemas/results'
+   data: 
+    type: object
+    properties: 
+     results: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/dataresultsArray'
+   post_member_search_2_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_search_2_req: 
+    type: object
+    properties: 
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     birthDate: 
+      type: string
+     phoneNumber: 
+      type: string
+     state: 
+      type: string
+     memberId: 
+      type: string
+     medicareId: 
+      type: string
+     brokerWritingCodes: 
+      type: array
+      items: 
+       type: string
+     effectiveStartDate: 
+      type: string
+     effectiveEndDate: 
+      type: string
+   post_member_MergePhone_3_200_res: 
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: string
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/post_member_MergePhone_3_200_reserrorsArray'
+   errors: 
+    type: object
+    properties: 
+     statusCode: 
+      type: string
+     message: 
+      type: string
+     topic: 
+      type: string
+     severityLevel: 
+      type: string
+     severity: 
+      type: string
+   post_member_MergePhone_3_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: object
+      $ref: '#/components/schemas/errors'
+   post_member_MergePhone_3_req: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     type: 
+      type: string
+     phoneNumber: 
+      type: string
+     phoneExtension: 
+      type: string
+     preferred: 
+      type: boolean
+     staffId: 
+      type: string
+   post_member_MergeEmail_4_200_res: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     type: 
+      type: string
+     emailAddress: 
+      type: string
+     preferred: 
+      type: boolean
+     staffId: 
+      type: string
+   post_member_MergeEmail_4_req: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     type: 
+      type: string
+     emailAddress: 
+      type: string
+     preferred: 
+      type: boolean
+     staffId: 
+      type: string
+   get_member_nameId_5_200_res: 
+    type: object
+    properties: 
+     MemberId: 
+      type: number
+     PlanId: 
+      type: number
+     PlanName: 
+      type: string
+     GroupId: 
+      type: string
+     AltMemberId: 
+      type: string
+     HICN: 
+      type: string
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Prefix: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     MAddress1: 
+      type: string
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+     MState: 
+      type: string
+     MZipCode: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     Gender: 
+      type: string
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     CellPhone: 
+      type: string
+     AltPhone: 
+      type: string
+     BWritingCode: 
+      type: string
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     MonthlyPremium: 
+      type: number
+     CurrentBalance: 
+      type: number
+     EnrollmentDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+     PbpId: 
+      type: number
+     Year: 
+      type: number
+     GreenEobReasonCode: 
+      type: number
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: number
+     Status: 
+      type: string
+     EGWPDirectBill: 
+      type: boolean
+   PrimaryPharmacy: 
+    type: object
+    properties: 
+     PharmacyId: 
+      type: number
+     NABP: 
+      type: string
+     ChainCode: 
+      type: string
+     Name: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     PharmacyTypeId: 
+      type: number
+     Phone: 
+      type: string
+     IsPrimary: 
+      type: boolean
+     IsPreferred: 
+      type: boolean
+     IsEPrescribing: 
+      type: boolean
+     IsEIC: 
+      type: boolean
+     IsEGWP: 
+      type: boolean
+     IsPreferredCC: 
+      type: boolean
+     Is90DayRetail: 
+      type: boolean
+     MemberPharmacyID: 
+      type: number
+     Distance: 
+      type: number
+     Year: 
+      type: number
+     PreferenceType: 
+      type: number
+     IsBrokerPbp: 
+      type: boolean
+   Address: 
+    type: object
+    properties: 
+     Latitude: 
+      type: string
+     Longitude: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     StateCode: 
+      type: string
+     ZipCode: 
+      type: string
+   get_member_nameId_5_200_resPharmaciesArray: 
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   get_member_nameId_billing_6_200_res: 
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   get_member_nameId_billing_6_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: string
+   get_member_nameId_notes_7_200_res: 
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   get_member_nameId_notes_7_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_nameId_notes_8_200_res: 
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   post_member_nameId_notes_8_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_nameId_notes_8_req: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     noteTypeId: 
+      type: string
+     noteText: 
+      type: string
+     createdBy: 
+      type: string
+   get_member_nameId_letters_9_200_res: 
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   get_member_nameId_letters_9_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: string
+   Log: 
+    type: object
+    properties: 
+     Id: 
+      type: number
+     MemberId: 
+      type: number
+     CreatedDate: 
+      type: string
+      format: date-time
+     TransactionId: 
+      type: string
+     Approved: 
+      type: boolean
+     Origin: 
+      type: string
+   get_member_payment_lastvalidpayment_altMemberId_10_200_res: 
+    type: object
+    properties: 
+     Log: 
+      type: object
+      $ref: '#/components/schemas/Log'
+     NextPaymentAllowedIn: 
+      type: number
+   post_member_app_pbp_11_200_res: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     rowsAffected: 
+      type: number
+     lastUpdatedDate: 
+      type: string
+      format: date-time
+     actionSetCount: 
+      type: number
+     nextCardId: 
+      type: string
+     success: 
+      type: boolean
+     statusCode: 
+      type: number
+     actionSetErrors: 
+      type: array
+      items: 
+       type: string
+     errors: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/post_member_app_pbp_11_200_reserrorsArray'
+     truthTableErrors: 
+      type: array
+      items: 
+       type: string
+     userMessages: 
+      type: array
+      items: 
+       type: string
+   post_member_app_pbp_11_200_resactionSetErrorsArray: 
+    type: object
+    properties: 
+     actionSetErrors: 
+      type: string
+   post_member_app_pbp_11_200_reserrorsArray: 
+    type: object
+    properties: 
+     errors: 
+      type: object
+      $ref: '#/components/schemas/errors'
+   post_member_app_pbp_11_200_restruthTableErrorsArray: 
+    type: object
+    properties: 
+     truthTableErrors: 
+      type: string
+   post_member_app_pbp_11_200_resuserMessagesArray: 
+    type: object
+    properties: 
+     userMessages: 
+      type: string
+   post_member_app_pbp_11_req: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     dateOfBirth: 
+      type: string
+     currentPackageId: 
+      type: string
+     effectiveDate: 
+      type: string
+     newPackageId: 
+      type: string
+     premiumWithholdType: 
+      type: string
+     signatureDate: 
+      type: string
+     receivedDate: 
+      type: string
+     electionPeriod: 
+      type: string
+     brokerAttestation: 
+      type: string
+     loginId: 
+      type: string
+   post_member_nameId_update_address_12_200_res: 
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: boolean
+     FaultException: 
+      type: object
+      $ref: '#/components/schemas/FaultException'
+   FaultException: 
+    type: object
+    properties: 
+     Success: 
+      type: boolean
+     Exceptions: 
+      type: array
+      items: 
+       type: string
+     Errors: 
+      type: array
+      items: 
+       type: string
+     Warnings: 
+      type: array
+      items: 
+       type: string
+     Messages: 
+      type: array
+      items: 
+       type: string
+   FaultExceptionExceptionsArray: 
+    type: object
+    properties: 
+     Exceptions: 
+      type: string
+   FaultExceptionErrorsArray: 
+    type: object
+    properties: 
+     Errors: 
+      type: string
+   FaultExceptionWarningsArray: 
+    type: object
+    properties: 
+     Warnings: 
+      type: string
+   FaultExceptionMessagesArray: 
+    type: object
+    properties: 
+     Messages: 
+      type: string
+   post_member_nameId_update_address_12_req: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     id: 
+      type: string
+     type: 
+      type: string
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     relationship: 
+      type: string
+     address1: 
+      type: string
+     address2: 
+      type: string
+     city: 
+      type: string
+     state: 
+      type: string
+     zip: 
+      type: string
+     county: 
+      type: string
+     companyName: 
+      type: string
+     phoneNumber: 
+      type: string
+     alternativePhoneNumber: 
+      type: string
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+      format: date-time
+     staffId: 
+      type: string
+   post_member_nameId_mergeContact_13_200_res: 
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: boolean
+     FaultException: 
+      type: object
+      $ref: '#/components/schemas/FaultException'
+   post_member_nameId_mergeContact_13_req: 
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     id: 
+      type: string
+     type: 
+      type: string
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     relationship: 
+      type: string
+     address1: 
+      type: string
+     address2: 
+      type: string
+     city: 
+      type: string
+     state: 
+      type: string
+     zip: 
+      type: string
+     county: 
+      type: string
+     companyName: 
+      type: string
+     phoneNumber: 
+      type: string
+     alternativePhoneNumber: 
+      type: string
+     startDate: 
+      type: string
+     endDate: 
+      type: string
+     staffId: 
+      type: string
+  parameters: 
+   client_idHeaderParam: 
+    in: header
+    name: client_id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   client_secretHeaderParam: 
+    in: header
+    name: client_secret
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   nameIdPathParam: 
+    in: path
+    name: nameId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   altMemberIdPathParam: 
+    in: path
+    name: altMemberId
+    required: true
+    schema: 
+     type: string
+    description: Alt Member Id
+   TenantIdentifierHeaderParam: 
+    in: header
+    name: TenantIdentifier
+    required: true
+    schema: 
+     type: string
+    description: Tenant Identifier
