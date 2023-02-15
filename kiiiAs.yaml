@@ -1,0 +1,734 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: EIC-Portal-User-papi
+  description: This API is designed to manage the complex process for Portal User management and process orestration.   This process API layer is designed to handle the more complex process orestration for managing Portal Users. We have intentially followed the same URIs as exposed in the original Swagger / Open API so there is no need for mapping old name to new URI names. While it would be nice to "clean up" some of the unconventional Resource naming to following the RESTful approach more closely, keeping the same URIs makes life much easier for developers to call lower level APIs that match the URIs while using the API-Led approach.   
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /user: 
+   post: 
+    operationId: post_user_1
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_user_1
+     '500': 
+      description: Internal Server Error
+   put: 
+    operationId: put_user_2
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: put_user_2
+     '500': 
+      description: Internal Server Error
+  /user/getuser: 
+   get: 
+    operationId: get_user_getuser_3
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_user_getuser_3
+     '500': 
+      description: Internal Server Error
+  /user/get: 
+   get: 
+    operationId: get_user_get_4
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_user_get_4
+     '500': 
+      description: Internal Server Error
+  /user/{userName}: 
+   get: 
+    operationId: get_user_userName_5
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/userNamePathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_user_userName_5
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_user_userName_5_200_res'
+     '500': 
+      description: Internal Server Error
+  /user/login: 
+   post: 
+    operationId: post_user_login_6
+    tags: 
+     - user
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_user_login_6_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_user_login_6
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_user_login_6_201_res'
+     '500': 
+      description: Internal Server Error
+  /user/ResetPassword: 
+   post: 
+    operationId: post_user_ResetPassword_7
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_user_ResetPassword_7
+     '500': 
+      description: Internal Server Error
+  /user/SendPasswordResetMail: 
+   post: 
+    operationId: post_user_SendPasswordResetMail_8
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_user_SendPasswordResetMail_8
+     '500': 
+      description: Internal Server Error
+  /user/PortalUserForgetUserName: 
+   post: 
+    operationId: post_user_PortalUserForgetUserName_9
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_user_PortalUserForgetUserName_9
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_user_PortalUserForgetUserName_9_201_res'
+     '500': 
+      description: Internal Server Error
+  /user/Temp: 
+   post: 
+    operationId: post_user_Temp_10
+    tags: 
+     - user
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_user_Temp_10_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_user_Temp_10
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/post_user_Temp_10_200_res'
+     '500': 
+      description: Internal Server Error
+  /user/Validate: 
+   post: 
+    operationId: post_user_Validate_11
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '201': 
+      description: post_user_Validate_11
+     '500': 
+      description: Internal Server Error
+  /user/ValidateDob: 
+   get: 
+    operationId: get_user_ValidateDob_12
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_user_ValidateDob_12
+     '500': 
+      description: Internal Server Error
+  /user/{username}/{dob}: 
+   get: 
+    operationId: get_user_username_dob_13
+    tags: 
+     - user
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/usernamePathParam'
+     - $ref: '#/components/parameters/dobPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_user_username_dob_13
+     '500': 
+      description: Internal Server Error
+  /member/portaluser: 
+   post: 
+    operationId: post_member_portaluser_14
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_portaluser_14
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_portaluser_14_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/validate/about: 
+   post: 
+    operationId: post_member_validate_about_15
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_validate_about_15_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_validate_about_15
+     '500': 
+      description: Internal Server Error
+  /data/secretimage: 
+   get: 
+    operationId: get_data_secretimage_16
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_secretimage_16
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_data_secretimage_16_200_res'
+     '500': 
+      description: Internal Server Error
+  /data/secretquestion: 
+   get: 
+    operationId: get_data_secretquestion_17
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_secretquestion_17
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_data_secretquestion_17_200_res'
+     '500': 
+      description: Internal Server Error
+  /data/secretquestion/{userId}: 
+   get: 
+    operationId: get_data_secretquestion_userId_18
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/userIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_data_secretquestion_userId_18_200_res'
+     '500': 
+      description: Internal Server Error
+components: 
+  schemas: 
+   get_user_userName_5_200_res: 
+   Title : get_user_userName_5_200_res: 
+    type: object
+    properties: 
+     UserId: 
+      type: number
+     PortalRole: 
+      type: object
+      $ref: '#/components/schemas/PortalRole'
+      Title : get_user_userName_5_200_res: 
+     WritingCode: 
+      type: string
+     NameId: 
+      type: string
+     MemberId: 
+      type: string
+     Member: 
+      type: string
+     UserName: 
+      type: string
+     Email: 
+      type: string
+     SecretImage: 
+      type: string
+     SecretImageAltText: 
+      type: string
+     LoginAttempt: 
+      type: number
+     ResetGuid: 
+      type: string
+     Url: 
+      type: string
+     IsValidUser: 
+      type: boolean
+     Phone: 
+      type: string
+     SecretAnswers: 
+      type: array
+      items: 
+       type: string
+     SecretQuestions: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_user_userName_5_200_resSecretQuestionsArray'
+     HasAcceptedEula: 
+      type: boolean
+     PreferedContactMethod: 
+      type: string
+     PatientId: 
+      type: string
+     NPN: 
+      type: string
+     Broker: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Agency: 
+      type: string
+   PortalRole: 
+   Title : PortalRole: 
+    type: object
+    properties: 
+     RoleId: 
+      type: number
+     RoleDescription: 
+      type: string
+   get_user_userName_5_200_resSecretAnswersArray: 
+   Title : get_user_userName_5_200_resSecretAnswersArray: 
+    type: object
+    properties: 
+     SecretAnswers: 
+      type: string
+   SecretQuestions: 
+   Title : SecretQuestions: 
+    type: object
+    properties: 
+     SecretQuestionId: 
+      type: number
+     SecretQuestionText: 
+      type: string
+     EffectiveDate: 
+      type: string
+     HiddenDate: 
+      type: string
+   get_user_userName_5_200_resSecretQuestionsArray: 
+   Title : get_user_userName_5_200_resSecretQuestionsArray: 
+    type: object
+    properties: 
+     SecretQuestions: 
+      type: object
+      $ref: '#/components/schemas/SecretQuestions'
+      Title : get_user_userName_5_200_resSecretQuestionsArray: 
+   post_user_login_6_201_res: 
+   Title : post_user_login_6_201_res: 
+    type: object
+    properties: 
+     UserId: 
+      type: number
+     Password: 
+      type: string
+   post_user_login_6_req: 
+   Title : post_user_login_6_req: 
+    type: object
+    properties: 
+     UserId: 
+      type: number
+     PortalRole: 
+      type: object
+      $ref: '#/components/schemas/PortalRole'
+      Title : post_user_login_6_req: 
+     WritingCode: 
+      type: string
+     NameId: 
+      type: string
+     MemberId: 
+      type: string
+     Member: 
+      type: string
+     UserName: 
+      type: string
+     Email: 
+      type: string
+     SecretImage: 
+      type: string
+     SecretImageAltText: 
+      type: string
+     LoginAttempt: 
+      type: string
+     ResetGuid: 
+      type: string
+     Url: 
+      type: string
+     IsValidUser: 
+      type: boolean
+     Phone: 
+      type: string
+     SecretAnswers: 
+      type: array
+      items: 
+       type: string
+     SecretQuestions: 
+      type: array
+      items: 
+       type: string
+     HasAcceptedEula: 
+      type: boolean
+     PreferedContactMethod: 
+      type: string
+     PatientId: 
+      type: string
+     NPN: 
+      type: string
+     Broker: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Agency: 
+      type: string
+   post_user_login_6_reqSecretAnswersArray: 
+   Title : post_user_login_6_reqSecretAnswersArray: 
+    type: object
+    properties: 
+     SecretAnswers: 
+      type: string
+   post_user_login_6_reqSecretQuestionsArray: 
+   Title : post_user_login_6_reqSecretQuestionsArray: 
+    type: object
+    properties: 
+     SecretQuestions: 
+      type: string
+   RequestDetails: 
+   Title : RequestDetails: 
+    type: object
+    properties: 
+     Dob: 
+      type: string
+      format: date-time
+     AltMemberId: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     UserRole: 
+      type: string
+   post_user_PortalUserForgetUserName_9_201_res: 
+   Title : post_user_PortalUserForgetUserName_9_201_res: 
+    type: object
+    properties: 
+     RequestDetails: 
+      type: object
+      $ref: '#/components/schemas/RequestDetails'
+      Title : post_user_PortalUserForgetUserName_9_201_res: 
+   post_user_Temp_10_200_res: 
+   Title : post_user_Temp_10_200_res: 
+    type: object
+    properties: 
+     RoleId: 
+      type: number
+     ResetTs: 
+      type: string
+     UserId: 
+      type: number
+     ResetGUID: 
+      type: string
+     Password: 
+      type: string
+     WritingCode: 
+      type: string
+     RoleDescription: 
+      type: string
+     NameId: 
+      type: string
+     AttemptTs: 
+      type: string
+     Email: 
+      type: string
+     SecretImage: 
+      type: string
+     UserName: 
+      type: string
+     LoginAttempt: 
+      type: string
+   post_user_Temp_10_req: 
+   Title : post_user_Temp_10_req: 
+    type: object
+    properties: 
+     UserName: 
+      type: string
+     NameId: 
+      type: string
+   post_member_portaluser_14_200_res: 
+   Title : post_member_portaluser_14_200_res: 
+    type: object
+    properties: 
+     UserId: 
+      type: number
+     PortalRole: 
+      type: object
+      $ref: '#/components/schemas/PortalRole'
+      Title : post_member_portaluser_14_200_res: 
+     WritingCode: 
+      type: string
+     NameId: 
+      type: string
+     MemberId: 
+      type: string
+     Member: 
+      type: string
+     UserName: 
+      type: string
+     Email: 
+      type: string
+     SecretImage: 
+      type: string
+     SecretImageAltText: 
+      type: string
+     LoginAttempt: 
+      type: string
+     ResetGuid: 
+      type: string
+     Url: 
+      type: string
+     IsValidUser: 
+      type: boolean
+     Phone: 
+      type: string
+     SecretAnswers: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/post_member_portaluser_14_200_resSecretAnswersArray'
+     SecretQuestions: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/post_member_portaluser_14_200_resSecretQuestionsArray'
+     HasAcceptedEula: 
+      type: boolean
+     PreferedContactMethod: 
+      type: number
+     PatientId: 
+      type: string
+     NPN: 
+      type: string
+     Broker: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Agency: 
+      type: string
+   SecretAnswers: 
+   Title : SecretAnswers: 
+    type: object
+    properties: 
+     QuestionId: 
+      type: number
+     Answer: 
+      type: string
+   post_member_portaluser_14_200_resSecretAnswersArray: 
+   Title : post_member_portaluser_14_200_resSecretAnswersArray: 
+    type: object
+    properties: 
+     SecretAnswers: 
+      type: object
+      $ref: '#/components/schemas/SecretAnswers'
+      Title : post_member_portaluser_14_200_resSecretAnswersArray: 
+   post_member_portaluser_14_200_resSecretQuestionsArray: 
+   Title : post_member_portaluser_14_200_resSecretQuestionsArray: 
+    type: object
+    properties: 
+     SecretQuestions: 
+      type: object
+      $ref: '#/components/schemas/SecretQuestions'
+      Title : post_member_portaluser_14_200_resSecretQuestionsArray: 
+   post_member_validate_about_15_req: 
+   Title : post_member_validate_about_15_req: 
+    type: object
+    properties: 
+     RequestDetails: 
+      type: object
+      $ref: '#/components/schemas/RequestDetails'
+      Title : post_member_validate_about_15_req: 
+   get_data_secretimage_16_200_res: 
+   Title : get_data_secretimage_16_200_res: 
+    type: object
+    properties: 
+     SecretImageId: 
+      type: number
+     SecretImagePath: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     HiddenDate: 
+      type: string
+      format: date-time
+     SecretImageAltText: 
+      type: string
+   get_data_secretquestion_17_200_res: 
+   Title : get_data_secretquestion_17_200_res: 
+    type: object
+    properties: 
+     SecretQuestionId: 
+      type: number
+     SecretQuestionText: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     HiddenDate: 
+      type: string
+   get_data_secretquestion_userId_18_200_res: 
+   Title : get_data_secretquestion_userId_18_200_res: 
+    type: object
+    properties: 
+     SecretQuestionText: 
+      type: string
+     HiddenDate: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     SecretQuestionId: 
+      type: number
+  parameters: 
+   client_idHeaderParam: 
+    in: header
+    name: client_id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   client_secretHeaderParam: 
+    in: header
+    name: client_secret
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   userNamePathParam: 
+    in: path
+    name: userName
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   usernamePathParam: 
+    in: path
+    name: username
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   dobPathParam: 
+    in: path
+    name: dob
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   userIdPathParam: 
+    in: path
+    name: userId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
