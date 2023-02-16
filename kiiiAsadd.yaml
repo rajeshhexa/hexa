@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: EIC-Member-Data-Service-sapi
+  description: API description
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /CorrespondenceLogGetByNameId/{NameId}: 
+   get: 
+    operationId: get_CorrespondenceLogGetByNameId_NameId_1
+    tags: 
+     - CorrespondenceLogGetByNameId
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_CorrespondenceLogGetByNameId_NameId_1
+     '500': 
+      description: get_CorrespondenceLogGetByNameId_NameId_1
+  /SetGoGreenSubscription: 
+   post: 
+    operationId: post_SetGoGreenSubscription_2
+    tags: 
+     - SetGoGreenSubscription
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_SetGoGreenSubscription_2_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_SetGoGreenSubscription_2_200_res'
+     '500': 
+      description: Internal Server error
+components: 
+  schemas: 
+   post_SetGoGreenSubscription_2_200_res: 
+    title : post_SetGoGreenSubscription_2_200_res
+    type: object
+    properties: 
+     NameId: 
+      type: string
+   post_SetGoGreenSubscription_2_req: 
+    title : post_SetGoGreenSubscription_2_req
+    type: object
+    properties: 
+     NameId: 
+      type: string
+     ReasonCode: 
+      type: string
+  parameters: 
+   NameIdPathParam: 
+    in: path
+    name: NameId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   client_idHeaderParam: 
+    in: header
+    name: client_id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   client_secretHeaderParam: 
+    in: header
+    name: client_secret
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
