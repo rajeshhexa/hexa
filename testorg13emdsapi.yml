@@ -1,0 +1,3794 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: EIC-Member-Data-Service-sapi
+  description: API description
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /SSADeductExport/{UserName}: 
+   get: 
+    operationId: get_SSADeductExport_UserName_1
+    tags: 
+     - SSADeductExport
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UserNamePathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_SSADeductExport_UserName_1
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_SSADeductExport_UserName_1_200_res'
+     '500': 
+      description: get_SSADeductExport_UserName_1
+  /SSADeductByMemberID/{memberId}: 
+   get: 
+    operationId: get_SSADeductByMemberID_memberId_2
+    tags: 
+     - SSADeductByMemberID
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/memberIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_SSADeductByMemberID_memberId_2
+     '500': 
+      description: get_SSADeductByMemberID_memberId_2
+  /member/SSADeductRequest: 
+   post: 
+    operationId: post_member_SSADeductRequest_3
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_SSADeductRequest_3_req'
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_SSADeductRequest_3_200_res'
+     '500': 
+      description: post_member_SSADeductRequest_3
+  /member/payment/insertpaymentlog: 
+   post: 
+    operationId: post_member_payment_insertpaymentlog_4
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_payment_insertpaymentlog_4_req'
+    parameters: 
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_payment_insertpaymentlog_4_200_res'
+     '500': 
+      description: post_member_payment_insertpaymentlog_4
+  /member/payment/lastvalidpayment/{altMemberId}: 
+   get: 
+    operationId: get_member_payment_lastvalidpayment_altMemberId_5
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/altMemberIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_payment_lastvalidpayment_altMemberId_5
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_member_payment_lastvalidpayment_altMemberId_5_200_res'
+     '500': 
+      description: get_member_payment_lastvalidpayment_altMemberId_5
+  /member/portaluser: 
+   post: 
+    operationId: post_member_portaluser_6
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_portaluser_6_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_portaluser_6_200_res'
+     '500': 
+      description: post_member_portaluser_6
+   put: 
+    operationId: put_member_portaluser_7
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_member_portaluser_7_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_member_portaluser_7_200_res'
+     '500': 
+      description: put_member_portaluser_7
+  /member/portalusers: 
+   put: 
+    operationId: put_member_portalusers_8
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_member_portalusers_8_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_member_portalusers_8_200_res'
+  /member/{nameId}: 
+   get: 
+    operationId: get_member_nameId_9
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_9
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_9_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/Messages: 
+   post: 
+    operationId: post_member_Messages_10
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_Messages_10_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/post_member_Messages_10_200_res'
+     '500': 
+      description: post_member_Messages_10
+   get: 
+    operationId: get_member_Messages_11
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ApplicationIdQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+     '500': 
+      description: get_member_Messages_11
+  /member/portalDetails: 
+   get: 
+    operationId: get_member_portalDetails_12
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdQueryParam'
+     - $ref: '#/components/parameters/RoleQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: Get portalDetails
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_member_portalDetails_12_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/updateEmail: 
+   post: 
+    operationId: post_member_updateEmail_13
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_updateEmail_13
+     '500': 
+      description: Internal Server Error
+  /data/planBenefitPackage: 
+   get: 
+    operationId: get_data_planBenefitPackage_14
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/pbpQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_planBenefitPackage_14
+     '500': 
+      description: get_data_planBenefitPackage_14
+  /data/sepReason: 
+   get: 
+    operationId: get_data_sepReason_15
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/sepReasonQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_sepReason_15
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_data_sepReason_15_200_res'
+     '404': 
+      description: get_data_sepReason_15
+     '500': 
+      description: get_data_sepReason_15
+  /data/sep: 
+   get: 
+    operationId: get_data_sep_16
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_sep_16
+     '404': 
+      description: get_data_sep_16
+     '500': 
+      description: get_data_sep_16
+  /data/paymentType: 
+   get: 
+    operationId: get_data_paymentType_17
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/paymentTypeCodeQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_paymentType_17
+     '500': 
+      description: get_data_paymentType_17
+  /data/enrollmentType: 
+   get: 
+    operationId: get_data_enrollmentType_18
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/enrollmentTypeQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_enrollmentType_18
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_data_enrollmentType_18_200_res'
+     '500': 
+      description: get_data_enrollmentType_18
+  /data/planYear: 
+   get: 
+    operationId: get_data_planYear_19
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/planYearCodeQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_planYear_19
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_data_planYear_19_200_res'
+     '500': 
+      description: get_data_planYear_19
+  /data/member: 
+   get: 
+    operationId: get_data_member_20
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_member_20
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_data_member_20_200_res'
+     '500': 
+      description: get_data_member_20
+  /data/member/ByAltNameId/{altNameId}: 
+   get: 
+    operationId: get_data_member_ByAltNameId_altNameId_21
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/altNameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_member_ByAltNameId_altNameId_21
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_data_member_ByAltNameId_altNameId_21_200_res'
+     '500': 
+      description: get_data_member_ByAltNameId_altNameId_21
+  /data/member/portaluser: 
+   post: 
+    operationId: post_data_member_portaluser_22
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_data_member_portaluser_22
+     '500': 
+      description: post_data_member_portaluser_22
+  /data/member/addresschange: 
+   post: 
+    operationId: post_data_member_addresschange_23
+    tags: 
+     - data
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_data_member_addresschange_23_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_data_member_addresschange_23
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_data_member_addresschange_23_200_res'
+  /data/member/AddressChangeRequest: 
+   post: 
+    operationId: post_data_member_AddressChangeRequest_24
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_data_member_AddressChangeRequest_24
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_data_member_AddressChangeRequest_24_200_res'
+     '500': 
+      description: post_data_member_AddressChangeRequest_24
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_data_member_AddressChangeRequest_24_500_res'
+  /data/member/AddressChangeRequests: 
+   get: 
+    operationId: get_data_member_AddressChangeRequests_25
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/completeQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_member_AddressChangeRequests_25
+     '500': 
+      description: get_data_member_AddressChangeRequests_25
+  /data/member/AddressChangeRequest/{addressChangeID}: 
+   get: 
+    operationId: get_data_member_AddressChangeRequest_addressChangeID_26
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/addressChangeIDPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_member_AddressChangeRequest_addressChangeID_26
+     '500': 
+      description: get_data_member_AddressChangeRequest_addressChangeID_26
+  /data/member/disenrollment: 
+   post: 
+    operationId: post_data_member_disenrollment_27
+    tags: 
+     - data
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_data_member_disenrollment_27_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_data_member_disenrollment_27
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_data_member_disenrollment_27_200_res'
+     '500': 
+      description: post_data_member_disenrollment_27
+  /data/user/getuser: 
+   get: 
+    operationId: get_data_user_getuser_28
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_data_user_getuser_28
+     '500': 
+      description: get_data_user_getuser_28
+  /data/user/PortalUserForgetUserName: 
+   post: 
+    operationId: post_data_user_PortalUserForgetUserName_29
+    tags: 
+     - data
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_data_user_PortalUserForgetUserName_29
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_data_user_PortalUserForgetUserName_29_200_res'
+     '500': 
+      description: post_data_user_PortalUserForgetUserName_29
+  /AddressChangeRequest/MemberID/{ID}: 
+   get: 
+    operationId: get_AddressChangeRequest_MemberID_ID_30
+    tags: 
+     - AddressChangeRequest
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/IDPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_AddressChangeRequest_MemberID_ID_30
+     '500': 
+      description: get_AddressChangeRequest_MemberID_ID_30
+  /MarketProminence: 
+   get: 
+    operationId: get_MarketProminence_31
+    tags: 
+     - MarketProminence
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/pbpQueryParam'
+     - $ref: '#/components/parameters/yearQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_MarketProminence_31
+     '500': 
+      description: get_MarketProminence_31
+  /validateuserid: 
+   get: 
+    operationId: get_validateuserid_32
+    tags: 
+     - validateuserid
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/userIdQueryParam'
+     - $ref: '#/components/parameters/nameIdQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_validateuserid_32
+     '500': 
+      description: get_validateuserid_32
+  /secretquestion/{userId}: 
+   get: 
+    operationId: get_secretquestion_userId_33
+    tags: 
+     - secretquestion
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/userIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_secretquestion_userId_33
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_secretquestion_userId_33_200_res'
+     '500': 
+      description: get_secretquestion_userId_33
+  /portaluserexist/{NameId}: 
+   get: 
+    operationId: get_portaluserexist_NameId_34
+    tags: 
+     - portaluserexist
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_portaluserexist_NameId_34
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_portaluserexist_NameId_34_200_res'
+     '500': 
+      description: get_portaluserexist_NameId_34
+  /CodeLookup/CallScript/{language}: 
+   get: 
+    operationId: get_CodeLookup_CallScript_language_35
+    tags: 
+     - CodeLookup
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/languagePathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_CodeLookup_CallScript_language_35_200_res'
+     '500': 
+      description: get_CodeLookup_CallScript_language_35
+  /CodeLookup/AdminDropDownList/{year}: 
+   get: 
+    operationId: get_CodeLookup_AdminDropDownList_year_36
+    tags: 
+     - CodeLookup
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/yearPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_CodeLookup_AdminDropDownList_year_36_200_res'
+     '500': 
+      description: get_CodeLookup_AdminDropDownList_year_36
+  /notetypes: 
+   get: 
+    operationId: get_notetypes_37
+    tags: 
+     - notetypes
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_notetypes_37
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_notetypes_37_200_res'
+     '500': 
+      description: get_notetypes_37
+  /PlanInfoGet: 
+   get: 
+    operationId: get_PlanInfoGet_38
+    tags: 
+     - PlanInfoGet
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/packageIdQueryParam'
+     - $ref: '#/components/parameters/yearQueryParam'
+     - $ref: '#/components/parameters/groupIdQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_PlanInfoGet_38
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_PlanInfoGet_38_200_res'
+     '500': 
+      description: get_PlanInfoGet_38
+  /EnrollmentSourceGet: 
+   get: 
+    operationId: get_EnrollmentSourceGet_39
+    tags: 
+     - EnrollmentSourceGet
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/idQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_EnrollmentSourceGet_39
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_EnrollmentSourceGet_39_200_res'
+     '500': 
+      description: get_EnrollmentSourceGet_39
+  /lepAttestation: 
+   post: 
+    operationId: post_lepAttestation_40
+    tags: 
+     - lepAttestation
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_lepAttestation_40_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_lepAttestation_40_200_res'
+     '500': 
+      description: post_lepAttestation_40
+  /lepAttestations: 
+   get: 
+    operationId: get_lepAttestations_41
+    tags: 
+     - lepAttestations
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/completeQueryParam'
+     - $ref: '#/components/parameters/assignedQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_lepAttestations_41
+     '500': 
+      description: get_lepAttestations_41
+  /LEPAttestation/{ID}: 
+   get: 
+    operationId: get_LEPAttestation_ID_42
+    tags: 
+     - LEPAttestation
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/IDPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_LEPAttestation_ID_42
+     '500': 
+      description: get_LEPAttestation_ID_42
+  /lepAttestationsByMemberId/{memberId}: 
+   get: 
+    operationId: get_lepAttestationsByMemberId_memberId_44
+    tags: 
+     - lepAttestationsByMemberId
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/memberIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_lepAttestationsByMemberId_memberId_44
+     '500': 
+      description: get_lepAttestationsByMemberId_memberId_44
+  /CorrespondenceLogGetByNameId/{NameId}: 
+   get: 
+    operationId: get_CorrespondenceLogGetByNameId_NameId_45
+    tags: 
+     - CorrespondenceLogGetByNameId
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_CorrespondenceLogGetByNameId_NameId_45
+     '500': 
+      description: get_CorrespondenceLogGetByNameId_NameId_45
+  /PrintRequestTypes/{Who}: 
+   get: 
+    operationId: get_PrintRequestTypes_Who_46
+    tags: 
+     - PrintRequestTypes
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/WhoPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_PrintRequestTypes_Who_46_200_res'
+     '500': 
+      description: Internal Server error
+  /PrintRequest: 
+   post: 
+    operationId: post_PrintRequest_47
+    tags: 
+     - PrintRequest
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_PrintRequest_47_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_PrintRequest_47_200_res'
+     '500': 
+      description: Internal Server error
+  /PrintRequestExport: 
+   get: 
+    operationId: get_PrintRequestExport_48
+    tags: 
+     - PrintRequestExport
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_PrintRequestExport_48_200_res'
+     '500': 
+      description: Internal Server error
+  /memberPharmacyGetByID: 
+   get: 
+    operationId: get_memberPharmacyGetByID_49
+    tags: 
+     - memberPharmacyGetByID
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_memberPharmacyGetByID_49
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_memberPharmacyGetByID_49_200_res'
+     '500': 
+      description: Internal Server error
+  /greenEobPortalGetByNameId: 
+   get: 
+    operationId: get_greenEobPortalGetByNameId_50
+    tags: 
+     - greenEobPortalGetByNameId
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_greenEobPortalGetByNameId_50
+     '500': 
+      description: Internal Server error
+  /login: 
+   post: 
+    operationId: post_login_51
+    tags: 
+     - login
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_login_51_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_login_51_200_res'
+     '500': 
+      description: Internal Server error
+  /SetGoGreenSubscription: 
+   post: 
+    operationId: post_SetGoGreenSubscription_52
+    tags: 
+     - SetGoGreenSubscription
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_SetGoGreenSubscription_52_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_SetGoGreenSubscription_52_200_res'
+     '500': 
+      description: Internal Server error
+  /portalUserGetByNameId/{NameId}: 
+   get: 
+    operationId: get_portalUserGetByNameId_NameId_53
+    tags: 
+     - portalUserGetByNameId
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_portalUserGetByNameId_NameId_53
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_portalUserGetByNameId_NameId_53_200_res'
+     '500': 
+      description: Internal Server error
+  /DisenrollRequestExport/{userName}: 
+   get: 
+    operationId: get_DisenrollRequestExport_userName_54
+    tags: 
+     - DisenrollRequestExport
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/userNamePathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_DisenrollRequestExport_userName_54
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_DisenrollRequestExport_userName_54_200_res'
+     '500': 
+      description: get_DisenrollRequestExport_userName_54
+  /lastLogin/{Username}: 
+   get: 
+    operationId: get_lastLogin_Username_55
+    tags: 
+     - lastLogin
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsernamePathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_lastLogin_Username_55_200_res'
+     '500': 
+      description: Internal Server error
+  /disableLogin: 
+   post: 
+    operationId: post_disableLogin_56
+    tags: 
+     - disableLogin
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_disableLogin_56_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_disableLogin_56_200_res'
+     '500': 
+      description: Internal Server error
+  /disenrollmentReasons: 
+   get: 
+    operationId: get_disenrollmentReasons_57
+    tags: 
+     - disenrollmentReasons
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_disenrollmentReasons_57_200_res'
+     '500': 
+      description: Internal Server error
+  /errorLog: 
+   post: 
+    operationId: post_errorLog_58
+    tags: 
+     - errorLog
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+     '500': 
+      description: Internal Server error
+  /Messages: 
+   post: 
+    operationId: post_Messages_59
+    tags: 
+     - Messages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_Messages_59_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+     '500': 
+      description: Internal Server error
+   put: 
+    operationId: put_Messages_60
+    tags: 
+     - Messages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_Messages_60_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_Messages_60_200_res'
+  /Messages/{MessageId}: 
+   get: 
+    operationId: get_Messages_MessageId_61
+    tags: 
+     - Messages
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MessageIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_Messages_MessageId_61
+     '500': 
+      description: Internal Server error
+  /Messages/Lookups/{MessageId}: 
+   delete: 
+    operationId: delete_Messages_Lookups_MessageId_62
+    tags: 
+     - Messages
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MessageIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: delete_Messages_Lookups_MessageId_62
+     '500': 
+      description: Internal Server error
+  /Messages/LookupByMemberID: 
+   post: 
+    operationId: post_Messages_LookupByMemberID_63
+    tags: 
+     - Messages
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+     '500': 
+      description: Internal Server error
+  /Messages/LookupByPlan: 
+   post: 
+    operationId: post_Messages_LookupByPlan_64
+    tags: 
+     - Messages
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+     '500': 
+      description: Internal Server error
+  /Messages/LookupByState: 
+   post: 
+    operationId: post_Messages_LookupByState_65
+    tags: 
+     - Messages
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+     '500': 
+      description: Internal Server error
+  /Messages/LookupByZipCodes: 
+   post: 
+    operationId: post_Messages_LookupByZipCodes_66
+    tags: 
+     - Messages
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+     '500': 
+      description: Internal Server error
+  /eventlog: 
+   post: 
+    operationId: post_eventlog_67
+    tags: 
+     - eventlog
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_eventlog_67_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: OK
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_eventlog_67_200_res'
+     '500': 
+      description: Internal Server Error
+  /auditLogByNameId: 
+   get: 
+    operationId: get_auditLogByNameId_68
+    tags: 
+     - auditLogByNameId
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NameIdQueryParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_auditLogByNameId_68
+     '500': 
+      description: Internal Server error
+components: 
+  schemas: 
+   SSADeductRequests: 
+    title : SSADeductRequests
+    type: object
+    properties: 
+     NameID: 
+      type: string
+     RequestDate: 
+      type: string
+      format: date-time
+     MedicareID: 
+      type: string
+     MemberID: 
+      type: string
+   get_SSADeductExport_UserName_1_200_resSSADeductRequestsArray: 
+    title : get_SSADeductExport_UserName_1_200_resSSADeductRequestsArray
+    type: object
+    properties: 
+     SSADeductRequests: 
+      type: object
+      $ref: '#/components/schemas/SSADeductRequests'
+   get_SSADeductExport_UserName_1_200_res: 
+    title : get_SSADeductExport_UserName_1_200_res
+    type: object
+    properties: 
+     SSADeductRequests: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_SSADeductExport_UserName_1_200_resSSADeductRequestsArray'
+   post_member_SSADeductRequest_3_200_res: 
+    title : post_member_SSADeductRequest_3_200_res
+    type: object
+    properties: 
+     SSADeductID: 
+      type: number
+   post_member_SSADeductRequest_3_req: 
+    title : post_member_SSADeductRequest_3_req
+    type: object
+    properties: 
+     NameId: 
+      type: string
+     MemberID: 
+      type: string
+     MedicareNumber: 
+      type: string
+   resultSet1: 
+    title : resultSet1
+    type: object
+    properties: 
+     CreatedDate: 
+      type: string
+      format: date-time
+     Origin: 
+      type: number
+     Id: 
+      type: number
+     TransactionId: 
+      type: string
+     MemberId: 
+      type: string
+     Status: 
+      type: string
+   post_member_payment_insertpaymentlog_4_200_resresultSet1Array: 
+    title : post_member_payment_insertpaymentlog_4_200_resresultSet1Array
+    type: object
+    properties: 
+     resultSet1: 
+      type: object
+      $ref: '#/components/schemas/resultSet1'
+   post_member_payment_insertpaymentlog_4_200_res: 
+    title : post_member_payment_insertpaymentlog_4_200_res
+    type: object
+    properties: 
+     resultSet1: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/post_member_payment_insertpaymentlog_4_200_resresultSet1Array'
+     updateCount1: 
+      type: number
+   post_member_payment_insertpaymentlog_4_req: 
+    title : post_member_payment_insertpaymentlog_4_req
+    type: object
+    properties: 
+     Id: 
+      type: string
+     CreatedDate: 
+      type: string
+     TransactionId: 
+      type: string
+     MemberId: 
+      type: string
+     Approved: 
+      type: boolean
+     Status: 
+      type: string
+     Origin: 
+      type: string
+   get_member_payment_lastvalidpayment_altMemberId_5_200_res: 
+    title : get_member_payment_lastvalidpayment_altMemberId_5_200_res
+    type: object
+    properties: 
+     CreatedDate: 
+      type: string
+      format: date-time
+     Origin: 
+      type: number
+     Id: 
+      type: number
+     TransactionId: 
+      type: string
+     MemberId: 
+      type: string
+     Status: 
+      type: number
+   ResponseDetails: 
+    title : ResponseDetails
+    type: object
+    properties: 
+     UserId: 
+      type: number
+     PortalRole: 
+      type: object
+      $ref: '#/components/schemas/PortalRole'
+     WritingCode: 
+      type: string
+     NameId: 
+      type: string
+     MemberId: 
+      type: string
+     Member: 
+      type: string
+     UserName: 
+      type: string
+     Email: 
+      type: string
+     SecretImage: 
+      type: string
+     SecretImageAltText: 
+      type: string
+     LoginAttempt: 
+      type: number
+     ResetGuid: 
+      type: string
+     Url: 
+      type: string
+     IsValidUser: 
+      type: boolean
+     Phone: 
+      type: string
+     SecretAnswers: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/ResponseDetailsSecretAnswersArray'
+     SecretQuestions: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/ResponseDetailsSecretQuestionsArray'
+     HasAcceptedEula: 
+      type: boolean
+     PreferedContactMethod: 
+      type: number
+     PatientId: 
+      type: string
+     NPN: 
+      type: string
+     Broker: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Agency: 
+      type: string
+   PortalRole: 
+    title : PortalRole
+    type: object
+    properties: 
+     RoleId: 
+      type: number
+     RoleDescription: 
+      type: string
+   SecretAnswers: 
+    title : SecretAnswers
+    type: object
+    properties: 
+     QuestionId: 
+      type: number
+     Answer: 
+      type: string
+   ResponseDetailsSecretAnswersArray: 
+    title : ResponseDetailsSecretAnswersArray
+    type: object
+    properties: 
+     SecretAnswers: 
+      type: object
+      $ref: '#/components/schemas/SecretAnswers'
+   SecretQuestions: 
+    title : SecretQuestions
+    type: object
+    properties: 
+     SecretQuestionId: 
+      type: string
+     SecretQuestionText: 
+      type: string
+     EffectiveDate: 
+      type: string
+     HiddenDate: 
+      type: string
+   ResponseDetailsSecretQuestionsArray: 
+    title : ResponseDetailsSecretQuestionsArray
+    type: object
+    properties: 
+     SecretQuestions: 
+      type: object
+      $ref: '#/components/schemas/SecretQuestions'
+   post_member_portaluser_6_200_res: 
+    title : post_member_portaluser_6_200_res
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: object
+      $ref: '#/components/schemas/ResponseDetails'
+     FaultException: 
+      type: object
+      $ref: '#/components/schemas/FaultException'
+   FaultException: 
+    title : FaultException
+    type: object
+    properties: 
+     Success: 
+      type: boolean
+     Exceptions: 
+      type: array
+      items: 
+       type: string
+     Errors: 
+      type: array
+      items: 
+       type: string
+     Warnings: 
+      type: array
+      items: 
+       type: string
+     Messages: 
+      type: array
+      items: 
+       type: string
+   FaultExceptionExceptionsArray: 
+    title : FaultExceptionExceptionsArray
+    type: object
+    properties: 
+     Exceptions: 
+      type: string
+   FaultExceptionErrorsArray: 
+    title : FaultExceptionErrorsArray
+    type: object
+    properties: 
+     Errors: 
+      type: string
+   FaultExceptionWarningsArray: 
+    title : FaultExceptionWarningsArray
+    type: object
+    properties: 
+     Warnings: 
+      type: string
+   FaultExceptionMessagesArray: 
+    title : FaultExceptionMessagesArray
+    type: object
+    properties: 
+     Messages: 
+      type: string
+   RequestDetails: 
+    title : RequestDetails
+    type: object
+    properties: 
+     AltMemberId: 
+      type: string
+     NameId: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Dob: 
+      type: string
+      format: date-time
+     UserName: 
+      type: string
+     Password: 
+      type: string
+     SecretImage: 
+      type: string
+     SecretAnswers: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/RequestDetailsSecretAnswersArray'
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     PreferredContactMethod: 
+      type: number
+     HasAcceptedEula: 
+      type: boolean
+   RequestDetailsSecretAnswersArray: 
+    title : RequestDetailsSecretAnswersArray
+    type: object
+    properties: 
+     SecretAnswers: 
+      type: object
+      $ref: '#/components/schemas/SecretAnswers'
+   post_member_portaluser_6_req: 
+    title : post_member_portaluser_6_req
+    type: object
+    properties: 
+     RequestDetails: 
+      type: object
+      $ref: '#/components/schemas/RequestDetails'
+   put_member_portaluser_7_200_res: 
+    title : put_member_portaluser_7_200_res
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: object
+      $ref: '#/components/schemas/ResponseDetails'
+     FaultException: 
+      type: object
+      $ref: '#/components/schemas/FaultException'
+   put_member_portaluser_7_req: 
+    title : put_member_portaluser_7_req
+    type: object
+    properties: 
+     RequestDetails: 
+      type: object
+      $ref: '#/components/schemas/RequestDetails'
+   put_member_portalusers_8_200_res: 
+    title : put_member_portalusers_8_200_res
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: object
+      $ref: '#/components/schemas/ResponseDetails'
+     FaultException: 
+      type: object
+      $ref: '#/components/schemas/FaultException'
+   put_member_portalusers_8_req: 
+    title : put_member_portalusers_8_req
+    type: object
+    properties: 
+     RequestDetails: 
+      type: object
+      $ref: '#/components/schemas/RequestDetails'
+   get_member_nameId_9_200_res: 
+    title : get_member_nameId_9_200_res
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     memberBalance: 
+      type: number
+     billingOption: 
+      type: string
+     premiumWithhold: 
+      type: string
+     premiumDetails: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_member_nameId_9_200_respremiumDetailsArray'
+     transactions: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_member_nameId_9_200_restransactionsArray'
+   premiumDetails: 
+    title : premiumDetails
+    type: object
+    properties: 
+     effectiveDate: 
+      type: string
+      format: date-time
+     premiumAmount: 
+      type: number
+     memberExpected: 
+      type: number
+     lepAmount: 
+      type: string
+     lisExpected: 
+      type: number
+     spapExpected: 
+      type: number
+     ssaExpected: 
+      type: number
+   get_member_nameId_9_200_respremiumDetailsArray: 
+    title : get_member_nameId_9_200_respremiumDetailsArray
+    type: object
+    properties: 
+     premiumDetails: 
+      type: object
+      $ref: '#/components/schemas/premiumDetails'
+   transactions: 
+    title : transactions
+    type: object
+    properties: 
+     billee: 
+      type: string
+     invoiceNumber: 
+      type: string
+     paymentType: 
+      type: string
+     createDate: 
+      type: string
+      format: date-time
+     periodStart: 
+      type: string
+      format: date-time
+     paymentMethod: 
+      type: string
+     note: 
+      type: string
+     totalAmount: 
+      type: number
+   get_member_nameId_9_200_restransactionsArray: 
+    title : get_member_nameId_9_200_restransactionsArray
+    type: object
+    properties: 
+     transactions: 
+      type: object
+      $ref: '#/components/schemas/transactions'
+   post_member_Messages_10_200_res: 
+    title : post_member_Messages_10_200_res
+    type: object
+    properties: 
+     DefaultOrder: 
+      type: number
+     EndDate: 
+      type: string
+      format: date-time
+     Link: 
+      type: string
+     MemberMessageId: 
+      type: number
+     LinkText: 
+      type: string
+     Title: 
+      type: string
+     StartDate: 
+      type: string
+      format: date-time
+     LanguageType: 
+      type: string
+     Content: 
+      type: string
+   post_member_Messages_10_req: 
+    title : post_member_Messages_10_req
+    type: object
+    properties: 
+     EICNumber: 
+      type: string
+     PlanType: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     ApplicationId: 
+      type: number
+   get_member_portalDetails_12_200_res: 
+    title : get_member_portalDetails_12_200_res
+    type: object
+    properties: 
+     NameId: 
+      type: string
+     UserId: 
+      type: number
+     Email: 
+      type: string
+     UserName: 
+      type: string
+   get_data_sepReason_15_200_res: 
+    title : get_data_sepReason_15_200_res
+    type: object
+    properties: 
+     SEPReasonID: 
+      type: number
+     Code: 
+      type: string
+     Reason: 
+      type: string
+     ActiveFlag: 
+      type: boolean
+     MoreInfo: 
+      type: boolean
+   get_data_enrollmentType_18_200_res: 
+    title : get_data_enrollmentType_18_200_res
+    type: object
+    properties: 
+     RequestType: 
+      type: number
+     Description: 
+      type: string
+   get_data_planYear_19_200_res: 
+    title : get_data_planYear_19_200_res
+    type: object
+    properties: 
+     PlanId: 
+      type: number
+     Description: 
+      type: string
+     Enabled: 
+      type: boolean
+     PlanYearId: 
+      type: number
+     Year: 
+      type: number
+     PbpId: 
+      type: number
+     PbpCode: 
+      type: string
+     PbpDescription: 
+      type: string
+     GroupId: 
+      type: string
+     StateCode: 
+      type: string
+     StateName: 
+      type: string
+     LIS25: 
+      type: number
+     LIS50: 
+      type: number
+     LIS75: 
+      type: number
+     LIS100: 
+      type: number
+     Deductible: 
+      type: number
+     Premium: 
+      type: number
+     Deminimis: 
+      type: boolean
+     FormularyId: 
+      type: string
+     PricingGroupId: 
+      type: string
+     IsBrokerPbp: 
+      type: boolean
+     IsEGWP: 
+      type: boolean
+     TimeZone: 
+      type: string
+     DayLightSavings: 
+      type: boolean
+     SkipDeductable: 
+      type: boolean
+     EGWPDirectBill: 
+      type: boolean
+   get_data_member_20_200_res: 
+    title : get_data_member_20_200_res
+    type: object
+    properties: 
+     MemberId: 
+      type: number
+     PlanId: 
+      type: number
+     PlanName: 
+      type: string
+     GroupId: 
+      type: string
+     AltMemberId: 
+      type: string
+     HICN: 
+      type: string
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Prefix: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     MAddress1: 
+      type: string
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+     MState: 
+      type: string
+     MZipCode: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     Gender: 
+      type: string
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     CellPhone: 
+      type: string
+     AltPhone: 
+      type: string
+     BWritingCode: 
+      type: string
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     MonthlyPremium: 
+      type: number
+     CurrentBalance: 
+      type: number
+     EnrollmentDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+     PbpId: 
+      type: number
+     Year: 
+      type: number
+     GreenEobReasonCode: 
+      type: number
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: number
+     Status: 
+      type: string
+     EGWPDirectBill: 
+      type: boolean
+   PrimaryPharmacy: 
+    title : PrimaryPharmacy
+    type: object
+    properties: 
+     PharmacyId: 
+      type: number
+     NABP: 
+      type: string
+     ChainCode: 
+      type: string
+     Name: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     PharmacyTypeId: 
+      type: number
+     Phone: 
+      type: string
+     IsPrimary: 
+      type: boolean
+     IsPreferred: 
+      type: boolean
+     IsEPrescribing: 
+      type: boolean
+     IsEIC: 
+      type: boolean
+     IsEGWP: 
+      type: boolean
+     IsPreferredCC: 
+      type: boolean
+     Is90DayRetail: 
+      type: boolean
+     MemberPharmacyID: 
+      type: number
+     Distance: 
+      type: number
+     Year: 
+      type: number
+     PreferenceType: 
+      type: number
+     IsBrokerPbp: 
+      type: boolean
+   Address: 
+    title : Address
+    type: object
+    properties: 
+     Latitude: 
+      type: string
+     Longitude: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     StateCode: 
+      type: string
+     ZipCode: 
+      type: string
+   get_data_member_20_200_resPharmaciesArray: 
+    title : get_data_member_20_200_resPharmaciesArray
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   get_data_member_ByAltNameId_altNameId_21_200_res: 
+    title : get_data_member_ByAltNameId_altNameId_21_200_res
+    type: object
+    properties: 
+     MemberId: 
+      type: number
+     PlanId: 
+      type: number
+     PlanName: 
+      type: string
+     GroupId: 
+      type: string
+     AltMemberId: 
+      type: string
+     HICN: 
+      type: string
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Prefix: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     MAddress1: 
+      type: string
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+     MState: 
+      type: string
+     MZipCode: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     Gender: 
+      type: string
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     CellPhone: 
+      type: string
+     AltPhone: 
+      type: string
+     BWritingCode: 
+      type: string
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     MonthlyPremium: 
+      type: number
+     CurrentBalance: 
+      type: number
+     EnrollmentDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+     PbpId: 
+      type: number
+     Year: 
+      type: number
+     GreenEobReasonCode: 
+      type: number
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: number
+     Status: 
+      type: string
+     EGWPDirectBill: 
+      type: boolean
+   get_data_member_ByAltNameId_altNameId_21_200_resPharmaciesArray: 
+    title : get_data_member_ByAltNameId_altNameId_21_200_resPharmaciesArray
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   post_data_member_addresschange_23_200_res: 
+    title : post_data_member_addresschange_23_200_res
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: boolean
+   post_data_member_addresschange_23_req: 
+    title : post_data_member_addresschange_23_req
+    type: object
+    properties: 
+     MemberName: 
+      type: string
+     MemberID: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     HICN: 
+      type: string
+     AddressType: 
+      type: string
+     OldAddress1: 
+      type: string
+     OldAddress2: 
+      type: string
+     OldCity: 
+      type: string
+     OldState: 
+      type: string
+     OldZipCode: 
+      type: string
+     NewAddress1: 
+      type: string
+     NewAddress2: 
+      type: string
+     NewCity: 
+      type: string
+     NewState: 
+      type: string
+     NewZipCode: 
+      type: string
+     Notes: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     RequestedBy: 
+      type: string
+     Attestation: 
+      type: boolean
+   post_data_member_AddressChangeRequest_24_200_res: 
+    title : post_data_member_AddressChangeRequest_24_200_res
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: boolean
+   post_data_member_AddressChangeRequest_24_500_res: 
+    title : post_data_member_AddressChangeRequest_24_500_res
+    type: object
+    properties: 
+     MemberName: 
+      type: string
+     MemberID: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     HICN: 
+      type: string
+     AddressType: 
+      type: string
+     OldAddress1: 
+      type: string
+     OldAddress2: 
+      type: string
+     OldCity: 
+      type: string
+     OldState: 
+      type: string
+     OldZipCode: 
+      type: string
+     NewAddress1: 
+      type: string
+     NewAddress2: 
+      type: string
+     NewCity: 
+      type: string
+     NewState: 
+      type: string
+     NewZipCode: 
+      type: string
+     Notes: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     RequestedBy: 
+      type: string
+     Attestation: 
+      type: boolean
+   post_data_member_disenrollment_27_200_res: 
+    title : post_data_member_disenrollment_27_200_res
+    type: object
+    properties: 
+     DisenrollmentRequestId: 
+      type: number
+   post_data_member_disenrollment_27_req: 
+    title : post_data_member_disenrollment_27_req
+    type: object
+    properties: 
+     NameId: 
+      type: string
+     AltMemberId: 
+      type: string
+     Prefix: 
+      type: string
+     FirstName: 
+      type: string
+     MiddleInitial: 
+      type: string
+     LastName: 
+      type: string
+     Phone: 
+      type: string
+     DisenrollmentReasonId: 
+      type: number
+     Comment: 
+      type: string
+     RequestedBy: 
+      type: string
+     RequestedDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+      format: date-time
+   post_data_user_PortalUserForgetUserName_29_200_res: 
+    title : post_data_user_PortalUserForgetUserName_29_200_res
+    type: object
+    properties: 
+     UserId: 
+      type: number
+     PortalRole: 
+      type: object
+      $ref: '#/components/schemas/PortalRole'
+     WritingCode: 
+      type: string
+     MemberId: 
+      type: string
+     Member: 
+      type: string
+     UserName: 
+      type: string
+     Email: 
+      type: string
+     SecretImage: 
+      type: string
+     SecretImageAltText: 
+      type: string
+     LoginAttempt: 
+      type: string
+     ResetGuid: 
+      type: string
+     Url: 
+      type: string
+     IsValidUser: 
+      type: boolean
+     Phone: 
+      type: string
+     SecretAnswers: 
+      type: array
+      items: 
+       type: string
+     SecretQuestions: 
+      type: array
+      items: 
+       type: string
+     HasAcceptedEula: 
+      type: boolean
+     PreferedContactMethod: 
+      type: string
+     PatientId: 
+      type: string
+     NPN: 
+      type: string
+     Broker: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Agency: 
+      type: string
+   post_data_user_PortalUserForgetUserName_29_200_resSecretAnswersArray: 
+    title : post_data_user_PortalUserForgetUserName_29_200_resSecretAnswersArray
+    type: object
+    properties: 
+     SecretAnswers: 
+      type: string
+   post_data_user_PortalUserForgetUserName_29_200_resSecretQuestionsArray: 
+    title : post_data_user_PortalUserForgetUserName_29_200_resSecretQuestionsArray
+    type: object
+    properties: 
+     SecretQuestions: 
+      type: string
+   get_secretquestion_userId_33_200_res: 
+    title : get_secretquestion_userId_33_200_res
+    type: object
+    properties: 
+     UserId: 
+      type: number
+     SecretQuestionId: 
+      type: number
+     Answer: 
+      type: string
+   get_portaluserexist_NameId_34_200_res: 
+    title : get_portaluserexist_NameId_34_200_res
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: object
+      $ref: '#/components/schemas/ResponseDetails'
+     FaultException: 
+      type: object
+      $ref: '#/components/schemas/FaultException'
+   get_CodeLookup_CallScript_language_35_200_res: 
+    title : get_CodeLookup_CallScript_language_35_200_res
+    type: object
+    properties: 
+     Language: 
+      type: string
+     PageTitle: 
+      type: string
+     Intro1: 
+      type: string
+     Intro2: 
+      type: string
+     Intro3: 
+      type: string
+     Intro4: 
+      type: string
+     Intro5: 
+      type: string
+     Intro6: 
+      type: string
+     QMedicareID: 
+      type: string
+     QState: 
+      type: string
+     QEnrollmentYear: 
+      type: string
+     ScriptEnrollBenefits: 
+      type: string
+     QEnrollBenefits: 
+      type: string
+     ScriptElectionPeriod: 
+      type: string
+     QElectionPeriod: 
+      type: string
+     ScriptSEP: 
+      type: string
+     QSEP: 
+      type: string
+     QMemberInfo: 
+      type: string
+     QDOB: 
+      type: string
+     QGender: 
+      type: string
+     QPhone: 
+      type: string
+     QCellPhone: 
+      type: string
+     QAltPhone: 
+      type: string
+     QMAddress: 
+      type: string
+     QEContact: 
+      type: string
+     QEmail: 
+      type: string
+     QPartAandB: 
+      type: string
+     ScriptPremiums: 
+      type: string
+     QPremiumPayment: 
+      type: string
+     ScriptPremiumHelp: 
+      type: string
+     QOtherCoverage: 
+      type: string
+     QLongTermCare: 
+      type: string
+     QMaterialFormat: 
+      type: string
+     QNotMember: 
+      type: string
+     ScriptAuthorized: 
+      type: string
+     QHowYouGotInfo: 
+      type: string
+     OptSpanish: 
+      type: string
+     OptLargePrint: 
+      type: string
+     OptEndingAtt: 
+      type: string
+     ScriptAttestation: 
+      type: string
+     OptYes: 
+      type: boolean
+     OptNo: 
+      type: boolean
+     btnSearch: 
+      type: string
+     btnSubmit: 
+      type: string
+     btnClose: 
+      type: string
+     btnCancel: 
+      type: string
+     LabelPrefix: 
+      type: string
+     LabelFirstName: 
+      type: string
+     LabelMI: 
+      type: string
+     LabelLastName: 
+      type: string
+     LabelPermAddress1: 
+      type: string
+     LabelMAddress1: 
+      type: string
+     LabelAddress2: 
+      type: string
+     LabelCity: 
+      type: string
+     LabelState: 
+      type: string
+     LabelZip: 
+      type: string
+     LabelName: 
+      type: string
+     LabelPhone: 
+      type: string
+     LabelRelation: 
+      type: string
+     LabelPartA: 
+      type: string
+     LabelPartB: 
+      type: string
+     LabelCovName: 
+      type: string
+     LabelCovID: 
+      type: string
+     LabelCovGroup: 
+      type: string
+     LabelInstitution: 
+      type: string
+     popMemberFnd: 
+      type: string
+     popSEPNone: 
+      type: string
+     popSSADeduct: 
+      type: string
+     popAttestation1: 
+      type: string
+     popAttestation2: 
+      type: string
+     popAttestation3: 
+      type: string
+     popAttestation4: 
+      type: string
+     popAttestation5: 
+      type: string
+     popAttestation6: 
+      type: string
+     popAttestation7: 
+      type: string
+     popAttestation8: 
+      type: string
+     popAttestation9: 
+      type: string
+     popAttestation10: 
+      type: string
+     popAttestation11: 
+      type: string
+     popAttestation12: 
+      type: string
+     popAttestation14: 
+      type: string
+     popConfirmation: 
+      type: string
+     popCallerObjects: 
+      type: string
+     WantToEnrollYes: 
+      type: string
+     WantToEnrollNo: 
+      type: string
+     popVerifyName: 
+      type: string
+     QPermanentAddress: 
+      type: string
+     popBankAccount: 
+      type: string
+     popCreditCard: 
+      type: string
+     popAttestation9b: 
+      type: string
+     BankAccountDesc: 
+      type: string
+     LabelBAName: 
+      type: string
+     LabelBARouting: 
+      type: string
+     LabelBAAccount: 
+      type: string
+     CreditCardDesc: 
+      type: string
+     LabelCCType: 
+      type: string
+     LabelCCName: 
+      type: string
+     LabelCCAccount: 
+      type: string
+     LabelCCExp: 
+      type: string
+     popUSPSInvalid: 
+      type: string
+     popUSPSUpdate: 
+      type: string
+     popStateValidate: 
+      type: string
+     popStateValidateAlert: 
+      type: string
+     IEPMessage: 
+      type: string
+     AlternateMessage: 
+      type: string
+     popSEPNoneNotAEP: 
+      type: string
+     popMedicareIdAlert: 
+      type: string
+   States: 
+    title : States
+    type: object
+    properties: 
+     Description: 
+      type: string
+     State: 
+      type: string
+   get_CodeLookup_AdminDropDownList_year_36_200_resStatesArray: 
+    title : get_CodeLookup_AdminDropDownList_year_36_200_resStatesArray
+    type: object
+    properties: 
+     States: 
+      type: object
+      $ref: '#/components/schemas/States'
+   get_CodeLookup_AdminDropDownList_year_36_200_res: 
+    title : get_CodeLookup_AdminDropDownList_year_36_200_res
+    type: object
+    properties: 
+     States: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_CodeLookup_AdminDropDownList_year_36_200_resStatesArray'
+     PreenrollmentRequest: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_CodeLookup_AdminDropDownList_year_36_200_resPreenrollmentRequestArray'
+     DisenrollmentCodes: 
+      type: array
+      items: 
+       type: string
+     ElectionTypes: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_CodeLookup_AdminDropDownList_year_36_200_resElectionTypesArray'
+     RequestLocations: 
+      type: array
+      items: 
+       type: string
+     EnrollmentTypes: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_CodeLookup_AdminDropDownList_year_36_200_resEnrollmentTypesArray'
+     Plans: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_CodeLookup_AdminDropDownList_year_36_200_resPlansArray'
+     SEPReasons: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_CodeLookup_AdminDropDownList_year_36_200_resSEPReasonsArray'
+   PreenrollmentRequest: 
+    title : PreenrollmentRequest
+    type: object
+    properties: 
+     RequestType: 
+      type: number
+     Description: 
+      type: string
+   get_CodeLookup_AdminDropDownList_year_36_200_resPreenrollmentRequestArray: 
+    title : get_CodeLookup_AdminDropDownList_year_36_200_resPreenrollmentRequestArray
+    type: object
+    properties: 
+     PreenrollmentRequest: 
+      type: object
+      $ref: '#/components/schemas/PreenrollmentRequest'
+   get_CodeLookup_AdminDropDownList_year_36_200_resDisenrollmentCodesArray: 
+    title : get_CodeLookup_AdminDropDownList_year_36_200_resDisenrollmentCodesArray
+    type: object
+    properties: 
+     DisenrollmentCodes: 
+      type: string
+   ElectionTypes: 
+    title : ElectionTypes
+    type: object
+    properties: 
+     ElectionType: 
+      type: string
+     Description: 
+      type: string
+   get_CodeLookup_AdminDropDownList_year_36_200_resElectionTypesArray: 
+    title : get_CodeLookup_AdminDropDownList_year_36_200_resElectionTypesArray
+    type: object
+    properties: 
+     ElectionTypes: 
+      type: object
+      $ref: '#/components/schemas/ElectionTypes'
+   get_CodeLookup_AdminDropDownList_year_36_200_resRequestLocationsArray: 
+    title : get_CodeLookup_AdminDropDownList_year_36_200_resRequestLocationsArray
+    type: object
+    properties: 
+     RequestLocations: 
+      type: string
+   EnrollmentTypes: 
+    title : EnrollmentTypes
+    type: object
+    properties: 
+     Description: 
+      type: string
+     EnrollmentType: 
+      type: number
+   get_CodeLookup_AdminDropDownList_year_36_200_resEnrollmentTypesArray: 
+    title : get_CodeLookup_AdminDropDownList_year_36_200_resEnrollmentTypesArray
+    type: object
+    properties: 
+     EnrollmentTypes: 
+      type: object
+      $ref: '#/components/schemas/EnrollmentTypes'
+   Plans: 
+    title : Plans
+    type: object
+    properties: 
+     Description: 
+      type: string
+     PlanID: 
+      type: number
+   get_CodeLookup_AdminDropDownList_year_36_200_resPlansArray: 
+    title : get_CodeLookup_AdminDropDownList_year_36_200_resPlansArray
+    type: object
+    properties: 
+     Plans: 
+      type: object
+      $ref: '#/components/schemas/Plans'
+   SEPReasons: 
+    title : SEPReasons
+    type: object
+    properties: 
+     Description: 
+      type: string
+     SEPReasonID: 
+      type: number
+     Enabled: 
+      type: boolean
+   get_CodeLookup_AdminDropDownList_year_36_200_resSEPReasonsArray: 
+    title : get_CodeLookup_AdminDropDownList_year_36_200_resSEPReasonsArray
+    type: object
+    properties: 
+     SEPReasons: 
+      type: object
+      $ref: '#/components/schemas/SEPReasons'
+   notes: 
+    title : notes
+    type: object
+    properties: 
+     itemId: 
+      type: string
+     typeId: 
+      type: string
+     typeDescription: 
+      type: string
+     text: 
+      type: string
+     createdBy: 
+      type: string
+     createdOn: 
+      type: string
+      format: date-time
+   get_notetypes_37_200_resnotesArray: 
+    title : get_notetypes_37_200_resnotesArray
+    type: object
+    properties: 
+     notes: 
+      type: object
+      $ref: '#/components/schemas/notes'
+   get_notetypes_37_200_res: 
+    title : get_notetypes_37_200_res
+    type: object
+    properties: 
+     notes: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_notetypes_37_200_resnotesArray'
+   get_PlanInfoGet_38_200_res: 
+    title : get_PlanInfoGet_38_200_res
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     demographics: 
+      type: object
+      $ref: '#/components/schemas/demographics'
+     addresses: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_PlanInfoGet_38_200_resaddressesArray'
+     brokers: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_PlanInfoGet_38_200_resbrokersArray'
+     enrollment: 
+      type: object
+      $ref: '#/components/schemas/enrollment'
+     phoneNumbers: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_PlanInfoGet_38_200_resphoneNumbersArray'
+     emailAddresses: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_PlanInfoGet_38_200_resemailAddressesArray'
+     contacts: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_PlanInfoGet_38_200_rescontactsArray'
+   demographics: 
+    title : demographics
+    type: object
+    properties: 
+     prefix: 
+      type: string
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     middleInitial: 
+      type: string
+     suffix: 
+      type: string
+     gender: 
+      type: string
+     birthDate: 
+      type: string
+      format: date-time
+   addresses: 
+    title : addresses
+    type: object
+    properties: 
+     address1: 
+      type: string
+     address2: 
+      type: string
+     address3: 
+      type: string
+     city: 
+      type: string
+     state: 
+      type: string
+     zip: 
+      type: string
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+     preferred: 
+      type: string
+     type: 
+      type: string
+   get_PlanInfoGet_38_200_resaddressesArray: 
+    title : get_PlanInfoGet_38_200_resaddressesArray
+    type: object
+    properties: 
+     addresses: 
+      type: object
+      $ref: '#/components/schemas/addresses'
+   brokers: 
+    title : brokers
+    type: object
+    properties: 
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     writingCode: 
+      type: string
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+   get_PlanInfoGet_38_200_resbrokersArray: 
+    title : get_PlanInfoGet_38_200_resbrokersArray
+    type: object
+    properties: 
+     brokers: 
+      type: object
+      $ref: '#/components/schemas/brokers'
+   enrollmentDates: 
+    title : enrollmentDates
+    type: object
+    properties: 
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+   enrollmentenrollmentDatesArray: 
+    title : enrollmentenrollmentDatesArray
+    type: object
+    properties: 
+     enrollmentDates: 
+      type: object
+      $ref: '#/components/schemas/enrollmentDates'
+   enrollment: 
+    title : enrollment
+    type: object
+    properties: 
+     enrollmentDates: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/enrollmentenrollmentDatesArray'
+     applicationDate: 
+      type: string
+      format: date-time
+     electionType: 
+      type: string
+     type: 
+      type: string
+     state: 
+      type: string
+     typeDescription: 
+      type: string
+     medicareId: 
+      type: string
+     plan: 
+      type: string
+     planName: 
+      type: string
+     sepReason: 
+      type: string
+     language: 
+      type: string
+     partAStartDate: 
+      type: string
+      format: date-time
+     partBStartDate: 
+      type: string
+      format: date-time
+     partDStartDate: 
+      type: string
+     lowIncomeSubsidy: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/enrollmentlowIncomeSubsidyArray'
+     longTermCare: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/enrollmentlongTermCareArray'
+     otherCoverage: 
+      type: object
+     memberId: 
+      type: string
+     groupNumber: 
+      type: string
+     rxBin: 
+      type: string
+     rxPcn: 
+      type: string
+     pbp: 
+      type: string
+   lowIncomeSubsidy: 
+    title : lowIncomeSubsidy
+    type: object
+    properties: 
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+     level: 
+      type: string
+   enrollmentlowIncomeSubsidyArray: 
+    title : enrollmentlowIncomeSubsidyArray
+    type: object
+    properties: 
+     lowIncomeSubsidy: 
+      type: object
+      $ref: '#/components/schemas/lowIncomeSubsidy'
+   longTermCare: 
+    title : longTermCare
+    type: object
+    properties: 
+     startDate: 
+      type: string
+      format: date-time
+     endDate: 
+      type: string
+     level: 
+      type: string
+   enrollmentlongTermCareArray: 
+    title : enrollmentlongTermCareArray
+    type: object
+    properties: 
+     longTermCare: 
+      type: object
+      $ref: '#/components/schemas/longTermCare'
+   phoneNumbers: 
+    title : phoneNumbers
+    type: object
+    properties: 
+     phoneNumber: 
+      type: string
+     extension: 
+      type: string
+     type: 
+      type: string
+     preferred: 
+      type: string
+   get_PlanInfoGet_38_200_resphoneNumbersArray: 
+    title : get_PlanInfoGet_38_200_resphoneNumbersArray
+    type: object
+    properties: 
+     phoneNumbers: 
+      type: object
+      $ref: '#/components/schemas/phoneNumbers'
+   emailAddresses: 
+    title : emailAddresses
+    type: object
+    properties: 
+     emailAddress: 
+      type: string
+     preferred: 
+      type: string
+     type: 
+      type: string
+   get_PlanInfoGet_38_200_resemailAddressesArray: 
+    title : get_PlanInfoGet_38_200_resemailAddressesArray
+    type: object
+    properties: 
+     emailAddresses: 
+      type: object
+      $ref: '#/components/schemas/emailAddresses'
+   contacts: 
+    title : contacts
+    type: object
+    properties: 
+     id: 
+      type: string
+     type: 
+      type: string
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     relationship: 
+      type: string
+     address1: 
+      type: string
+     address2: 
+      type: string
+     city: 
+      type: string
+     state: 
+      type: string
+     zip: 
+      type: string
+     phoneNumber: 
+      type: string
+     alternativePhoneNumber: 
+      type: string
+   get_PlanInfoGet_38_200_rescontactsArray: 
+    title : get_PlanInfoGet_38_200_rescontactsArray
+    type: object
+    properties: 
+     contacts: 
+      type: object
+      $ref: '#/components/schemas/contacts'
+   get_EnrollmentSourceGet_39_200_res: 
+    title : get_EnrollmentSourceGet_39_200_res
+    type: object
+    properties: 
+     RequestType: 
+      type: number
+     Description: 
+      type: string
+   post_lepAttestation_40_200_res: 
+    title : post_lepAttestation_40_200_res
+    type: object
+    properties: 
+     lepAttestationID: 
+      type: number
+   post_lepAttestation_40_req: 
+    title : post_lepAttestation_40_req
+    type: object
+    properties: 
+     memberID: 
+      type: string
+     attestedBy: 
+      type: string
+     lepReasons: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/post_lepAttestation_40_reqlepReasonsArray'
+   lepReasons: 
+    title : lepReasons
+    type: object
+    properties: 
+     lepReasonID: 
+      type: number
+     dateFrom: 
+      type: string
+      format: date-time
+     dateTo: 
+      type: string
+      format: date-time
+     reasonName: 
+      type: string
+     stateID: 
+      type: string
+   post_lepAttestation_40_reqlepReasonsArray: 
+    title : post_lepAttestation_40_reqlepReasonsArray
+    type: object
+    properties: 
+     lepReasons: 
+      type: object
+      $ref: '#/components/schemas/lepReasons'
+   get_PrintRequestTypes_Who_46_200_res: 
+    title : get_PrintRequestTypes_Who_46_200_res
+    type: object
+    properties: 
+     TypeID: 
+      type: string
+     PlanID: 
+      type: string
+     NameID: 
+      type: string
+     MemberID: 
+      type: string
+     MedicareID: 
+      type: string
+     Prefix: 
+      type: string
+     FirstName: 
+      type: string
+     MI: 
+      type: string
+     LastName: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     Phonenumber: 
+      type: string
+     GroupID: 
+      type: string
+     PBP: 
+      type: string
+     DoNotCall: 
+      type: boolean
+     Language: 
+      type: string
+     RequestLocation: 
+      type: string
+     RequestMethodID: 
+      type: string
+     CreatedBy: 
+      type: string
+     Notes: 
+      type: string
+   post_PrintRequest_47_200_res: 
+    title : post_PrintRequest_47_200_res
+    type: object
+    properties: 
+     TypeID: 
+      type: string
+     PlanID: 
+      type: string
+     NameID: 
+      type: string
+     MemberID: 
+      type: string
+     MedicareID: 
+      type: string
+     Prefix: 
+      type: string
+     FirstName: 
+      type: string
+     MI: 
+      type: string
+     LastName: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     Phonenumber: 
+      type: string
+     GroupID: 
+      type: string
+     PBP: 
+      type: string
+     DoNotCall: 
+      type: boolean
+     Language: 
+      type: string
+     RequestLocation: 
+      type: string
+     RequestMethodID: 
+      type: string
+     CreatedBy: 
+      type: string
+     Notes: 
+      type: string
+     DistributionMethod: 
+      type: string
+     Email: 
+      type: string
+   post_PrintRequest_47_req: 
+    title : post_PrintRequest_47_req
+    type: object
+    properties: 
+     PrintRequestId: 
+      type: number
+   RequestTypes: 
+    title : RequestTypes
+    type: object
+    properties: 
+     TypeID: 
+      type: number
+     Description: 
+      type: string
+     SupplementalText: 
+      type: string
+     Print: 
+      type: boolean
+     Email: 
+      type: boolean
+   get_PrintRequestExport_48_200_resRequestTypesArray: 
+    title : get_PrintRequestExport_48_200_resRequestTypesArray
+    type: object
+    properties: 
+     RequestTypes: 
+      type: object
+      $ref: '#/components/schemas/RequestTypes'
+   get_PrintRequestExport_48_200_res: 
+    title : get_PrintRequestExport_48_200_res
+    type: object
+    properties: 
+     RequestTypes: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_PrintRequestExport_48_200_resRequestTypesArray'
+   get_memberPharmacyGetByID_49_200_res: 
+    title : get_memberPharmacyGetByID_49_200_res
+    type: object
+    properties: 
+     NameID: 
+      type: string
+     MemberId: 
+      type: string
+     PlanId: 
+      type: string
+     PlanName: 
+      type: string
+     GroupId: 
+      type: string
+     HICN: 
+      type: string
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+     FirstName: 
+      type: string
+     LastName: 
+      type: string
+     Prefix: 
+      type: string
+     MiddleInitial: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     MAddress1: 
+      type: string
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+     MState: 
+      type: string
+     MZipCode: 
+      type: string
+     DOB: 
+      type: string
+      format: date-time
+     Gender: 
+      type: string
+     Email: 
+      type: string
+     Phone: 
+      type: string
+     CellPhone: 
+      type: string
+     AltPhone: 
+      type: string
+     BWritingCode: 
+      type: string
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     MonthlyPremium: 
+      type: string
+     CurrentBalance: 
+      type: string
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     EnrollmentDate: 
+      type: string
+      format: date-time
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+     PbpId: 
+      type: number
+     Year: 
+      type: number
+     GreenEobReasonCode: 
+      type: number
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: string
+     Status: 
+      type: string
+     EGWPDirectBill: 
+      type: boolean
+   get_memberPharmacyGetByID_49_200_resPharmaciesArray: 
+    title : get_memberPharmacyGetByID_49_200_resPharmaciesArray
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   post_login_51_200_res: 
+    title : post_login_51_200_res
+    type: object
+    properties: 
+     response: 
+      type: boolean
+   post_login_51_req: 
+    title : post_login_51_req
+    type: object
+    properties: 
+     username: 
+      type: string
+     ipAddress: 
+      type: string
+     success: 
+      type: boolean
+   post_SetGoGreenSubscription_52_200_res: 
+    title : post_SetGoGreenSubscription_52_200_res
+    type: object
+    properties: 
+     NameId: 
+      type: string
+   post_SetGoGreenSubscription_52_req: 
+    title : post_SetGoGreenSubscription_52_req
+    type: object
+    properties: 
+     NameId: 
+      type: string
+     ReasonCode: 
+      type: string
+   get_portalUserGetByNameId_NameId_53_200_res: 
+    title : get_portalUserGetByNameId_NameId_53_200_res
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_portalUserGetByNameId_NameId_53_200_reserrorsArray'
+   data: 
+    title : data
+    type: object
+    properties: 
+     nameId: 
+      type: string
+     demographics: 
+      type: object
+      $ref: '#/components/schemas/demographics'
+     addresses: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/dataaddressesArray'
+     brokers: 
+      type: array
+      items: 
+       type: string
+     enrollment: 
+      type: object
+      $ref: '#/components/schemas/enrollment'
+     phoneNumbers: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/dataphoneNumbersArray'
+     emailAddresses: 
+      type: array
+      items: 
+       type: string
+     contacts: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/datacontactsArray'
+   dataaddressesArray: 
+    title : dataaddressesArray
+    type: object
+    properties: 
+     addresses: 
+      type: object
+      $ref: '#/components/schemas/addresses'
+   databrokersArray: 
+    title : databrokersArray
+    type: object
+    properties: 
+     brokers: 
+      type: string
+   dataphoneNumbersArray: 
+    title : dataphoneNumbersArray
+    type: object
+    properties: 
+     phoneNumbers: 
+      type: object
+      $ref: '#/components/schemas/phoneNumbers'
+   dataemailAddressesArray: 
+    title : dataemailAddressesArray
+    type: object
+    properties: 
+     emailAddresses: 
+      type: string
+   datacontactsArray: 
+    title : datacontactsArray
+    type: object
+    properties: 
+     contacts: 
+      type: object
+      $ref: '#/components/schemas/contacts'
+   errors: 
+    title : errors
+    type: object
+    properties: 
+     statusCode: 
+      type: number
+     message: 
+      type: string
+     topic: 
+      type: string
+     severityLevel: 
+      type: number
+     severity: 
+      type: string
+   get_portalUserGetByNameId_NameId_53_200_reserrorsArray: 
+    title : get_portalUserGetByNameId_NameId_53_200_reserrorsArray
+    type: object
+    properties: 
+     errors: 
+      type: object
+      $ref: '#/components/schemas/errors'
+   get_DisenrollRequestExport_userName_54_200_resDisenrollRequestsArray: 
+    title : get_DisenrollRequestExport_userName_54_200_resDisenrollRequestsArray
+    type: object
+    properties: 
+     DisenrollRequests: 
+      type: string
+   get_DisenrollRequestExport_userName_54_200_res: 
+    title : get_DisenrollRequestExport_userName_54_200_res
+    type: object
+    properties: 
+     DisenrollRequests: 
+      type: array
+      items: 
+       type: string
+   get_lastLogin_Username_55_200_res: 
+    title : get_lastLogin_Username_55_200_res
+    type: object
+    properties: 
+     username: 
+      type: string
+     ipAddress: 
+      type: string
+     success: 
+      type: boolean
+     loginDate: 
+      type: string
+      format: date-time
+   post_disableLogin_56_200_res: 
+    title : post_disableLogin_56_200_res
+    type: object
+    properties: 
+     AdminDisabledUserID: 
+      type: number
+   post_disableLogin_56_req: 
+    title : post_disableLogin_56_req
+    type: object
+    properties: 
+     username: 
+      type: string
+   disenrollmentReasons: 
+    title : disenrollmentReasons
+    type: object
+    properties: 
+     ID: 
+      type: number
+     Description: 
+      type: string
+   get_disenrollmentReasons_57_200_resdisenrollmentReasonsArray: 
+    title : get_disenrollmentReasons_57_200_resdisenrollmentReasonsArray
+    type: object
+    properties: 
+     disenrollmentReasons: 
+      type: object
+      $ref: '#/components/schemas/disenrollmentReasons'
+   get_disenrollmentReasons_57_200_res: 
+    title : get_disenrollmentReasons_57_200_res
+    type: object
+    properties: 
+     disenrollmentReasons: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/get_disenrollmentReasons_57_200_resdisenrollmentReasonsArray'
+   post_Messages_59_req: 
+    title : post_Messages_59_req
+    type: object
+    properties: 
+     EICNumber: 
+      type: string
+     PlanType: 
+      type: string
+     State: 
+      type: string
+     ZipCode: 
+      type: string
+     ApplicationId: 
+      type: number
+   put_Messages_60_200_res: 
+    title : put_Messages_60_200_res
+    type: object
+    properties: 
+     MessageID: 
+      type: number
+   put_Messages_60_req: 
+    title : put_Messages_60_req
+    type: object
+    properties: 
+     MesssageId: 
+      type: number
+     Title: 
+      type: string
+     Content: 
+      type: string
+     Link: 
+      type: string
+     LinkText: 
+      type: string
+     LanguageType: 
+      type: string
+     Image: 
+      type: string
+     DefaultOrder: 
+      type: number
+     StartDate: 
+      type: string
+      format: date-time
+     EndDate: 
+      type: string
+      format: date-time
+     UserName: 
+      type: string
+   post_eventlog_67_200_res: 
+    title : post_eventlog_67_200_res
+    type: object
+    properties: 
+     updateCount1: 
+      type: number
+   post_eventlog_67_req: 
+    title : post_eventlog_67_req
+    type: object
+    properties: 
+     EventTypeId: 
+      type: number
+     ApplicationId: 
+      type: number
+     NameId: 
+      type: string
+     CreatedBy: 
+      type: string
+     CreatedDate: 
+      type: string
+      format: date-time
+     OldValue: 
+      type: string
+     NewValue: 
+      type: string
+  parameters: 
+   UserNamePathParam: 
+    in: path
+    name: UserName
+    required: true
+    schema: 
+     type: string
+    description: Unique userName
+   TenantIdentifierHeaderParam: 
+    in: header
+    name: TenantIdentifier
+    required: false
+    schema: 
+     type: string
+    description: Tenant Identifier
+   client_idHeaderParam: 
+    in: header
+    name: client_id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   client_secretHeaderParam: 
+    in: header
+    name: client_secret
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   memberIdPathParam: 
+    in: path
+    name: memberId
+    required: true
+    schema: 
+     type: string
+    description: Unique MemberID
+   altMemberIdPathParam: 
+    in: path
+    name: altMemberId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   nameIdPathParam: 
+    in: path
+    name: nameId
+    required: true
+    schema: 
+     type: string
+    description: Unique nameId
+   ApplicationIdQueryParam: 
+    in: query
+    name: ApplicationId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   nameIdQueryParam: 
+    in: query
+    name: nameId
+    required: true
+    schema: 
+     type: string
+    description: nameId
+   RoleQueryParam: 
+    in: query
+    name: Role
+    required: true
+    schema: 
+     type: string
+    description: Role
+   pbpQueryParam: 
+    in: query
+    name: pbp
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   sepReasonQueryParam: 
+    in: query
+    name: sepReason
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   paymentTypeCodeQueryParam: 
+    in: query
+    name: paymentTypeCode
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   enrollmentTypeQueryParam: 
+    in: query
+    name: enrollmentType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   planYearCodeQueryParam: 
+    in: query
+    name: planYearCode
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   altNameIdPathParam: 
+    in: path
+    name: altNameId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   completeQueryParam: 
+    in: query
+    name: complete
+    required: true
+    schema: 
+     type: boolean
+    description: description of parameter passed
+   addressChangeIDPathParam: 
+    in: path
+    name: addressChangeID
+    required: true
+    schema: 
+     type: number
+    description: description of parameter passed
+   IDPathParam: 
+    in: path
+    name: ID
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   yearQueryParam: 
+    in: query
+    name: year
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   userIdQueryParam: 
+    in: query
+    name: userId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   userIdPathParam: 
+    in: path
+    name: userId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   NameIdPathParam: 
+    in: path
+    name: NameId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   languagePathParam: 
+    in: path
+    name: language
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   yearPathParam: 
+    in: path
+    name: year
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   packageIdQueryParam: 
+    in: query
+    name: packageId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   groupIdQueryParam: 
+    in: query
+    name: groupId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   idQueryParam: 
+    in: query
+    name: id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   assignedQueryParam: 
+    in: query
+    name: assigned
+    required: true
+    schema: 
+     type: boolean
+    description: assigned
+   WhoPathParam: 
+    in: path
+    name: Who
+    required: true
+    schema: 
+     type: string
+    description: Who
+   userNamePathParam: 
+    in: path
+    name: userName
+    required: true
+    schema: 
+     type: string
+    description: userName
+   UsernamePathParam: 
+    in: path
+    name: Username
+    required: true
+    schema: 
+     type: string
+    description: Username
+   MessageIdPathParam: 
+    in: path
+    name: MessageId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   NameIdQueryParam: 
+    in: query
+    name: NameId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
