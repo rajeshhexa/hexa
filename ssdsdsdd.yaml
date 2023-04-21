@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: PBMExpress
+  description: Servers
+servers: 
+  - url: https://localhost:58922/PBMExpress.asmx
+    description: API Server Description
+paths: 
+  /GetPharmacies: 
+   post: 
+    operationId: GetPharmacies
+    tags: 
+     - PBMExpressSoap
+    summary: GetPharmacies
+    description: desc is not set
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GetPharmaciesSoapIn'
+    parameters: 
+     - $ref: '#/components/parameters/useridHeaderParam'
+     - $ref: '#/components/parameters/passwordHeaderParam'
+    responses: 
+     '200': 
+      description: Successfully retrieved the response
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GetPharmaciesSoapOut'
+components: 
+  schemas: 
+   GetPharmaciesSoapIn: 
+    title : GetPharmaciesSoapIn
+    type: object
+    properties: 
+     /GetPharmacies: 
+      type: object
+   GetPharmaciesResponse: 
+    title : GetPharmaciesResponse
+    type: object
+    properties: 
+     /ArrayOfPharmacy: 
+      type: object
+   GetPharmaciesSoapOut: 
+    title : GetPharmaciesSoapOut
+    type: object
+    properties: 
+     /GetPharmaciesResponse: 
+      type: object
+   Pharmacy: 
+    title : Pharmacy
+    type: object
+    properties: 
+     WEDHOURS: 
+      type: string
+     SATHOURS: 
+      type: string
+     PHONE: 
+      type: string
+     LONGITUDE: 
+      type: number
+     PHARMACYNAME: 
+      type: string
+     PHARMZIP: 
+      type: string
+     VACCINENETWORK: 
+      type: boolean
+     PHARMSTATE: 
+      type: string
+     PHARMCITY: 
+      type: string
+     ICON: 
+      type: string
+     RETAIL90: 
+      type: boolean
+     DISTANCE: 
+      type: number
+     NABP: 
+      type: string
+     TUEHOURS: 
+      type: string
+     THUHOURS: 
+      type: string
+     DISPCLASS: 
+      type: string
+     PHARMADDR2: 
+      type: string
+     SUNHOURS: 
+      type: string
+     PHARMADDR1: 
+      type: string
+     FRIHOURS: 
+      type: string
+     AFFILIATIONCODE: 
+      type: string
+     DISPTYPE: 
+      type: string
+     RX90: 
+      type: boolean
+     LATITUDE: 
+      type: number
+     MONHOURS: 
+      type: string
+   UserCredentials: 
+    title : UserCredentials
+    type: object
+    properties: 
+     UserID: 
+      type: string
+     Password: 
+      type: string
+   GetPharmacies: 
+    title : GetPharmacies
+    type: object
+    properties: 
+     Distance: 
+      type: string
+     ZipCode: 
+      type: string
+     PharmacyName: 
+      type: string
+     CarrierID: 
+      type: string
+     MaxPharmacies: 
+      type: integer
+   ArrayOfPharmacy: 
+    title : ArrayOfPharmacy
+    type: object
+    properties: 
+     Pharmacy: 
+      type: array
+  parameters: 
+   useridHeaderParam: 
+    in: header
+    name: userid
+    required: true
+    schema: 
+     type: string
+    description: User Id to authenticate
+   passwordHeaderParam: 
+    in: header
+    name: password
+    required: true
+    schema: 
+     type: string
+    description: Password to authenticate
