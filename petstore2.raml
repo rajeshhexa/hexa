@@ -1,0 +1,812 @@
+#%RAML 1.0
+securedBy:
+  - BasicAuth
+traits:
+  entityIdParam:
+    headers:
+      entityId:
+        description: description of parameter passed
+        type: string
+  clientURNParam:
+    headers:
+      clientURN:
+        description: description of parameter passed
+        type: string
+  applianceTokenParam:
+    headers:
+      applianceToken:
+        description: description of parameter passed
+        type: string
+  systemCodeParam:
+    headers:
+      systemCode:
+        description: description of parameter passed
+        type: string
+  countryCodeParam:
+    headers:
+      countryCode:
+        description: description of parameter passed
+        type: string
+  clientCodeParam:
+    headers:
+      clientCode:
+        description: description of parameter passed
+        type: string
+  clientGroupCodeParam:
+    headers:
+      clientGroupCode:
+        description: description of parameter passed
+        type: string
+  channelCodeParam:
+    headers:
+      channelCode:
+        description: description of parameter passed
+        type: string
+  clientUserIdParam:
+    headers:
+      clientUserId:
+        description: description of parameter passed
+        type: string
+  clientPasswordParam:
+    headers:
+      clientPassword:
+        description: description of parameter passed
+        type: string
+title: Items API V1
+description: Items API
+version: 1.0.1
+protocols:
+  - HTTPS
+baseUri: 'https://www.apiexample.com/v1'
+securitySchemes:
+  BasicAuth:
+    type: Basic Authentication
+types:
+  ItemDetails:
+    type: object
+    properties:
+      ItemCode:
+        type: string
+      ItemCodeDescription:
+        type: string
+      ManufacturerBrandCode:
+        type: string
+      ManufacturerBrandDescription:
+        type: string
+      GoodsColour:
+        type: string
+      ModelNumber:
+        type: string
+      SerialNumber:
+        type: string
+      OperationalStatusCode:
+        type: string
+      DGAllocatedSupplierAgentCode:
+        type: string
+      DGAllocatedSupplierBranchCode:
+        type: string
+      LastServiceDate:
+        type: string
+      LastServiceTime:
+        type: string
+      ItemCatCode:
+        type: string
+      ManufacturerBrandGroupCode:
+        type: string
+      ItemID:
+        type: ItemID
+      ItemURNList:
+        type: ItemURNList
+      Item:
+        type: Item
+  AdditionalDetails:
+    type: object
+    properties:
+      BoilerType:
+        type: string
+      ExtCovPrdFee:
+        type: string
+      PdNettFlg:
+        type: string
+      CallSource:
+        type: string
+      PeriodOfCover:
+        type: string
+      GoodsColour:
+        type: string
+      CoverType:
+        type: string
+      BreakdownStartDate:
+        type: string
+  Cover:
+    type: object
+    properties:
+      ManufacturerGuaranteeLabourMonths:
+        type: string
+      ManufacturerGuaranteePartsMonths:
+        type: string
+      ThirdPartyGuaranteeLabourMonths:
+        type: string
+      ThirdPartyGuaranteePartsMonths:
+        type: string
+  Purchase:
+    type: object
+    properties:
+      PurchasePrice:
+        type: string
+      PriceCurrencyCode:
+        type: string
+      PurchaseDate:
+        type: string
+      PurchaseTime:
+        type: string
+      RecommendedPrice:
+        type: string
+      RecommendedPriceCurrencyCode:
+        type: string
+      PurchaseRetailer:
+        type: string
+  PersonOwnerList:
+    type: object
+    properties:
+      PersonOwner:
+        type: PersonOwner
+  PersonOwner:
+    type: object
+    properties:
+      PreviousClientURN:
+        type: string
+      ClientURN:
+        type: string
+      PreviousEID:
+        type: string
+      EID:
+        type: string
+      SrcCode:
+        type: string
+  PersonUserList:
+    type: object
+    properties:
+      PersonUser:
+        type: PersonUser
+  PersonUser:
+    type: object
+    properties:
+      PreviousClientURN:
+        type: string
+      ClientURN:
+        type: string
+      PreviousEID:
+        type: string
+      EID:
+        type: string
+      SrcCode:
+        type: string
+  Source:
+    type: object
+    properties:
+      ChannelCode:
+        type: string
+      ChannelGroupCode:
+        type: string
+      SystemCode:
+        type: string
+      CountryCode:
+        type: string
+      ClientCode:
+        type: string
+      ClientCodeDescription:
+        type: string
+      ClientGroupCode:
+        type: string
+      ClientGroupDescription:
+        type: string
+  SourceID:
+    type: object
+    properties:
+      ClientUserId:
+        type: string
+      Password:
+        type: string
+  GetItemDetailsResp:
+    type: object
+    properties:
+      Source:
+        type: Source
+      ItemDetailsList:
+        type: ItemDetailsList
+      ErrorResponseList:
+        type: ErrorResponseList
+  CreateItemReq:
+    type: object
+    properties:
+      SourceEvent:
+        type: SourceEvent
+      IsItemOwned:
+        type: string
+      ItemID:
+        type: ItemID
+      ItemURN:
+        type: ItemURN
+      Item:
+        type: Item
+      RegisterMailer:
+        type: string
+      ItemGetPriceDetails:
+        type: ItemGetPriceDetails
+      CustomerToken:
+        type: string
+      PersonEID:
+        type: string
+      MailerDetails:
+        type: MailerDetails
+  SourceEvent:
+    type: object
+    properties:
+      BusinessEventSourceCode:
+        type: string
+      BusinessEventCode:
+        type: string
+      ReceivedDate:
+        type: string
+      ReceivedTime:
+        type: string
+      LogonUserId:
+        type: string
+  ItemGetPriceDetails:
+    type: object
+    properties:
+      ItemCreateOffer:
+        type: string
+      GetPriceCallSourceList:
+        type: GetPriceCallSourceList
+  GetPriceCallSourceList:
+    type: object
+    properties:
+      CallSource:
+        type: string
+  MailerDetails:
+    type: object
+    properties:
+      RegCode:
+        type: string
+      ProdQTypeID:
+        type: string
+      BoilerType:
+        type: string
+      Language:
+        type: string
+  Address:
+    type: object
+    properties:
+      AddressCategory:
+        type: string
+      AddressOverride:
+        type: string
+      AddressStatus:
+        type: string
+      AddressDetails:
+        type: AddressDetails
+  AddressDetails:
+    type: object
+    properties:
+      AddressLine1:
+        type: string
+      AddressLine2:
+        type: string
+      AddressLine3:
+        type: string
+      AddressLine4:
+        type: string
+      PostalCode:
+        type: string
+      CountryCode:
+        type: string
+  CreateItemResp:
+    type: object
+    properties:
+      ItemID:
+        type: ItemID
+      ItemURN:
+        type: ItemURN
+      Mailer:
+        type: Mailer
+      RTPOfferReferenceList:
+        type: RTPOfferReferenceList
+      RTPRateList:
+        type: RTPRateList
+      AlternativeApplianceList:
+        type: AlternativeApplianceList
+      ErrorResponseList:
+        type: ErrorResponseList
+  Mailer:
+    type: object
+    properties:
+      CompanyCode:
+        type: string
+      SchemeCode:
+        type: string
+      Reference:
+        type: string
+  RTPOfferReferenceList:
+    type: object
+    properties:
+      RTPOfferReference:
+        type: RTPOfferReference
+  ItemDetailsList:
+    type: object
+    properties:
+      ItemDetails:
+        type: ItemDetails
+  RTPOfferReference:
+    type: object
+    properties:
+      OfferReference:
+        type: string
+      OfferKey:
+        type: string
+      CallSource:
+        type: string
+  RTPRateList:
+    type: object
+    properties:
+      RTPRate:
+        type: RTPRate
+  RTPRate:
+    type: object
+    properties:
+      CallSourceDetails:
+        type: CallSourceDetails
+      RTPOfferDetails:
+        type: RTPOfferDetails
+  CallSourceDetails:
+    type: object
+    properties:
+      CallSource:
+        type: string
+      CallSourceDescription:
+        type: string
+      Scheme:
+        type: Scheme
+      Agent:
+        type: Agent
+      ItemCode:
+        type: string
+      ItemCodeDescription:
+        type: string
+      PriceBand:
+        type: string
+      NumberOfItems:
+        type: string
+      CoverType:
+        type: string
+      BreakdownStartDate:
+        type: string
+      ContractType:
+        type: ContractType
+  Scheme:
+    type: object
+    properties:
+      CompanyCode:
+        type: string
+      SchemeCode:
+        type: string
+      TelRegMakerCode:
+        type: string
+  Agent:
+    type: object
+    properties:
+      AgentNumber:
+        type: string
+      SchemeCodeBranchNumber:
+        type: string
+  ContractType:
+    type: object
+    properties:
+      ProductCategory:
+        type: string
+      ProductCategoryDesc:
+        type: string
+      ProductType:
+        type: string
+      ProductTypeDesc:
+        type: string
+      ProductVariance:
+        type: string
+      ProductVarianceDesc:
+        type: string
+      PaymentTerm:
+        type: string
+      PaymentTermDesc:
+        type: string
+      ContractTypeCode:
+        type: string
+      ContractTypeDesc:
+        type: string
+      ProductDescription:
+        type: string
+  RTPOfferDetails:
+    type: object
+    properties:
+      OfferReference:
+        type: string
+      OfferKey:
+        type: string
+      OfferPricingKey:
+        type: string
+      PeriodOfCover:
+        type: string
+      Fee:
+        type: string
+      WaitDays:
+        type: string
+      WicType:
+        type: string
+      MultiplanType:
+        type: string
+      MultiplanWarrantyType:
+        type: string
+      RTPPaymentDetails:
+        type: RTPPaymentDetails
+  RTPPaymentDetails:
+    type: object
+    properties:
+      PreferredPayment:
+        type: string
+      PaymentType:
+        type: string
+      PaymentProfile:
+        type: string
+      CashPaymentType:
+        type: string
+      NumberOfPayments:
+        type: string
+      PaymentFrequency:
+        type: string
+      FirstPayment:
+        type: string
+      SubsequentPayment:
+        type: string
+      ExcessAmount:
+        type: string
+      RTPRates:
+        type: RTPRates
+  RTPRates:
+    type: object
+    properties:
+      OfferPricingDetailsKey:
+        type: string
+      LevelOfCover:
+        type: string
+      ItemCode:
+        type: string
+      PayProfile:
+        type: string
+      PeriodOfCover:
+        type: string
+      ServiceFee:
+        type: string
+      Price:
+        type: string
+      NetFee:
+        type: string
+      GrossFee:
+        type: string
+      TotalPrice:
+        type: string
+      InsPremTax:
+        type: string
+      SumInsured:
+        type: string
+      ExcessValue:
+        type: string
+      ClientMargin:
+        type: string
+      ManuMargin:
+        type: string
+      Procurement:
+        type: string
+      UnderWrtPrem:
+        type: string
+      IPTTaxRate:
+        type: string
+      PriceBand:
+        type: string
+      RetroMargin:
+        type: string
+      RetraOvr:
+        type: string
+      ManufOvr:
+        type: string
+      SalesStaffInc:
+        type: string
+      CoverCode:
+        type: string
+      ExclusionCode:
+        type: string
+      Underwriter:
+        type: string
+      ReserveCode:
+        type: string
+      ReservePOC:
+        type: string
+      ReserveMfGuar:
+        type: string
+  AlternativeApplianceList:
+    type: object
+    properties:
+      AlternativeAppliance:
+        type: AlternativeAppliance
+  AlternativeAppliance:
+    type: object
+    properties:
+      CompanyCode:
+        type: string
+      SchemeCode:
+        type: string
+      ItemGroupCode:
+        type: string
+      ItemCode:
+        type: string
+      ItemDescription:
+        type: string
+  UpdateItemReq:
+    type: object
+    properties:
+      SourceEvent:
+        type: SourceEvent
+      ItemID:
+        type: ItemID
+      ItemURN:
+        type: ItemURN
+      Item:
+        type: Item
+      Plan:
+        type: Plan
+      IsNewBabyPlan:
+        type: string
+      NewBabyPlanList:
+        type: NewBabyPlanList
+      Mailer:
+        type: Mailer
+      UpdateMailerStatus:
+        type: string
+      CustomerToken:
+        type: string
+      OvrBabyBSD:
+        type: string
+  Plan:
+    type: object
+    properties:
+      CompanyCode:
+        type: string
+      SchemeCode:
+        type: string
+      Reference:
+        type: string
+  NewBabyPlanList:
+    type: object
+    properties:
+      NewBabyPlan:
+        type: NewBabyPlan
+  NewBabyPlan:
+    type: object
+    properties:
+      ItemID:
+        type: ItemID
+      ItemURN:
+        type: ItemURN
+      Mailer:
+        type: Mailer
+      Item:
+        type: Item
+  UpdateItemResp:
+    type: object
+    properties:
+      ItemID:
+        type: ItemID
+      ItemURN:
+        type: ItemURN
+      BabyPlanList:
+        type: BabyPlanList
+      ErrorResponseList:
+        type: ErrorResponseList
+  BabyPlan:
+    type: object
+    properties:
+      CompanyCode:
+        type: string
+      SchemeCode:
+        type: string
+      Reference:
+        type: string
+      ItemCode:
+        type: string
+      ModelNumber1:
+        type: string
+      ModelNumber2:
+        type: string
+      ErrorMessage:
+        type: string
+  ErrorResponseList:
+    type: object
+    properties:
+      Error:
+        type: Error
+  Error:
+    type: object
+    properties:
+      ErrorCode:
+        type: string
+      ErrorDescription:
+        type: string
+  ItemID:
+    type: object
+    properties:
+      EID:
+        type: string
+  BabyPlanList:
+    type: object
+    properties:
+      BabyPlan:
+        type: BabyPlan
+  OtherIds:
+    type: object
+    properties:
+      OtherId1:
+        type: string
+      OtherId1CategoryCode:
+        type: string
+      OtherId2:
+        type: string
+      OtherId2CategoryCode:
+        type: string
+      OtherId3:
+        type: string
+      OtherId3CategoryCode:
+        type: string
+      OtherModelId1:
+        type: string
+      OtherModelId1CategoryCode:
+        type: string
+      OtherModelId2:
+        type: string
+      OtherModelId2CategoryCode:
+        type: string
+  ItemURNList:
+    type: object
+    properties:
+      ItemURN:
+        type: ItemURN
+  ItemURN:
+    type: object
+    properties:
+      ClientURN:
+        type: string
+      ApplianceToken:
+        type: string
+  Item:
+    type: object
+    properties:
+      ItemLink:
+        type: ItemLink
+      ItemDetails:
+        type: ItemDetails
+      AdditionalDetails:
+        type: AdditionalDetails
+      OtherIds:
+        type: OtherIds
+      Cover:
+        type: Cover
+      Purchase:
+        type: Purchase
+      Address:
+        type: Address
+      PersonOwnerList:
+        type: PersonOwnerList
+      PersonUserList:
+        type: PersonUserList
+      ClientCode:
+        type: string
+      ItemCtgCode:
+        type: string
+  ItemLink:
+    type: object
+    properties:
+      MemIdNum:
+        type: string
+      SrcCode:
+        type: string
+annotationTypes:
+  oas-body-name:
+    type: string
+    allowedTargets: TypeDeclaration
+  oas-tags:
+    type: 'string[]'
+    allowedTargets: Method
+/items:
+  post:
+    description: creates Item
+    is:
+      - entityIdParam
+      - clientURNParam
+      - applianceTokenParam
+      - systemCodeParam
+      - countryCodeParam
+      - clientCodeParam
+      - clientGroupCodeParam
+      - channelCodeParam
+      - clientUserIdParam
+      - clientPasswordParam
+    responses:
+      '200':
+        description: Success
+        body:
+          application/json:
+            type: CreateItemResp
+          application/xml:
+            type: CreateItemResp
+    body:
+      application/json:
+        description: description of parameter passed
+        type: CreateItemReq
+        (oas-body-name): CreateItemReq
+    (oas-tags):
+      - items
+  '/{id}':
+    get:
+      description: get Item details by Id
+      is:
+        - entityIdParam
+        - clientURNParam
+        - applianceTokenParam
+        - systemCodeParam
+        - countryCodeParam
+        - clientCodeParam
+        - clientGroupCodeParam
+        - channelCodeParam
+        - clientUserIdParam
+        - clientPasswordParam
+      responses:
+        '200':
+          description: Success
+          body:
+            application/json:
+              type: GetItemDetailsResp
+            application/xml:
+              type: GetItemDetailsResp
+      (oas-tags):
+        - items
+    put:
+      description: updates an item by Id
+      is:
+        - entityIdParam
+        - clientURNParam
+        - applianceTokenParam
+        - systemCodeParam
+        - countryCodeParam
+        - clientCodeParam
+        - clientGroupCodeParam
+        - channelCodeParam
+        - clientUserIdParam
+        - clientPasswordParam
+      responses:
+        '200':
+          description: Success
+          body:
+            application/json:
+              type: UpdateItemResp
+            application/xml:
+              type: UpdateItemResp
+      body:
+        application/json:
+          description: description of parameter passed
+          type: UpdateItemReq
+          (oas-body-name): UpdateItemReq
+      (oas-tags):
+        - items
+    uriParameters:
+      id:
+        description: Id of an item to get details
+        type: string
+
