@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Orders API
+  description: Get Orders APi
+servers: 
+  - url: orderapi.com
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /getOrder/id: 
+   get: 
+    operationId: getOrderById
+    tags: 
+     - Order
+    summary: Get Order
+    description: Get an order by its ID
+    parameters: 
+     - $ref: '#/components/parameters/idParam'
+    responses: 
+     '200': 
+      description: Order retreived
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/Order'
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  schemas: 
+   Order: 
+    title : Order
+    type: object
+    properties: 
+     id: 
+      type: string
+     userid: 
+      type: string
+     status: 
+      type: string
+     couponId: 
+      type: string
+     PaymentMode: 
+      type: string
+     totalPrice: 
+      type: integer
+     storeId: 
+      type: integer
+  parameters: 
+   idParam: 
+    in: query
+    name: id
+    required: true
+    schema: 
+     type: string
+    description: Order id
