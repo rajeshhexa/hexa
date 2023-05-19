@@ -1,0 +1,316 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Items API V1
+  description: Items API
+servers: 
+  - url: <to be set>
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /items/{id}: 
+   get: 
+    operationId: getItemDetails
+    tags: 
+     - items
+    summary: Get a Single Item details by passing it's ID
+    description: get Item details by Id
+    parameters: 
+     - $ref: '#/components/parameters/idPathParam'
+     - $ref: '#/components/parameters/entityIdHeaderParam'
+     - $ref: '#/components/parameters/clientURNHeaderParam'
+     - $ref: '#/components/parameters/applianceTokenHeaderParam'
+     - $ref: '#/components/parameters/systemCodeHeaderParam'
+     - $ref: '#/components/parameters/countryCodeHeaderParam'
+     - $ref: '#/components/parameters/clientCodeHeaderParam'
+     - $ref: '#/components/parameters/clientGroupCodeHeaderParam'
+     - $ref: '#/components/parameters/channelCodeHeaderParam'
+     - $ref: '#/components/parameters/clientUserIdHeaderParam'
+     - $ref: '#/components/parameters/clientPasswordHeaderParam'
+    responses: 
+     '200': 
+      description: Item Retrieved by ID
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GetItemDetailsResp'
+   put: 
+    operationId: updateItem
+    tags: 
+     - items
+    description: updates an item by Id
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UpdateItemReq'
+    parameters: 
+     - $ref: '#/components/parameters/idPathParam'
+     - $ref: '#/components/parameters/entityIdHeaderParam'
+     - $ref: '#/components/parameters/clientURNHeaderParam'
+     - $ref: '#/components/parameters/applianceTokenHeaderParam'
+     - $ref: '#/components/parameters/systemCodeHeaderParam'
+     - $ref: '#/components/parameters/countryCodeHeaderParam'
+     - $ref: '#/components/parameters/clientCodeHeaderParam'
+     - $ref: '#/components/parameters/clientGroupCodeHeaderParam'
+     - $ref: '#/components/parameters/channelCodeHeaderParam'
+     - $ref: '#/components/parameters/clientUserIdHeaderParam'
+     - $ref: '#/components/parameters/clientPasswordHeaderParam'
+    responses: 
+     '200': 
+      description: Item updated by ID
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UpdateItemResp'
+     '400': 
+      description: ID not present
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/Error'
+  /items: 
+   post: 
+    operationId: createItem
+    tags: 
+     - items
+    description: creates Item
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CreateItemReq'
+    parameters: 
+     - $ref: '#/components/parameters/entityIdHeaderParam'
+     - $ref: '#/components/parameters/clientURNHeaderParam'
+     - $ref: '#/components/parameters/applianceTokenHeaderParam'
+     - $ref: '#/components/parameters/systemCodeHeaderParam'
+     - $ref: '#/components/parameters/countryCodeHeaderParam'
+     - $ref: '#/components/parameters/clientCodeHeaderParam'
+     - $ref: '#/components/parameters/clientGroupCodeHeaderParam'
+     - $ref: '#/components/parameters/channelCodeHeaderParam'
+     - $ref: '#/components/parameters/clientUserIdHeaderParam'
+     - $ref: '#/components/parameters/clientPasswordHeaderParam'
+    responses: 
+     '200': 
+      description: Item Created
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CreateItemResp'
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  schemas: 
+   ItemDetails: 
+    title : ItemDetails
+    type: object
+    properties: 
+     ItemCode: 
+      type: string
+     ItemCodeDescription: 
+      type: string
+     ManufacturerBrandCode: 
+      type: string
+     ManufacturerBrandDescription: 
+      type: string
+     GoodsColour: 
+      type: string
+     ModelNumber: 
+      type: string
+     SerialNumber: 
+      type: string
+     OperationalStatusCode: 
+      type: string
+     DGAllocatedSupplierAgentCode: 
+      type: string
+     DGAllocatedSupplierBranchCode: 
+      type: string
+     LastServiceDate: 
+      type: string
+     LastServiceTime: 
+      type: string
+     ItemCatCode: 
+      type: string
+     ManufacturerBrandGroupCode: 
+      type: string
+     ItemID: 
+      type: object
+      $ref: '#/components/schemas/ItemID'
+     ItemURNList: 
+      type: object
+      $ref: '#/components/schemas/ItemURNList'
+     Item: 
+      type: object
+      $ref: '#/components/schemas/Item'
+   AdditionalDetails: 
+    title : AdditionalDetails
+    type: object
+    properties: 
+     BoilerType: 
+      type: string
+     ExtCovPrdFee: 
+      type: string
+     PdNettFlg: 
+      type: string
+     CallSource: 
+      type: string
+     PeriodOfCover: 
+      type: string
+     GoodsColour: 
+      type: string
+     CoverType: 
+      type: string
+     BreakdownStartDate: 
+      type: string
+   Cover: 
+    title : Cover
+    type: object
+    properties: 
+     ManufacturerGuaranteeLabourMonths: 
+      type: string
+     ManufacturerGuaranteePartsMonths: 
+      type: string
+     ThirdPartyGuaranteeLabourMonths: 
+      type: string
+     ThirdPartyGuaranteePartsMonths: 
+      type: string
+   Purchase: 
+    title : Purchase
+    type: object
+    properties: 
+     PurchasePrice: 
+      type: string
+     PriceCurrencyCode: 
+      type: string
+     PurchaseDate: 
+      type: string
+     PurchaseTime: 
+      type: string
+     RecommendedPrice: 
+      type: string
+     RecommendedPriceCurrencyCode: 
+      type: string
+     PurchaseRetailer: 
+      type: string
+   PersonOwnerList: 
+    title : PersonOwnerList
+    type: object
+    properties: 
+     PersonOwner: 
+      type: object
+      $ref: '#/components/schemas/PersonOwner'
+   PersonOwner: 
+    title : PersonOwner
+    type: object
+    properties: 
+     PreviousClientURN: 
+      type: string
+     ClientURN: 
+      type: string
+     PreviousEID: 
+      type: string
+     EID: 
+      type: string
+     SrcCode: 
+      type: string
+   PersonUserList: 
+    title : PersonUserList
+    type: object
+    properties: 
+     PersonUser: 
+      type: object
+      $ref: '#/components/schemas/PersonUser'
+   PersonUser: 
+    title : PersonUser
+    type: object
+    properties: 
+     PreviousClientURN: 
+      type: string
+     ClientURN: 
+      type: string
+     PreviousEID: 
+      type: string
+     EID: 
+      type: string
+     SrcCode: 
+      type: string
+   Source: 
+    title : Source
+    type: object
+    properties: 
+     ChannelCode: 
+      type: string
+     ChannelGroupCode: 
+      type: string
+     SystemCode: 
+      type: string
+     CountryCode: 
+      type: string
+     ClientCode: 
+      type: string
+     ClientCodeDescription: 
+      type: string
+     ClientGroupCode: 
+      type: string
+     ClientGroupDescription: 
+      type: string
+   SourceID: 
+    title : SourceID
+    type: object
+    properties: 
+     ClientUserId: 
+      type: string
+     Password: 
+      type: string
+   GetItemDetailsResp: 
+    title : GetItemDetailsResp
+    type: object
+    properties: 
+     Source: 
+      type: object
+      $ref: '#/components/schemas/Source'
+     ItemDetailsList: 
+      type: object
+      $ref: '#/components/schemas/ItemDetailsList'
+     ErrorResponseList: 
+      type: object
+      $ref: '#/components/schemas/ErrorResponseList'
+   CreateItemReq: 
+    title : CreateItemReq
+    type: object
+    properties: 
+     SourceEvent: 
+      type: object
+      $ref: '#/components/schemas/SourceEvent'
+     IsItemOwned: 
+      type: string
+     ItemID: 
+      type: object
+      $ref: '#/components/schemas/ItemID'
+     ItemURN: 
+      type: object
+      $ref: '#/components/schemas/ItemURN'
+     Item: 
+      type: object
+      $ref: '#/components/schemas/Item'
+     RegisterMailer: 
+      type: string
+     ItemGetPriceDetails: 
+      type: object
+      $ref: '#/components/schemas/ItemGetPriceDetails'
+     CustomerToken: 
+      type: string
+     PersonEID: 
+      type: string
+     MailerDetails: 
+      type: object
+      $ref: '#/components/schemas/MailerDetails'
+   SourceEvent: 
+    title : SourceEvent
+ 
