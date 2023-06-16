@@ -1,0 +1,2082 @@
+openapi: 3.0.0
+info:
+  title: demo-api
+  description: Demo API
+  version: v1.0
+paths:
+  /TestAPIOne:
+    post:
+      description: doing a TestAPIOne from MDM
+      parameters:
+        -
+          name: entityType
+          description: Entity Type
+          required: true
+          in: query
+          schema:
+            title: entityType
+            description: Entity Type
+            enum:
+              - IND
+              - ORG
+              - COM
+              - AFF
+              - REL
+            type: string
+        -
+          name: messageid
+          description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+          required: false
+          in: header
+          schema:
+            title: messageid (message id)
+            description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: tenantId
+          description: Tenant Identifier (guid)
+          required: true
+          in: header
+          schema:
+            title: TenantId
+            description: Tenant Identifier (guid)
+            example: 470ed299-1647-11e8-87e0-48452081f82f
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+            minLength: 36
+            maxLength: 36
+        -
+          name: jobId
+          description: job id
+          required: true
+          in: header
+          schema:
+            title: jobId
+            description: job id
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: transactionId
+          description: transaction id
+          required: true
+          in: header
+          schema:
+            title: transactionId
+            description: transaction id
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: targetCode
+          description: application targetCode
+          required: false
+          in: header
+          schema:
+            title: targetCode
+            description: application targetCode
+            type: array
+        -
+          name: sourceCode
+          description: application sourceCode
+          required: false
+          in: header
+          schema:
+            title: sourceCode
+            description: application sourceCode
+            type: string
+        -
+          name: sourceName
+          description: sourceName for country
+          required: false
+          in: header
+          schema:
+            title: sourceName
+            description: sourceName for country
+            type: string
+        -
+          name: entityDomainCode
+          description: application entityDomainCode
+          required: false
+          in: header
+          schema:
+            title: entityDomainCode
+            description: application entityDomainCode
+            type: string
+        -
+          name: entityType
+          description: entityType
+          required: false
+          in: header
+          schema:
+            title: entityType
+            description: entityType
+            type: string
+        -
+          name: idlFlag
+          description: IDL Flag
+          required: false
+          in: header
+          schema:
+            title: IDL Flag
+            description: IDL Flag
+            default: 1
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+            type: number
+        -
+          name: countryCode
+          description: countryCode
+          required: false
+          in: header
+          schema:
+            title: countryCode
+            description: countryCode
+            type: string
+        -
+          name: dcrStatusFlag
+          description: DCR Status Flag
+          required: false
+          in: header
+          schema:
+            title: DCR Status Flag
+            description: DCR Status Flag
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                ExportDetails:
+                  ovOnly: true
+                  includeType:
+                    - configuration/entityTypes/HCP
+                    - configuration/entityTypes/HCO
+                  updateTimeFilter:
+                    since: "1522598940000"
+                    to: "1543162140000"
+                s3BucketDetails:
+                  s3Path: R7/evtmN18O9aVDPRQ/Ind11/OCESales/201901259/
+                  credentials: ewogICAiYWNjZXNzX2tleV9pZCIgOiAiQUtJQUpRWDM2RUhUNE9aTENFRVEiLAogICAic2VjcmV0X2tleV9pZCIgOiAia01vZ0NpdnEvdy9QcG9oZUl5V0ZtZ01XZUFoNW9HZmovNU5saWI5QSIsCiAgICJidWNrZXRfbmFtZSIgOiAibGV4aS1yZWx0aW8tbWRtLWRldiIsCiAgICJyZWdpb24iIDogInVzLWVhc3QtMSIKfQo=
+                Config:
+                  credentials: ewogICJ0b2tlbnVybCI6ICJodHRwczovL2F1dGgucmVsdGlvLmNvbS9vYXV0aC90b2tlbiIsCiAgImN1c3RvbWVydGVuYW50dXJsIjogImh0dHBzOi8vZGV2LnJlbHRpby5jb20vcmVsdGlvL2FwaS8iLAogICJjdXN0b21lcnRlbmFudGlkIjogIjZMRlRuUWpBMUM2U2dIaSIsCiAgImN1c3RvbWVydGVuYW50dXNlcm5hbWUiOiAidnZpcmVzaCIsCiAgImN1c3RvbWVydGVuYW50cGFzc3dvcmQiOiAiV2VsY29tZSEiLAogICJjdXN0b21lcnRlbmFudGNsaWVudGtleSI6ICJjbVZzZEdsdlgzVnBPbTFoYTJsMFlRPT0iLAogICJleHBvcnRzZXJ2aWNldXJsIjogImh0dHBzOi8vZGV2LnJlbHRpby5jb20vcmVsdGlvL2FwaS8iLAogICJ3b3JrZmxvd3VybCI6ICJodHRwczovL3Byb2Qtd29ya2Zsb3cucmVsdGlvLmNvbS93b3JrZmxvdy1hZGFwdGVyIiwKICAiZGF0YXRlbmFudHVybCI6ICJodHRwczovL3Rlc3QucmVsdGlvLmNvbS9hcGkvIiwKICAiZGF0YXRlbmFudGlkIjogIlpNR3RvVlY2RlBHcjFmSiIsCiAgImRhdGF0ZW5hbnR1c2VybmFtZSI6ICJ2dmlyZXNoIiwKICAiZGF0YXRlbmFudHBhc3N3b3JkIjogIldlbGNvbWUhIiwKICAiZGF0YXRlbmFudGNsaWVudGtleSI6ICJjbVZzZEdsdlgzVnBPbTFoYTJsMFlRPT0iLAogICJyZG11cmwiOiAiaHR0cHM6Ly9yZG0ucmVsdGlvLmNvbS9hcGkvIiwKICAicmRtdGVuYW50aWQiOiAiODh0QVA0aXVJSzNGdk9oIiwKICAicmRtdXNlcm5hbWUiOiAidnZpcmVzaCIsCiAgInJkbXBhc3N3b3JkIjogIldlbGNvbWUhIiwKICAicmRtY2xpZW50a2V5IjogImNtVnNkR2x2WDNWcE9tMWhhMmwwWVE9PSIKfQ==
+              type: object
+              additionalProperties: true
+              required:
+                - ExportDetails
+                - Config
+              properties:
+                s3BucketDetails:
+                  type: object
+                  additionalProperties: true
+                  properties:
+                    s3Path:
+                      default: ROCHE/6LFTnQjA1C6SgHi/Individual/12102018/
+                      type: string
+                ExportDetails:
+                  type: object
+                  additionalProperties: true
+                  properties:
+                    ovOnly:
+                      default: true
+                      type: boolean
+                    updateTimeFilter:
+                      type: object
+                      additionalProperties: true
+                      properties:
+                        since:
+                          default: "1522598940000"
+                          type: string
+                        to:
+                          default: "1522598940000"
+                          type: string
+                Config:
+                  type: object
+                  additionalProperties: true
+                  required:
+                    - credentials
+                  properties:
+                    credentials:
+                      default: ewogICJ0b2tlbn
+                      type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  groupId: 453b7f3c-533b-4f8a-bf9c-d3c628e32ee4
+                  exportType: ENTITIES
+                  version: v1
+                  status: scheduled
+                  details: "Export job has been scheduled. Result will be sent to your email: vvadiwala@us.imshealth.com"
+                  taskIds:
+                    - d878d562-4b80-4fe9-9288-5518a2687c6f
+                    - c9a9414c-98cb-47af-bda9-5003d30ed566
+                    - e0f9847d-8b87-4d57-9b16-c4fb47b432f6
+                    - f6a4512d-dec3-416e-8b4e-2c1aa2e0d7c4
+                    - a123c50a-dec9-4c5a-9b23-3e80fd4c2579
+                    - 684343de-96fe-450f-bb5f-9ee3e984edab
+                type: object
+                additionalProperties: true
+                required:
+                  - groupId
+                  - taskIds
+                properties:
+                  groupId:
+                    default: 453b7f3c-533b-4f8a-bf9c-d3c628e32ee4
+                    type: string
+                  exportType:
+                    default: ENTITIES
+                    type: string
+                  version:
+                    default: v1
+                    type: string
+                  status:
+                    default: scheduled
+                    type: string
+                  details:
+                    default: Export job has been scheduled Result will be sent to your email vvadiwala@us.imshealth.com
+                    type: string
+                  taskIds:
+                    type: array
+        "400":
+          description: A request was malformed
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+        "404":
+          description: resource not found
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+        "500":
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+      security:
+        -
+          basicAuth: []
+  /TestAPIOne/{TaskId}:
+    description: This operation gets status of the task.
+    parameters:
+      -
+        name: TaskId
+        required: true
+        in: path
+        schema:
+          type: string
+    post:
+      description: Get Task status using task id
+      parameters:
+        -
+          name: messageid
+          description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+          required: false
+          in: header
+          schema:
+            title: messageid (message id)
+            description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: tenantId
+          description: Tenant Identifier (guid)
+          required: true
+          in: header
+          schema:
+            title: TenantId
+            description: Tenant Identifier (guid)
+            example: 470ed299-1647-11e8-87e0-48452081f82f
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+            minLength: 36
+            maxLength: 36
+        -
+          name: jobId
+          description: job id
+          required: true
+          in: header
+          schema:
+            title: jobId
+            description: job id
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: transactionId
+          description: transaction id
+          required: true
+          in: header
+          schema:
+            title: transactionId
+            description: transaction id
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: targetCode
+          description: application targetCode
+          required: false
+          in: header
+          schema:
+            title: targetCode
+            description: application targetCode
+            type: array
+        -
+          name: sourceCode
+          description: application sourceCode
+          required: false
+          in: header
+          schema:
+            title: sourceCode
+            description: application sourceCode
+            type: string
+        -
+          name: sourceName
+          description: sourceName for country
+          required: false
+          in: header
+          schema:
+            title: sourceName
+            description: sourceName for country
+            type: string
+        -
+          name: entityDomainCode
+          description: application entityDomainCode
+          required: false
+          in: header
+          schema:
+            title: entityDomainCode
+            description: application entityDomainCode
+            type: string
+        -
+          name: entityType
+          description: entityType
+          required: false
+          in: header
+          schema:
+            title: entityType
+            description: entityType
+            type: string
+        -
+          name: idlFlag
+          description: IDL Flag
+          required: false
+          in: header
+          schema:
+            title: IDL Flag
+            description: IDL Flag
+            default: 1
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+            type: number
+        -
+          name: countryCode
+          description: countryCode
+          required: false
+          in: header
+          schema:
+            title: countryCode
+            description: countryCode
+            type: string
+        -
+          name: dcrStatusFlag
+          description: DCR Status Flag
+          required: false
+          in: header
+          schema:
+            title: DCR Status Flag
+            description: DCR Status Flag
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                Config:
+                  credentials: 1ewogICJ0b2tlbn
+              type: object
+              additionalProperties: true
+              required:
+                - Config
+              properties:
+                Config:
+                  type: object
+                  additionalProperties: true
+                  required:
+                    - credentials
+                  properties:
+                    credentials:
+                      default: ewogICJ0b2tlbn
+                      type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  id: 0d4a796b-c045-407e-9e70-9cafc9d6d0d3
+                  groupId: d8794d2b-886f-4a45-ac42-fea9574805b0
+                  createdTime: 1544431448198
+                  createdBy: vviresh
+                  updatedTime: 1544431448198
+                  updatedBy: vviresh
+                  type: com.reltio.export.tasks.local.cassandra.EntitiesCassandraExportTask
+                  status: COMPLETED
+                  name: entities-cassandra-export-task[6lftnqja1c6sghi_08-44_entities_ed61]
+                  createdOnHost: ip-54-86-193-194
+                  executedOnHost: ip-54-204-149-174
+                  parallelExecution: true
+                  nodesGroup: dev-jobs1
+                  startTime: 1544431449890
+                  endTime: 1544431549341
+                  parameters:
+                    updatedSince: "1543162140000"
+                    distributedTaskIndex: "0"
+                    s3Path: /export/HCP/HCP_12_031_18
+                    partSize: "104857600"
+                    headersStyle: name
+                    specifiedMailAddress: vvadiwala@us.imshealth.com
+                    taskId: 6lftnqja1c6sghi_08-44_entities_ed61
+                    useEsHeadersCollectionExport: "false"
+                    updatedBefore: "1543162140000"
+                    activeness: ACTIVE
+                    fileFormat: JSON
+                    parallelTasksIds: "[\"a3cea27e-2a74-4417-8a61-10c0b3582dc0\",\"21711918-3d68-4d04-8ccd-d0ea615a5a2e\",\"801c0f4b-5fcf-4647-9e1d-f740265d2dfc\",\"c4d12121-6ede-4cca-b29c-026497e83f20\",\"5457131e-7927-41d7-a77e-f24d01dfda09\"]"
+                    tenantId: 6LFTnQjA1C6SgHi
+                    skipPostprocessing: "false"
+                    s3Bucket: lexi-reltio-mdm-dev
+                    includeType: "[\"configuration/entityTypes/HCP\"]"
+                    queryParams: "{\"options\":\"parallelExecution\",\"activeness\":\"ACTIVE\"}"
+                    exportName: 6lftnqja1c6sghi_08-44_entities
+                    userRoles: ACCEPT_CHANGE_REQUEST,API_USER,ROLE_ADMIN_TENANT_6LFTnQjA1C6SgHi,ROLE_ADMIN_TENANT_88tAP4iuIK3FvOh,ROLE_ADMIN_TENANT_Kjmc5DI6ZulMklx,ROLE_ANALYTICS,ROLE_API,ROLE_EXPORT,ROLE_INITIATE_CHANGE_REQUEST,ROLE_RDM,ROLE_RDM_EDIT,ROLE_REVIEWER,ROLE_SFDC_CONNECTOR,ROLE_SFDC_CONNECTOR_ADMIN,ROLE_UI_ALL,ROLE_USER,ROLE_WORKFLOW
+                    ovOnly: "true"
+                    username: vviresh
+                    encryptUrl: "true"
+                    headerFormat: DEFAULT
+                    sePrefix: "false"
+                    distributedTasksPartsCount: "6"
+                    dateFormat: TIMESTAMP
+                    mailAddress: vvadiwala@us.imshealth.com
+                    exportPath: export/HCP
+                  currentState:
+                    statusId: 600
+                    status: Completed
+                    lastExecutionEC2Instances: i-0ac0a45784904cb37
+                    lastHourThroughput: 435.1044921875
+                    numberOfProcessedObjects: 0
+                    numberOfFailedToPublishEvents: 0
+                    numberOfObjects: 34704
+                    globalStatus:
+                      lastFiveMinReadThroughput: 2274
+                      lastFiveMinThroughput: 0
+                      entitiesTotal: 54642
+                      entitiesNumber: 0
+                      overallThroughput: 0
+                      overallReadThroughput: 2274
+                    exportUrls:
+                      - https://dev.reltio.com/download.html?tenant=6LFTnQjA1C6SgHi&downloadExportUrl=https://lexi-reltio-mdm-dev.s3.amazonaws.com/export/HCP/HCP_12_031_18_part_1.zip?AWSAccessKeyId=UKW9fZephHjsLiiV1bpOFKekHozIDSPgT7gpf0H1Ac0%3D&Expires=1545036347&Signature=X2pc8vjz%2F4w6brr7fircMWgAk3M%3D
+                  throughput: 0
+                  duration: 1m 39s
+                type: object
+                additionalProperties: true
+        "400":
+          description: A request was malformed
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+        "500":
+          description: Server-side issue
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+      security:
+        -
+          basicAuth: []
+  /TestAPITwo:
+    description: This operation does an export for merged records.
+    post:
+      description: Test API 2.
+      parameters:
+        -
+          name: messageid
+          description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+          required: false
+          in: header
+          schema:
+            title: messageid (message id)
+            description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: tenantId
+          description: Tenant Identifier (guid)
+          required: true
+          in: header
+          schema:
+            title: TenantId
+            description: Tenant Identifier (guid)
+            example: 470ed299-1647-11e8-87e0-48452081f82f
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+            minLength: 36
+            maxLength: 36
+        -
+          name: jobId
+          description: job id
+          required: true
+          in: header
+          schema:
+            title: jobId
+            description: job id
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: transactionId
+          description: transaction id
+          required: true
+          in: header
+          schema:
+            title: transactionId
+            description: transaction id
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: targetCode
+          description: application targetCode
+          required: false
+          in: header
+          schema:
+            title: targetCode
+            description: application targetCode
+            type: array
+        -
+          name: sourceCode
+          description: application sourceCode
+          required: false
+          in: header
+          schema:
+            title: sourceCode
+            description: application sourceCode
+            type: string
+        -
+          name: sourceName
+          description: sourceName for country
+          required: false
+          in: header
+          schema:
+            title: sourceName
+            description: sourceName for country
+            type: string
+        -
+          name: entityDomainCode
+          description: application entityDomainCode
+          required: false
+          in: header
+          schema:
+            title: entityDomainCode
+            description: application entityDomainCode
+            type: string
+        -
+          name: entityType
+          description: entityType
+          required: false
+          in: header
+          schema:
+            title: entityType
+            description: entityType
+            type: string
+        -
+          name: idlFlag
+          description: IDL Flag
+          required: false
+          in: header
+          schema:
+            title: IDL Flag
+            description: IDL Flag
+            default: 1
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+            type: number
+        -
+          name: countryCode
+          description: countryCode
+          required: false
+          in: header
+          schema:
+            title: countryCode
+            description: countryCode
+            type: string
+        -
+          name: dcrStatusFlag
+          description: DCR Status Flag
+          required: false
+          in: header
+          schema:
+            title: DCR Status Flag
+            description: DCR Status Flag
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                ExportDetails:
+                  ovOnly: true
+                  startDate: 1562656521000
+                  endDate: 1562656821000
+                s3BucketDetails:
+                  s3Path: Merge/6LFTnQjA1C6SgHi/20190102/
+                  credentials: ewogICAiYWNjZXNzX2tleV9pZCIgOiAiQUtJQUpRWDM2RUhUNE9aTENFRVEiLAogICAic2VjcmV0X2tleV9pZCIgOiAia01vZ0NpdnEvdy9QcG9oZUl5V0ZtZ01XZUFoNW9HZmovNU5saWI5QSIsCiAgICJidWNrZXRfbmFtZSIgOiAibGV4aS1yZWx0aW8tbWRtLWRldiIsCiAgICJyZWdpb24iIDogInVzLWVhc3QtMSIKfQo=
+                Config:
+                  credentials: ewogICJ0b2tlbnVybCI6ICJodHRwczovL2F1dGgucmVsdGlvLmNvbS9vYXV0aC90b2tlbiIs
+              type: object
+              additionalProperties: true
+              required:
+                - ExportDetails
+                - Config
+              properties:
+                s3BucketDetails:
+                  type: object
+                  additionalProperties: true
+                  properties:
+                    s3Path:
+                      default: ROCHE/6LFTnQjA1C6SgHi/Individual/12102018/
+                      type: string
+                ExportDetails:
+                  type: object
+                  additionalProperties: true
+                  properties:
+                    ovOnly:
+                      default: true
+                      type: boolean
+                    startDate:
+                      default: 1522598940000
+                      type: number
+                    endDate:
+                      default: 1522598940000
+                      type: number
+                Config:
+                  type: object
+                  additionalProperties: true
+                  required:
+                    - credentials
+                  properties:
+                    credentials:
+                      default: ewogICJ0b2tlbn
+                      type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  groupId: 820586ff-5bc9-48f1-b304-2e36f1f5c35a
+                  exportType: MERGE_TREE
+                  version: v1
+                  status: scheduled
+                  details: "Export job has been scheduled. Result will be sent to your email: vvadiwala@us.imshealth.com"
+                  taskIds:
+                    - fb2d57d8-a686-4d1d-b4fb-31934e2af639
+                type: object
+                additionalProperties: true
+                required:
+                  - groupId
+                  - taskIds
+                properties:
+                  groupId:
+                    default: 453b7f3c-533b-4f8a-bf9c-d3c628e32ee4
+                    type: string
+                  exportType:
+                    default: MERGE_TREE
+                    type: string
+                  version:
+                    default: v1
+                    type: string
+                  status:
+                    default: scheduled
+                    type: string
+                  details:
+                    default: Export job has been scheduled Result will be sent to your email vvadiwala@us.imshealth.com
+                    type: string
+                  taskIds:
+                    type: array
+        "400":
+          description: A request was malformed
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+        "404":
+          description: resource not found
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+        "500":
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+      security:
+        -
+          basicAuth: []
+  /TestAPIThree: {}
+  /TestAPIThree/{TestUri}:
+    description: get Status
+    parameters:
+      -
+        name: TestUri
+        required: true
+        in: path
+        schema:
+          type: string
+    post:
+      description: Test API 3
+      parameters:
+        -
+          name: DCROperationType
+          required: true
+          in: query
+          schema:
+            type: string
+        -
+          name: messageid
+          description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+          required: false
+          in: header
+          schema:
+            title: messageid (message id)
+            description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: tenantId
+          description: Tenant Identifier (guid)
+          required: true
+          in: header
+          schema:
+            title: TenantId
+            description: Tenant Identifier (guid)
+            example: 470ed299-1647-11e8-87e0-48452081f82f
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+            minLength: 36
+            maxLength: 36
+        -
+          name: jobId
+          description: job id
+          required: true
+          in: header
+          schema:
+            title: jobId
+            description: job id
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: transactionId
+          description: transaction id
+          required: true
+          in: header
+          schema:
+            title: transactionId
+            description: transaction id
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+        -
+          name: targetCode
+          description: application targetCode
+          required: false
+          in: header
+          schema:
+            title: targetCode
+            description: application targetCode
+            type: array
+        -
+          name: sourceCode
+          description: application sourceCode
+          required: false
+          in: header
+          schema:
+            title: sourceCode
+            description: application sourceCode
+            type: string
+        -
+          name: sourceName
+          description: sourceName for country
+          required: false
+          in: header
+          schema:
+            title: sourceName
+            description: sourceName for country
+            type: string
+        -
+          name: entityDomainCode
+          description: application entityDomainCode
+          required: false
+          in: header
+          schema:
+            title: entityDomainCode
+            description: application entityDomainCode
+            type: string
+        -
+          name: entityType
+          description: entityType
+          required: false
+          in: header
+          schema:
+            title: entityType
+            description: entityType
+            type: string
+        -
+          name: idlFlag
+          description: IDL Flag
+          required: false
+          in: header
+          schema:
+            title: IDL Flag
+            description: IDL Flag
+            default: 1
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+            type: number
+        -
+          name: countryCode
+          description: countryCode
+          required: false
+          in: header
+          schema:
+            title: countryCode
+            description: countryCode
+            type: string
+        -
+          name: dcrStatusFlag
+          description: DCR Status Flag
+          required: false
+          in: header
+          schema:
+            title: DCR Status Flag
+            description: DCR Status Flag
+            enum:
+              - 0
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+            type: number
+        -
+          name: crosswalkId
+          required: false
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                Config:
+                  credentials: 1ewogICJ0b2tlbn
+                sourceEntityIds:
+                  -
+                    AccountSourceID: 0015A00002Rdu8RQAR
+                    AccountAddressSourceID: a0n5A00000Tw6UjQAJ
+              type: object
+              additionalProperties: true
+              required:
+                - Config
+              properties:
+                Config:
+                  type: object
+                  additionalProperties: true
+                  required:
+                    - credentials
+                  properties:
+                    credentials:
+                      default: ewogICJ0b2tlbn
+                      type: string
+                sourceEntityIds:
+                  type: array
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  entityUri: entities/tJ1YUZd
+                  entityType: configuration/entityTypes/HCP
+                  hasAddressUri: relations/s5SepYd
+                  activityUri: relations/s5Setot
+                  dcrStatus: Approve
+                  dcrMessage:
+                    assignee: vviresh
+                    processInstanceId: "35680475"
+                    processType: dataChangeRequestReview
+                    objectURIs:
+                      - changeRequests/2BTKIZbd
+                      - entities/tJ1YUZd
+                    createdBy: vviresh
+                    priorityClass: Medium
+                    taskType: dcrInternalReview
+                    createTime: 1560764022432
+                    dueDate: 1560936822432
+                    processInstanceComments:
+                      -
+                        id: "35680490"
+                        message: Started Reviewing
+                        author: vviresh
+                        time: 1560763733697
+                    taskId: "35680495"
+                    displayName: Internal DS Review
+                    processDefinitionDisplayName: Data Change Request Review
+                    possibleActions:
+                      -
+                        action: Approve
+                        label: Approve
+                      -
+                        action: Reject
+                        label: Reject
+                    priority: 50
+                    preferredAction:
+                      action: Approve
+                      label: Approve
+                    repeatingTask: false
+                    isOpen: false
+                    updateTime: 1560764109621
+                    completedAction:
+                      action: Approve
+                      label: Approve
+                    completeTime: 1560764109621
+                    completedBy: vviresh
+                    valid: true
+                type: object
+                additionalProperties: true
+                required:
+                  - dcrStatus
+                properties:
+                  entityUri:
+                    type: string
+                  entityType:
+                    type: string
+                  hasAddressUri:
+                    type: string
+                  activityUri:
+                    type: string
+                  dcrStatus:
+                    type: string
+                  dcrMessage:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: A request was malformed
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+        "500":
+          description: Server-side issue
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+      security:
+        -
+          basicAuth: []
+  /TestAPIFour:
+    description: Test API 4
+    get:
+      parameters:
+        -
+          name: messageid
+          description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+          required: false
+          in: header
+          schema:
+            title: messageid (message id)
+            description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+            example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+            type: string
+            pattern: ^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                example:
+                  CreatedDate: "21042022"
+                  CurrentDate: "13072022"
+                  ExpirationDate: "22042024"
+                  ExpiringInDays: 649
+                  FeatureName: reltio_cloud_connector
+                  LicenseOwner: IQVIA
+                  ValidVersion: ""
+                  VendorName: reltio
+                type: object
+                additionalProperties: true
+                required:
+                  - CurrentDate
+                  - ExpirationDate
+                  - ExpiringInDays
+                  - FeatureName
+                  - LicenseOwner
+                  - ValidVersion
+                  - VendorName
+                properties:
+                  CreatedDate:
+                    default: "22042024"
+                    type: string
+                  CurrentDate:
+                    default: "22042024"
+                    type: string
+                  ExpirationDate:
+                    default: "22042024"
+                    type: string
+                  ExpiringInDays:
+                    type: integer
+                  FeatureName:
+                    type: string
+                  LicenseOwner:
+                    type: string
+                  ValidVersion:
+                    type: string
+                  VendorName:
+                    type: string
+        "400":
+          description: A request was malformed
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+        "500":
+          description: Server issue
+          content:
+            application/json:
+              schema:
+                title: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                required:
+                  - apiVersion
+                  - error
+                properties:
+                  apiVersion:
+                    title: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                  error:
+                    type: object
+                    additionalProperties: true
+                    required:
+                      - code
+                      - message
+                      - errors
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          required:
+                            - domain
+                            - reason
+                            - message
+                            - location
+                            - locationType
+                            - extendedHelp
+                            - transactionId
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              x-amf-examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+      security:
+        -
+          basicAuth: []
+components:
+  securitySchemes:
+    basicAuth:
+      type: basic
+      description: Each request must contain the headers necessary for basic authentication
+      x-amf-describedBy:
+        headers:
+          Authorization:
+            description: Used to send the Base64-encoded "client_id:client_secret" credentials
+            type: string
+        responses:
+          "401":
+            description: |-
+              Unauthorized. Either the provided client_id and client_secret
+              combination is invalid.
+               
+            body:
+              application/json:
+                displayName: DEMO Standard Error Response Format
+                description: This data type represents a standard error response format. These properties are NOT required; in other words, each reserved property may appear zero or one times
+                type: object
+                additionalProperties: true
+                properties:
+                  apiVersion:
+                    displayName: apiVersion
+                    description: Version of the API
+                    example: "1.0"
+                    type: string
+                    required: true
+                  error:
+                    type: object
+                    additionalProperties: true
+                    properties:
+                      code:
+                        description: Represents the code for this error. This property value will usually represent the HTTP response code. If there are multiple errors, code will be the error code for the first error.
+                        example: 409
+                        type: integer
+                        required: true
+                      message:
+                        description: A human readable message providing more details about the error. If there are multiple errors, message will be the message for the first error.
+                        example: Lexi Id not found
+                        type: string
+                        required: true
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                          properties:
+                            domain:
+                              description: The name of the service, class or other identifier for where the error occured to better provide an understanding of what the issue was.
+                              examples:
+                                first: global
+                                second: com.demo.mulesoft.mypackage
+                              type: string
+                              required: true
+                            reason:
+                              description: Unique identifier for this error. Different from the error.code property in that this is not an http response code.
+                              example: LexiIdNotFound
+                              type: string
+                              required: true
+                            message:
+                              description: A human readable message providing more details about the error. If there is only one error, this field will match error.message.
+                              example: Lexi Id not found
+                              type: string
+                              required: true
+                            location:
+                              description: The location of the error (the interpretation of its value depends on locationType).
+                              example: LexiId
+                              type: string
+                              required: true
+                            locationType:
+                              description: Indicates how the location property should be interpreted.
+                              example: URI parameter
+                              type: string
+                              required: true
+                            extendedHelp:
+                              description: Extended help for the support - Knowledge Base Article ID (if avaliable)
+                              example: KB-121a
+                              type: string
+                              required: true
+                            transactionId:
+                              description: Mule flow transaction Id (in guid format)
+                              example: efe0023e-0b80-4409-9652-6a61b540cede
+                              type: string
+                              required: true
+                        required: true
+                    required: true
