@@ -1,0 +1,901 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: demo-api
+  description: Demo API
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /TestAPIOne: 
+   post: 
+    operationId: post_TestAPIOne_1
+    tags: 
+     - TestAPIOne
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIOne_1_req'
+    parameters: 
+     - $ref: '#/components/parameters/entityTypeQueryParam'
+     - $ref: '#/components/parameters/messageidHeaderParam'
+     - $ref: '#/components/parameters/tenantIdHeaderParam'
+     - $ref: '#/components/parameters/jobIdHeaderParam'
+     - $ref: '#/components/parameters/transactionIdHeaderParam'
+     - $ref: '#/components/parameters/targetCodeHeaderParam'
+     - $ref: '#/components/parameters/sourceCodeHeaderParam'
+     - $ref: '#/components/parameters/sourceNameHeaderParam'
+     - $ref: '#/components/parameters/entityDomainCodeHeaderParam'
+     - $ref: '#/components/parameters/entityTypeHeaderParam'
+     - $ref: '#/components/parameters/idlFlagHeaderParam'
+     - $ref: '#/components/parameters/countryCodeHeaderParam'
+     - $ref: '#/components/parameters/dcrStatusFlagHeaderParam'
+    responses: 
+     '200': 
+      description: post_TestAPIOne_1
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIOne_1_200_res'
+     '400': 
+      description: A request was malformed
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIOne_1_400_res'
+     '404': 
+      description: resource not found
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIOne_1_404_res'
+     '500': 
+      description: internal server error
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIOne_1_500_res'
+  /TestAPIOne/{TaskId}: 
+   post: 
+    operationId: post_TestAPIOne_TaskId_2
+    tags: 
+     - TestAPIOne
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIOne_TaskId_2_req'
+    parameters: 
+     - $ref: '#/components/parameters/TaskIdPathParam'
+     - $ref: '#/components/parameters/messageidHeaderParam'
+     - $ref: '#/components/parameters/tenantIdHeaderParam'
+     - $ref: '#/components/parameters/jobIdHeaderParam'
+     - $ref: '#/components/parameters/transactionIdHeaderParam'
+     - $ref: '#/components/parameters/targetCodeHeaderParam'
+     - $ref: '#/components/parameters/sourceCodeHeaderParam'
+     - $ref: '#/components/parameters/sourceNameHeaderParam'
+     - $ref: '#/components/parameters/entityDomainCodeHeaderParam'
+     - $ref: '#/components/parameters/entityTypeHeaderParam'
+     - $ref: '#/components/parameters/idlFlagHeaderParam'
+     - $ref: '#/components/parameters/countryCodeHeaderParam'
+     - $ref: '#/components/parameters/dcrStatusFlagHeaderParam'
+    responses: 
+     '200': 
+      description: post_TestAPIOne_TaskId_2
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIOne_TaskId_2_200_res'
+     '400': 
+      description: A request was malformed
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIOne_TaskId_2_400_res'
+     '500': 
+      description: Server-side issue
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIOne_TaskId_2_500_res'
+  /TestAPITwo: 
+   post: 
+    operationId: post_TestAPITwo_3
+    tags: 
+     - TestAPITwo
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPITwo_3_req'
+    parameters: 
+     - $ref: '#/components/parameters/messageidHeaderParam'
+     - $ref: '#/components/parameters/tenantIdHeaderParam'
+     - $ref: '#/components/parameters/jobIdHeaderParam'
+     - $ref: '#/components/parameters/transactionIdHeaderParam'
+     - $ref: '#/components/parameters/targetCodeHeaderParam'
+     - $ref: '#/components/parameters/sourceCodeHeaderParam'
+     - $ref: '#/components/parameters/sourceNameHeaderParam'
+     - $ref: '#/components/parameters/entityDomainCodeHeaderParam'
+     - $ref: '#/components/parameters/entityTypeHeaderParam'
+     - $ref: '#/components/parameters/idlFlagHeaderParam'
+     - $ref: '#/components/parameters/countryCodeHeaderParam'
+     - $ref: '#/components/parameters/dcrStatusFlagHeaderParam'
+    responses: 
+     '200': 
+      description: post_TestAPITwo_3
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPITwo_3_200_res'
+     '400': 
+      description: A request was malformed
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPITwo_3_400_res'
+     '404': 
+      description: resource not found
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPITwo_3_404_res'
+     '500': 
+      description: internal server error
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPITwo_3_500_res'
+  /TestAPIThree/{TestUri}: 
+   post: 
+    operationId: post_TestAPIThree_TestUri_4
+    tags: 
+     - TestAPIThree
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIThree_TestUri_4_req'
+    parameters: 
+     - $ref: '#/components/parameters/TestUriPathParam'
+     - $ref: '#/components/parameters/DCROperationTypeQueryParam'
+     - $ref: '#/components/parameters/messageidHeaderParam'
+     - $ref: '#/components/parameters/tenantIdHeaderParam'
+     - $ref: '#/components/parameters/jobIdHeaderParam'
+     - $ref: '#/components/parameters/transactionIdHeaderParam'
+     - $ref: '#/components/parameters/targetCodeHeaderParam'
+     - $ref: '#/components/parameters/sourceCodeHeaderParam'
+     - $ref: '#/components/parameters/sourceNameHeaderParam'
+     - $ref: '#/components/parameters/entityDomainCodeHeaderParam'
+     - $ref: '#/components/parameters/entityTypeHeaderParam'
+     - $ref: '#/components/parameters/idlFlagHeaderParam'
+     - $ref: '#/components/parameters/countryCodeHeaderParam'
+     - $ref: '#/components/parameters/dcrStatusFlagHeaderParam'
+     - $ref: '#/components/parameters/crosswalkIdHeaderParam'
+    responses: 
+     '200': 
+      description: post_TestAPIThree_TestUri_4
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIThree_TestUri_4_200_res'
+     '400': 
+      description: A request was malformed
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIThree_TestUri_4_400_res'
+     '500': 
+      description: Server-side issue
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_TestAPIThree_TestUri_4_500_res'
+  /TestAPIFour: 
+   get: 
+    operationId: get_TestAPIFour_5
+    tags: 
+     - TestAPIFour
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/messageidHeaderParam'
+    responses: 
+     '200': 
+      description: get_TestAPIFour_5
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_TestAPIFour_5_200_res'
+     '400': 
+      description: A request was malformed
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_TestAPIFour_5_400_res'
+     '500': 
+      description: Server issue
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_TestAPIFour_5_500_res'
+components: 
+  schemas: 
+   post_TestAPIOne_1_200_res: 
+    title : post_TestAPIOne_1_200_res
+    type: object
+    properties: 
+     groupId: 
+      type: string
+      default: 453b7f3c-533b-4f8a-bf9c-d3c628e32ee4
+      example: 453b7f3c-533b-4f8a-bf9c-d3c628e32ee4
+     exportType: 
+      type: string
+      default: ENTITIES
+      example: ENTITIES
+     version: 
+      type: string
+      default: v1
+      example: v1
+     status: 
+      type: string
+      default: scheduled
+      example: scheduled
+     details: 
+      type: string
+      default: Export job has been scheduled Result will be sent to your email vvadiwala@us.imshealth.com
+      example: Export job has been scheduled. Result will be sent to your email: vvadiwala@us.imshealth.com
+     taskIds: 
+      type: array
+      items: 
+       type: string
+   post_TestAPIOne_1_400_res: 
+    title : post_TestAPIOne_1_400_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   error: 
+    title : error
+    type: object
+    properties: 
+     code: 
+      type: integer
+      example: 409
+     message: 
+      type: string
+      example: Lexi Id not found
+     errors: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/errorerrorsArray'
+   errorerrorsArray: 
+    title : errorerrorsArray
+    type: object
+    properties: 
+     domain: 
+      type: string
+     reason: 
+      type: string
+      example: LexiIdNotFound
+     message: 
+      type: string
+      example: Lexi Id not found
+     location: 
+      type: string
+      example: LexiId
+     locationType: 
+      type: string
+      example: URI parameter
+     extendedHelp: 
+      type: string
+      example: KB-121a
+     transactionId: 
+      type: string
+      example: efe0023e-0b80-4409-9652-6a61b540cede
+   post_TestAPIOne_1_404_res: 
+    title : post_TestAPIOne_1_404_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   post_TestAPIOne_1_500_res: 
+    title : post_TestAPIOne_1_500_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   s3BucketDetails: 
+    title : s3BucketDetails
+    type: object
+    properties: 
+     s3Path: 
+      type: string
+      default: ROCHE/6LFTnQjA1C6SgHi/Individual/12102018/
+      example: R7/evtmN18O9aVDPRQ/Ind11/OCESales/201901259/
+   post_TestAPIOne_1_req: 
+    title : post_TestAPIOne_1_req
+    type: object
+    properties: 
+     s3BucketDetails: 
+      type: object
+      $ref: '#/components/schemas/s3BucketDetails'
+     ExportDetails: 
+      type: object
+      $ref: '#/components/schemas/ExportDetails'
+     Config: 
+      type: object
+      $ref: '#/components/schemas/Config'
+   ExportDetails: 
+    title : ExportDetails
+    type: object
+    properties: 
+     ovOnly: 
+      type: boolean
+     updateTimeFilter: 
+      type: object
+      $ref: '#/components/schemas/updateTimeFilter'
+   updateTimeFilter: 
+    title : updateTimeFilter
+    type: object
+    properties: 
+     since: 
+      type: string
+      default: 1522598940000
+      example: 1522598940000
+     to: 
+      type: string
+      default: 1522598940000
+      example: 1543162140000
+   Config: 
+    title : Config
+    type: object
+    properties: 
+     credentials: 
+      type: string
+      default: ewogICJ0b2tlbn
+      example: ewogICJ0b2tlbnVybCI6ICJodHRwczovL2F1dGgucmVsdGlvLmNvbS9vYXV0aC90b2tlbiIsCiAgImN1c3RvbWVydGVuYW50dXJsIjogImh0dHBzOi8vZGV2LnJlbHRpby5jb20vcmVsdGlvL2FwaS8iLAogICJjdXN0b21lcnRlbmFudGlkIjogIjZMRlRuUWpBMUM2U2dIaSIsCiAgImN1c3RvbWVydGVuYW50dXNlcm5hbWUiOiAidnZpcmVzaCIsCiAgImN1c3RvbWVydGVuYW50cGFzc3dvcmQiOiAiV2VsY29tZSEiLAogICJjdXN0b21lcnRlbmFudGNsaWVudGtleSI6ICJjbVZzZEdsdlgzVnBPbTFoYTJsMFlRPT0iLAogICJleHBvcnRzZXJ2aWNldXJsIjogImh0dHBzOi8vZGV2LnJlbHRpby5jb20vcmVsdGlvL2FwaS8iLAogICJ3b3JrZmxvd3VybCI6ICJodHRwczovL3Byb2Qtd29ya2Zsb3cucmVsdGlvLmNvbS93b3JrZmxvdy1hZGFwdGVyIiwKICAiZGF0YXRlbmFudHVybCI6ICJodHRwczovL3Rlc3QucmVsdGlvLmNvbS9hcGkvIiwKICAiZGF0YXRlbmFudGlkIjogIlpNR3RvVlY2RlBHcjFmSiIsCiAgImRhdGF0ZW5hbnR1c2VybmFtZSI6ICJ2dmlyZXNoIiwKICAiZGF0YXRlbmFudHBhc3N3b3JkIjogIldlbGNvbWUhIiwKICAiZGF0YXRlbmFudGNsaWVudGtleSI6ICJjbVZzZEdsdlgzVnBPbTFoYTJsMFlRPT0iLAogICJyZG11cmwiOiAiaHR0cHM6Ly9yZG0ucmVsdGlvLmNvbS9hcGkvIiwKICAicmRtdGVuYW50aWQiOiAiODh0QVA0aXVJSzNGdk9oIiwKICAicmRtdXNlcm5hbWUiOiAidnZpcmVzaCIsCiAgInJkbXBhc3N3b3JkIjogIldlbGNvbWUhIiwKICAicmRtY2xpZW50a2V5IjogImNtVnNkR2x2WDNWcE9tMWhhMmwwWVE9PSIKfQ==
+   post_TestAPIOne_TaskId_2_200_res: 
+    title : post_TestAPIOne_TaskId_2_200_res
+    type: object
+    properties: 
+     id: 
+      type: string
+      example: 0d4a796b-c045-407e-9e70-9cafc9d6d0d3
+     groupId: 
+      type: string
+      example: d8794d2b-886f-4a45-ac42-fea9574805b0
+     createdBy: 
+      type: string
+      example: vviresh
+     updatedBy: 
+      type: string
+      example: vviresh
+     type: 
+      type: string
+      example: com.reltio.export.tasks.local.cassandra.EntitiesCassandraExportTask
+     status: 
+      type: string
+      example: COMPLETED
+     name: 
+      type: string
+      example: entities-cassandra-export-task[6lftnqja1c6sghi_08-44_entities_ed61]
+     createdOnHost: 
+      type: string
+      example: ip-54-86-193-194
+     executedOnHost: 
+      type: string
+      example: ip-54-204-149-174
+     parallelExecution: 
+      type: boolean
+     nodesGroup: 
+      type: string
+      example: dev-jobs1
+     parameters: 
+      type: object
+      $ref: '#/components/schemas/parameters'
+     currentState: 
+      type: object
+      $ref: '#/components/schemas/currentState'
+     throughput: 
+      type: number
+      example: 0
+     duration: 
+      type: string
+      example: 1m 39s
+   parameters: 
+    title : parameters
+    type: object
+    properties: 
+     updatedSince: 
+      type: string
+      example: 1543162140000
+     distributedTaskIndex: 
+      type: string
+      example: 0
+     s3Path: 
+      type: string
+      example: /export/HCP/HCP_12_031_18
+     partSize: 
+      type: string
+      example: 104857600
+     headersStyle: 
+      type: string
+      example: name
+     specifiedMailAddress: 
+      type: string
+      example: vvadiwala@us.imshealth.com
+     taskId: 
+      type: string
+      example: 6lftnqja1c6sghi_08-44_entities_ed61
+     useEsHeadersCollectionExport: 
+      type: string
+      example: false
+     updatedBefore: 
+      type: string
+      example: 1543162140000
+     activeness: 
+      type: string
+      example: ACTIVE
+     fileFormat: 
+      type: string
+      example: JSON
+     parallelTasksIds: 
+      type: string
+      example: ["a3cea27e-2a74-4417-8a61-10c0b3582dc0","21711918-3d68-4d04-8ccd-d0ea615a5a2e","801c0f4b-5fcf-4647-9e1d-f740265d2dfc","c4d12121-6ede-4cca-b29c-026497e83f20","5457131e-7927-41d7-a77e-f24d01dfda09"]
+     tenantId: 
+      type: string
+      example: 6LFTnQjA1C6SgHi
+     skipPostprocessing: 
+      type: string
+      example: false
+     s3Bucket: 
+      type: string
+      example: lexi-reltio-mdm-dev
+     includeType: 
+      type: string
+      example: ["configuration/entityTypes/HCP"]
+     queryParams: 
+      type: string
+      example: {"options":"parallelExecution","activeness":"ACTIVE"}
+     exportName: 
+      type: string
+      example: 6lftnqja1c6sghi_08-44_entities
+     userRoles: 
+      type: string
+      example: ACCEPT_CHANGE_REQUEST,API_USER,ROLE_ADMIN_TENANT_6LFTnQjA1C6SgHi,ROLE_ADMIN_TENANT_88tAP4iuIK3FvOh,ROLE_ADMIN_TENANT_Kjmc5DI6ZulMklx,ROLE_ANALYTICS,ROLE_API,ROLE_EXPORT,ROLE_INITIATE_CHANGE_REQUEST,ROLE_RDM,ROLE_RDM_EDIT,ROLE_REVIEWER,ROLE_SFDC_CONNECTOR,ROLE_SFDC_CONNECTOR_ADMIN,ROLE_UI_ALL,ROLE_USER,ROLE_WORKFLOW
+     ovOnly: 
+      type: string
+      example: true
+     username: 
+      type: string
+      example: vviresh
+     encryptUrl: 
+      type: string
+      example: true
+     headerFormat: 
+      type: string
+      example: DEFAULT
+     sePrefix: 
+      type: string
+      example: false
+     distributedTasksPartsCount: 
+      type: string
+      example: 6
+     dateFormat: 
+      type: string
+      example: TIMESTAMP
+     mailAddress: 
+      type: string
+      example: vvadiwala@us.imshealth.com
+     exportPath: 
+      type: string
+      example: export/HCP
+   currentState: 
+    title : currentState
+    type: object
+    properties: 
+     statusId: 
+      type: number
+      example: 600
+     status: 
+      type: string
+      example: Completed
+     lastExecutionEC2Instances: 
+      type: string
+      example: i-0ac0a45784904cb37
+     lastHourThroughput: 
+      type: number
+      example: 435.1044921875
+     numberOfProcessedObjects: 
+      type: number
+      example: 0
+     numberOfFailedToPublishEvents: 
+      type: number
+      example: 0
+     numberOfObjects: 
+      type: number
+      example: 34704
+     globalStatus: 
+      type: object
+      $ref: '#/components/schemas/globalStatus'
+     exportUrls: 
+      type: array
+      items: 
+       type: string
+   globalStatus: 
+    title : globalStatus
+    type: object
+    properties: 
+     lastFiveMinReadThroughput: 
+      type: number
+      example: 2274
+     lastFiveMinThroughput: 
+      type: number
+      example: 0
+     entitiesTotal: 
+      type: number
+      example: 54642
+     entitiesNumber: 
+      type: number
+      example: 0
+     overallThroughput: 
+      type: number
+      example: 0
+     overallReadThroughput: 
+      type: number
+      example: 2274
+   currentStateexportUrlsArray: 
+    title : currentStateexportUrlsArray
+    type: object
+    properties: 
+     exportUrls: 
+      type: string
+      example: https://dev.reltio.com/download.html?tenant=6LFTnQjA1C6SgHi&downloadExportUrl=https://lexi-reltio-mdm-dev.s3.amazonaws.com/export/HCP/HCP_12_031_18_part_1.zip?AWSAccessKeyId=UKW9fZephHjsLiiV1bpOFKekHozIDSPgT7gpf0H1Ac0%3D&Expires=1545036347&Signature=X2pc8vjz%2F4w6brr7fircMWgAk3M%3D
+   post_TestAPIOne_TaskId_2_400_res: 
+    title : post_TestAPIOne_TaskId_2_400_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   post_TestAPIOne_TaskId_2_500_res: 
+    title : post_TestAPIOne_TaskId_2_500_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   post_TestAPIOne_TaskId_2_req: 
+    title : post_TestAPIOne_TaskId_2_req
+    type: object
+    properties: 
+     Config: 
+      type: object
+      $ref: '#/components/schemas/Config'
+   post_TestAPITwo_3_200_res: 
+    title : post_TestAPITwo_3_200_res
+    type: object
+    properties: 
+     groupId: 
+      type: string
+      default: 453b7f3c-533b-4f8a-bf9c-d3c628e32ee4
+      example: 820586ff-5bc9-48f1-b304-2e36f1f5c35a
+     exportType: 
+      type: string
+      default: MERGE_TREE
+      example: MERGE_TREE
+     version: 
+      type: string
+      default: v1
+      example: v1
+     status: 
+      type: string
+      default: scheduled
+      example: scheduled
+     details: 
+      type: string
+      default: Export job has been scheduled Result will be sent to your email vvadiwala@us.imshealth.com
+      example: Export job has been scheduled. Result will be sent to your email: vvadiwala@us.imshealth.com
+     taskIds: 
+      type: array
+      items: 
+       type: string
+   post_TestAPITwo_3_400_res: 
+    title : post_TestAPITwo_3_400_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   post_TestAPITwo_3_404_res: 
+    title : post_TestAPITwo_3_404_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   post_TestAPITwo_3_500_res: 
+    title : post_TestAPITwo_3_500_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   post_TestAPITwo_3_req: 
+    title : post_TestAPITwo_3_req
+    type: object
+    properties: 
+     s3BucketDetails: 
+      type: object
+      $ref: '#/components/schemas/s3BucketDetails'
+     ExportDetails: 
+      type: object
+      $ref: '#/components/schemas/ExportDetails'
+     Config: 
+      type: object
+      $ref: '#/components/schemas/Config'
+   post_TestAPIThree_TestUri_4_200_res: 
+    title : post_TestAPIThree_TestUri_4_200_res
+    type: object
+    properties: 
+     entityUri: 
+      type: string
+      example: entities/tJ1YUZd
+     entityType: 
+      type: string
+      example: configuration/entityTypes/HCP
+     hasAddressUri: 
+      type: string
+      example: relations/s5SepYd
+     activityUri: 
+      type: string
+      example: relations/s5Setot
+     dcrStatus: 
+      type: string
+      example: Approve
+     dcrMessage: 
+      type: object
+   post_TestAPIThree_TestUri_4_400_res: 
+    title : post_TestAPIThree_TestUri_4_400_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   post_TestAPIThree_TestUri_4_500_res: 
+    title : post_TestAPIThree_TestUri_4_500_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   post_TestAPIThree_TestUri_4_req: 
+    title : post_TestAPIThree_TestUri_4_req
+    type: object
+    properties: 
+     Config: 
+      type: object
+      $ref: '#/components/schemas/Config'
+     sourceEntityIds: 
+      type: array
+      items: 
+       type: string
+   get_TestAPIFour_5_200_res: 
+    title : get_TestAPIFour_5_200_res
+    type: object
+    properties: 
+     CreatedDate: 
+      type: string
+      default: 22042024
+      example: 21042022
+     CurrentDate: 
+      type: string
+      default: 22042024
+      example: 13072022
+     ExpirationDate: 
+      type: string
+      default: 22042024
+      example: 22042024
+     ExpiringInDays: 
+      type: integer
+      example: 649
+     FeatureName: 
+      type: string
+      example: reltio_cloud_connector
+     LicenseOwner: 
+      type: string
+      example: IQVIA
+     ValidVersion: 
+      type: string
+      example: 
+     VendorName: 
+      type: string
+      example: reltio
+   get_TestAPIFour_5_400_res: 
+    title : get_TestAPIFour_5_400_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+   get_TestAPIFour_5_500_res: 
+    title : get_TestAPIFour_5_500_res
+    type: object
+    properties: 
+     apiVersion: 
+      type: string
+      example: 1.0
+     error: 
+      type: object
+      $ref: '#/components/schemas/error'
+  parameters: 
+   entityTypeQueryParam: 
+    in: query
+    name: entityType
+    required: true
+    schema: 
+     type: string
+    description: Entity Type
+   messageidHeaderParam: 
+    in: header
+    name: messageid
+    required: false
+    schema: 
+     type: string
+     example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+    description: A messageid uniquely identifies a message coming Anypoint MQ. Having a messageid allows us to fully reconstruct how a particular value ended-up in our dbs, using Splunk or similar system.
+   tenantIdHeaderParam: 
+    in: header
+    name: tenantId
+    required: true
+    schema: 
+     type: string
+     example: 470ed299-1647-11e8-87e0-48452081f82f
+    description: Tenant Identifier (guid)
+   jobIdHeaderParam: 
+    in: header
+    name: jobId
+    required: true
+    schema: 
+     type: string
+     example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+    description: job id
+   transactionIdHeaderParam: 
+    in: header
+    name: transactionId
+    required: true
+    schema: 
+     type: string
+     example: 988a512a-5c03-4002-9bf8-d741b1ca47e8
+    description: transaction id
+   targetCodeHeaderParam: 
+    in: header
+    name: targetCode
+    required: false
+    schema: 
+     type: string
+     format: array
+    description: application targetCode
+   sourceCodeHeaderParam: 
+    in: header
+    name: sourceCode
+    required: false
+    schema: 
+     type: string
+    description: application sourceCode
+   sourceNameHeaderParam: 
+    in: header
+    name: sourceName
+    required: false
+    schema: 
+     type: string
+    description: sourceName for country
+   entityDomainCodeHeaderParam: 
+    in: header
+    name: entityDomainCode
+    required: false
+    schema: 
+     type: string
+    description: application entityDomainCode
+   entityTypeHeaderParam: 
+    in: header
+    name: entityType
+    required: false
+    schema: 
+     type: string
+    description: entityType
+   idlFlagHeaderParam: 
+    in: header
+    name: idlFlag
+    required: false
+    schema: 
+     type: number
+     default: 1
+    description: IDL Flag
+   countryCodeHeaderParam: 
+    in: header
+    name: countryCode
+    required: false
+    schema: 
+     type: string
+    description: countryCode
+   dcrStatusFlagHeaderParam: 
+    in: header
+    name: dcrStatusFlag
+    required: false
+    schema: 
+     type: number
+    description: DCR Status Flag
+   TaskIdPathParam: 
+    in: path
+    name: TaskId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   TestUriPathParam: 
+    in: path
+    name: TestUri
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   DCROperationTypeQueryParam: 
+    in: query
+    name: DCROperationType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   crosswalkIdHeaderParam: 
+    in: header
+    name: crosswalkId
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
