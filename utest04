@@ -1,0 +1,157 @@
+#%RAML 1.0
+title: Member Enrollment API V1
+description: Member Enrollment API V1
+version: v1
+securitySchemes: 
+annotationTypes: 
+  operationId: 
+   type: string
+uses:
+  api_data_types_lib:library/lib_data_typeutest04
+/groups: 
+  get: 
+   (operationId): getAllGroups
+   description: Get All Groups
+   responses: 
+    200: 
+     description: All Groups retrieved
+     body: 
+      application/json: 
+       type: array
+       items: 
+        type: api_data_types_lib.groupResponse
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: api_data_types_lib.ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: api_data_types_lib.ErrorResponseList
+  post: 
+   (operationId): createGroup
+   description: Create Group
+   body: 
+    type: api_data_types_lib.groupRequest
+   responses: 
+    200: 
+     description: Group created by Id
+     body: 
+      application/json: 
+       type: api_data_types_lib.createResponse
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: api_data_types_lib.ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: api_data_types_lib.ErrorResponseList
+  /{id}: 
+   get: 
+    (operationId): getGroupById
+    description: Get Group By Id
+    responses: 
+     200: 
+      description: Group retrieved by Id
+      body: 
+       application/json: 
+        type: api_data_types_lib.groupResponse
+     404: 
+      description: Not Found
+      body: 
+       application/json: 
+        type: api_data_types_lib.ErrorResponseList
+     500: 
+      description: Internal Server Error
+      body: 
+       application/json: 
+        type: api_data_types_lib.ErrorResponseList
+   put: 
+    (operationId): updateGroup
+    description: Update Group By Id
+    body: 
+     type: api_data_types_lib.memberRequest
+    responses: 
+     200: 
+      description: Group updated by Id
+      body: 
+       application/json: 
+        type: api_data_types_lib.updateResponse
+     404: 
+      description: Not Found
+      body: 
+       application/json: 
+        type: api_data_types_lib.ErrorResponseList
+     500: 
+      description: Internal Server Error
+      body: 
+       application/json: 
+        type: api_data_types_lib.ErrorResponseList
+/members: 
+  get: 
+   (operationId): getAllMembers
+   description: Get All Members
+   responses: 
+    200: 
+     description: All Members retrieved
+     body: 
+      application/json: 
+       type: array
+       items: 
+        type: api_data_types_lib.memberResponse
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: api_data_types_lib.ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: api_data_types_lib.ErrorResponseList
+  post: 
+   (operationId): createMember
+   description: Create Member
+   body: 
+    type: api_data_types_lib.memberRequest
+   responses: 
+    200: 
+     description: Member created by Id
+     body: 
+      application/json: 
+       type: api_data_types_lib.createResponse
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: api_data_types_lib.ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: api_data_types_lib.ErrorResponseList
+  /{id}: 
+   get: 
+    (operationId): getMemberById
+    description: Get Member By Id
+    responses: 
+     200: 
+      description: Member retrieved by Id
+      body: 
+       application/json: 
+        type: api_data_types_lib.memberResponse
+     404: 
+      description: Not Found
+      body: 
+       application/json: 
+        type: api_data_types_lib.ErrorResponseList
+     500: 
+      description: Internal Server Error
+      body: 
+       application/json: 
+        type: api_data_types_lib.ErrorResponseList
