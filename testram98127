@@ -1,0 +1,186 @@
+#%RAML 1.0
+title: Member Enrollment API V1
+description: Member Enrollment API V1
+version: v1
+securitySchemes: 
+annotationTypes: 
+  operationId: 
+   type: string
+types: 
+  updateResponse: 
+   type: object
+   properties: 
+  createResponse: 
+   type: object
+   properties: 
+  groupRequest: 
+   type: object
+   properties: 
+  addressDetails: 
+   type: object
+   properties: 
+  contactDetails: 
+   type: object
+   properties: 
+  groupResponse: 
+   type: object
+   properties: 
+  memberRequest: 
+   type: object
+   properties: 
+  memberResponse: 
+   type: object
+   properties: 
+  ErrorResponseList: 
+   type: object
+   properties: 
+  Error: 
+   type: object
+   properties: 
+/groups: 
+  get: 
+   (operationId): getAllGroups
+   description: Get All Groups
+   responses: 
+    200: 
+     description: All Groups retrieved
+     body: 
+      application/json: 
+       type: array
+       items: 
+        type: groupResponse
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: ErrorResponseList
+  post: 
+   (operationId): createGroup
+   description: Create Group
+   body: 
+    type: groupRequest
+   responses: 
+    200: 
+     description: Group created by Id
+     body: 
+      application/json: 
+       type: createResponse
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: ErrorResponseList
+  /{id}: 
+   get: 
+    (operationId): getGroupById
+    description: Get Group By Id
+    responses: 
+     200: 
+      description: Group retrieved by Id
+      body: 
+       application/json: 
+        type: groupResponse
+     404: 
+      description: Not Found
+      body: 
+       application/json: 
+        type: ErrorResponseList
+     500: 
+      description: Internal Server Error
+      body: 
+       application/json: 
+        type: ErrorResponseList
+   put: 
+    (operationId): updateGroup
+    description: Update Group By Id
+    body: 
+     type: memberRequest
+    responses: 
+     200: 
+      description: Group updated by Id
+      body: 
+       application/json: 
+        type: updateResponse
+     404: 
+      description: Not Found
+      body: 
+       application/json: 
+        type: ErrorResponseList
+     500: 
+      description: Internal Server Error
+      body: 
+       application/json: 
+        type: ErrorResponseList
+/members: 
+  get: 
+   (operationId): getAllMembers
+   description: Get All Members
+   responses: 
+    200: 
+     description: All Members retrieved
+     body: 
+      application/json: 
+       type: array
+       items: 
+        type: memberResponse
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: ErrorResponseList
+  post: 
+   (operationId): createMember
+   description: Create Member
+   body: 
+    type: memberRequest
+   responses: 
+    200: 
+     description: Member created by Id
+     body: 
+      application/json: 
+       type: createResponse
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: ErrorResponseList
+  /{id}: 
+   get: 
+    (operationId): getMemberById
+    description: Get Member By Id
+    responses: 
+     200: 
+      description: Member retrieved by Id
+      body: 
+       application/json: 
+        type: memberResponse
+     404: 
+      description: Not Found
+      body: 
+       application/json: 
+        type: ErrorResponseList
+     500: 
+      description: Internal Server Error
+      body: 
+       application/json: 
+        type: ErrorResponseList
