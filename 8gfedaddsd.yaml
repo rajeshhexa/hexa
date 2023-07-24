@@ -1,0 +1,657 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  Broker/getbrokers: 
+   post: 
+    operationId: getBrokers
+    tags: 
+     - Broker
+    summary: Get Broker 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BrokerSearchDTO'
+    responses: 
+     '200': 
+      description: Brokers retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BrokerListDTO'
+  Broker/addbroker: 
+   post: 
+    operationId: addBroker
+    tags: 
+     - Broker
+    summary: Add Broker
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BrokerDTO'
+    responses: 
+     '200': 
+      description: Broker added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  Broker/updatebroker: 
+   put: 
+    operationId: updateBroker
+    tags: 
+     - Broker
+    summary: Update Broker
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BrokerDTO'
+    responses: 
+     '200': 
+      description: Broker updated succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  Broker/getbrokerprofile: 
+   post: 
+    operationId: getBrokerProfile
+    tags: 
+     - Broker
+    summary: Get Broker Profile
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BrokerProfileSearchDTO'
+    responses: 
+     '200': 
+      description: Broker profile retrieved successfullly
+      content: 
+       application/xml: 
+        schema: 
+         type: string
+         nullable: true
+  Broker/getbrokerhistory/{brokerId}: 
+   post: 
+    operationId: getBrokerHistory
+    tags: 
+     - Broker
+    summary: Get Broker History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/brokerIdPathParam'
+    responses: 
+     '200': 
+      description: Broker history retrieved successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BrokerHistoryListDTO'
+  BrokerPosting/postbrokercommission: 
+   post: 
+    operationId: postBrokerCommission
+    tags: 
+     - BrokerPosting
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BrokerCommissionDTO'
+    responses: 
+     '200': 
+      description: Broker Commission Added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  BrokerPosting/previewbrokercommission: 
+   put: 
+    operationId: perviewBrokerCommission
+    tags: 
+     - BrokerPosting
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreviewBrokerProfileSearchDTO'
+    responses: 
+     '200': 
+      description: Broker Commision Updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   BrokerDTO: 
+    title : BrokerDTO
+    type: object
+    properties: 
+     BrokerId: 
+      type: string
+     BrokerNumber: 
+      type: number
+      format: float
+     DefaultCommission: 
+      type: integer
+     VendorId: 
+      type: string
+     LastName: 
+      type: string
+     FirstName: 
+      type: string
+     MiddleName: 
+      type: string
+     Title: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     Zip: 
+      type: string
+     ZipCodeId: 
+      type: integer
+     CountryCode: 
+      type: string
+     County: 
+      type: string
+     HomePhone: 
+      type: string
+     WorkPhone: 
+      type: string
+     WorkPhoneExt: 
+      type: string
+     EffectiveDate: 
+      type: string
+      description: Effective date
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      description: Expiry date
+      format: date-time
+      nullable: true
+     CellPhone: 
+      type: string
+     FaxPhone: 
+      type: string
+     LicenseNumber: 
+      type: string
+     ContactName: 
+      type: string
+     ContactEmail: 
+      type: string
+     UpdateUsage: 
+      type: string
+      default: |NORMAL|
+      nullable: true
+     Usage: 
+      type: string
+     Class: 
+      type: string
+     SubClass: 
+      type: string
+     NationalProducerNumber: 
+      type: string
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     SSN: 
+      type: string
+     LicenseState: 
+      type: string
+     LicenseEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LicenseExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AppointmentStatus: 
+      type: string
+     AppointmentDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastVerificationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NextVerificationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationReason: 
+      type: string
+     TerminationForCause: 
+      type: string
+   BrokerSearchDTO: 
+    title : BrokerSearchDTO
+    type: object
+    properties: 
+     BrokerID: 
+      type: integer
+     Usage: 
+      type: string
+     Flag: 
+      type: integer
+     LastName: 
+      type: string
+     BrokerNumber: 
+      type: string
+     EIN: 
+      type: string
+     VendorId: 
+      type: integer
+     LicenseNumber: 
+      type: string
+     LicenseState: 
+      type: string
+     AppointmentStatus: 
+      type: string
+     LastVerificationFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     LastVerificationTo: 
+      type: string
+      format: date-time
+      nullable: true
+     NextVerificationFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     NextVerificationTo: 
+      type: string
+      format: date-time
+      nullable: true
+     AppointmentDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     AppointmentDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ResultCount: 
+      type: integer
+   BrokerListDTO: 
+    title : BrokerListDTO
+    type: object
+    properties: 
+     BrokerId: 
+      type: integer
+      format: int32
+     BrokerType: 
+      type: string
+     BrokerTypeName: 
+      type: string
+     BrokerNumber: 
+      type: string
+     DefaultCommission: 
+      type: number
+      format: float
+     VendorId: 
+      type: integer
+      format: int32
+     VendorName: 
+      type: string
+     LastName: 
+      type: string
+     FirstName: 
+      type: string
+     MiddleName: 
+      type: string
+     Title: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     Zip: 
+      type: string
+     County: 
+      type: string
+     ZipCodeId: 
+      type: integer
+      format: int32
+     CountryCode: 
+      type: string
+     CountryISOCode2: 
+      type: string
+     CountryISOCode3: 
+      type: string
+     LATITUDE: 
+      type: number
+      format: double
+     LONGITUDE: 
+      type: number
+      format: double
+     HomePhone: 
+      type: string
+     WorkPhone: 
+      type: string
+     WorkPhoneExt: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     AccessCode: 
+      type: string
+     CellPhone: 
+      type: string
+     FaxPhone: 
+      type: string
+     LicenseNumber: 
+      type: string
+     ContactName: 
+      type: string
+     ContactEmail: 
+      type: string
+     BrokerName: 
+      type: string
+     WebUserId: 
+      type: integer
+      format: int32
+     WebUserName: 
+      type: string
+     WebUserFullName: 
+      type: string
+     WebUserEmail: 
+      type: string
+     Class: 
+      type: string
+     SubClass: 
+      type: string
+     NationalProducerNumber: 
+      type: string
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     SSN: 
+      type: string
+     LicenseState: 
+      type: string
+     LicenseEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LicenseExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AppointmentStatus: 
+      type: string
+     AppointmentDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastVerificationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NextVerificationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationReason: 
+      type: string
+     TerminationForCause: 
+      type: string
+     EIN: 
+      type: string
+     LegalName: 
+      type: string
+     LastVerificationFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     LastVerificationTo: 
+      type: string
+      format: date-time
+      nullable: true
+     NextVerificationFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     NextVerificationTo: 
+      type: string
+      format: date-time
+      nullable: true
+     AppointmentDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     AppointmentDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+   BrokerHistoryListDTO: 
+    title : BrokerHistoryListDTO
+    type: object
+    properties: 
+     BrokerId: 
+      type: integer
+     VendorId: 
+      type: string
+     VendorName: 
+      type: string
+     DefaultCommission: 
+      type: number
+      format: float
+     BrokerNumber : 
+      type: string
+     LastName : 
+      type: string
+     FirstName: 
+      type: string
+     MiddleName: 
+      type: string
+     Title: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+     City: 
+      type: string
+     State: 
+      type: string
+     Zip: 
+      type: string
+     HomePhone: 
+      type: string
+     WorkPhone: 
+      type: string
+     WorkPhoneExt: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedById: 
+      type: integer
+     County: 
+      type: string
+     AccessCode: 
+      type: string
+     CellPhone: 
+      type: string
+     FaxPhone: 
+      type: string
+     LicenseNumber: 
+      type: string
+     ContactName: 
+      type: string
+     ContactEmail: 
+      type: string
+     Class: 
+      type: string
+     SubClass: 
+      type: string
+     NationalProducerNumber: 
+      type: string
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     SSN: 
+      type: string
+     LicenseState: 
+      type: string
+     LicenseEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LicenseExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AppointmentStatus: 
+      type: string
+     AppointmentDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastVerificationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NextVerificationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationReason: 
+      type: string
+     TerminationForCause: 
+      type: string
+   BrokerProfileSearchDTO: 
+    title : BrokerProfileSearchDTO
+    type: object
+    properties: 
+     BrokerID: 
+      type: integer
+     BrokerNumber: 
+      type: string
+     ContactCategories: 
+      type: string
+     UserReportID: 
+      type: integer
+     ReturnStatus: 
+      type: string
+      default: Y
+      nullable: true
+     Usage: 
+      type: string
+   BrokerCommissionDTO: 
+    title : BrokerCommissionDTO
+    type: object
+    properties: 
+     RecordID: 
+      type: integer
+     Usage: 
+      type: string
+      default: |POST|
+      nullable: true
+     DebugFlag: 
+      type: integer
+     SPName: 
+      type: string
+   PreviewBrokerProfileSearchDTO: 
+    title : PreviewBrokerProfileSearchDTO
+    type: object
+    properties: 
+     AsOfDate: 
+      type: string
+     BillingEntityId: 
+      type: integer
+     Usage: 
+      type: string
+      default: |PREVIEW|
+      nullable: true
+     DebugFlag: 
+      type: integer
+     SPName: 
+      type: string
+  parameters: 
+   brokerIdPathParam: 
+    in: path
+    name: brokerId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
