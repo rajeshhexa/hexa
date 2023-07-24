@@ -1,0 +1,440 @@
+swagger: "2.0"
+info: 
+  title: Member Enrollment API V1
+  description: Member Enrollment API V1
+  version: 1.0.1
+host: www.apiexample.com
+basePath: /v1
+schemes: 
+  - https
+security: 
+  - BasicAuth: []
+paths: 
+  /groups: 
+   get: 
+    tags: 
+     - groups
+    description: Get All Groups
+    produces: 
+     - application/json
+     - application/xml
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/groupResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+   post: 
+    tags: 
+     - groups
+    description: Create Group
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - name: groupRequest
+       in: body
+       description: description of parameter passed
+       required: true
+       schema: 
+        $ref: '#/definitions/groupRequest'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/createResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+  /groups/{id}: 
+   get: 
+    tags: 
+     - groups
+    description: Get Group By Id
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - $ref: '#/parameters/idParam'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/groupResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+   put: 
+    tags: 
+     - groups
+    description: Update Group By Id
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - $ref: '#/parameters/idParam'
+     - name: memberRequest
+       in: body
+       description: description of parameter passed
+       required: true
+       schema: 
+        $ref: '#/definitions/memberRequest'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/updateResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+  /groups/{id}: 
+   put: 
+    tags: 
+     - groups
+    description: Update Group By Id
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - $ref: '#/parameters/idParam'
+     - name: memberRequest
+       in: body
+       description: description of parameter passed
+       required: true
+       schema: 
+        $ref: '#/definitions/memberRequest'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/updateResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+   get: 
+    tags: 
+     - groups
+    description: Get Group By Id
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - $ref: '#/parameters/idParam'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/groupResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+  /members: 
+   get: 
+    tags: 
+     - groups
+    description: Get All Members
+    produces: 
+     - application/json
+     - application/xml
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/memberResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+   post: 
+    tags: 
+     - groups
+    description: Create Member
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - name: memberRequest
+       in: body
+       description: description of parameter passed
+       required: true
+       schema: 
+        $ref: '#/definitions/memberRequest'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/createResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+definitions: 
+   updateResponse: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     status: 
+      type: string
+     statusCode: 
+      type: string
+   createResponse: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     status: 
+      type: string
+     statusCode: 
+      type: string
+   groupRequest: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     groupNo: 
+      type: string
+     groupName: 
+      type: string
+     groupType: 
+      type: string
+     idNumber: 
+      type: string
+     addressDetails: 
+      type: object
+      $ref: '#/definitions/addressDetails'
+     effectiveStartDate: 
+      type: string
+     effectiveEndDate: 
+      type: string
+     contactDetails: 
+      type: object
+      $ref: '#/definitions/contactDetails'
+     renewalDate: 
+      type: string
+     lineOfBusiness: 
+      type: string
+     productType: 
+      type: string
+     productLine: 
+      type: string
+     coverage: 
+      type: string
+   addressDetails: 
+    type: object
+    properties: 
+     streetAddress1: 
+      type: string
+     streetAddress2: 
+      type: string
+     city: 
+      type: string
+     state: 
+      type: string
+     zipCode: 
+      type: string
+     county: 
+      type: string
+     country: 
+      type: string
+   contactDetails: 
+    type: object
+    properties: 
+     contactName: 
+      type: string
+     contactPhone: 
+      type: string
+     ext: 
+      type: string
+     fax: 
+      type: string
+     email: 
+      type: string
+   groupResponse: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     groupNo: 
+      type: string
+     groupName: 
+      type: string
+     groupType: 
+      type: string
+     idNumber: 
+      type: string
+     addressDetails: 
+      type: object
+      $ref: '#/definitions/addressDetails'
+     effectiveStartDate: 
+      type: string
+     effectiveEndDate: 
+      type: string
+     contactDetails: 
+      type: object
+      $ref: '#/definitions/contactDetails'
+     renewalDate: 
+      type: string
+     lineOfBusiness: 
+      type: string
+     productType: 
+      type: string
+     productLine: 
+      type: string
+     coverage: 
+      type: string
+   memberRequest: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     middleName: 
+      type: string
+     prefix: 
+      type: string
+     suffix: 
+      type: string
+     gender: 
+      type: string
+     addressDetails: 
+      type: object
+      $ref: '#/definitions/addressDetails'
+     activeMemberSince: 
+      type: string
+     nationalId: 
+      type: string
+     lastNameMatch: 
+      type: string
+     locationCode: 
+      type: string
+     HICN: 
+      type: string
+     dateOfBirth: 
+      type: string
+     dateOfDeath: 
+      type: string
+     SSN: 
+      type: string
+     medicareEntitlement: 
+      type: string
+     mbi: 
+      type: string
+     primaryLanguage: 
+      type: string
+     maritalStatus: 
+      type: string
+     ethnicity: 
+      type: string
+     dependentViewWebOption: 
+      type: string
+     employerName: 
+      type: string
+     homePhone: 
+      type: string
+     workPhone: 
+      type: string
+     cellPhone: 
+      type: string
+     email: 
+      type: string
+     hireDate: 
+      type: string
+     volume: 
+      type: string
+   memberResponse: 
+    type: object
+    properties: 
+     id: 
+      type: string
+     firstName: 
+      type: string
+     lastName: 
+      type: string
+     middleName: 
+      type: string
+     prefix: 
+      type: string
+     suffix: 
+      type: string
+     gender: 
+      type: string
+     addressDetails: 
+      type: object
+      $ref: '#/definitions/addressDetails'
+     activeMemberSince: 
+      type: string
+     nationalId: 
+      type: string
+     lastNameMatch: 
+      type: string
+     locationCode: 
+      type: string
+     HICN: 
+      type: string
+     dateOfBirth: 
+      type: string
+     dateOfDeath: 
+      type: string
+     SSN: 
+      type: string
+     medicareEntitlement: 
+      type: string
+     mbi: 
+      type: string
+     primaryLanguage: 
+      type: string
+     maritalStatus: 
+      type: string
+     ethnicity: 
+      type: string
+     dependentViewWebOption: 
+      type: string
+     employerName: 
+      type: string
+     homePhone: 
+      type: string
+     workPhone: 
+      type: string
+     cellPhone: 
+      type: string
+     email: 
+      type: string
+     hireDate: 
+      type: string
+     volume: 
+      type: string
+   ErrorResponseList: 
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/definitions/Error'
+   Error: 
+    type: object
+    properties: 
+     ErrorCode: 
+      type: string
+     ErrorDescription: 
+      type: string
+parameters: 
+   idParam: 
+    in: path
+    name: id
+    type: string
+    required: true
+    description: Id of an group to get details
+securityDefinitions: 
+   BasicAuth: 
+    type: basic
