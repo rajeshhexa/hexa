@@ -1,0 +1,690 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Reference Data
+  description: Reference Date API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /ReferenceData/outputbatchend: 
+   put: 
+    operationId: outputbatchend
+    tags: 
+     - Reference Data
+    summary: Ouput Batch End
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/OutputBatchEndDTO'
+    responses: 
+     '200': 
+      description: Output batch end completed
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /ReferenceData/setuseroption: 
+   post: 
+    operationId: setuseroption
+    tags: 
+     - Reference Data
+    summary: Set user option
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ItemTypeQueryParam'
+     - $ref: '#/components/parameters/ItemValueQueryParam'
+    responses: 
+     '200': 
+      description: User option set successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /ReferenceData/getedixacts: 
+   post: 
+    operationId: getedixacts
+    tags: 
+     - Reference Data
+    summary: Get EDIXacts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EDIXactsSearchDTO'
+    responses: 
+     '200': 
+      description: EDIXacts retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EDIXactsListDTO'
+  /ReferenceData/getnumbersequences: 
+   get: 
+    operationId: getnumbersequences
+    tags: 
+     - Reference Data
+    summary: Get number sequences
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NumberSequenceIdQueryParam'
+     - $ref: '#/components/parameters/SequenceTypeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Number Sequences retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NumberSequencesListDTO'
+  /ReferenceData/getreferencecodes: 
+   post: 
+    operationId: getreferencecodes
+    tags: 
+     - Reference Data
+    summary: Get reference codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReferenceCodesSearchDTO'
+    responses: 
+     '200': 
+      description: Reference Codes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReferenceCodesListDTO'
+  /ReferenceData/getcountries: 
+   get: 
+    operationId: getcountries
+    tags: 
+     - Reference Data
+    summary: Get countries
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CountryIdQueryParam'
+     - $ref: '#/components/parameters/CountryNameQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Countries retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CountriesListDTO'
+  /ReferenceData/getcounties: 
+   get: 
+    operationId: getcounties
+    tags: 
+     - Reference Data
+    summary: Get counties
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/StateQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: Counties retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+  /ReferenceData/validatecitystatezip: 
+   post: 
+    operationId: validatecitystatezip
+    tags: 
+     - Reference Data
+    summary: Validate City State Zip
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ValidateCityStateZipSearchDTO'
+    responses: 
+     '200': 
+      description: Validate city state zip
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ValidateCityStateZipListDTO'
+components: 
+  schemas: 
+   ValidateCityStateZipListDTO: 
+    title : ValidateCityStateZipListDTO
+    type: object
+    properties: 
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     Longitude: 
+      type: number
+      format: float
+      nullable: true
+     Latitude: 
+      type: number
+      format: float
+      nullable: true
+   OutputBatchEndDTO: 
+    title : OutputBatchEndDTO
+    type: object
+    properties: 
+     OutputBatchId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     LastTransactionSetControlNumber: 
+      type: integer
+      nullable: true
+     ErrorFileName: 
+      type: string
+      nullable: true
+     ErrorFileLocation: 
+      type: string
+      nullable: true
+     SetMailDateToConfirmDate: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+   EDIXactsSearchDTO: 
+    title : EDIXactsSearchDTO
+    type: object
+    properties: 
+     FileID: 
+      type: integer
+      nullable: true
+     XactID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     ClaimID: 
+      type: integer
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   EDIXactsListDTO: 
+    title : EDIXactsListDTO
+    type: object
+    properties: 
+     XactID: 
+      type: integer
+      nullable: true
+     EDIFileID: 
+      type: integer
+      nullable: true
+     XactType: 
+      type: string
+      nullable: true
+     XactTypeCode: 
+      type: string
+      nullable: true
+     XactStatusCode: 
+      type: string
+      nullable: true
+     XactStatus: 
+      type: string
+      nullable: true
+     XactLog: 
+      type: string
+      nullable: true
+     SegmentStart: 
+      type: integer
+      nullable: true
+     SourceDataLocation: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: string
+      nullable: true
+     ReferenceNumber2: 
+      type: string
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ExternalFileName: 
+      type: string
+      nullable: true
+     InternalFileName: 
+      type: string
+      nullable: true
+     DonePath: 
+      type: string
+      nullable: true
+     FileType: 
+      type: string
+      nullable: true
+     FileTypeCode: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     ProcessedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EDIDescription: 
+      type: string
+      nullable: true
+     SQLCall: 
+      type: string
+      nullable: true
+     RecordID: 
+      type: integer
+      nullable: true
+     AmtPaid: 
+      type: string
+      nullable: true
+     NodeDisplay: 
+      type: string
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ClaimSubmissionId: 
+      type: integer
+      nullable: true
+     SubmissionTypeCode: 
+      type: string
+      nullable: true
+     SubmissionType: 
+      type: string
+      nullable: true
+     OutputBatchStatus: 
+      type: string
+      nullable: true
+     OutputBatchStatusName: 
+      type: string
+      nullable: true
+     ElementSeparator: 
+      type: string
+      nullable: true
+     SegmentSeparator: 
+      type: string
+      nullable: true
+     DataSeparator: 
+      type: string
+      nullable: true
+   NumberSequencesListDTO: 
+    title : NumberSequencesListDTO
+    type: object
+    properties: 
+     NumberSequenceId: 
+      type: integer
+      nullable: true
+     NumberSequenceName: 
+      type: string
+      nullable: true
+     SequenceType: 
+      type: string
+      nullable: true
+     ValueType: 
+      type: string
+      nullable: true
+     Prefix: 
+      type: string
+      nullable: true
+     CurrentValue: 
+      type: integer
+      format: int64
+      nullable: true
+     MinimumValue: 
+      type: integer
+      format: int64
+      nullable: true
+     MaximumValue: 
+      type: integer
+      format: int64
+      nullable: true
+     NumberLength: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     SequenceTypeName: 
+      type: string
+      nullable: true
+     ValueTypeName: 
+      type: string
+      nullable: true
+   ReferenceCodesSearchDTO: 
+    title : ReferenceCodesSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     AllowCheckout: 
+      type: string
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     SubType: 
+      type: string
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     ReferenceCodeID: 
+      type: integer
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReturnOnlyActiveCodes: 
+      type: string
+      nullable: true
+     UseLikeForName: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     CMSPaymentCategory: 
+      type: string
+      nullable: true
+   ReferenceCodesListDTO: 
+    title : ReferenceCodesListDTO
+    type: object
+    properties: 
+     ReferenceCodeID: 
+      type: integer
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     Subtype: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     FedNumber: 
+      type: string
+      nullable: true
+     StateNumber: 
+      type: string
+      nullable: true
+     AppNumber: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     Visible: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastupdatedByID: 
+      type: integer
+      nullable: true
+     FullName: 
+      type: string
+      nullable: true
+     LastupdatedBy: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     CMSPaymentCategory: 
+      type: string
+      nullable: true
+     CMSPaymentCategoryName: 
+      type: string
+      nullable: true
+   CountriesListDTO: 
+    title : CountriesListDTO
+    type: object
+    properties: 
+     CountryID: 
+      type: integer
+      nullable: true
+     CountryName: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     BaseCurrency: 
+      type: string
+      nullable: true
+     BaseCurrencyName: 
+      type: string
+      nullable: true
+     PrimaryLanguage: 
+      type: string
+      nullable: true
+     PrimaryLanguageName: 
+      type: string
+      nullable: true
+     PhonePrefix: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     ValidationType: 
+      type: string
+      nullable: true
+     ValidationTypeName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+   ValidateCityStateZipSearchDTO: 
+    title : ValidateCityStateZipSearchDTO
+    type: object
+    properties: 
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   ItemTypeQueryParam: 
+    in: query
+    name: ItemType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   ItemValueQueryParam: 
+    in: query
+    name: ItemValue
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   NumberSequenceIdQueryParam: 
+    in: query
+    name: NumberSequenceId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SequenceTypeQueryParam: 
+    in: query
+    name: SequenceType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   CountryIdQueryParam: 
+    in: query
+    name: CountryId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   CountryNameQueryParam: 
+    in: query
+    name: CountryName
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   StateQueryParam: 
+    in: query
+    name: State
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   FlagQueryParam: 
+    in: query
+    name: Flag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
