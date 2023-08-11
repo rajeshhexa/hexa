@@ -1,0 +1,407 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: User API
+  description: Users API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /User/getusers: 
+   post: 
+    operationId: getUsers
+    tags: 
+     - Users
+    summary: Get users
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UserSearchDTO'
+    responses: 
+     '200': 
+      description: Users retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/UserListDTO'
+  /User/getuseroption: 
+   get: 
+    operationId: getuseroption
+    tags: 
+     - Users
+    summary: Get user option
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ItemTypeQueryParam'
+    responses: 
+     '200': 
+      description: User option retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UserOptionListDTO'
+  /User/getfindprofiles: 
+   post: 
+    operationId: getfindprofiles
+    tags: 
+     - Users
+    summary: Get profiles
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProfileSearchDTO'
+    responses: 
+     '200': 
+      description: Profiles retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProfileListDTO'
+  /User/getlistviewprofilesettings: 
+   post: 
+    operationId: getlistviewprofilesettings
+    tags: 
+     - Users
+    summary: View profile settings list
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ListviewProfileSettingsSearchDTO'
+    responses: 
+     '200': 
+      description: List view profile settings completed
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ListviewProfileSettingsListDTO'
+  /User/getuserlistviewsettings: 
+   post: 
+    operationId: getuserlistviewsettings
+    tags: 
+     - Users
+    summary: User settings list view
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UserListviewSettingsSearchDTO'
+    responses: 
+     '200': 
+      description: User list view settings completed
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+components: 
+  schemas: 
+   UserSearchDTO: 
+    title : UserSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     UserID: 
+      type: integer
+      nullable: true
+     DeptID: 
+      type: integer
+      nullable: true
+     CustomerId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     WorkGroupId: 
+      type: integer
+      nullable: true
+     RoleName: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     ReturnStepInfo: 
+      type: string
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+     ReasonShortcut: 
+      type: string
+      nullable: true
+     CheckSession: 
+      type: string
+      nullable: true
+     UserName: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+   UserListDTO: 
+    title : UserListDTO
+    type: object
+    properties: 
+     FullName: 
+      type: string
+     UserID: 
+      type: integer
+      description: 
+     DeptID: 
+      type: integer
+     JobTitleID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+     FirstName: 
+      type: string
+     MiddleInitial: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     WorkgroupEmailOption: 
+      type: string
+      nullable: true
+     WorkPhone: 
+      type: string
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     Username: 
+      type: string
+     Password: 
+      type: string
+     UserStatus: 
+      type: string
+     Email: 
+      type: string
+      nullable: true
+     CustomerId: 
+      type: integer
+      nullable: true
+     CustomerName: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     DefaultBillingRole: 
+      type: string
+      nullable: true
+     RequireUserAssignment: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     CustomerNumber: 
+      type: string
+      nullable: true
+     Product: 
+      type: string
+      nullable: true
+     UserOption: 
+      type: string
+      nullable: true
+     UseSingleSignOn: 
+      type: string
+     LockoutAt: 
+      type: string
+      format: date-time
+      nullable: true
+     AssignedItems: 
+      type: integer
+      nullable: true
+     UserPollingOptionID: 
+      type: integer
+      nullable: true
+     WorkGroupTypeCode: 
+      type: string
+      nullable: true
+     WorkFromAnyWorkGroupCode: 
+      type: string
+      nullable: true
+     WorkFromAnyWorkGroup: 
+      type: string
+      nullable: true
+     PendToSameWorkGroupCode: 
+      type: string
+      nullable: true
+     PendToSameWorkGroup: 
+      type: string
+      nullable: true
+     SelectWorkGroupToPollFromCode: 
+      type: string
+      nullable: true
+     SelectWorkGroupToPollFrom: 
+      type: string
+      nullable: true
+     PollingOrderCode: 
+      type: string
+      nullable: true
+     PollingOrder: 
+      type: string
+      nullable: true
+     IsLogged: 
+      type: string
+     LoggedSessionId: 
+      type: integer
+      nullable: true
+   UserOptionListDTO: 
+    title : UserOptionListDTO
+    type: object
+    properties: 
+     UserID: 
+      type: integer
+      nullable: true
+     ItemType: 
+      type: string
+      nullable: true
+     ItemValue: 
+      type: string
+      nullable: true
+   ProfileSearchDTO: 
+    title : ProfileSearchDTO
+    type: object
+    properties: 
+     FindCommandId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   ProfileListDTO: 
+    title : ProfileListDTO
+    type: object
+    properties: 
+     FindProfileId: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+     FindCommandId: 
+      type: integer
+     Description: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: integer
+     OwnerId: 
+      type: integer
+      nullable: true
+     StatusCode: 
+      type: string
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     Owner: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     FindCommand: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+  parameters: 
+   ItemTypeQueryParam: 
+    in: query
+    name: ItemType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
