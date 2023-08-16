@@ -1,0 +1,263 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: User API
+  description: Users API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /User/getusers: 
+   post: 
+    operationId: getUsers
+    tags: 
+     - Users
+    summary: Get users
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UserSearchDTO'
+    responses: 
+     '200': 
+      description: Users retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/UserListDTO'
+  /User/getuseroption: 
+   get: 
+    operationId: getuseroption
+    tags: 
+     - Users
+    summary: Get user option
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ItemTypeQueryParam'
+    responses: 
+     '200': 
+      description: User option retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UserOptionListDTO'
+  /User/getfindprofiles: 
+   post: 
+    operationId: getfindprofiles
+    tags: 
+     - Users
+    summary: Get profiles
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProfileSearchDTO'
+    responses: 
+     '200': 
+      description: Profiles retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProfileListDTO'
+  /User/getlistviewprofilesettings: 
+   post: 
+    operationId: getlistviewprofilesettings
+    tags: 
+     - Users
+    summary: View profile settings list
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ListviewProfileSettingsSearchDTO'
+    responses: 
+     '200': 
+      description: List view profile settings completed
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ListviewProfileSettingsListDTO'
+  /User/getuserlistviewsettings: 
+   post: 
+    operationId: getuserlistviewsettings
+    tags: 
+     - Users
+    summary: User settings list view
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UserListviewSettingsSearchDTO'
+    responses: 
+     '200': 
+      description: User list view settings completed
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+  /User/getuserreports: 
+   post: 
+    operationId: getuserreports
+    tags: 
+     - Users
+    summary: Get user resports
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UserReportSearchDTO'
+    responses: 
+     '200': 
+      description: User resports generated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/UserReportListDTO'
+components: 
+  schemas: 
+   UserReportSearchDTO: 
+    title : UserReportSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     OperationalReportId: 
+      type: integer
+      nullable: true
+     UserReportId: 
+      type: integer
+      nullable: true
+     GetFavoriteDefaultParameters: 
+      type: string
+      nullable: true
+     GetUserReportDefaultColumns: 
+      type: string
+      nullable: true
+     UserReportMapID: 
+      type: integer
+      nullable: true
+     CategoryCode: 
+      type: string
+      nullable: true
+     SubCategoryCode: 
+      type: string
+      nullable: true
+     ReportName: 
+      type: string
+      nullable: true
+     Product: 
+      type: string
+      nullable: true
+   UserReportListDTO: 
+    title : UserReportListDTO
+    type: object
+    properties: 
+     UserReportId: 
+      type: integer
+      nullable: true
+     OperationalReportId: 
+      type: integer
+      nullable: true
+     ReportName: 
+      type: string
+     ReportDescription: 
+      type: string
+     SortKey: 
+      type: number
+      nullable: true
+     ReportPath: 
+      type: string
+      nullable: true
+     DefaultParameters: 
+      type: string
+      nullable: true
+     DefaultColumns: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     CategoryCode: 
+      type: string
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     SubCategoryCode: 
+      type: string
+      nullable: true
+     SubCategoryName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     PermissionId: 
+      type: integer
+      nullable: true
+     PermissionName: 
+      type: string
+      nullable: true
+     StoredProcedureName: 
+      type: string
+      nullable: true
+     OnlineReportName: 
+      type: string
+      nullable: true
+     ReportType: 
+      type: string
+     MultiRecordset: 
+      type: string
+      nullable: true
+     ExportType: 
+      type: string
+      nullable: true
+     ExportDocumentSource: 
+      type: string
+      nullable: true
+     EnforceEntityAccess: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+     StatusName: 
+      type: string
+      nullable: true
+     PSScript: 
+      type: string
+      nullable: true
+  parameters: 
+   ItemTypeQueryParam: 
+    in: query
+    name: ItemType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
