@@ -1,0 +1,372 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Reference Data
+  description: Reference Data API 
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /ReferenceData/outputbatchend: 
+   put: 
+    operationId: outputbatchend
+    tags: 
+     - Reference Data
+    summary: Ouput Batch End
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/OutputBatchEndDTO'
+    responses: 
+     '200': 
+      description: Output batch end completed
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /ReferenceData/setuseroption: 
+   post: 
+    operationId: setuseroption
+    tags: 
+     - Reference Data
+    summary: Set user option
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ItemTypeQueryParam'
+     - $ref: '#/components/parameters/ItemValueQueryParam'
+    responses: 
+     '200': 
+      description: User option set successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /ReferenceData/getedixacts: 
+   get: 
+    operationId: getedixacts
+    tags: 
+     - Reference Data
+    summary: Get EDIXacts
+    description: Description of path
+    responses: 
+     '200': 
+      description: EDIXacts retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EDIXactsListDTO'
+  /ReferenceData/getnumbersequences: 
+   get: 
+    operationId: getnumbersequences
+    tags: 
+     - Reference Data
+    summary: Get number sequences
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NumberSequenceIdQueryParam'
+     - $ref: '#/components/parameters/SequenceTypeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Number Sequences retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NumberSequencesListDTO'
+  /ReferenceData/getreferencecodes: 
+   get: 
+    operationId: getreferencecodes
+    tags: 
+     - Reference Data
+    summary: Get reference codes
+    description: Description of path
+    responses: 
+     '200': 
+      description: Success
+  /ReferenceData/getcountries: 
+   get: 
+    operationId: getcountries
+    tags: 
+     - Reference Data
+    summary: Get countries
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CountryIdQueryParam'
+     - $ref: '#/components/parameters/CountryNameQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Countries retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CountriesListDTO'
+  /ReferenceData/getcounties: 
+   get: 
+    operationId: getcounties
+    tags: 
+     - Reference Data
+    summary: Get counties
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/StateQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: Counties retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+  /ReferenceData/validatecitystatezip: 
+   post: 
+    operationId: validatecitystatezip
+    tags: 
+     - Reference Data
+    summary: Validate City State Zip
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ValidateCityStateZipSearchDTO'
+    responses: 
+     '200': 
+      description: Validate city state zip
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ValidateCityStateZipListDTO'
+  /ReferenceData/getfindcontrols: 
+   get: 
+    operationId: getfindcontrols
+    tags: 
+     - Reference Data
+    summary: Get find controls
+    description: Description of path
+    responses: 
+     '200': 
+      description: Controls retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/FindControlListDTO'
+components: 
+  schemas: 
+   ValidateCityStateZipListDTO: 
+    title : ValidateCityStateZipListDTO
+    type: object
+    properties: 
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     Longitude: 
+      type: number
+      format: float
+      nullable: true
+     Latitude: 
+      type: number
+      format: float
+      nullable: true
+   FindControlSearchDTO: 
+    title : FindControlSearchDTO
+    type: object
+    properties: 
+     FindCommand: 
+      type: string
+      nullable: true
+     FindProfile: 
+      type: string
+      nullable: true
+     FindProfileId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|ByFindCommand|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   FindControlListDTO: 
+    title : FindControlListDTO
+    type: object
+    properties: 
+     FindControlId: 
+      type: integer
+      nullable: true
+     FindCommand: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Label: 
+      type: string
+      nullable: true
+     ControlType: 
+      type: string
+      nullable: true
+     Interface: 
+      type: string
+      nullable: true
+     Visible: 
+      type: string
+      nullable: true
+     Required: 
+      type: string
+      nullable: true
+     DefaultValue: 
+      type: string
+      nullable: true
+     DataType: 
+      type: string
+      nullable: true
+     MinLength: 
+      type: integer
+      nullable: true
+     MaxLength: 
+      type: integer
+      nullable: true
+     ComboBoxSql: 
+      type: string
+      nullable: true
+     DisplayFieldName: 
+      type: string
+      nullable: true
+     DisplayIDName: 
+      type: string
+      nullable: true
+     LinkTo: 
+      type: string
+      nullable: true
+     LinkFrom: 
+      type: string
+      nullable: true
+     FindDisplayName: 
+      type: string
+      nullable: true
+     FindResultIDName: 
+      type: string
+      nullable: true
+     FindResultDisplayName: 
+      type: string
+      nullable: true
+     FindAllowEdit: 
+      type: string
+      nullable: true
+     FindType: 
+      type: string
+      nullable: true
+     Tooltip: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: integer
+      nullable: true
+     ReferenceCodeType: 
+      type: string
+      nullable: true
+     ReferenceCodeSubType: 
+      type: string
+      nullable: true
+     ReferenceCodeClass: 
+      type: string
+      nullable: true
+  parameters: 
+   ItemTypeQueryParam: 
+    in: query
+    name: ItemType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   ItemValueQueryParam: 
+    in: query
+    name: ItemValue
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   NumberSequenceIdQueryParam: 
+    in: query
+    name: NumberSequenceId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SequenceTypeQueryParam: 
+    in: query
+    name: SequenceType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   CountryIdQueryParam: 
+    in: query
+    name: CountryId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   CountryNameQueryParam: 
+    in: query
+    name: CountryName
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   StateQueryParam: 
+    in: query
+    name: State
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   FlagQueryParam: 
+    in: query
+    name: Flag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
