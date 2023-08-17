@@ -1,0 +1,597 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Payer
+  description: Payers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Payer/getpayer: 
+   post: 
+    operationId: getPayer
+    tags: 
+     - Payer
+    summary: Get payer
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PayerSearchDTO'
+    responses: 
+     '200': 
+      description: Success
+  /Payer/addpayer: 
+   post: 
+    operationId: addpayer
+    tags: 
+     - Payer
+    summary: Add Payer
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PayerDTO'
+    responses: 
+     '200': 
+      description: Payer Added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Payer/updatepayer: 
+   put: 
+    operationId: updatePayer
+    tags: 
+     - Payer
+    summary: Update payer
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PayerDTO'
+    responses: 
+     '200': 
+      description: Payer Updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Payer/deletepayer: 
+   delete: 
+    operationId: deletePayer
+    tags: 
+     - Payer
+    summary: Delete Payer
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PayerIdQueryParam'
+    responses: 
+     '200': 
+      description: Payer deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Payer/addpayerclaimadjustmentreasoncodes: 
+   post: 
+    operationId: addpayerclaimadjustmentreasoncodes
+    tags: 
+     - Payer
+    summary: Add payer adjustment reason code
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PayerClaimAdjustmentReasonCodesDTO'
+    responses: 
+     '200': 
+      description: payer claim adjustment reason code added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Payer/updatepayerclaimadjustmentreasoncodes: 
+   put: 
+    operationId: updatepayerclaimadjustmentreasoncodes
+    tags: 
+     - Payer
+    summary: Update payer adjustment reason code
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PayerClaimAdjustmentReasonCodesDTO'
+    responses: 
+     '200': 
+      description: payer claim adjustment reason code updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Payer/getpayerclaimadjustmentreasoncodes: 
+   get: 
+    operationId: getpayerclaimadjustmentreasoncodes
+    tags: 
+     - Payer
+    summary: Get payer adjustment reason code
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PayerIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: payer claim adjustment reason code retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PayerClaimAdjustmentReasonCodesListDTO'
+  /Payer/deletepayerclaimadjustmentreasoncodes: 
+   delete: 
+    operationId: deletepayerclaimadjustmentreasoncodes
+    tags: 
+     - Payer
+    summary: Delete payer claim adjustment reason code
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PayerClaimAdjustmentReasonCodeIdQueryParam'
+     - $ref: '#/components/parameters/PayerIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: payer claim adjustment reason code deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Payer/getpayerclaimadjustmentreasoncodeshistory: 
+   get: 
+    operationId: getpayerclaimadjustmentreasoncodeshistory
+    tags: 
+     - Payer
+    summary: Get payer adjustment reason code history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PayerClaimAdjustmentReasonCodeIdQueryParam'
+     - $ref: '#/components/parameters/PayerIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Payer claim adjustment reason code history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PayerClaimAdjustmentReasonCodesHistoryListDTO'
+components: 
+  schemas: 
+   PayerDTO: 
+    title : PayerDTO
+    type: object
+    properties: 
+     PayerName: 
+      type: string
+      nullable: true
+     PayerNumberQualifier: 
+      type: string
+      nullable: true
+     PayerNumber: 
+      type: string
+      nullable: true
+     PayerType: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     CellPhone: 
+      type: string
+      nullable: true
+     FaxPhone: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     WorkPhone: 
+      type: string
+      nullable: true
+     WorkPhoneExt: 
+      type: string
+      nullable: true
+     PCPWaiver: 
+      type: string
+      nullable: true
+     ReferralWaiver: 
+      type: string
+      nullable: true
+     AuthorizationWaiver: 
+      type: string
+      nullable: true
+     NDCWaiver: 
+      type: string
+      nullable: true
+     PreEstimateWaiver: 
+      type: string
+      nullable: true
+     UPNWaiver: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     ZipSearch: 
+      type: string
+      nullable: true
+     SequestrationCalculation: 
+      type: string
+      nullable: true
+     SequestrationPercentage: 
+      type: number
+      nullable: true
+     PayerDescription: 
+      type: string
+      nullable: true
+     PayerId: 
+      type: integer
+      nullable: true
+     UpdateUsage: 
+      type: string
+      nullable: true
+   PayerSearchDTO: 
+    title : PayerSearchDTO
+    type: object
+    properties: 
+     SessionID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     PayerName: 
+      type: string
+      nullable: true
+     PayerNumberQualifier: 
+      type: string
+      nullable: true
+     PayerNumber: 
+      type: string
+      nullable: true
+     PayerType: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     PayerId: 
+      type: integer
+      nullable: true
+     MatchFullName: 
+      type: string
+      nullable: true
+   PayerListDTO: 
+    title : PayerListDTO
+    type: object
+    properties: 
+     PayerId: 
+      type: integer
+      nullable: true
+     PayerName: 
+      type: string
+     PayerNumberQualifier: 
+      type: string
+     PayerNumberQualifierName: 
+      type: string
+      nullable: true
+     PayerNumber: 
+      type: string
+     PayerType: 
+      type: string
+      nullable: true
+     PayerTypeName: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CellPhone: 
+      type: string
+      nullable: true
+     FaxPhone: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     WorkPhone: 
+      type: string
+      nullable: true
+     WorkPhoneExt: 
+      type: string
+      nullable: true
+     PCPWaiver: 
+      type: string
+     PCPWaiverName: 
+      type: string
+      nullable: true
+     ReferralWaiver: 
+      type: string
+     ReferralWaiverName: 
+      type: string
+      nullable: true
+     AuthorizationWaiver: 
+      type: string
+     AuthorizationWaiverName: 
+      type: string
+      nullable: true
+     NDCWaiver: 
+      type: string
+     NDCWaiverName: 
+      type: string
+      nullable: true
+     PreEstimateWaiver: 
+      type: string
+     PreEstimateWaiverName: 
+      type: string
+      nullable: true
+     UPNWaiver: 
+      type: string
+     UPNWaiverName: 
+      type: string
+      nullable: true
+     SequestrationCalculation: 
+      type: string
+     SequestrationCalculationName: 
+      type: string
+      nullable: true
+     SequestrationPercentage: 
+      type: number
+      nullable: true
+     LastupdatedBy: 
+      type: string
+     LastupdatedAt: 
+      type: string
+      format: date-time
+     PayerDescription: 
+      type: string
+      nullable: true
+   PayerClaimAdjustmentReasonCodesDTO: 
+    title : PayerClaimAdjustmentReasonCodesDTO
+    type: object
+    properties: 
+     HIPAAExplanationId: 
+      type: integer
+      nullable: true
+     GroupCode: 
+      type: string
+      nullable: true
+     CalculationAction: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     PayerId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+      format: date-time
+      nullable: true
+     PayerClaimAdjustmentReasonCodeId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   PayerClaimAdjustmentReasonCodesListDTO: 
+    title : PayerClaimAdjustmentReasonCodesListDTO
+    type: object
+    properties: 
+     HIPAAExplanationId: 
+      type: integer
+     HIPAAAbbreviation: 
+      type: string
+     HIPAAExplanation: 
+      type: string
+     GroupCode: 
+      type: string
+      nullable: true
+     GroupCodeName: 
+      type: string
+      nullable: true
+     CalculationAction: 
+      type: string
+     CalculationActionName: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     PayerId: 
+      type: integer
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+     PayerClaimAdjustmentReasonCodeId: 
+      type: integer
+   PayerClaimAdjustmentReasonCodesHistoryListDTO: 
+    title : PayerClaimAdjustmentReasonCodesHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+     ChangedBy: 
+      type: integer
+     ChangedByName: 
+      type: string
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeType: 
+      type: string
+     ProcedureName: 
+      type: string
+     PayerClaimAdjustmentReasonCodeId: 
+      type: integer
+     CARC: 
+      type: string
+     GroupCode: 
+      type: string
+      nullable: true
+     GroupCodeName: 
+      type: string
+      nullable: true
+     CalculationAction: 
+      type: string
+     CalculationActionName: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+  parameters: 
+   PayerIdQueryParam: 
+    in: query
+    name: PayerId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PayerClaimAdjustmentReasonCodeIdQueryParam: 
+    in: query
+    name: PayerClaimAdjustmentReasonCodeId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
