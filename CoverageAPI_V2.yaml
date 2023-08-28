@@ -1,0 +1,659 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Members API
+  description: Members API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Coverage/getmembershistory/{MemberId}: 
+   get: 
+    operationId: GetMembersHistory
+    tags: 
+     - Member Coverage
+    summary: Get member history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberIdPathParam'
+    responses: 
+     '200': 
+      description: Member history retreived
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberHistoryListDTO'
+  /Coverage/getpreexistingcoveragemap: 
+   get: 
+    operationId: GetPreexistingCoverageMap
+    tags: 
+     - Member Coverage
+    summary: Get pre-existing coverage map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingCoverageMapIdQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Preexisting coverage map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreexistingCoverageMapListDTO'
+  /Coverage/updatepreexistingcoveragemap: 
+   put: 
+    operationId: UpdatePreexistingCoverageMap
+    tags: 
+     - Member Coverage
+    summary: Update pre-existing ccoverage map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreexistingCoverageMapDTO'
+    responses: 
+     '200': 
+      description: Updated preexisting coverage map successfully
+      content: 
+  /Coverage/deletepreexistingcoveragemap/{PreExistingCoverageMapId}: 
+   delete: 
+    operationId: DeletePreexistingCoverageMap
+    tags: 
+     - Member Coverage
+    summary: Delete Pre-Existing Coverage Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingCoverageMapIdPathParam'
+    responses: 
+     '200': 
+      description: Existing coverage map is deleted
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Coverage/addpreexistingcoveragemap: 
+   post: 
+    operationId: AddPreexistingCoverageMap
+    tags: 
+     - Member Coverage
+    summary: Add Pre-Existing Coverage Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreexistingCoverageMapDTO'
+    responses: 
+     '200': 
+      description: Existing coverage map is added  successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Coverage/getassignedprovidershistory/{MemberProviderID}: 
+   get: 
+    operationId: GetAssignedProvidersHistory
+    tags: 
+     - Member Coverage
+    summary: Get assigned provider history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberProviderIDPathParam'
+    responses: 
+     '200': 
+      description: Assigned provider history retreived successflly
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AssignedProviderHistoryListDTO'
+  /Coverage/getbenefitcoverageshistory/{BenefitCoverageId}: 
+   post: 
+    operationId: GetBenefitCoveragesHistory
+    tags: 
+     - Member Coverage
+    summary: Get benefit coverages history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BenefitCoverageIdPathParam'
+    responses: 
+     '200': 
+      description: Benefit coverage history retreived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BenefitCoveragesHistoryListDTO'
+  /Coverage/getpreexistingconditionshistory: 
+   put: 
+    operationId: GetPreexistingConditionsHistory
+    tags: 
+     - Member Coverage
+    summary: Get pre-existing conditions history
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreExistingConditionsHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Pre-existing conditions history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PreExistingConditionsHistoryListDTO'
+  /Coverage/getqualifiershistory/{BenefitCoverageId}: 
+   get: 
+    operationId: GetQualifiersHistory
+    tags: 
+     - Member Coverage
+    summary: Get qualifiers history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BenefitCoverageIdPathParam'
+    responses: 
+     '200': 
+      description: Qualifier history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/Coverage/getreimbursementshistory'
+  /Coverage/getreimbursementshistory: 
+   post: 
+    operationId: GetReimbursementsHistory
+    tags: 
+     - Member Coverage
+    summary: Get reimbursement history
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReimbursementHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Reimbursements history successfully retrieved
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReimbursementHistoryListDTO'
+  /Coverage/getresponsiblepartieshistory/{ResponsiblePartyCoverageMapId}: 
+   get: 
+    operationId: GetResponsiblePartiesHistory
+    tags: 
+     - Member Coverage
+    summary: Get responsible parties history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ResponsiblePartyCoverageMapIdPathParam'
+    responses: 
+     '200': 
+      description: Responsible parties history fetched successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ResponsiblePartiesHistoryResultDTO'
+  /Coverage/getsubscribercontractshistory/{MemberId}: 
+   get: 
+    operationId: GetSubscriberContractsHistory
+    tags: 
+     - Member Coverage
+    summary: Get subscriber contracts history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberIdPathParam'
+    responses: 
+     '200': 
+      description: Subscriber contrats history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/SubscriberContractHistoryListDTO'
+  /Coverage/getmemberprovidermaphistory/{MemberProviderID}: 
+   get: 
+    operationId: GetMemberProviderMapHistory
+    tags: 
+     - Member Coverage
+    summary: Get member provider map history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberProviderIDPathParam'
+     - $ref: '#/components/parameters/MemberIdQueryParam'
+    responses: 
+     '200': 
+      description: Success
+components: 
+  schemas: 
+   ReimbursementHistorySearchDTO: 
+    title : ReimbursementHistorySearchDTO
+    type: object
+    properties: 
+     RowID: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|Updated|"
+      nullable: true
+   ReimbursementHistoryListDTO: 
+    title : ReimbursementHistoryListDTO
+    type: object
+    properties: 
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     RowID: 
+      type: integer
+      nullable: true
+     ReimbursementID: 
+      type: integer
+      nullable: true
+     ReimbursementCode: 
+      type: string
+      nullable: true
+     ReimbursementType: 
+      type: string
+      nullable: true
+     ReimbursementTypeName: 
+      type: string
+      nullable: true
+     ReimbursementName: 
+      type: string
+      nullable: true
+     ReimbursementNodeName: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: number
+      nullable: true
+     FormTypeCode: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     InterchangeID: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     RepricingContractID: 
+      type: integer
+      nullable: true
+     RepricingContractName: 
+      type: string
+      nullable: true
+     ExternalRepricingRejectionIndicator: 
+      type: string
+      nullable: true
+     ExternalRepricingRejectionIndicatorName: 
+      type: string
+      nullable: true
+     FallThroughTransformId: 
+      type: integer
+      nullable: true
+     FallThroughTransformName: 
+      type: string
+      nullable: true
+     RepricedAmountAction: 
+      type: string
+      nullable: true
+     RepricedAmountActionName: 
+      type: string
+      nullable: true
+     ReimbursementContractID: 
+      type: integer
+      nullable: true
+     ReimbursementContractName: 
+      type: string
+      nullable: true
+     InNetwork: 
+      type: string
+      nullable: true
+     ProviderAssignment: 
+      type: string
+      nullable: true
+     ProviderAssignmentName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedByID: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   ResponsiblePartiesHistoryResultDTO: 
+    title : ResponsiblePartiesHistoryResultDTO
+    type: object
+    properties: 
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ResponsiblePartyId: 
+      type: integer
+      nullable: true
+     ResponsibleFirstName: 
+      type: string
+      nullable: true
+     ResponsibleLastName: 
+      type: string
+      nullable: true
+     HouseholdReferenceNumber: 
+      type: string
+      nullable: true
+     ResponsiblePartyType: 
+      type: string
+      nullable: true
+     ResponsiblePartyTypeName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     RelationshipCode: 
+      type: string
+      nullable: true
+     Relationship: 
+      type: string
+      nullable: true
+     ResponsiblePartyCoverageMapId: 
+      type: integer
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt           : 
+      type: string
+      format: date-time
+   SubscriberContractHistoryListDTO: 
+    title : SubscriberContractHistoryListDTO
+    type: object
+    properties: 
+     HistoryId: 
+      type: integer
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangedBy: 
+      type: integer
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+     MemberProviderID: 
+      type: integer
+      nullable: true
+     SubscriberContractID: 
+      type: integer
+     MemberID: 
+      type: integer
+     MemberNumber: 
+      type: string
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     ChangeEffectiveDate: 
+      type: string
+      nullable: true
+     ChangeExpirationDate: 
+      type: string
+      nullable: true
+     ReasonCode: 
+      type: string
+      nullable: true
+     ReasonName: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     AutoAssignment: 
+      type: string
+      nullable: true
+     OverridePCPPanel: 
+      type: string
+      nullable: true
+     ManuallyAssigned: 
+      type: string
+      nullable: true
+     ContractID: 
+      type: integer
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     TermedBy: 
+      type: integer
+      nullable: true
+     TermedByName: 
+      type: string
+      nullable: true
+     TermedAt: 
+      type: string
+      nullable: true
+     AddedBy: 
+      type: integer
+      nullable: true
+     AddedByName: 
+      type: string
+      nullable: true
+     AddedAt: 
+      type: string
+      nullable: true
+     IsInherited: 
+      type: string
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     HospitalName: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     PCPEffectiveDate: 
+      type: string
+      nullable: true
+     PCPExpirationDate: 
+      type: string
+      nullable: true
+     PrecedenceCode: 
+      type: string
+      nullable: true
+     PrecedenceName: 
+      type: string
+      nullable: true
+     TermedByCode: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   MemberIdPathParam: 
+    in: path
+    name: MemberId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PreExistingCoverageMapIdQueryParam: 
+    in: query
+    name: PreExistingCoverageMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   MemberCoverageIdQueryParam: 
+    in: query
+    name: MemberCoverageId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   PreExistingCoverageMapIdPathParam: 
+    in: path
+    name: PreExistingCoverageMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   MemberProviderIDPathParam: 
+    in: path
+    name: MemberProviderID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   BenefitCoverageIdPathParam: 
+    in: path
+    name: BenefitCoverageId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ResponsiblePartyCoverageMapIdPathParam: 
+    in: path
+    name: ResponsiblePartyCoverageMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   MemberIdQueryParam: 
+    in: query
+    name: MemberId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
