@@ -1,0 +1,221 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Members API
+  description: Members API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Coverage/getmembershistory/{MemberId}: 
+   get: 
+    operationId: GetMembersHistory
+    tags: 
+     - Member Coverage
+    summary: Get member history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberIdPathParam'
+    responses: 
+     '200': 
+      description: Member history retreived
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberHistoryListDTO'
+  /Coverage/getpreexistingcoveragemap: 
+   get: 
+    operationId: GetPreexistingCoverageMap
+    tags: 
+     - Member Coverage
+    summary: Get pre-existing coverage map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingCoverageMapIdQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Preexisting coverage map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreexistingCoverageMapListDTO'
+  /Coverage/updatepreexistingcoveragemap: 
+   put: 
+    operationId: UpdatePreexistingCoverageMap
+    tags: 
+     - Member Coverage
+    summary: Update pre-existing ccoverage map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreexistingCoverageMapDTO'
+    responses: 
+     '200': 
+      description: Updated preexisting coverage map successfully
+      content: 
+  /Coverage/deletepreexistingcoveragemap/{PreExistingCoverageMapId}: 
+   delete: 
+    operationId: DeletePreexistingCoverageMap
+    tags: 
+     - Member Coverage
+    summary: Delete Pre-Existing Coverage Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingCoverageMapIdPathParam'
+    responses: 
+     '200': 
+      description: Existing coverage map is deleted
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Coverage/addpreexistingcoveragemap: 
+   post: 
+    operationId: AddPreexistingCoverageMap
+    tags: 
+     - Member Coverage
+    summary: Add Pre-Existing Coverage Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreexistingCoverageMapDTO'
+    responses: 
+     '200': 
+      description: Existing coverage map is added  successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Coverage/getassignedprovidershistory/{MemberProviderID}: 
+   get: 
+    operationId: GetAssignedProvidersHistory
+    tags: 
+     - Member Coverage
+    summary: Get assigned provider history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberProviderIDPathParam'
+    responses: 
+     '200': 
+      description: Assigned provider history retreived successflly
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AssignedProviderHistoryListDTO'
+  /Coverage/getbenefitcoverageshistory/{BenefitCoverageId}: 
+   post: 
+    operationId: GetBenefitCoveragesHistory
+    tags: 
+     - Member Coverage
+    summary: Get benefit coverages history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BenefitCoverageIdPathParam'
+    responses: 
+     '200': 
+      description: Benefit coverage history retreived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BenefitCoveragesHistoryListDTO'
+  /Coverage/getpreexistingconditionshistory: 
+   put: 
+    operationId: GetPreexistingConditionsHistory
+    tags: 
+     - Member Coverage
+    summary: Get pre-existing conditions history
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreExistingConditionsHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Pre-existing conditions history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PreExistingConditionsHistoryListDTO'
+  /Coverage/getqualifiershistory/{BenefitCoverageId}: 
+   get: 
+    operationId: GetQualifiersHistory
+    tags: 
+     - Member Coverage
+    summary: Get qualifiers history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BenefitCoverageIdPathParam'
+    responses: 
+     '200': 
+      description: Qualifier history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/Coverage/getreimbursementshistory'
+  /Coverage/getreimbursementshistory: 
+   post: 
+    operationId: GetReimbursementsHistory
+    tags: 
+     - Member Coverage
+    summary: Get reimbursement history
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReimbursementHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Reimbursements history successfully retrieved
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReimbursementHistoryListDTO'
+  /Coverage/getresponsiblepartieshistory/{ResponsiblePartyCoverageMapId}: 
+   get: 
+    operationId: GetResponsiblePartiesHistory
+    tags: 
+     - Member Coverage
+    summary: Get responsible parties history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ResponsiblePartyCoverageMapIdPathParam'
+    responses: 
+     '200': 
+      description: Responsible parties history fetched successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ResponsiblePartiesHistoryResultDTO'
+  /Coverage/getsubscribercontractshistory/{MemberId}: 
+   null: 
+    operationId: GetSubscriberContractsHistory
+    tags: 
+     - Member Coverage
+    summary: Get subscriber contracts history
+    description: Description of path
