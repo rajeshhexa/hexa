@@ -1,0 +1,2331 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Members API
+  description: Members API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Member/getmembers: 
+   post: 
+    operationId: GetMembers
+    tags: 
+     - Member
+    summary: Get Member 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberSearchDTO'
+    responses: 
+     '200': 
+      description: Members retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberListDTO'
+  /Member/getmemberinformation: 
+   get: 
+    operationId: GetMemberInformation
+    tags: 
+     - Member
+    summary: Get member information
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIdQueryParam'
+    responses: 
+     '200': 
+      description: Member Information retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberInformationListDTO'
+  /Member/updatemember: 
+   put: 
+    operationId: UpdateMember
+    tags: 
+     - Member
+    summary: Update member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberDTO'
+    responses: 
+     '200': 
+      description: Member updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Member/membermaintenance: 
+   post: 
+    operationId: MemberMaintenance
+    tags: 
+     - Member
+    summary: Member maintenance
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberMaintenanceRequestDTO'
+    responses: 
+     '200': 
+      description: Member maintenance completed
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberMaintenanceListDTO'
+  /Member/addmembersubmission: 
+   post: 
+    operationId: AddMemberSubmission
+    tags: 
+     - Member
+    summary: Add member submission
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberSubmissionDTO'
+    responses: 
+     '200': 
+      description: Member submission added sucessfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Member/generateworkflowmember: 
+   put: 
+    operationId: GenerateWorkflowMember
+    tags: 
+     - Member
+    summary: Generate workflow member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GenerateWorkFlowMemberDTO'
+    responses: 
+     '200': 
+      description: Workflow member generated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Member/getmemberzipcode/{MemberId}: 
+   get: 
+    operationId: GetMemberZipCode
+    tags: 
+     - Member 
+    summary: Get member zip code
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/MemberIdPathParam'
+    responses: 
+     '200': 
+      description: Member zip code retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: string
+         nullable: true
+  /Member/getusid: 
+   get: 
+    operationId: GetUSId
+    tags: 
+     - Member
+    summary: Get USID
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/SSNQueryParam'
+    responses: 
+     '200': 
+      description: Get US Id
+      content: 
+       application/json: 
+        schema: 
+         type: string
+         nullable: true
+  /Member/regeneratenewmembernumber: 
+   post: 
+    operationId: RegenerateNewMemberNumber
+    tags: 
+     - Member
+    summary: Regenerate new member number
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIdQueryParam'
+    responses: 
+     '200': 
+      description: New member number generated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Member/updatememberaddress: 
+   put: 
+    operationId: updatememberaddress
+    tags: 
+     - Member
+    summary: Update member address
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberDTO'
+    responses: 
+     '200': 
+      description: Member address updated successfully
+      content: 
+components: 
+  schemas: 
+   MemberDTO: 
+    title : MemberDTO
+    type: object
+    properties: 
+     MemberId: 
+      type: integer
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     ContactReasonID: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     NationalIndividualID: 
+      type: string
+      nullable: true
+     SSNumber: 
+      type: string
+      nullable: true
+     SocialSecurityNumber : 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     MiddleName: 
+      type: string
+      nullable: true
+     NamePrefix: 
+      type: string
+      nullable: true
+     NameSuffix: 
+      type: string
+      nullable: true
+     NameFormat: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     LocationCode: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId : 
+      type: integer
+      nullable: true
+     CountryCode : 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     WorkPhone: 
+      type: string
+      nullable: true
+     CellPhone: 
+      type: string
+      nullable: true
+     EMail: 
+      type: string
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     DateOfDeath: 
+      type: string
+      format: date-time
+      nullable: true
+     MaritalStatus: 
+      type: string
+      nullable: true
+     UseMemberAddress: 
+      type: string
+      nullable: true
+     LastNameMatch: 
+      type: string
+      nullable: true
+     Ethnicity: 
+      type: string
+      default: 7
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     MedicareEntitlementReason: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     ParametersXml: 
+      type: string
+      nullable: true
+     ResultsXml: 
+      type: string
+      nullable: true
+   MemberSearchDTO: 
+    title : MemberSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     UseLastNameSoundex: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     SSNumber: 
+      type: string
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     subscribercontractId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     NationalIndividualId: 
+      type: string
+      nullable: true
+     ProviderContractId: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     MPMOfficeID: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     HouseholdReferenceNumber: 
+      type: string
+      nullable: true
+     CustomAttributeEntity1: 
+      type: string
+      nullable: true
+     CustomAttributeName1: 
+      type: string
+      nullable: true
+     CustomAttributeEntity2: 
+      type: string
+      nullable: true
+     CustomAttributeName2: 
+      type: string
+      nullable: true
+     CustomAttributeEntity3: 
+      type: string
+      nullable: true
+     CustomAttributeName3: 
+      type: string
+      nullable: true
+     CustomAttributeEntity4: 
+      type: string
+      nullable: true
+     CustomAttributeName4: 
+      type: string
+      nullable: true
+     CustomAttributeEntity5: 
+      type: string
+      nullable: true
+     CustomAttributeName5: 
+      type: string
+      nullable: true
+     CustomAttributeEntity6: 
+      type: string
+      nullable: true
+     CustomAttributeName6: 
+      type: string
+      nullable: true
+     CustomAttributeEntity7: 
+      type: string
+      nullable: true
+     CustomAttributeName7: 
+      type: string
+      nullable: true
+     CustomAttributeEntity8: 
+      type: string
+      nullable: true
+     CustomAttributeName8: 
+      type: string
+      nullable: true
+     CustomAttributeEntity9: 
+      type: string
+      nullable: true
+     CustomAttributeName9: 
+      type: string
+      nullable: true
+     CustomAttributeEntity10: 
+      type: string
+      nullable: true
+     CustomAttributeName10: 
+      type: string
+      nullable: true
+   MemberListDTO: 
+    title : MemberListDTO
+    type: object
+    properties: 
+     MemberId: 
+      type: integer
+      nullable: true
+     NationalIndividualId: 
+      type: string
+      nullable: true
+     SSNumber: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+     FirstName: 
+      type: string
+     MiddleName: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     NamePrefix: 
+      type: string
+      nullable: true
+     Prefix: 
+      type: string
+      nullable: true
+     NameSuffix: 
+      type: string
+      nullable: true
+     Suffix: 
+      type: string
+      nullable: true
+     NameFormat: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+     State: 
+      type: string
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+     CountryCode: 
+      type: string
+      nullable: true
+     LocationCode: 
+      type: string
+      nullable: true
+     PrimaryLanguage: 
+      type: string
+      nullable: true
+     Ethnicity: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     WorkPhone: 
+      type: string
+      nullable: true
+     CellPhone: 
+      type: string
+      nullable: true
+     EMail: 
+      type: string
+      nullable: true
+     Gender: 
+      type: string
+     GenderName: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+     useMemberAddress: 
+      type: string
+     DateOfDeath: 
+      type: string
+      nullable: true
+     MaritalStatus: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     PolicyNumber: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     Relationship: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+      format: date-time
+     NotesFlag: 
+      type: string
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     LastNameMatch: 
+      type: string
+      nullable: true
+     UseLastNameSoundex: 
+      type: string
+      nullable: true
+     MemberProviderID: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     NPI: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: string
+      nullable: true
+     PrecedenceName: 
+      type: string
+      nullable: true
+     ManuallyAssigned: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     MedicareEntitlementReason: 
+      type: string
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficePhone: 
+      type: string
+      nullable: true
+     OfficeExt: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     RiskGroupSubclassName: 
+      type: string
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     HospitalName: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     HospitalNPI: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     RequireRequestType: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupLOB: 
+      type: string
+      nullable: true
+     GroupProductType: 
+      type: string
+      nullable: true
+     GroupProductLine: 
+      type: string
+      nullable: true
+     GroupCoverageCode: 
+      type: string
+      nullable: true
+     MemberAsOfDate: 
+      type: string
+      nullable: true
+     WebUserId: 
+      type: integer
+      nullable: true
+     WebUserName: 
+      type: string
+      nullable: true
+     WebUserFullName: 
+      type: string
+      nullable: true
+     WebUserEmail: 
+      type: string
+      nullable: true
+     MaxExpirationDateForCoverage: 
+      type: string
+      nullable: true
+     CustomAttributeEntity1: 
+      type: string
+      nullable: true
+     CustomAttributeName1: 
+      type: string
+      nullable: true
+     CustomAttributeValue1: 
+      type: string
+      nullable: true
+     CustomAttributeEntity2: 
+      type: string
+      nullable: true
+     CustomAttributeName2: 
+      type: string
+      nullable: true
+     CustomAttributeValue2: 
+      type: string
+      nullable: true
+     CustomAttributeEntity3: 
+      type: string
+      nullable: true
+     CustomAttributeName3: 
+      type: string
+      nullable: true
+     CustomAttributeValue3: 
+      type: string
+      nullable: true
+     CustomAttributeEntity4: 
+      type: string
+      nullable: true
+     CustomAttributeName4: 
+      type: string
+      nullable: true
+     CustomAttributeValue4: 
+      type: string
+      nullable: true
+     CustomAttributeEntity5: 
+      type: string
+      nullable: true
+     CustomAttributeName5: 
+      type: string
+      nullable: true
+     CustomAttributeValue5: 
+      type: string
+      nullable: true
+     CustomAttributeEntity6: 
+      type: string
+      nullable: true
+     CustomAttributeName6: 
+      type: string
+      nullable: true
+     CustomAttributeValue6: 
+      type: string
+      nullable: true
+     CustomAttributeEntity7: 
+      type: string
+      nullable: true
+     CustomAttributeName7: 
+      type: string
+      nullable: true
+     CustomAttributeValue7: 
+      type: string
+      nullable: true
+     CustomAttributeEntity8: 
+      type: string
+      nullable: true
+     CustomAttributeName8: 
+      type: string
+      nullable: true
+     CustomAttributeValue8: 
+      type: string
+      nullable: true
+     CustomAttributeEntity9: 
+      type: string
+      nullable: true
+     CustomAttributeName9: 
+      type: string
+      nullable: true
+     CustomAttributeValue9: 
+      type: string
+      nullable: true
+     CustomAttributeEntity10: 
+      type: string
+      nullable: true
+     CustomAttributeName10: 
+      type: string
+      nullable: true
+     CustomAttributeValue10: 
+      type: string
+      nullable: true
+   MemberInformationListDTO: 
+    title : MemberInformationListDTO
+    type: object
+    properties: 
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+     GroupNumber: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     EmployerName: 
+      type: string
+      nullable: true
+     HireDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Volume: 
+      type: string
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     MedicareEntitlementReason: 
+      type: string
+      nullable: true
+     DependentViewWebOption: 
+      type: string
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     RxIdNumber: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+     SeparateOutOfNetworkIDCard: 
+      type: string
+     BasePlanBenefitCoverageId: 
+      type: integer
+      nullable: true
+     BasePlanId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     TierItemId: 
+      type: integer
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     TierAsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     LastName: 
+      type: string
+     FirstName: 
+      type: string
+     MiddleName: 
+      type: string
+      nullable: true
+     NamePrefix: 
+      type: string
+      nullable: true
+     NameSuffix: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     Gender: 
+      type: string
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+     State: 
+      type: string
+     Zip: 
+      type: string
+     County: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     Latitude: 
+      type: number
+      format: float
+      nullable: true
+     Longitude: 
+      type: number
+      format: float
+      nullable: true
+     LocationCode: 
+      type: string
+      nullable: true
+     PrimaryLanguage: 
+      type: string
+     Ethnicity: 
+      type: string
+      nullable: true
+     DateOfDeath: 
+      type: string
+      format: date-time
+      nullable: true
+     MaritalStatus: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     WorkPhone: 
+      type: string
+      nullable: true
+     CellPhone: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     LastNameMatch: 
+      type: string
+     UseMemberAddress: 
+      type: string
+      nullable: true
+     NationalIndividualID: 
+      type: string
+      nullable: true
+     ActiveMemberSince: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     MemberLastUpdatedByID: 
+      type: integer
+      nullable: true
+     MemberLastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberLastUpdatedBy: 
+      type: string
+      nullable: true
+     MemberCoverageLastUpdatedByID: 
+      type: integer
+      nullable: true
+     MemberCoverageLastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberCoverageLastUpdatedBy: 
+      type: string
+      nullable: true
+     BenefitCoverageLastUpdatedByID: 
+      type: integer
+      nullable: true
+     BenefitCoverageLastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     BenefitCoverageLastUpdatedBy: 
+      type: string
+      nullable: true
+     UseDateOfIncidentForAdjudication: 
+      type: string
+      nullable: true
+     MemberToPay: 
+      type: integer
+      nullable: true
+     MemberToPayName: 
+      type: string
+      nullable: true
+     MemberEOBFulfillment: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     ProviderAssignmentRequirement: 
+      type: string
+      nullable: true
+   MemberMaintenanceRequestDTO: 
+    title : MemberMaintenanceRequestDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     SubscriberSSN: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     RxIdNumber: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     SeparateOutOfNetworkIDCard: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     LastNameMatch: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      nullable: true
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     TierCode: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     Ethnicity: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     LocationCode: 
+      type: string
+      nullable: true
+     OldMemberNumber: 
+      type: string
+      nullable: true
+     OldDateOfBirth: 
+      type: string
+      nullable: true
+     OldLastName: 
+      type: string
+      nullable: true
+     OldFirstName: 
+      type: string
+      nullable: true
+     OldSSN: 
+      type: string
+      nullable: true
+     OldAddress1: 
+      type: string
+      nullable: true
+     OldCity: 
+      type: string
+      nullable: true
+     OldState: 
+      type: string
+      nullable: true
+     OldZip: 
+      type: string
+      nullable: true
+     LookupStatus: 
+      type: string
+      nullable: true
+     MaintenanceTypeCode: 
+      type: string
+      nullable: true
+     MaintenanceReasonCode: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     NationalIndividualID: 
+      type: string
+      nullable: true
+     MiddleName: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     WorkPhone: 
+      type: string
+      nullable: true
+     CellPhone: 
+      type: string
+      nullable: true
+     Volume: 
+      type: string
+      nullable: true
+     HireDate: 
+      type: string
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     MedicareEntitlementReason: 
+      type: string
+      nullable: true
+     MemberToPay: 
+      type: integer
+      nullable: true
+     MemberToPayNumber: 
+      type: string
+      nullable: true
+     MemberToPayGroupNumber: 
+      type: string
+      nullable: true
+     MemberEOBFulfillment: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderNumberQualifier: 
+      type: string
+      nullable: true
+     OfficeAddress1: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     PCPPrecedence: 
+      type: string
+      nullable: true
+     AutoAssignPCP: 
+      type: string
+      nullable: true
+     PrimaryLanguage: 
+      type: string
+      nullable: true
+     LanguagesXML: 
+      type: string
+      nullable: true
+     AidCodesXML: 
+      type: string
+      nullable: true
+     EmployerName: 
+      type: string
+      nullable: true
+     DependentViewWebOption: 
+      type: string
+      nullable: true
+     TerminationDate: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     DateOfDeath: 
+      type: string
+      nullable: true
+     PrimaryInsurance: 
+      type: string
+      nullable: true
+     NamePrefix: 
+      type: string
+      nullable: true
+     NameSuffix: 
+      type: string
+      nullable: true
+     NameFormat: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     MaritalStatus: 
+      type: string
+      nullable: true
+     XMLDataString: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     ProviderOrganization: 
+      type: string
+      nullable: true
+     PrimarySecondaryIndicator: 
+      type: integer
+      nullable: true
+     ProviderNetworkName: 
+      type: string
+      nullable: true
+     NetworkEffectiveDate: 
+      type: string
+      nullable: true
+     NetworkExpirationDate: 
+      type: string
+      nullable: true
+     ActiveMemberSince: 
+      type: string
+      nullable: true
+     PlanCoverageDescription: 
+      type: string
+      nullable: true
+     BenefitCode: 
+      type: string
+      nullable: true
+     StatusCode: 
+      type: string
+      nullable: true
+     SOCStatus: 
+      type: string
+      nullable: true
+     SOCAmount: 
+      type: string
+      nullable: true
+     SOCCertDate: 
+      type: string
+      nullable: true
+     MCDEffectiveDate: 
+      type: string
+      nullable: true
+     MCDExpirationDate: 
+      type: string
+      nullable: true
+     COBPrecedence: 
+      type: string
+      nullable: true
+     COBPayerName: 
+      type: string
+      nullable: true
+     COBPayerType: 
+      type: string
+      nullable: true
+     COBPayerNumber: 
+      type: string
+      nullable: true
+     COBPayerNumberQualifier: 
+      type: string
+      nullable: true
+     COBCoverage: 
+      type: string
+      nullable: true
+     COBEffectiveDate: 
+      type: string
+      nullable: true
+     COBExpirationDate: 
+      type: string
+      nullable: true
+     UpdateIdentifyingElements: 
+      type: string
+      nullable: true
+     CreateCOBPayerFlag: 
+      type: string
+      nullable: true
+     UpdatePolicyNumber: 
+      type: string
+      nullable: true
+     UpdateSSN: 
+      type: string
+      nullable: true
+     UpdateMBI: 
+      type: string
+      nullable: true
+     UpdateName: 
+      type: string
+      nullable: true
+     UpdateDateOfBirth: 
+      type: string
+      nullable: true
+     UpdateAdditionalInformation: 
+      type: string
+      nullable: true
+     UpdateActiveMemberSince: 
+      type: string
+      nullable: true
+     UpdateNationalIndividualId: 
+      type: string
+      nullable: true
+     UpdateAdditionalNameDetails: 
+      type: string
+      nullable: true
+     UpdateStreetAddressInfo: 
+      type: string
+      nullable: true
+     UpdateMainAddressInfo: 
+      type: string
+      nullable: true
+     UpdateLocationCode: 
+      type: string
+      nullable: true
+     UpdateContactInfo: 
+      type: string
+      nullable: true
+     UpdateGender: 
+      type: string
+      nullable: true
+     UpdateDateOfDeath: 
+      type: string
+      nullable: true
+     UpdateEthnicity: 
+      type: string
+      nullable: true
+     UpdateMaritalStatus: 
+      type: string
+      nullable: true
+     UpdateMemberEOBFulfillment: 
+      type: string
+      nullable: true
+     OverrideMismatch: 
+      type: string
+      nullable: true
+     OverrideDupMemberNumber: 
+      type: string
+      nullable: true
+     UpdateMemberNumberFlag: 
+      type: string
+      nullable: true
+     UseMemberaddress: 
+      type: string
+      nullable: true
+     UseAnyTier: 
+      type: string
+      nullable: true
+     UpdateHICN: 
+      type: string
+      nullable: true
+     UpdateMemberToPay: 
+      type: string
+      nullable: true
+     FNDLevel: 
+      type: number
+      format: float
+      nullable: true
+     SaveAltAddress: 
+      type: string
+      nullable: true
+     AlternateAddressType: 
+      type: string
+      nullable: true
+     TermExistBenefitsBeforeAddNew: 
+      type: string
+      nullable: true
+     ProcedureCaller: 
+      type: string
+      nullable: true
+     AutoGenerateCityAndState: 
+      type: string
+      nullable: true
+     OverridePCPPanel: 
+      type: string
+      nullable: true
+     ManuallyAssigned: 
+      type: string
+      nullable: true
+     OverrideEffectiveDate: 
+      type: string
+      nullable: true
+     OverrideTerminationDate: 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     TierUpdate: 
+      type: string
+      nullable: true
+     TierUpdateAsOfDate: 
+      type: string
+      nullable: true
+     CustomAttributes: 
+      type: string
+      nullable: true
+     MemberCoverageAttributes: 
+      type: string
+      nullable: true
+     CreateNewHousehold: 
+      type: string
+      nullable: true
+     InheritResponsibleParty: 
+      type: string
+      nullable: true
+     OverrideMultipleResponsibleParties: 
+      type: string
+      nullable: true
+     ResponsiblePartyLastName: 
+      type: string
+      nullable: true
+     ResponsiblePartyFirstName: 
+      type: string
+      nullable: true
+     ResponsiblePartySuffix: 
+      type: string
+      nullable: true
+     ResponsiblePartyMiddleName: 
+      type: string
+      nullable: true
+     ResponsiblePartyType: 
+      type: string
+      nullable: true
+     ResponsiblePartyNII: 
+      type: string
+      nullable: true
+     ResponsiblePartySSN: 
+      type: string
+      nullable: true
+     ResponsiblePartyNumber: 
+      type: string
+      nullable: true
+     ResponsiblePartyDOB: 
+      type: string
+      nullable: true
+     ResponsiblePartyRelationshipCode: 
+      type: string
+      nullable: true
+     ResponsiblePartyGender: 
+      type: string
+      nullable: true
+     ResponsiblePartyGroupNumber: 
+      type: string
+      nullable: true
+     ResponsiblePartyAddress: 
+      type: string
+      nullable: true
+     ResponsiblePartyAddress2: 
+      type: string
+      nullable: true
+     ResponsiblePartyCity: 
+      type: string
+      nullable: true
+     ResponsiblePartyState: 
+      type: string
+      nullable: true
+     ResponsiblePartyZip: 
+      type: string
+      nullable: true
+     ResponsiblePartyLocationCode: 
+      type: string
+      nullable: true
+     ResponsiblePartyCellPhone: 
+      type: string
+      nullable: true
+     ResponsiblePartyHomePhone: 
+      type: string
+      nullable: true
+     ResponsiblePartyWorkPhone: 
+      type: string
+      nullable: true
+     ResponsiblePartyEmail: 
+      type: string
+      nullable: true
+     ResponsiblePartyAlternateAddressType: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingAddress: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingAddress2: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingCity: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingState: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingZip: 
+      type: string
+      nullable: true
+     ResponsiblePartyCustomAttributes: 
+      type: string
+      nullable: true
+     HouseholdReferenceNumber: 
+      type: string
+      nullable: true
+     ResponsibleEffectiveDate: 
+      type: string
+      nullable: true
+     ResponsibleExpirationDate: 
+      type: string
+      nullable: true
+     AddNewMemberPCPMapSlice: 
+      type: string
+      nullable: true
+     DisallowNewMembers: 
+      type: string
+      nullable: true
+     SkipBeginTran: 
+      type: string
+      nullable: true
+     ContactReasonID: 
+      type: integer
+      nullable: true
+     ContactReasonShortcut: 
+      type: string
+      nullable: true
+     Source834XmlId: 
+      type: integer
+      nullable: true
+     ParametersXml: 
+      type: string
+      nullable: true
+     ResultsXml: 
+      type: string
+      nullable: true
+   MemberMaintenanceListDTO: 
+    title : MemberMaintenanceListDTO
+    type: object
+    properties: 
+     GroupNumber: 
+      type: string
+     SubscriberNumber: 
+      type: string
+     SubscriberSSN: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+     SeparateOutOfNetworkIDCard: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     LastName: 
+      type: string
+     LastNameMatch: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     TierCode: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     LocationCode: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     MaintenanceTypeCode: 
+      type: string
+      nullable: true
+     MaintenanceReasonCode: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NationalIndividualID: 
+      type: string
+      nullable: true
+     MiddleName: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     WorkPhone: 
+      type: string
+      nullable: true
+     CellPhone: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderNumberQualifier: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeAddress1: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     PCPPrecedence: 
+      type: string
+      nullable: true
+     AutoAssignPCP: 
+      type: string
+      nullable: true
+     EmployerName: 
+      type: string
+      nullable: true
+     DependentViewWebOption: 
+      type: string
+      nullable: true
+     TerminationDate: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     DateOfDeath: 
+      type: string
+      format: date-time
+      nullable: true
+     PrimaryInsurance: 
+      type: string
+      nullable: true
+     NamePrefix: 
+      type: string
+      nullable: true
+     NameSuffix: 
+      type: string
+      nullable: true
+     NameFormat: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     MaritalStatus: 
+      type: string
+      nullable: true
+     Ethnicity: 
+      type: string
+      nullable: true
+     Volume: 
+      type: string
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     MedicareEntitlementReason: 
+      type: string
+      nullable: true
+     MemberToPayNumber: 
+      type: string
+      nullable: true
+     MemberToPayGroupNumber: 
+      type: string
+      nullable: true
+     MemberEOBFulfillment: 
+      type: string
+      nullable: true
+     HireDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PrimaryLanguage: 
+      type: string
+      nullable: true
+     LanguagesXML: 
+      type: string
+      nullable: true
+     AidCodesXML: 
+      type: string
+      nullable: true
+     ProviderOrganization: 
+      type: string
+      nullable: true
+     PrimarySecondaryIndicator: 
+      type: integer
+      nullable: true
+     ProviderNetworkName: 
+      type: string
+      nullable: true
+     NetworkEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NetworkExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ActiveMemberSince: 
+      type: string
+      format: date-time
+      nullable: true
+     PlanCoverageDescription: 
+      type: string
+      nullable: true
+     BenefitCode: 
+      type: string
+      nullable: true
+     StatusCode: 
+      type: string
+      nullable: true
+     SOCStatus: 
+      type: string
+      nullable: true
+     SOCAmount: 
+      type: string
+      nullable: true
+     SOCCertDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MCDEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MCDExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CreateCOBPayerFlag: 
+      type: string
+      nullable: true
+     COBPrecedence: 
+      type: string
+      nullable: true
+     COBPayerName: 
+      type: string
+      nullable: true
+     COBPayerType: 
+      type: string
+      nullable: true
+     COBPayerNumber: 
+      type: string
+      nullable: true
+     COBPayerNumberQualifier: 
+      type: string
+      nullable: true
+     COBCoverage: 
+      type: string
+      nullable: true
+     COBEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     COBExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OldMemberNumber: 
+      type: string
+      nullable: true
+     OldDateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     OldLastName: 
+      type: string
+      nullable: true
+     OldFirstName: 
+      type: string
+      nullable: true
+     OldSSN: 
+      type: string
+      nullable: true
+     OldAddress1: 
+      type: string
+      nullable: true
+     OldCity: 
+      type: string
+      nullable: true
+     OldState: 
+      type: string
+      nullable: true
+     OldZip: 
+      type: string
+      nullable: true
+     UpdateIdentifyingElements: 
+      type: string
+      nullable: true
+     UpdatePolicyNumber: 
+      type: string
+      nullable: true
+     UpdateActiveMemberSince: 
+      type: string
+      nullable: true
+     UpdateSSN: 
+      type: string
+      nullable: true
+     UpdateName: 
+      type: string
+      nullable: true
+     UpdateDateOfBirth: 
+      type: string
+      nullable: true
+     UpdateAdditionalInformation: 
+      type: string
+      nullable: true
+     UpdateNationalIndividualId: 
+      type: string
+      nullable: true
+     UpdateAdditionalNameDetails: 
+      type: string
+      nullable: true
+     UpdateStreetAddressInfo: 
+      type: string
+      nullable: true
+     UpdateMainAddressInfo: 
+      type: string
+      nullable: true
+     UpdateLocationCode: 
+      type: string
+      nullable: true
+     UpdateContactInfo: 
+      type: string
+      nullable: true
+     UpdateGender: 
+      type: string
+      nullable: true
+     UpdateDateOfDeath: 
+      type: string
+      nullable: true
+     UpdateEthnicity: 
+      type: string
+      nullable: true
+     UpdateMaritalStatus: 
+      type: string
+      nullable: true
+     UpdateMemberEOBFulfillment: 
+      type: string
+      nullable: true
+     OverrideMismatch: 
+      type: string
+      nullable: true
+     OverrideDupmemberNumber: 
+      type: string
+      nullable: true
+     UseAnyTier: 
+      type: string
+      nullable: true
+     SaveAltAddress: 
+      type: string
+      nullable: true
+     AlternateAddressType: 
+      type: string
+      nullable: true
+     TermExistBenefitsBeforeAddNew: 
+      type: string
+      nullable: true
+     UpdateMemberNumberFlag: 
+      type: string
+      nullable: true
+     UseMemberAddress: 
+      type: string
+      nullable: true
+     AutoGenerateCityAndState: 
+      type: string
+      nullable: true
+     OverridePCPPanel: 
+      type: string
+      nullable: true
+     ManuallyAssigned: 
+      type: string
+      nullable: true
+     OverrideEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideTerminationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     TierUpdate: 
+      type: string
+      nullable: true
+     TierUpdateAsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CustomAttributes: 
+      type: string
+      nullable: true
+     MemberCoverageAttributes: 
+      type: string
+      nullable: true
+     CreateNewHousehold: 
+      type: string
+      nullable: true
+     InheritResponsibleParty: 
+      type: string
+      nullable: true
+     OverrideMultipleResponsibleParties: 
+      type: string
+      nullable: true
+     ResponsiblePartyLastName: 
+      type: string
+      nullable: true
+     ResponsiblePartyFirstName: 
+      type: string
+      nullable: true
+     ResponsiblePartySuffix: 
+      type: string
+      nullable: true
+     ResponsiblePartyMiddleName: 
+      type: string
+      nullable: true
+     ResponsiblePartyNII: 
+      type: string
+      nullable: true
+     ResponsiblePartySSN: 
+      type: string
+      nullable: true
+     ResponsiblePartyNumber: 
+      type: string
+      nullable: true
+     ResponsiblePartyDOB: 
+      type: string
+      format: date-time
+      nullable: true
+     ResponsiblePartyRelationshipCode: 
+      type: string
+      nullable: true
+     ResponsiblePartyGender: 
+      type: string
+      nullable: true
+     ResponsiblePartyGroupNumber: 
+      type: string
+      nullable: true
+     ResponsiblePartyType: 
+      type: string
+      nullable: true
+     ResponsiblePartyAddress: 
+      type: string
+      nullable: true
+     ResponsiblePartyAddress2: 
+      type: string
+      nullable: true
+     ResponsiblePartyCity: 
+      type: string
+      nullable: true
+     ResponsiblePartyState: 
+      type: string
+      nullable: true
+     ResponsiblePartyZip: 
+      type: string
+      nullable: true
+     ResponsiblePartyLocationCode: 
+      type: string
+      nullable: true
+     ResponsiblePartyCellPhone: 
+      type: string
+      nullable: true
+     ResponsiblePartyHomePhone: 
+      type: string
+      nullable: true
+     ResponsiblePartyWorkPhone: 
+      type: string
+      nullable: true
+     ResponsiblePartyEmail: 
+      type: string
+      nullable: true
+     ResponsiblePartyAlternateAddressType: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingAddress: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingAddress2: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingCity: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingState: 
+      type: string
+      nullable: true
+     ResponsiblePartyMailingZip: 
+      type: string
+      nullable: true
+     ResponsiblePartyCustomAttributes: 
+      type: string
+      nullable: true
+     HouseholdReferenceNumber: 
+      type: string
+      nullable: true
+     ResponsibleEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ResponsibleExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AddNewMemberPCPMapSlice: 
+      type: string
+      nullable: true
+     DisallowNewMembers: 
+      type: string
+      nullable: true
+     UpdateHICN: 
+      type: string
+      nullable: true
+     UpdateMBI: 
+      type: string
+      nullable: true
+     UpdateMemberToPay: 
+      type: string
+      nullable: true
+     Source834XmlId: 
+      type: integer
+      nullable: true
+     ContactReasonShortcut: 
+      type: string
+      nullable: true
+   MemberSubmissionDTO: 
+    title : MemberSubmissionDTO
+    type: object
+    properties: 
+     InterchangeId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     BenefitCoverageId: 
+      type: integer
+      nullable: true
+     SubmissionType: 
+      type: string
+      nullable: true
+     SubmissionStatus: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     DoNotSendReason: 
+      type: string
+      nullable: true
+     CoverageEntityType: 
+      type: string
+      nullable: true
+     CoverageEntityId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   GenerateWorkFlowMemberDTO: 
+    title : GenerateWorkFlowMemberDTO
+    type: object
+    properties: 
+     ContactReasonId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     AdditionalIndividualType: 
+      type: string
+      nullable: true
+     AdditionalIndividualId: 
+      type: integer
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   MemberCoverageIdQueryParam: 
+    in: query
+    name: MemberCoverageId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   MemberIdPathParam: 
+    in: path
+    name: MemberId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SSNQueryParam: 
+    in: query
+    name: SSN
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
