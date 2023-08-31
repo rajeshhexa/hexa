@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Members PCP API
+  description: Members PCP API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /PCP/getmemberpcpinfo: 
+   post: 
+    operationId: GetMemberPCPInfo
+    tags: 
+     - Member PCP
+    summary: Get Member PCP info
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberPCPInfoSearchDTO'
+    responses: 
+     '200': 
+      description: Member PCP info retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberPCPInfoListDTO'
+  /PCP/addmemberpcpmap: 
+   post: 
+    operationId: AddMemberPCPMap
+    tags: 
+     - Member PCP
+    summary: Add member PCP map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberPCPMapDTO'
+    responses: 
+     '200': 
+      description: Member PCP map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /PCP/addresponsiblepartycoveragemap: 
+   post: 
+    operationId: AddResponsiblePartyCoverageMap
+    tags: 
+     - Member PCP
+    summary: Add responsible party coverage map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ResponsiblePartyCoverageMapDTO'
+    responses: 
+     '200': 
+      description: Responsible party coverage map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /PCP/autoassignpcptomember: 
+   post: 
+    operationId: AutoAssignPCPToMember
+    tags: 
+     - Member PCP
+    summary: Auto assign PCP to member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AutoAssignPCPtoMemberSearchDTO'
+    responses: 
+     '200': 
+      description: PCP assigned to member successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AutoAssignPCPtoMemberResponseDTO'
+  /PCP/getreimbursementsforassignment: 
+   get: 
+    operationId: GetReimbursementsForAssignment
+    tags: 
+     - Member PCP
+    summary: Get reimbursement for assignment
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Reimbursement for assignment retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReimbursementForAssignmentListDTO'
+  /PCP/getresponsiblepartycoveragemap: 
+   get: 
+    operationId: GetResponsiblePartyCoverageMap
+    tags: 
+     - Member PCP
+    summary: Get responsible party coverage map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberIdQueryParam'
+     - $ref: '#/components/parameters/SubscriberContractIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Responsible party coverage map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ResponsiblePartyCoverageMapListDTO'
+  /PCP/updatememberpcpmap: 
+   put: 
+    operationId: UpdateMemberPCPMap
+    tags: 
+     - Member PCP
+    summary: Update member PCP map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberPCPMapDTO'
+    responses: 
+     '200': 
+      description: Member PCP map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /PCP/updateresponsiblepartycoveragemap: 
+   null: 
+    operationId: UpdateResponsiblePartyCoverageMap
+    description: Description of path
