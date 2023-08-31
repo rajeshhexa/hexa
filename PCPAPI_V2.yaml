@@ -1,0 +1,753 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Members PCP API
+  description: Members PCP API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /PCP/getmemberpcpinfo: 
+   post: 
+    operationId: GetMemberPCPInfo
+    tags: 
+     - Member PCP
+    summary: Get Member PCP info
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberPCPInfoSearchDTO'
+    responses: 
+     '200': 
+      description: Member PCP info retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberPCPInfoListDTO'
+  /PCP/addmemberpcpmap: 
+   post: 
+    operationId: AddMemberPCPMap
+    tags: 
+     - Member PCP
+    summary: Add member PCP map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberPCPMapDTO'
+    responses: 
+     '200': 
+      description: Member PCP map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /PCP/addresponsiblepartycoveragemap: 
+   post: 
+    operationId: AddResponsiblePartyCoverageMap
+    tags: 
+     - Member PCP
+    summary: Add responsible party coverage map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ResponsiblePartyCoverageMapDTO'
+    responses: 
+     '200': 
+      description: Responsible party coverage map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /PCP/autoassignpcptomember: 
+   post: 
+    operationId: AutoAssignPCPToMember
+    tags: 
+     - Member PCP
+    summary: Auto assign PCP to member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AutoAssignPCPtoMemberSearchDTO'
+    responses: 
+     '200': 
+      description: PCP assigned to member successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AutoAssignPCPtoMemberResponseDTO'
+  /PCP/getreimbursementsforassignment: 
+   get: 
+    operationId: GetReimbursementsForAssignment
+    tags: 
+     - Member PCP
+    summary: Get reimbursement for assignment
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Reimbursement for assignment retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReimbursementForAssignmentListDTO'
+  /PCP/getresponsiblepartycoveragemap: 
+   get: 
+    operationId: GetResponsiblePartyCoverageMap
+    tags: 
+     - Member PCP
+    summary: Get responsible party coverage map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberIdQueryParam'
+     - $ref: '#/components/parameters/SubscriberContractIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Responsible party coverage map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ResponsiblePartyCoverageMapListDTO'
+  /PCP/updatememberpcpmap: 
+   put: 
+    operationId: UpdateMemberPCPMap
+    tags: 
+     - Member PCP
+    summary: Update member PCP map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberPCPMapDTO'
+    responses: 
+     '200': 
+      description: Member PCP map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /PCP/updateresponsiblepartycoveragemap: 
+   put: 
+    operationId: UpdateResponsiblePartyCoverageMap
+    tags: 
+     - Member PCP
+    summary: Update Responsible party coverage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ResponsiblePartyCoverageMapDTO'
+    responses: 
+     '200': 
+      description: Responsible party coverage map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   MemberPCPInfoSearchDTO: 
+    title : MemberPCPInfoSearchDTO
+    type: object
+    properties: 
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     MemberProviderID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExcludeFuturePCP: 
+      type: string
+      default: N
+      nullable: true
+     ExcludeDisabledPCP: 
+      type: string
+      default: N
+      nullable: true
+   MemberPCPInfoListDTO: 
+    title : MemberPCPInfoListDTO
+    type: object
+    properties: 
+     MemberProviderID: 
+      type: integer
+     SubscriberContractID: 
+      type: integer
+     MEmberID: 
+      type: integer
+     ProviderId: 
+      type: integer
+     OfficeID: 
+      type: integer
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     CapitationType: 
+      type: string
+      nullable: true
+     PCPEffectiveDate: 
+      type: string
+      format: date-time
+     PCPExpirationDate: 
+      type: string
+      format: date-time
+     Precedence: 
+      type: string
+      nullable: true
+     ReasonCode: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+     LastUpdatedAt : 
+      type: string
+      format: date-time
+     CapitationTypeName: 
+      type: string
+      nullable: true
+     PrecedenceName: 
+      type: string
+      nullable: true
+     ReasonCodeName: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeAddress1: 
+      type: string
+      nullable: true
+     OfficeAddress2: 
+      type: string
+      nullable: true
+     OfficeCity: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     OfficeState: 
+      type: string
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     RiskGroupSubclassName: 
+      type: string
+      nullable: true
+     HospitalName: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     HospitalNPI: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupLOB: 
+      type: string
+      nullable: true
+     GroupProductType: 
+      type: string
+      nullable: true
+     GroupProductLine: 
+      type: string
+      nullable: true
+     GroupCoverageCode: 
+      type: string
+      nullable: true
+     AutoAssignment: 
+      type: string
+      nullable: true
+     OverridePCPPanel : 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     ManuallyAssigned: 
+      type: string
+      nullable: true
+     IsInherited: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     PCPNodeName: 
+      type: string
+      nullable: true
+     AddedBy: 
+      type: integer
+      nullable: true
+     AddedByName: 
+      type: string
+      nullable: true
+     AddedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     TermedBy: 
+      type: integer
+      nullable: true
+     TermedByName: 
+      type: string
+      nullable: true
+     TermedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   MemberPCPMapDTO: 
+    title : MemberPCPMapDTO
+    type: object
+    properties: 
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     MEmberID: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     CapitationType: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: string
+      nullable: true
+     AutoAssignment: 
+      type: string
+      default: N
+      nullable: true
+     OverridePCPPanel: 
+      type: string
+      default: N
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      default: N
+      nullable: true
+     ManuallyAssigned: 
+      type: string
+      nullable: true
+     ReasonCode: 
+      type: string
+      nullable: true
+     ContactReasonID: 
+      type: integer
+      nullable: true
+     PCPEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PCPExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberProviderID: 
+      type: integer
+      nullable: true
+   ResponsiblePartyCoverageMapDTO: 
+    title : ResponsiblePartyCoverageMapDTO
+    type: object
+    properties: 
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     ResponsiblePartyId: 
+      type: integer
+      nullable: true
+     ResponsiblePartyType: 
+      type: string
+      nullable: true
+     CreateNewHousehold: 
+      type: string
+      default: N
+      nullable: true
+     HouseholdReferenceNumber: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      default: '01/01/1900'
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      default: '12/31/9999'
+      nullable: true
+     ResponsiblePartyCoverageMapId: 
+      type: integer
+      nullable: true
+   AutoAssignPCPtoMemberSearchDTO: 
+    title : AutoAssignPCPtoMemberSearchDTO
+    type: object
+    properties: 
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+   AutoAssignPCPtoMemberResponseDTO: 
+    title : AutoAssignPCPtoMemberResponseDTO
+    type: object
+    properties: 
+     OfficeID: 
+      type: integer
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     RiskGroupID: 
+      type: integer
+      nullable: true
+     HospitalID: 
+      type: integer
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeAddress1: 
+      type: string
+      nullable: true
+     OfficeCity: 
+      type: string
+      nullable: true
+     OfficeState: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     HospitalName: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: string
+      nullable: true
+     AutoAssignment: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+   ReimbursementForAssignmentListDTO: 
+    title : ReimbursementForAssignmentListDTO
+    type: object
+    properties: 
+     ReimbursementId: 
+      type: integer
+     ReimbursementName: 
+      type: string
+     ReimbursementDescription: 
+      type: string
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+   ResponsiblePartyCoverageMapListDTO: 
+    title : ResponsiblePartyCoverageMapListDTO
+    type: object
+    properties: 
+     ResponsiblePartyCoverageMapId: 
+      type: integer
+     ResponsiblePartyType: 
+      type: string
+     ResponsiblePartyTypeName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     MemberId: 
+      type: integer
+     SubscriberContractId: 
+      type: integer
+     ResponsiblePartyId: 
+      type: integer
+     HouseholdReferenceNumber: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     Relationship: 
+      type: string
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberNationalIndividualID: 
+      type: string
+      nullable: true
+     MemberSocialSecurityNumber: 
+      type: string
+      nullable: true
+     MemberGender: 
+      type: string
+      nullable: true
+     MemberDateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberAddress: 
+      type: string
+      nullable: true
+     MemberCity: 
+      type: string
+      nullable: true
+     MemberState: 
+      type: string
+      nullable: true
+     MemberZip: 
+      type: string
+      nullable: true
+     MemberHomePhone: 
+      type: string
+      nullable: true
+     MemberWorkPhone: 
+      type: string
+      nullable: true
+     MemberEmail: 
+      type: string
+      nullable: true
+     ResponsiblePartyMemberCoverageId: 
+      type: integer
+      nullable: true
+     ResponsibleLastName: 
+      type: string
+      nullable: true
+     ResponsibleFirstName: 
+      type: string
+      nullable: true
+     ResponsibleNationalIndividualID: 
+      type: string
+      nullable: true
+     ResponsibleSocialSecurityNumber: 
+      type: string
+      nullable: true
+     ResponsibleGender: 
+      type: string
+      nullable: true
+     ResponsibleDateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     ResponsibleAddress: 
+      type: string
+      nullable: true
+     ResponsibleCity: 
+      type: string
+      nullable: true
+     ResponsibleState: 
+      type: string
+      nullable: true
+     ResponsibleZip: 
+      type: string
+      nullable: true
+     ResponsibleHomePhone: 
+      type: string
+      nullable: true
+     ResponsibleWorkPhone: 
+      type: string
+      nullable: true
+     ResponsibleEmail: 
+      type: string
+      nullable: true
+     IsResponsiblePersonMember: 
+      type: string
+      nullable: true
+     ResponsiblePartyNodeName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     CopyMemberId: 
+      type: integer
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     EntityAccessRolePermission: 
+      type: string
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: "|USAGE1|"
+    description: description of parameter passed
+   MemberIdQueryParam: 
+    in: query
+    name: MemberId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SubscriberContractIdQueryParam: 
+    in: query
+    name: SubscriberContractId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
