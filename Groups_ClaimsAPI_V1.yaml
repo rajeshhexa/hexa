@@ -1,0 +1,258 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Group Claim API
+  description: Groups Claim API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Claims/getserviceareas/{GroupId}: 
+   get: 
+    operationId: GetServiceAreas
+    tags: 
+     - Group Claim
+    summary: Get Service area
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/GroupIdPathParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Service areas retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ServiceAreaListDTO'
+  /Claims/updateservicearea: 
+   put: 
+    operationId: UpdateServiceArea
+    tags: 
+     - Group Claim
+    summary: Update service area
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceAreaDTO'
+    responses: 
+     '200': 
+      description: Service area updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Claims/addservicearea: 
+   post: 
+    operationId: AddServiceArea
+    tags: 
+     - Group Claim
+    summary: Add Service area
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceAreaDTO'
+    responses: 
+     '200': 
+      description: Service area added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /Claims/deleteservicearea/{ServiceAreaId}: 
+   delete: 
+    operationId: DeleteServiceArea
+    tags: 
+     - Group Claim
+    summary: Delete Service area
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ServiceAreaIdPathParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Service area deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Claims/getclaimfilingterm: 
+   post: 
+    operationId: GetClaimFilingTerm
+    tags: 
+     - Group Claim
+    summary: Get claim filing term
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimFilingTermSearchDTO'
+    responses: 
+     '200': 
+      description: Claim filing term retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimFilingTermListDTO'
+  /Claims/getgroupbenefitpackage/{GroupId}: 
+   get: 
+    operationId: GetGroupBenefitPackage
+    tags: 
+     - Group Claim
+    summary: Get group benefit package
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/GroupIdPathParam'
+     - $ref: '#/components/parameters/AsOfDateQueryParam'
+    responses: 
+     '200': 
+      description: Group benefit package retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupBenefitPackageListDTO'
+  /Claims/getgroupparents/{GroupId}: 
+   get: 
+    operationId: GetGroupParents
+    tags: 
+     - Group Claim
+    summary: Get group parents
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/GroupIdPathParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Group parents retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/GroupParentsListDTO'
+  /Claims/paymentpackageaggregatesummary: 
+   post: 
+    operationId: PaymentPackageAggregateSummary
+    tags: 
+     - Group Claim
+    summary: Payment package aggregate summary
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageAggregateSummarySearchDTO'
+    responses: 
+     '200': 
+      description: Payment package aggregate summary retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageAggregateSummaryListDTO'
+components: 
+  schemas: 
+   ServiceAreaListDTO: 
+    title : ServiceAreaListDTO
+    type: object
+    properties: 
+     ServiceAreaId: 
+      type: integer
+      description: 
+     GroupId: 
+      type: integer
+     Zip: 
+      type: string
+     County: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   ServiceAreaDTO: 
+    title : ServiceAreaDTO
+    type: object
+    properties: 
+     ServiceAreaId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   GroupIdPathParam: 
+    in: path
+    name: GroupId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ServiceAreaIdPathParam: 
+    in: path
+    name: ServiceAreaId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AsOfDateQueryParam: 
+    in: query
+    name: AsOfDate
+    required: true
+    schema: 
+     type: string
+     format: date-time
+    description: description of parameter passed
