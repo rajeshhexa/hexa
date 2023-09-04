@@ -1,0 +1,138 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Alternate_Address API
+  description: Alternate_Address API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /AlternateAddress/getalternateaddress: 
+   post: 
+    operationId: GetAlternateAddress
+    tags: 
+     - AlternateAddress
+    summary: Get alternate address
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressSearchDTO'
+    responses: 
+     '200': 
+      description: Alternate address retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressListDTO'
+  /AlternateAddress/deletealternateaddress/{AlternateAddressID}: 
+   delete: 
+    operationId: DeleteAlternateAddress
+    tags: 
+     - AlternateAddress
+    summary: Delete alternate address
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AlternateAddressIDPathParam'
+    responses: 
+     '200': 
+      description: Alternate address deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /AlternateAddress/addalternateaddress: 
+   post: 
+    operationId: AddAlternateAddress
+    tags: 
+     - AlternateAddress
+    summary: Add alternate address
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressDTO'
+    responses: 
+     '200': 
+      description: Alternate address added successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressReturnDTO'
+  /AlternateAddress/updatealternateaddress: 
+   put: 
+    operationId: UpdateAlternateAddress
+    tags: 
+     - AlternateAddress
+    summary: Update alternate address
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressDTO'
+    responses: 
+     '200': 
+      description: Alternate address updated successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressReturnDTO'
+  /AlternateAddress/getalternateaddresshistory: 
+   post: 
+    operationId: GetAlternateAddressHistory
+    tags: 
+     - AlternateAddress
+    summary: Get alternate address history
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Alternate address history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressHistoryListDTO'
+components: 
+  schemas: 
+   AlternateAddressHistorySearchDTO: 
+    title : AlternateAddressHistorySearchDTO
+    type: object
+    properties: 
+     AlternateAddressID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+  parameters: 
+   AlternateAddressIDPathParam: 
+    in: path
+    name: AlternateAddressID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
