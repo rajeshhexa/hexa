@@ -1,0 +1,379 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Attachement  API
+  description: Attachment API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Attachment/getdocumententitymap: 
+   post: 
+    operationId: GetDocumentEntityMap
+    tags: 
+     - Document
+    summary: Get document entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentEntityMapSearchDTO'
+    responses: 
+     '200': 
+      description: Document Entity map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentEntityMapListDTO'
+  /Attachment/adddocumententitymap: 
+   post: 
+    operationId: AddDocumentEntityMap
+    tags: 
+     - Document
+    summary: Add document entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentEntityMapDTO'
+    responses: 
+     '200': 
+      description: Document Entity map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/updatedocumententitymap: 
+   put: 
+    operationId: UpdateDocumentEntityMap
+    tags: 
+     - Document
+    summary: Update document entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentEntityMapDTO'
+    responses: 
+     '200': 
+      description: Document Entity map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /Attachment/deletedocumententitymap: 
+   delete: 
+    operationId: DeleteDocumentEntityMap
+    tags: 
+     - Document
+    summary: Delete document entity map
+    description: Description of path
+    responses: 
+     '200': 
+      description: Document Entity map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/adddocumentforentity: 
+   post: 
+    operationId: AddDocumentForEntity
+    tags: 
+     - Document
+    summary: Add document for entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentForEntityDTO'
+    responses: 
+     '200': 
+      description: Document for entity added successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentForEntityListDTO'
+  /Attachment/adddocument: 
+   post: 
+    operationId: AddDocument
+    tags: 
+     - Document
+    summary: Add document
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentDTO'
+    responses: 
+     '200': 
+      description: Document added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/updatedocument: 
+   put: 
+    operationId: UpdateDocument
+    tags: 
+     - Document
+    summary: Update document
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentDTO'
+    responses: 
+     '200': 
+      description: Document updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /Attachment/addfileentitymap: 
+   post: 
+    operationId: AddFileEntityMap
+    tags: 
+     - Document
+    summary: Add file entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileEntityMap'
+    responses: 
+     '200': 
+      description: File  entity map added
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/addtransactiontofile: 
+   post: 
+    operationId: AddTransactionToFile
+    tags: 
+     - Document
+    summary: Add transaction to file
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TransactionToFileDTO'
+    responses: 
+     '200': 
+      description: File added successfully to transaction
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/getattachmentcategories: 
+   post: 
+    operationId: GetAttachmentCategories
+    tags: 
+     - Document
+    summary: Get attachment categories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AttachmentCategoriesSearchDTO'
+    responses: 
+     '200': 
+      description: Attachment categories retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AttachmentCategoriesListDTO'
+  /Attachment/getdocument: 
+   post: 
+    operationId: GetDocuments
+    tags: 
+     - Document
+    summary: Get documents
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentsSearchDTO'
+    responses: 
+     '200': 
+      description: Documents retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DocumentsListDTO'
+  /Attachment/getfileentitymap: 
+   post: 
+    operationId: GetFileEntityMap
+    tags: 
+     - Document
+    summary: Get file entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileEntityMapSearchDTO'
+    responses: 
+     '200': 
+      description: File Entity map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileEntityMapListDTO'
+  /Attachment/gettransactioninfoforfile: 
+   post: 
+    operationId: GetTransactionInfoForFile
+    tags: 
+     - Document
+    summary: Get transaction info for a file
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Transaction info for a file retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TransactionInfoForFileListDTO'
+  /Attachment/voidfile: 
+   post: 
+    operationId: voidfile
+    tags: 
+     - Document
+    summary: Void file
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/VoidFileDTO'
+    responses: 
+     '200': 
+      description: Void file 
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   FileEntityMapListDTO: 
+    title : FileEntityMapListDTO
+    type: object
+    properties: 
+     RowId: 
+      type: integer
+     FileId: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+     Active: 
+      type: string
+      nullable: true
+     LinkedItemName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     IndividualId: 
+      type: integer
+      nullable: true
+     SupplementalId: 
+      type: integer
+      nullable: true
+     SupplementalType: 
+      type: string
+      nullable: true
+     SupplementalNumber: 
+      type: string
+      nullable: true
+     SupplementalName: 
+      type: string
+      nullable: true
+     TrackingNumber: 
+      type: string
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     DateOpened: 
+      type: string
+      format: date-time
+      nullable: true
+     DateClosed: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: "|INIT|"
+    description: description of parameter passed
