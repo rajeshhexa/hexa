@@ -1,0 +1,1595 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Alternate_Address API
+  description: Alternate_Address API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Finance/getrates: 
+   post: 
+    operationId: GetRates
+    tags: 
+     - Finance
+    summary: Get Rates
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RatesSearchDTO'
+    responses: 
+     '200': 
+      description: Rates retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/RatesListDTO'
+  /Finance/getrecords: 
+   post: 
+    operationId: GetRecords
+    tags: 
+     - Finance
+    summary: Get Records
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RecordsSearchDTO'
+    responses: 
+     '200': 
+      description: Records retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/RecordsListDTO'
+  /Finance/getbillpackages: 
+   post: 
+    operationId: GetBillPackages
+    tags: 
+     - Finance
+    summary: Get Bill Packages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillPackagesSearchDTO'
+    responses: 
+     '200': 
+      description: Bill packages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillPackagesListDTO'
+  Finance/getentityaccountmap: 
+   post: 
+    operationId: GetEntityAccountMap
+    tags: 
+     - Finance
+    summary: Get entity account map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityAccountMapSearchDTO'
+    responses: 
+     '200': 
+      description: Entity account map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityAccountMapListDTO'
+  Finance/getinterestpackages: 
+   get: 
+    operationId: GetInterestPackages
+    tags: 
+     - Finance
+    summary: Get interest packages
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Interest packages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/InterestPackagesListDTO'
+  Finance/paymentpackageaggregatesummary: 
+   post: 
+    operationId: PaymentPackageAggregateSummary
+    tags: 
+     - Finance
+    summary: Payment package aggregate summary
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageAggregateSummarySearchDTO'
+    responses: 
+     '200': 
+      description: Payment package aggregate summary retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageAggregateSummaryListDTO'
+  Finance/voidpostedbillingrecord/{BillingRecordId}: 
+   get: 
+    operationId: VoidPostedBillingRecord
+    tags: 
+     - Finance
+    summary: Void posted billing record
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BillingRecordIdPathParam'
+     - $ref: '#/components/parameters/VoidReasonQueryParam'
+    responses: 
+     '200': 
+      description: Void posted billing record successful
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  Finance/getpaymentqualifierentitymap: 
+   post: 
+    operationId: GetPaymentQualifierEntityMap
+    tags: 
+     - Finance
+    summary: Get payment qualifier entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentQualifierEntityMapSearchDTO'
+    responses: 
+     '200': 
+      description: payment qualifier entity map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentQualifierEntityMapListDTO'
+  Finance/Getpaymentwithholds: 
+   post: 
+    operationId: GetPaymentWithholds
+    tags: 
+     - Finance
+    summary: Get payment withholds
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWithholdsSearchDTO'
+    responses: 
+     '200': 
+      description: payment withholds retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PaymentWithholdsListDTO'
+components: 
+  schemas: 
+   InterestPackagesListDTO: 
+    title : InterestPackagesListDTO
+    type: object
+    properties: 
+     InterestPackageId: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     ApplyToAllStates: 
+      type: string
+      nullable: true
+     ApplyInterest: 
+      type: string
+      nullable: true
+     ApplyInterestName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   PaymentPackageAggregateSummarySearchDTO: 
+    title : PaymentPackageAggregateSummarySearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     PackageEntityType: 
+      type: string
+      nullable: true
+     PackageEntityId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     PostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ShowGroupSummary: 
+      type: string
+      default: N
+      nullable: true
+     ReturnResultsAsXml: 
+      type: string
+      default: N
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   PaymentPackageAggregateSummaryListDTO: 
+    title : PaymentPackageAggregateSummaryListDTO
+    type: object
+    properties: 
+     PostingDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReinsurancePolicy: 
+      type: string
+      nullable: true
+     Group: 
+      type: string
+      nullable: true
+     RecordId: 
+      type: integer
+      nullable: true
+     MonthlyAttachmentPoint: 
+      type: string
+      nullable: true
+     YTDAttachmentPoint: 
+      type: string
+      nullable: true
+     ManuallyUpdated: 
+      type: string
+      nullable: true
+     Employee and Children: 
+      type: string
+      nullable: true
+     Employee and Spouse: 
+      type: string
+      nullable: true
+     Family: 
+      type: string
+      nullable: true
+     Individual: 
+      type: string
+      nullable: true
+   PaymentQualifierEntityMapSearchDTO: 
+    title : PaymentQualifierEntityMapSearchDTO
+    type: object
+    properties: 
+     PaymentQualifierCode: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   PaymentQualifierEntityMapListDTO: 
+    title : PaymentQualifierEntityMapListDTO
+    type: object
+    properties: 
+     PaymentQualifierEntityId: 
+      type: integer
+      nullable: true
+     PaymentQualifierCode: 
+      type: string
+      nullable: true
+     PaymentQualifierName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   PaymentWithholdsSearchDTO: 
+    title : PaymentWithholdsSearchDTO
+    type: object
+    properties: 
+     PaymentWithholdId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   PaymentWithholdsListDTO: 
+    title : PaymentWithholdsListDTO
+    type: object
+    properties: 
+     PaymentWithholdId: 
+      type: integer
+      nullable: true
+     WithholdNumber: 
+      type: string
+      nullable: true
+     ExternalWithholdNumber: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     UnitTypeName: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DateToApplyWithhold: 
+      type: string
+      nullable: true
+     DateToApplyWithholdName: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     LineOfBusiness: 
+      type: string
+      nullable: true
+     LineOfBusinessName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     WithholdAction: 
+      type: string
+      nullable: true
+     WithholdActionName: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     VendorToPayId: 
+      type: integer
+      nullable: true
+     CreatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     CreatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     EntityNumber: 
+      type: string
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     VendorToPayName: 
+      type: string
+      nullable: true
+     VendorToPayNumber: 
+      type: string
+      nullable: true
+   RatesSearchDTO: 
+    title : RatesSearchDTO
+    type: object
+    properties: 
+     RateId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     JobID: 
+      type: integer
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   RatesListDTO: 
+    title : RatesListDTO
+    type: object
+    properties: 
+     RateId: 
+      type: integer
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     RateUnitType: 
+      type: string
+      nullable: true
+     RateUnitValue: 
+      type: string
+      nullable: true
+     RateType: 
+      type: string
+      nullable: true
+     RateTypeName: 
+      type: string
+      nullable: true
+     RateTypeEntityID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     RateUnitTypeName: 
+      type: string
+      nullable: true
+     RiderName: 
+      type: string
+      nullable: true
+     QualifierName: 
+      type: string
+      nullable: true
+     AppliedLevel: 
+      type: string
+      nullable: true
+     AppliedLevelName: 
+      type: string
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     AgeFrom: 
+      type: integer
+      nullable: true
+     AgeTo: 
+      type: integer
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     GenderName: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     UsageName: 
+      type: string
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     BillingEntityType: 
+      type: string
+      nullable: true
+     BillingEntityTypeName: 
+      type: string
+      nullable: true
+     PayBrokerCommissions: 
+      type: string
+      nullable: true
+     AidCodeId: 
+      type: integer
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+   RecordsSearchDTO: 
+    title : RecordsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ReferenceID: 
+      type: integer
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordID: 
+      type: integer
+      nullable: true
+     AccountID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     MemberAccountId: 
+      type: integer
+      nullable: true
+     BillType: 
+      type: string
+      default: MEM
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CheckType: 
+      type: string
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     BrokerID: 
+      type: integer
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     BenefitCoverageID: 
+      type: integer
+      nullable: true
+     StartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DepositNumber: 
+      type: string
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     FinancialsToShow: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     CashAccountId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     IncludeArchives: 
+      type: string
+      default: Y
+      nullable: true
+   RecordsListDTO: 
+    title : RecordsListDTO
+    type: object
+    properties: 
+     RecordID: 
+      type: integer
+      description: 
+      nullable: true
+     ParentAccountID: 
+      type: integer
+      nullable: true
+     RecordTypeCode: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     RecordStatusCode: 
+      type: string
+      nullable: true
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     ReferenceID: 
+      type: integer
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     CashAccountID: 
+      type: integer
+      nullable: true
+     ExpenseAccountID: 
+      type: integer
+      nullable: true
+     ExpenseAccountName: 
+      type: string
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcessedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     VoidDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     RateId: 
+      type: integer
+      nullable: true
+     RateType: 
+      type: string
+      nullable: true
+     RateTypeName: 
+      type: string
+      nullable: true
+     RateUsage: 
+      type: string
+      nullable: true
+     RateUsageName: 
+      type: string
+      nullable: true
+     RateBillingEntityId: 
+      type: integer
+      nullable: true
+     RateBillingEntityName: 
+      type: string
+      nullable: true
+     PayBrokerCommissions: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     StartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: string
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     CheckType: 
+      type: string
+      nullable: true
+     ExternalCheckNumber: 
+      type: string
+      nullable: true
+     ExternalCheckCurrency: 
+      type: string
+      nullable: true
+     ExternalCheckCurrencyName: 
+      type: string
+      nullable: true
+     ExternalCheckAmount: 
+      type: string
+      nullable: true
+     ExternalConversionRate: 
+      type: number
+      format: float
+      nullable: true
+     ExternalCheckDate: 
+      type: string
+      format: date
+      nullable: true
+     ExternalMethodOfPayment: 
+      type: string
+      nullable: true
+     ExternalMethodOfPaymentCode: 
+      type: string
+      nullable: true
+     CheckClearedDate: 
+      type: string
+      format: date
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     CashAccount: 
+      type: string
+      nullable: true
+     OwedAmount: 
+      type: string
+      nullable: true
+     OpenBalance: 
+      type: string
+      nullable: true
+     TotalAmount: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: integer
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     PaymentVendorName: 
+      type: string
+      nullable: true
+     PaymentVendorNumber: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     PaymentClassName: 
+      type: string
+      nullable: true
+     VendorAddress1: 
+      type: string
+      nullable: true
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     CheckStatusCode: 
+      type: string
+      nullable: true
+     CheckStatus: 
+      type: string
+      nullable: true
+     CheckVoidReason: 
+      type: string
+      nullable: true
+     CheckDetailLocation: 
+      type: string
+      nullable: true
+     CheckPDFDetailName: 
+      type: string
+      nullable: true
+     GracePeriod: 
+      type: integer
+      nullable: true
+     WriteOffReasonCode: 
+      type: string
+      nullable: true
+     WriteOffReason: 
+      type: string
+      nullable: true
+     EOBReportPath: 
+      type: string
+      nullable: true
+     MemberClaimSummaryReportPath: 
+      type: string
+      nullable: true
+     ProviderClaimSummaryReportPath: 
+      type: string
+      nullable: true
+     PCPPreEstimateReportPath: 
+      type: string
+      nullable: true
+     ProviderPreEstimateReportPath: 
+      type: string
+      nullable: true
+     MemberPreEstimateReportPath: 
+      type: string
+      nullable: true
+     EOBReportId: 
+      type: integer
+      nullable: true
+     MemberClaimSummaryReportId: 
+      type: integer
+      nullable: true
+     ProviderClaimSummaryReportId: 
+      type: integer
+      nullable: true
+     PCPPreEstimateReportId: 
+      type: integer
+      nullable: true
+     ProviderPreEstimateReportId: 
+      type: integer
+      nullable: true
+     MemberPreEstimateReportId: 
+      type: integer
+      nullable: true
+     AccountRoutingNumber: 
+      type: string
+      nullable: true
+     BankAccountNumber: 
+      type: string
+      nullable: true
+     ClaimID: 
+      type: integer
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     CheckDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     PaymentMethod: 
+      type: string
+      nullable: true
+     PaymentSubMethod: 
+      type: string
+      nullable: true
+     PaymentSubMethodName: 
+      type: string
+      nullable: true
+     BillPackageName: 
+      type: string
+      nullable: true
+     BillType: 
+      type: string
+      nullable: true
+     BillNumber: 
+      type: string
+      nullable: true
+     PaidAmount: 
+      type: string
+      nullable: true
+     DateDue: 
+      type: string
+      format: date-time
+      nullable: true
+     DateDueForTermination: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     AppliedAmount: 
+      type: string
+      nullable: true
+     AllowOpenBalance: 
+      type: string
+      nullable: true
+     DepositNumber: 
+      type: string
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     XactAmount: 
+      type: string
+      nullable: true
+     XactTypeCode: 
+      type: string
+      nullable: true
+     XactType: 
+      type: string
+      nullable: true
+     TotalUnpaidCommission: 
+      type: string
+      nullable: true
+     DateOfLastLetterOutput: 
+      type: string
+      format: date-time
+      nullable: true
+     RefundLetterNumber: 
+      type: integer
+      nullable: true
+     PDFFilePath: 
+      type: string
+      nullable: true
+     PDFDocumentId: 
+      type: integer
+      nullable: true
+     DetailPDFExists: 
+      type: string
+      nullable: true
+     ReinsuranceRecordId: 
+      type: integer
+      nullable: true
+     PaymentPackageMappingId: 
+      type: integer
+      nullable: true
+     BillingReferenceID: 
+      type: integer
+      nullable: true
+     TierItemID: 
+      type: integer
+      nullable: true
+     TierItemName: 
+      type: string
+      nullable: true
+     RateCoverageType: 
+      type: string
+      nullable: true
+     RateCoverageTypeName: 
+      type: string
+      nullable: true
+     RateDetailQualifierId: 
+      type: integer
+      nullable: true
+     RiderName: 
+      type: string
+      nullable: true
+     QualifierName: 
+      type: string
+      nullable: true
+     QualifierType: 
+      type: string
+      nullable: true
+     AppliedLevel: 
+      type: string
+      nullable: true
+     AppliedLevelName: 
+      type: string
+      nullable: true
+     BillingMember: 
+      type: string
+      nullable: true
+     BrokerName: 
+      type: string
+      nullable: true
+     BrokerNumber: 
+      type: string
+      nullable: true
+     Commission: 
+      type: string
+      nullable: true
+     CommissionType: 
+      type: string
+      nullable: true
+     CommissionTypeName: 
+      type: string
+      nullable: true
+     CommissionTierItemId: 
+      type: integer
+      nullable: true
+     CommissionTierItemName: 
+      type: string
+      nullable: true
+     NumberOfMembers: 
+      type: integer
+      nullable: true
+     TotalBrokerCommissions: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     Month: 
+      type: string
+      nullable: true
+     Year: 
+      type: string
+      nullable: true
+     AccountID: 
+      type: integer
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     RiskGroupVendorMapID: 
+      type: integer
+      nullable: true
+     RiskGroupID: 
+      type: integer
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     RiskGroupSubclassName: 
+      type: string
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+      nullable: true
+     DateCompleted: 
+      type: string
+      format: date-time
+      nullable: true
+     JobID: 
+      type: integer
+      nullable: true
+     CheckTypeForReports: 
+      type: string
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     SuppressCheckDetail: 
+      type: string
+      nullable: true
+     EmailVendorPayment: 
+      type: string
+      nullable: true
+     ZeroDollarCheckOption: 
+      type: string
+      nullable: true
+     CheckOnlyReportId: 
+      type: integer
+      nullable: true
+     CheckDetailReportId: 
+      type: integer
+      nullable: true
+     ZeroDollarCheckReportId: 
+      type: integer
+      nullable: true
+     CashAccount835FileMethod: 
+      type: string
+      nullable: true
+     CSVReportId: 
+      type: integer
+      nullable: true
+     SuppressEOBForMembers: 
+      type: string
+      nullable: true
+     EmailMemberEOB: 
+      type: string
+      nullable: true
+     MultipleClaimsOnEOBs: 
+      type: string
+      nullable: true
+     DelayEOBCreation: 
+      type: string
+      nullable: true
+     Hierarchy1: 
+      type: string
+      nullable: true
+     Hierarchy2: 
+      type: string
+      nullable: true
+     Hierarchy3: 
+      type: string
+      nullable: true
+     Hierarchy4: 
+      type: string
+      nullable: true
+     ClientNumber: 
+      type: string
+      nullable: true
+     EFTReportId: 
+      type: integer
+      nullable: true
+     IncludeEFTsInABFFile: 
+      type: string
+      nullable: true
+     FulfillmentTypeName: 
+      type: string
+      nullable: true
+     JobStatus: 
+      type: string
+      nullable: true
+     JobStatusName: 
+      type: string
+      nullable: true
+     SuspensionReason: 
+      type: string
+      nullable: true
+     SuspensionReasonName: 
+      type: string
+      nullable: true
+     PaymentWizardJobCheckDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CoveragePeriodStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CoveragePeriodEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NumberOfDaysCovered: 
+      type: integer
+      nullable: true
+     ForwardingBalanceId: 
+      type: integer
+      nullable: true
+     ForwardingBalanceAmount: 
+      type: string
+      nullable: true
+     DateGracePeriodExceeded: 
+      type: string
+      format: date-time
+      nullable: true
+     PaymentWizardCheckType: 
+      type: string
+      nullable: true
+     CheckImageFileName: 
+      type: string
+      nullable: true
+     ClearedCheckLastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     RefundTypeCode: 
+      type: string
+      nullable: true
+     RefundType: 
+      type: string
+      nullable: true
+     MethodOfRefundCode: 
+      type: string
+      nullable: true
+     MethodOfRefund: 
+      type: string
+      nullable: true
+     PaymentStatusCode: 
+      type: string
+      nullable: true
+     PaymentStatus: 
+      type: string
+      nullable: true
+     ExternalPaymentNumber: 
+      type: string
+      nullable: true
+     ExternalPaymentDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RecordDetailId: 
+      type: integer
+      nullable: true
+     BillId: 
+      type: integer
+      nullable: true
+     CoveragePeriodEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CoveragePeriodExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+   BillPackagesListDTO: 
+    title : BillPackagesListDTO
+    type: object
+    properties: 
+     BillPackageId: 
+      type: integer
+      nullable: true
+     BillPackageName: 
+      type: string
+      nullable: true
+     BillPackageDescription: 
+      type: string
+      nullable: true
+     BillType: 
+      type: string
+      nullable: true
+     BillTypeName: 
+      type: string
+      nullable: true
+     InvoiceLevel: 
+      type: string
+      nullable: true
+     InvoiceLevelName: 
+      type: string
+      nullable: true
+     OutputFormatType: 
+      type: string
+      nullable: true
+     OutputFormatTypeName: 
+      type: string
+      nullable: true
+     CrystalTemplateID: 
+      type: integer
+      nullable: true
+     CrystalTemplate: 
+      type: string
+      nullable: true
+     BillingCycleType: 
+      type: string
+      nullable: true
+     BillingCycleValue: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastPostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RetroactiveLimit: 
+      type: integer
+      nullable: true
+     RetroactiveTerminationLimit: 
+      type: integer
+      nullable: true
+     ReportProcedure: 
+      type: string
+      nullable: true
+     BillingCycleName: 
+      type: string
+      nullable: true
+     NextPostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AllowOpenBalance: 
+      type: string
+      nullable: true
+     RateSelectionOption: 
+      type: string
+      nullable: true
+     CutoffDay: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+   BillPackagesSearchDTO: 
+    title : BillPackagesSearchDTO
+    type: object
+    properties: 
+     BillPackageId: 
+      type: integer
+      nullable: true
+     BillPackageName: 
+      type: string
+      nullable: true
+     BillType: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   EntityAccountMapSearchDTO: 
+    title : EntityAccountMapSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     AccountType: 
+      type: string
+      nullable: true
+     AccountID: 
+      type: integer
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+   EntityAccountMapListDTO: 
+    title : EntityAccountMapListDTO
+    type: object
+    properties: 
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     AccountID: 
+      type: integer
+      nullable: true
+     AccountType: 
+      type: string
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     AccountNumber: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     Subclass: 
+      type: string
+      nullable: true
+     BenefitCategoryID: 
+      type: integer
+      nullable: true
+     BenefitCategoryName: 
+      type: string
+      nullable: true
+     BankingAccountID: 
+      type: integer
+      nullable: true
+     BankingAccountName: 
+      type: string
+      nullable: true
+     BankingAccountNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     Balance: 
+      type: string
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   BillingRecordIdPathParam: 
+    in: path
+    name: BillingRecordId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   VoidReasonQueryParam: 
+    in: query
+    name: VoidReason
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
