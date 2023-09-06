@@ -1,0 +1,547 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Groups PolicyMap API
+  description: Groups PolicyMap API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /PolicyMap/grouppolicymap/{GroupID}: 
+   get: 
+    operationId: GetGroupPolicyMap
+    tags: 
+     - PolicyMap
+    summary: Get group policy map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/GroupIDPathParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Group policy map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/GroupPolicyMapListDTO'
+  /PolicyMap/grouppolicymap: 
+   post: 
+    operationId: AddGroupPolicyMap
+    tags: 
+     - PolicyMap
+    summary: Add group policy map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupPolicyMapDTO'
+    responses: 
+     '200': 
+      description: Group policy map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateGroupPolicyMap
+    tags: 
+     - PolicyMap
+    summary: Update group policy map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupPolicyMapDTO'
+    responses: 
+     '200': 
+      description: Group policy map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /PolicyMap/grouppolicymap/{PolicyID}: 
+   delete: 
+    operationId: DeleteGroupPolicyMap
+    tags: 
+     - PolicyMap
+    summary: Delete group policy map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PolicyIDPathParam'
+    responses: 
+     '200': 
+      description: Group policy map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /PolicyMap/groupentitymap/{GroupID}: 
+   get: 
+    operationId: GetGroupEntityMap
+    tags: 
+     - PolicyMap
+    summary: Get group entity map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/GroupIDPathParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+     - $ref: '#/components/parameters/AsOfDateQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Group entity map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupEntityMapListDTO'
+  /PolicyMap/groupentitymap: 
+   post: 
+    operationId: AddGroupEntityMap
+    tags: 
+     - PolicyMap
+    summary: Add group entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupEntityMapDTO'
+    responses: 
+     '200': 
+      description: Group entity map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateGroupEntityMap
+    tags: 
+     - PolicyMap
+    summary: Update group entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupEntityMapDTO'
+    responses: 
+     '200': 
+      description: Group entity map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  PolicyMap/groupentitymap/{GroupEntityMapID}: 
+   delete: 
+    operationId: DeleteGroupEntityMap
+    tags: 
+     - PolicyMap
+    summary: Deleted group entity map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/GroupEntityMapIDPathParam'
+    responses: 
+     '200': 
+      description: Group entity map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /PolicyMap/groupimportlocationmap/{GroupId}: 
+   get: 
+    operationId: GetGroupImportLocationMap
+    tags: 
+     - PolicyMap
+    summary: Get group import location map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/GroupIdPathParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Group import location map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupImportLocationMapListDTO'
+  /PolicyMap/groupimportlocationmap: 
+   post: 
+    operationId: AddGroupImportLocationMap
+    tags: 
+     - PolicyMap
+    summary: Add group import location map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupImportLocationMapDTO'
+    responses: 
+     '200': 
+      description: Group import location map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateGroupImportLocationMap
+    tags: 
+     - PolicyMap
+    summary: Update group import location map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupImportLocationMapDTO'
+    responses: 
+     '200': 
+      description: Group import location map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /PolicyMap/groupimportlocationmap/{GroupImportLocationMapId}: 
+   delete: 
+    operationId: DeleteGroupImportLocationMap
+    tags: 
+     - PolicyMap
+    summary: Delete group import location map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/GroupImportLocationMapIdPathParam'
+    responses: 
+     '200': 
+      description: Group import location map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   GroupPolicyMapListDTO: 
+    title : GroupPolicyMapListDTO
+    type: object
+    properties: 
+     PolicyID: 
+      type: integer
+      description: 
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     PolicyDescription: 
+      type: string
+      nullable: true
+     Carrier: 
+      type: string
+      nullable: true
+     CarrierName: 
+      type: string
+      nullable: true
+     PARAmount: 
+      type: string
+      nullable: true
+     StopLossAmount: 
+      type: string
+      nullable: true
+     StopLossAmountAction: 
+      type: string
+      nullable: true
+     StopLossAmountActionName: 
+      type: string
+      nullable: true
+     StopLossPercent: 
+      type: number
+      nullable: true
+     StopLossPercentAction: 
+      type: string
+      nullable: true
+     StopLossPercentActionName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   GroupPolicyMapDTO: 
+    title : GroupPolicyMapDTO
+    type: object
+    properties: 
+     PolicyID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     PolicyDescription: 
+      type: string
+      nullable: true
+     Carrier: 
+      type: string
+      nullable: true
+     PARAmount: 
+      type: string
+      nullable: true
+     StopLossAmount: 
+      type: string
+      nullable: true
+     StopLossAmountAction: 
+      type: string
+      nullable: true
+     StopLossPercent: 
+      type: number
+      nullable: true
+     StopLossPercentAction: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+   GroupEntityMapListDTO: 
+    title : GroupEntityMapListDTO
+    type: object
+    properties: 
+     GroupEntityMapID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     FeeScheduleName: 
+      type: string
+      nullable: true
+     FeeScheduleDescription: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     LocationCode: 
+      type: string
+      nullable: true
+     LocationDescription: 
+      type: string
+      nullable: true
+     Department: 
+      type: string
+      nullable: true
+     DepartmentCode: 
+      type: string
+      nullable: true
+     DepartmentDescription: 
+      type: string
+      nullable: true
+     JobTitle: 
+      type: string
+      nullable: true
+     JobTitleCode: 
+      type: string
+      nullable: true
+     JobTitleDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ProviderContractClassCode: 
+      type: string
+      nullable: true
+     ProviderContractClass: 
+      type: string
+      nullable: true
+   GroupEntityMapDTO: 
+    title : GroupEntityMapDTO
+    type: object
+    properties: 
+     GroupEntityMapID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProviderContractClassCode: 
+      type: string
+      nullable: true
+   GroupImportLocationMapListDTO: 
+    title : GroupImportLocationMapListDTO
+    type: object
+    properties: 
+     GroupImportLocationMapId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     LocationId: 
+      type: integer
+      nullable: true
+     LocationName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   GroupImportLocationMapDTO: 
+    title : GroupImportLocationMapDTO
+    type: object
+    properties: 
+     GroupImportLocationMapId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     LocationId: 
+      type: integer
+      nullable: true
+  parameters: 
+   GroupIDPathParam: 
+    in: path
+    name: GroupID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: "|FORGROUP|"
+    description: description of parameter passed
+   PolicyIDPathParam: 
+    in: path
+    name: PolicyID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   EntityIdQueryParam: 
+    in: query
+    name: EntityId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AsOfDateQueryParam: 
+    in: query
+    name: AsOfDate
+    required: true
+    schema: 
+     type: string
+     format: date-time
+    description: description of parameter passed
+   GroupEntityMapIDPathParam: 
+    in: path
+    name: GroupEntityMapID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   GroupIdPathParam: 
+    in: path
+    name: GroupId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   GroupImportLocationMapIdPathParam: 
+    in: path
+    name: GroupImportLocationMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
