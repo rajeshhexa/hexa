@@ -1,0 +1,625 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Member AIDCode API
+  description: Member AIDCode API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Aidcode/aidcodes/get: 
+   post: 
+    operationId: GetAidCodes
+    tags: 
+     - AidCode
+    summary: Get aid code
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AidCodeSearchDTO'
+    responses: 
+     '200': 
+      description: Aid codes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AidCodeListDTO'
+  /Aidcode/aidcodes: 
+   post: 
+    operationId: AddAidCodes
+    tags: 
+     - AidCode
+    summary: Add aid code
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AidCodeDTO'
+    responses: 
+     '200': 
+      description: Aid Code added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateAidCodes
+    tags: 
+     - AidCode
+    summary: Update aid code
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AidCodeDTO'
+    responses: 
+     '200': 
+      description: Aid Code updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /Aidcode/aidcodes/{AidCodeID}: 
+   delete: 
+    operationId: DeleteAidCodes
+    tags: 
+     - AidCode
+    summary: Delete aid code
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AidCodeIDPathParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Aid Code deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Aidcode/memberaidcode/get: 
+   post: 
+    operationId: GetMemberAidCode
+    tags: 
+     - AidCode
+    summary: Get member aid code
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberAidCodeSearchDTOParam'
+    responses: 
+     '200': 
+      description: Member Aid codes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberAidCodeListDTO'
+  /Aidcode/memberaidcode: 
+   post: 
+    operationId: AddMemberAidCode
+    tags: 
+     - AidCode
+    summary: Add member aid code
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberAidCodeDTOParam'
+    responses: 
+     '200': 
+      description: Member Aid Code added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateMemberAidCode
+    tags: 
+     - AidCode
+    summary: Update member aid code
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberAidCodeDTOParam'
+    responses: 
+     '200': 
+      description: Member Aid Code updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /Aidcode/memberaidcode/{MemberAidCodeId}: 
+   delete: 
+    operationId: DeleteMemberAidCode
+    tags: 
+     - AidCode
+    summary: Delete member aid code
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberAidCodeIdPathParam'
+    responses: 
+     '200': 
+      description: Member Aid Code deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Aidcode/aidcodeshistory/{MemberAidCodeId}: 
+   get: 
+    operationId: GetAidCodesHistory
+    tags: 
+     - AidCode
+    summary: Get aid code history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberAidCodeIdPathParam'
+     - $ref: '#/components/parameters/MemberIdQueryParam'
+     - $ref: '#/components/parameters/SubscriberContractIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Aid codes history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AidCodesHistoryListDTO'
+components: 
+  schemas: 
+   AidCodeSearchDTO: 
+    title : AidCodeSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     AidCodeId: 
+      type: integer
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+     AidCodeName: 
+      type: string
+      nullable: true
+     AidCodeClass: 
+      type: string
+      nullable: true
+     AidCodeSubClass: 
+      type: string
+      nullable: true
+     AidCodeCategory: 
+      type: string
+      nullable: true
+     AidCodeSubCategory: 
+      type: string
+      nullable: true
+   AidCodeListDTO: 
+    title : AidCodeListDTO
+    type: object
+    properties: 
+     AidCodeId: 
+      type: integer
+      description: 
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+     AidCodeName: 
+      type: string
+      nullable: true
+     AidCodeDescription: 
+      type: string
+      nullable: true
+     AidCodeClass: 
+      type: string
+      nullable: true
+     AidCodeClassName: 
+      type: string
+      nullable: true
+     AidCodeSubClass: 
+      type: string
+      nullable: true
+     AidCodeSubClassName: 
+      type: string
+      nullable: true
+     AidCodeCategory: 
+      type: string
+      nullable: true
+     AidCodeCategoryName: 
+      type: string
+      nullable: true
+     AidCodeSubCategory: 
+      type: string
+      nullable: true
+     AidCodeSubCategoryName: 
+      type: string
+      nullable: true
+     QualifierItemId: 
+      type: integer
+      nullable: true
+     QualifierItemName: 
+      type: string
+      nullable: true
+     Benefits: 
+      type: string
+      nullable: true
+     SOC: 
+      type: string
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+     ExplanationAbbreviation: 
+      type: string
+      nullable: true
+     AidCodeAndName: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   AidCodeDTO: 
+    title : AidCodeDTO
+    type: object
+    properties: 
+     AidCodeID: 
+      type: integer
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+     AidCodeName: 
+      type: string
+      nullable: true
+     AidCodeDescription: 
+      type: string
+      nullable: true
+     AidCodeClass: 
+      type: string
+      nullable: true
+     AidCodeSubClass: 
+      type: string
+      nullable: true
+     AidCodeCategory: 
+      type: string
+      nullable: true
+     AidCodeSubCategory: 
+      type: string
+      nullable: true
+     QualifierItemId: 
+      type: integer
+      nullable: true
+     Benefits: 
+      type: string
+      nullable: true
+     SOC: 
+      type: string
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   MemberAidCodeSearchDTO: 
+    title : MemberAidCodeSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+     AidCodeName: 
+      type: string
+      nullable: true
+     AidCodeType: 
+      type: string
+      nullable: true
+     AidCodeClass: 
+      type: string
+      nullable: true
+     AidCodeSubClass: 
+      type: string
+      nullable: true
+     AidCodeCategory: 
+      type: string
+      nullable: true
+     AidCodeSubCategory: 
+      type: string
+      nullable: true
+     EffectiveOnOrAfter: 
+      type: string
+      format: date
+      nullable: true
+   MemberAidCodeListDTO: 
+    title : MemberAidCodeListDTO
+    type: object
+    properties: 
+     MemberAidCodeId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     AidCodeId: 
+      type: integer
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+     AidCodeName: 
+      type: string
+      nullable: true
+     AidCodeAndName: 
+      type: string
+      nullable: true
+     AidCodeDescription: 
+      type: string
+      nullable: true
+     AidCodeClass: 
+      type: string
+      nullable: true
+     AidCodeClassName: 
+      type: string
+      nullable: true
+     AidCodeSubClass: 
+      type: string
+      nullable: true
+     AidCodeSubClassName: 
+      type: string
+      nullable: true
+     AidCodeCategory: 
+      type: string
+      nullable: true
+     AidCodeCategoryName: 
+      type: string
+      nullable: true
+     AidCodeSubCategory: 
+      type: string
+      nullable: true
+     AidCodeSubCategoryName: 
+      type: string
+      nullable: true
+     Benefits: 
+      type: string
+      nullable: true
+     SOC: 
+      type: string
+      nullable: true
+     AidCodeType: 
+      type: string
+      nullable: true
+     AidCodeTypeName: 
+      type: string
+      nullable: true
+     EligibilityStatus: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveOnOrAfter: 
+      type: string
+      format: date
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+   MemberAidCodeDTO: 
+    title : MemberAidCodeDTO
+    type: object
+    properties: 
+     MemberAidCodeId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     AidCodeId: 
+      type: integer
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+     AidCodeType: 
+      type: string
+      nullable: true
+     EligibilityStatus: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+   AidCodesHistoryListDTO: 
+    title : AidCodesHistoryListDTO
+    type: object
+    properties: 
+     MemberAidCodeId: 
+      type: integer
+      nullable: true
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     AidCodeId: 
+      type: integer
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+     AidCodeName: 
+      type: string
+      nullable: true
+     AidCodeTypeCode: 
+      type: string
+      nullable: true
+     AidCodeType: 
+      type: string
+      nullable: true
+     EligibiltyStatus: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+  parameters: 
+   AidCodeIDPathParam: 
+    in: path
+    name: AidCodeID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   MemberAidCodeSearchDTOParam: 
+    in: query
+    name: MemberAidCodeSearchDTO
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   MemberAidCodeDTOParam: 
+    in: query
+    name: MemberAidCodeDTO
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   MemberAidCodeIdPathParam: 
+    in: path
+    name: MemberAidCodeId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   MemberIdQueryParam: 
+    in: query
+    name: MemberId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SubscriberContractIdQueryParam: 
+    in: query
+    name: SubscriberContractId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
