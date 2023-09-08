@@ -1,0 +1,1374 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Attachement  API
+  description: Attachment API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Attachment/getdocumententitymap: 
+   post: 
+    operationId: GetDocumentEntityMap
+    tags: 
+     - Document
+    summary: Get document entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentEntityMapSearchDTO'
+    responses: 
+     '200': 
+      description: Document Entity map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentEntityMapListDTO'
+  /Attachment/adddocumententitymap: 
+   post: 
+    operationId: AddDocumentEntityMap
+    tags: 
+     - Document
+    summary: Add document entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentEntityMapDTO'
+    responses: 
+     '200': 
+      description: Document Entity map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/updatedocumententitymap: 
+   put: 
+    operationId: UpdateDocumentEntityMap
+    tags: 
+     - Document
+    summary: Update document entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentEntityMapDTO'
+    responses: 
+     '200': 
+      description: Document Entity map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /Attachment/deletedocumententitymap: 
+   delete: 
+    operationId: DeleteDocumentEntityMap
+    tags: 
+     - Document
+    summary: Delete document entity map
+    description: Description of path
+    responses: 
+     '200': 
+      description: Document Entity map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/adddocumentforentity: 
+   post: 
+    operationId: AddDocumentForEntity
+    tags: 
+     - Document
+    summary: Add document for entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentForEntityDTO'
+    responses: 
+     '200': 
+      description: Document for entity added successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentForEntityListDTO'
+  /Attachment/adddocument: 
+   post: 
+    operationId: AddDocument
+    tags: 
+     - Document
+    summary: Add document
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentDTO'
+    responses: 
+     '200': 
+      description: Document added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/updatedocument: 
+   put: 
+    operationId: UpdateDocument
+    tags: 
+     - Document
+    summary: Update document
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentDTO'
+    responses: 
+     '200': 
+      description: Document updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /Attachment/addfileentitymap: 
+   post: 
+    operationId: AddFileEntityMap
+    tags: 
+     - Document
+    summary: Add file entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileEntityMap'
+    responses: 
+     '200': 
+      description: File  entity map added
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/addtransactiontofile: 
+   post: 
+    operationId: AddTransactionToFile
+    tags: 
+     - Document
+    summary: Add transaction to file
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TransactionToFileDTO'
+    responses: 
+     '200': 
+      description: File added successfully to transaction
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Attachment/getattachmentcategories: 
+   post: 
+    operationId: GetAttachmentCategories
+    tags: 
+     - Document
+    summary: Get attachment categories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AttachmentCategoriesSearchDTO'
+    responses: 
+     '200': 
+      description: Attachment categories retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AttachmentCategoriesListDTO'
+  /Attachment/getdocument: 
+   post: 
+    operationId: GetDocuments
+    tags: 
+     - Document
+    summary: Get documents
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DocumentsSearchDTO'
+    responses: 
+     '200': 
+      description: Documents retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DocumentsListDTO'
+  /Attachment/getfileentitymap: 
+   post: 
+    operationId: GetFileEntityMap
+    tags: 
+     - Document
+    summary: Get file entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileEntityMapSearchDTO'
+    responses: 
+     '200': 
+      description: File Entity map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileEntityMapListDTO'
+  /Attachment/gettransactioninfoforfile: 
+   post: 
+    operationId: GetTransactionInfoForFile
+    tags: 
+     - Document
+    summary: Get transaction info for a file
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Transaction info for a file retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TransactionInfoForFileListDTO'
+  /Attachment/voidfile: 
+   post: 
+    operationId: voidfile
+    tags: 
+     - Document
+    summary: Void file
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/VoidFileDTO'
+    responses: 
+     '200': 
+      description: Void file 
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  attachment/notescategory/get: 
+   post: 
+    operationId: GetNotesCategories
+    tags: 
+     - Document
+    summary: Get Notes Categories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NotesCategoriesSearchDTO'
+    responses: 
+     '200': 
+      description: Notes categories retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/NotesCategoriesListDTO'
+components: 
+  schemas: 
+   TransactionToFileDTO: 
+    title : TransactionToFileDTO
+    type: object
+    properties: 
+     ReasonShortcut: 
+      type: string
+      nullable: true
+     SourceCode: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     IndividualID: 
+      type: integer
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     TransactionStepID: 
+      type: integer
+      nullable: true
+     RequestStepID: 
+      type: integer
+      nullable: true
+     CallBackCode: 
+      type: string
+      nullable: true
+     CallBackNumber: 
+      type: string
+      nullable: true
+     ContactorType: 
+      type: string
+      nullable: true
+     ContactorName: 
+      type: string
+      nullable: true
+     DateOpened: 
+      type: string
+      nullable: true
+     FileID: 
+      type: integer
+      nullable: true
+     TransactionCode: 
+      type: string
+      nullable: true
+     RequestID: 
+      type: integer
+      nullable: true
+     DateDue: 
+      type: string
+      nullable: true
+     DateRequested: 
+      type: string
+      nullable: true
+     DateInitiated: 
+      type: string
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     Request: 
+      type: string
+      nullable: true
+     WorkDuration: 
+      type: integer
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     FolderType: 
+      type: string
+      nullable: true
+     DelayPeriod: 
+      type: integer
+      nullable: true
+     RouteSubject: 
+      type: string
+      nullable: true
+     RouteAssignToId: 
+      type: integer
+      nullable: true
+     WorkDate: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     TraceFlag: 
+      type: integer
+      nullable: true
+     TransactionId: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     ParentFileId: 
+      type: integer
+      nullable: true
+     ParentStepId: 
+      type: integer
+      nullable: true
+     FaxNumber: 
+      type: string
+      nullable: true
+     FaxContactName: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     ReasonFileOnHold: 
+      type: string
+      nullable: true
+     CallAddLetter: 
+      type: string
+      default: N
+      nullable: true
+     UsersToEmail: 
+      type: string
+      nullable: true
+     SupplementalID: 
+      type: integer
+      nullable: true
+     SupplementalType: 
+      type: string
+      nullable: true
+     SecondaryIndividualCode: 
+      type: string
+      nullable: true
+     SecondaryIndividualId: 
+      type: integer
+      nullable: true
+     BillingCode: 
+      type: string
+      nullable: true
+     RoutingTransformID: 
+      type: integer
+      nullable: true
+     RoutingTransformOverridden: 
+      type: string
+      nullable: true
+     PutOnHold: 
+      type: string
+      default: N
+      nullable: true
+     RouteToOriginator: 
+      type: string
+      default: N
+      nullable: true
+     EventActionTaken: 
+      type: string
+      nullable: true
+   AttachmentCategoriesSearchDTO: 
+    title : AttachmentCategoriesSearchDTO
+    type: object
+    properties: 
+     AttachmentCategoryId: 
+      type: integer
+      nullable: true
+     AttachmentCategoryName: 
+      type: string
+      nullable: true
+     IndividualTypeCode: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     WebAccess: 
+      type: string
+      nullable: true
+   AttachmentCategoriesListDTO: 
+    title : AttachmentCategoriesListDTO
+    type: object
+    properties: 
+     AttachmentCategoryId: 
+      type: integer
+      nullable: true
+     AttachmentCategoryName: 
+      type: string
+      nullable: true
+     AttachmentCategoryDescription: 
+      type: string
+      nullable: true
+     WebAccess: 
+      type: string
+      nullable: true
+     Disabled: 
+      type: string
+      nullable: true
+     AddAllowed: 
+      type: string
+      nullable: true
+     EditAllowed: 
+      type: string
+      nullable: true
+     DeleteAllowed: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   DocumentsSearchDTO: 
+    title : DocumentsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     ReferenceNumber: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     FileId: 
+      type: integer
+      nullable: true
+     DocumentTypeCode: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+   DocumentsListDTO: 
+    title : DocumentsListDTO
+    type: object
+    properties: 
+     DocumentID: 
+      type: integer
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     OriginalDocumentName: 
+      type: string
+      nullable: true
+     DocumentTypeCode: 
+      type: string
+      nullable: true
+     ContentType: 
+      type: string
+      nullable: true
+     ContentSubType: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     ImageType: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     DateFiled: 
+      type: string
+      format: date-time
+      nullable: true
+     FiledByID: 
+      type: integer
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: string
+      nullable: true
+     ReferenceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TransactionID: 
+      type: integer
+      nullable: true
+     TranLinkCount: 
+      type: integer
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     FiledByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastupdatedBy: 
+      type: integer
+      nullable: true
+     LastupdatedByName: 
+      type: string
+      nullable: true
+     FileTrackingNumber: 
+      type: string
+      nullable: true
+     FileSubject: 
+      type: string
+      nullable: true
+     FileContactReason: 
+      type: string
+      nullable: true
+   FileEntityMapSearchDTO: 
+    title : FileEntityMapSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     FileId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     IndividualId: 
+      type: integer
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      default: "1/1/1900"
+      nullable: true
+     DateTo: 
+      type: string
+      format: date-time
+      default: "12/31/9999"
+      nullable: true
+     Active: 
+      type: string
+      default: Y
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   FileEntityMapListDTO: 
+    title : FileEntityMapListDTO
+    type: object
+    properties: 
+     RowId: 
+      type: integer
+      nullable: true
+     FileId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Active: 
+      type: string
+      nullable: true
+     LinkedItemName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     IndividualId: 
+      type: integer
+      nullable: true
+     SupplementalId: 
+      type: integer
+      nullable: true
+     SupplementalType: 
+      type: string
+      nullable: true
+     SupplementalNumber: 
+      type: string
+      nullable: true
+     SupplementalName: 
+      type: string
+      nullable: true
+     TrackingNumber: 
+      type: string
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     DateOpened: 
+      type: string
+      format: date-time
+      nullable: true
+     DateClosed: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+   TransactionInfoForFileListDTO: 
+    title : TransactionInfoForFileListDTO
+    type: object
+    properties: 
+     ReasonShortcut: 
+      type: string
+      nullable: true
+     SourceCode: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     IndividualID: 
+      type: integer
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     TransactionStepID: 
+      type: integer
+      nullable: true
+     RequestStepID: 
+      type: integer
+      nullable: true
+     CallBackCode: 
+      type: string
+      nullable: true
+     CallBackNumber: 
+      type: string
+      nullable: true
+     ContactorType: 
+      type: string
+      nullable: true
+     ContactorName: 
+      type: string
+      nullable: true
+     DateOPened: 
+      type: string
+      format: date-time
+      nullable: true
+     FileID: 
+      type: integer
+      nullable: true
+     TransactionCode: 
+      type: string
+      nullable: true
+     RequestID: 
+      type: integer
+      nullable: true
+     DateDue: 
+      type: string
+      format: date-time
+      nullable: true
+     DateRequested: 
+      type: string
+      format: date-time
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     Request: 
+      type: string
+      nullable: true
+     WorkDuration: 
+      type: integer
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     FolderType: 
+      type: string
+      nullable: true
+     DelayPeriod: 
+      type: integer
+      nullable: true
+     RouteSubject: 
+      type: string
+      nullable: true
+     RouteAssignToId: 
+      type: integer
+      nullable: true
+     WorkDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     TraceFlag: 
+      type: integer
+      nullable: true
+     TransactionId: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     ParentFileId: 
+      type: integer
+      nullable: true
+     ParentStepId: 
+      type: integer
+      nullable: true
+     FaxNumber: 
+      type: string
+      nullable: true
+     FaxContactName: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     ReasonFileOnHold: 
+      type: string
+      nullable: true
+     CallAddLetter: 
+      type: string
+      nullable: true
+     UsersToEmail: 
+      type: string
+      nullable: true
+     SupplementalID: 
+      type: integer
+      nullable: true
+     SupplementalType: 
+      type: string
+      nullable: true
+     AllottedTimeUnitType: 
+      type: string
+      nullable: true
+     AllottedTimeUnitValue: 
+      type: integer
+      nullable: true
+   VoidFileDTO: 
+    title : VoidFileDTO
+    type: object
+    properties: 
+     FileId: 
+      type: integer
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     IndividualId: 
+      type: integer
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     TransactionStepId: 
+      type: integer
+      nullable: true
+   NotesCategoriesSearchDTO: 
+    title : NotesCategoriesSearchDTO
+    type: object
+    properties: 
+     NotesCategoryId: 
+      type: integer
+      nullable: true
+     NotesCategoryName: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     IndividualTypeCode: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   DocumentEntityMapSearchDTO: 
+    title : DocumentEntityMapSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: "|BYENTITY|"
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     ReturnUnclassified: 
+      type: string
+      nullable: true
+   NotesCategoriesListDTO: 
+    title : NotesCategoriesListDTO
+    type: object
+    properties: 
+     NotesCategoryId: 
+      type: integer
+      nullable: true
+     NotesCategoryName: 
+      type: string
+      nullable: true
+     Disabled: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     MapStatus: 
+      type: string
+      nullable: true
+   DocumentEntityMapListDTO: 
+    title : DocumentEntityMapListDTO
+    type: object
+    properties: 
+     RowId: 
+      type: integer
+      description: 
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     DocumentTypeCode: 
+      type: string
+      nullable: true
+     ContentType: 
+      type: string
+      nullable: true
+     ContentSubType: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     ImageType: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     DateFiled: 
+      type: string
+      format: date-time
+      nullable: true
+     FiledByID: 
+      type: integer
+      nullable: true
+     FiledByName: 
+      type: string
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: string
+      nullable: true
+     ReferenceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TransactionID: 
+      type: integer
+      nullable: true
+     TranLinkCount: 
+      type: integer
+      nullable: true
+     OriginalDocumentName: 
+      type: string
+      nullable: true
+     InputBatchID: 
+      type: integer
+      nullable: true
+     AttachmentFileName: 
+      type: string
+      nullable: true
+     AttachmentCategoryId: 
+      type: integer
+      nullable: true
+     AttachmentCategory: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     DocumentType: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     DocumentLastUpdatedBy: 
+      type: integer
+      nullable: true
+     DocumentLastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     DocumentLastUpdatedByName: 
+      type: string
+      nullable: true
+   DocumentEntityMapDTO: 
+    title : DocumentEntityMapDTO
+    type: object
+    properties: 
+     DocumentId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     AttachmentCategoryId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   DocumentEntityMapRemoveDTO: 
+    title : DocumentEntityMapRemoveDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: "|DELETEBYID|"
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     ReturnUnclassified: 
+      type: string
+      nullable: true
+   DocumentForEntityDTO: 
+    title : DocumentForEntityDTO
+    type: object
+    properties: 
+     DocumentNumber: 
+      type: string
+      nullable: true
+     DocumentTypeCode: 
+      type: string
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: string
+      nullable: true
+     ReferenceDate: 
+      type: string
+      format: date-time
+      default: N
+      nullable: true
+     ContentType: 
+      type: string
+      nullable: true
+     ContentSubType : 
+      type: string
+      nullable: true
+     TransactionId: 
+      type: integer
+      nullable: true
+     OriginalDocumentName: 
+      type: string
+      nullable: true
+     ImageType: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     TimeStamp: 
+      type: string
+      default: N
+      nullable: true
+     FromWeb: 
+      type: string
+      default: "|DOCUMENT|"
+      nullable: true
+     ReferralDocumentID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: N
+      nullable: true
+   DocumentForEntityListDTO: 
+    title : DocumentForEntityListDTO
+    type: object
+    properties: 
+     DocumentId: 
+      type: integer
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     ImageType: 
+      type: string
+      nullable: true
+   DocumentDTO: 
+    title : DocumentDTO
+    type: object
+    properties: 
+     DocumentId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     FileId: 
+      type: integer
+      nullable: true
+     AddTransaction: 
+      type: string
+      nullable: true
+     DocumentType: 
+      type: string
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DocumentTypeCode: 
+      type: string
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: string
+      nullable: true
+     ReferenceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReasonShortCut: 
+      type: string
+      nullable: true
+     SourceCode: 
+      type: string
+      nullable: true
+     ContentType: 
+      type: string
+      nullable: true
+     ContentSubType: 
+      type: string
+      nullable: true
+     TransactionId: 
+      type: integer
+      nullable: true
+     LOATrackingNumber: 
+      type: string
+      nullable: true
+     OriginalDocumentName: 
+      type: string
+      nullable: true
+     TransactionSubject: 
+      type: string
+      nullable: true
+     ImageType: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   FileEntityMap: 
+    title : FileEntityMap
+    type: object
+    properties: 
+     FileId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Active: 
+      type: string
+      default: Y
+      nullable: true
+     DisableOtherMappings: 
+      type: string
+      default: N
+      nullable: true
+     SupplementalID: 
+      type: integer
+      nullable: true
+     SupplementalType: 
+      type: string
+      nullable: true
+     RowId: 
+      type: integer
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: "|INIT|"
+    description: description of parameter passed
