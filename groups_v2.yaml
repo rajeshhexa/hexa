@@ -1,0 +1,2154 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Groups API
+  description: Groups API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /Group/addgroup: 
+   post: 
+    operationId: AddGroup
+    tags: 
+     - Group
+    summary: Add group
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupDTO'
+    responses: 
+     '200': 
+      description: Group added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Group/updategroup: 
+   put: 
+    operationId: UpdateGroup
+    tags: 
+     - Group
+    summary: Update group
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupDTO'
+    responses: 
+     '200': 
+      description: Group updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Group/Getgroups: 
+   post: 
+    operationId: Get Groups
+    tags: 
+     - Group
+    summary: Get groups
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/GroupsSearchDTO'
+    responses: 
+     '200': 
+      description: Groups retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/GroupsListDTO'
+  /Group/getgroupshistory/{GroupID}: 
+   get: 
+    operationId: GetGroupsHistory
+    tags: 
+     - Group
+    summary: Get groups history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/GroupIDPathParam'
+    responses: 
+     '200': 
+      description: Groups history retrived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/GroupHistoryListDTO'
+  /Group/getsubscribercontracts: 
+   post: 
+    operationId: GetSubscriberContracts
+    tags: 
+     - Group
+    summary: Get subscriber contracts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SubscriberContractsSearchDTO'
+    responses: 
+     '200': 
+      description: Get subscriber contracts
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/SubscriberContractsListDTO'
+  /group/subscribercontract: 
+   put: 
+    operationId: UpdateSubscriberContract
+    tags: 
+     - Group
+    summary: Update subscriber contracts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SubscriberContractsDTO'
+    responses: 
+     '201': 
+      description: Groups updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   GroupDTO: 
+    title : GroupDTO
+    type: object
+    properties: 
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     ExpenseAccountID: 
+      type: integer
+      nullable: true
+     OrganizationID: 
+      type: integer
+      nullable: true
+     GroupLevel: 
+      type: integer
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     EOBDefault: 
+      type: string
+      nullable: true
+     MemberClaimSummaryDefault: 
+      type: string
+      nullable: true
+     ProviderClaimSummaryDefault: 
+      type: string
+      nullable: true
+     Repricing: 
+      type: string
+      nullable: true
+     DeductibleCarryOver: 
+      type: string
+      nullable: true
+     InstitutionalDupClaimCheck: 
+      type: string
+      nullable: true
+     DentalDupClaimCheck: 
+      type: string
+      nullable: true
+     DentalPreestimateDupClaimCheck: 
+      type: string
+      nullable: true
+     RxDupClaimCheck: 
+      type: string
+      nullable: true
+     HCFADupClaimCheck: 
+      type: string
+      nullable: true
+     InvalidClaimInfoAction: 
+      type: string
+      nullable: true
+     ReimbursementNotFoundAction: 
+      type: string
+      nullable: true
+     DenialExplanationID: 
+      type: integer
+      nullable: true
+     RequireDentalDiagnosis: 
+      type: string
+      nullable: true
+     SavingsCalculation: 
+      type: string
+      nullable: true
+     AdminFeeProcessType: 
+      type: string
+      nullable: true
+     AdminFeeRateType: 
+      type: string
+      nullable: true
+     AdminFeeRateValue: 
+      type: string
+      nullable: true
+     RetroClaimActivity: 
+      type: string
+      nullable: true
+     AutoExtendSubscriberCoverage: 
+      type: string
+      nullable: true
+     MaximumCoverageGapToMerge: 
+      type: integer
+      nullable: true
+     AllowAddressUpdate: 
+      type: string
+      nullable: true
+     ExtendCoverageUnitType: 
+      type: string
+      nullable: true
+     ExtendCoverageUnits: 
+      type: integer
+      nullable: true
+     RetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     MemberSearchCriteria: 
+      type: string
+      nullable: true
+     MemberDemographicRequirement: 
+      type: string
+      nullable: true
+     EligibilityMode: 
+      type: string
+      nullable: true
+     GroupType: 
+      type: string
+      nullable: true
+     IDNumber: 
+      type: string
+      nullable: true
+     MedicareContractId: 
+      type: string
+      nullable: true
+     MedicarePlanId: 
+      type: string
+      nullable: true
+     MedicareSegmentId: 
+      type: string
+      nullable: true
+     MedicarePartDRxPCN: 
+      type: string
+      nullable: true
+     MedicarePartDRxBIN: 
+      type: string
+      nullable: true
+     MedicarePartDRxGroup: 
+      type: string
+      nullable: true
+     AdditionalGroupNumber: 
+      type: string
+      nullable: true
+     PCPReferralReportID: 
+      type: integer
+      nullable: true
+     ProviderReferralReportID: 
+      type: integer
+      nullable: true
+     MemberReferralReportID: 
+      type: integer
+      nullable: true
+     EOBReportID: 
+      type: integer
+      nullable: true
+     MemberClaimSummaryReportID: 
+      type: integer
+      nullable: true
+     ProviderClaimSummaryReportID: 
+      type: integer
+      nullable: true
+     RPCCoverSheetReportID: 
+      type: integer
+      nullable: true
+     PCPPreEstimateReportID: 
+      type: integer
+      nullable: true
+     ProviderPreEstimateReportID: 
+      type: integer
+      nullable: true
+     MemberPreEstimateReportID: 
+      type: integer
+      nullable: true
+     HCFAClaimReportID: 
+      type: integer
+      nullable: true
+     MoveToAdjudication: 
+      type: string
+      nullable: true
+     AutoAdjudication: 
+      type: string
+      nullable: true
+     MemberPickingMode: 
+      type: string
+      nullable: true
+     AllowDefaultMemberPicked: 
+      type: string
+      nullable: true
+     MemberDataRequired: 
+      type: string
+      nullable: true
+     LOB: 
+      type: string
+      nullable: true
+     UseStandardTimeSlices: 
+      type: string
+      nullable: true
+     ProviderAssignmentRequirement: 
+      type: string
+      nullable: true
+     AllowCoverageOutsideGroup: 
+      type: string
+      nullable: true
+     MemberNumberConsistency: 
+      type: string
+      nullable: true
+     IDCardComments: 
+      type: string
+      nullable: true
+     CapitationExpenseAccountId: 
+      type: integer
+      nullable: true
+     PreventEOBForMembers: 
+      type: string
+      nullable: true
+     ShowMultipleUtilizationPeriods: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Prefix: 
+      type: string
+      nullable: true
+     FamilySequenceMethod: 
+      type: string
+      nullable: true
+     MemberNumberSequenceId: 
+      type: integer
+      nullable: true
+     AutoGenerateSubscriberNumber: 
+      type: string
+      nullable: true
+     InsuranceType: 
+      type: string
+      nullable: true
+     ProductLineCode: 
+      type: string
+      nullable: true
+     CoverageCode: 
+      type: string
+      nullable: true
+     ProductType: 
+      type: string
+      nullable: true
+     MileageLimitForPCPAssignment: 
+      type: number
+      format: float
+      nullable: true
+     UtilizationCountersRollover: 
+      type: string
+      nullable: true
+     UtilizationRolloverMethodology: 
+      type: string
+      nullable: true
+     ResubmitClaimOutput: 
+      type: string
+      nullable: true
+     ExpenseAccountsToUse: 
+      type: string
+      nullable: true
+     RenewalDate: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupWebOption: 
+      type: string
+      nullable: true
+     DependentViewWebOption: 
+      type: string
+      nullable: true
+     IncludeEncounterClaimsForDup: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     HCFASameClaimDup: 
+      type: string
+      nullable: true
+     UBSameClaimDup: 
+      type: string
+      nullable: true
+     DENSameClaimDup: 
+      type: string
+      nullable: true
+     DENPreestimateSameClaimDup: 
+      type: string
+      nullable: true
+     RxSameClaimDup: 
+      type: string
+      nullable: true
+     OOPMaxCarryOver: 
+      type: string
+      nullable: true
+     ExternalClaimEditing: 
+      type: string
+      nullable: true
+     OpenEnrollmentPeriodStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentPeriodEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentBenefitStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentBenefitEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentApprovalContactReasonId: 
+      type: integer
+      nullable: true
+     OpenEnrollmentDenialContactReasonId: 
+      type: integer
+      nullable: true
+     EnrollmentChangeApprovalContactReasonId: 
+      type: integer
+      nullable: true
+     EnrollmentChangeDenialContactReasonId: 
+      type: integer
+      nullable: true
+     ShowEOBwithLimitedAppliedAmount: 
+      type: string
+      nullable: true
+     InterestPackageID: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     WebAccess: 
+      type: string
+      nullable: true
+     MSPInterchangeId: 
+      type: integer
+      nullable: true
+     MSPCorporationId: 
+      type: integer
+      nullable: true
+     MSPTIN: 
+      type: string
+      nullable: true
+     EnrollmentWaitingPeriod: 
+      type: integer
+      nullable: true
+     AgeLimitForDependentView: 
+      type: integer
+      nullable: true
+     InheritPCP: 
+      type: string
+      nullable: true
+     UsePrimaryOfficeDuringPCPAssignment: 
+      type: string
+      nullable: true
+     AllowDualCoverageInSubGroups: 
+      type: string
+      nullable: true
+     PCPRequired: 
+      type: string
+      nullable: true
+     PCPCapitationRequired: 
+      type: string
+      nullable: true
+     PCPRiskGroupRequired: 
+      type: string
+      nullable: true
+     PCPHospitalRequired: 
+      type: string
+      nullable: true
+     PCPSearchDistance: 
+      type: integer
+      nullable: true
+     AutoAssignLanguageRule: 
+      type: string
+      nullable: true
+     MemberWebAccess: 
+      type: string
+      nullable: true
+     AutoAssignmentAlgorithm: 
+      type: string
+      nullable: true
+     MemberTreeViewMode: 
+      type: string
+      nullable: true
+     MemberMatchMethodology: 
+      type: string
+      nullable: true
+     ParentGroupLevelMatch: 
+      type: string
+      nullable: true
+     RxIdNumberGeneration: 
+      type: string
+      nullable: true
+     RxIdNumberRequired: 
+      type: string
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   GroupHistoryListDTO: 
+    title : GroupHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangeAt: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     ParentGroupName: 
+      type: string
+      nullable: true
+     ParentGroupNumber: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      description: 
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     GroupLevel: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupType: 
+      type: string
+      nullable: true
+     GroupTypeName: 
+      type: string
+      nullable: true
+     IDNumber: 
+      type: string
+      nullable: true
+     MedicareContractId: 
+      type: string
+      nullable: true
+     MedicarePlanId: 
+      type: string
+      nullable: true
+     MedicareSegmentId: 
+      type: string
+      nullable: true
+     MedicarePartDRxPCN: 
+      type: string
+      nullable: true
+     MedicarePartDRxBIN: 
+      type: string
+      nullable: true
+     MedicarePartDRxGroup: 
+      type: string
+      nullable: true
+     AdditionalGroupNumber: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipSearch : 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     GroupWebOption : 
+      type: string
+      nullable: true
+     GroupWebOptionName: 
+      type: string
+      nullable: true
+     DependentViewWebOption: 
+      type: string
+      nullable: true
+     DependentViewWebOptionName: 
+      type: string
+      nullable: true
+     IncludeEncounterClaimsForDup : 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     OrganizationId: 
+      type: integer
+      nullable: true
+     OrganizationName: 
+      type: string
+      nullable: true
+     EOBDefault: 
+      type: string
+      nullable: true
+     MemberClaimSummaryDefault: 
+      type: string
+      nullable: true
+     ProviderClaimSummaryDefault: 
+      type: string
+      nullable: true
+     Repricing: 
+      type: string
+      nullable: true
+     DeductibleCarryOver : 
+      type: string
+      nullable: true
+     InstitutionalDupClaimCheck: 
+      type: string
+      nullable: true
+     InstitutionalDupClaimCheckName: 
+      type: string
+      nullable: true
+     DentalDupClaimCheck: 
+      type: string
+      nullable: true
+     DentalDupClaimCheckName: 
+      type: string
+      nullable: true
+     DentalPreestimateDupClaimCheck: 
+      type: string
+      nullable: true
+     DentalPreestimateDupClaimCheckName: 
+      type: string
+      nullable: true
+     HCFADupClaimCheck: 
+      type: string
+      nullable: true
+     HCFADupClaimCheckName: 
+      type: string
+      nullable: true
+     RxDupClaimCheck: 
+      type: string
+      nullable: true
+     RxDupClaimCheckName: 
+      type: string
+      nullable: true
+     ReimbursementNotFoundAction: 
+      type: string
+      nullable: true
+     ReimbursementNotFoundActionName: 
+      type: string
+      nullable: true
+     DenialExplanationID: 
+      type: integer
+      nullable: true
+     DenialExplanationAbbreviation: 
+      type: string
+      nullable: true
+     RequireDentalDiagnosis: 
+      type: string
+      nullable: true
+     RequireDentalDiagnosisName: 
+      type: string
+      nullable: true
+     SavingsCalculation: 
+      type: string
+      nullable: true
+     SavingsCalculationName: 
+      type: string
+      nullable: true
+     AdminFeeProcessType : 
+      type: string
+      nullable: true
+     AdminFeeProcessTypeName: 
+      type: string
+      nullable: true
+     AdminFeeRateType : 
+      type: string
+      nullable: true
+     AdminFeeRateTypeName: 
+      type: string
+      nullable: true
+     AdminFeeRateValue: 
+      type: string
+      nullable: true
+     AutoExtendSubscriberCoverage : 
+      type: string
+      nullable: true
+     MaximumCoverageGapToMerge : 
+      type: integer
+      nullable: true
+     AllowAddressUpdate: 
+      type: string
+      nullable: true
+     ExtendCoverageUnitType : 
+      type: string
+      nullable: true
+     ExtendCoverageUnitTypeName: 
+      type: string
+      nullable: true
+     ExtendCoverageUnits: 
+      type: integer
+      nullable: true
+     RetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     RetroEnrollmentEnforcementName: 
+      type: string
+      nullable: true
+     MemberSearchCriteria: 
+      type: string
+      nullable: true
+     MemberSearchCriteriaName: 
+      type: string
+      nullable: true
+     EligibilityMode: 
+      type: string
+      nullable: true
+     EligibilityModeName: 
+      type: string
+      nullable: true
+     LastUpdatedBy : 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt : 
+      type: string
+      format: date-time
+      nullable: true
+     RetroClaimActivity: 
+      type: string
+      nullable: true
+     RetroClaimActivityName: 
+      type: string
+      nullable: true
+     MemberDemographicRequirement: 
+      type: string
+      nullable: true
+     MemberDemographicRequirementName: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     MoveToAdjudication: 
+      type: string
+      nullable: true
+     AutoAdjudication: 
+      type: string
+      nullable: true
+     EOBReportPath : 
+      type: string
+      nullable: true
+     MemberClaimSummaryReportPath: 
+      type: string
+      nullable: true
+     ProviderClaimSummaryReportPath: 
+      type: string
+      nullable: true
+     PCPPreEstimateReportPath: 
+      type: string
+      nullable: true
+     ProviderPreEstimateReportPath: 
+      type: string
+      nullable: true
+     MemberPreEstimateReportPath: 
+      type: string
+      nullable: true
+     HCFAClaimReportPath: 
+      type: string
+      nullable: true
+     RPCCoverSheetReportPath : 
+      type: string
+      nullable: true
+     MemberPickingMode: 
+      type: string
+      nullable: true
+     MemberPickingModeName: 
+      type: string
+      nullable: true
+     AllowDefaultMemberPicked: 
+      type: string
+      nullable: true
+     MemberDataRequired: 
+      type: string
+      nullable: true
+     MemberDataRequiredName: 
+      type: string
+      nullable: true
+     LOB: 
+      type: string
+      nullable: true
+     LOBName: 
+      type: string
+      nullable: true
+     ProductLineCode : 
+      type: string
+      nullable: true
+     ProductLineName: 
+      type: string
+      nullable: true
+     CoverageCode : 
+      type: string
+      nullable: true
+     CoverageName: 
+      type: string
+      nullable: true
+     ProductType: 
+      type: string
+      nullable: true
+     ProductTypeName: 
+      type: string
+      nullable: true
+     UseStandardTimeSlices : 
+      type: string
+      nullable: true
+     PreventEOBForMembers: 
+      type: string
+      nullable: true
+     PreventEOBForMembersName: 
+      type: string
+      nullable: true
+     ShowMultipleUtilizationPeriods: 
+      type: string
+      nullable: true
+     ShowMultipleUtilizationPeriodsName: 
+      type: string
+      nullable: true
+     EmailMemberEOB: 
+      type: string
+      nullable: true
+     EmailMemberEOBName: 
+      type: string
+      nullable: true
+     IDCardComments: 
+      type: string
+      nullable: true
+     InvalidClaimInfoAction: 
+      type: string
+      nullable: true
+     InvalidClaimInfoActionName: 
+      type: string
+      nullable: true
+     CapitationExpenseAccountId: 
+      type: integer
+      nullable: true
+     CapitationExpenseAccountName: 
+      type: string
+      nullable: true
+     AllowCoverageOutsideGroup: 
+      type: string
+      nullable: true
+     MemberNumberConsistency: 
+      type: string
+      nullable: true
+     TotalPremiumPaid: 
+      type: string
+      nullable: true
+     Prefix: 
+      type: string
+      nullable: true
+     FamilySequenceMethod: 
+      type: string
+      nullable: true
+     FamilySequenceMethodName: 
+      type: string
+      nullable: true
+     AutoGenerateSubscriberNumber: 
+      type: string
+      nullable: true
+     AutoGenerateSubscriberNumberName: 
+      type: string
+      nullable: true
+     MemberNumberSequenceId: 
+      type: integer
+      nullable: true
+     MileageLimitForPCPAssignment: 
+      type: number
+      format: float
+      nullable: true
+     UtilizationCountersRollover: 
+      type: string
+      nullable: true
+     UtilizationCountersRolloverName: 
+      type: string
+      nullable: true
+     UtilizationRolloverMethodology: 
+      type: string
+      nullable: true
+     UtilizationRolloverMethodologyName: 
+      type: string
+      nullable: true
+     InsuranceType: 
+      type: string
+      nullable: true
+     InsuranceTypeName: 
+      type: string
+      nullable: true
+     AccessCode: 
+      type: string
+      nullable: true
+     ExpenseAccountsToUse: 
+      type: string
+      nullable: true
+     ExpenseAccountToUseName: 
+      type: string
+      nullable: true
+     PCPReferralReportPath: 
+      type: string
+      nullable: true
+     ProviderReferralReportPath: 
+      type: string
+      nullable: true
+     MemberReferralReportPath: 
+      type: string
+      nullable: true
+     RenewalDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberReferralReportID: 
+      type: integer
+      nullable: true
+     ProviderReferralReportID: 
+      type: integer
+      nullable: true
+     PCPReferralReportID: 
+      type: integer
+      nullable: true
+     PCPPreEstimateReportID: 
+      type: integer
+      nullable: true
+     MemberPreEstimateReportID: 
+      type: integer
+      nullable: true
+     ProviderPreEstimateReportID: 
+      type: integer
+      nullable: true
+     EOBReportID: 
+      type: integer
+      nullable: true
+     MemberClaimSummaryReportId: 
+      type: integer
+      nullable: true
+     ProviderClaimSummaryReportId: 
+      type: integer
+      nullable: true
+     RPCCoverSheetReportID: 
+      type: integer
+      nullable: true
+     HCFAClaimReportID: 
+      type: integer
+      nullable: true
+     ExternalClaimEditing: 
+      type: string
+      nullable: true
+     ExternalClaimEditingName: 
+      type: string
+      nullable: true
+     HCFASameClaimDup: 
+      type: string
+      nullable: true
+     HCFASameClaimDupName: 
+      type: string
+      nullable: true
+     UBSameClaimDup: 
+      type: string
+      nullable: true
+     UBSameClaimDupName: 
+      type: string
+      nullable: true
+     DENSameClaimDup: 
+      type: string
+      nullable: true
+     DENSameClaimDupName: 
+      type: string
+      nullable: true
+     DENPreestimateSameClaimDup: 
+      type: string
+      nullable: true
+     DENPreestimateSameClaimDupName: 
+      type: string
+      nullable: true
+     RxSameClaimDup: 
+      type: string
+      nullable: true
+     RxSameClaimDupName: 
+      type: string
+      nullable: true
+     OOPMaxCarryOver : 
+      type: string
+      nullable: true
+     ProviderAssignmentRequirement: 
+      type: string
+      nullable: true
+     ProviderAssignmentRequirementName: 
+      type: string
+      nullable: true
+     OpenEnrollmentPeriodStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentPeriodEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentBenefitStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentBenefitEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentApprovalContactReasonId: 
+      type: integer
+      nullable: true
+     OpenEnrollmentApprovalContactReasonName: 
+      type: string
+      nullable: true
+     EnrollmentChangeApprovalContactReasonId: 
+      type: integer
+      nullable: true
+     EnrollmentChangeApprovalContactReasonName: 
+      type: string
+      nullable: true
+     EnrollmentChangeDenialContactReasonId: 
+      type: integer
+      nullable: true
+     EnrollmentChangeDenialContactReasonName: 
+      type: string
+      nullable: true
+     ShowEOBwithLimitedAppliedAmount: 
+      type: string
+      nullable: true
+     ShowEOBWithLimitedAppliedAmountName: 
+      type: string
+      nullable: true
+     InterestPackageId: 
+      type: integer
+      nullable: true
+     InterestPackageName: 
+      type: string
+      nullable: true
+     InheritPCP: 
+      type: string
+      nullable: true
+     UsePrimaryOfficeDuringPCPAssignment: 
+      type: string
+      nullable: true
+     AllowDualCoverageInSubGroups: 
+      type: string
+      nullable: true
+     PCPRequired: 
+      type: string
+      default: OPT
+      nullable: true
+     PCPRequiredName: 
+      type: string
+      nullable: true
+     PCPCapitationRequired: 
+      type: string
+      default: N
+      nullable: true
+     PCPCapitationRequiredName: 
+      type: string
+      nullable: true
+     PCPRiskGroupRequired: 
+      type: string
+      default: N
+      nullable: true
+     PCPRiskGroupRequiredName: 
+      type: string
+      nullable: true
+     PCPHospitalRequired: 
+      type: string
+      default: N
+      nullable: true
+     PCPHospitalRequiredName: 
+      type: string
+      nullable: true
+     PCPSearchDistance: 
+      type: integer
+      nullable: true
+     AutoAssignLanguageRule : 
+      type: string
+      nullable: true
+     AutoAssignLanguageRuleName: 
+      type: string
+      nullable: true
+     MemberWebAccess: 
+      type: string
+      default: ALW
+      nullable: true
+     MemberWebAccessName: 
+      type: string
+      nullable: true
+     AutoAssignmentAlgorithm: 
+      type: string
+      nullable: true
+     AutoAssignmentAlgorithmName: 
+      type: string
+      nullable: true
+     MemberTreeViewMode: 
+      type: string
+      nullable: true
+     MemberTreeViewModeName: 
+      type: string
+      nullable: true
+     MemberMatchMethodology: 
+      type: string
+      default: MRM
+      nullable: true
+     MemberMatchMethodologyName: 
+      type: string
+      nullable: true
+     ParentGroupLevel: 
+      type: string
+      nullable: true
+     ParentGroupLevelName: 
+      type: string
+      nullable: true
+     RxIdNumberGeneration: 
+      type: string
+      nullable: true
+     RxIdNumberGenerationName: 
+      type: string
+      nullable: true
+     RxIdNumberRequired: 
+      type: string
+      default: N
+      nullable: true
+   SubscriberContractsSearchDTO: 
+    title : SubscriberContractsSearchDTO
+    type: object
+    properties: 
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     SSNumber: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     ReturnSubscriberContractsForSubscriber: 
+      type: string
+      nullable: true
+   SubscriberContractsListDTO: 
+    title : SubscriberContractsListDTO
+    type: object
+    properties: 
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     NationalIndividualID: 
+      type: string
+      nullable: true
+     SSNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     MiddleName: 
+      type: string
+      nullable: true
+     NamePrefix: 
+      type: string
+      nullable: true
+     NameSuffix: 
+      type: string
+      nullable: true
+     NameFormat: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     WorkPhone: 
+      type: string
+      nullable: true
+     CellPhone: 
+      type: string
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     DateOfDeath: 
+      type: string
+      format: date-time
+      nullable: true
+     MaritalStatus: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     EmployerName: 
+      type: string
+      nullable: true
+     DependentViewWebOption: 
+      type: string
+      nullable: true
+     HireDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Volume: 
+      type: string
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     TierItemName: 
+      type: string
+      nullable: true
+     TierAsOfDate: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+   GroupsSearchDTO: 
+    title : GroupsSearchDTO
+    type: object
+    properties: 
+     GroupID: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     OrganizationID: 
+      type: integer
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     AdditionalGroupNumber: 
+      type: string
+      nullable: true
+     ProductType: 
+      type: string
+      nullable: true
+     ProductLineCode: 
+      type: string
+      nullable: true
+     CoverageCode: 
+      type: string
+      nullable: true
+     LOB: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     GroupNodeType: 
+      type: string
+      nullable: true
+     RepricingOnly: 
+      type: string
+      nullable: true
+     HasCoverage: 
+      type: string
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     IdCardPackageId: 
+      type: integer
+      nullable: true
+   GroupsListDTO: 
+    title : GroupsListDTO
+    type: object
+    properties: 
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GrpId: 
+      type: integer
+      nullable: true
+     GrpNumber: 
+      type: string
+      nullable: true
+     GrpName: 
+      type: string
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     ParentGroupName: 
+      type: string
+      nullable: true
+     OrganizationID: 
+      type: integer
+      nullable: true
+     OrganizationName: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     GroupLevel: 
+      type: integer
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     HasChildren: 
+      type: string
+      nullable: true
+     HasSubscriber: 
+      type: string
+      nullable: true
+     HasUnfinishedBasePlanJob: 
+      type: string
+      nullable: true
+     GroupNodeType: 
+      type: string
+      nullable: true
+     GroupType: 
+      type: string
+      nullable: true
+     UtilizationRolloverMethodology: 
+      type: string
+      nullable: true
+     AccessCode: 
+      type: string
+      nullable: true
+     EOBDefault: 
+      type: string
+      nullable: true
+     ProviderClaimSummaryDefault: 
+      type: string
+      nullable: true
+     MemberClaimSummaryDefault: 
+      type: string
+      nullable: true
+     PreventEOBForMembers: 
+      type: string
+      nullable: true
+     ShowMultipleUtilizationPeriods: 
+      type: string
+      nullable: true
+     DeductibleCarryOver: 
+      type: string
+      nullable: true
+     Repricing: 
+      type: string
+      nullable: true
+     InstitutionalDupClaimCheck: 
+      type: string
+      nullable: true
+     DentalDupClaimCheck: 
+      type: string
+      nullable: true
+     DentalPreestimateDupClaimCheck: 
+      type: string
+      nullable: true
+     RxDupClaimCheck: 
+      type: string
+      nullable: true
+     HCFADupClaimCheck: 
+      type: string
+      nullable: true
+     InvalidClaimInfoAction: 
+      type: string
+      nullable: true
+     ReimbursementNotFoundAction: 
+      type: string
+      nullable: true
+     DenialExplanationID: 
+      type: integer
+      nullable: true
+     RequireDentalDiagnosis: 
+      type: string
+      nullable: true
+     SavingsCalculation: 
+      type: string
+      nullable: true
+     AdminFeeProcessType: 
+      type: string
+      nullable: true
+     AdminFeeRateType: 
+      type: string
+      nullable: true
+     AdminFeeRateValue: 
+      type: string
+      nullable: true
+     AutoExtendSubscriberCoverage: 
+      type: string
+      nullable: true
+     MaximumCoverageGapToMerge: 
+      type: integer
+      nullable: true
+     ExtendCoverageUnitType: 
+      type: string
+      nullable: true
+     ExtendCoverageUnits: 
+      type: integer
+      nullable: true
+     RetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     MemberSearchCriteria: 
+      type: string
+      nullable: true
+     AllowAddressUpdate: 
+      type: string
+      nullable: true
+     RetroClaimActivity: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     MemberDemographicRequirement: 
+      type: string
+      nullable: true
+     EligibilityMode: 
+      type: string
+      nullable: true
+     AdditionalGroupNumber: 
+      type: string
+      nullable: true
+     IDNumber: 
+      type: string
+      nullable: true
+     MedicareContractId: 
+      type: string
+      nullable: true
+     MedicarePlanId: 
+      type: string
+      nullable: true
+     MedicareSegmentId: 
+      type: string
+      nullable: true
+     MedicarePartDRxPCN: 
+      type: string
+      nullable: true
+     MedicarePartDRxBIN: 
+      type: string
+      nullable: true
+     MedicarePartDRxGroup: 
+      type: string
+      nullable: true
+     EOBReportPath: 
+      type: string
+      nullable: true
+     MemberClaimSummaryReportPath: 
+      type: string
+      nullable: true
+     ProviderClaimSummaryReportPath: 
+      type: string
+      nullable: true
+     PCPPreEstimateReportPath: 
+      type: string
+      nullable: true
+     ProviderPreEstimateReportPath: 
+      type: string
+      nullable: true
+     MemberPreEstimateReportPath: 
+      type: string
+      nullable: true
+     HCFAClaimReportPath: 
+      type: string
+      nullable: true
+     PCPReferralReportPath: 
+      type: string
+      nullable: true
+     ProviderReferralReportPath: 
+      type: string
+      nullable: true
+     MemberReferralReportPath: 
+      type: string
+      nullable: true
+     RPCCoverSheetReportPath: 
+      type: string
+      nullable: true
+     PCPReferralReportID: 
+      type: integer
+      nullable: true
+     ProviderReferralReportID: 
+      type: integer
+      nullable: true
+     MemberReferralReportID: 
+      type: integer
+      nullable: true
+     EOBReportID: 
+      type: integer
+      nullable: true
+     MemberClaimSummaryReportId: 
+      type: integer
+      nullable: true
+     ProviderClaimSummaryReportId: 
+      type: integer
+      nullable: true
+     RPCCoverSheetReportID: 
+      type: integer
+      nullable: true
+     PCPPreEstimateReportID: 
+      type: integer
+      nullable: true
+     ProviderPreEstimateReportID: 
+      type: integer
+      nullable: true
+     MemberPreEstimateReportID: 
+      type: integer
+      nullable: true
+     HCFAClaimReportID: 
+      type: integer
+      nullable: true
+     MoveToAdjudication: 
+      type: string
+      nullable: true
+     AutoAdjudication: 
+      type: string
+      nullable: true
+     MemberPickingMode: 
+      type: string
+      nullable: true
+     MemberPickingModeName: 
+      type: string
+      nullable: true
+     AllowDefaultMemberPicked: 
+      type: string
+      nullable: true
+     MemberDataRequired: 
+      type: string
+      nullable: true
+     LOB: 
+      type: string
+      nullable: true
+     ProductLineCode: 
+      type: string
+      nullable: true
+     CoverageCode: 
+      type: string
+      nullable: true
+     ProductType: 
+      type: string
+      nullable: true
+     LOBName: 
+      type: string
+      nullable: true
+     ProductLineName: 
+      type: string
+      nullable: true
+     CoverageName: 
+      type: string
+      nullable: true
+     ProductTypeName: 
+      type: string
+      nullable: true
+     UseStandardTimeSlices: 
+      type: string
+      nullable: true
+     ProviderAssignmentRequirement: 
+      type: string
+      nullable: true
+     AllowCoverageOutsideGroup: 
+      type: string
+      nullable: true
+     MemberNumberConsistency: 
+      type: string
+      nullable: true
+     IDCardComments: 
+      type: string
+      nullable: true
+     CapitationExpenseAccountId: 
+      type: integer
+      nullable: true
+     CapitationExpenseAccountName: 
+      type: string
+      nullable: true
+     Prefix: 
+      type: string
+      nullable: true
+     FamilySequenceMethod: 
+      type: string
+      nullable: true
+     AutoGenerateSubscriberNumber: 
+      type: string
+      nullable: true
+     MemberNumberSequenceId: 
+      type: integer
+      nullable: true
+     TotalPremiumPaid: 
+      type: string
+      nullable: true
+     MileageLimitForPCPAssignment: 
+      type: number
+      format: float
+      nullable: true
+     UtilizationCountersRollover: 
+      type: string
+      nullable: true
+     ResubmitClaimOutput: 
+      type: string
+      nullable: true
+     InsuranceType: 
+      type: string
+      nullable: true
+     RepricingOnly: 
+      type: string
+      nullable: true
+     ExpenseAccountsToUse: 
+      type: string
+      nullable: true
+     RenewalDate: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupWebOption: 
+      type: string
+      nullable: true
+     DependentViewWebOption: 
+      type: string
+      nullable: true
+     IncludeEncounterClaimsForDup: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     HCFASameClaimDup: 
+      type: string
+      nullable: true
+     UBSameClaimDup: 
+      type: string
+      nullable: true
+     DENSameClaimDup: 
+      type: string
+      nullable: true
+     DENPreestimateSameClaimDup: 
+      type: string
+      nullable: true
+     RxSameClaimDup: 
+      type: string
+      nullable: true
+     OOPMaxCarryOver: 
+      type: string
+      nullable: true
+     InterestPackageID: 
+      type: integer
+      nullable: true
+     ExternalClaimEditing: 
+      type: string
+      nullable: true
+     ExternalClaimEditingName: 
+      type: string
+      nullable: true
+     MinimumPlanEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MaximumPlanExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentPeriodStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentPeriodEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentBenefitStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentBenefitEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenEnrollmentApprovalContactReasonId: 
+      type: integer
+      nullable: true
+     OpenEnrollmentApprovalContactReasonName: 
+      type: string
+      nullable: true
+     OpenEnrollmentDenialContactReasonId: 
+      type: integer
+      nullable: true
+     OpenEnrollmentDenialContactReasonName: 
+      type: string
+      nullable: true
+     EnrollmentChangeApprovalContactReasonId: 
+      type: integer
+      nullable: true
+     EnrollmentChangeApprovalContactReasonName: 
+      type: string
+      nullable: true
+     EnrollmentChangeDenialContactReasonId: 
+      type: integer
+      nullable: true
+     EnrollmentChangeDenialContactReasonName: 
+      type: string
+      nullable: true
+     ShowEOBwithLimitedAppliedAmount: 
+      type: string
+      nullable: true
+     WebAccess: 
+      type: string
+      nullable: true
+     MSPInterchangeId: 
+      type: integer
+      nullable: true
+     MSPCorporationId: 
+      type: integer
+      nullable: true
+     MSPInterchangeName: 
+      type: string
+      nullable: true
+     MSPCorporationName: 
+      type: string
+      nullable: true
+     MSPTIN: 
+      type: string
+      nullable: true
+     EnrollmentWaitingPeriod: 
+      type: integer
+      nullable: true
+     AgeLimitForDependentView: 
+      type: integer
+      nullable: true
+     InheritPCP: 
+      type: string
+      nullable: true
+     UsePrimaryOfficeDuringPCPAssignment: 
+      type: string
+      nullable: true
+     AllowDualCoverageInSubGroups: 
+      type: string
+      nullable: true
+     PCPRequired: 
+      type: string
+      nullable: true
+     PCPRequiredName: 
+      type: string
+      nullable: true
+     PCPCapitationRequired: 
+      type: string
+      nullable: true
+     PCPCapitationRequiredName: 
+      type: string
+      nullable: true
+     PCPRiskGroupRequired: 
+      type: string
+      nullable: true
+     PCPRiskGroupRequiredName: 
+      type: string
+      nullable: true
+     PCPSearchDistance: 
+      type: integer
+      nullable: true
+     AutoAssignLanguageRule: 
+      type: string
+      nullable: true
+     AutoAssignmentAlgorithm: 
+      type: string
+      nullable: true
+     PCPHospitalRequired: 
+      type: string
+      nullable: true
+     PCPHospitalRequiredName: 
+      type: string
+      nullable: true
+     MemberWebAccess: 
+      type: string
+      nullable: true
+     MemberWebAccessName: 
+      type: string
+      nullable: true
+     ChildCount: 
+      type: string
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     WebUserId: 
+      type: integer
+      nullable: true
+     WebUserName: 
+      type: string
+      nullable: true
+     WebUserFullName: 
+      type: string
+      nullable: true
+     WebUserEmail: 
+      type: string
+      nullable: true
+     MemberTreeViewMode: 
+      type: string
+      nullable: true
+     MemberTreeViewModeName: 
+      type: string
+      nullable: true
+     MemberMatchMethodology: 
+      type: string
+      nullable: true
+     MemberMatchMethodologyName: 
+      type: string
+      nullable: true
+     ParentGroupLevelMatch: 
+      type: string
+      nullable: true
+     ParentGroupLevelMatchName: 
+      type: string
+      nullable: true
+     RxIdNumberGeneration: 
+      type: string
+      nullable: true
+     RxIdNumberRequired: 
+      type: string
+      nullable: true
+   SubscriberContractsDTO: 
+    title : SubscriberContractsDTO
+    type: object
+    properties: 
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     EmployerName: 
+      type: string
+      nullable: true
+     DependentViewWebOption: 
+      type: string
+      nullable: true
+     HireDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Volume: 
+      type: string
+      nullable: true
+  parameters: 
+   GroupIDPathParam: 
+    in: path
+    name: GroupID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
