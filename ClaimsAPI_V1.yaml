@@ -1,0 +1,704 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Alternate_Address API
+  description: Alternate_Address API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  Claim/claimfilingterms: 
+   get: 
+    operationId: GetClaimFilingTerms
+    tags: 
+     - Claims
+    summary: Get claim filing terms
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+     - $ref: '#/components/parameters/AsOfDateQueryParam'
+    responses: 
+     '200': 
+      description: Claim filing term retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimFilingTermListDTO'
+  Claim/claimsforentity/get: 
+   post: 
+    operationId: GetClaimForEntity
+    tags: 
+     - Claims
+    summary: Get claim for entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimForEntitySearchDTO'
+    responses: 
+     '200': 
+      description: Claim for entity retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimForEntityListDTO'
+  Claim/servicerestrictionpackageentitymaps/get: 
+   post: 
+    operationId: GetServiceRestrictionPackageEntityMaps
+    tags: 
+     - Claims
+    summary: Get service restriction package entity maps
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceRestrictionPackageEntityMapsSearchDTO'
+    responses: 
+     '200': 
+      description: Service restriction package entity maps retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceRestrictionPackageEntityMapsSearchDTOListDTO'
+components: 
+  schemas: 
+   ClaimFilingTermListDTO: 
+    title : ClaimFilingTermListDTO
+    type: object
+    properties: 
+     ClaimFilingTermID: 
+      type: integer
+      description: 
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     Form: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     Source: 
+      type: string
+      nullable: true
+     MemberFilingLimit: 
+      type: integer
+      nullable: true
+     ProviderFilingLimit: 
+      type: integer
+      nullable: true
+     ClaimFilingAction: 
+      type: string
+      nullable: true
+     ClaimFilingActionName: 
+      type: string
+      nullable: true
+     FilingRulePrecedence: 
+      type: string
+      nullable: true
+     FilingRulePrecedenceName: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LimitType: 
+      type: string
+      nullable: true
+     LimitTypeName: 
+      type: string
+      nullable: true
+     FeeReductionType: 
+      type: string
+      nullable: true
+     FeeReductionTypeName: 
+      type: string
+      nullable: true
+     FeeReductionValue: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     ExplanationAbbreviation: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   ClaimForEntitySearchDTO: 
+    title : ClaimForEntitySearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderNPINumber: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     ReceivedDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ReceivedDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     FormSubtype: 
+      type: string
+      nullable: true
+     ClaimType: 
+      type: string
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ExternalClaimNumber: 
+      type: string
+      nullable: true
+     PatientAccountNumber: 
+      type: string
+      nullable: true
+     OnlyMeditracStatus: 
+      type: string
+      nullable: true
+     ShowHistoricalClaims: 
+      type: string
+      nullable: true
+     ReturnReferringClaims: 
+      type: string
+      nullable: true
+     ReturnRefEstimateClaimsOnly: 
+      type: string
+      nullable: true
+     ReturnEmergencyReferral: 
+      type: string
+      nullable: true
+     ReturnVoidedClaims: 
+      type: string
+      nullable: true
+     DateUsage: 
+      type: string
+      nullable: true
+   ClaimForEntityListDTO: 
+    title : ClaimForEntityListDTO
+    type: object
+    properties: 
+     InputBatchId: 
+      type: integer
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ClaimStatusCode: 
+      type: string
+      nullable: true
+     ClaimStatusCodeiTransact: 
+      type: string
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     Queue: 
+      type: integer
+      nullable: true
+     PendedReason: 
+      type: string
+      nullable: true
+     PendedDescription: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     FormSubtype: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ReceivedDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ReceivedDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     DatePaid: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     ClaimType: 
+      type: string
+      nullable: true
+     ExternalClaimNumber: 
+      type: string
+      nullable: true
+     ExternalReferralNumber: 
+      type: string
+      nullable: true
+     ExternalAuthorizationNumber: 
+      type: string
+      nullable: true
+     TotalCharges: 
+      type: string
+      nullable: true
+     BilledCurrency: 
+      type: string
+      nullable: true
+     BilledCurrencyCode: 
+      type: string
+      nullable: true
+     RadiographReferenceNumber: 
+      type: string
+      nullable: true
+     DateProcessed: 
+      type: string
+      format: date-time
+      nullable: true
+     OutstandingBalance: 
+      type: string
+      nullable: true
+     UtilizationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PatientAccountNumber: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ClaimDescription: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     AdjustmentReason: 
+      type: string
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     OriginalDocumentName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeCity: 
+      type: string
+      nullable: true
+     OfficeState: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     DenialExplanationAbbreviation: 
+      type: string
+      nullable: true
+     AdjustmentReasonCode: 
+      type: string
+      nullable: true
+     AdjustmentReasonName: 
+      type: string
+      nullable: true
+     CaseID: 
+      type: integer
+      nullable: true
+     CaseNumber: 
+      type: string
+      nullable: true
+     CaseType: 
+      type: string
+      nullable: true
+     TypeOfBill: 
+      type: string
+      nullable: true
+     AssignmentBenefits: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     PaymentClassName: 
+      type: string
+      nullable: true
+     CleanedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProviderNPINumber: 
+      type: string
+      nullable: true
+     DateUsage: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     ReferringPreestimate: 
+      type: string
+      nullable: true
+     ReferringProviderId: 
+      type: integer
+      nullable: true
+     ReferringOfficeId: 
+      type: integer
+      nullable: true
+     ReferringEntity: 
+      type: string
+      nullable: true
+     EmergencyReferral: 
+      type: string
+      nullable: true
+     InitialReadyToCloseDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ClaimPDFEOPExist: 
+      type: string
+      nullable: true
+     ClaimPDFEOBExist: 
+      type: string
+      nullable: true
+   ServiceRestrictionPackageEntityMapsSearchDTO: 
+    title : ServiceRestrictionPackageEntityMapsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ServiceRestrictionPackageId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ServiceRestrictionPackageEntityMapsSearchDTOListDTO: 
+    title : ServiceRestrictionPackageEntityMapsSearchDTOListDTO
+    type: object
+    properties: 
+     ServiceRestrictionPackageId: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     TypeName: 
+      type: string
+      nullable: true
+     System: 
+      type: string
+      nullable: true
+     MapId: 
+      type: integer
+      nullable: true
+     Excluded: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupLevel: 
+      type: integer
+      nullable: true
+     InheritedFromParentGroup: 
+      type: string
+      nullable: true
+     ParentGroupId: 
+      type: integer
+      nullable: true
+     ParentGroupNumber: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     HasHistory: 
+      type: string
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: "|SEARCH|"
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: true
+    schema: 
+     type: string
+     default: "SEARCH"
+    description: description of parameter passed
+   EntityIdQueryParam: 
+    in: query
+    name: EntityId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AsOfDateQueryParam: 
+    in: query
+    name: AsOfDate
+    required: true
+    schema: 
+     type: string
+     format: date-time
+    description: description of parameter passed
