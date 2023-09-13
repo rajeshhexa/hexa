@@ -1,0 +1,3632 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Workflow_Management API
+  description: Workflow_Management API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /WorkflowManagement/getfiledatawithattributes: 
+   post: 
+    operationId: GetFileDataWithAttributes
+    tags: 
+     - WorkflowManagement
+    summary: Get File Data With Attributes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileDataWithAttributesSearchDTO'
+    responses: 
+     '200': 
+      description: File Data With Attributes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileDataWithAttributesListDTO'
+  /WorkflowManagement/pollforworkrequest: 
+   post: 
+    operationId: PollForWorkRequest
+    tags: 
+     - WorkflowManagement
+    summary: Poll For Work Request
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PollForWorkRequestSearchDTO'
+    responses: 
+     '200': 
+      description: Poll For Work Request completed successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PollForWorkRequestListDTO'
+  /WorkflowManagement/getcontactreasons: 
+   post: 
+    operationId: GetContactReasons
+    tags: 
+     - WorkflowManagement
+    summary: Get Contact Reasons
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactReasonsSearchDTO'
+    responses: 
+     '200': 
+      description: Contact Reasons retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContactReasonsListDTO'
+  /WorkflowManagement/geteventgenerationreasons: 
+   get: 
+    operationId: GetEventGenerationReasons
+    tags: 
+     - WorkflowManagement
+    summary: Get Event Generation Reasons
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EventGenerationReasonCodeQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Event Generation Reasons retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EventGenerationReasonsListDTO'
+  /WorkflowManagement/getexplanations: 
+   post: 
+    operationId: GetExplanations
+    tags: 
+     - workflowManagement
+    summary: Get Explanations
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ExplanationsSearchDTO'
+    responses: 
+     '200': 
+      description: Explanations retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ExplanationsListDTO'
+  /WorkflowManagement/getcontactsfiles: 
+   post: 
+    operationId: GetContactsFiles
+    tags: 
+     - workflowManagement
+    summary: Get Contacts Files
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactFilesSearchDTO'
+    responses: 
+     '200': 
+      description: Contacts Files retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContactFilesListDTO'
+  /WorkflowManagement/getadditionalcontacts: 
+   post: 
+    operationId: GetAdditionalContacts
+    tags: 
+     - workflowManagement
+    summary: Get Additional Contacts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AdditionalContactsSearchDTO'
+    responses: 
+     '200': 
+      description: Additional contacts retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AdditionalContactsListDTO'
+  /WorkflowManagement/getcontactreasonsforstep: 
+   post: 
+    operationId: GetContactReasonsForStep
+    tags: 
+     - WorkflowManagement
+    summary: Get Contact Reasons For Step
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactReasonsForStepSearchDTO'
+    responses: 
+     '200': 
+      description: Contact Reasons For Step
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContactReasonsForStepListDTO'
+  /WorkflowManagement/getcontactsteps: 
+   post: 
+    operationId: GetContactSteps
+    tags: 
+     - workflowManagement
+    summary: Get Contact Steps
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactStepSearchDTO'
+    responses: 
+     '200': 
+      description: Contact Steps retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContactStepListDTO'
+  /WorkflowManagement/getcontactstepstoskipto: 
+   post: 
+    operationId: GetContactStepsToSkipTo
+    tags: 
+     - WorkflowManagement
+    summary: Get Contact Steps To Skip To
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactStepsToSkipToSearchDTO'
+    responses: 
+     '200': 
+      description: Contact Steps To Skip To retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactStepsToSkipToListDTO'
+  /WorkflowManagement/getfulfillmentforcontactstep: 
+   post: 
+    operationId: GetFulfillmentForContactStep
+    tags: 
+     - WorkflowManagement
+    summary: Get Fulfillment For Contact Step
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FulfillmentForContactStepSearchDTO'
+    responses: 
+     '200': 
+      description: Fulfillment For Contact Step retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FulfillmentForContactStepListDTO'
+  /WorkflowManagement/getworkgrouprequests: 
+   post: 
+    operationId: GetWorkGroupRequests
+    tags: 
+     - WorkflowManagement
+    summary: Get Work Group Requests
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/WorkGroupRequestsSearchDTO'
+    responses: 
+     '200': 
+      description: Work Group Requests retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/WorkGroupRequestsListDTO'
+  /WorkflowManagement/getworkgroups: 
+   post: 
+    operationId: GetWorkGroups
+    tags: 
+     - WorkflowManagement
+    summary: Get Work Groups
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/WorkGroupsSearchDTO'
+    responses: 
+     '200': 
+      description: Work Groups retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/WorkGroupsListDTO'
+  /WorkflowManagement/getcrcategories: 
+   post: 
+    operationId: GetCRCategories
+    tags: 
+     - workflowManagement
+    summary: Get CR categories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CRCategoriesSearchDTO'
+    responses: 
+     '200': 
+      description: CR categories retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CRCategoriesListDTO'
+  /workflowmanagement/interchangecheckoutputmap/{InterchangeId}: 
+   get: 
+    operationId: GetInterchangeCheckOutputMap
+    tags: 
+     - WorkflowManagement
+    summary: Get Interchange CheckOutput Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/InterchangeIdPathParam'
+     - $ref: '#/components/parameters/VendorIdQueryParam'
+     - $ref: '#/components/parameters/AccountIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Interchange CheckOutput Map  retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterchangeCheckOutputMapListDTO'
+  /workflowmanagement/explanationcategories/get: 
+   post: 
+    operationId: GetExplanationCategories
+    tags: 
+     - WorkflowManagement
+    summary: Get Explanation categories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ExplanationCategorySearchDTO'
+    responses: 
+     '200': 
+      description: Explanation categories retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ExplanationCategoryListDTO'
+components: 
+  schemas: 
+   ExplanationsListDTO: 
+    title : ExplanationsListDTO
+    type: object
+    properties: 
+     ExplanationId: 
+      type: integer
+      nullable: true
+     Severity: 
+      type: string
+      nullable: true
+     SeverityName: 
+      type: string
+      nullable: true
+     Abbreviation: 
+      type: string
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     ExplanationCode: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     Product: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     ActionCodeType: 
+      type: string
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     AllowOverride: 
+      type: string
+      nullable: true
+     EnableAllowOverride: 
+      type: string
+      nullable: true
+     AllowInformationLevel: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: number
+      nullable: true
+     CoversheetGrouping: 
+      type: string
+      nullable: true
+     CoverSheetGroupingName: 
+      type: string
+      nullable: true
+     DefaultExplanation: 
+      type: string
+      nullable: true
+     OutputType: 
+      type: string
+      nullable: true
+     Active: 
+      type: string
+      nullable: true
+     ContactReasonID: 
+      type: integer
+      nullable: true
+     ContactReasonName: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     IndividualCodeName: 
+      type: string
+      nullable: true
+     AdditionalIndividualCode: 
+      type: string
+      nullable: true
+     AdditionalIndividualCodeName: 
+      type: string
+      nullable: true
+     DefaultGroupCode: 
+      type: string
+      nullable: true
+     ExplanationCategoryId: 
+      type: integer
+      nullable: true
+     ExplanationCategoryName: 
+      type: string
+      nullable: true
+     ExplanationCategoryType: 
+      type: string
+      nullable: true
+     ExplanationCategoryTypeName: 
+      type: string
+      nullable: true
+     ExplanationCategoryPrecedence: 
+      type: number
+      nullable: true
+     HIPAA: 
+      type: string
+      nullable: true
+     AllowUserExplanation: 
+      type: string
+      nullable: true
+     AllowDenialFieldsToBeSet: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByUser: 
+      type: string
+      nullable: true
+     NodeName: 
+      type: string
+      nullable: true
+     ExplanationCatNameAndAbbrev: 
+      type: string
+      nullable: true
+     ShortExplanation: 
+      type: string
+      nullable: true
+     DenialCategory: 
+      type: string
+      nullable: true
+     DenialAction: 
+      type: string
+      nullable: true
+     DenialCategoryName: 
+      type: string
+      nullable: true
+     DenialActionName: 
+      type: string
+      nullable: true
+     AdjActionCodeID: 
+      type: integer
+      nullable: true
+     AdjActionCode: 
+      type: string
+      nullable: true
+     AdjActionCodeName: 
+      type: string
+      nullable: true
+     AllowDenial: 
+      type: string
+      nullable: true
+     AllowDenialName: 
+      type: string
+      nullable: true
+     Definition: 
+      type: string
+      nullable: true
+     EntityTransformId: 
+      type: integer
+      nullable: true
+     TransformName: 
+      type: string
+      nullable: true
+     ApplyToClaimCode: 
+      type: string
+      nullable: true
+     ApplyToClaim: 
+      type: string
+      nullable: true
+     AdjudicationErrorActionCode: 
+      type: string
+      nullable: true
+     AdjudicationErrorAction: 
+      type: string
+      nullable: true
+     ExplanationClass: 
+      type: string
+      nullable: true
+     ExplanationClassName: 
+      type: string
+      nullable: true
+     ExplanationSubClass: 
+      type: string
+      nullable: true
+     ExplanationSubClassName: 
+      type: string
+      nullable: true
+     DenialTakesPrecedence: 
+      type: string
+      nullable: true
+   ContactFilesSearchDTO: 
+    title : ContactFilesSearchDTO
+    type: object
+    properties: 
+     IndividualNumber: 
+      type: string
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     IndividualId: 
+      type: integer
+      nullable: true
+     IndividualNumber2: 
+      type: string
+      nullable: true
+     IndividualType2: 
+      type: string
+      nullable: true
+     IndividualId2: 
+      type: integer
+      nullable: true
+     IndividualNumber3: 
+      type: string
+      nullable: true
+     IndividualType3: 
+      type: string
+      nullable: true
+     IndividualId3: 
+      type: integer
+      nullable: true
+     FromDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ToDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     FileId: 
+      type: integer
+      nullable: true
+     OpenedById: 
+      type: integer
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     ParentFileId: 
+      type: integer
+      nullable: true
+     SubjectContains: 
+      type: string
+      nullable: true
+     TransactionContains: 
+      type: string
+      nullable: true
+     TrackingNumber: 
+      type: string
+      nullable: true
+     ParentEventTrackingNumber: 
+      type: string
+      nullable: true
+     InboundJobType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     ResultPageNumber: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     ContactCategoryId: 
+      type: integer
+      nullable: true
+     ContactReasonShortcut: 
+      type: string
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+     CategoryClass: 
+      type: string
+      nullable: true
+     CategorySubclass: 
+      type: string
+      nullable: true
+     ReasonClass: 
+      type: string
+      nullable: true
+     ReasonSubclass: 
+      type: string
+      nullable: true
+     ContactStepClass: 
+      type: string
+      nullable: true
+     ContactStepSubclass: 
+      type: string
+      nullable: true
+     WorkGroupId: 
+      type: integer
+      nullable: true
+     AssignToId: 
+      type: integer
+      nullable: true
+     EditedByUserId: 
+      type: integer
+      nullable: true
+     DateUsage: 
+      type: string
+      nullable: true
+     EditedByUsage: 
+      type: string
+      nullable: true
+     ShowVoided: 
+      type: string
+      nullable: true
+     CustomAttributeSearchXML: 
+      type: string
+      nullable: true
+     AttributeName1: 
+      type: string
+      nullable: true
+     AttributeName2: 
+      type: string
+      nullable: true
+     AttributeName3: 
+      type: string
+      nullable: true
+     AttributeName4: 
+      type: string
+      nullable: true
+     AttributeName5: 
+      type: string
+      nullable: true
+     ParentStepID: 
+      type: integer
+      nullable: true
+     ParentStepName: 
+      type: string
+      nullable: true
+     ParentFromDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ParentToDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ParentStatus: 
+      type: string
+      nullable: true
+     ParentIndividualNumber: 
+      type: string
+      nullable: true
+     ParentIndividualType: 
+      type: string
+      nullable: true
+     ParentIndividualID: 
+      type: integer
+      nullable: true
+     ParentIndividualNumber2: 
+      type: string
+      nullable: true
+     ParentIndividualType2: 
+      type: string
+      nullable: true
+     ParentIndividualID2: 
+      type: integer
+      nullable: true
+     ReturnIndividualDemographics: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   ContactFilesListDTO: 
+    title : ContactFilesListDTO
+    type: object
+    properties: 
+     FileID: 
+      type: integer
+      nullable: true
+     TrackingNumber: 
+      type: string
+      nullable: true
+     ParentEventTrackingNumber: 
+      type: string
+      nullable: true
+     OwnerID: 
+      type: integer
+      nullable: true
+     OwnerName: 
+      type: string
+      nullable: true
+     StatusCode: 
+      type: string
+      nullable: true
+     FileStatus: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     ParentEventSubject: 
+      type: string
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     IndividualId: 
+      type: integer
+      nullable: true
+     IndividualCodeName: 
+      type: string
+      nullable: true
+     IndividualName: 
+      type: string
+      nullable: true
+     IndividualDOB: 
+      type: string
+      format: date-time
+      nullable: true
+     IndividualPlanName: 
+      type: string
+      nullable: true
+     IndividualGroupNumber: 
+      type: string
+      nullable: true
+     IndividualGroupName: 
+      type: string
+      nullable: true
+     IndividualGroupLOBCode: 
+      type: string
+      nullable: true
+     IndividualGroupLOB: 
+      type: string
+      nullable: true
+     StepID: 
+      type: integer
+      nullable: true
+     StepName: 
+      type: string
+      nullable: true
+     ContactReasonStepId: 
+      type: integer
+      nullable: true
+     SupplementalId: 
+      type: integer
+      nullable: true
+     CategoryClass: 
+      type: string
+      nullable: true
+     CategoryClassName: 
+      type: string
+      nullable: true
+     CategorySubclass: 
+      type: string
+      nullable: true
+     CategorySubclassName: 
+      type: string
+      nullable: true
+     ReasonClass: 
+      type: string
+      nullable: true
+     ReasonClassName: 
+      type: string
+      nullable: true
+     ReasonSubclass: 
+      type: string
+      nullable: true
+     ReasonSubclassName: 
+      type: string
+      nullable: true
+     ContactStepClass: 
+      type: string
+      nullable: true
+     ContactStepClassName: 
+      type: string
+      nullable: true
+     ContactStepSubclass: 
+      type: string
+      nullable: true
+     ContactStepSubclassName: 
+      type: string
+      nullable: true
+     ContactorName: 
+      type: string
+      nullable: true
+     ContactorType: 
+      type: string
+      nullable: true
+     CallBackNumber: 
+      type: string
+      nullable: true
+     DefaultWorkGroupId: 
+      type: integer
+      nullable: true
+     DateOpened: 
+      type: string
+      format: date-time
+      nullable: true
+     DateInitiated: 
+      type: string
+      format: date-time
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     ReasonCode: 
+      type: string
+      nullable: true
+     ReasonName: 
+      type: string
+      nullable: true
+     ContactCategoryId: 
+      type: integer
+      nullable: true
+     ContactCategoryName: 
+      type: string
+      nullable: true
+     ContactCategoryProductName: 
+      type: string
+      nullable: true
+     ContactType: 
+      type: string
+      nullable: true
+     CallbackCode: 
+      type: string
+      nullable: true
+     InboundJobType: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     RequestId: 
+      type: integer
+      nullable: true
+     WorkgroupId: 
+      type: integer
+      nullable: true
+     WorkgroupName: 
+      type: string
+      nullable: true
+     AssignToId: 
+      type: integer
+      nullable: true
+     AssignToUserName: 
+      type: string
+      nullable: true
+     AssignToUserFullName: 
+      type: string
+      nullable: true
+     DateDue: 
+      type: string
+      format: date-time
+      nullable: true
+     DateAssigned: 
+      type: string
+      format: date-time
+      nullable: true
+     OpenedById: 
+      type: integer
+      nullable: true
+     OpenedByUserFullName: 
+      type: string
+      nullable: true
+     ParentFileId: 
+      type: integer
+      nullable: true
+     BillingCode: 
+      type: string
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     FromDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ToDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SubjectContains: 
+      type: string
+      nullable: true
+     TransactionContains: 
+      type: string
+      nullable: true
+     FileTotalHours: 
+      type: string
+      nullable: true
+     DateClosed: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     AttributeId1: 
+      type: integer
+      nullable: true
+     AttributeName1: 
+      type: string
+      nullable: true
+     AttributeValue1: 
+      type: string
+      nullable: true
+     AttributeId2: 
+      type: integer
+      nullable: true
+     AttributeName2: 
+      type: string
+      nullable: true
+     AttributeValue2: 
+      type: string
+      nullable: true
+     AttributeId3: 
+      type: integer
+      nullable: true
+     AttributeName3: 
+      type: string
+      nullable: true
+     AttributeValue3: 
+      type: string
+      nullable: true
+     AttributeId4: 
+      type: integer
+      nullable: true
+     AttributeName4: 
+      type: string
+      nullable: true
+     AttributeValue4: 
+      type: string
+      nullable: true
+     AttributeId5: 
+      type: integer
+      nullable: true
+     AttributeName5: 
+      type: string
+      nullable: true
+     AttributeValue5: 
+      type: string
+      nullable: true
+     EditedByUserId: 
+      type: integer
+      nullable: true
+     EditedByUsage: 
+      type: string
+      nullable: true
+     ShowVoided: 
+      type: string
+      nullable: true
+     DateUsage: 
+      type: string
+      nullable: true
+     AdditionalIndividualTypeCode: 
+      type: string
+      nullable: true
+     AdditionalIndividualType: 
+      type: string
+      nullable: true
+     AdditionalIndividualId: 
+      type: integer
+      nullable: true
+     AdditionalIndividualNumber: 
+      type: string
+      nullable: true
+     AdditionalIndividualName: 
+      type: string
+      nullable: true
+     AdditionalSupplementalId: 
+      type: integer
+      nullable: true
+     AdditionalIndividualTypeCode2: 
+      type: string
+      nullable: true
+     AdditionalIndividualType2: 
+      type: string
+      nullable: true
+     AdditionalIndividualId2: 
+      type: integer
+      nullable: true
+     AdditionalIndividualNumber2: 
+      type: string
+      nullable: true
+     AdditionalIndividualName2: 
+      type: string
+      nullable: true
+     AdditionalSupplementalId2: 
+      type: integer
+      nullable: true
+     AdditionalIndividualTypeCode3: 
+      type: string
+      nullable: true
+     AdditionalIndividualType3: 
+      type: string
+      nullable: true
+     AdditionalIndividualId3: 
+      type: integer
+      nullable: true
+     AdditionalIndividualNumber3: 
+      type: string
+      nullable: true
+     AdditionalIndividualName3: 
+      type: string
+      nullable: true
+     AdditionalSupplementalId3: 
+      type: integer
+      nullable: true
+     AdditionalIndividualTypeCode4: 
+      type: string
+      nullable: true
+     AdditionalIndividualType4: 
+      type: string
+      nullable: true
+     AdditionalIndividualId4: 
+      type: integer
+      nullable: true
+     AdditionalIndividualNumber4: 
+      type: string
+      nullable: true
+     AdditionalIndividualName4: 
+      type: string
+      nullable: true
+     AdditionalSupplementalId4: 
+      type: integer
+      nullable: true
+     AdditionalIndividualTypeCode5: 
+      type: string
+      nullable: true
+     AdditionalIndividualType5: 
+      type: string
+      nullable: true
+     AdditionalIndividualId5: 
+      type: integer
+      nullable: true
+     AdditionalIndividualNumber5: 
+      type: string
+      nullable: true
+     AdditionalIndividualName5: 
+      type: string
+      nullable: true
+     AdditionalSupplementalId5: 
+      type: integer
+      nullable: true
+     DetailsRequired: 
+      type: string
+      nullable: true
+     AttachmentIndicator: 
+      type: string
+      nullable: true
+     DepartmentName: 
+      type: string
+      nullable: true
+     DepartmentId: 
+      type: integer
+      nullable: true
+     LockedByUserID: 
+      type: integer
+      nullable: true
+     InboundJobData: 
+      type: string
+      nullable: true
+     InboundJobDetailId: 
+      type: integer
+      nullable: true
+     TrackingNumberWithPayer: 
+      type: string
+      nullable: true
+   AdditionalContactsSearchDTO: 
+    title : AdditionalContactsSearchDTO
+    type: object
+    properties: 
+     OfficeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     Subclass: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Title: 
+      type: string
+      nullable: true
+     Department: 
+      type: string
+      nullable: true
+     Phone: 
+      type: string
+      nullable: true
+     Extension: 
+      type: string
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   AdditionalContactsListDTO: 
+    title : AdditionalContactsListDTO
+    type: object
+    properties: 
+     AdditionalContactId: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     Subclass: 
+      type: string
+      nullable: true
+     SubclassName: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Title: 
+      type: string
+      nullable: true
+     TitleName: 
+      type: string
+      nullable: true
+     Department: 
+      type: string
+      nullable: true
+     DepartmentName: 
+      type: string
+      nullable: true
+     Phone: 
+      type: string
+      nullable: true
+     Extension: 
+      type: string
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   ContactReasonsForStepSearchDTO: 
+    title : ContactReasonsForStepSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ReasonCode: 
+      type: string
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+   ContactReasonsForStepListDTO: 
+    title : ContactReasonsForStepListDTO
+    type: object
+    properties: 
+     RowId: 
+      type: integer
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+     NewReasonId: 
+      type: integer
+      nullable: true
+     NewReasonCode: 
+      type: string
+      nullable: true
+     NewReasonName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   ContactStepSearchDTO: 
+    title : ContactStepSearchDTO
+    type: object
+    properties: 
+     ReasonID: 
+      type: integer
+      nullable: true
+     ReasonCode: 
+      type: string
+      nullable: true
+     ReasonName: 
+      type: string
+      nullable: true
+     ContactStepClass: 
+      type: string
+      nullable: true
+     ContactStepSubclass: 
+      type: string
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   ContactStepListDTO: 
+    title : ContactStepListDTO
+    type: object
+    properties: 
+     ReasonID: 
+      type: integer
+      nullable: true
+     StepID: 
+      type: integer
+      nullable: true
+     StepName: 
+      type: string
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     WorkGroupName: 
+      type: string
+      nullable: true
+     Request: 
+      type: string
+      nullable: true
+     WorkDuration: 
+      type: integer
+      nullable: true
+     TransactionCode: 
+      type: string
+      nullable: true
+     InboundOutboundProcess: 
+      type: string
+      nullable: true
+     StepScript: 
+      type: string
+      nullable: true
+     XCoord: 
+      type: integer
+      nullable: true
+     YCoord: 
+      type: integer
+      nullable: true
+     ContactStepType: 
+      type: string
+      nullable: true
+     TranFlowIdentifierId: 
+      type: integer
+      nullable: true
+     DestFlowIdentifierId: 
+      type: integer
+      nullable: true
+     DestIndividualCode: 
+      type: string
+      nullable: true
+     DelayUnitType: 
+      type: string
+      nullable: true
+     DelayUnitValue: 
+      type: integer
+      nullable: true
+     AllottedTimeUnitType: 
+      type: string
+      nullable: true
+     AllottedTimeUnitValue: 
+      type: integer
+      nullable: true
+     ContactStepClass: 
+      type: string
+      nullable: true
+     ContactStepSubclass: 
+      type: string
+      nullable: true
+     AllowSkipStep: 
+      type: string
+      nullable: true
+     AllowOverrideStep: 
+      type: string
+      nullable: true
+     DetailsRequired: 
+      type: string
+      nullable: true
+     EmailOnAssignment: 
+      type: string
+      nullable: true
+     RequireUserAssignment: 
+      type: string
+      nullable: true
+     RequireLoggedTimeForRouting: 
+      type: string
+      nullable: true
+     ContactReasonStepId: 
+      type: integer
+      nullable: true
+     RealStepId: 
+      type: integer
+      nullable: true
+     DefaultEmailSubject: 
+      type: string
+      nullable: true
+     DefaultEmailBody: 
+      type: string
+      nullable: true
+     RequireEmailBeforeRouting: 
+      type: string
+      nullable: true
+     EntityTransformID: 
+      type: integer
+      nullable: true
+     EntityTransformName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     PSScript: 
+      type: string
+      nullable: true
+   ContactStepsToSkipToSearchDTO: 
+    title : ContactStepsToSkipToSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ReasonCode: 
+      type: string
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+   FileDataWithAttributesSearchDTO: 
+    title : FileDataWithAttributesSearchDTO
+    type: object
+    properties: 
+     ReportPeriodStart: 
+      type: string
+      format: date-time
+      nullable: true
+     ReportPeriodEnd: 
+      type: string
+      format: date-time
+      nullable: true
+     BaseTime: 
+      type: string
+      format: date-time
+      nullable: true
+     TimePeriod: 
+      type: string
+      nullable: true
+     DepartmentId: 
+      type: integer
+      nullable: true
+     TransactionCode: 
+      type: string
+      nullable: true
+     FileStatus: 
+      type: string
+      nullable: true
+     FileId: 
+      type: integer
+      nullable: true
+     AttributeId1: 
+      type: integer
+      nullable: true
+     AttributeId2: 
+      type: integer
+      nullable: true
+     AttributeId3: 
+      type: integer
+      nullable: true
+     AttributeId4: 
+      type: integer
+      nullable: true
+     AttributeId5: 
+      type: integer
+      nullable: true
+     AttributeId6: 
+      type: integer
+      nullable: true
+     AttributeId7: 
+      type: integer
+      nullable: true
+     AttributeId8: 
+      type: integer
+      nullable: true
+     AttributeId9: 
+      type: integer
+      nullable: true
+     AttributeId10: 
+      type: integer
+      nullable: true
+     AttributeId11: 
+      type: integer
+      nullable: true
+     AttributeId12: 
+      type: integer
+      nullable: true
+     AttributeId13: 
+      type: integer
+      nullable: true
+     AttributeId14: 
+      type: integer
+      nullable: true
+     AttributeId15: 
+      type: integer
+      nullable: true
+     AttributeId16: 
+      type: integer
+      nullable: true
+     AttributeValue1: 
+      type: string
+      nullable: true
+     AttributeValue2: 
+      type: string
+      nullable: true
+     AttributeValue3: 
+      type: string
+      nullable: true
+     AttributeValue4: 
+      type: string
+      nullable: true
+     AttributeValue5: 
+      type: string
+      nullable: true
+     AttributeValue6: 
+      type: string
+      nullable: true
+     AttributeValue7: 
+      type: string
+      nullable: true
+     AttributeValue8: 
+      type: string
+      nullable: true
+     AttributeValue9: 
+      type: string
+      nullable: true
+     AttributeValue10: 
+      type: string
+      nullable: true
+     AttributeValue11: 
+      type: string
+      nullable: true
+     AttributeValue12: 
+      type: string
+      nullable: true
+     AttributeValue13: 
+      type: string
+      nullable: true
+     AttributeValue14: 
+      type: string
+      nullable: true
+     AttributeValue15: 
+      type: string
+      nullable: true
+     AttributeValue16: 
+      type: string
+      nullable: true
+     ReturnStatus: 
+      type: string
+      nullable: true
+     Interval: 
+      type: integer
+      nullable: true
+     LOB: 
+      type: string
+      nullable: true
+     ParentGroupID: 
+      type: string
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     IndividualID: 
+      type: integer
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     ShowSubFiles: 
+      type: string
+      nullable: true
+     CalculateAging: 
+      type: string
+      nullable: true
+     AgingDateUsage: 
+      type: string
+      nullable: true
+     ContactCategory: 
+      type: string
+      nullable: true
+     ContactReason: 
+      type: string
+      nullable: true
+     CategoryClass: 
+      type: string
+      nullable: true
+     CategorySubclass: 
+      type: string
+      nullable: true
+     ReasonClass: 
+      type: string
+      nullable: true
+     ReasonSubclass: 
+      type: string
+      nullable: true
+     ContactStepClass: 
+      type: string
+      nullable: true
+     ContactStepSubclass: 
+      type: string
+      nullable: true
+     ReturnVoided: 
+      type: string
+      nullable: true
+     ReturnFormLetterData: 
+      type: string
+      nullable: true
+     ProductUsage: 
+      type: string
+      nullable: true
+     TableUsage: 
+      type: string
+      nullable: true
+     ResultTableName: 
+      type: string
+      nullable: true
+     UserReportID: 
+      type: integer
+      nullable: true
+     ColumnList: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     WorkGroupClass: 
+      type: string
+      nullable: true
+     WorkGroupSubclass: 
+      type: string
+      nullable: true
+     ReturnAdditionalEntities: 
+      type: string
+      nullable: true
+     ResultsetName: 
+      type: string
+      nullable: true
+   ContactStepsToSkipToListDTO: 
+    title : ContactStepsToSkipToListDTO
+    type: object
+    properties: 
+     ReasonId: 
+      type: integer
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+     StepName: 
+      type: string
+      nullable: true
+     AllowSkipStep: 
+      type: string
+      nullable: true
+     AllowOverride: 
+      type: string
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     RequireUserAssignment: 
+      type: string
+      nullable: true
+     AllottedTimeUnitType: 
+      type: string
+      nullable: true
+     AllottedTimeUnitValue: 
+      type: integer
+      nullable: true
+     DelayUnitType: 
+      type: string
+      nullable: true
+     DelayUnitValue: 
+      type: integer
+      nullable: true
+     FinalStepID: 
+      type: integer
+      nullable: true
+     InboundOutboundProcess: 
+      type: string
+      nullable: true
+     EntityTransformID: 
+      type: integer
+      nullable: true
+     Request: 
+      type: string
+      nullable: true
+   FulfillmentForContactStepSearchDTO: 
+    title : FulfillmentForContactStepSearchDTO
+    type: object
+    properties: 
+     ReasonID: 
+      type: integer
+      nullable: true
+     ReasonCode: 
+      type: string
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+     IndividualId: 
+      type: integer
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|LETTER|"
+      nullable: true
+   FulfillmentForContactStepListDTO: 
+    title : FulfillmentForContactStepListDTO
+    type: object
+    properties: 
+     ReasonID   : 
+      type: integer
+      nullable: true
+         StepID: 
+      type: integer
+      nullable: true
+         IndividualID: 
+      type: integer
+      nullable: true
+         IndividualType: 
+      type: string
+      nullable: true
+         IndividualEmail: 
+      type: string
+      nullable: true
+         IndividualFaxNumber: 
+      type: string
+      nullable: true
+         IndividualContactName: 
+      type: string
+      nullable: true
+     TransactionCode: 
+      type: string
+      nullable: true
+     InboundOutboundProcess: 
+      type: string
+      nullable: true
+     InboundOutboundProcessName: 
+      type: string
+      nullable: true
+     DefaultFulfillmentType: 
+      type: string
+      nullable: true
+     AutoPrint: 
+      type: string
+      nullable: true
+     DefaultEmailBody: 
+      type: string
+      nullable: true
+     DefaultEmailsubject: 
+      type: string
+      nullable: true
+     StepName: 
+      type: string
+      nullable: true
+     RequireEmailBeforeRouting: 
+      type: string
+      default: N
+      nullable: true
+   WorkGroupRequestsSearchDTO: 
+    title : WorkGroupRequestsSearchDTO
+    type: object
+    properties: 
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     WorkDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckOutUserId: 
+      type: integer
+      nullable: true
+     EntityType1: 
+      type: string
+      nullable: true
+     EntityType2: 
+      type: string
+      nullable: true
+     AttributeId: 
+      type: integer
+      nullable: true
+     AttributeId2: 
+      type: integer
+      nullable: true
+     AttrFilter1: 
+      type: string
+      nullable: true
+     AttrFilter2: 
+      type: string
+      nullable: true
+     OriginalDocumentName: 
+      type: string
+      nullable: true
+     DateReceivedFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceivedTo: 
+      type: string
+      format: date-time
+      nullable: true
+     CategoryId: 
+      type: integer
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     CalculateQueueStatistics: 
+      type: string
+      nullable: true
+     DateOpenedStart: 
+      type: string
+      format: date-time
+      nullable: true
+     DateOpenedEnd: 
+      type: string
+      format: date-time
+      nullable: true
+     TrackingNumber: 
+      type: string
+      nullable: true
+     ResultPageNumber: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   WorkGroupRequestsListDTO: 
+    title : WorkGroupRequestsListDTO
+    type: object
+    properties: 
+     RequestID: 
+      type: integer
+      nullable: true
+     Subject: 
+      type: string
+      nullable: true
+     DateRequested: 
+      type: string
+      format: date-time
+      nullable: true
+     DateInitiated: 
+      type: string
+      format: date-time
+      nullable: true
+     DateDue: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     OriginalDocumentName: 
+      type: string
+      nullable: true
+     Request: 
+      type: string
+      nullable: true
+     FullName: 
+      type: string
+      nullable: true
+     DateStarted: 
+      type: string
+      format: date-time
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     WorkGroupName: 
+      type: string
+      nullable: true
+     WorkGroupQueueDiscipline: 
+      type: string
+      nullable: true
+     WorkDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Locked: 
+      type: string
+      nullable: true
+     OverDue: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     FileId: 
+      type: integer
+      nullable: true
+     FileSubject: 
+      type: string
+      nullable: true
+     FileParentId: 
+      type: integer
+      nullable: true
+     FileTrackingNumber: 
+      type: string
+      nullable: true
+     FileParentTrackingNumber: 
+      type: string
+      nullable: true
+     FileReasonShortcut: 
+      type: string
+      nullable: true
+     FileContactReasonName: 
+      type: string
+      nullable: true
+     FileContactCategoryName: 
+      type: string
+      nullable: true
+     FileContactReasonCategoryType: 
+      type: string
+      nullable: true
+     FileStepId: 
+      type: integer
+      nullable: true
+     FileStepName: 
+      type: string
+      nullable: true
+     FileStatus: 
+      type: string
+      nullable: true
+     FileStatusName: 
+      type: string
+      nullable: true
+     QueueDescription: 
+      type: string
+      nullable: true
+     IndividualId: 
+      type: integer
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     IndividualTypeName: 
+      type: string
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     IndividualName: 
+      type: string
+      nullable: true
+     AdditionalIndividualId: 
+      type: integer
+      nullable: true
+     AdditionalIndividualType: 
+      type: string
+      nullable: true
+     AdditionalIndividualTypeName: 
+      type: string
+      nullable: true
+     AdditionalIndividualNumber: 
+      type: string
+      nullable: true
+     AdditionalIndividualName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     ParentGroupNumber: 
+      type: string
+      nullable: true
+     ParentGroupName: 
+      type: string
+      nullable: true
+     LOB: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ParentGroupId: 
+      type: integer
+      nullable: true
+     Permitted: 
+      type: string
+      nullable: true
+     CountPermitted: 
+      type: integer
+      nullable: true
+     CheckOutUserId: 
+      type: integer
+      nullable: true
+     AssignToUserName: 
+      type: string
+      nullable: true
+     DateAssigned: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckedOutToAnotherUser: 
+      type: string
+      nullable: true
+     NumOfItems: 
+      type: integer
+      nullable: true
+     DateOfOldest: 
+      type: string
+      format: date-time
+      nullable: true
+     AverageDaysOnQueue: 
+      type: string
+      nullable: true
+     OldestItemNumDays: 
+      type: integer
+      nullable: true
+     Priority: 
+      type: number
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     ReasonFileOnHold: 
+      type: string
+      nullable: true
+     ReasonFileOnHoldName: 
+      type: string
+      nullable: true
+     DaysOnQueue: 
+      type: integer
+      nullable: true
+     CategoryId: 
+      type: integer
+      nullable: true
+     ContactCategoryId: 
+      type: integer
+      nullable: true
+     AssignToId: 
+      type: integer
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     DateOpened: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     SupplementalID: 
+      type: integer
+      nullable: true
+     SupplementalType: 
+      type: string
+      nullable: true
+     BillingCode: 
+      type: string
+      nullable: true
+     COBPayerName: 
+      type: string
+      nullable: true
+     AttributeValue: 
+      type: string
+      nullable: true
+     AttributeValue2: 
+      type: string
+      nullable: true
+   WorkGroupsSearchDTO: 
+    title : WorkGroupsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     WorkGroupName: 
+      type: string
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     DeptID: 
+      type: integer
+      nullable: true
+     QueueDisiplineCode: 
+      type: string
+      nullable: true
+     ForUserID: 
+      type: integer
+      nullable: true
+     WorkGroupStatus: 
+      type: string
+      nullable: true
+     ReturnStatistics: 
+      type: string
+      nullable: true
+     CompletionCalculationMethod: 
+      type: string
+      nullable: true
+     DaysToComplete: 
+      type: integer
+      nullable: true
+     WorkGroupClass: 
+      type: string
+      nullable: true
+     WorkGroupSubclass: 
+      type: string
+      nullable: true
+     ContactCategoryId: 
+      type: integer
+      nullable: true
+     AdditionalFilter: 
+      type: string
+      nullable: true
+     WorkGroupType: 
+      type: string
+      nullable: true
+     WorkGroupSubtype: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   WorkGroupsListDTO: 
+    title : WorkGroupsListDTO
+    type: object
+    properties: 
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     WorkGroupName: 
+      type: string
+      nullable: true
+     WorkGroupAbbreviation: 
+      type: string
+      nullable: true
+     QueueDisiplineCode: 
+      type: string
+      nullable: true
+     QueueDisciplineName: 
+      type: string
+      nullable: true
+     WorkGroupType: 
+      type: string
+      nullable: true
+     WorkGroupTypeName: 
+      type: string
+      nullable: true
+     WorkGroupSubtype: 
+      type: string
+      nullable: true
+     WorkGroupSubTypeName: 
+      type: string
+      nullable: true
+     OwnedBy: 
+      type: integer
+      nullable: true
+     OwnedByName: 
+      type: string
+      nullable: true
+     TargetWaitTime: 
+      type: integer
+      nullable: true
+     TargetNumItems: 
+      type: integer
+      nullable: true
+     NumOfItems: 
+      type: integer
+      nullable: true
+     DateOfOldest: 
+      type: string
+      format: date-time
+      nullable: true
+     OldestItemNumDays: 
+      type: integer
+      nullable: true
+     AverageDaysOnQueue: 
+      type: integer
+      nullable: true
+     Allowed: 
+      type: string
+      nullable: true
+     WorkGroupStatus: 
+      type: string
+      nullable: true
+     WorkGroupStatusName: 
+      type: string
+      nullable: true
+     EMFirstItem: 
+      type: string
+      nullable: true
+     EMEveryItem: 
+      type: string
+      nullable: true
+     EMOverdueItems: 
+      type: string
+      nullable: true
+     EMAfterNItems: 
+      type: string
+      nullable: true
+     EMAfterNHrs: 
+      type: string
+      nullable: true
+     EMSummary: 
+      type: string
+      nullable: true
+     CurrentUserId: 
+      type: integer
+      nullable: true
+     WorkGroupClass: 
+      type: string
+      nullable: true
+     WorkGroupClassName: 
+      type: string
+      nullable: true
+     WorkGroupSubclass: 
+      type: string
+      nullable: true
+     WorkGroupSubclassName: 
+      type: string
+      nullable: true
+     DefaultButtonBar: 
+      type: string
+      nullable: true
+     DefaultStyleSheet: 
+      type: integer
+      nullable: true
+     NumberOfOverdueItems: 
+      type: integer
+      nullable: true
+     AgingCount: 
+      type: integer
+      nullable: true
+     DaysToComplete: 
+      type: integer
+      nullable: true
+     CompletionCalculationMethod: 
+      type: string
+      nullable: true
+     CompletionCalculationMethodName: 
+      type: string
+      nullable: true
+     WorkGroupPriority: 
+      type: number
+      nullable: true
+     AssignedItems: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   CRCategoriesSearchDTO: 
+    title : CRCategoriesSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     CategoryID: 
+      type: integer
+      nullable: true
+     CategoryClass: 
+      type: string
+      nullable: true
+     CategorySubclass: 
+      type: string
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+   CRCategoriesListDTO: 
+    title : CRCategoriesListDTO
+    type: object
+    properties: 
+     CategoryID: 
+      type: integer
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     CategoryDescription: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     CategoryClass: 
+      type: string
+      nullable: true
+     CategorySubclass: 
+      type: string
+      nullable: true
+   InterchangeCheckOutputMapListDTO: 
+    title : InterchangeCheckOutputMapListDTO
+    type: object
+    properties: 
+     InterchangeCheckOutputMapId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Entity: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     Funded: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EntityNumber: 
+      type: string
+      nullable: true
+     MethodOfPaymentCode: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+   FileDataWithAttributesListDTO: 
+    title : FileDataWithAttributesListDTO
+    type: object
+    properties: 
+     PeriodStart: 
+      type: string
+      format: date-time
+      nullable: true
+     PeriodEnd: 
+      type: string
+      format: date-time
+      nullable: true
+     FileId: 
+      type: integer
+      description: 
+      nullable: true
+     TrackingNumber: 
+      type: string
+      nullable: true
+     FileSubject: 
+      type: string
+      nullable: true
+     ParentFileId: 
+      type: integer
+      nullable: true
+     ParentTrackingNumber: 
+      type: string
+      nullable: true
+     ParentFileReasonId: 
+      type: integer
+      nullable: true
+     ParentFileReasonName: 
+      type: string
+      nullable: true
+     ParentFileSubject: 
+      type: string
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     ReasonName: 
+      type: string
+      nullable: true
+     ReasonDescription: 
+      type: string
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     ReasonClass: 
+      type: string
+      nullable: true
+     ReasonClassName: 
+      type: string
+      nullable: true
+     ReasonSubclass: 
+      type: string
+      nullable: true
+     ReasonSubclassName: 
+      type: string
+      nullable: true
+     CategoryClass: 
+      type: string
+      nullable: true
+     CategoryClassName: 
+      type: string
+      nullable: true
+     CategorySubclass: 
+      type: string
+      nullable: true
+     CategorySubclassName: 
+      type: string
+      nullable: true
+     ContactStepClass: 
+      type: string
+      nullable: true
+     ContactStepClassName: 
+      type: string
+      nullable: true
+     ContactStepSubclass: 
+      type: string
+      nullable: true
+     ContactStepSubclassName: 
+      type: string
+      nullable: true
+     ContactCategoryId: 
+      type: integer
+      nullable: true
+     SourceCode: 
+      type: string
+      nullable: true
+     SourceCodeName: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     IndividualCodeName: 
+      type: string
+      nullable: true
+     IndividualId: 
+      type: integer
+      nullable: true
+     IndividualNumber: 
+      type: string
+      nullable: true
+     SupplementalID: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     Address: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     AdditionalIndividualId: 
+      type: integer
+      nullable: true
+     AdditionalIndividualCode: 
+      type: string
+      nullable: true
+     AdditionalIndividualNumber: 
+      type: string
+      nullable: true
+     AdditionalSupplementalID: 
+      type: integer
+      nullable: true
+     AdditionalIndividualLastName: 
+      type: string
+      nullable: true
+     AdditionalIndividualFirstName: 
+      type: string
+      nullable: true
+     AdditionalIndividualAddress: 
+      type: string
+      nullable: true
+     AdditionalIndividualCity: 
+      type: string
+      nullable: true
+     AdditionalIndividualState: 
+      type: string
+      nullable: true
+     AdditionalIndividualZip: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupLOB: 
+      type: string
+      nullable: true
+     ParentGroupId: 
+      type: integer
+      nullable: true
+     ParentGroupNumber: 
+      type: string
+      nullable: true
+     ParentGroupName: 
+      type: string
+      nullable: true
+     FileStatus: 
+      type: string
+      nullable: true
+     FileStatusName: 
+      type: string
+      nullable: true
+     FileStepId: 
+      type: integer
+      nullable: true
+     FileStepName: 
+      type: string
+      nullable: true
+     OpenedById: 
+      type: integer
+      nullable: true
+     OpenedByName: 
+      type: string
+      nullable: true
+     OpenedByDeptName: 
+      type: string
+      nullable: true
+     ClosedById: 
+      type: integer
+      nullable: true
+     ClosedByName: 
+      type: string
+      nullable: true
+     OwnerId: 
+      type: integer
+      nullable: true
+     OwnerName: 
+      type: string
+      nullable: true
+     CurrentUserId: 
+      type: integer
+      nullable: true
+     CurrentUserName: 
+      type: string
+      nullable: true
+     CallBackCode: 
+      type: string
+      nullable: true
+     CallbackCodeName: 
+      type: string
+      nullable: true
+     CallbackNumber: 
+      type: string
+      nullable: true
+     ContactorType: 
+      type: string
+      nullable: true
+     ContactorTypeName: 
+      type: string
+      nullable: true
+     ContactorName: 
+      type: string
+      nullable: true
+     DateOpened: 
+      type: string
+      format: date-time
+      nullable: true
+     DateClosed: 
+      type: string
+      format: date-time
+      nullable: true
+     TransactionId: 
+      type: integer
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     TransactionCode: 
+      type: string
+      nullable: true
+     TransactionSubject: 
+      type: string
+      nullable: true
+     TransactionDescription: 
+      type: string
+      nullable: true
+     TransactionStepId: 
+      type: integer
+      nullable: true
+     FaxNumber: 
+      type: string
+      nullable: true
+     FaxContactName: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     UserId: 
+      type: integer
+      nullable: true
+     Username: 
+      type: string
+      nullable: true
+     FullName: 
+      type: string
+      nullable: true
+     DeptName: 
+      type: string
+      nullable: true
+     DateStarted: 
+      type: string
+      format: date-time
+      nullable: true
+     DateCompleted: 
+      type: string
+      format: date-time
+      nullable: true
+     DateRequested: 
+      type: string
+      format: date-time
+      nullable: true
+     DateInitiated: 
+      type: string
+      format: date-time
+      nullable: true
+     AssignToId: 
+      type: integer
+      nullable: true
+     DepartNameForAssignTo: 
+      type: string
+      nullable: true
+     WorkGroupId: 
+      type: integer
+      nullable: true
+     WorkGroupName: 
+      type: string
+      nullable: true
+     WorkGroupAbbreviation: 
+      type: string
+      nullable: true
+     WorkGroupClass: 
+      type: string
+      nullable: true
+     WorkGroupClassName: 
+      type: string
+      nullable: true
+     WorkGroupSubclass: 
+      type: string
+      nullable: true
+     WorkGroupSubclassName: 
+      type: string
+      nullable: true
+     WRSubject: 
+      type: string
+      nullable: true
+     WRRequest: 
+      type: string
+      nullable: true
+     WRDateRequested: 
+      type: string
+      format: date-time
+      nullable: true
+     WRDateDue: 
+      type: string
+      format: date-time
+      nullable: true
+     AssignToUserId: 
+      type: integer
+      nullable: true
+     AssignToUserName: 
+      type: string
+      nullable: true
+     DateAssigned: 
+      type: string
+      format: date-time
+      nullable: true
+     WorkDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReasonOnHold: 
+      type: string
+      nullable: true
+     ReasonOnHoldName: 
+      type: string
+      nullable: true
+     AttributeId1: 
+      type: integer
+      nullable: true
+     AttributeName1: 
+      type: string
+      nullable: true
+     AttributeSortKey1: 
+      type: number
+      nullable: true
+     AttributeValue1: 
+      type: string
+      nullable: true
+     AttributeId2: 
+      type: integer
+      nullable: true
+     AttributeValue2: 
+      type: string
+      nullable: true
+     AttributeId3: 
+      type: integer
+      nullable: true
+     AttributeValue3: 
+      type: string
+      nullable: true
+     AttributeId4: 
+      type: integer
+      nullable: true
+     AttributeValue4: 
+      type: string
+      nullable: true
+     AttributeId5: 
+      type: integer
+      nullable: true
+     AttributeValue5: 
+      type: string
+      nullable: true
+     AttributeId6: 
+      type: integer
+      nullable: true
+     AttributeValue6: 
+      type: string
+      nullable: true
+     AttributeId7: 
+      type: integer
+      nullable: true
+     AttributeValue7: 
+      type: string
+      nullable: true
+     AttributeId8: 
+      type: integer
+      nullable: true
+     AttributeValue8: 
+      type: string
+      nullable: true
+     AttributeId9: 
+      type: integer
+      nullable: true
+     AttributeValue9: 
+      type: string
+      nullable: true
+     AttributeId10: 
+      type: integer
+      nullable: true
+     AttributeValue10: 
+      type: string
+      nullable: true
+     AttributeId11: 
+      type: integer
+      nullable: true
+     AttributeValue11: 
+      type: string
+      nullable: true
+     AttributeId12: 
+      type: integer
+      nullable: true
+     AttributeValue12: 
+      type: string
+      nullable: true
+     AttributeId13: 
+      type: integer
+      nullable: true
+     AttributeValue13: 
+      type: string
+      nullable: true
+     AttributeId14: 
+      type: integer
+      nullable: true
+     AttributeValue14: 
+      type: string
+      nullable: true
+     AttributeId15: 
+      type: integer
+      nullable: true
+     AttributeValue15: 
+      type: string
+      nullable: true
+     AttributeId16: 
+      type: integer
+      nullable: true
+     AttributeValue16: 
+      type: string
+      nullable: true
+     AgingDays: 
+      type: integer
+      nullable: true
+     DaysToClose: 
+      type: integer
+      nullable: true
+     AgingRangeOfFile: 
+      type: string
+      nullable: true
+     ClosingRangeOfFile: 
+      type: string
+      nullable: true
+     Attachments: 
+      type: string
+      nullable: true
+     ExternalData: 
+      type: string
+      nullable: true
+     LOBName: 
+      type: string
+      nullable: true
+     PrintedBy: 
+      type: string
+      nullable: true
+     IndividualNumberIn: 
+      type: string
+      nullable: true
+     Sponsor: 
+      type: string
+      nullable: true
+     ColumnList: 
+      type: string
+      nullable: true
+     AllottedTimeUnitType: 
+      type: string
+      nullable: true
+     AllottedTimeUnitValue: 
+      type: integer
+      nullable: true
+     FormLetterRowId: 
+      type: integer
+      nullable: true
+     FormLetterBatchId: 
+      type: integer
+      nullable: true
+     FormLetterOutputSource: 
+      type: string
+      nullable: true
+     FormLetterOutputSourceName: 
+      type: string
+      nullable: true
+     FormLetterOutputStatus: 
+      type: string
+      nullable: true
+     FormLetterOutputStatusName: 
+      type: string
+      nullable: true
+     FormLetterUserReportId: 
+      type: integer
+      nullable: true
+     FormLetterUserReportName: 
+      type: string
+      nullable: true
+     FormLetterConfirmDate: 
+      type: string
+      format: date-time
+      nullable: true
+     FormLetterMailDate: 
+      type: string
+      format: date
+      nullable: true
+     FileID: 
+      type: integer
+      description: 
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityNumber: 
+      type: string
+      nullable: true
+     SupplementalID: 
+      type: integer
+      nullable: true
+     SupplementalType: 
+      type: string
+      nullable: true
+     EntityLastName: 
+      type: string
+      nullable: true
+     EntityFirstName: 
+      type: string
+      nullable: true
+     EntityAddress: 
+      type: string
+      nullable: true
+     EntityCity: 
+      type: string
+      nullable: true
+     EntityState: 
+      type: string
+      nullable: true
+     EntityZip: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupLOB: 
+      type: string
+      nullable: true
+     ParentGroupId: 
+      type: integer
+      nullable: true
+     ParentGroupNumber: 
+      type: string
+      nullable: true
+     ParentGroupName: 
+      type: string
+      nullable: true
+   ExplanationCategorySearchDTO: 
+    title : ExplanationCategorySearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     ExplanationCategoryType: 
+      type: string
+      nullable: true
+     ExplanationCategoryName: 
+      type: string
+      nullable: true
+     Active: 
+      type: string
+      nullable: true
+     AllowDenialFieldsToBeSet: 
+      type: string
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+     IsRepricingInPerfectClaim: 
+      type: string
+      nullable: true
+   ExplanationCategoryListDTO: 
+    title : ExplanationCategoryListDTO
+    type: object
+    properties: 
+     ExplanationCategoryId: 
+      type: integer
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     Product: 
+      type: string
+      nullable: true
+     ExplanationCategoryType: 
+      type: string
+      nullable: true
+     ExplanationCategoryTypeName: 
+      type: string
+      nullable: true
+     ExplanationCategoryName: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: number
+      nullable: true
+     HIPAA: 
+      type: string
+      nullable: true
+     Active: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     IsRepricingInPerfectClaim: 
+      type: string
+      nullable: true
+     AllowUserExplanation: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByUser: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     NodeName: 
+      type: string
+      nullable: true
+     AllowDenialFieldsToBeSet: 
+      type: string
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+     AllowUserExplanationsOnly: 
+      type: string
+      nullable: true
+   PollForWorkRequestSearchDTO: 
+    title : PollForWorkRequestSearchDTO
+    type: object
+    properties: 
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     RequestID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     WorkDate: 
+      type: string
+      nullable: true
+     PollBy: 
+      type: string
+      nullable: true
+     CheckingOnQueueDisipline: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   PollForWorkRequestListDTO: 
+    title : PollForWorkRequestListDTO
+    type: object
+    properties: 
+     RequestID   : 
+      type: integer
+      nullable: true
+     WorkGroupId: 
+      type: integer
+      nullable: true
+     FileID      : 
+      type: integer
+      nullable: true
+     TransactionStepID: 
+      type: integer
+      nullable: true
+     TransactionCode  : 
+      type: string
+      nullable: true
+     InboundOutboundProcess: 
+      type: string
+      nullable: true
+     Subject          : 
+      type: string
+      nullable: true
+     Request         : 
+      type: string
+      nullable: true
+     DateRequested    : 
+      type: string
+      format: date-time
+      nullable: true
+     DateDue          : 
+      type: string
+      format: date-time
+      nullable: true
+     TrackingNumber   : 
+      type: string
+      nullable: true
+     ReasonShortcut   : 
+      type: string
+      nullable: true
+     ReasonID: 
+      type: integer
+      nullable: true
+     AllowOverrideFromReason: 
+      type: string
+      nullable: true
+     DetailsRequired: 
+      type: string
+      nullable: true
+     SourceCode       : 
+      type: string
+      nullable: true
+     IndividualCode   : 
+      type: string
+      nullable: true
+     IndividualID     : 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     IndividualNumber : 
+      type: string
+      nullable: true
+     IndividualName: 
+      type: string
+      nullable: true
+     ContactType: 
+      type: string
+      nullable: true
+     CallBackCode   : 
+      type: string
+      nullable: true
+     CallBackNumber   : 
+      type: string
+      nullable: true
+     ContactorType: 
+      type: string
+      nullable: true
+     ContactorName: 
+      type: string
+      nullable: true
+     DateOpened       : 
+      type: string
+      format: date-time
+      nullable: true
+     OpenedByID: 
+      type: integer
+      nullable: true
+     CategoryID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     OriginalDocumentName: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     ImageType: 
+      type: string
+      nullable: true
+     NumberLeftOnQueue: 
+      type: string
+      nullable: true
+     CheckOutUserId: 
+      type: integer
+      nullable: true
+     DateAssigned : 
+      type: string
+      format: date-time
+      nullable: true
+     UserId: 
+      type: integer
+      nullable: true
+     SessionId: 
+      type: integer
+      nullable: true
+     WorkDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReasonFileOnHold: 
+      type: string
+      nullable: true
+     ParentFileId: 
+      type: integer
+      nullable: true
+     ParentStepId: 
+      type: integer
+      nullable: true
+     ParentFileDateOpened: 
+      type: string
+      format: date-time
+      nullable: true
+     NumberOfClaims: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     LOAId: 
+      type: integer
+      nullable: true
+     SupplementalID: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     StepTransformID: 
+      type: integer
+      nullable: true
+     StepScript : 
+      type: string
+      nullable: true
+     StepName: 
+      type: string
+      nullable: true
+     RequireLoggedTimeForRouting: 
+      type: string
+      nullable: true
+     RequireEmailBeforeRouting: 
+      type: string
+      nullable: true
+     DefaultEmailBody: 
+      type: string
+      nullable: true
+     FileSubject: 
+      type: string
+      nullable: true
+   ContactReasonsSearchDTO: 
+    title : ContactReasonsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ReasonID: 
+      type: integer
+      nullable: true
+     CategoryID: 
+      type: integer
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     ReasonName: 
+      type: string
+      nullable: true
+     ReasonClass: 
+      type: string
+      nullable: true
+     ReasonSubclass: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   ContactReasonsListDTO: 
+    title : ContactReasonsListDTO
+    type: object
+    properties: 
+     ReasonID: 
+      type: integer
+      nullable: true
+     ContactReasonID: 
+      type: integer
+      nullable: true
+     ReasonShortcut: 
+      type: string
+      nullable: true
+     ReasonName: 
+      type: string
+      nullable: true
+     ContactReasonName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     Priority: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     DesignatedCloserID: 
+      type: integer
+      nullable: true
+     AllowOverride: 
+      type: string
+      nullable: true
+     ReasonStatus: 
+      type: string
+      nullable: true
+     DetailsRequired: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ContactCategoryID: 
+      type: integer
+      nullable: true
+     CategoryID: 
+      type: integer
+      nullable: true
+     ReasonDescription: 
+      type: string
+      nullable: true
+     ReasonScript: 
+      type: string
+      nullable: true
+     AllowTimeforClosedFileEvent: 
+      type: string
+      nullable: true
+     UseReasonNameAsSubject: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     ReasonClass: 
+      type: string
+      nullable: true
+     ReasonSubclass: 
+      type: string
+      nullable: true
+     EntityTransformID: 
+      type: integer
+      nullable: true
+     EntityTransformName: 
+      type: string
+      nullable: true
+     ContactCategory: 
+      type: string
+      nullable: true
+     EmailConfigurationID: 
+      type: integer
+      nullable: true
+     EmailConfigurationName: 
+      type: string
+      nullable: true
+   EventGenerationReasonsListDTO: 
+    title : EventGenerationReasonsListDTO
+    type: object
+    properties: 
+     EventGenerationReasonId: 
+      type: integer
+      nullable: true
+     EventGenerationReasonCode: 
+      type: string
+      nullable: true
+     EventGenerationReasonName: 
+      type: string
+      nullable: true
+     ContactReasonId: 
+      type: integer
+      nullable: true
+     ContactReasonName: 
+      type: string
+      nullable: true
+     Required: 
+      type: string
+      nullable: true
+     Locked: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   ExplanationsSearchDTO: 
+    title : ExplanationsSearchDTO
+    type: object
+    properties: 
+     ExplanationId: 
+      type: integer
+      nullable: true
+     Abbreviation: 
+      type: string
+      nullable: true
+     ActionCodeID: 
+      type: integer
+      nullable: true
+     EnableAllowOverride: 
+      type: string
+      nullable: true
+     Severity: 
+      type: string
+      nullable: true
+     DefaultExplanation: 
+      type: string
+      nullable: true
+     OutputType: 
+      type: string
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     SortBy: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Product: 
+      type: string
+      nullable: true
+     Active: 
+      type: string
+      nullable: true
+     ExplanationCode: 
+      type: string
+      nullable: true
+     DefaultGroupCode: 
+      type: string
+      nullable: true
+     ExplanationCategoryId: 
+      type: integer
+      nullable: true
+     ExplanationCategoryType: 
+      type: string
+      nullable: true
+     ExplanationCategoryName: 
+      type: string
+      nullable: true
+  parameters: 
+   EventGenerationReasonCodeQueryParam: 
+    in: query
+    name: EventGenerationReasonCode
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   InterchangeIdPathParam: 
+    in: path
+    name: InterchangeId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   VendorIdQueryParam: 
+    in: query
+    name: VendorId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AccountIdQueryParam: 
+    in: query
+    name: AccountId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
