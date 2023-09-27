@@ -1,0 +1,181 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Member Enrollment API V1
+  description: Member Enrollment API V1
+servers: 
+  - url: <to be set>
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /corporateActions: 
+   get: 
+    operationId: getCorporateActions
+    tags: 
+     - corporateActions
+    summary: Get All Corporate Actions
+    description: Get All Corporate Actions
+    responses: 
+     '200': 
+      description: Success
+   post: 
+    operationId: createCorporateActions
+    tags: 
+     - corporateActions
+    summary: Create Corporate Action
+    description: Create Corporate Action
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/corporateActionsRequest'
+    responses: 
+     '200': 
+      description: Success
+  /corporateActions/{id}: 
+   get: 
+    operationId: getCorporateActionsById
+    tags: 
+     - corporateActions
+    summary: Get Corporate Action By Id
+    description: Get Corporate Action By Id
+    parameters: 
+     - $ref: '#/components/parameters/idPathParam'
+    responses: 
+     '200': 
+      description: Success
+   put: 
+    operationId: updateCorporateAction
+    tags: 
+     - corporateActions
+    summary: Update Corporate Action By Id
+    description: Update Corporate Action By Id
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/corporateActionsRequest'
+    parameters: 
+     - $ref: '#/components/parameters/idPathParam'
+    responses: 
+     '200': 
+      description: Success
+   delete: 
+    operationId: deleteCorporateAction
+    tags: 
+     - corporateActions
+    summary: Delete Corporate Action By Id
+    description: Delete Corporate Action By Id
+    parameters: 
+     - $ref: '#/components/parameters/idPathParam'
+    responses: 
+     '200': 
+      description: Success
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  schemas: 
+   corporateActions: 
+    title : corporateActions
+    type: object
+    properties: 
+     id: 
+      type: string
+      description: Corporate Actions Id
+      format: uuid
+      minLength: 1
+      maxLength: 10
+      default: ASDFFFR
+      example: FDASDER
+      pattern: DSADSAD
+     type: 
+      type: string
+     recordDate: 
+      type: string
+     exDate: 
+      type: string
+     paymentDate: 
+      type: string
+     issuer: 
+      type: object
+      $ref: '#/components/schemas/issuer'
+     affectedSecurities: 
+      type: object
+      $ref: '#/components/schemas/affectedSecurities'
+   issuer: 
+    title : issuer
+    type: object
+    properties: 
+     id: 
+      type: string
+      description: Issuer Id
+      format: uuid
+      minLength: 1
+      maxLength: 10
+      default: ASDFFFR
+      example: FDASDER
+      pattern: DSADSAD
+     name: 
+      type: string
+     tickerSymbol: 
+      type: string
+     ISIN: 
+      type: string
+   affectedSecurities: 
+    title : affectedSecurities
+    type: object
+    properties: 
+     id: 
+      type: string
+      description: affected Securities Id
+      format: uuid
+      minLength: 1
+      maxLength: 10
+      default: ASDFFFR
+      example: FDASDER
+      pattern: DSADSAD
+     name: 
+      type: string
+     symbol: 
+      type: string
+     ISIN: 
+      type: string
+     actionDetails: 
+      type: object
+      $ref: '#/components/schemas/actionDetails'
+   actionDetails: 
+    title : actionDetails
+    type: object
+    properties: 
+     type: 
+      type: string
+     splitRatio: 
+      type: string
+   ErrorResponseList: 
+    title : ErrorResponseList
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   Error: 
+    title : Error
+    type: object
+    properties: 
+     ErrorCode: 
+      type: string
+     ErrorDescription: 
+      type: string
+  parameters: 
+   idPathParam: 
+    in: path
+    name: id
+    required: true
+    schema: 
+     type: string
+    description: Id of Corporate Action to get details
