@@ -1,0 +1,369 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Workflow_Management API
+  description: Workflow_Management API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /WorkflowManagement/getfiledatawithattributes: 
+   post: 
+    operationId: GetFileDataWithAttributes
+    tags: 
+     - WorkflowManagement
+    summary: Get File Data With Attributes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileDataWithAttributesSearchDTO'
+    responses: 
+     '200': 
+      description: File Data With Attributes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FileDataWithAttributesListDTO'
+  /WorkflowManagement/pollforworkrequest: 
+   post: 
+    operationId: PollForWorkRequest
+    tags: 
+     - WorkflowManagement
+    summary: Poll For Work Request
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PollForWorkRequestSearchDTO'
+    responses: 
+     '200': 
+      description: Poll For Work Request completed successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PollForWorkRequestListDTO'
+  /WorkflowManagement/getcontactreasons: 
+   post: 
+    operationId: GetContactReasons
+    tags: 
+     - WorkflowManagement
+    summary: Get Contact Reasons
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactReasonsSearchDTO'
+    responses: 
+     '200': 
+      description: Contact Reasons retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContactReasonsListDTO'
+  /WorkflowManagement/geteventgenerationreasons: 
+   get: 
+    operationId: GetEventGenerationReasons
+    tags: 
+     - WorkflowManagement
+    summary: Get Event Generation Reasons
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EventGenerationReasonCodeQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Event Generation Reasons retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EventGenerationReasonsListDTO'
+  /WorkflowManagement/getexplanations: 
+   post: 
+    operationId: GetExplanations
+    tags: 
+     - workflowManagement
+    summary: Get Explanations
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ExplanationsSearchDTO'
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ExplainationSearchDTO'
+    responses: 
+     '200': 
+      description: Explanations retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ExplanationsListDTO'
+     '200': 
+      description: Success
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ExplainationListDTO'
+  /WorkflowManagement/getcontactsfiles: 
+   post: 
+    operationId: GetContactsFiles
+    tags: 
+     - workflowManagement
+    summary: Get Contacts Files
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactFilesSearchDTO'
+    responses: 
+     '200': 
+      description: Contacts Files retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContactFilesListDTO'
+  /WorkflowManagement/getadditionalcontacts: 
+   post: 
+    operationId: GetAdditionalContacts
+    tags: 
+     - workflowManagement
+    summary: Get Additional Contacts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AdditionalContactsSearchDTO'
+    responses: 
+     '200': 
+      description: Additional contacts retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AdditionalContactsListDTO'
+  /WorkflowManagement/getcontactreasonsforstep: 
+   post: 
+    operationId: GetContactReasonsForStep
+    tags: 
+     - WorkflowManagement
+    summary: Get Contact Reasons For Step
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactReasonsForStepSearchDTO'
+    responses: 
+     '200': 
+      description: Contact Reasons For Step
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContactReasonsForStepListDTO'
+  /WorkflowManagement/getcontactsteps: 
+   post: 
+    operationId: GetContactSteps
+    tags: 
+     - workflowManagement
+    summary: Get Contact Steps
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactStepSearchDTO'
+    responses: 
+     '200': 
+      description: Contact Steps retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContactStepListDTO'
+  /WorkflowManagement/getcontactstepstoskipto: 
+   post: 
+    operationId: GetContactStepsToSkipTo
+    tags: 
+     - WorkflowManagement
+    summary: Get Contact Steps To Skip To
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactStepsToSkipToSearchDTO'
+    responses: 
+     '200': 
+      description: Contact Steps To Skip To retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContactStepsToSkipToListDTO'
+  /WorkflowManagement/getfulfillmentforcontactstep: 
+   post: 
+    operationId: GetFulfillmentForContactStep
+    tags: 
+     - WorkflowManagement
+    summary: Get Fulfillment For Contact Step
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FulfillmentForContactStepSearchDTO'
+    responses: 
+     '200': 
+      description: Fulfillment For Contact Step retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FulfillmentForContactStepListDTO'
+  /WorkflowManagement/getworkgrouprequests: 
+   post: 
+    operationId: GetWorkGroupRequests
+    tags: 
+     - WorkflowManagement
+    summary: Get Work Group Requests
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/WorkGroupRequestsSearchDTO'
+    responses: 
+     '200': 
+      description: Work Group Requests retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/WorkGroupRequestsListDTO'
+  /WorkflowManagement/getworkgroups: 
+   post: 
+    operationId: GetWorkGroups
+    tags: 
+     - WorkflowManagement
+    summary: Get Work Groups
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/WorkGroupsSearchDTO'
+    responses: 
+     '200': 
+      description: Work Groups retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/WorkGroupsListDTO'
+  /WorkflowManagement/getcrcategories: 
+   post: 
+    operationId: GetCRCategories
+    tags: 
+     - workflowManagement
+    summary: Get CR categories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CRCategoriesSearchDTO'
+    responses: 
+     '200': 
+      description: CR categories retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CRCategoriesListDTO'
+  /workflowmanagement/interchangecheckoutputmap/{InterchangeId}: 
+   get: 
+    operationId: GetInterchangeCheckOutputMap
+    tags: 
+     - WorkflowManagement
+    summary: Get Interchange CheckOutput Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/InterchangeIdPathParam'
+     - $ref: '#/components/parameters/VendorIdQueryParam'
+     - $ref: '#/components/parameters/AccountIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Interchange CheckOutput Map  retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterchangeCheckOutputMapListDTO'
+  /workflowmanagement/explanationcategories/get: 
+   post: 
+    operationId: GetExplanationCategories
+    tags: 
+     - WorkflowManagement
+    summary: Get Explanation categories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ExplanationCategorySearchDTO'
+    responses: 
+     '200': 
+      description: Explanation categories retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ExplanationCategoryListDTO'
+  /workflowmanagement/explanationentitymap: 
+   null: 
+    operationId: AddExplanationEntityMap
+    tags: 
+     - WorkflowManagement
+    summary: Add Explaination Entity Map
+    description: Description of path
