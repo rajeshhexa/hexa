@@ -1,0 +1,340 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Corporate Actions API V1
+  description: Corporate Actions API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /corporateActions: 
+   get: 
+    operationId: get_corporateActions_1
+    tags: 
+     - corporateActions
+    description: Description of path
+    responses: 
+     '200': 
+      description: All Corporate Actions retrieved
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/get_corporateActions_1_200_res'
+     '404': 
+      description: Not Found
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_corporateActions_1_404_res'
+     '500': 
+      description: Internal Server Error
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_corporateActions_1_500_res'
+   post: 
+    operationId: post_corporateActions_2
+    tags: 
+     - corporateActions
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_corporateActions_2_req'
+    responses: 
+     '200': 
+      description: Create Corporate Action
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_corporateActions_2_200_res'
+     '404': 
+      description: Not Found
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_corporateActions_2_404_res'
+     '500': 
+      description: Internal Server Error
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_corporateActions_2_500_res'
+  /corporateActions/{id}: 
+   get: 
+    operationId: get_corporateActions_id_3
+    tags: 
+     - corporateActions
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/idPathParam'
+    responses: 
+     '200': 
+      description: Corporate Action retrieved by Id
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_corporateActions_id_3_200_res'
+     '404': 
+      description: Not Found
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_corporateActions_id_3_404_res'
+     '500': 
+      description: Internal Server Error
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_corporateActions_id_3_500_res'
+   put: 
+    operationId: put_corporateActions_id_4
+    tags: 
+     - corporateActions
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_corporateActions_id_4_req'
+    parameters: 
+     - $ref: '#/components/parameters/idPathParam'
+    responses: 
+     '200': 
+      description: Update Corporate Action
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_corporateActions_id_4_200_res'
+     '404': 
+      description: Not Found
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_corporateActions_id_4_404_res'
+     '500': 
+      description: Internal Server Error
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/put_corporateActions_id_4_500_res'
+   delete: 
+    operationId: delete_corporateActions_id_5
+    tags: 
+     - corporateActions
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/idPathParam'
+    responses: 
+     '200': 
+      description: Delete Corporate Action
+components: 
+  schemas: 
+   get_corporateActions_1_200_res: 
+    title : get_corporateActions_1_200_res
+    type: object
+    properties: 
+     id: 
+      type: string
+     type: 
+      type: string
+     recordDate: 
+      type: string
+     exDate: 
+      type: string
+     paymentDate: 
+      type: string
+     issuer: 
+      type: object
+      $ref: '#/components/schemas/issuer'
+     affectedSecurities: 
+      type: object
+      $ref: '#/components/schemas/affectedSecurities'
+   issuer: 
+    title : issuer
+    type: object
+    properties: 
+     id: 
+      type: string
+     name: 
+      type: string
+     tickerSymbol: 
+      type: string
+     ISIN: 
+      type: string
+   affectedSecurities: 
+    title : affectedSecurities
+    type: object
+    properties: 
+     id: 
+      type: string
+     name: 
+      type: string
+     symbol: 
+      type: string
+     ISIN: 
+      type: string
+     actionDetails: 
+      type: object
+      $ref: '#/components/schemas/actionDetails'
+   actionDetails: 
+    title : actionDetails
+    type: object
+    properties: 
+     type: 
+      type: string
+     splitRatio: 
+      type: string
+   Error: 
+    title : Error
+    type: object
+    properties: 
+     ErrorCode: 
+      type: string
+     ErrorDescription: 
+      type: string
+   get_corporateActions_1_404_res: 
+    title : get_corporateActions_1_404_res
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   get_corporateActions_1_500_res: 
+    title : get_corporateActions_1_500_res
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   post_corporateActions_2_200_res: 
+    title : post_corporateActions_2_200_res
+    type: object
+    properties: 
+     statusCode: 
+      type: string
+     message: 
+      type: string
+   post_corporateActions_2_404_res: 
+    title : post_corporateActions_2_404_res
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   post_corporateActions_2_500_res: 
+    title : post_corporateActions_2_500_res
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   post_corporateActions_2_req: 
+    title : post_corporateActions_2_req
+    type: object
+    properties: 
+     id: 
+      type: string
+     type: 
+      type: string
+     recordDate: 
+      type: string
+     exDate: 
+      type: string
+     paymentDate: 
+      type: string
+     issuer: 
+      type: object
+      $ref: '#/components/schemas/issuer'
+     affectedSecurities: 
+      type: object
+      $ref: '#/components/schemas/affectedSecurities'
+   get_corporateActions_id_3_200_res: 
+    title : get_corporateActions_id_3_200_res
+    type: object
+    properties: 
+     id: 
+      type: string
+     type: 
+      type: string
+     recordDate: 
+      type: string
+     exDate: 
+      type: string
+     paymentDate: 
+      type: string
+     issuer: 
+      type: object
+      $ref: '#/components/schemas/issuer'
+     affectedSecurities: 
+      type: object
+      $ref: '#/components/schemas/affectedSecurities'
+   get_corporateActions_id_3_404_res: 
+    title : get_corporateActions_id_3_404_res
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   get_corporateActions_id_3_500_res: 
+    title : get_corporateActions_id_3_500_res
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   put_corporateActions_id_4_200_res: 
+    title : put_corporateActions_id_4_200_res
+    type: object
+    properties: 
+     statusCode: 
+      type: string
+     message: 
+      type: string
+   put_corporateActions_id_4_404_res: 
+    title : put_corporateActions_id_4_404_res
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   put_corporateActions_id_4_500_res: 
+    title : put_corporateActions_id_4_500_res
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   put_corporateActions_id_4_req: 
+    title : put_corporateActions_id_4_req
+    type: object
+    properties: 
+     id: 
+      type: string
+     type: 
+      type: string
+     recordDate: 
+      type: string
+     exDate: 
+      type: string
+     paymentDate: 
+      type: string
+     issuer: 
+      type: object
+      $ref: '#/components/schemas/issuer'
+     affectedSecurities: 
+      type: object
+      $ref: '#/components/schemas/affectedSecurities'
+  parameters: 
+   idPathParam: 
+    in: path
+    name: id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
