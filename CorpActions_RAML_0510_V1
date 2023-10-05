@@ -1,0 +1,165 @@
+#%RAML 1.0
+title: Corporate Actions API V1
+description: Corporate Actions API V1
+version: v1
+securitySchemes: 
+annotationTypes: 
+  operationId: 
+   type: string
+types: 
+  corporateActions: 
+   type: object
+   properties: 
+     id: 
+      type: string
+     type: 
+      type: string
+     recordDate: 
+      type: string
+     exDate: 
+      type: string
+     paymentDate: 
+      type: string
+     issuer: issuer
+     affectedSecurities: affectedSecurities
+  issuer: 
+   type: object
+   properties: 
+     id: 
+      type: string
+     name: 
+      type: string
+     tickerSymbol: 
+      type: string
+     ISIN: 
+      type: string
+  affectedSecurities: 
+   type: object
+   properties: 
+     id: 
+      type: string
+     name: 
+      type: string
+     symbol: 
+      type: string
+     ISIN: 
+      type: string
+     actionDetails: actionDetails
+  actionDetails: 
+   type: object
+   properties: 
+     type: 
+      type: string
+     splitRatio: 
+      type: string
+  ErrorResponseList: 
+   type: object
+   properties: 
+     Error: Error
+  Error: 
+   type: object
+   properties: 
+     ErrorCode: 
+      type: string
+     ErrorDescription: 
+      type: string
+  EntityResponse: 
+   type: object
+   properties: 
+     statusCode: 
+      type: string
+     message: 
+      type: string
+/corporateActions: 
+  get: 
+   (operationId): getCorporateActions
+   description: Get All Corporate Actions
+   responses: 
+    200: 
+     description: All Corporate Actions retrieved
+     body: 
+      application/json: 
+       type: array
+       items: 
+        type: corporateActions
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: ErrorResponseList
+  post: 
+   (operationId): createCorporateActions
+   description: Create Corporate Action
+   body: 
+    type: corporateActions
+   responses: 
+    200: 
+     description: Create Corporate Action
+     body: 
+      application/json: 
+       type: EntityResponse
+    404: 
+     description: Not Found
+     body: 
+      application/json: 
+       type: ErrorResponseList
+    500: 
+     description: Internal Server Error
+     body: 
+      application/json: 
+       type: ErrorResponseList
+  /{id}: 
+   get: 
+    (operationId): getCorporateActionsById
+    description: Get Corporate Action By Id
+    responses: 
+     200: 
+      description: Corporate Action retrieved by Id
+      body: 
+       application/json: 
+        type: corporateActions
+     404: 
+      description: Not Found
+      body: 
+       application/json: 
+        type: ErrorResponseList
+     500: 
+      description: Internal Server Error
+      body: 
+       application/json: 
+        type: ErrorResponseList
+   put: 
+    (operationId): updateCorporateAction
+    description: Update Corporate Action By Id
+    body: 
+     type: corporateActions
+    responses: 
+     200: 
+      description: Update Corporate Action
+      body: 
+       application/json: 
+        type: EntityResponse
+     404: 
+      description: Not Found
+      body: 
+       application/json: 
+        type: ErrorResponseList
+     500: 
+      description: Internal Server Error
+      body: 
+       application/json: 
+        type: ErrorResponseList
+   delete: 
+    (operationId): deleteCorporateAction
+    description: Delete Corporate Action By Id
+    responses: 
+     200: 
+      description: Delete Corporate Action
+      body: 
+       application/json: 
+        type: string
