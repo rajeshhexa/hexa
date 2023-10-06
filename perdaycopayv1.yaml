@@ -1,0 +1,151 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: PerDayCoPay
+  description: PerDayCoPay API
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /perdaycopay: 
+   get: 
+    operationId: GetPerDayCoPay
+    summary: Get Perdaycopay 
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LiabilityItemIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: PerDayCoPay retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PerDayCoPayDTO'
+   post: 
+    operationId: AddPerDayCopay
+    summary: Add Perdaycopay
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PerDayCoPayDTO'
+    responses: 
+     '200': 
+      description: PerDayCoPay added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdatePerDayCopay
+    summary: Update Perdaycopay
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PerDayCoPayDTO'
+    responses: 
+     '200': 
+      description: PerDayCoPay updated successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/'
+  /removeperdaycopay: 
+   delete: 
+    operationId: DeletePerDayCopay
+    summary: Delete PerDayCopay
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PerDayCopayIdPathParam'
+    responses: 
+     '200': 
+      description: PerDayCoPay deleted successully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/null'
+components: 
+  schemas: 
+   PerDayCoPayDTO: 
+    title : PerDayCoPayDTO
+    type: object
+    properties: 
+     LiabilityItemId: 
+      type: integer
+      nullable: true
+     Period: 
+      type: string
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     StartCopayAsOf: 
+      type: integer
+      nullable: true
+     UserId: 
+      type: integer
+      nullable: true
+     PerDayCopayId: 
+      type: integer
+      nullable: true
+   PerDayCoPayListDTO: 
+    title : PerDayCoPayListDTO
+    type: object
+    properties: 
+     PerDayCopayId: 
+      type: integer
+      nullable: true
+     LiabilityItemId: 
+      type: integer
+      nullable: true
+     Period: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     StartCopayAsOf: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      description: Last update date
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: string
+      nullable: true
+  parameters: 
+   LiabilityItemIdQueryParam: 
+    in: query
+    name: LiabilityItemId
+    required: false
+    schema: 
+     type: number
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   PerDayCopayIdPathParam: 
+    in: path
+    name: PerDayCopayId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
