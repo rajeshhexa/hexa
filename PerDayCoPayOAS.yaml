@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: PerDayCoPay
+  description: PerDayCoPay API
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /perdaycopay: 
+   post: 
+    operationId: getPerDayCoPay
+    summary: Get Perdaycopay 
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LiabilityItemIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: PerDayCoPay retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PerDayCoPayDTO'
+   put: 
+    operationId: updatePerDayCopay
+    summary: Update Perdaycopay
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PerDayCoPayDTO'
+    responses: 
+     '200': 
+      description: PerDayCoPay updated successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/'
+  /removeperdaycopay/{PerDayCopayId}: 
+   delete: 
+    operationId: deletePerDayCopay
+    summary: Delete PerDayCopay
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PerDayCopayIdPathParam'
+    responses: 
+     '200': 
+      description: PerDayCoPay deleted successully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/null'
+components: 
+  schemas: 
+   PerDayCoPayDTO: 
+    title : PerDayCoPayDTO
+    type: object
+    properties: 
+     LiabilityItemId: 
+      type: integer
+     Period: 
+      type: string
+     Amount: 
+      type: number
+     StartCopayAsOf: 
+      type: integer
+     UserId: 
+      type: integer
+     PerDayCopayId: 
+      type: integer
+   PerDayCoPayListDTO: 
+    title : PerDayCoPayListDTO
+    type: object
+    properties: 
+     PerDayCopayId: 
+      type: integer
+     LiabilityItemId: 
+      type: integer
+     Period: 
+      type: string
+     Amount: 
+      type: string
+     StartCopayAsOf: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      description: Last update date
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedById: 
+      type: string
+  parameters: 
+   LiabilityItemIdQueryParam: 
+    in: query
+    name: LiabilityItemId
+    required: false
+    schema: 
+     type: number
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   PerDayCopayIdPathParam: 
+    in: path
+    name: PerDayCopayId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
