@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /diagnosiscategories: 
+   post: 
+    operationId: GetDiagnosisCategories
+    tags: 
+     - Broker
+    summary: Get Diagnosis Categories 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BrokerDTO'
+    responses: 
+     '200': 
+      description: Broker updated succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /diagnosiscategory: 
+   post: 
+    operationId: AddDiagnosisCategory
+    tags: 
+     - Broker
+    summary: Add Broker
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BrokerDTO'
+    responses: 
+     '200': 
+      description: Broker added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateDiagnosisCategory
+    tags: 
+     - Broker
+    summary: Update Broker
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BrokerSearchDTO'
+    responses: 
+     '200': 
+      description: Brokers retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BrokerListDTO'
+   get: 
+    operationId: MoveDiagnosisCategory
+    tags: 
+     - Broker
+    summary: Get Broker History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/brokerIdPathParam'
+    responses: 
+     '200': 
+      description: Broker history retrieved successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BrokerHistoryListDTO'
+  /diagnosiscategorymap: 
+   null: 
+    operationId: AddDiagnosisCategoryMap
+    description: Description of path
