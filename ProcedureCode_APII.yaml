@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: SummaryOfBenefit
+  description: SummaryOfBenefit API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/procedurecodes: 
+   post: 
+    operationId: GetProcedureCodes
+    tags: 
+     - ProcedureCode
+    summary: Get ProcedureCode 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodeSearchDTO'
+    responses: 
+     '200': 
+      description: ProcedureCode retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCodeListDTO'
+  /benefit/procedurecode: 
+   post: 
+    operationId: AddProcedureCode
+    tags: 
+     - ProcedureCode
+    summary: Add ProcedureCode
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodeDTO'
+    responses: 
+     '200': 
+      description: ProcedureCode added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateProcedureCode
+    tags: 
+     - ProcedureCode
+    summary: Update ProcedureCode
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodeDTO'
+    responses: 
+     '200': 
+      description: ProcedureCode retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: MoveProcedureCode
+    tags: 
+     - ProcedureCode
+    summary: Delete ProcedureCode
+    description: Description of path
+    responses: 
+     '200': 
+      description: ProcedureCode moved successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/procedurecodehistory: 
+   null: 
+    operationId: GetProcedureCodeHistory
+    tags: 
+     - ProcedureCodeHistory
+    summary: Delete ProcedureCode
+    description: Description of path
