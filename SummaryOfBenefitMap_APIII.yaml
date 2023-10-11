@@ -1,0 +1,200 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /summaryofbenifitmaps: 
+   post: 
+    operationId: GetSummaryOfBenefitMap
+    tags: 
+     - BenifitMap
+    summary: Get SummaryOfBenefitMap 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SummaryOfBenefitMapSearchDTO'
+    responses: 
+     '200': 
+      description: SummaryOfBenefitMap retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/SummaryOfBenefitMapListDTO'
+  /summaryofbenifitmap: 
+   post: 
+    operationId: AddSummaryOfBenefitMap
+    tags: 
+     - BenifitMap
+    summary: Add SummaryOfBenefitMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SummaryOfBenefitMapDTO'
+    responses: 
+     '200': 
+      description: SummaryOfBenefitMap added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateSummaryOfBenefitMap
+    tags: 
+     - BenifitMap
+    summary: Update SummaryOfBenefitMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SummaryOfBenefitMapDTO'
+    responses: 
+     '200': 
+      description: SummaryOfBenefitMap retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteSummaryOfBenefitMap
+    tags: 
+     - BenifitMap
+    summary: Delete SummaryOfBenefitMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/SummaryOfBenefitMapIdQueryParam'
+    responses: 
+     '200': 
+      description: SummaryOfBenefitMap deleted successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   SummaryOfBenefitMapDTO: 
+    title : SummaryOfBenefitMapDTO
+    type: object
+    properties: 
+     Level: 
+      type: string
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     SOBReportPath: 
+      type: string
+      nullable: true
+     SOBReportPathid: 
+      type: integer
+      nullable: true
+     SummaryOfBenefitMapId: 
+      type: integer
+      nullable: true
+     SummaryOfBenefitId: 
+      type: integer
+      nullable: true
+   SummaryOfBenefitMapSearchDTO: 
+    title : SummaryOfBenefitMapSearchDTO
+    type: object
+    properties: 
+     Level: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|NORMAL|"
+      nullable: true
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   SummaryOfBenefitMapListDTO: 
+    title : SummaryOfBenefitMapListDTO
+    type: object
+    properties: 
+     EntityTypeName: 
+      type: string
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     SummaryOfBenefitReportPath: 
+      type: string
+      nullable: true
+     SummaryOfBenefitReportPathId: 
+      type: integer
+      nullable: true
+     SummaryOfBenefitsTemplate: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     LiabilityPackageName: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     SummaryOfBenefitMapId: 
+      type: integer
+      nullable: true
+  parameters: 
+   SummaryOfBenefitMapIdQueryParam: 
+    in: query
+    name: SummaryOfBenefitMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
