@@ -1,0 +1,267 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Procedure Codes Modifier Rules
+  description: Procedure Codes Modifier Rules API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/procedurecode/modifierrules: 
+   post: 
+    operationId: AddProcedureCodesModifierRules
+    tags: 
+     - ProcedureCodesModifierRules
+    summary: Add Procedure Code Modifier Rules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodesModifierRuleDTO'
+    responses: 
+     '200': 
+      description: ProcedureCodesModifierRules Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateProcedureCodesModifierRules
+    tags: 
+     - ProcedureCodesModifierRules
+    summary: Update Procedure Code Modifier Rules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodesModifierRuleDTO'
+    responses: 
+     '200': 
+      description: ProcedureCodesModifierRules Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteProcedureCodesModifierRules
+    tags: 
+     - ProcedureCodesModifierRules
+    summary: Delete Procedure Code Modifier Rules
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/ProcedureCodeRuleIDQueryParam'
+    responses: 
+     '200': 
+      description: ProcedureCodesModifierRules Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/procedurecode/modifierruleshistory: 
+   post: 
+    operationId: GetProcedureCodesModifierRulesHistory
+    tags: 
+     - ProcedureCodesModifierRules
+    summary: Get Procedure Codes Code Modifier History
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodesModifierRulesHistorySearchDTO'
+    responses: 
+     '200': 
+      description: ProcedureCodesModifierRulesHistory Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCodesModifierRulesHistoryListDTO'
+components: 
+  schemas: 
+   ProcedureCodesModifierRuleDTO: 
+    title : ProcedureCodesModifierRuleDTO
+    type: object
+    properties: 
+     ProcedureCodeRuleID: 
+      type: integer
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     RequirementRule: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     FeeScheduleLOB: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ProcedureCodesModifierRulesHistorySearchDTO: 
+    title : ProcedureCodesModifierRulesHistorySearchDTO
+    type: object
+    properties: 
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|Updated|"
+      nullable: true
+   ProcedureCodesModifierRulesHistoryListDTO: 
+    title : ProcedureCodesModifierRulesHistoryListDTO
+    type: object
+    properties: 
+     ProcedureCodeRuleID: 
+      type: integer
+      description: 
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureCodeName: 
+      type: string
+      nullable: true
+     RequirementRule: 
+      type: string
+      nullable: true
+     RequirementRuleName: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     FeeScheduleLOB: 
+      type: string
+      nullable: true
+     FeeScheduleLOBName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+   ProcedureCodesModifierRulesSearchDTO: 
+    title : ProcedureCodesModifierRulesSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ProcedureCodesModifierRulesListDTO: 
+    title : ProcedureCodesModifierRulesListDTO
+    type: object
+    properties: 
+     ProcedureCodeRuleID: 
+      type: integer
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     RequirementRule: 
+      type: string
+      nullable: true
+     Requirement: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     FeeScheduleLOB: 
+      type: string
+      nullable: true
+     FeeScheduleLineOfBusiness: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+  parameters: 
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProcedureCodeRuleIDQueryParam: 
+    in: query
+    name: ProcedureCodeRuleID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
