@@ -1,0 +1,320 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: DiagnosisCategory
+  description: DiagnosisCategory API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /diagnosiscategories: 
+   post: 
+    operationId: GetDiagnosisCategories
+    tags: 
+     - DiagnosisCategory
+    summary: Get Diagnosis Categories 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DiagnosisCategoryListDTO'
+    responses: 
+     '200': 
+      description: DiagnosisCategory retrieved Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DiagnosisCategoryListDTO'
+  /diagnosiscategory: 
+   post: 
+    operationId: AddDiagnosisCategory
+    tags: 
+     - DiagnosisCategory
+    summary: Add Diagnosis Category
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DiagnosisCategoryDTO'
+    responses: 
+     '200': 
+      description: DiagnosisCategory added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateDiagnosisCategory
+    tags: 
+     - DiagnosisCategory
+    summary: Update Diagnosis Category
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DiagnosisCategoryDTO'
+    responses: 
+     '200': 
+      description: DiagnosisCategory updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   get: 
+    operationId: MoveDiagnosisCategory
+    tags: 
+     - DiagnosisCategory
+    summary: Move Diagnosis Category
+    description: Description of path
+    responses: 
+     '200': 
+      description: DiagnosisCategory moved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /diagnosiscategorymap: 
+   post: 
+    operationId: AddDiagnosisCategoryMap
+    tags: 
+     - DiagnosisCategory
+    summary: Add DiagnosisCategory Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DiagnosisCategoryMapDTO'
+    responses: 
+     '200': 
+      description: DiagnosisCategoryMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/diagonosiscategoriesparents: 
+   post: 
+    operationId: GetDiagnosisCategoryParents
+    tags: 
+     - DiagnosisCategory
+    summary: Get Diagnosis Categories parents
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DiagnosisCategoryParentsSearchDTO'
+    responses: 
+     '200': 
+      description: DiagnosisCategoryParents retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DiagnosisCategoryParentsListDTO'
+components: 
+  schemas: 
+   DiagnosisCategoryDTO: 
+    title : DiagnosisCategoryDTO
+    type: object
+    properties: 
+     DiagnosisCategoryId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     DiagnosisCategoryLevel: 
+      type: integer
+      nullable: true
+     DiagnosisCategoryName: 
+      type: string
+      nullable: true
+     DiagnosisCategoryDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DiagnosisCode: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   DiagnosisCategoryMapDTO: 
+    title : DiagnosisCategoryMapDTO
+    type: object
+    properties: 
+     DiagnosisCodeID : 
+      type: integer
+      nullable: true
+     DiagnosisCategoryID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      description: Effective date
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      description: Expiry date
+      format: date-time
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   DiagnosisCategoryListDTO: 
+    title : DiagnosisCategoryListDTO
+    type: object
+    properties: 
+     DiagnosisCategoryId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     DiagnosisCategoryLevel: 
+      type: integer
+      nullable: true
+     DiagnosisCategoryName: 
+      type: string
+      nullable: true
+     DiagnosisCategoryDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DiagnosisCodeId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      nullable: true
+     Code: 
+      type: integer
+      nullable: true
+     ChildType: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     MapStatus: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     DiagnosisCode: 
+      type: string
+      nullable: true
+     DiagnosisCodeName: 
+      type: string
+      nullable: true
+   DiagnosisCategoryMoveDTO: 
+    title : DiagnosisCategoryMoveDTO
+    type: object
+    properties: 
+     OldDiagnosisCategoryId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     DiagnosisCategoryLevel: 
+      type: integer
+      nullable: true
+     DiagnosisCategoryName: 
+      type: string
+      nullable: true
+     DiagnosisCategoryDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     OldParentId: 
+      type: integer
+      nullable: true
+   DiagnosisCategoryParentsSearchDTO: 
+    title : DiagnosisCategoryParentsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     DiagnosisCategoryId: 
+      type: integer
+      nullable: true
+   DiagnosisCategoryParentsListDTO: 
+    title : DiagnosisCategoryParentsListDTO
+    type: object
+    properties: 
+     RowID: 
+      type: integer
+     DiagnosisCategoryId: 
+      type: integer
+     DiagnosisCategoryName: 
+      type: string
+     ParentID: 
+      type: integer
+      nullable: true
