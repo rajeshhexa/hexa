@@ -1,0 +1,266 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Diagnosis Code
+  description: Diagnosis Code API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /diagnosiscodes: 
+   post: 
+    operationId: GetDiagnosisCode
+    tags: 
+     - DiagnosisCode
+    summary: Get Diagnosis codes 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DiagnosisCodeSearchDTO'
+    responses: 
+     '200': 
+      description: DiagnosisCode retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DiagnosisCodeListDTO'
+  /diagnosiscode: 
+   post: 
+    operationId: AddDiagnosisCode
+    tags: 
+     - DiagnosisCode
+    summary: Add Diagnosis Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DiagnosisCodeDTO'
+    responses: 
+     '200': 
+      description: DiagnosisCode added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateDiagnosisCode
+    tags: 
+     - DiagnosisCode
+    summary: Update Diagnosis Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DiagnosisCodeDTO'
+    responses: 
+     '200': 
+      description: DiagnosisCode updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /movediagnosiscode: 
+   post: 
+    operationId: MoveDiagnosisCode
+    tags: 
+     - DiagnosisCode
+    summary: Move Diagnosis Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DiagnosisCodeMoveDTO'
+    responses: 
+     '200': 
+      description: DiagnosisCode Moved successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   DiagnosisCodeDTO: 
+    title : DiagnosisCodeDTO
+    type: object
+    properties: 
+     DiagnosisCode: 
+      type: string
+      nullable: true
+     CodeType: 
+      type: string
+      nullable: true
+     DiagnosisName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     InjuryIndicator: 
+      type: string
+      nullable: true
+     EstimatedCostWeight: 
+      type: string
+      nullable: true
+     EstimatedDays: 
+      type: integer
+      nullable: true
+     AgeType: 
+      type: string
+      nullable: true
+     DiagnosisCodeID: 
+      type: integer
+      nullable: true
+   DiagnosisCodeListDTO: 
+    title : DiagnosisCodeListDTO
+    type: object
+    properties: 
+     DiagnosisCodeID : 
+      type: integer
+      nullable: true
+     DiagnosisCategoryID: 
+      type: integer
+      nullable: true
+     DiagnosisCategoryName: 
+      type: string
+      nullable: true
+     DiagnosisCode: 
+      type: string
+      nullable: true
+     CodeType: 
+      type: string
+      nullable: true
+     TypeName: 
+      type: string
+      nullable: true
+     CodeName: 
+      type: string
+      nullable: true
+     DiagnosisName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     EstimatedCostWeight: 
+      type: string
+      nullable: true
+     EstimatedDays: 
+      type: integer
+      nullable: true
+     InjuryIndicator: 
+      type: string
+      nullable: true
+     AgeType: 
+      type: integer
+      nullable: true
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     SexLimit: 
+      type: string
+      nullable: true
+     PreEstimateRequired: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MapEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MapExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CurrentMapEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MapStatus: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   DiagnosisCodeSearchDTO: 
+    title : DiagnosisCodeSearchDTO
+    type: object
+    properties: 
+     DiagnosisCodeID: 
+      type: integer
+      nullable: true
+     DiagnosisCategoryID: 
+      type: integer
+      nullable: true
+     DiagnosisCode: 
+      type: string
+      nullable: true
+     CodeType: 
+      type: string
+      nullable: true
+     DiagnosisName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   DiagnosisCodeMoveDTO: 
+    title : DiagnosisCodeMoveDTO
+    type: object
+    properties: 
+     DiagnosisCodeID : 
+      type: integer
+      nullable: true
+     DiagnosisCategoryID: 
+      type: integer
+      nullable: true
+     OldDiagnosisCategoryID: 
+      type: integer
+      nullable: true
+     DiagnosisCode: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
