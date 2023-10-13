@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ProcedureCodesValidModifiers
+  description: ProcedureCodesValidModifiers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/procedurecode/validmodifiers: 
+   post: 
+    operationId: AddProcedureCodesValidModifiers
+    summary: Add ProcedureCodesValidModifiers
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodesValidModifiersDTO'
+    responses: 
+     '200': 
+      description: PerDayCoPay retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: DeleteProcedureCodesValidModifiers
+    summary: Delete ProcedureCodesValidModifiers
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProcedureCodeModifierIDQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: PerDayCoPay updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: GetProcedureCodesValidModifiers
+    summary: Get ProcedureCodesValidModifiers
+    description: Description of path
+    responses: 
+     '200': 
+      description: PerDayCoPay deleted successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCodesValidModifiersListDTO'
+  /benefit/procedurecode/validmodifiershistory: 
+   null: 
+    operationId: GetProcedureCodesValidModifiersHistory
+    summary: Get ProcedureCodesValidModifiersHistory 
+    description: Description of path
