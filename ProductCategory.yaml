@@ -1,0 +1,220 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ProductCategories
+  description: ProductCategories API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/productcategorymap: 
+   post: 
+    operationId: AddProductCategoryMap
+    tags: 
+     - ProductCategory
+    summary: Add ProductCategoryMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProductCategoryMapDTO'
+    responses: 
+     '200': 
+      description: Product category map added succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/productcategory: 
+   post: 
+    operationId: AddProductCategory
+    tags: 
+     - ProductCategory
+    summary: Add AddProductCategory
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProductCategoryDTO'
+    responses: 
+     '200': 
+      description: ProductCategory added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/productcategories: 
+   get: 
+    operationId: GetProductCategories
+    tags: 
+     - ProductCategory
+    summary: Get ProductCategories
+    description: Description of path
+    responses: 
+     '200': 
+      description: ProductCategories retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProductCategoriesListDTO'
+  /benefit/productcategoryparents: 
+   get: 
+    operationId: GetProductCategoryParents
+    tags: 
+     - ProductCategory
+    summary: Get ProductCategoryParents
+    description: Description of path
+    responses: 
+     '200': 
+      description: ProductCategoryParents retrived successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProductCategoryParentsListDTO'
+components: 
+  schemas: 
+   ProductCategoryDTO: 
+    title : ProductCategoryDTO
+    type: object
+    properties: 
+     ParentId: 
+      type: integer
+      nullable: true
+     ProductCategoryLevel: 
+      type: integer
+      nullable: true
+     ProductCategoryName: 
+      type: string
+      nullable: true
+     ProductCategoryDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+   ProductCategoriesSearchDTO: 
+    title : ProductCategoriesSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ProductCategoryId: 
+      type: integer
+      nullable: true
+     ProductCategoryName: 
+      type: string
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     ParentProductCategoryName: 
+      type: string
+      nullable: true
+     ProductCategoryLevel: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   ProductCategoryMapDTO: 
+    title : ProductCategoryMapDTO
+    type: object
+    properties: 
+     ProductCodeId: 
+      type: integer
+      nullable: true
+     ProductCategoryId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+   ProductCategoriesListDTO: 
+    title : ProductCategoriesListDTO
+    type: object
+    properties: 
+     ProductCategoryId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     ChildType: 
+      type: string
+      nullable: true
+     ProductCategoryLevel: 
+      type: integer
+      nullable: true
+     ProductCategoryName: 
+      type: string
+     ProductCategoryDescription: 
+      type: string
+     SortKey: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     MapStatus: 
+      type: integer
+      nullable: true
+   ProductCategoryParentsSearchDTO: 
+    title : ProductCategoryParentsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ProductCategoryId: 
+      type: integer
+      nullable: true
+   ProductCategoryParentsListDTO: 
+    title : ProductCategoryParentsListDTO
+    type: object
+    properties: 
+     RowID: 
+      type: integer
+     ProductCategoryId: 
+      type: integer
+     ProductCategoryName: 
+      type: string
+     ParentID: 
+      type: integer
+      nullable: true
