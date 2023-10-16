@@ -1,0 +1,474 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ProcedureCode
+  description: ProcedureCode API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/procedurecodes: 
+   post: 
+    operationId: GetProcedureCodes
+    tags: 
+     - ProcedureCode
+    summary: Get ProcedureCode 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodeSearchDTO'
+    responses: 
+     '200': 
+      description: ProcedureCode retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCodeListDTO'
+  /benefit/procedurecode: 
+   post: 
+    operationId: AddProcedureCode
+    tags: 
+     - ProcedureCode
+    summary: Add ProcedureCode
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodeDTO'
+    responses: 
+     '200': 
+      description: ProcedureCode added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateProcedureCode
+    tags: 
+     - ProcedureCode
+    summary: Update ProcedureCode
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodeDTO'
+    responses: 
+     '200': 
+      description: ProcedureCode retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/procedurecodehistory: 
+   get: 
+    operationId: GetProcedureCodeHistory
+    tags: 
+     - ProcedureCodeHistory
+    summary: Delete ProcedureCode
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProcedureCodeIDQueryParam'
+    responses: 
+     '200': 
+      description: ProcedureCodeHistory retrieved successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCodeHistoryListDTO'
+components: 
+  schemas: 
+   ProcedureCodeDTO: 
+    title : ProcedureCodeDTO
+    type: object
+    properties: 
+     ProcedureCode: 
+      type: string
+      nullable: true
+     CodeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     TypeOfService: 
+      type: string
+      nullable: true
+     EstimatedCostWeight: 
+      type: string
+      nullable: true
+     EstimatedUnits: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     AgeType: 
+      type: string
+      nullable: true
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     SexLimit: 
+      type: string
+      default: "N"
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      default: "01/01/1900"
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      default: "12/31/9999"
+      nullable: true
+     MinimumServiceUnits: 
+      type: string
+      nullable: true
+     MinimumServiceValue: 
+      type: string
+      nullable: true
+     MaximumServiceUnits: 
+      type: string
+      nullable: true
+     MaximumServiceValue: 
+      type: string
+      nullable: true
+     PreEstimateRequired: 
+      type: string
+      nullable: true
+     ExcludeFromDupChecking: 
+      type: string
+      nullable: true
+     PaymentGroupCode: 
+      type: string
+      nullable: true
+     DentalValidationCode: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     ProcedureCategoryId: 
+      type: integer
+      nullable: true
+     MapEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MapExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CurrentMapEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+   ProcedureCodeSearchDTO: 
+    title : ProcedureCodeSearchDTO
+    type: object
+    properties: 
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     ProcedureCategoryID: 
+      type: integer
+      nullable: true
+     CodeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     ProcedureCode: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      nullable: true
+     TypeofService: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+   ProcedureCodeListDTO: 
+    title : ProcedureCodeListDTO
+    type: object
+    properties: 
+     ProcedureCodeID: 
+      type: integer
+     ProcedureCategoryID: 
+      type: integer
+     ProcedureCategoryName: 
+      type: string
+      nullable: true
+     CodeName: 
+      type: string
+      nullable: true
+     ProcedureCode: 
+      type: string
+      nullable: true
+     CodeType: 
+      type: string
+     ProcedureName: 
+      type: string
+     Description: 
+      type: string
+     TypeOfService: 
+      type: string
+      nullable: true
+     EstimatedCostWeight: 
+      type: string
+      nullable: true
+     EstimatedUnits: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+     AgeType: 
+      type: string
+      nullable: true
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     SexLimit: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     MinimumServiceUnits: 
+      type: string
+      nullable: true
+     MinimumServiceValue: 
+      type: string
+      nullable: true
+     MaximumServiceUnits: 
+      type: string
+      nullable: true
+     MaximumServiceValue: 
+      type: string
+      nullable: true
+     PreEstimateRequired: 
+      type: string
+      nullable: true
+     PaymentGroupCode: 
+      type: string
+      nullable: true
+     MapEffectiveDate: 
+      type: string
+      format: date-time
+     MapExpirationDate: 
+      type: string
+      format: date-time
+     CurrentMapEffectiveDate: 
+      type: string
+      format: date-time
+     MapStatus: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExcludeFromDupChecking: 
+      type: string
+      nullable: true
+     DentalValidationCode: 
+      type: string
+      nullable: true
+   ProcedureCodeHistoryListDTO: 
+    title : ProcedureCodeHistoryListDTO
+    type: object
+    properties: 
+     ProcedureCodeID: 
+      type: integer
+     ProcedureCode: 
+      type: string
+      nullable: true
+     CodeType: 
+      type: string
+     ProcedureName: 
+      type: string
+     Description: 
+      type: string
+     TypeOfService: 
+      type: string
+      nullable: true
+     EstimatedCostWeight: 
+      type: string
+      nullable: true
+     EstimatedUnits: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+     AgeType: 
+      type: string
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     SexLimit: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     MinimumServiceUnits: 
+      type: string
+      nullable: true
+     MinimumServiceValue: 
+      type: string
+      nullable: true
+     MaximumServiceUnits: 
+      type: string
+      nullable: true
+     MaximumServiceValue: 
+      type: string
+      nullable: true
+     PreEstimateRequired: 
+      type: string
+      nullable: true
+     PaymentGroupCode: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     ExcludeFromDupChecking: 
+      type: string
+      nullable: true
+     DentalValidationCode: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: string
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangedType: 
+      type: string
+      nullable: true
+     ProcedureCategory: 
+      type: string
+      nullable: true
+     ProcedrueCategoryEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcedureCategoryExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+   ProcedureCodeMoveDTO: 
+    title : ProcedureCodeMoveDTO
+    type: object
+    properties: 
+     ProcedureCodeId: 
+      type: integer
+      nullable: true
+     OldProcedureCategoryId: 
+      type: integer
+      nullable: true
+     ProcedureCategoryId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MapEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+  parameters: 
+   ProcedureCodeIDQueryParam: 
+    in: query
+    name: ProcedureCodeID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
