@@ -1,0 +1,173 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/baseplan: 
+   put: 
+    operationId: CopyBasePlan
+    tags: 
+     - Base Plan
+    summary: Copy Base Plan 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CopyBasePlanDTO'
+    responses: 
+     '200': 
+      description: Copy Base Plan Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   post: 
+    operationId: AddBasePlan
+    tags: 
+     - Base Plan
+    summary: Add Base Plan
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AddBasePlanDTO'
+    responses: 
+     '200': 
+      description: Base Plan Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/baseplan/status: 
+   put: 
+    operationId: ChangePlanStatus
+    tags: 
+     - Base Plan
+    summary: Change Plan Status
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PlanIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Plan Status Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   AddBasePlanDTO: 
+    title : AddBasePlanDTO
+    type: object
+    properties: 
+     PlanName: 
+      type: string
+      nullable: true
+     PrintName: 
+      type: string
+      nullable: true
+     PlanType: 
+      type: string
+      nullable: true
+     LineOfBusinessCode: 
+      type: string
+      nullable: true
+     ProductLineCode: 
+      type: string
+      nullable: true
+     ProductType: 
+      type: string
+      nullable: true
+     NetworkID: 
+      type: integer
+      nullable: true
+     SOBReportPathID: 
+      type: integer
+      nullable: true
+     SOBDisplayReportPath: 
+      type: string
+      nullable: true
+     ShowBenefitDescription: 
+      type: string
+      nullable: true
+     GraduatingBenefits: 
+      type: string
+      nullable: true
+     PlanStatus: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     ResponseFor271: 
+      type: string
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     AdjustmentReason: 
+      type: string
+      nullable: true
+   CopyBasePlanDTO: 
+    title : CopyBasePlanDTO
+    type: object
+    properties: 
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SourcePlanId: 
+      type: integer
+      nullable: true
+  parameters: 
+   PlanIdQueryParam: 
+    in: query
+    name: PlanId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
