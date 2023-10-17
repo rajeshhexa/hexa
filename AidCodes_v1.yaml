@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /aidcodes: 
+   put: 
+    operationId: UpdateAidCodes
+    tags: 
+     - AidCodes
+    summary: Update Aid Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AidCodeDTO'
+    responses: 
+     '200': 
+      description: AidCode updated succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   post: 
+    operationId: AddAidCodes
+    tags: 
+     - AidCodes
+    summary: Add Aid Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AidCodeDTO'
+    responses: 
+     '200': 
+      description: AidCode added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteAidCodes
+    tags: 
+     - AidCodes
+    summary: Delete Aid Codes
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/AidCodeIDQueryParam'
+    responses: 
+     '200': 
+      description: AidCode deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   AidCodeDTO: 
+    title : AidCodeDTO
+    type: object
+    properties: 
+     AidCodeID: 
+      type: integer
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+     AidCodeName: 
+      type: string
+      nullable: true
+     AidCodeDescription: 
+      type: string
+      nullable: true
+     AidCodeClass: 
+      type: string
+      nullable: true
+     AidCodeSubClass: 
+      type: string
+      nullable: true
+     AidCodeCategory: 
+      type: string
+      nullable: true
+     AidCodeSubCategory: 
+      type: string
+      nullable: true
+     QualifierItemId: 
+      type: integer
+      nullable: true
+     Benefits: 
+      type: string
+      nullable: true
+     SOC: 
+      type: string
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      default: 01/01/1900'
+     ExpirationDate: 
+      type: string
+      format: date-time
+      default: 12/31/9999'
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AidCodeIDQueryParam: 
+    in: query
+    name: AidCodeID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
