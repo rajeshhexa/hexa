@@ -1,0 +1,234 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /qualifier/item: 
+   post: 
+    operationId: AddQualifierItem
+    tags: 
+     - Qualifier Item
+    summary: Add Qualifier Item
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/QualifierItemDTO'
+    responses: 
+     '200': 
+      description: Qualifier Item Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateQualifierItem
+    tags: 
+     - Qualifier Item
+    summary: Update Qualifier Item
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/QualifierItemDTO'
+    responses: 
+     '200': 
+      description: Qualifier Item Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteQualifierItem
+    tags: 
+     - Qualifier Item
+    summary: Delete Qualifier Item
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/QualifierItemidQueryParam'
+     - $ref: '#/components/parameters/PlanIdQueryParam'
+    responses: 
+     '200': 
+      description: Qualifier Item Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /qualifier/items: 
+   post: 
+    operationId: GetQualifierItems
+    tags: 
+     - Qualifier Item
+    summary: Get Qualifier Item
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/QualifierItemSearchDTO'
+    responses: 
+     '200': 
+      description: Qualifier Item Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/QualifierItemListDTO'
+  /copyqualifiers: 
+   post: 
+    operationId: CopyQualifiers
+    tags: 
+     - Qualifier Item
+    summary: Get Copy Qualifier Item
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/QualifierTypeIdQueryParam'
+     - $ref: '#/components/parameters/PlanIdQueryParam'
+    responses: 
+     '200': 
+      description: CopyQualifier Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   QualifierItemDTO: 
+    title : QualifierItemDTO
+    type: object
+    properties: 
+     PlanId     : 
+      type: integer
+      nullable: true
+     QualifierItemName: 
+      type: string
+      nullable: true
+     QualifierDescription: 
+      type: string
+      nullable: true
+     QualifierTypeId: 
+      type: integer
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: number
+      nullable: true
+     DefaultVal: 
+      type: string
+      nullable: true
+     AppliedLevel: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     QualifierItemid: 
+      type: integer
+      nullable: true
+   QualifierItemSearchDTO: 
+    title : QualifierItemSearchDTO
+    type: object
+    properties: 
+     QualifierTypeId: 
+      type: integer
+      nullable: true
+     QualifierItemID: 
+      type: integer
+      nullable: true
+     QualifierItemName: 
+      type: string
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE2|"
+     Flag: 
+      type: integer
+      nullable: true
+   QualifierItemListDTO: 
+    title : QualifierItemListDTO
+    type: object
+    properties: 
+     QualifierItemId: 
+      type: integer
+      description: 
+     Planid: 
+      type: integer
+      nullable: true
+     QualifierItemName: 
+      type: string
+     QualifierDescription: 
+      type: string
+     QualifierTypeId: 
+      type: integer
+     QualifierType: 
+      type: string
+      nullable: true
+     Unittype: 
+      type: string
+     UnitValue: 
+      type: number
+     DefaultVal: 
+      type: string
+     AppliedLevel: 
+      type: string
+     AppliedLevelName: 
+      type: string
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+  parameters: 
+   QualifierItemidQueryParam: 
+    in: query
+    name: QualifierItemid
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PlanIdQueryParam: 
+    in: query
+    name: PlanId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   QualifierTypeIdQueryParam: 
+    in: query
+    name: QualifierTypeId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
