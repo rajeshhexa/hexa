@@ -1,0 +1,285 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ModifierRules
+  description: ModifierRules
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /modifierrule: 
+   post: 
+    operationId: AddModifierRules
+    tags: 
+     - Modifier Rules
+    summary: Add Modifier Rules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierRulesDTO'
+    responses: 
+     '200': 
+      description: AddModifierRules added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateModifierRules
+    tags: 
+     - Modifier Rules
+    summary: Update Modifier Rules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierRulesDTO'
+    responses: 
+     '200': 
+      description: UpdateModifierRules updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteModifierRules
+    tags: 
+     - Modifier Rules
+    summary: Delete Modifier Rules
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ModifierRuleIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: DeleteModifierRules deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /modifierrules: 
+   post: 
+    operationId: GetModifierRules
+    tags: 
+     - Modifier Rules
+    summary: Get Modifier Rules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierRulesSearchDTO'
+    responses: 
+     '200': 
+      description: GetModifierRules Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ModifierRulesListDTO'
+  /modifier/rule/history: 
+   post: 
+    operationId: GetModifierRulesHistory
+    tags: 
+     - Modifier Rules
+    summary: Get Modifier Rules History
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierRulesHistorySearchDTO'
+    responses: 
+     '200': 
+      description: GetModifierRulesHistory Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ModifierRulesHistoryListDTO'
+components: 
+  schemas: 
+   ModifierRulesDTO: 
+    title : ModifierRulesDTO
+    type: object
+    properties: 
+     ModifierId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     PricingIndicator: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      default: "01/01/1900"
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      default: "12/31/9999"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ModifierRuleId: 
+      type: integer
+      nullable: true
+   ModifierRulesSearchDTO: 
+    title : ModifierRulesSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ModifierID: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ModifierRulesListDTO: 
+    title : ModifierRulesListDTO
+    type: object
+    properties: 
+     ModifierRuleID: 
+      type: integer
+      description: 
+     ModifierID: 
+      type: integer
+     Modifier: 
+      type: string
+      nullable: true
+     ModifierName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+     EntityName: 
+      type: string
+      nullable: true
+     PricingIndicator: 
+      type: string
+     PricingIndicatorName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   ModifierRulesHistorySearchDTO: 
+    title : ModifierRulesHistorySearchDTO
+    type: object
+    properties: 
+     ModifierRuleId: 
+      type: integer
+      nullable: true
+     ModifierID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|Updated|"
+      nullable: true
+   ModifierRulesHistoryListDTO: 
+    title : ModifierRulesHistoryListDTO
+    type: object
+    properties: 
+     ModifierRuleID: 
+      type: integer
+     ModifierId: 
+      type: integer
+     ChangedBy: 
+      type: integer
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+     ChangeTypeCode: 
+      type: string
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityIDName: 
+      type: string
+      nullable: true
+     PricingIndicator: 
+      type: string
+     PricingIndicatorName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+  parameters: 
+   ModifierRuleIdQueryParam: 
+    in: query
+    name: ModifierRuleId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
