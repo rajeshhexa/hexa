@@ -1,0 +1,382 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/productcode: 
+   post: 
+    operationId: AddProductCode
+    tags: 
+     - Product Code
+    summary: Add Product Code
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProductCodeDTO'
+    responses: 
+     '200': 
+      description: Product Code Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateProductCode
+    tags: 
+     - Product Code
+    summary: Update Product Code
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProductCodeDTO'
+    responses: 
+     '200': 
+      description: Product Code Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/productcodes: 
+   post: 
+    operationId: GetProductCodes
+    tags: 
+     - Product Code
+    summary: Get Product Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProductCodeSearchDTO'
+    responses: 
+     '200': 
+      description: Product Code Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProductCodeListDTO'
+components: 
+  schemas: 
+   ProductCodeDTO: 
+    title : ProductCodeDTO
+    type: object
+    properties: 
+     ProductCode: 
+      type: string
+      nullable: true
+     DrugLabelerCode: 
+      type: string
+      nullable: true
+     DrugProductCode: 
+      type: string
+      nullable: true
+     DrugPackageCode: 
+      type: string
+      nullable: true
+     ProductCodeType: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     ProductDescription: 
+      type: string
+      nullable: true
+     ProductTypeName: 
+      type: string
+      nullable: true
+     PackageDescription: 
+      type: string
+      nullable: true
+     NonProprietaryName: 
+      type: string
+      nullable: true
+     DosageFormName: 
+      type: string
+      nullable: true
+     RouteName: 
+      type: string
+      nullable: true
+     StartMarketingDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EndMarketingDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MarketingCategoryName: 
+      type: string
+      nullable: true
+     ApplicationNumber: 
+      type: string
+      nullable: true
+     LabelerName: 
+      type: string
+      nullable: true
+     SubstanceName: 
+      type: string
+      nullable: true
+     StrengthNumber: 
+      type: string
+      nullable: true
+     StrengthUnit: 
+      type: string
+      nullable: true
+     PharmacologicalClasses: 
+      type: string
+      nullable: true
+     DEASchedule: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     ProcedureCodeName: 
+      type: string
+      nullable: true
+     MapExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CurrentMapEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MapEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DaysSupply: 
+      type: integer
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     ProductCategoryId: 
+      type: integer
+      nullable: true
+     ProductCodeId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ProductCodeSearchDTO: 
+    title : ProductCodeSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ProductCodeId: 
+      type: integer
+      nullable: true
+     ProductCategoryId: 
+      type: integer
+      nullable: true
+     ProductCode: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     ProductCodeType: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReturnCategoryLevels: 
+      type: string
+      nullable: true
+     ProductCategoryNameLevel0: 
+      type: string
+      nullable: true
+     ProductCategoryNameLevel1: 
+      type: string
+      nullable: true
+     ProductCategoryNameLevel2: 
+      type: string
+      nullable: true
+     ProductCategoryNameLevel3: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ProductCodeListDTO: 
+    title : ProductCodeListDTO
+    type: object
+    properties: 
+     ProductCodeId: 
+      type: integer
+     ProductCode: 
+      type: string
+      nullable: true
+     DrugLabelerCode: 
+      type: string
+      nullable: true
+     DrugProductCode: 
+      type: string
+      nullable: true
+     DrugPackageCode: 
+      type: string
+      nullable: true
+     ProductCodeType: 
+      type: string
+     ProductCodeTypeName: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+     ProductDescription: 
+      type: string
+      nullable: true
+     ProductTypeName: 
+      type: string
+      nullable: true
+     PackageDescription: 
+      type: string
+      nullable: true
+     ProductCodeAndName: 
+      type: string
+      nullable: true
+     NonProprietaryName: 
+      type: string
+      nullable: true
+     DosageFormName: 
+      type: string
+      nullable: true
+     RouteName: 
+      type: string
+      nullable: true
+     StartMarketingDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EndMarketingDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MarketingCategoryName: 
+      type: string
+      nullable: true
+     ApplicationNumber: 
+      type: string
+      nullable: true
+     LabelerName: 
+      type: string
+      nullable: true
+     SubstanceName: 
+      type: string
+      nullable: true
+     StrengthNumber: 
+      type: string
+      nullable: true
+     StrengthUnit: 
+      type: string
+      nullable: true
+     PharmacologicalClasses: 
+      type: string
+      nullable: true
+     DEASchedule: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     ProcedureCodeName: 
+      type: string
+      nullable: true
+     DaysSupply: 
+      type: integer
+      nullable: true
+     ProductCategoryId: 
+      type: integer
+      description: 
+     ParentId: 
+      type: integer
+      nullable: true
+     ProductCategoryLevel: 
+      type: integer
+      nullable: true
+     ProductCategoryName: 
+      type: string
+     ProductCategoryDescription: 
+      type: string
+     ProductCategoryNameLevel0: 
+      type: string
+      nullable: true
+     ProductCategoryNameLevel1: 
+      type: string
+      nullable: true
+     ProductCategoryNameLevel2: 
+      type: string
+      nullable: true
+     ProductCategoryNameLevel3: 
+      type: string
+      nullable: true
+     MapEffectiveDate: 
+      type: string
+      format: date-time
+     MapExpirationDate: 
+      type: string
+      format: date-time
+     CurrentMapEffectiveDate: 
+      type: string
+      format: date-time
+     MapStatus: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
