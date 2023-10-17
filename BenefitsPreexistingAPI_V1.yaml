@@ -1,0 +1,306 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Entity API
+  description: Entity API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  benefit/preexistingcondition/get: 
+   get: 
+    operationId: GetPreExistingCondition
+    tags: 
+     - benefit
+    summary: Get PreExisting Condition
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingConditionIDQueryParam'
+     - $ref: '#/components/parameters/PlanIdQueryParam'
+     - $ref: '#/components/parameters/PreExistingConditionNameQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: PreExistingCondition retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PreExistingConditionListDTO'
+  /benefit/preexistingcondition: 
+   post: 
+    operationId: AddPreExistingCondition
+    tags: 
+     - benefit
+    summary: Add PreExisting Condition
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingConditionNameQueryParam'
+     - $ref: '#/components/parameters/DescriptionQueryParam'
+     - $ref: '#/components/parameters/SortKeyQueryParam'
+    responses: 
+     '200': 
+      description: PreExistingCondition added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdatePreExistingCondition
+    tags: 
+     - benefit
+    summary: Update PreExisting Condition
+    description: Description of path
+    responses: 
+     '200': 
+      description: Success
+   delete: 
+    operationId: DeletePreExistingCondition
+    tags: 
+     - benefit
+    summary: Delete PreExisting Condition
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingConditionNameQueryParam'
+     - $ref: '#/components/parameters/DescriptionQueryParam'
+     - $ref: '#/components/parameters/SortKeyQueryParam'
+    responses: 
+     '200': 
+      description: PreExistingCondition deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/preexistingentities: 
+   get: 
+    operationId: GetPreExistingEntities
+    tags: 
+     - benefit
+    summary: Get PreExisting Entities
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingConditionIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: PreExisting Entities retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PreExistingEntitiesListDTO'
+  /benefit/preexistingentitymap: 
+   post: 
+    operationId: AddPreExistingEntityMap
+    tags: 
+     - benefit
+    summary: Add PreExisting EntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingConditionIdQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+    responses: 
+     '200': 
+      description: PreExisting EntityMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeletePreExistingEntityMap
+    tags: 
+     - benefit
+    summary: Delete PreExisting EntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingConditionIdQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+    responses: 
+     '200': 
+      description: PreExisting EntityMap deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/category/liabilitypackage/preexisting: 
+   post: 
+    operationId: AddBnfCategoryPreExistingMap
+    tags: 
+     - benefit
+    summary: Add BnfCategory PreExisting Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BenefitCategoryIdQueryParam'
+     - $ref: '#/components/parameters/PreExistingLiabilityPackageMapIdQueryParam'
+    responses: 
+     '200': 
+      description: BnfCategory PreExisting Map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteBnfCategoryPreExistingMap
+    tags: 
+     - benefit
+    summary: Delete BnfCategory PreExisting Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BenefitCategoryIdQueryParam'
+     - $ref: '#/components/parameters/PreExistingLiabilityPackageMapIdQueryParam'
+    responses: 
+     '200': 
+      description: BnfCategory PreExisting Map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   PreExistingConditionListDTO: 
+    title : PreExistingConditionListDTO
+    type: object
+    properties: 
+     PreExistingConditionID: 
+      type: integer
+      nullable: true
+     PreExistingConditionName: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   PreExistingEntitiesListDTO: 
+    title : PreExistingEntitiesListDTO
+    type: object
+    properties: 
+     PreExistingEntityMapId: 
+      type: integer
+      nullable: true
+     PreExistingConditionId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+     EntityId: 
+      type: integer
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+  parameters: 
+   PreExistingConditionIDQueryParam: 
+    in: query
+    name: PreExistingConditionID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PlanIdQueryParam: 
+    in: query
+    name: PlanId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PreExistingConditionNameQueryParam: 
+    in: query
+    name: PreExistingConditionName
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   DescriptionQueryParam: 
+    in: query
+    name: Description
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   SortKeyQueryParam: 
+    in: query
+    name: SortKey
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PreExistingConditionIdQueryParam: 
+    in: query
+    name: PreExistingConditionId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   EntityIdQueryParam: 
+    in: query
+    name: EntityId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   BenefitCategoryIdQueryParam: 
+    in: query
+    name: BenefitCategoryId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PreExistingLiabilityPackageMapIdQueryParam: 
+    in: query
+    name: PreExistingLiabilityPackageMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
