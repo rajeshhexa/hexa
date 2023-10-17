@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefitstructure: 
+   put: 
+    operationId: UpdateBenefitStructure
+    tags: 
+     - BenefitStructure
+    summary: Update Benefit Structure
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitStructureDTO'
+    responses: 
+     '200': 
+      description: Success
+   delete: 
+    operationId: DeleteBenefitStructure
+    tags: 
+     - BenefitStructure
+    summary: Delete Benefit Structure
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/StructureIdQueryParam'
+    responses: 
+     '200': 
+      description: Success
+components: 
+  schemas: 
+   BenefitStructureDTO: 
+    title : BenefitStructureDTO
+    type: object
+    properties: 
+     StructureId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     LiabilityCounterType: 
+      type: string
+      nullable: true
+     ProcessType: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     BenefitCode: 
+      type: string
+      nullable: true
+     UpdateAllItems: 
+      type: string
+      default: "Y"
+      nullable: true
+     EpisodeDays: 
+      type: integer
+      nullable: true
+     EpisodeMaxDollars: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+  parameters: 
+   StructureIdQueryParam: 
+    in: query
+    name: StructureId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
