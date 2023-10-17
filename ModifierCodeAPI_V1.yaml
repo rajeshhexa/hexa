@@ -1,0 +1,256 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /modifier/modifiercodes: 
+   post: 
+    operationId: GetModifierCodes
+    tags: 
+     - Modifier Code
+    summary: Get Modifier Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierCodeSearchDTO'
+    responses: 
+     '200': 
+      description: Modifier Code Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ModifierCodeListDTO'
+  /modifier/modifiercode: 
+   post: 
+    operationId: AddModifierCodes
+    tags: 
+     - Modifier Code
+    summary: Add Modifier Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierCodeDTO'
+    responses: 
+     '200': 
+      description: Modifier Code Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateModifierCodes
+    tags: 
+     - Modifier Code
+    summary: Update Modifier Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierCodeDTO'
+    responses: 
+     '200': 
+      description: Modifier Code Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /modifier/modifiercodeshistory: 
+   post: 
+    operationId: GetModifierCodesHistory
+    tags: 
+     - Modifier Code
+    summary: Get Modifier Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierCodesHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Modifier Code History Retrieved Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ModifierCodesHistoryListDTO'
+components: 
+  schemas: 
+   ModifierCodeDTO: 
+    title : ModifierCodeDTO
+    type: object
+    properties: 
+     Modifier: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     PricingIndicator: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ModifierId: 
+      type: integer
+      nullable: true
+   ModifierCodeSearchDTO: 
+    title : ModifierCodeSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ModifierId: 
+      type: integer
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReturnOnlyActiveCodes: 
+      type: string
+      default: "Y"
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ModifierCodeListDTO: 
+    title : ModifierCodeListDTO
+    type: object
+    properties: 
+     ModifierId: 
+      type: integer
+      description: 
+     Modifier: 
+      type: string
+     Name: 
+      type: string
+     Description: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PricingIndicator: 
+      type: string
+     PricingIndicatorName: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedByName: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   ModifierCodesHistorySearchDTO: 
+    title : ModifierCodesHistorySearchDTO
+    type: object
+    properties: 
+     ModifierId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|Updated|"
+      nullable: true
+   ModifierCodesHistoryListDTO: 
+    title : ModifierCodesHistoryListDTO
+    type: object
+    properties: 
+     ModifierId: 
+      type: integer
+      description: 
+     ChangedBy: 
+      type: integer
+      description: 
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeTypeCode: 
+      type: string
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     Modifier: 
+      type: string
+     Name: 
+      type: string
+     Description: 
+      type: string
+     PricingIndicator: 
+      type: string
+     PricingIndicatorName: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
