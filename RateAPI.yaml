@@ -1,0 +1,128 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: API Title
+  description: Servers
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/rate: 
+   post: 
+    operationId: AddRate
+    tags: 
+     - rate
+    summary: Add Rate
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RateDTO'
+    responses: 
+     '200': 
+      description: Rate Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateRate
+    tags: 
+     - rate
+    summary: Update Rate
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RateDTO'
+    responses: 
+     '200': 
+      description: Rate Updated Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   RateDTO: 
+    title : RateDTO
+    type: object
+    properties: 
+     RateId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     RateUnitType: 
+      type: string
+      nullable: true
+     RateUnitValue: 
+      type: string
+      nullable: true
+     RateType: 
+      type: string
+      nullable: true
+     RateTypeEntityID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     AgeFrom: 
+      type: integer
+      nullable: true
+     AgeTo: 
+      type: integer
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "PAY"
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     PayBrokerCommissions: 
+      type: string
+      default: "Y"
+      nullable: true
+     AidCodeId: 
+      type: integer
+      nullable: true
+     BillingEntityType: 
+      type: string
+      default: "ALL"
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     raiserror: 
+      type: integer
+      nullable: true
+     debug: 
+      type: integer
+      nullable: true
