@@ -1,0 +1,163 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: API Title
+  description: Servers
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/tier: 
+   post: 
+    operationId: UpdateTier
+    tags: 
+     - tier
+    summary: Update Tier
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TierDTO'
+    responses: 
+     '200': 
+      description: Tier Updated Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteTier
+    tags: 
+     - tier
+    summary: Delete Tier
+    description: Description of path
+    responses: 
+     '200': 
+      description: Tier Removed Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   TierDTO: 
+    title : TierDTO
+    type: object
+    properties: 
+     TierId: 
+      type: integer
+      nullable: true
+     MinSpouses: 
+      type: integer
+      nullable: true
+     MaxSpouses: 
+      type: integer
+      nullable: true
+     SpouseTierDecrement: 
+      type: integer
+      nullable: true
+     SpouseTierIncrement: 
+      type: integer
+      nullable: true
+     MinChildren: 
+      type: integer
+      nullable: true
+     MaxChildren: 
+      type: integer
+      nullable: true
+     ChildTierDecrement: 
+      type: integer
+      nullable: true
+     ChildTierIncrement: 
+      type: integer
+      nullable: true
+     MinOthers: 
+      type: integer
+      nullable: true
+     MaxOthers: 
+      type: integer
+      nullable: true
+     OtherTierDecrement: 
+      type: integer
+      nullable: true
+     OtherTierIncrement: 
+      type: integer
+      nullable: true
+     MinTotalDependents: 
+      type: integer
+      nullable: true
+     MaxTotalDependents: 
+      type: integer
+      nullable: true
+   CopyTierListDTO: 
+    title : CopyTierListDTO
+    type: object
+    properties: 
+     StructureID: 
+      type: integer
+     PlanId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     Type: 
+      type: string
+     ProcessType: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+     Description: 
+      type: string
+     SortKey: 
+      type: number
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+   DeleteTierSearchDTO: 
+    title : DeleteTierSearchDTO
+    type: object
+    properties: 
+     TierTypeId: 
+      type: integer
+      nullable: true
+     TierId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+  parameters: 
+   TierTypeIdParam: 
+    in: query
+    name: TierTypeId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PlanIdParam: 
+    in: query
+    name: PlanId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
