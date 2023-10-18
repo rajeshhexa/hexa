@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: API Title
+  description: Servers
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/structure: 
+   Put: 
+    operationId: UpdateBenefitStructure
+    tags: 
+     - benifitstructure
+    summary: Update Benefit Structures
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UpdateBenefitStructuresDTO'
+    responses: 
+     '200': 
+      description: Benefit Structure Updated Succesfullt
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Delete: 
+    operationId: DeleteBenefitStructure
+    tags: 
+     - benifitstructure
+    summary: Delete Benefit Structures
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/StructureIdParam'
+    responses: 
+     '200': 
+      description: Benefit Structure deleted Succesfullt
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   UpdateBenefitStructuresDTO: 
+    title : UpdateBenefitStructuresDTO
+    type: object
+    properties: 
+     StructureId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     LiabilityCounterType: 
+      type: string
+      nullable: true
+     ProcessType: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     BenefitCode: 
+      type: string
+      nullable: true
+     UpdateAllItems: 
+      type: string
+      default: "Y"
+      nullable: true
+     EpisodeDays: 
+      type: integer
+      nullable: true
+     EpisodeMaxDollars: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+  parameters: 
+   StructureIdParam: 
+    in: query
+    name: StructureId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
