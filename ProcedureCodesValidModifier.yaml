@@ -1,0 +1,280 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ProcedureCodesValidModifiers
+  description: ProcedureCodesValidModifiers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/procedurecode/validmodifier: 
+   post: 
+    operationId: AddProcedureCodesValidModifiers
+    tags: 
+     - ProcedureCodesValidModifiers
+    summary: Add ProcedureCodesValidModifiers
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodesValidModifiersDTO'
+    responses: 
+     '200': 
+      description: ProcedureCodesValidModifiers added succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateProcedureCodesValidModifiers
+    tags: 
+     - ProcedureCodesValidModifiers
+    summary: Update ProcedureCodesValidModifiers
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProcedureCodesValidModifiersDTOParam'
+    responses: 
+     '200': 
+      description: ProcedureCodesValidModifiers updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteProcedureCodesValidModifiers
+    tags: 
+     - ProcedureCodesValidModifiers
+    summary: Delete ProcedureCodesValidModifiers
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProcedureCodeModifierIDQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: ProcedureCodesValidModifiers deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/procedurecode/validmodifiershistory: 
+   get: 
+    operationId: GetProcedureCodesValidModifiersHistory
+    tags: 
+     - ProcedureCodesValidModifiers
+    summary: Get ProcedureCodesValidModifiersHistory 
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProcedureCodeIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: ProcedureCodesValidModifiersHistory retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCodesValidModifiersHistoryListDTO'
+components: 
+  schemas: 
+   ProcedureCodesValidModifiersDTO: 
+    title : ProcedureCodesValidModifiersDTO
+    type: object
+    properties: 
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      default: "01/01/1900"
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      default: "12/31/9999"
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     FeeScheduleLOB: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ProcedureCodeModifierID: 
+      type: integer
+      nullable: true
+   ProcedureCodesValidModifiersHistoryListDTO: 
+    title : ProcedureCodesValidModifiersHistoryListDTO
+    type: object
+    properties: 
+     ProcedureCodeModifierID: 
+      type: integer
+      description: 
+     ProcedureCodeID: 
+      type: integer
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeTypeCode: 
+      type: string
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureCodeName: 
+      type: string
+      nullable: true
+     Modifier: 
+      type: string
+     ModifierName: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     FeeScheduleLOB: 
+      type: string
+      nullable: true
+     FeeScheduleLOBName: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   ProcedureCodesValidModifiersSearchDTO: 
+    title : ProcedureCodesValidModifiersSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ProcedureCodesValidModifiersListDTO: 
+    title : ProcedureCodesValidModifiersListDTO
+    type: object
+    properties: 
+     ProcedureCodeModifierID: 
+      type: integer
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+     Modifier: 
+      type: string
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     FeeScheduleLOB: 
+      type: string
+      nullable: true
+     FeeScheduleLOBName: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     Description: 
+      type: string
+  parameters: 
+   ProcedureCodesValidModifiersDTOParam: 
+    in: query
+    name: ProcedureCodesValidModifiersDTO
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProcedureCodeModifierIDQueryParam: 
+    in: query
+    name: ProcedureCodeModifierID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProcedureCodeIDQueryParam: 
+    in: query
+    name: ProcedureCodeID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: "|Updated|"
+    description: description of parameter passed
