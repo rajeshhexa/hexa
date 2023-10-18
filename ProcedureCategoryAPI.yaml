@@ -1,0 +1,439 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: API Title
+  description: Servers
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/procedurecategories: 
+   post: 
+    operationId: GetProcedureCategories
+    tags: 
+     - ProcedureCategory
+    summary: GetProcedureCategories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCategoriesSearchDTO'
+    responses: 
+     '200': 
+      description: ProcedureCategoriesRetirievedSuccesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCategoriesListDTO'
+  /benefit/procedurecategory: 
+   post: 
+    operationId: addprocedurecategory
+    tags: 
+     - ProcedureCategory
+    summary: addprocedurecategory
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCategoriesDTO'
+    responses: 
+     '200': 
+      description: ProcedureCategoryAddedSuccesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: moveprocedurecategory
+    tags: 
+     - ProcedureCategory
+    summary: moveprocedurecategory
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MoveProcedureCategoriesDTO'
+    responses: 
+     '200': 
+      description: ProcedureCategoryMovedSuccesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/procedurecategoryhistory: 
+   post: 
+    operationId: GetProcedureCategory_History
+    tags: 
+     - ProcedureCategory
+    summary: GetProcedureCategoryHistory
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProcedureCategoryIdParam'
+    responses: 
+     '200': 
+      description: ProcedureCategoryHistoryRetirievedSuccesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCategoryHistoryListDTO'
+  /benefit/procedurecategoryparents: 
+   post: 
+    operationId: getprocedurecategoryparents
+    tags: 
+     - ProcedureCategory
+    summary: getprocedurecategoryparents
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageParam'
+     - $ref: '#/components/parameters/ProcedureCategoryIdParam'
+    responses: 
+     '200': 
+      description: ProcedureCategoryParentsRetirievedSuccesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/procedurecategoryparentsListDTO'
+  /benefit/procedurecategorymap: 
+   post: 
+    operationId: addprocedurecategorymap
+    tags: 
+     - ProcedureCategory
+    summary: addprocedurecategorymap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/procedurecategorymapDTO'
+    responses: 
+     '200': 
+      description: ProcedureCategoryMapAddedSuccesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/procedurecategorymaphistory: 
+   post: 
+    operationId: GetProcedureCategoryMap_History
+    tags: 
+     - ProcedureCategory
+    summary: GetProcedureCategoryMapHistory
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProcedureCodeIdParam'
+    responses: 
+     '200': 
+      description: ProcedureCategoryMapHistoryRetrievedSuccesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCategoryMapHistoryListDTO'
+components: 
+  schemas: 
+   ProcedureCategoriesSearchDTO: 
+    title : ProcedureCategoriesSearchDTO
+    type: object
+    properties: 
+     ProcedureCategoryID: 
+      type: integer
+      nullable: true
+     ProcedureCategoryName: 
+      type: string
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcedureCode: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   ProcedureCategoriesListDTO: 
+    title : ProcedureCategoriesListDTO
+    type: object
+    properties: 
+     ProcedureCategoryID: 
+      type: integer
+     ParentId: 
+      type: integer
+      nullable: true
+     ChildType: 
+      type: string
+      nullable: true
+     ProcedureCategoryLevel: 
+      type: integer
+     ProcedureCategoryName: 
+      type: string
+     ProcedureCategoryDescription: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     SortKey: 
+      type: number
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     MapStatus: 
+      type: string
+      nullable: true
+     ProcedureCodeId: 
+      type: integer
+      nullable: true
+     ProcedureCode: 
+      type: string
+      nullable: true
+     ProcedureCodeName: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ObjectName: 
+      type: procedurecategoriesdto
+   ProcedureCategoriesDTO: 
+    title : ProcedureCategoriesDTO
+    type: object
+    properties: 
+     ProcedureCategoryId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     ProcedureCategoryLevel: 
+      type: integer
+      nullable: true
+     ProcedureCategoryName: 
+      type: string
+      nullable: true
+     ProcedureCategoryDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     ObjectName: 
+      type: moveprocedurecategoriesdto
+   MoveProcedureCategoriesDTO: 
+    title : MoveProcedureCategoriesDTO
+    type: object
+    properties: 
+     ParentId: 
+      type: string
+      nullable: true
+     ProcedureCategoryLevel: 
+      type: string
+      nullable: true
+     ProcedureCategoryName: 
+      type: string
+      nullable: true
+     ProcedureCategoryDescription: 
+      type: string
+      nullable: true
+     OldProcedureCategoryId: 
+      type: integer
+      nullable: true
+     OldParentId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ObjectName: 
+      type: procedurecategoryhistorylistdto
+   ProcedureCategoryHistoryListDTO: 
+    title : ProcedureCategoryHistoryListDTO
+    type: object
+    properties: 
+     ChangedBy: 
+      type: string
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeType: 
+      type: string
+     ProcedureCategoryID: 
+      type: integer
+     ParentName: 
+      type: string
+      nullable: true
+     ProcedureCategoryLevel: 
+      type: integer
+     ProcedureCategoryName: 
+      type: string
+     ProcedureCategoryDescription: 
+      type: string
+     SortKey: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     ObjectName: 
+      type: procedurecategoryparentslistdto
+   procedurecategoryparentsListDTO: 
+    title : procedurecategoryparentsListDTO
+    type: object
+    properties: 
+     RowID: 
+      type: integer
+     ProcedureCategoryId: 
+      type: integer
+     ProcedureCategoryName: 
+      type: string
+     ParentID: 
+      type: integer
+      nullable: true
+     ObjectName: 
+      type: procedurecategorymapdto
+   procedurecategorymapDTO: 
+    title : procedurecategorymapDTO
+    type: object
+    properties: 
+     ProcedureCodeId: 
+      type: integer
+      nullable: true
+     ProcedureCategoryId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     ObjectName: 
+      type: procedurecategorymaphistorylistdto
+   ProcedureCategoryMapHistoryListDTO: 
+    title : ProcedureCategoryMapHistoryListDTO
+    type: object
+    properties: 
+     ChangedBy: 
+      type: string
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeType: 
+      type: string
+     ProcedureCategoryID: 
+      type: integer
+     ProcedureCategoryName: 
+      type: string
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+     ProcedureCodeName: 
+      type: string
+      nullable: true
+     CodeType: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   ProcedureCategoryIdParam: 
+    in: query
+    name: ProcedureCategoryId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   ProcedureCodeIdParam: 
+    in: query
+    name: ProcedureCodeId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
