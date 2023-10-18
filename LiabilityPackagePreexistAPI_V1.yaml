@@ -1,0 +1,223 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/category/liabilitypackage/preexistings: 
+   Post: 
+    operationId: GetPreExistingLiabilityPackageMap
+    tags: 
+     - liabilitypackage
+    summary: Get Pre Existing Liability Package Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreExistingLiabilityPackageMapSearchDTO'
+    responses: 
+     '200': 
+      description: Pre Existing Liability Package Map retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PreExistingLiabilityPackageMapListDTO'
+   Delete: 
+    operationId: DeleteBnfCategoryPreExistingMap
+    tags: 
+     - liabilitypackage
+    summary: Delete Bnf Category Pre Existing Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BnfCategoryPreExistingMapIdParam'
+    responses: 
+     '200': 
+      description: Bnf Category Pre Existing Map Deleted Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/category/liabilitypackage/preexisting: 
+   Post: 
+    operationId: AddPreExistingLiabilityPackageMap
+    tags: 
+     - liabilitypackage
+    summary: Add Pre Existing Liability Package Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PreExistingLiabilityPackageMapDTO'
+    responses: 
+     '200': 
+      description: Pre Existing Liability Package Map Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   Delete: 
+    operationId: DeletePreExistingLiabilityPackageMap
+    tags: 
+     - liabilitypackage
+    summary: Delete Pre Existing Liability Package Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PreExistingLiabilityPackageMapIdParam'
+    responses: 
+     '200': 
+      description: Pre Existing Liability Package Map Deleted Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   PreExistingLiabilityPackageMapSearchDTO: 
+    title : PreExistingLiabilityPackageMapSearchDTO
+    type: object
+    properties: 
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     BenefitCategoryId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BYPACKAGEID|"
+      nullable: true
+   PreExistingLiabilityPackageMapListDTO: 
+    title : PreExistingLiabilityPackageMapListDTO
+    type: object
+    properties: 
+     PreExistingLiabilityPackageMapId: 
+      type: integer
+     LiabilityPackageId: 
+      type: integer
+     LiabilityLevelId: 
+      type: integer
+     LiabilityLevelName: 
+      type: string
+     PreExistingConditionId: 
+      type: integer
+     PreExistingConditionName: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     PeriodUnitTypeCode: 
+      type: string
+     PeriodUnitType: 
+      type: string
+      nullable: true
+     SubscriberExclusionPeriod: 
+      type: integer
+     DependentExclusionPeriod: 
+      type: integer
+     LookbackPeriod: 
+      type: integer
+     UnknownConditionAction: 
+      type: string
+     UnknownConditionActionName: 
+      type: string
+      nullable: true
+     MinimumAge: 
+      type: integer
+     UnknownConditionExplanationId: 
+      type: integer
+      nullable: true
+     UnknownConditionExplanationAbbreviation: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+     MappedToBenefit: 
+      type: string
+      default: "N"
+      nullable: true
+     BnfCategoryPreExistingMapId: 
+      type: integer
+      nullable: true
+   PreExistingLiabilityPackageMapDTO: 
+    title : PreExistingLiabilityPackageMapDTO
+    type: object
+    properties: 
+     PreExistingConditionId: 
+      type: integer
+      nullable: true
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     PeriodUnitType: 
+      type: string
+      nullable: true
+     SubscriberExclusionPeriod: 
+      type: integer
+      nullable: true
+     MinimumAge: 
+      type: integer
+      nullable: true
+     UnknownConditionAction: 
+      type: string
+      default: "PND"
+      nullable: true
+     UnknownConditionExplanationId: 
+      type: integer
+      nullable: true
+     DependentExclusionPeriod: 
+      type: integer
+      nullable: true
+     LookbackPeriod: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     MapPreexistingToBenefits: 
+      type: string
+      default: "N"
+      nullable: true
+  parameters: 
+   BenefitCategoryIdParam: 
+    in: query
+    name: BenefitCategoryId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PreExistingLiabilityPackageMapIdParam: 
+    in: query
+    name: PreExistingLiabilityPackageMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   BnfCategoryPreExistingMapIdParam: 
+    in: query
+    name: BnfCategoryPreExistingMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
