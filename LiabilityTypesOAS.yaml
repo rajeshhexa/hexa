@@ -1,0 +1,325 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/liabilitytypes: 
+   post: 
+    operationId: GetLiabilityTypes
+    tags: 
+     - Liability Types
+    summary: Get Liability Types
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LiabilityTypesSearchDTO'
+    responses: 
+     '200': 
+      description: Liability Types Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LiabilityTypesListDTO'
+  /benefit/liabilitytypes/identifier: 
+   post: 
+    operationId: getnewid
+    tags: 
+     - Liability Types
+    summary: Get new ID
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/IdTypeParam'
+     - $ref: '#/components/parameters/FlagParam'
+    responses: 
+     '200': 
+      description: New Id Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/category/liabilitytype: 
+   post: 
+    operationId: addliabilitytypetobnfcategory
+    tags: 
+     - Liability Types
+    summary: Add Liability Type to bnf Category
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/liabilitytypetobnfcategoryDTO'
+    responses: 
+     '200': 
+      description: Liability Type to bnf Category Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: deleteliabilitytypefrombnfcategory
+    tags: 
+     - Liability Types
+    summary: Delete Liability Type from bnf Category
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BnfCategoryLiabilityTypeMapIdParam'
+     - $ref: '#/components/parameters/SeqIdParam'
+     - $ref: '#/components/parameters/BatchIdParam'
+     - $ref: '#/components/parameters/raiserrorParam'
+    responses: 
+     '200': 
+      description: Liability Type from bnf Category Deleted Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/category/liabilitytypesmaphistory: 
+   post: 
+    operationId: getbnfcategoryliabilitytypemaphistory
+    tags: 
+     - Liability Types
+    summary: get bnf Category Liability type Map History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BnfCategoryLiabilityTypeMapIdParam'
+    responses: 
+     '200': 
+      description: bnf Category Liability Map history Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/bnfcategoryliabilitytypemaphistoryListDTO'
+components: 
+  schemas: 
+   LiabilityTypesSearchDTO: 
+    title : LiabilityTypesSearchDTO
+    type: object
+    properties: 
+     PlanId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     BnfCategoryId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   LiabilityTypesListDTO: 
+    title : LiabilityTypesListDTO
+    type: object
+    properties: 
+     LiabilityPackageItemLevelMapId: 
+      type: integer
+      nullable: true
+     LiabilityTypeId: 
+      type: integer
+      nullable: true
+     LiabilityTypeName: 
+      type: string
+      nullable: true
+     LiabilityItemId: 
+      type: integer
+      nullable: true
+     LiabilityItemName: 
+      type: string
+      nullable: true
+     LiabilityPackageName: 
+      type: string
+      nullable: true
+     UnitTypeName: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: number
+      nullable: true
+     IndividualTypeName: 
+      type: string
+      nullable: true
+     PeriodTypeName: 
+      type: string
+      nullable: true
+     PeriodValue: 
+      type: number
+      nullable: true
+     ProcessType: 
+      type: string
+      nullable: true
+     BnfCategoryLiabilityTypeMapId: 
+      type: integer
+      nullable: true
+     MappedToBenefit: 
+      type: boolean
+     EffectiveDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ExpirationDate : 
+      type: string
+      format: datetime
+      nullable: true
+     LastUpdatedBy : 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt : 
+      type: string
+      format: datetime
+      nullable: true
+     MaximumPerOccurrence: 
+      type: number
+      nullable: true
+   liabilitytypetobnfcategoryDTO: 
+    title : liabilitytypetobnfcategoryDTO
+    type: object
+    properties: 
+     BnfCategoryID: 
+      type: integer
+      nullable: true
+     LiabilityTypeId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     LiabilityPackageItemLevelMapId: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: datetime
+     ExpirationDate: 
+      type: string
+      format: datetime
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     raiserror: 
+      type: integer
+      nullable: true
+   bnfcategoryliabilitytypemaphistoryListDTO: 
+    title : bnfcategoryliabilitytypemaphistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+      nullable: true
+     ChangeDate: 
+      type: string
+      format: datetime
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     UserId: 
+      type: integer
+      nullable: true
+     BnfCategoryLiabilityTypeMapId: 
+      type: integer
+      nullable: true
+     LiabilityPackageItemLevelMapId: 
+      type: integer
+      nullable: true
+     BnfCategoryId : 
+      type: integer
+      nullable: true
+     LiabilityTypeId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: datetime
+     ExpirationDate: 
+      type: string
+      format: datetime
+     LastUpdatedBy : 
+      type: integer
+      nullable: true
+     LastUpdatedAt : 
+      type: string
+      format: datetime
+     ChangedByName: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+  parameters: 
+   IdTypeParam: 
+    in: query
+    name: IdType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   FlagParam: 
+    in: query
+    name: Flag
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   BnfCategoryLiabilityTypeMapIdParam: 
+    in: query
+    name: BnfCategoryLiabilityTypeMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SeqIdParam: 
+    in: query
+    name: SeqId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   BatchIdParam: 
+    in: query
+    name: BatchId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   raiserrorParam: 
+    in: query
+    name: raiserror
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
