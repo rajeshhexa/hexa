@@ -1,0 +1,580 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/liabilitypackages: 
+   post: 
+    operationId: GetLiabilityItemsForPackage
+    tags: 
+     - liabilitypackage
+    summary: Get Liability Items ForPackage
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LiabilityPackageIdParam'
+     - $ref: '#/components/parameters/UsageParam'
+    responses: 
+     '200': 
+      description: Liability Items For Package Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LiabilityItemsForPackageListDTO'
+  /benefit/liabilitypackage: 
+   post: 
+    operationId: copyliabilitypackage
+    tags: 
+     - liabilitypackage
+    summary: copy liability package
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LiabilityPackageIdParam'
+     - $ref: '#/components/parameters/PlanIdParam'
+     - $ref: '#/components/parameters/AsOfDateParam'
+     - $ref: '#/components/parameters/DescriptionParam'
+    responses: 
+     '200': 
+      description: Liability Package Copied Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/copyliabilitypackageListDTO'
+   delete: 
+    operationId: DeleteLiabilityItemFromPackage
+    tags: 
+     - liabilitypackage
+    summary: Delete Liability Item From Package
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LiabilityPackageItemLevelMapIdParam'
+     - $ref: '#/components/parameters/LiabilityPackageIdParam'
+     - $ref: '#/components/parameters/DebugFlagParam'
+     - $ref: '#/components/parameters/DeleteMappedItemsParam'
+    responses: 
+     '200': 
+      description: Liability Item From Package Deleted Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/liabilitypackageitemlevelmaphistory: 
+   post: 
+    operationId: GetLiabilityPackageItemLevelMapHistory
+    tags: 
+     - liabilitypackage
+    summary: Get Liability Package Item Level Map History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LiabilityPackageItemLevelMapIdParam'
+    responses: 
+     '200': 
+      description: Liability Package Item Level Map History Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LiabilityPackageItemLevelMapHistoryListDTO'
+  /benefit/liabilitypackage/reimburesements: 
+   post: 
+    operationId: GetReimbursementIDsForLiabilityPackage
+    tags: 
+     - reimburesement
+    summary: Get Reimbursement IDs For Liability Package
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LiabilityPackageIdParam'
+     - $ref: '#/components/parameters/UsageParam'
+    responses: 
+     '200': 
+      description: Reimbursement IDs fo Liability Package Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReimbursementIDsForLiabilityPackageListDTO'
+  /benefit/liabilitypackage/reimburesement: 
+   post: 
+    operationId: AddReimbursementIDToLiabilityPackage
+    tags: 
+     - reimburesement
+    summary: Add Reimbursement ID To Liability Package
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReimbursementIDToLiabilityPackageDTO'
+    responses: 
+     '200': 
+      description: Reimbursement ID To Liability Package Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteReimbursementIDFromLiabilityPackage
+    tags: 
+     - reimburesement
+    summary: Delete Reimbursement ID From Liability Package
+    description: Description of path
+    responses: 
+     '200': 
+      description: Reimbursement ID From Liability Package Deleted Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   LiabilityItemToPackageDTO: 
+    title : LiabilityItemToPackageDTO
+    type: object
+    properties: 
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     LiabilityItemId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: datetime
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     IncrementForEncounter: 
+      type: string
+      default: "N"
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     CarryOverType: 
+      type: string
+      default: "N"
+      nullable: true
+     CarryOverPeriod: 
+      type: integer
+      nullable: true
+     MapToBenefits: 
+      type: string
+      default: "N"
+      nullable: true
+     ClassificationForIDCards: 
+      type: string
+      nullable: true
+   LiabilityPackageItemLevelMapDTO: 
+    title : LiabilityPackageItemLevelMapDTO
+    type: object
+    properties: 
+     LiabilityPackageItemLevelMapId: 
+      type: integer
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     IncrementForEncounter: 
+      type: string
+      nullable: true
+     CarryOverType: 
+      type: string
+      nullable: true
+     CarryOverPeriod: 
+      type: integer
+      nullable: true
+     ClassificationForIDCards: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|FORTERMINATION|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   LiabilityPackageItemLevelMapHistoryListDTO: 
+    title : LiabilityPackageItemLevelMapHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+      nullable: true
+     ChangeDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     UserId: 
+      type: integer
+      nullable: true
+     LiabilityPackageItemLevelMapId: 
+      type: integer
+      nullable: true
+     LiabilityPackageId : 
+      type: integer
+      nullable: true
+     LiabilityItemId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     EffectiveDate : 
+      type: string
+      format: datetime
+      nullable: true
+     ExpirationDate : 
+      type: string
+      format: datetime
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     CarryOverType: 
+      type: string
+      nullable: true
+     CarryOverTypeName: 
+      type: string
+      nullable: true
+     CarryOverPeriod: 
+      type: integer
+      nullable: true
+     IncrementForEncounter: 
+      type: boolean
+     ExplanationID: 
+      type: integer
+      nullable: true
+     LastUpdatedBy : 
+      type: integer
+      nullable: true
+     LastUpdatedAt : 
+      type: string
+      format: datetime
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+   ReimbursementIDsForLiabilityPackageListDTO: 
+    title : ReimbursementIDsForLiabilityPackageListDTO
+    type: object
+    properties: 
+     LiabilityLevelID: 
+      type: integer
+      nullable: true
+     LiabilityLevelName: 
+      type: string
+      nullable: true
+     ReimbursementId: 
+      type: integer
+     ReimbursementName: 
+      type: string
+     PreEstimateReq: 
+      type: string
+      nullable: true
+     PreEstimateAmt: 
+      type: string
+      nullable: true
+     AuthReq: 
+      type: string
+      nullable: true
+     RefReq: 
+      type: string
+      nullable: true
+     PreEstimateReqName: 
+      type: string
+      nullable: true
+     AuthReqName: 
+      type: string
+      nullable: true
+     RefReqName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+      nullable: true
+   ReimbursementIDToLiabilityPackageDTO: 
+    title : ReimbursementIDToLiabilityPackageDTO
+    type: object
+    properties: 
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     PreEstimateReq: 
+      type: string
+      nullable: true
+     PreEstimateAmt: 
+      type: string
+      nullable: true
+     AuthReq: 
+      type: string
+      nullable: true
+     RefReq: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   DeleteReimbursementIDFromLiabilityPackageSearchDTO: 
+    title : DeleteReimbursementIDFromLiabilityPackageSearchDTO
+    type: object
+    properties: 
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|Usage1|"
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   LiabilityItemsForPackageListDTO: 
+    title : LiabilityItemsForPackageListDTO
+    type: object
+    properties: 
+     LiabilityPackageItemLevelMapId: 
+      type: integer
+     LiabilityPackageId: 
+      type: integer
+     LiabilityPackageName: 
+      type: string
+     LiabilityTypeId: 
+      type: integer
+     LiabilityTypeName: 
+      type: string
+     ProcessType: 
+      type: string
+      nullable: true
+     ProcessTypeName: 
+      type: string
+      nullable: true
+     LiabilityItemId: 
+      type: integer
+     LiabilityItemName: 
+      type: string
+     LiabilityLevelId: 
+      type: integer
+     LiabilityLevelName: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: datetime
+     ExpirationDate: 
+      type: string
+      format: datetime
+     Precedence: 
+      type: integer
+     Name: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     CarryOverType: 
+      type: string
+     CarryOverTypeName: 
+      type: string
+      nullable: true
+     CarryOverPeriod: 
+      type: integer
+      nullable: true
+     IncrementForEncounter: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     ExplanationName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+      nullable: true
+     ClassificationForIDCards: 
+      type: string
+      nullable: true
+     ClassificationForIDCardsName: 
+      type: string
+      nullable: true
+   copyliabilitypackageListDTO: 
+    title : copyliabilitypackageListDTO
+    type: object
+    properties: 
+     StructureID: 
+      type: integer
+     PlanId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     Type : 
+      type: string
+     ProcessType: 
+      type: string
+      nullable: true
+     LiabilityCounterType: 
+      type: string
+      nullable: true
+     Name : 
+      type: string
+     Description : 
+      type: string
+     SortKey : 
+      type: number
+     LastUpdatedAt : 
+      type: string
+      format: datetime
+     LastUpdatedBy: 
+      type: string
+  parameters: 
+   LiabilityPackageIdParam: 
+    in: query
+    name: LiabilityPackageId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: "|FORBENEFITPLANS|"
+    description: description of parameter passed
+   PlanIdParam: 
+    in: query
+    name: PlanId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AsOfDateParam: 
+    in: query
+    name: AsOfDate
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   DescriptionParam: 
+    in: query
+    name: Description
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   LiabilityPackageItemLevelMapDTOParam: 
+    in: query
+    name: LiabilityPackageItemLevelMapDTO
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   LiabilityPackageItemLevelMapIdParam: 
+    in: query
+    name: LiabilityPackageItemLevelMapId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagParam: 
+    in: query
+    name: DebugFlag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DeleteMappedItemsParam: 
+    in: query
+    name: DeleteMappedItems
+    required: true
+    schema: 
+     type: string
+     default: "N"
+    description: description of parameter passed
