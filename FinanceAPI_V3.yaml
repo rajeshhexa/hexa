@@ -1,0 +1,1397 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/billingentities/Get: 
+   Post: 
+    operationId: GetBillingEntities
+    tags: 
+     - Finance
+    summary: Get Billing Entities
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingEntitySearchDTO'
+    responses: 
+     '200': 
+      description: Billing Entities Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/FinanceListDTO'
+  /finance/billingentity: 
+   Put: 
+    operationId: AddBillingEntity
+    tags: 
+     - Finance
+    summary: Add Billing Entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingEntityDTO'
+    responses: 
+     '200': 
+      description: Billing Entity Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/billingentitymap/Get: 
+   Post: 
+    operationId: GetBillingEntityMap
+    tags: 
+     - Finance
+    summary: Get Billing Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingEntityMapSearchDTO'
+    responses: 
+     '200': 
+      description: Billing Entity Map Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillingEntityMapListDTO'
+  /finance/billingentitymap: 
+   Put: 
+    operationId: AddBillingEntityMap
+    tags: 
+     - Finance
+    summary: Add Billing Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingEntityMapDTO'
+    responses: 
+     '200': 
+      description: Billing Entity Map Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/changebillingentitymap: 
+   Put: 
+    operationId: ChangeBillingEntityMap
+    tags: 
+     - Finance
+    summary: Change Billing Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingEntityMapDTO'
+    responses: 
+     '200': 
+      description: Billing Entity Map Changes Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/claimbillingservice: 
+   Get: 
+    operationId: GetClaimBillingServices
+    tags: 
+     - Finance
+    summary: Get Claim Billing Services
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageParam'
+     - $ref: '#/components/parameters/BillingEntityIdParam'
+    responses: 
+     '200': 
+      description: Claim Billing Services Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimBillingServicesListDTO'
+   Put: 
+    operationId: AddClaimBillingService
+    tags: 
+     - Finance
+    summary: Add Claim Billing Services
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimBillingServicesDTO'
+    responses: 
+     '200': 
+      description: Claim Billing Services Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Delete: 
+    operationId: DeleteClaimBillingService/{ClaimBillingServiceId}
+    tags: 
+     - Finance
+    summary: Delete Claim Billing Services
+    description: Description of path
+    responses: 
+     '200': 
+      description: Success
+  /finance/billingentityusermap: 
+   Post: 
+    operationId: GetBillingEntityUserMap
+    tags: 
+     - Finance
+    summary: Get Billing Entity User Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingEntityUserMapSearchDTO'
+    responses: 
+     '200': 
+      description: Billing Entity User Map Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillingEntityUserMapListDTO'
+  /finance/entityaccountmap/get: 
+   Post: 
+    operationId: GetEntityAccountMap
+    tags: 
+     - Finance
+    summary: Get Entity Account Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityAccountMapSearchDTO'
+    responses: 
+     '201': 
+      description: Billing Entity Account Map Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EntityAccountMapListDTO'
+components: 
+  schemas: 
+   BillingEntityUserMapSearchDTO: 
+    title : BillingEntityUserMapSearchDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|Normal|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   BillingEntityUserMapListDTO: 
+    title : BillingEntityUserMapListDTO
+    type: object
+    properties: 
+     BillingEntityUserMapId: 
+      type: integer
+      nullable: true
+     BillingEntityId: 
+      type: integer
+     WebUserId: 
+      type: integer
+     ProcessedDate: 
+      type: string
+      format: datetime
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+      nullable: true
+     UserName: 
+      type: string
+      nullable: true
+     FullName: 
+      type: string
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: datetime
+      nullable: true
+   EntityAccountMapSearchDTO: 
+    title : EntityAccountMapSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     AccountType: 
+      type: string
+      nullable: true
+     AccountID: 
+      type: integer
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+   EntityAccountMapListDTO: 
+    title : EntityAccountMapListDTO
+    type: object
+    properties: 
+     EntityID: 
+      type: integer
+     EntityType: 
+      type: string
+     AccountID: 
+      type: integer
+     AccountType: 
+      type: string
+     AccountName: 
+      type: string
+     AccountNumber: 
+      type: string
+     Class: 
+      type: string
+      nullable: true
+     Subclass: 
+      type: string
+      nullable: true
+     BenefitCategoryID: 
+      type: integer
+      nullable: true
+     BenefitCategoryName: 
+      type: string
+      nullable: true
+     BankingAccountID: 
+      type: integer
+      nullable: true
+     BankingAccountName: 
+      type: string
+      nullable: true
+     BankingAccountNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: datetime
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+     EIN: 
+      type: string
+      nullable: true
+     CompanyName: 
+      type: string
+     Balance: 
+      type: number
+      format: float
+      nullable: true
+   BillingEntityDTO: 
+    title : BillingEntityDTO
+    type: object
+    properties: 
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: datetime
+      nullable: true
+     BillingEntityDescription: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     BillType: 
+      type: string
+      nullable: true
+     PostingRule: 
+      type: string
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     ClaimBillingMode: 
+      type: string
+      nullable: true
+     BillingCycle: 
+      type: string
+      nullable: true
+     BillingCycleType: 
+      type: string
+      nullable: true
+     PostingCutoffDay: 
+      type: integer
+      nullable: true
+     NextPostDateStart: 
+      type: string
+      format: datetime
+      nullable: true
+     NextPostDateEnd: 
+      type: string
+      format: datetime
+      nullable: true
+     RetroactiveAddLimit: 
+      type: integer
+      nullable: true
+     RetroactiveTermLimit: 
+      type: integer
+      nullable: true
+     RateSelectionOption: 
+      type: string
+      nullable: true
+     RiderRateSelectionOption: 
+      type: string
+      nullable: true
+     QualifierRateSelectionOption: 
+      type: string
+      nullable: true
+     AnniversaryDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ZeroDollarPostingAction: 
+      type: string
+      nullable: true
+     PrintNonPositiveBills: 
+      type: string
+      nullable: true
+     MaximumFloatAmount: 
+      type: string
+      nullable: true
+     PostBrokerCommission: 
+      type: string
+      nullable: true
+     CommissionCalculation: 
+      type: string
+      nullable: true
+     BrokerCommissionPostingAction: 
+      type: string
+      nullable: true
+     BrokerCommissionRateOption: 
+      type: string
+      nullable: true
+     PostingPreviewReportId: 
+      type: integer
+      nullable: true
+     TotalPaymentChargeAmountOption: 
+      type: string
+      nullable: true
+     TotalPaymentAdditionalAmount2Option: 
+      type: string
+      nullable: true
+     OutputFormatType: 
+      type: string
+      nullable: true
+     BillReportId: 
+      type: integer
+      nullable: true
+     BillCSVReportId: 
+      type: integer
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     AutoReconcile: 
+      type: string
+      nullable: true
+     DueDatePeriodUnitType: 
+      type: string
+      nullable: true
+     DueDatePeriod: 
+      type: integer
+      nullable: true
+     PaymentGracePeriodUnitType: 
+      type: string
+      nullable: true
+     PaymentGracePeriod: 
+      type: integer
+      nullable: true
+     LastBillDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ExpectedPaymentMethod: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactPhoneExt: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     ClaimBillingServiceMethodology: 
+      type: string
+      nullable: true
+     ClaimAdminFeeOption: 
+      type: string
+      nullable: true
+     ClaimAdminFeePeriodType: 
+      type: string
+      nullable: true
+     ClaimAdminFeePeriodValue: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   BillingEntitySearchDTO: 
+    title : BillingEntitySearchDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     InvoiceNumber: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     BillType: 
+      type: string
+      nullable: true
+     PostingRule: 
+      type: string
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     ClaimBillingMode: 
+      type: string
+      nullable: true
+     BillingCycle: 
+      type: string
+      nullable: true
+     BillingCycleType: 
+      type: string
+      nullable: true
+     NextPostDate: 
+      type: string
+      format: datetime
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     LastBillDate: 
+      type: string
+      format: datetime
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     OnlyOpenDetails: 
+      type: string
+      nullable: true
+     PostingRecordsExist: 
+      type: string
+      nullable: true
+     PostingRecordsExistAsOfDate: 
+      type: string
+      format: datetime
+      nullable: true
+     UnpostedMappingExists: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: datetime
+      nullable: true
+     PostingFlag: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Step: 
+      type: string
+      nullable: true
+     VoidMode: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   BillingEntityListDTO: 
+    title : BillingEntityListDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+     BillingEntityName: 
+      type: string
+     BillingEntityNumber: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: datetime
+     ExpirationDate: 
+      type: string
+      format: datetime
+     BillingEntityDescription: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     BillType: 
+      type: string
+     PostingRule: 
+      type: string
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     ClaimBillingMode: 
+      type: string
+      nullable: true
+     BillingCycle: 
+      type: string
+     BillingCycleType: 
+      type: string
+     PostingCutoffDay: 
+      type: integer
+     NextPostDateStart: 
+      type: string
+      format: datetime
+     NextPostDateEnd: 
+      type: string
+      format: datetime
+     RetroactiveAddLimit: 
+      type: integer
+     RetroactiveTermLimit: 
+      type: integer
+     RateSelectionOption: 
+      type: string
+     QualifierRateSelectionOption: 
+      type: string
+     RiderRateSelectionOption: 
+      type: string
+     AnniversaryDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ZeroDollarPostingAction: 
+      type: string
+     PostingPreviewReportId: 
+      type: integer
+     TotalPaymentChargeAmountOption: 
+      type: string
+      nullable: true
+     TotalPaymentAdditionalAmount2Option: 
+      type: string
+      nullable: true
+     OutputFormatType: 
+      type: string
+     BillReportID: 
+      type: integer
+      nullable: true
+     BillCSVReportId: 
+      type: integer
+      nullable: true
+     AutoReconcile: 
+      type: string
+     DueDatePeriodUnitType: 
+      type: string
+     DueDatePeriod: 
+      type: string
+      nullable: true
+     PaymentGracePeriodUnitType: 
+      type: string
+     PaymentGracePeriod: 
+      type: integer
+     PrintNonPositiveBills: 
+      type: string
+     LastBillDate: 
+      type: string
+      format: datetime
+      nullable: true
+     FulfillmentType: 
+      type: string
+     ExpectedPaymentMethod: 
+      type: string
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+     MaximumFloatAmount: 
+      type: number
+      format: float
+     PostBrokerCommission: 
+      type: string
+     CommissionCalculation: 
+      type: string
+     BrokerCommissionPostingAction: 
+      type: string
+     BrokerCommissionRateOption: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+     State: 
+      type: string
+     Zip: 
+      type: string
+     County: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     HistoryId: 
+      type: integer
+      nullable: true
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: datetime
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     PostingStatus: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     SubClassName: 
+      type: string
+      nullable: true
+     BillTypeName: 
+      type: string
+      nullable: true
+     PostingRuleName: 
+      type: string
+      nullable: true
+     BillingModeName: 
+      type: string
+      nullable: true
+     ClaimBillingModeName: 
+      type: string
+      nullable: true
+     BillingCycleName: 
+      type: string
+      nullable: true
+     BillingCycleTypeName: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     RateSelectionOptionName: 
+      type: string
+      nullable: true
+     RiderRateSelectionOptionName: 
+      type: string
+      nullable: true
+     QualifierRateSelectionOptionName: 
+      type: string
+      nullable: true
+     ZeroDollarPostingActionName: 
+      type: string
+      nullable: true
+     OutputFormatTypeName: 
+      type: string
+      nullable: true
+     AutoReconcileName: 
+      type: string
+      nullable: true
+     ExpectedPaymentMethodName: 
+      type: string
+      nullable: true
+     PaymentGracePeriodUnitTypeName: 
+      type: string
+      nullable: true
+     DueDatePeriodUnitTypeName: 
+      type: string
+      nullable: true
+     FulfillmentTypeName: 
+      type: string
+      nullable: true
+     PostBrokerCommissionName: 
+      type: string
+      nullable: true
+     TotalPaymentChargeAmountOptionName: 
+      type: string
+      nullable: true
+     TotalPaymentAdditionalAmount2OptionName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: string
+      nullable: true
+     BillReportName: 
+      type: string
+      nullable: true
+     BillCSVReportName: 
+      type: string
+      nullable: true
+     PostingPreviewReportName: 
+      type: string
+      nullable: true
+     PostingPreviewReportPath: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactPhoneExt: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     PostingRecordsExist: 
+      type: string
+     UnpostedMappingExists: 
+      type: string
+     HasBeenBilled: 
+      type: string
+     RetroActiveMonth: 
+      type: string
+      format: datetime
+      nullable: true
+     PostType: 
+      type: string
+      nullable: true
+     JobDetailId: 
+      type: integer
+      nullable: true
+     LastPostedMonth: 
+      type: string
+      format: datetime
+      nullable: true
+     LastPostedJob: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+     ClaimBillingServiceMethodology: 
+      type: string
+      nullable: true
+     ClaimBillingServiceMethodologyName: 
+      type: string
+      nullable: true
+     ClaimAdminFeeOption: 
+      type: string
+      nullable: true
+     ClaimAdminFeeOptionName: 
+      type: string
+      nullable: true
+     ClaimAdminFeePeriodType: 
+      type: string
+      nullable: true
+     ClaimAdminFeePeriodTypeName: 
+      type: string
+      nullable: true
+     ClaimAdminFeePeriodValue: 
+      type: integer
+      nullable: true
+   BillingEntityMapSearchDTO: 
+    title : BillingEntityMapSearchDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      nullable: true
+     PostingRecordsExist: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   BillingEntityMapListDTO: 
+    title : BillingEntityMapListDTO
+    type: object
+    properties: 
+     BillingEntityMapId: 
+      type: integer
+     BillingEntityId: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+     PaidThroughDate: 
+      type: string
+      format: datetime
+      nullable: true
+     InvoicePaidThroughDate: 
+      type: string
+      format: datetime
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: datetime
+     ExpirationDate: 
+      type: string
+      format: datetime
+     BillingMethodology: 
+      type: string
+     BillingMethodologyName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+     NextPostDateStart: 
+      type: string
+      format: datetime
+     NextPostDateEnd: 
+      type: string
+      format: datetime
+     CloseOutDate: 
+      type: string
+      format: datetime
+      nullable: true
+     SelfPosted: 
+      type: string
+     SelfPostedName: 
+      type: string
+      nullable: true
+     AnniversaryDate: 
+      type: string
+      format: datetime
+      nullable: true
+     HistoryId: 
+      type: integer
+      nullable: true
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: datetime
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     PostingStatus: 
+      type: string
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     RenewalDate: 
+      type: string
+      format: datetime
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     EmailAddress: 
+      type: string
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     BillingModeName: 
+      type: string
+      nullable: true
+     ClaimBillingMode: 
+      type: string
+      nullable: true
+     ClaimBillingModeName: 
+      type: string
+      nullable: true
+     ARAccountId: 
+      type: integer
+     ARAccountNumber: 
+      type: string
+      nullable: true
+     ARAccountName: 
+      type: string
+      nullable: true
+     IncomeAccountId: 
+      type: integer
+     IncomeAccountNumber: 
+      type: string
+      nullable: true
+     IncomeAccountName: 
+      type: string
+      nullable: true
+     BrokerExpenseAccountId: 
+      type: integer
+      nullable: true
+     BrokerExpenseAccountNumber: 
+      type: string
+      nullable: true
+     BrokerExpenseAccountName: 
+      type: string
+      nullable: true
+     BillingRefundExpenseAccountId: 
+      type: integer
+      nullable: true
+     BillingRefundExpenseAccountNumber: 
+      type: string
+      nullable: true
+     BillingRefundExpenseAccountName: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     PostingRecordsExist: 
+      type: string
+     ReferenceNumber: 
+      type: string
+      nullable: true
+   BillingEntityMapDTO: 
+    title : BillingEntityMapDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     ARAccountId: 
+      type: integer
+      nullable: true
+     IncomeAccountId: 
+      type: integer
+      nullable: true
+     BrokerExpenseAccountId: 
+      type: integer
+      nullable: true
+     BillingRefundExpenseAccountId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: datetime
+      nullable: true
+     NextPostDateStart: 
+      type: string
+      format: datetime
+      nullable: true
+     NextPostDateEnd: 
+      type: string
+      format: datetime
+      nullable: true
+     CloseOutDate: 
+      type: string
+      format: datetime
+      nullable: true
+     SelfPosted: 
+      type: string
+      default: "N"
+      nullable: true
+     AnniversaryDate: 
+      type: string
+      format: datetime
+      nullable: true
+     BillingMethodology: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     BillingEntityMapId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: datetime
+      nullable: true
+   ClaimBillingServicesListDTO: 
+    title : ClaimBillingServicesListDTO
+    type: object
+    properties: 
+     ClaimBillingServiceId: 
+      type: integer
+     Service: 
+      type: string
+      nullable: true
+     ServiceId: 
+      type: integer
+     ServiceType: 
+      type: string
+     ServiceTypeName: 
+      type: string
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     BillingModeName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: datetime
+     ExpirationDate: 
+      type: string
+      format: datetime
+     ServiceTPChargeAmountOption: 
+      type: string
+      nullable: true
+     ServiceTPChargeAmountOptionName: 
+      type: string
+      nullable: true
+     ServiceTPAdditionalAmountOption: 
+      type: string
+      nullable: true
+     ServiceTPAdditionalAmountOptionName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+   ClaimBillingServicesDTO: 
+    title : ClaimBillingServicesDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     ServiceType: 
+      type: string
+      nullable: true
+     ServiceId: 
+      type: integer
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ServiceTPChargeAmountOption: 
+      type: string
+      nullable: true
+     ServiceTPAdditionalAmountOption: 
+      type: string
+      nullable: true
+  parameters: 
+   UsageParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   BillingEntityIdParam: 
+    in: query
+    name: BillingEntityId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ClaimBillingServiceIdParam: 
+    in: query
+    name: ClaimBillingServiceId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
