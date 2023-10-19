@@ -1,0 +1,1446 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /application/application: 
+   post: 
+    operationId: AddApplication
+    tags: 
+     - application
+    summary: Add Application
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ApplicationDTO'
+    responses: 
+     '200': 
+      description: Application Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /application/removeapplication: 
+   delete: 
+    operationId: DeleteApplication
+    tags: 
+     - application
+    summary: Delete Application
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ApplicationIDQueryParam'
+    responses: 
+     '200': 
+      description: Application Deleted Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /application/enrollmentapplications: 
+   post: 
+    operationId: GetEnrollmentApplication
+    tags: 
+     - application
+    summary: Get Enrollment Application
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EnrollmentApplicationSearchDTO'
+    responses: 
+     '200': 
+      description: Enrollment Application Deleted Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EnrollmentApplicationListDTO'
+  /application/pollforenrollmentapplications: 
+   get: 
+    operationId: PollForEnrollmentApplications
+    tags: 
+     - application
+    summary: Poll for Enrollment Application
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ApplicationTypeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Poll for Enrollment Inserted Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /application/enrollmentapplicationhistory: 
+   put: 
+    operationId: GetEnrollmentApplicationHistory
+    tags: 
+     - application
+    summary: Get Enrollment Application history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ApplicationIDQueryParam'
+    responses: 
+     '200': 
+      description: Enrollment Application retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EnrollmentApplicationHistoryListDTO'
+  /application/autocreateprospectivememberforenrollmentapplication: 
+   put: 
+    operationId: AutoCreateProspectiveMemberForEnrollmentApplication
+    tags: 
+     - application
+    summary: Auto Create Prospective Member for Enrollment Application
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ApplicationIDQueryParam'
+    responses: 
+     '200': 
+      description: Auto Created Prospective Member for 
+Enrollment Application
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   EnrollmentApplicationSearchDTO: 
+    title : EnrollmentApplicationSearchDTO
+    type: object
+    properties: 
+     ApplicationID: 
+      type: integer
+      nullable: true
+     ApplicationType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ApplicantLastName: 
+      type: string
+      nullable: true
+     ApplicantFirstName: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     ApplicationNumber: 
+      type: string
+      nullable: true
+     DOB: 
+      type: string
+      format: datetime
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     ContractID: 
+      type: string
+      nullable: true
+     PlanID: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     CustomAttributeSearchXML: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   EnrollmentApplicationListDTO: 
+    title : EnrollmentApplicationListDTO
+    type: object
+    properties: 
+     ApplicationID: 
+      type: integer
+      nullable: true
+     ApplicationNumber: 
+      type: string
+      nullable: true
+     ApplicationType: 
+      type: string
+      nullable: true
+     ApplicationTypeName: 
+      type: string
+      nullable: true
+     ApplicationStatus: 
+      type: string
+      nullable: true
+     ApplicationStatusDescription: 
+      type: string
+      nullable: true
+     ApplicationSourceType: 
+      type: string
+      nullable: true
+     ApplicationSourceTypeName: 
+      type: string
+      nullable: true
+     ApplicationCreateDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ConfirmationNumber: 
+      type: string
+      nullable: true
+     ContractID: 
+      type: string
+      nullable: true
+     PlanID: 
+      type: string
+      nullable: true
+     SegmentID: 
+      type: string
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberDOB: 
+      type: string
+      format: datetime
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     ApplicantTitle: 
+      type: string
+      nullable: true
+     ApplicantFirstName: 
+      type: string
+      nullable: true
+     ApplicantMiddleInitial: 
+      type: string
+      nullable: true
+     ApplicantLastName: 
+      type: string
+      nullable: true
+     ApplicantBirthDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ApplicantGender: 
+      type: string
+      nullable: true
+     ApplicantAddress1: 
+      type: string
+      nullable: true
+     ApplicantAddress2: 
+      type: string
+      nullable: true
+     ApplicantAddress3: 
+      type: string
+      nullable: true
+     ApplicantCity: 
+      type: string
+      nullable: true
+     ApplicantCounty: 
+      type: string
+      nullable: true
+     ApplicantState: 
+      type: string
+      nullable: true
+     ApplicantZip: 
+      type: string
+      nullable: true
+     ApplicantPhone: 
+      type: string
+      nullable: true
+     ApplicantEmailAddress: 
+      type: string
+      nullable: true
+     ApplicantMBI: 
+      type: string
+      nullable: true
+     MailingAddress1: 
+      type: string
+      nullable: true
+     MailingAddress2: 
+      type: string
+      nullable: true
+     MailingAddress3: 
+      type: string
+      nullable: true
+     MailingCity: 
+      type: string
+      nullable: true
+     MailingState: 
+      type: string
+      nullable: true
+     MailingZip: 
+      type: string
+      nullable: true
+     MailingCounty: 
+      type: string
+      nullable: true
+     MedicarePartA: 
+      type: string
+      format: datetime
+      nullable: true
+     MedicarePartB: 
+      type: string
+      format: datetime
+      nullable: true
+     EmergencyContactName: 
+      type: string
+      nullable: true
+     EmergencyPhone: 
+      type: string
+      nullable: true
+     EmergencyRelationship: 
+      type: string
+      nullable: true
+     OtherCoverage: 
+      type: string
+      nullable: true
+     OtherCoverageName: 
+      type: string
+      nullable: true
+     OtherCoverageID: 
+      type: string
+      nullable: true
+     LongTerm: 
+      type: string
+      nullable: true
+     LongTermName: 
+      type: string
+      nullable: true
+     LongTermAddress: 
+      type: string
+      nullable: true
+     LongTermPhone: 
+      type: string
+      nullable: true
+     AuthorizedRepName: 
+      type: string
+      nullable: true
+     AuthorizedRepAddress: 
+      type: string
+      nullable: true
+     AuthorizedRepCity: 
+      type: string
+      nullable: true
+     AuthorizedRepState: 
+      type: string
+      nullable: true
+     AuthorizedRepZip: 
+      type: string
+      nullable: true
+     AuthorizedRepPhone: 
+      type: string
+      nullable: true
+     AuthorizedRepRelationship: 
+      type: string
+      nullable: true
+     Language: 
+      type: string
+      nullable: true
+     ESRD: 
+      type: string
+      nullable: true
+     StateMedicaid: 
+      type: string
+      nullable: true
+     WorkStatus: 
+      type: string
+      nullable: true
+     PrimaryCarePhysician: 
+      type: string
+      nullable: true
+     OtherCoverageGroup: 
+      type: string
+      nullable: true
+     BrokerNumber: 
+      type: string
+      nullable: true
+     SubmitTime: 
+      type: string
+      format: datetime
+      nullable: true
+     SEPReasonCode: 
+      type: string
+      nullable: true
+     SEPEffectiveDate: 
+      type: string
+      format: datetime
+      nullable: true
+     SEPCMSReasonCODE: 
+      type: string
+      nullable: true
+     EnrollmentPlanYear: 
+      type: integer
+      nullable: true
+     PremiumWithhold: 
+      type: string
+      nullable: true
+     SpouseWorkStatus: 
+      type: string
+      nullable: true
+     AccessibilityFormat: 
+      type: string
+      nullable: true
+     EmailOptIn: 
+      type: string
+      nullable: true
+     ApplicationReceiptDate: 
+      type: string
+      format: datetime
+      nullable: true
+     MAEnrollmentApplicationType: 
+      type: string
+      nullable: true
+     ApplicationMethod: 
+      type: string
+      nullable: true
+     Electiontype: 
+      type: string
+      nullable: true
+     SEPValidated: 
+      type: string
+      nullable: true
+     OverrideElection: 
+      type: string
+      nullable: true
+     EnrollmentDate: 
+      type: string
+      format: datetime
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     SNPType: 
+      type: string
+      nullable: true
+     SNPStatusVerified: 
+      type: string
+      nullable: true
+     SNPVerificationSource: 
+      type: string
+      nullable: true
+     OtherSNPVerificationSource: 
+      type: string
+      nullable: true
+     SNPDateVerified: 
+      type: string
+      format: datetime
+      nullable: true
+     AddressCountry: 
+      type: string
+      nullable: true
+     AddressCountryCode: 
+      type: integer
+      nullable: true
+     MailingAddressCountry: 
+      type: string
+      nullable: true
+     MailingAddressCountryCode: 
+      type: integer
+      nullable: true
+     SecondaryPhone: 
+      type: string
+      nullable: true
+     PCPAreYouACurrentPatient: 
+      type: string
+      nullable: true
+     PCPProviderNumber: 
+      type: string
+      nullable: true
+     PCPPrimaryCareID: 
+      type: string
+      nullable: true
+     MedicaidNumber: 
+      type: string
+      nullable: true
+     ValidCCEligiblePD: 
+      type: string
+      nullable: true
+     CCCoverageStartDate: 
+      type: string
+      format: datetime
+      nullable: true
+     CCCoverageEndDate: 
+      type: string
+      format: datetime
+      nullable: true
+     OtherCCCoverageName: 
+      type: string
+      nullable: true
+     PremiumPaymentMethod: 
+      type: string
+      nullable: true
+     ApplicationSignature: 
+      type: string
+      nullable: true
+     ApplicationSignatureDate: 
+      type: string
+      format: datetime
+      nullable: true
+     SOAcompleted: 
+      type: string
+      nullable: true
+     SOANotCompletedReason: 
+      type: string
+      nullable: true
+     SOAMethod: 
+      type: string
+      nullable: true
+     SOAConfirmationNumber: 
+      type: string
+      nullable: true
+     SOAAvailability: 
+      type: string
+      nullable: true
+     SOAAvailabilityReason: 
+      type: string
+      nullable: true
+     BrokerName: 
+      type: string
+      nullable: true
+     BrokerPhoneNumber: 
+      type: string
+      nullable: true
+     BrokerNPN: 
+      type: string
+      nullable: true
+     BrokerSignature: 
+      type: string
+      nullable: true
+     BrokerReceivedApplication: 
+      type: string
+      format: datetime
+      nullable: true
+     EnrolleeReceiptProvided: 
+      type: string
+      nullable: true
+     ApplicationTrackingNumber: 
+      type: string
+      nullable: true
+     Comments: 
+      type: string
+      nullable: true
+     Denial: 
+      type: string
+      nullable: true
+     DenialReasonCode: 
+      type: string
+      nullable: true
+     Cancellation: 
+      type: string
+      nullable: true
+     CancellationDate: 
+      type: string
+      format: datetime
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+      nullable: true
+     LastActiveRowVersionNumber: 
+      type: string
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     DocumentLocation: 
+      type: string
+      nullable: true
+     Race: 
+      type: string
+      nullable: true
+     Ethnicity: 
+      type: string
+      nullable: true
+     RxID: 
+      type: string
+      nullable: true
+     PartDOptOutSwitch: 
+      type: string
+      nullable: true
+     PremiumDeducted: 
+      type: string
+      nullable: true
+     PremiumDirectPay: 
+      type: string
+      nullable: true
+     EventExists: 
+      type: string
+      nullable: true
+   EnrollmentApplicationHistoryListDTO: 
+    title : EnrollmentApplicationHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+      description: 
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: datetime
+     ChangeType: 
+      type: string
+     ProcedureName: 
+      type: string
+     ApplicationID: 
+      type: integer
+      description: 
+      nullable: true
+     ApplicationNumber: 
+      type: integer
+      nullable: true
+     ApplicationType: 
+      type: string
+     ApplicationStatus: 
+      type: string
+     ApplicationSourceType: 
+      type: string
+     ApplicationCreateDate: 
+      type: string
+      format: datetime
+     LastUpdatedBy: 
+      type: integer
+      description: 
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+     ConfirmationNumber: 
+      type: string
+      nullable: true
+     ContractID: 
+      type: string
+      nullable: true
+     PlanID: 
+      type: string
+      nullable: true
+     SegmentID: 
+      type: string
+      nullable: true
+     ApplicantTitle: 
+      type: string
+      nullable: true
+     ApplicantFirstName: 
+      type: string
+      nullable: true
+     ApplicantMiddleInitial: 
+      type: string
+      nullable: true
+     ApplicantLastName: 
+      type: string
+      nullable: true
+     ApplicantBirthDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ApplicantGender: 
+      type: string
+      nullable: true
+     ApplicantAddress1: 
+      type: string
+      nullable: true
+     ApplicantAddress2: 
+      type: string
+      nullable: true
+     ApplicantAddress3: 
+      type: string
+      nullable: true
+     ApplicantCity: 
+      type: string
+      nullable: true
+     ApplicantCounty: 
+      type: string
+      nullable: true
+     ApplicantState: 
+      type: string
+      nullable: true
+     ApplicantZip: 
+      type: integer
+      nullable: true
+     ApplicantPhone: 
+      type: string
+      nullable: true
+     ApplicantEmailAddress: 
+      type: string
+      nullable: true
+     ApplicantMBI: 
+      type: string
+      nullable: true
+     MailingAddress1: 
+      type: string
+      nullable: true
+     MailingAddress2: 
+      type: string
+      nullable: true
+     MailingAddress3: 
+      type: string
+      nullable: true
+     MailingCity: 
+      type: string
+      nullable: true
+     MailingState: 
+      type: string
+      nullable: true
+     MailingZip: 
+      type: integer
+      nullable: true
+     MailingCounty: 
+      type: string
+      nullable: true
+     MedicarePartA: 
+      type: string
+      format: datetime
+      nullable: true
+     MedicarePartB: 
+      type: string
+      format: datetime
+      nullable: true
+     EmergencyContactName: 
+      type: string
+      nullable: true
+     EmergencyPhone: 
+      type: string
+      nullable: true
+     EmergencyRelationship: 
+      type: string
+      nullable: true
+     OtherCoverage: 
+      type: boolean
+     OtherCoverageName: 
+      type: string
+      nullable: true
+     OtherCoverageID: 
+      type: integer
+      nullable: true
+     LongTerm: 
+      type: string
+      nullable: true
+     LongTermName: 
+      type: string
+      nullable: true
+     LongTermAddress: 
+      type: string
+      nullable: true
+     LongTermPhone: 
+      type: string
+      nullable: true
+     AuthorizedRepName: 
+      type: string
+      nullable: true
+     AuthorizedRepAddress: 
+      type: string
+      nullable: true
+     AuthorizedRepCity: 
+      type: string
+      nullable: true
+     AuthorizedRepState: 
+      type: string
+      nullable: true
+     AuthorizedRepZip: 
+      type: integer
+      nullable: true
+     AuthorizedRepPhone: 
+      type: string
+      nullable: true
+     AuthorizedRepRelationship: 
+      type: string
+      nullable: true
+     Language: 
+      type: string
+      nullable: true
+     ESRD: 
+      type: boolean
+     StateMedicaid: 
+      type: boolean
+     WorkStatus: 
+      type: boolean
+     PrimaryCarePhysician: 
+      type: string
+      nullable: true
+     OtherCoverageGroup: 
+      type: string
+      nullable: true
+     BrokerNumber: 
+      type: string
+      nullable: true
+     SubmitTime: 
+      type: string
+      format: datetime
+      nullable: true
+     SubmitDate: 
+      type: string
+      format: datetime
+      nullable: true
+     SEPReasonCode: 
+      type: string
+      nullable: true
+     SEPEffectiveDate: 
+      type: string
+      format: datetime
+      nullable: true
+     SEPCMSReasonCODE: 
+      type: string
+      nullable: true
+     EnrollmentPlanYear: 
+      type: integer
+      nullable: true
+     PremiumWithhold: 
+      type: string
+      nullable: true
+     PremiumSource: 
+      type: string
+      nullable: true
+     PartDSubAppInd: 
+      type: string
+      nullable: true
+     DeemedInd: 
+      type: string
+      nullable: true
+     SubsidyPercentage: 
+      type: string
+      nullable: true
+     DeemedReasonCode: 
+      type: string
+      nullable: true
+     LISCopayLevelID: 
+      type: integer
+      nullable: true
+     DeemedCopayLevelID: 
+      type: integer
+      nullable: true
+     PremiumDirectPay: 
+      type: string
+      nullable: true
+     SpouseWorkStatus: 
+      type: boolean
+     AccessibilityFormat: 
+      type: string
+      nullable: true
+     EmailOptIn: 
+      type: boolean
+     ApplicationReceiptDate: 
+      type: string
+      format: datetime
+      nullable: true
+     MAEnrollmentApplicationType: 
+      type: string
+      nullable: true
+     ApplicationMethod: 
+      type: string
+      nullable: true
+     Electiontype: 
+      type: string
+      nullable: true
+     SEPValidated: 
+      type: string
+      nullable: true
+     OverrideElection: 
+      type: string
+      nullable: true
+     EnrollmentDate: 
+      type: string
+      format: datetime
+      nullable: true
+     GroupNumber: 
+      type: integer
+      nullable: true
+     SNPType: 
+      type: string
+      nullable: true
+     SNPStatusVerified: 
+      type: string
+      nullable: true
+     SNPVerificationSource: 
+      type: string
+      nullable: true
+     OtherSNPVerificationSource: 
+      type: string
+      nullable: true
+     SNPDateVerified: 
+      type: string
+      format: datetime
+      nullable: true
+     AddressCountry: 
+      type: integer
+      nullable: true
+     AddressCountryCode: 
+      type: integer
+      nullable: true
+     MailingAddressCountry: 
+      type: string
+      nullable: true
+     MailingAddressCountryCode: 
+      type: integer
+      nullable: true
+     SecondaryPhone: 
+      type: string
+      nullable: true
+     PCPAreYouACurrentPatient: 
+      type: boolean
+     PCPProviderNumber: 
+      type: integer
+      nullable: true
+     PCPPrimaryCareID: 
+      type: integer
+      nullable: true
+     MedicaidNumber: 
+      type: integer
+      nullable: true
+     ValidCCEligiblePD: 
+      type: boolean
+     CCCoverageStartDate: 
+      type: string
+      format: datetime
+      nullable: true
+     CCCoverageEndDate: 
+      type: string
+      format: datetime
+      nullable: true
+     OtherCCCoverageName: 
+      type: string
+      nullable: true
+     PremiumPaymentMethod: 
+      type: string
+      nullable: true
+     ApplicationSignature: 
+      type: boolean
+     ApplicationSignatureDate: 
+      type: string
+      nullable: true
+     SOACompleted: 
+      type: boolean
+     SOANotCompletedReason: 
+      type: string
+      nullable: true
+     SOAMethod: 
+      type: string
+      nullable: true
+     SOAConfirmationNumber: 
+      type: string
+      nullable: true
+     SOAAvailability: 
+      type: string
+      nullable: true
+     SOAAvailabilityReason: 
+      type: string
+      nullable: true
+     BrokerName: 
+      type: string
+      nullable: true
+     BrokerPhoneNumber: 
+      type: string
+      nullable: true
+     BrokerNPN: 
+      type: string
+      nullable: true
+     BrokerSignature: 
+      type: boolean
+     BrokerReceivedApplication: 
+      type: string
+      format: datetime
+      nullable: true
+     EnrolleeReceiptProvided: 
+      type: boolean
+     ApplicationTrackingNumber: 
+      type: string
+      nullable: true
+     Comments: 
+      type: string
+      nullable: true
+     Race: 
+      type: string
+      nullable: true
+     Ethnicity: 
+      type: string
+      nullable: true
+     PartDOptOutSwitch : 
+      type: string
+      nullable: true
+     RxID: 
+      type: string
+      nullable: true
+     PremiumDeducted: 
+      type: string
+      nullable: true
+     WithinServiceArea: 
+      type: boolean
+   ApplicationDTO: 
+    title : ApplicationDTO
+    type: object
+    properties: 
+     ApplicationType: 
+      type: string
+      nullable: true
+     ApplicationReceiptDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ConfirmationNumber: 
+      type: string
+      nullable: true
+     ContractID: 
+      type: string
+      nullable: true
+     PlanID: 
+      type: string
+      nullable: true
+     SegmentID: 
+      type: string
+      nullable: true
+     ApplicantTitle: 
+      type: string
+      nullable: true
+     ApplicantFirstName: 
+      type: string
+      nullable: true
+     ApplicantMiddleInitial: 
+      type: string
+      nullable: true
+     ApplicantLastName: 
+      type: string
+      nullable: true
+     ApplicantBirthDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ApplicantGender: 
+      type: string
+      nullable: true
+     ApplicantAddress1: 
+      type: string
+      nullable: true
+     ApplicantAddress2: 
+      type: string
+      nullable: true
+     ApplicantAddress3: 
+      type: string
+      nullable: true
+     ApplicantCity: 
+      type: string
+      nullable: true
+     ApplicantCounty: 
+      type: string
+      nullable: true
+     ApplicantState: 
+      type: string
+      nullable: true
+     ApplicantZip: 
+      type: string
+      nullable: true
+     ApplicantPhone: 
+      type: string
+      nullable: true
+     ApplicantEmailAddress: 
+      type: string
+      nullable: true
+     ApplicantMBI: 
+      type: string
+      nullable: true
+     MailingAddress1: 
+      type: string
+      nullable: true
+     MailingAddress2: 
+      type: string
+      nullable: true
+     MailingAddress3: 
+      type: string
+      nullable: true
+     MailingCity: 
+      type: string
+      nullable: true
+     MailingState: 
+      type: string
+      nullable: true
+     MailingZip: 
+      type: string
+      nullable: true
+     MailingCounty: 
+      type: string
+      nullable: true
+     MedicarePartA: 
+      type: string
+      format: datetime
+      nullable: true
+     MedicarePartB: 
+      type: string
+      format: datetime
+      nullable: true
+     EmergencyContactName: 
+      type: string
+      nullable: true
+     EmergencyPhone: 
+      type: string
+      nullable: true
+     EmergencyRelationship: 
+      type: string
+      nullable: true
+     OtherCoverage: 
+      type: string
+      nullable: true
+     OtherCoverageName: 
+      type: string
+      nullable: true
+     OtherCoverageID: 
+      type: string
+      nullable: true
+     LongTerm: 
+      type: string
+      nullable: true
+     LongTermName: 
+      type: string
+      nullable: true
+     LongTermAddress: 
+      type: string
+      nullable: true
+     LongTermPhone: 
+      type: string
+      nullable: true
+     AuthorizedRepName: 
+      type: string
+      nullable: true
+     AuthorizedRepAddress: 
+      type: string
+      nullable: true
+     AuthorizedRepCity: 
+      type: string
+      nullable: true
+     AuthorizedRepState: 
+      type: string
+      nullable: true
+     AuthorizedRepZip: 
+      type: string
+      nullable: true
+     AuthorizedRepPhone: 
+      type: string
+      nullable: true
+     AuthorizedRepRelationship: 
+      type: string
+      nullable: true
+     Language: 
+      type: string
+      nullable: true
+     ESRD: 
+      type: string
+      nullable: true
+     StateMedicaid: 
+      type: string
+      nullable: true
+     WorkStatus: 
+      type: string
+      nullable: true
+     PrimaryCarePhysician: 
+      type: string
+      nullable: true
+     OtherCoverageGroup: 
+      type: string
+      nullable: true
+     BrokerNumber: 
+      type: string
+      nullable: true
+     SubmitTime: 
+      type: string
+      format: datetime
+      nullable: true
+     SEPReasonCode: 
+      type: string
+      nullable: true
+     SEPEffectiveDate: 
+      type: string
+      format: datetime
+      nullable: true
+     SEPCMSReasonCODE: 
+      type: string
+      nullable: true
+     EnrollmentPlanYear: 
+      type: integer
+      nullable: true
+     PremiumWithhold: 
+      type: string
+      nullable: true
+     SpouseWorkStatus: 
+      type: string
+      nullable: true
+     AccessibilityFormat: 
+      type: string
+      nullable: true
+     EmailOptIn: 
+      type: string
+      nullable: true
+     MAEnrollmentApplicationType: 
+      type: string
+      nullable: true
+     ApplicationMethod: 
+      type: string
+      nullable: true
+     Electiontype: 
+      type: string
+      nullable: true
+     EnrollmentDate: 
+      type: string
+      format: datetime
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     SNPType: 
+      type: string
+      nullable: true
+     SNPStatusVerified: 
+      type: string
+      nullable: true
+     SNPVerificationSource: 
+      type: string
+      nullable: true
+     OtherSNPVerificationSource: 
+      type: string
+      nullable: true
+     SNPDateVerified: 
+      type: string
+      format: datetime
+      nullable: true
+     AddressCountry: 
+      type: string
+      nullable: true
+     AddressCountryCode: 
+      type: integer
+      nullable: true
+     MailingAddressCountry: 
+      type: string
+      nullable: true
+     MailingAddressCountryCode: 
+      type: integer
+      nullable: true
+     SecondaryPhone: 
+      type: string
+      nullable: true
+     PCPAreYouACurrentPatient: 
+      type: string
+      nullable: true
+     PCPProviderNumber: 
+      type: string
+      nullable: true
+     PCPPrimaryCareID: 
+      type: string
+      nullable: true
+     MedicaidNumber: 
+      type: string
+      nullable: true
+     ValidCCEligiblePD: 
+      type: string
+      nullable: true
+     CCCoverageStartDate: 
+      type: string
+      format: datetime
+      nullable: true
+     CCCoverageEndDate: 
+      type: string
+      format: datetime
+      nullable: true
+     OtherCCCoverageName: 
+      type: string
+      nullable: true
+     PremiumPaymentMethod: 
+      type: string
+      nullable: true
+     ApplicationSignature: 
+      type: string
+      nullable: true
+     ApplicationSignatureDate: 
+      type: string
+      format: datetime
+      nullable: true
+     SOAcompleted: 
+      type: string
+      nullable: true
+     SOANotCompletedReason: 
+      type: string
+      nullable: true
+     SOAMethod: 
+      type: string
+      nullable: true
+     SOAConfirmationNumber: 
+      type: string
+      nullable: true
+     SOAAvailability: 
+      type: string
+      nullable: true
+     SOAAvailabilityReason: 
+      type: string
+      nullable: true
+     BrokerName: 
+      type: string
+      nullable: true
+     BrokerPhoneNumber: 
+      type: string
+      nullable: true
+     BrokerNPN: 
+      type: string
+      nullable: true
+     BrokerSignature: 
+      type: string
+      nullable: true
+     BrokerReceivedApplication: 
+      type: string
+      format: datetime
+      nullable: true
+     EnrolleeReceiptProvided: 
+      type: string
+      nullable: true
+     ApplicationTrackingNumber: 
+      type: string
+      nullable: true
+     Comments: 
+      type: string
+      nullable: true
+     RxID: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     ValidateMBI: 
+      type: string
+      nullable: true
+     PremiumDirectPay: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Race: 
+      type: string
+      nullable: true
+     Ethnicity: 
+      type: string
+      nullable: true
+     PremiumDeducted: 
+      type: string
+      nullable: true
+     PartDOptOutSwitch: 
+      type: string
+      nullable: true
+     ApplicationStatus: 
+      type: string
+      nullable: true
+     ApplicationID: 
+      type: integer
+      nullable: true
+     SEPValidated: 
+      type: string
+      nullable: true
+     OverrideElection: 
+      type: string
+      nullable: true
+     Denial: 
+      type: string
+      nullable: true
+     DenialReasonCode: 
+      type: string
+      nullable: true
+     Cancellation: 
+      type: string
+      nullable: true
+     CancellationDate: 
+      type: string
+      format: datetime
+      nullable: true
+     ApplicationSource: 
+      type: string
+      nullable: true
+     SEPValidated: 
+      type: string
+      nullable: true
+     OverrideElection: 
+      type: string
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     ApplicationStatus: 
+      type: string
+      nullable: true
+  parameters: 
+   ApplicationIDQueryParam: 
+    in: query
+    name: ApplicationID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ApplicationTypeQueryParam: 
+    in: query
+    name: ApplicationType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
