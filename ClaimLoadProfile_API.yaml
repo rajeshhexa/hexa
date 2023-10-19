@@ -1,0 +1,731 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ClaimLoad
+  description: Tools claim load API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/load/jobs: 
+   post: 
+    operationId: GetClaimLoadJobs
+    tags: 
+     - ClaimLoad
+    summary: Get ClaimLoadJobs
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimLoadJobsSearchDTO'
+    responses: 
+     '200': 
+      description: ClaimLoadJobs retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimLoadJobsListDTO'
+  /claim/load/job: 
+   post: 
+    operationId: AddClaimLoadJob
+    tags: 
+     - ClaimLoad
+    summary: Add ClaimLoadJobs
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimLoadJobDTO'
+    responses: 
+     '200': 
+      description: ClaimLoadJob added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateClaimLoadJob
+    tags: 
+     - ClaimLoad
+    summary: Update ClaimLoadJobs
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimLoadJobDTO'
+    responses: 
+     '200': 
+      description: ClaimLoadJob updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/load/profiles: 
+   post: 
+    operationId: GetClaimLoadProfile
+    tags: 
+     - ClaimLoad
+    summary: Get ClaimLoadProfile
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimLoadProfileSearchDTO'
+    responses: 
+     '200': 
+      description: ClaimLoadProfile retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimLoadProfileListDTO'
+  /claim/load/profile: 
+   post: 
+    operationId: AddClaimLoadProfile
+    tags: 
+     - ClaimLoad
+    summary: Add ClaimLoadProfile
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimLoadProfileDTO'
+    responses: 
+     '200': 
+      description: ClaimLoadProfile added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateClaimLoadProfile
+    tags: 
+     - ClaimLoad
+    summary: Update ClaimLoadProfile
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimLoadProfileDTO'
+    responses: 
+     '200': 
+      description: ClaimLoadProfile updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/load/jobstat: 
+   get: 
+    operationId: GetClaimLoadJobStats
+    tags: 
+     - ClaimLoad
+    summary: Get ClaimLoadJobStats
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: ClaimLoadJobStats retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimLoadJobStatsListDTO'
+  /claim/load/errors: 
+   post: 
+    operationId: GetClaimLoadErrors
+    tags: 
+     - ClaimLoad
+    summary: Get ClaimLoadErrors
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimLoadErrorsSearchDTO'
+    responses: 
+     '200': 
+      description: ClaimLoadErrors retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimLoadErrorsListDTO'
+components: 
+  schemas: 
+   ClaimLoadProfileDTO: 
+    title : ClaimLoadProfileDTO
+    type: object
+    properties: 
+     ClaimLoadName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     DefaultProviderId: 
+      type: integer
+      nullable: true
+     DefaultVendorId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     DefaultOfficeId: 
+      type: integer
+      nullable: true
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     ClaimLoadId: 
+      type: integer
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   ClaimLoadJobDTO: 
+    title : ClaimLoadJobDTO
+    type: object
+    properties: 
+     JobName: 
+      type: string
+      nullable: true
+     JobDescription: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+      default: "CRT"
+      nullable: true
+     JobStep: 
+      type: string
+      default: "OPN"
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      default: "CSV"
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     ClaimLoadProfileOption: 
+      type: string
+      nullable: true
+     ClaimLoadProfileId: 
+      type: integer
+      nullable: true
+     TimeBetweenClaims: 
+      type: integer
+      nullable: true
+     ClaimLoadType: 
+      type: string
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|UPDATESTEP|"
+      nullable: true
+     ErrorFilePath: 
+      type: string
+      nullable: true
+   ClaimLoadJobsSearchDTO: 
+    title : ClaimLoadJobsSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     ClaimLoadType: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     JobStep: 
+      type: string
+      nullable: true
+     ClaimLoadProfileId: 
+      type: integer
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BygroupId|"
+      nullable: true
+   ClaimLoadJobsListDTO: 
+    title : ClaimLoadJobsListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+     JobName: 
+      type: string
+     JobDescription: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+     JobTypeName: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     JobStep: 
+      type: string
+     JobStepName: 
+      type: string
+      nullable: true
+     CreatedBy: 
+      type: integer
+      nullable: true
+     CreatedByName: 
+      type: string
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+     DateCompleted: 
+      type: string
+      format: date-time
+      nullable: true
+     TimeElapsed: 
+      type: number
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     TimeBetweenClaims: 
+      type: integer
+      nullable: true
+     ClaimLoadProfileOption: 
+      type: string
+     ClaimLoadProfileOptionName: 
+      type: string
+      nullable: true
+     ClaimLoadProfileId: 
+      type: integer
+      nullable: true
+     ClaimLoadProfileName: 
+      type: string
+      nullable: true
+     ClaimLoadType: 
+      type: string
+     ClaimLoadTypeName: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     SourceTypeName: 
+      type: string
+      nullable: true
+     LocationID: 
+      type: integer
+      nullable: true
+     LocationName: 
+      type: string
+      nullable: true
+     ErrorFilePath: 
+      type: string
+      nullable: true
+   ClaimLoadProfileSearchDTO: 
+    title : ClaimLoadProfileSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ClaimLoadId: 
+      type: integer
+      nullable: true
+     ClaimLoadName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     DefaultProviderId: 
+      type: integer
+      nullable: true
+     DefaultVendorId: 
+      type: integer
+      nullable: true
+     DefaultOfficeId: 
+      type: integer
+      nullable: true
+     UseLikeForName: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   ClaimLoadProfileListDTO: 
+    title : ClaimLoadProfileListDTO
+    type: object
+    properties: 
+     ClaimLoadId: 
+      type: integer
+     ClaimLoadName: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+     GroupName: 
+      type: string
+      nullable: true
+     DefaultProviderId: 
+      type: integer
+     DefaultProviderName: 
+      type: string
+      nullable: true
+     DefaultVendorId: 
+      type: integer
+     DefaultVendorName: 
+      type: string
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     DefaultOfficeId: 
+      type: integer
+     DefaultOfficeName: 
+      type: string
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     LiabilityPackageId: 
+      type: integer
+      nullable: true
+     LiabilityPackageName: 
+      type: string
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     LiabilityLevelName: 
+      type: string
+      nullable: true
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     ReimbursementName: 
+      type: string
+      nullable: true
+     TotalClaims: 
+      type: integer
+      nullable: true
+     SuccessfulClaims: 
+      type: integer
+      nullable: true
+     FailedClaims: 
+      type: integer
+      nullable: true
+     NotYetLoadedClaims: 
+      type: integer
+      nullable: true
+     NotYetLoadedDetails: 
+      type: integer
+      nullable: true
+     NotYetLoadedCodes: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+   ClaimLoadErrorsSearchDTO: 
+    title : ClaimLoadErrorsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: "|GROUPED|"
+      nullable: true
+     FailureReason: 
+      type: string
+      nullable: true
+     ClaimLoadId: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   ClaimLoadErrorsListDTO: 
+    title : ClaimLoadErrorsListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     ClaimLoadProfileId: 
+      type: integer
+      nullable: true
+     ClaimLoadProfileName: 
+      type: string
+      nullable: true
+     ExternalClaimId: 
+      type: integer
+      nullable: true
+     ClaimType: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     ExternalClaimNumber: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     TotalCharges: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorNumberQualifier: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeNumberQualifier: 
+      type: string
+      nullable: true
+     OfficeNPI: 
+      type: string
+      nullable: true
+     CreateEOBRequest: 
+      type: string
+      nullable: true
+     OneOfficePerProvider: 
+      type: string
+      nullable: true
+     MatchOfficeByName: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeAddress1: 
+      type: string
+      nullable: true
+     OfficeAddress2: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     TypeOfBill: 
+      type: string
+      nullable: true
+     ReferringProviderNumber: 
+      type: string
+      nullable: true
+     ReferringProviderNumberQualifier: 
+      type: string
+      nullable: true
+     Filler: 
+      type: string
+      nullable: true
+     UtilizationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberDateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     CaseNumber: 
+      type: string
+      nullable: true
+     ExternalCaseNumber: 
+      type: string
+      nullable: true
+     AuthorizationNumber: 
+      type: string
+      nullable: true
+     EpisodeDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SuppressPayment: 
+      type: string
+      nullable: true
+     AssignmentBenefits: 
+      type: string
+      nullable: true
+     StatementCoversFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     StatementCoversTo: 
+      type: string
+      format: date-time
+      nullable: true
+     AdmissionDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AdmissionHour: 
+      type: string
+      nullable: true
+     TypeOfAdmission: 
+      type: string
+      nullable: true
+     SourceOfAdmission: 
+      type: string
+      nullable: true
+     DischargeHour: 
+      type: string
+      nullable: true
+     DischargeStatus: 
+      type: string
+      nullable: true
+     ReinsurancePolicy: 
+      type: string
+      nullable: true
+     FailureReason: 
+      type: string
+     Frequency: 
+      type: integer
+      nullable: true
+   ClaimLoadJobStatsListDTO: 
+    title : ClaimLoadJobStatsListDTO
+    type: object
+    properties: 
+     TotalClaims: 
+      type: integer
+      nullable: true
+     SuccessfulClaims: 
+      type: integer
+      nullable: true
+     FailedClaims: 
+      type: integer
+      nullable: true
+     RemovedClaims: 
+      type: integer
+      nullable: true
+     NotYetLoadedClaims: 
+      type: integer
+      nullable: true
+     NotYetLoadedDetails: 
+      type: integer
+      nullable: true
+     NotYetLoadedCodes: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "BYJOBID"
+    description: description of parameter passed
