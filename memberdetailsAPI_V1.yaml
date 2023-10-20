@@ -1,0 +1,388 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: MembershipMemberDetails
+  description: MembershipMemberDetails API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /tools/membership/termdetails: 
+   post: 
+    operationId: GetMembershipTermDetails
+    tags: 
+     - MembershipTermDetails
+    summary: Get MembershipTermDetails
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MembershipTermDetailsSearchDTO'
+    responses: 
+     '200': 
+      description: MembershiptermDetails retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MembershipTermDetailsListDTO'
+  /tools/membership/termdetail: 
+   post: 
+    operationId: AddMembershipTermDetails
+    tags: 
+     - MembershipTermDetails
+    summary: Add MembershipTermDetails
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+    responses: 
+     '200': 
+      description: MembershipTermDetails added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /tools/membership/memberdetail: 
+   put: 
+    operationId: UpdateMembershipMemberDetails
+    tags: 
+     - MembershipMemberDetails
+    summary: Update MembershipMemberDetails
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MembershipMemberDetailsDTO'
+    responses: 
+     '200': 
+      description: MembershipMemberDetails updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   post: 
+    operationId: ValidateMembershipMemberDetails
+    tags: 
+     - MembershipMemberDetails
+    summary: Validate MembershipMemberDetails
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: MembershipMemberDetails validated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /tools/membership/memberdetail/errors: 
+   get: 
+    operationId: GetMembershipMemberDetailsErrors
+    tags: 
+     - MembershipMemberDetails
+    summary: Get MembershipMemberDetailsErrors
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: MembershipMemberDetailsErrors retreived successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MembershipMemberDetailsErrorsListDTO'
+  /tools/membership/groupdetails: 
+   get: 
+    operationId: GetMembershipGroupDetails
+    tags: 
+     - MembershipGroupDetails
+    summary: Get MembershipGroupDetails
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: MembershipGroupDetails retreived successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MembershipGroupDetailsListDTO'
+components: 
+  schemas: 
+   MembershipMemberDetailsDTO: 
+    title : MembershipMemberDetailsDTO
+    type: object
+    properties: 
+     RowId: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     FileId: 
+      type: integer
+      nullable: true
+     CurrentStatus: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     DOB: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     NewIgnoreReason: 
+      type: string
+      nullable: true
+     MemberXML: 
+      type: string
+      nullable: true
+     FileStatus: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|ForReprocessing|"
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+   MembershipTermDetailsSearchDTO: 
+    title : MembershipTermDetailsSearchDTO
+    type: object
+    properties: 
+     JobID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     TermStatus: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BygroupId|"
+      nullable: true
+   MembershipTermDetailsListDTO: 
+    title : MembershipTermDetailsListDTO
+    type: object
+    properties: 
+     LastName: 
+      type: string
+     FirstName: 
+      type: string
+     MemberNumber: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     TerminationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+     GroupId: 
+      type: integer
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     MaintenanceTypeCode: 
+      type: string
+      nullable: true
+     ErrorMsg: 
+      type: string
+      nullable: true
+   MembershipMemberDetailsErrorsListDTO: 
+    title : MembershipMemberDetailsErrorsListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     ReferenceCodeID: 
+      type: integer
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     Subtype: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     Count: 
+      type: integer
+      nullable: true
+   MembershipGroupDetailsListDTO: 
+    title : MembershipGroupDetailsListDTO
+    type: object
+    properties: 
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     TotalMembersInJob: 
+      type: integer
+      nullable: true
+     ActiveMembersAsOfTermDate: 
+      type: integer
+      nullable: true
+     PossibleTerms: 
+      type: integer
+      nullable: true
+     PercentOfTermsToActiveMembers: 
+      type: string
+      nullable: true
+     PercentChangeInMembership: 
+      type: string
+      nullable: true
+     ProjectedNumberOfAdds: 
+      type: integer
+      nullable: true
+     ProjectedNumberOfUpdates: 
+      type: integer
+      nullable: true
+     NumberOfErrors: 
+      type: integer
+      nullable: true
+     NumberOfSuccessfulRows: 
+      type: integer
+      nullable: true
+     PercentOfErrors: 
+      type: string
+      nullable: true
+     PercentSuccessful: 
+      type: string
+      nullable: true
+     NumberOfTermErrors: 
+      type: integer
+      nullable: true
+     NumberOfSuccessfulTerms: 
+      type: integer
+      nullable: true
+     PercentOfTermErrors: 
+      type: string
+      nullable: true
+     PercentOfSuccessfulTerms: 
+      type: string
+      nullable: true
+     NumberOfSubscribers: 
+      type: integer
+      nullable: true
+     NumberOfDependents: 
+      type: integer
+      nullable: true
+     NumberOfSPPSubscribers: 
+      type: integer
+      nullable: true
+     NumberOfSPPDependents: 
+      type: integer
+      nullable: true
+     PercentOfSubscribers: 
+      type: string
+      nullable: true
+     PercentOfDependents: 
+      type: string
+      nullable: true
+     NumberOfReprocessedSuccessful: 
+      type: integer
+      nullable: true
+     NumberOfIgnored: 
+      type: integer
+      nullable: true
+     PercentIgnored: 
+      type: string
+      nullable: true
+     NumberOfUpdated: 
+      type: integer
+      nullable: true
+     PercentUpdated: 
+      type: string
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "ForDataScrubbing"
+    description: description of parameter passed
