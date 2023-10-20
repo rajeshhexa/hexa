@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /tools/authorizationbatch: 
+   post: 
+    operationId: AddAuthorizationBatch
+    tags: 
+     - Authorization Batch
+    summary: Add Authorization Batch
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AuthorizationBatchDTO'
+    responses: 
+     '200': 
+      description: Authorization Batch Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /tools/authorizationbatches: 
+   get: 
+    operationId: GetAuthorizationBatches
+    tags: 
+     - Authorization Batch
+    summary: Get Authorization Batches
+    description: Description of path
