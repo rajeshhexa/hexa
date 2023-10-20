@@ -1,0 +1,434 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /tools/authorizationbatch: 
+   post: 
+    operationId: AddAuthorizationBatch
+    tags: 
+     - Authorization Batch
+    summary: Add Authorization Batch
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AuthorizationBatchDTO'
+    responses: 
+     '200': 
+      description: Authorization Batch Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /tools/authorizationbatches: 
+   get: 
+    operationId: GetAuthorizationBatches
+    tags: 
+     - Authorization Batch
+    summary: Get Authorization Batches
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AuthorizationBatchIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Authorization Batch Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AuthorizationBatchListDTO'
+  /tools/authorizationbatch/process: 
+   post: 
+    operationId: ProcessAuthorizationBatch
+    tags: 
+     - Authorization Batch
+    summary: Process Authorization Batch
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AuthorizationBatchIDQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Authorization Batch Processed Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /tools/authorization/loadermaster: 
+   get: 
+    operationId: GetAuthorizationLoaderMaster
+    tags: 
+     - Authorization Loader Master
+    summary: Get Authorization Loader Master
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AuthorizationBatchIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Authorization Loader Master Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AuthorizationLoaderMasterListDTO'
+  /tools/authorizationbatch/close: 
+   post: 
+    operationId: CloseAuthorizationBatch
+    tags: 
+     - Authorization Batch
+    summary: Close Authorization Batch
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CloseAuthorizationBatchDTO'
+    responses: 
+     '200': 
+      description: Authorization Batch Closed Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   AuthorizationBatchDTO: 
+    title : AuthorizationBatchDTO
+    type: object
+    properties: 
+     BatchName: 
+      type: string
+      nullable: true
+     BatchDescription: 
+      type: string
+      nullable: true
+   CloseAuthorizationBatchDTO: 
+    title : CloseAuthorizationBatchDTO
+    type: object
+    properties: 
+     AuthorizationBatchID: 
+      type: integer
+      nullable: true
+     AuthorizationErrorFileName: 
+      type: string
+      nullable: true
+     ServiceErrorFileName: 
+      type: string
+      nullable: true
+     DetailErrorFileName: 
+      type: string
+      nullable: true
+     TotalBatchTime: 
+      type: string
+      nullable: true
+   AuthorizationBatchListDTO: 
+    title : AuthorizationBatchListDTO
+    type: object
+    properties: 
+     AuthorizationBatchID: 
+      type: integer
+      description: 
+     BatchName: 
+      type: string
+     BatchDescription: 
+      type: string
+      nullable: true
+     BatchStatus: 
+      type: string
+     DateCreated: 
+      type: string
+      format: date-time
+     DateCompleted: 
+      type: string
+      format: date-time
+      nullable: true
+     TotalBatchTime: 
+      type: string
+      format: date-time
+      nullable: true
+     CreatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   AuthorizationLoaderMasterListDTO: 
+    title : AuthorizationLoaderMasterListDTO
+    type: object
+    properties: 
+     RowID: 
+      type: integer
+      description: 
+     AuthorizationBatchID: 
+      type: integer
+      description: 
+     AuthorizationLoadID: 
+      type: integer
+      description: 
+     TotalNumberOfServices: 
+      type: integer
+      nullable: true
+     TotalNumberOfDetails: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     ExternalAuthorizationNumber: 
+      type: string
+      nullable: true
+     AuthorizationNumber: 
+      type: string
+      nullable: true
+     AuthorizationClass: 
+      type: string
+      nullable: true
+     AuthorizationClassName: 
+      type: string
+      nullable: true
+     AuthorizationType: 
+      type: string
+      nullable: true
+     AuthorizationTypeCode: 
+      type: string
+      nullable: true
+     AuthorizationStatus: 
+      type: string
+      nullable: true
+     AuthorizationStatusCode: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusCode: 
+      type: string
+      nullable: true
+     ChangeReasonCode: 
+      type: string
+      nullable: true
+     ChangeReason: 
+      type: string
+      nullable: true
+     PreviousAuthorizationNumber: 
+      type: string
+      nullable: true
+     PreviousAuthorizationID: 
+      type: integer
+      nullable: true
+     RequestedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RequestedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ApprovedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ApprovedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RequestedMaxUnits: 
+      type: number
+      nullable: true
+     ApprovedMaxUnits: 
+      type: number
+      nullable: true
+     RequestedMaxVisits: 
+      type: integer
+      nullable: true
+     ApprovedMaxVisits: 
+      type: integer
+      nullable: true
+     RequestedMaxDollars: 
+      type: number
+      nullable: true
+     ApprovedMaxDollars: 
+      type: number
+      nullable: true
+     RequestedNegotiatedAmount: 
+      type: number
+      nullable: true
+     ApprovedNegotiatedAmount: 
+      type: number
+      nullable: true
+     AccidentDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastMenstrualPeriodDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EstimatedDateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     OnsetOfSymptomsDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AssignedToUser: 
+      type: string
+      nullable: true
+     AssignedToUserID: 
+      type: integer
+      nullable: true
+     RelatedCaseNumber: 
+      type: string
+      nullable: true
+     RelatedCaseID: 
+      type: integer
+      nullable: true
+     RequestingProviderNumber: 
+      type: string
+      nullable: true
+     RequestingProviderID: 
+      type: integer
+      nullable: true
+     RequestingOfficeNumber: 
+      type: string
+      nullable: true
+     RequestingOfficeName: 
+      type: string
+      nullable: true
+     RequestingOfficeID: 
+      type: integer
+      nullable: true
+     DiagnosisCodes: 
+      type: string
+      nullable: true
+     CustomAttributes: 
+      type: string
+      nullable: true
+     LetterComments: 
+      type: string
+      nullable: true
+     LetterComments2: 
+      type: string
+      nullable: true
+     LetterComments3: 
+      type: string
+      nullable: true
+     AuthExplanationId: 
+      type: integer
+      nullable: true
+     AuthExplanation: 
+      type: string
+      nullable: true
+     AuthExplanationId2: 
+      type: integer
+      nullable: true
+     AuthExplanation2: 
+      type: string
+      nullable: true
+     AuthExplanationId3: 
+      type: integer
+      nullable: true
+     AuthExplanation3: 
+      type: string
+      nullable: true
+     ClaimExplanationId: 
+      type: integer
+      nullable: true
+     ClaimExplanation: 
+      type: string
+      nullable: true
+     ApplyPenalty: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     OverrideTransform: 
+      type: string
+      nullable: true
+     EpisodeAuthorization: 
+      type: string
+      nullable: true
+     ExternalDollarsUsed: 
+      type: number
+      nullable: true
+     ExternalUnitsUsed: 
+      type: number
+      nullable: true
+     ExternalVisitsUsed: 
+      type: integer
+      nullable: true
+     OverrideTransformLastUpdatedBy: 
+      type: integer
+      nullable: true
+     OverrideTransformByName: 
+      type: string
+      nullable: true
+     OverrideTransformLastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy : 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedAt : 
+      type: string
+      format: date-time
+  parameters: 
+   AuthorizationBatchIDQueryParam: 
+    in: query
+    name: AuthorizationBatchID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|AllBatches|"
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
