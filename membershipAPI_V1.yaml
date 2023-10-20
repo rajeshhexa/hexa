@@ -1,0 +1,162 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: MembershipFiles
+  description: MembershipFiles API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /tools/membershipfile: 
+   post: 
+    operationId: AddMembershipFile
+    tags: 
+     - MembershipFile
+    summary: Add MembershipFile
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MembershipFileDTO'
+    responses: 
+     '200': 
+      description: Membership file added succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateMembershipfile
+    tags: 
+     - MembershipFile
+    summary: Update MembershipFile
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MembershipFileDTO'
+    responses: 
+     '200': 
+      description: Membership file updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteMembershipFile
+    tags: 
+     - MembershipFile
+    summary: Delete MembershipFile
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MembershipFileIDQueryParam'
+    responses: 
+     '200': 
+      description: Membership file deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /tools/membershipfiles: 
+   get: 
+    operationId: GetMembershipFile
+    tags: 
+     - MembershipFile
+    summary: Get MembershipFiles
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Membership file retrived successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MembershipFileListDTO'
+components: 
+  schemas: 
+   MembershipFileDTO: 
+    title : MembershipFileDTO
+    type: object
+    properties: 
+     FileName: 
+      type: string
+      nullable: true
+     InputType: 
+      type: string
+      default: "CSV"
+      nullable: true
+     FileStatus: 
+      type: string
+      nullable: true
+     JobID: 
+      type: integer
+      nullable: true
+     MembershipFileID: 
+      type: integer
+      nullable: true
+   MembershipFileListDTO: 
+    title : MembershipFileListDTO
+    type: object
+    properties: 
+     MembershipFileID: 
+      type: integer
+     JobId: 
+      type: integer
+      nullable: true
+     FileStatusCode: 
+      type: string
+      nullable: true
+     FileStatus: 
+      type: string
+      nullable: true
+     FileName: 
+      type: string
+     InputTypeCode: 
+      type: string
+     InputType: 
+      type: string
+      nullable: true
+     DateInput: 
+      type: string
+      format: date-time
+     TotalMembers: 
+      type: integer
+      nullable: true
+     LastupdatedBy: 
+      type: string
+     LastupdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   MembershipFileIDQueryParam: 
+    in: query
+    name: MembershipFileID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|OpenFiles|"
+    description: description of parameter passed
