@@ -1,0 +1,396 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Entity API
+  description: Entity API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /tools/onlinereports: 
+   post: 
+    operationId: GetOnlineReports
+    tags: 
+     - Reports
+    summary: Get Online Reports
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/OnlineReportsSearchDTO'
+    responses: 
+     '200': 
+      description: OnlineReports retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/OnlineReportsListDTO'
+  /user/report/defaultcolumns: 
+   get: 
+    operationId: GetUserReportDefaultColumns
+    tags: 
+     - Reports
+    summary: Get User Report Default Columns
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/UserReportIdQueryParam'
+    responses: 
+     '200': 
+      description: UserReportDefaultColumns retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UserReportDefaultColumnsListDTO'
+  /tools/report/usage: 
+   post: 
+    operationId: AddReportUsage
+    tags: 
+     - Reports
+    summary: Add Report Usage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReportUsageDTO'
+    responses: 
+     '200': 
+      description: Report Usage added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateReportUsage
+    tags: 
+     - Reports
+    summary: Update Report Usage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReportUsageDTO'
+    responses: 
+     '200': 
+      description: Report Usage updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /tools/reports: 
+   post: 
+    operationId: GetReports
+    tags: 
+     - Reports
+    summary: Get Reports
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReportsSearchDTO'
+    responses: 
+     '200': 
+      description: Reports retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReportsListDTO'
+components: 
+  schemas: 
+   OnlineReportsSearchDTO: 
+    title : OnlineReportsSearchDTO
+    type: object
+    properties: 
+     ReportName  : 
+      type: string
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     Product: 
+      type: string
+      nullable: true
+     ReportType: 
+      type: string
+      nullable: true
+     ReportId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     GetFavoriteDefaults: 
+      type: string
+      default: N
+      nullable: true
+     UserReportMapID: 
+      type: integer
+      nullable: true
+   OnlineReportsListDTO: 
+    title : OnlineReportsListDTO
+    type: object
+    properties: 
+     ReportType: 
+      type: string
+      nullable: true
+     ReportName: 
+      type: string
+     StoredProcedureName : 
+      type: string
+      nullable: true
+     ReportDescription: 
+      type: string
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     CategoryCode: 
+      type: string
+      nullable: true
+     SubCategoryName: 
+      type: string
+      nullable: true
+     SubCategoryCode : 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     PermissionId: 
+      type: integer
+      nullable: true
+     PermissionName : 
+      type: string
+      nullable: true
+     Dataset: 
+      type: string
+      nullable: true
+     DefaultParameters: 
+      type: string
+      nullable: true
+     DefaultColumns: 
+      type: string
+      nullable: true
+     SystemTableName: 
+      type: string
+      nullable: true
+     MultiRecordSet: 
+      type: string
+      nullable: true
+     AllowColumnSelection: 
+      type: string
+      nullable: true
+     ExportDocumentSource: 
+      type: string
+      nullable: true
+     SupportEntityAccess : 
+      type: string
+      nullable: true
+     EnforceEntityAccess  : 
+      type: string
+      nullable: true
+   UserReportDefaultColumnsListDTO: 
+    title : UserReportDefaultColumnsListDTO
+    type: object
+    properties: 
+     UserReportId: 
+      type: integer
+      nullable: true
+     DefaultColumns: 
+      type: string
+      nullable: true
+   ReportUsageDTO: 
+    title : ReportUsageDTO
+    type: object
+    properties: 
+     StoredProcedureName: 
+      type: string
+      nullable: true
+     ReportId: 
+      type: integer
+      nullable: true
+     ReportType: 
+      type: string
+      nullable: true
+     SQL: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     ExportType: 
+      type: string
+      nullable: true
+     UseServer: 
+      type: string
+      nullable: true
+     ReportUsageID: 
+      type: integer
+      nullable: true
+     ReportUsageStatus: 
+      type: string
+      nullable: true
+   ReportsSearchDTO: 
+    title : ReportsSearchDTO
+    type: object
+    properties: 
+     SessionId: 
+      type: integer
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     OnlineReportId: 
+      type: integer
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     SubCategoryName: 
+      type: string
+      nullable: true
+     ReportType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   ReportsListDTO: 
+    title : ReportsListDTO
+    type: object
+    properties: 
+     ProductName: 
+      type: string
+      default: N
+      nullable: true
+     ReportId: 
+      type: integer
+      nullable: true
+     ReportType: 
+      type: string
+      nullable: true
+     OnlineReportName: 
+      type: string
+      nullable: true
+     StoredProcedureName: 
+      type: string
+      nullable: true
+     ReportDescription: 
+      type: string
+      nullable: true
+     CategoryCode: 
+      type: string
+      default: N
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     SubCategoryCode: 
+      type: string
+      default: N
+      nullable: true
+     SubCategoryName: 
+      type: string
+      nullable: true
+     PermissionId: 
+      type: integer
+      nullable: true
+     PermissionName: 
+      type: string
+      nullable: true
+     Dataset: 
+      type: string
+      nullable: true
+     SystemTableName: 
+      type: string
+      nullable: true
+     MultiRecordSet: 
+      type: string
+      nullable: true
+     AllowColumnSelection: 
+      type: string
+      nullable: true
+     HasChildrenUserReports: 
+      type: string
+      nullable: true
+     SelectOutputFormat: 
+      type: string
+      nullable: true
+     ExportDocumentSource: 
+      type: string
+      nullable: true
+     SupportEntityAccess: 
+      type: string
+      nullable: true
+     EnforceEntityAccess: 
+      type: string
+      nullable: true
+     UserReportId: 
+      type: integer
+      nullable: true
+     OperationalReportId: 
+      type: integer
+      nullable: true
+     UserReportName: 
+      type: string
+      nullable: true
+     ReportName: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+     ReportPath: 
+      type: string
+      nullable: true
+     DefaultParameters: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     UseSQL: 
+      type: string
+      nullable: true
+     ExportType: 
+      type: string
+      nullable: true
+     DefaultColumns: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: |UserReports|
+    description: description of parameter passed
+   UserReportIdQueryParam: 
+    in: query
+    name: UserReportId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
