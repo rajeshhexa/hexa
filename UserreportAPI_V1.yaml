@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Tools Report map
+  description: Tools Report map API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /user/reportmaps: 
+   Get: 
+    operationId: GetUserReportMaps
+    tags: 
+     - reportmap
+    summary: Get User ReportMaps
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageParam'
+     - $ref: '#/components/parameters/TemplateParam'
+     - $ref: '#/components/parameters/ProductNameParam'
+    responses: 
+     '200': 
+      description: User Report Maps Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/UserReportMapsListDTO'
+  /user/reportmap: 
+   Post: 
+    operationId: AddUserReportMap
+    tags: 
+     - reportmap
+    summary: Add User Report Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MembershipJobDTO'
+    responses: 
+     '200': 
+      description: User Report Map Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Put: 
+    operationId: UpdateUserReportMap
+    tags: 
+     - reportmap
+    summary: Update User Report Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MembershipJobDTO'
+    responses: 
+     '200': 
+      description: User Report Map Update Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Delete: 
+    operationId: DeleteUserReportMap
+    tags: 
+     - reportmap
+    summary: Delete User Report Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UserReportMapIDParam'
+    responses: 
+     '200': 
+      description: User Report Map Delete Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   UserReportMapsListDTO: 
+    title : UserReportMapsListDTO
+    type: object
+    properties: 
+     UserReportMapID: 
+      type: integer
+      nullable: true
+     ReportAlias: 
+      type: string
+      nullable: true
+     ReportId: 
+      type: integer
+      nullable: true
+     ReportType: 
+      type: string
+      nullable: true
+     OnlineReportName: 
+      type: string
+      nullable: true
+     StoredProcedureName: 
+      type: string
+      nullable: true
+     ReportDescription: 
+      type: string
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     CategoryCode: 
+      type: string
+      nullable: true
+     PermissionId: 
+      type: integer
+      nullable: true
+     PermissionName: 
+      type: string
+      nullable: true
+     Dataset: 
+      type: string
+      nullable: true
+     MultiRecordset: 
+      type: string
+      nullable: true
+     AllowColumnSelection: 
+      type: string
+      nullable: true
+     SystemTableName: 
+      type: string
+      nullable: true
+     ExportDocumentSource: 
+      type: string
+      nullable: true
+   MembershipJobDTO: 
+    title : MembershipJobDTO
+    type: object
+    properties: 
+     ReportID: 
+      type: integer
+      nullable: true
+     ReportType: 
+      type: string
+      nullable: true
+     UserReportMapID: 
+      type: integer
+      nullable: true
+     DefaultParameters: 
+      type: string
+      nullable: true
+     DefaultColumns: 
+      type: string
+      nullable: true
+     ReportAlias: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|DefaultParameters|"
+      nullable: true
+  parameters: 
+   UsageParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: |ONLINEREPORTS|
+    description: description of parameter passed
+   TemplateParam: 
+    in: query
+    name: Template
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   ProductNameParam: 
+    in: query
+    name: ProductName
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   UserReportMapIDParam: 
+    in: query
+    name: UserReportMapID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
