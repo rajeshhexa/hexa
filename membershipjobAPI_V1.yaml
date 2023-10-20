@@ -1,0 +1,363 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Tools Membership Job
+  description: Tools Membership Job API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /tools/membershipjobs: 
+   get: 
+    operationId: GetMembershipJobs
+    tags: 
+     - MembershipJob
+    summary: GetMembershipJobs
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdParam'
+     - $ref: '#/components/parameters/JobTypeParam'
+     - $ref: '#/components/parameters/ProcessingStatusParam'
+     - $ref: '#/components/parameters/UsageParam'
+    responses: 
+     '200': 
+      description: Membership Job Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MembershipJobsListDTO'
+  /tools/membershipjob: 
+   post: 
+    operationId: AddMembershipJob
+    tags: 
+     - MembershipJob
+    summary: AddMembershipJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MembershipJobDTO'
+    responses: 
+     '200': 
+      description: Membership Job Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Put: 
+    operationId: UpdateMembershipJob
+    tags: 
+     - MembershipJob
+    summary: UpdateMembershipJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MembershipJobDTO'
+    responses: 
+     '200': 
+      description: Membership Job Updated Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /tools/membershipjob/rows: 
+   Get: 
+    operationId: GetMembershipJobRows
+    tags: 
+     - MembershipJob
+    summary: GetMembershipJobRows
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdParam'
+     - $ref: '#/components/parameters/ProcessUsageParam'
+     - $ref: '#/components/parameters/ScheduledJobIDParam'
+    responses: 
+     '200': 
+      description: Membership Job Rows Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /tools/membershipjob/process: 
+   post: 
+    operationId: ProcessMembershipJob
+    tags: 
+     - MembershipJob
+    summary: ProcessMembershipJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcessMembershipJobSearchDTO'
+    responses: 
+     '200': 
+      description: Membership Job Processed Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /tools/membershipjob/close: 
+   post: 
+    operationId: CloseMembershipJob
+    tags: 
+     - MembershipJob
+    summary: CloseMembershipJob
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIDParam'
+    responses: 
+     '200': 
+      description: Membership Job Closed Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /tools/membershipjob/reset: 
+   post: 
+    operationId: ResetDetailsForMembershipJob
+    tags: 
+     - MembershipJob
+    summary: ResetDetailsForMembershipJob
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIDParam'
+    responses: 
+     '200': 
+      description: Membership Job Detailes Reset Succesfull
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   MembershipJobsListDTO: 
+    title : MembershipJobsListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+     JobNumber: 
+      type: string
+     JobName: 
+      type: string
+     JobDescription: 
+      type: string
+      nullable: true
+     JobTypeCode: 
+      type: string
+     JobType: 
+      type: string
+      nullable: true
+     JobProcessingStatusCode: 
+      type: string
+     JobProcessingStatus: 
+      type: string
+      nullable: true
+     JobStep: 
+      type: string
+     JobStepName: 
+      type: string
+      nullable: true
+     LogResults: 
+      type: string
+     LogResultsName: 
+      type: string
+      nullable: true
+     RunInParallel: 
+      type: string
+      nullable: true
+     CreatedBy: 
+      type: integer
+     CreatedByName: 
+      type: string
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+      nullable: true
+     DateCompleted: 
+      type: string
+      format: date-time
+     TimeElapsed: 
+      type: number
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     Notes: 
+      type: string
+      nullable: true
+     TerminationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationReasonCode: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     ErrorFileName: 
+      type: string
+      nullable: true
+     TermErrorFileName: 
+      type: string
+      nullable: true
+     TermFutureSlicesCode: 
+      type: string
+      nullable: true
+     TermFutureSlices: 
+      type: string
+      nullable: true
+     Pause: 
+      type: integer
+     NumberTimesProcessed: 
+      type: integer
+      nullable: true
+     MembersPartiallyProcessed: 
+      type: integer
+      nullable: true
+   MembershipJobDTO: 
+    title : MembershipJobDTO
+    type: object
+    properties: 
+     JobName: 
+      type: string
+      nullable: true
+     JobDescription: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     Step: 
+      type: string
+      default: "CRT"
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      default: "OPN"
+      nullable: true
+     TerminationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     TermFutureSlices: 
+      type: string
+      nullable: true
+     LogResults: 
+      type: string
+      default: "N"
+      nullable: true
+     RunInParallel: 
+      type: string
+      default: "N"
+      nullable: true
+     Pause: 
+      type: integer
+      nullable: true
+     ErrorFileName: 
+      type: string
+      nullable: true
+     TermErrorFileName: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|UPDATESTEP|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ProcessMembershipJobSearchDTO: 
+    title : ProcessMembershipJobSearchDTO
+    type: object
+    properties: 
+     JobID: 
+      type: integer
+      nullable: true
+     ProcessUsage: 
+      type: string
+      nullable: true
+     ScheduledJobID: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   JobIdParam: 
+    in: query
+    name: JobId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   JobTypeParam: 
+    in: query
+    name: JobType
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   ProcessingStatusParam: 
+    in: query
+    name: ProcessingStatus
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: '|BYJOBID|'
+    description: description of parameter passed
+   ProcessUsageParam: 
+    in: query
+    name: ProcessUsage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   ScheduledJobIDParam: 
+    in: query
+    name: ScheduledJobID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   JobIDParam: 
+    in: query
+    name: JobID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
