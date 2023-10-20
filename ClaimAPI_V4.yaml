@@ -1,0 +1,1164 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/historycodes: 
+   get: 
+    operationId: GetClaimHistoryCodes
+    tags: 
+     - Claim History
+    summary: Get Claim History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/LoadStatusQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Claim History Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimHistoryCodeListDTO'
+  /tools/parameters: 
+   get: 
+    operationId: GetParameters
+    tags: 
+     - Parameter
+    summary: Get Parameter
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CollectionNameQueryParam'
+     - $ref: '#/components/parameters/UserReportIdQueryParam'
+    responses: 
+     '200': 
+      description: Parameters Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ParameterListDTO'
+  /claim/historymaster: 
+   get: 
+    operationId: GetClaimHistoryMaster
+    tags: 
+     - Claim History
+    summary: Get Claim History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/LoadStatusQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Claim History Master Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimHistoryMasterListDTO'
+  /claim/historydetails: 
+   get: 
+    operationId: GetClaimHistoryDetails
+    tags: 
+     - Claim History
+    summary: Get Claim History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/LoadStatusQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Claim History Details Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimHistoryDetailListDTO'
+components: 
+  schemas: 
+   ClaimHistoryCodeListDTO: 
+    title : ClaimHistoryCodeListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     ClaimLoadId: 
+      type: integer
+      nullable: true
+     ClaimLoadProfileName: 
+      type: string
+      nullable: true
+     ExternalClaimId: 
+      type: integer
+      nullable: true
+     Sequence: 
+      type: integer
+      nullable: true
+     CodeType: 
+      type: string
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     CodeQualifier: 
+      type: string
+      nullable: true
+     POAIndicator: 
+      type: string
+      nullable: true
+     DateThrough: 
+      type: string
+      nullable: true
+     DateRecorded: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     FieldNumber: 
+      type: string
+      nullable: true
+   ParameterListDTO: 
+    title : ParameterListDTO
+    type: object
+    properties: 
+     CollectionName: 
+      type: string
+     ParameterName: 
+      type: string
+     DisplayName: 
+      type: string
+     Visible: 
+      type: string
+     Required: 
+      type: string
+     ParameterOrder: 
+      type: number
+     ParameterDataType: 
+      type: string
+      nullable: true
+     ParameterLength: 
+      type: integer
+      nullable: true
+     ControlType: 
+      type: string
+      nullable: true
+     SearchField: 
+      type: string
+      nullable: true
+     ComboSql: 
+      type: string
+      nullable: true
+     ComboDisplayName: 
+      type: string
+      nullable: true
+     ComboIdName: 
+      type: string
+      nullable: true
+     FindType: 
+      type: string
+      nullable: true
+     FindParameters: 
+      type: string
+      nullable: true
+     DefaultValue: 
+      type: string
+      nullable: true
+     ToolTip: 
+      type: string
+      nullable: true
+   ClaimHistoryMasterListDTO: 
+    title : ClaimHistoryMasterListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+     JobNumber: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     ClaimLoadId: 
+      type: integer
+      nullable: true
+     ClaimLoadProfileName: 
+      type: string
+      nullable: true
+     ExternalClaimId : 
+      type: integer
+     ClaimType: 
+      type: string
+     FormType : 
+      type: string
+     ExternalClaimNumber : 
+      type: string
+     ExternalReferralNumber : 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+     MemberNumber : 
+      type: string
+      nullable: true
+     TotalCharges : 
+      type: number
+     DateReceived : 
+      type: string
+      format: date-time
+      nullable: true
+     VendorNumber : 
+      type: string
+      nullable: true
+     VendorNumberQualifier : 
+      type: string
+      nullable: true
+     VendorNPI: 
+      type: string
+      nullable: true
+     EIN : 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderLastName : 
+      type: string
+      nullable: true
+     ProviderNPI: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeNumberQualifier : 
+      type: string
+      nullable: true
+     OfficeNPI: 
+      type: string
+      nullable: true
+     ReimbursementName: 
+      type: string
+      nullable: true
+     CreateEOBRequest: 
+      type: string
+      nullable: true
+     OneOfficePerProvider: 
+      type: string
+      nullable: true
+     MatchOfficeByName: 
+      type: string
+      nullable: true
+     OfficeName : 
+      type: string
+      nullable: true
+     OfficeAddress1 : 
+      type: string
+      nullable: true
+     OfficeAddress2 : 
+      type: string
+      nullable: true
+     OfficeZip : 
+      type: string
+      nullable: true
+     TypeOfBill: 
+      type: string
+      nullable: true
+     ReferringProviderNumber: 
+      type: string
+      nullable: true
+     ReferringProviderNumberQualifier: 
+      type: string
+      nullable: true
+     FailureReason : 
+      type: string
+      nullable: true
+     Filler: 
+      type: string
+      nullable: true
+     UtilizationDate : 
+      type: string
+      format: date-time
+      nullable: true
+     History: 
+      type: string
+     MemberDateOfBirth : 
+      type: string
+      format: date-time
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     RelationshipCode : 
+      type: string
+      nullable: true
+     CaseNumber: 
+      type: string
+      nullable: true
+     ExternalCaseNumber : 
+      type: string
+      nullable: true
+     AuthorizationNumber: 
+      type: string
+      nullable: true
+     EpisodeDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SuppressPayment: 
+      type: string
+      nullable: true
+     AssignmentBenefits: 
+      type: string
+      nullable: true
+     StatementCoversFrom: 
+      type: string
+      nullable: true
+     StatementCoversTo: 
+      type: string
+      format: date-time
+      nullable: true
+     AdmissionDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AdmissionHour: 
+      type: string
+      nullable: true
+     TypeOfAdmission: 
+      type: string
+      nullable: true
+     SourceOfAdmission: 
+      type: string
+      nullable: true
+     DischargeHour: 
+      type: string
+      nullable: true
+     DischargeStatus: 
+      type: string
+      nullable: true
+     ReinsurancePolicy: 
+      type: string
+      nullable: true
+     ReferringPreestimate: 
+      type: string
+      nullable: true
+     ProviderSpecialtyCategory: 
+      type: string
+      nullable: true
+     ProviderSpecialtySubCategory: 
+      type: string
+      nullable: true
+     EmergencyReferral: 
+      type: string
+      nullable: true
+     ReferringOfficeNumber: 
+      type: string
+      nullable: true
+     MedicalRecordNumber: 
+      type: string
+      nullable: true
+     AttachmentStatus: 
+      type: string
+      nullable: true
+     MedicareStatus: 
+      type: string
+      nullable: true
+     BillingLimitExceptionIndicator: 
+      type: string
+      nullable: true
+     DelayReason: 
+      type: string
+      nullable: true
+     SOC: 
+      type: number
+      nullable: true
+     AttendingProviderNumber: 
+      type: string
+      nullable: true
+     OperatingProviderNumber: 
+      type: string
+      nullable: true
+     OtherProviderNumber: 
+      type: string
+      nullable: true
+     OtherProviderNumber2  : 
+      type: string
+      nullable: true
+     EmploymentRelated : 
+      type: string
+      nullable: true
+     AutoAccident : 
+      type: string
+      nullable: true
+     OtherAccident : 
+      type: string
+      nullable: true
+     PriorEpisodeDate : 
+      type: string
+      format: date-time
+      nullable: true
+     OffWorkDateFrom  : 
+      type: string
+      format: date-time
+      nullable: true
+     OffWorkDateTo : 
+      type: string
+      format: date-time
+      nullable: true
+     HospitalDateFrom : 
+      type: string
+      format: date-time
+      nullable: true
+     HospitalDateTo : 
+      type: string
+      format: date-time
+      nullable: true
+     OutsideLab : 
+      type: string
+      nullable: true
+     LabCharges : 
+      type: number
+      nullable: true
+     PatientAccountNumber  : 
+      type: string
+      nullable: true
+     AmountPaid : 
+      type: string
+      nullable: true
+     Radiograph : 
+      type: string
+      nullable: true
+     RadiographReferenceNumber : 
+      type: string
+      nullable: true
+     RadiographCount: 
+      type: integer
+      nullable: true
+     Orthodontics : 
+      type: string
+      nullable: true
+     DateAppliancePlaced : 
+      type: string
+      format: date-time
+      nullable: true
+     MonthsRemaining : 
+      type: integer
+      nullable: true
+     Prosthesis : 
+      type: string
+      nullable: true
+     AutoAccidentState : 
+      type: string
+      nullable: true
+     PriorPlacementDate : 
+      type: string
+      format: date-time
+      nullable: true
+     OrthodonticsTotalMonths : 
+      type: integer
+      nullable: true
+     MissingTeethInfo : 
+      type: string
+      nullable: true
+     CreateClaimSubmission: 
+      type: string
+      nullable: true
+     InputBatchClass: 
+      type: string
+      nullable: true
+     InputBatchSubClass: 
+      type: string
+      nullable: true
+     PriCOBRemittanceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PriCOBAmtBilled: 
+      type: number
+      nullable: true
+     PriCOBAmtAllowed: 
+      type: number
+      nullable: true
+     PriCOBAmtDeductible: 
+      type: number
+      nullable: true
+     PriCOBAmtCopay: 
+      type: number
+      nullable: true
+     PriCOBAmtCoinsurance: 
+      type: number
+      nullable: true
+     PriCOBAmtOtherPatientLiability: 
+      type: number
+      nullable: true
+     PriCOBAmtRemainingPatientLiability: 
+      type: number
+      nullable: true
+     PriCOBAmtPaid: 
+      type: number
+      nullable: true
+     PriCOBAmtSequestration: 
+      type: number
+      nullable: true
+     PriCOBAmtContractAdjustment: 
+      type: number
+      nullable: true
+     PriCOBAmtDenied: 
+      type: number
+      nullable: true
+     PriCOBAmtNonCovered: 
+      type: number
+      nullable: true
+     PriCOBPayerNumberQualifier: 
+      type: string
+      nullable: true
+     PriCOBPayerNumber: 
+      type: string
+      nullable: true
+     PriCOBRelationshipToSubscriberCode: 
+      type: string
+      nullable: true
+     PriCOBPayerGroupNumber: 
+      type: string
+      nullable: true
+     PriCOBPayerEmpName: 
+      type: string
+      nullable: true
+     PriCOBInsuranceTypeCode: 
+      type: string
+      nullable: true
+     PriCOBClaimFilingIndicatorCode: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderFirstName: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderLastName: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderMiddleName: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderNameSuffix: 
+      type: string
+      nullable: true
+     PriCOBPayerMemberNumber: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderAddress1: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderAddress2: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderCity: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderState: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderZip: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderCountryCode: 
+      type: string
+      nullable: true
+     PriCOBPolicyHolderSSN: 
+      type: string
+      nullable: true
+     PriCOBPayerName: 
+      type: string
+      nullable: true
+     PriCOBPayerAddress1: 
+      type: string
+      nullable: true
+     PriCOBPayerAddress2: 
+      type: string
+      nullable: true
+     PriCOBPayerCity: 
+      type: string
+      nullable: true
+     PriCOBPayerState: 
+      type: string
+      nullable: true
+     PriCOBPayerZip: 
+      type: string
+      nullable: true
+     PriCOBPayerCountryCode: 
+      type: string
+      nullable: true
+     SecCOBRemittanceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SecCOBAmtBilled: 
+      type: number
+      nullable: true
+     SecCOBAmtAllowed: 
+      type: number
+      nullable: true
+     SecCOBAmtDeductible: 
+      type: number
+      nullable: true
+     SecCOBAmtCopay: 
+      type: number
+      nullable: true
+     SecCOBAmtCoinsurance: 
+      type: number
+      nullable: true
+     SecCOBAmtOtherPatientLiability: 
+      type: number
+      nullable: true
+     SecCOBAmtRemainingPatientLiability: 
+      type: number
+      nullable: true
+     SecCOBAmtPaid: 
+      type: number
+      nullable: true
+     SecCOBAmtSequestration: 
+      type: number
+      nullable: true
+     SecCOBAmtContractAdjustment: 
+      type: number
+      nullable: true
+     SecCOBAmtDenied: 
+      type: number
+      nullable: true
+     SecCOBAmtNonCovered: 
+      type: number
+      nullable: true
+     SecCOBPayerNumberQualifier: 
+      type: string
+      nullable: true
+     SecCOBPayerNumber: 
+      type: string
+      nullable: true
+     SecCOBRelationshipToSubscriberCode: 
+      type: string
+      nullable: true
+     SecCOBPayerGroupNumber: 
+      type: string
+      nullable: true
+     SecCOBPayerEmpName: 
+      type: string
+      nullable: true
+     SecCOBInsuranceTypeCode: 
+      type: string
+      nullable: true
+     SecCOBClaimFilingIndicatorCode: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderFirstName: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderLastName: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderMiddleName: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderNameSuffix: 
+      type: string
+      nullable: true
+     SecCOBPayerMemberNumber: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderAddress1: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderAddress2: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderCity: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderState: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderZip: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderCountryCode: 
+      type: string
+      nullable: true
+     SecCOBPolicyHolderSSN: 
+      type: string
+      nullable: true
+     SecCOBPayerName: 
+      type: string
+      nullable: true
+     SecCOBPayerAddress1: 
+      type: string
+      nullable: true
+     SecCOBPayerAddress2: 
+      type: string
+      nullable: true
+     SecCOBPayerCity: 
+      type: string
+      nullable: true
+     SecCOBPayerState: 
+      type: string
+      nullable: true
+     SecCOBPayerZip: 
+      type: string
+      nullable: true
+     SecCOBPayerCountryCode: 
+      type: string
+      nullable: true
+     LockDescription: 
+      type: string
+      nullable: true
+     LockReason: 
+      type: string
+      nullable: true
+     LockExternalNumber: 
+      type: string
+      nullable: true
+     LockClass: 
+      type: string
+      nullable: true
+     LockSubClass: 
+      type: string
+      nullable: true
+     LockEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LockExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     FailureXml: 
+      type: string
+      nullable: true
+   ClaimHistoryDetailListDTO: 
+    title : ClaimHistoryDetailListDTO
+    type: object
+    properties: 
+     ClaimHistoryDetailsId: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     ClaimLoadId: 
+      type: integer
+      nullable: true
+     ClaimLoadProfileName: 
+      type: string
+      nullable: true
+     ExternalClaimId: 
+      type: integer
+     ServiceDateFrom : 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDateTo : 
+      type: string
+      format: date-time
+      nullable: true
+     DiagnosisPtrs: 
+      type: string
+      nullable: true
+     PlaceOfService : 
+      type: string
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+     Modifier2: 
+      type: string
+      nullable: true
+     Modifier3: 
+      type: string
+      nullable: true
+     Modifier4: 
+      type: string
+      nullable: true
+     ProcedureCode : 
+      type: string
+      nullable: true
+     ServiceUnits : 
+      type: number
+      nullable: true
+     Tooth : 
+      type: string
+      nullable: true
+     Surface: 
+      type: string
+      nullable: true
+     HCPCS: 
+      type: string
+      nullable: true
+     AmtCharged : 
+      type: number
+     AmtOverContract : 
+      type: number
+     AmtFeeAllowed: 
+      type: number
+     AmtDiscount: 
+      type: number
+     AmtWithhold: 
+      type: number
+     AmtEligible: 
+      type: number
+     AmtCopay: 
+      type: number
+     AmtCoinsurance: 
+      type: number
+     AmtDeductible: 
+      type: number
+     AmtCOB : 
+      type: number
+     SOC: 
+      type: number
+      nullable: true
+     VisitsCovered: 
+      type: integer
+      nullable: true
+     AmtCovered: 
+      type: number
+     AmtToPay: 
+      type: number
+     AmtToPayMember: 
+      type: number
+     AmtMajorMedical : 
+      type: number
+     AmtBasic : 
+      type: number
+     AmtPatientLiability: 
+      type: number
+     AmtOutOfPocket: 
+      type: number
+     AmtMoneyLimitApplied: 
+      type: number
+     AmtQualityAdjustment: 
+      type: number
+      nullable: true
+     QualityAdjustmentPercentage: 
+      type: number
+      nullable: true
+     RejectCode1 : 
+      type: string
+      nullable: true
+     RejectCode2 : 
+      type: string
+      nullable: true
+     CheckDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckNumber : 
+      type: string
+      nullable: true
+     RenderingProviderNumber: 
+      type: string
+      nullable: true
+     RenderingProviderNumberQualifier: 
+      type: string
+      nullable: true
+     AuthorizationNumber: 
+      type: string
+      nullable: true
+     ExternalAuthorizationNumber: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+     ExplanationID: 
+      type: integer
+      nullable: true
+     ExplanationID2: 
+      type: integer
+      nullable: true
+     ExplanationID3: 
+      type: integer
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     Explanation2: 
+      type: string
+      nullable: true
+     Explanation3: 
+      type: string
+      nullable: true
+     EpisodeAuthorizationNumber: 
+      type: string
+      nullable: true
+     StepDownLiabilityStepNumber: 
+      type: integer
+      nullable: true
+     ProductCodeQualifier: 
+      type: string
+      nullable: true
+     ProductCode: 
+      type: string
+      nullable: true
+     ProductQuantity: 
+      type: number
+      nullable: true
+     ProductUnitOfMeasure: 
+      type: string
+      nullable: true
+     RxAuthorizationNumber: 
+      type: string
+      nullable: true
+     RxAuthorizationNumberType: 
+      type: string
+      nullable: true
+     OtherCoverageCode: 
+      type: string
+      nullable: true
+     LevelOfService: 
+      type: string
+      nullable: true
+     RestrictionsMetIndicator: 
+      type: string
+      nullable: true
+     PrescriberNumber: 
+      type: string
+      nullable: true
+     PrescriberNumberQualifier: 
+      type: string
+      nullable: true
+     PharmacistNumber: 
+      type: string
+      nullable: true
+     PharmacistNumberQualifier: 
+      type: string
+      nullable: true
+     PrescriptionNumber: 
+      type: string
+      nullable: true
+     PrescriptionNumberQualifier: 
+      type: string
+      nullable: true
+     RefillNumber: 
+      type: integer
+      nullable: true
+     DateWritten: 
+      type: string
+      format: date-time
+      nullable: true
+     SubmissionClarificationCode: 
+      type: string
+      nullable: true
+     PrescriptionOrigin: 
+      type: string
+      nullable: true
+     PharmacyServiceType: 
+      type: string
+      nullable: true
+     SpecPackIndicator: 
+      type: string
+      nullable: true
+     DaysSupply: 
+      type: integer
+      nullable: true
+     DispenseAsWritten: 
+      type: string
+      nullable: true
+     ReasonForServiceCode: 
+      type: string
+      nullable: true
+     ProfessionalServiceCode: 
+      type: string
+      nullable: true
+     ResultOfServiceCode: 
+      type: string
+      nullable: true
+     LevelOfEffortCode: 
+      type: string
+      nullable: true
+     DosageFormCode: 
+      type: string
+      nullable: true
+     DispensingUnit: 
+      type: string
+      nullable: true
+     RouteOfAdministrationCode: 
+      type: string
+      nullable: true
+     IngredientComponentCount: 
+      type: integer
+      nullable: true
+     CompoundCode: 
+      type: string
+      nullable: true
+     UsualAndCustomaryCharge: 
+      type: number
+      nullable: true
+     BasisOfCost: 
+      type: string
+      nullable: true
+     IngredientTotalCharges: 
+      type: number
+      nullable: true
+     DispensingFeeSubmitted: 
+      type: number
+      nullable: true
+     ProfessionalServiceFeeSubmitted: 
+      type: number
+      nullable: true
+     IncentiveAmountSubmitted: 
+      type: number
+      nullable: true
+     OtherAmountSubmitted: 
+      type: number
+      nullable: true
+     ProcessForApprovedIngredients: 
+      type: string
+      nullable: true
+     LineItemControlNumber: 
+      type: string
+      nullable: true
+     PriCOBRemittanceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PriCOBAmtBilled: 
+      type: number
+      nullable: true
+     PriCOBAmtAllowed: 
+      type: number
+      nullable: true
+     PriCOBAmtDeductible: 
+      type: number
+      nullable: true
+     PriCOBAmtCopay: 
+      type: number
+      nullable: true
+     PriCOBAmtCoinsurance: 
+      type: number
+      nullable: true
+     PriCOBAmtOtherPatientLiability: 
+      type: number
+      nullable: true
+     PriCOBAmtRemainingPatientLiability: 
+      type: number
+      nullable: true
+     PriCOBAmtPaid: 
+      type: number
+      nullable: true
+     PriCOBAmtSequestration: 
+      type: number
+      nullable: true
+     PriCOBAmtContractAdjustment: 
+      type: number
+      nullable: true
+     PriCOBAmtDenied: 
+      type: number
+      nullable: true
+     PriCOBAmtNonCovered: 
+      type: number
+      nullable: true
+     SecCOBRemittanceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SecCOBAmtBilled: 
+      type: number
+      nullable: true
+     SecCOBAmtAllowed: 
+      type: number
+      nullable: true
+     SecCOBAmtDeductible: 
+      type: number
+      nullable: true
+     SecCOBAmtCopay: 
+      type: number
+      nullable: true
+     SecCOBAmtCoinsurance: 
+      type: number
+      nullable: true
+     SecCOBAmtOtherPatientLiability: 
+      type: number
+      nullable: true
+     SecCOBAmtRemainingPatientLiability: 
+      type: number
+      nullable: true
+     SecCOBAmtPaid: 
+      type: number
+      nullable: true
+     SecCOBAmtSequestration: 
+      type: number
+      nullable: true
+     SecCOBAmtContractAdjustment: 
+      type: number
+      nullable: true
+     SecCOBAmtDenied: 
+      type: number
+      nullable: true
+     SecCOBAmtNonCovered: 
+      type: number
+      nullable: true
+     OverrideExclusiveOrLiability: 
+      type: string
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   LoadStatusQueryParam: 
+    in: query
+    name: LoadStatus
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|ClaimLoadJob|"
+    description: description of parameter passed
+   CollectionNameQueryParam: 
+    in: query
+    name: CollectionName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UserReportIdQueryParam: 
+    in: query
+    name: UserReportId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
