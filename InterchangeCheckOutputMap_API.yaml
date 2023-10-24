@@ -1,0 +1,321 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: InterchangeCheckOutputMap
+  description: InterchangeCheckOutputMap API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  finance/interchangeinfo/checkoutputmap: 
+   post: 
+    operationId: GetInterchangeCheckOutputMap
+    tags: 
+     - InterchangeCheckOutputMap
+    summary: Get InterchangeCheckOutputMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterchangeCheckOutputMapSearchDTO'
+    responses: 
+     '200': 
+      description: InterchangeCheckOutputMap retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/InterchangeCheckOutputMapListDTO'
+   put: 
+    operationId: UpdateInterchangeCheckOutputMap
+    tags: 
+     - InterchangeCheckOutputMap
+    summary: Update InterchangeCheckOutputMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterchangeCheckOutputMapDTO'
+    responses: 
+     '200': 
+      description: InterchangeCheckOutputMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  finance/interchangeinfo/checkoutputmaphistory: 
+   get: 
+    operationId: GetInterchangeCheckOutputMapHistory
+    tags: 
+     - InterchangeCheckOutputMapHistory
+    summary: Get InterchangeCheckOutputMapHistory
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+    responses: 
+     '200': 
+      description: InterchangeCheckOutputMapHistory retreived successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MembershipMemberDetailsErrorsListDTO'
+components: 
+  schemas: 
+   InterchangeCheckOutputMapDTO: 
+    title : InterchangeCheckOutputMapDTO
+    type: object
+    properties: 
+     InterchangeId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: string
+      nullable: true
+     Funded: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     InterchangeCheckOutputMapId: 
+      type: integer
+      nullable: true
+     Funded: 
+      type: string
+      nullable: true
+   InterchangeCheckOutputMapSearchDTO: 
+    title : InterchangeCheckOutputMapSearchDTO
+    type: object
+    properties: 
+     InterchangeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     AccountId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BYINTERCHANGEDID|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   InterchangeCheckOutputMapListDTO: 
+    title : InterchangeCheckOutputMapListDTO
+    type: object
+    properties: 
+     InterchangeCheckOutputMapId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     EntityId: 
+      type: integer
+      nullable: true
+     Entity: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     Funded: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     EntityNumber: 
+      type: string
+      nullable: true
+     MethodOfPaymentCode: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+   InterchangeCheckOutputMapHistorySearchDTO: 
+    title : InterchangeCheckOutputMapHistorySearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: integer
+      nullable: true
+     InterchangeCheckOutputMapId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: string
+      nullable: true
+     AccountId: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: string
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   MembershipGroupDetailsListDTO: 
+    title : MembershipGroupDetailsListDTO
+    type: object
+    properties: 
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     TotalMembersInJob: 
+      type: integer
+      nullable: true
+     ActiveMembersAsOfTermDate: 
+      type: integer
+      nullable: true
+     PossibleTerms: 
+      type: integer
+      nullable: true
+     PercentOfTermsToActiveMembers: 
+      type: string
+      nullable: true
+     PercentChangeInMembership: 
+      type: string
+      nullable: true
+     ProjectedNumberOfAdds: 
+      type: integer
+      nullable: true
+     ProjectedNumberOfUpdates: 
+      type: integer
+      nullable: true
+     NumberOfErrors: 
+      type: integer
+      nullable: true
+     NumberOfSuccessfulRows: 
+      type: integer
+      nullable: true
+     PercentOfErrors: 
+      type: string
+      nullable: true
+     PercentSuccessful: 
+      type: string
+      nullable: true
+     NumberOfTermErrors: 
+      type: integer
+      nullable: true
+     NumberOfSuccessfulTerms: 
+      type: integer
+      nullable: true
+     PercentOfTermErrors: 
+      type: string
+      nullable: true
+     PercentOfSuccessfulTerms: 
+      type: string
+      nullable: true
+     NumberOfSubscribers: 
+      type: integer
+      nullable: true
+     NumberOfDependents: 
+      type: integer
+      nullable: true
+     NumberOfSPPSubscribers: 
+      type: integer
+      nullable: true
+     NumberOfSPPDependents: 
+      type: integer
+      nullable: true
+     PercentOfSubscribers: 
+      type: string
+      nullable: true
+     PercentOfDependents: 
+      type: string
+      nullable: true
+     NumberOfReprocessedSuccessful: 
+      type: integer
+      nullable: true
+     NumberOfIgnored: 
+      type: integer
+      nullable: true
+     PercentIgnored: 
+      type: string
+      nullable: true
+     NumberOfUpdated: 
+      type: integer
+      nullable: true
+     PercentUpdated: 
+      type: string
+      nullable: true
+  parameters: 
+   InterchangeCheckOutputMapIdQueryParam: 
+    in: query
+    name: InterchangeCheckOutputMapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+     default: "BYJOBID"
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
