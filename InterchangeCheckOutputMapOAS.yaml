@@ -1,0 +1,301 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: InterchangeCheckOutputMap
+  description: InterchangeCheckOutputMap API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/interchangeinfo/checkoutputmap: 
+   post: 
+    operationId: GetInterchangeCheckOutputMap
+    tags: 
+     - InterchangeCheckOutputMap
+    summary: Get InterchangeCheckOutputMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterchangeCheckOutputMapSearchDTO'
+    responses: 
+     '200': 
+      description: InterchangeCheckOutputMap retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/InterchangeCheckOutputMapListDTO'
+   put: 
+    operationId: UpdateInterchangeCheckOutputMap
+    tags: 
+     - InterchangeCheckOutputMap
+    summary: Update InterchangeCheckOutputMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterchangeCheckOutputMapDTO'
+    responses: 
+     '200': 
+      description: InterchangeCheckOutputMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteInterchangeCheckOutputMap
+    tags: 
+     - InterchangeCheckOutputMap
+    summary: Delete InterchangeCheckOutputMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/InterchangeCheckOutputMapIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: InterchangeCheckOutputMap deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/interchangeinfo/checkoutputmaphistory: 
+   post: 
+    operationId: AddInterchangeCheckOutputMapping
+    tags: 
+     - InterchangeCheckOutputMap
+    summary: Add InterchangeCheckOutputMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterchangeCheckOutputMapDTO'
+    responses: 
+     '200': 
+      description: InterchangeCheckOutputMapping added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   InterchangeCheckOutputMapDTO: 
+    title : InterchangeCheckOutputMapDTO
+    type: object
+    properties: 
+     InterchangeId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: string
+      nullable: true
+     Funded: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     InterchangeCheckOutputMapId: 
+      type: integer
+      nullable: true
+   InterchangeCheckOutputMapSearchDTO: 
+    title : InterchangeCheckOutputMapSearchDTO
+    type: object
+    properties: 
+     InterchangeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     AccountId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BYINTERCHANGEDID|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   InterchangeCheckOutputMapListDTO: 
+    title : InterchangeCheckOutputMapListDTO
+    type: object
+    properties: 
+     InterchangeCheckOutputMapId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     EntityId: 
+      type: integer
+      nullable: true
+     Entity: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     Funded: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     EntityNumber: 
+      type: string
+      nullable: true
+     MethodOfPaymentCode: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+   InterchangeCheckOutputMapHistorySearchDTO: 
+    title : InterchangeCheckOutputMapHistorySearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     InterchangeCheckOutputMapId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     AccountId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   InterchangeCheckOutputMapHistoryListDTO: 
+    title : InterchangeCheckOutputMapHistoryListDTO
+    type: object
+    properties: 
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     InterchangeCheckOutputMapID: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Entity: 
+      type: string
+      nullable: true
+     EntityNumber: 
+      type: string
+      nullable: true
+     MethodOfPaymentCode: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     Funded: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+  parameters: 
+   InterchangeCheckOutputMapIdQueryParam: 
+    in: query
+    name: InterchangeCheckOutputMapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
