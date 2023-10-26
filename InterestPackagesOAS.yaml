@@ -1,0 +1,380 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: InterestPackages
+  description: InterestPackages API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/interestpackages: 
+   get: 
+    operationId: GetInterestPackages
+    tags: 
+     - InterestPackages
+    summary: Get InterestPackages
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: InterestPackages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/InterestPackagesListDTO'
+   put: 
+    operationId: UpdateInterestPackages
+    tags: 
+     - InterestPackages
+    summary: Update InterestPackages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterestPackagesDTO'
+    responses: 
+     '200': 
+      description: InterestPackages updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/interestpackagedetails: 
+   post: 
+    operationId: GetInterestPackageDetails
+    tags: 
+     - InterestPackagesDetails
+    summary: Get InterestPackages Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterestPackageDetailsSearchDTO'
+    responses: 
+     '200': 
+      description: InterestPackagesDetails retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/InterestPackageDetailsListDTO'
+   put: 
+    operationId: UpdateInterestPackageDetails
+    tags: 
+     - InterestPackagesDetails
+    summary: Update InterestPackages Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterestPackageDetailsDTO'
+    responses: 
+     '200': 
+      description: InterestPackagesDetails updated successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/interestpackagedetail: 
+   post: 
+    operationId: AddInterestPackageDetails
+    tags: 
+     - InterestPackagesDetails
+    summary: Add InterestPackages Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/InterestPackageDetailsDTO'
+    responses: 
+     '200': 
+      description: InterestPackagesDetails added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/groupinterestpackages: 
+   get: 
+    operationId: FindGroupsInterestPackages
+    tags: 
+     - GroupInterestPackages
+    summary: Find GroupsInterestPackages
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/InterestPackageIDQueryParam'
+    responses: 
+     '200': 
+      description: GroupsInterestPackages retrived successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/GroupsInterestPackagesListDTO'
+components: 
+  schemas: 
+   InterestPackagesDTO: 
+    title : InterestPackagesDTO
+    type: object
+    properties: 
+     InterestPackageId: 
+      type: integer
+      nullable: true
+     ApplyToAllStates: 
+      type: string
+      default: "N"
+      nullable: true
+     ApplyInterest: 
+      type: string
+      default: "AAP"
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+   InterestPackagesListDTO: 
+    title : InterestPackagesListDTO
+    type: object
+    properties: 
+     Status: 
+      type: integer
+      nullable: true
+     InterestPackageId: 
+      type: integer
+     Name: 
+      type: string
+     Description: 
+      type: string
+     ApplyToAllStates: 
+      type: string
+      default: "N"
+     ApplyInterest: 
+      type: string
+      default: "AAP"
+     ApplyInterestName: 
+      type: string
+      default: "All Payments"
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   InterestPackageDetailsSearchDTO: 
+    title : InterestPackageDetailsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     InterestPackageId: 
+      type: integer
+      nullable: true
+     InterestPackageDetailId: 
+      type: integer
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     AsofDate: 
+      type: string
+      format: date-time
+      nullable: true
+   InterestPackageDetailsListDTO: 
+    title : InterestPackageDetailsListDTO
+    type: object
+    properties: 
+     InterestPackageDetailID: 
+      type: integer
+     InterestPackageID: 
+      type: integer
+     State: 
+      type: string
+     DayStart: 
+      type: integer
+      nullable: true
+     DayEnd: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     RuleType: 
+      type: string
+     RuleTypeName: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     FormTypeName: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     SourceTypeName: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     PaymentClassName: 
+      type: string
+      nullable: true
+     MinimumAmount: 
+      type: string
+      nullable: true
+     InterestPerYear: 
+      type: string
+      nullable: true
+     AdditionalDailyPenalty: 
+      type: string
+      nullable: true
+     InitialFee: 
+      type: string
+      nullable: true
+     DayStartCalculationMethod: 
+      type: string
+     CalculationMethodName: 
+      type: string
+      nullable: true
+     PlaceOfService: 
+      type: string
+      nullable: true
+     PlaceOfServiceName: 
+      type: string
+      nullable: true
+     MinimumInterestAmount: 
+      type: string
+      nullable: true
+     AsofDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReimbursementID: 
+      type: integer
+      nullable: true
+     ReimbursementName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   InterestPackageDetailsDTO: 
+    title : InterestPackageDetailsDTO
+    type: object
+    properties: 
+     InterestPackageDetailID: 
+      type: integer
+      nullable: true
+     InterestPackageID: 
+      type: integer
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     DayStart: 
+      type: integer
+      nullable: true
+     DayEnd: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RuleType: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     MinimumAmount: 
+      type: string
+      nullable: true
+     InterestPerYear: 
+      type: string
+      nullable: true
+     AdditionalDailyPenalty: 
+      type: string
+      nullable: true
+     InitialFee: 
+      type: string
+      nullable: true
+     PlaceOfService: 
+      type: string
+      nullable: true
+     MinimumInterestAmount: 
+      type: string
+      nullable: true
+     ReimbursementID: 
+      type: integer
+      nullable: true
+     DayStartCalculationMethod: 
+      type: string
+      nullable: true
+   GroupsInterestPackagesListDTO: 
+    title : GroupsInterestPackagesListDTO
+    type: object
+    properties: 
+     GroudId: 
+      type: integer
+     GroupName: 
+      type: string
+     GroupNumber: 
+      type: string
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   InterestPackageIDQueryParam: 
+    in: query
+    name: InterestPackageID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
