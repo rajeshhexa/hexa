@@ -1,0 +1,388 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Billing Jobs
+  description: Billing Jobs API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/billngjobs: 
+   post: 
+    operationId: GetBillingJobs
+    tags: 
+     - BillingJob
+    summary: Get BillingJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingJobSearchDTO'
+    responses: 
+     '200': 
+      description: BillingJobs retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillingJobListDTO'
+  /finance/billingjob: 
+   post: 
+    operationId: AddBillingJob
+    tags: 
+     - BillingJob
+    summary: Add BillingJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingJobDTO'
+    responses: 
+     '200': 
+      description: BillingJob added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateBillingJob
+    tags: 
+     - BillingJob
+    summary: Update BillingJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingJobDTO'
+    responses: 
+     '200': 
+      description: BillingJob updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/billngjobs/end: 
+   post: 
+    operationId: EndBillingJob
+    tags: 
+     - BillingJob
+    summary: End BillingJob
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: BillingJob ended successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/billingjobdetails: 
+   post: 
+    operationId: GetBillingJobDetails
+    tags: 
+     - BillingJobDetails
+    summary: Get BillingJob Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingJobDetailsSearchDTO'
+    responses: 
+     '200': 
+      description: BillingJobDetails retrived successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillingJobDetailsListDTO'
+  /finance/pendingjobdetails/process: 
+   post: 
+    operationId: ProcessPendingJobDetails
+    tags: 
+     - PendingJobDetails
+    summary: Process PendingJob Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcessPendingJobDetailsDTO'
+    responses: 
+     '200': 
+      description: PendingJobs processed successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   BillingJobDTO: 
+    title : BillingJobDTO
+    type: object
+    properties: 
+     JobName: 
+      type: string
+      nullable: true
+     JobDescription: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     Step: 
+      type: string
+      default: "CRT"
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      default: "OPN"
+      nullable: true
+     PostDateStart: 
+      type: string
+      format: date-time
+      nullable: true
+     PostDateEnd: 
+      type: string
+      format: date-time
+      nullable: true
+     CloseOutDate: 
+      type: string
+      format: date-time
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     BillCreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+     JobID: 
+      type: integer
+      nullable: true
+     BillsVoided: 
+      type: integer
+      nullable: true
+     BillsOutput: 
+      type: integer
+      nullable: true
+     BillingTemplate: 
+      type: integer
+      nullable: true
+     Force: 
+      type: string
+      nullable: true
+     VoidReason: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   BillingJobSearchDTO: 
+    title : BillingJobSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     JobType: 
+      type: string
+      default: "|BYJOBID|"
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   BillingJobListDTO: 
+    title : BillingJobListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+     JobNumber: 
+      type: string
+     JobName: 
+      type: string
+     JobDescription: 
+      type: string
+      nullable: true
+     JobTypeCode: 
+      type: string
+     JobType: 
+      type: string
+      nullable: true
+     ProcessingStatusCode: 
+      type: string
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     StepCode: 
+      type: string
+     Step: 
+      type: string
+      nullable: true
+     CreatedBy: 
+      type: integer
+     CreatedByName: 
+      type: string
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+      nullable: true
+     DateCompleted: 
+      type: string
+      format: date-time
+     TimeElapsed: 
+      type: integer
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     BillingTemplate: 
+      type: integer
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     PostDateStart: 
+      type: string
+      format: date-time
+      nullable: true
+     PostDateEnd: 
+      type: string
+      format: date-time
+      nullable: true
+     CloseOutDate: 
+      type: string
+      format: date-time
+      nullable: true
+     BillCreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+   BillingJobDetailsListDTO: 
+    title : BillingJobDetailsListDTO
+    type: object
+    properties: 
+     JobDetailId: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     Step: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: string
+      nullable: true
+     AdditionalEntityId: 
+      type: integer
+      nullable: true
+     DetailStatus: 
+      type: string
+      nullable: true
+     DetailMessage: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     StepKey: 
+      type: string
+      nullable: true
+     NumberOfItems: 
+      type: integer
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     WizardStepName: 
+      type: string
+      nullable: true
+   BillingJobDetailsSearchDTO: 
+    title : BillingJobDetailsSearchDTO
+    type: object
+    properties: 
+     SessionID : 
+      type: integer
+      nullable: true
+     JobId: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|NORMAL|"
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Step: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ProcessPendingJobDetailsDTO: 
+    title : ProcessPendingJobDetailsDTO
+    type: object
+    properties: 
+     WizardType: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     JobStep: 
+      type: string
+      nullable: true
+     ItemType: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
