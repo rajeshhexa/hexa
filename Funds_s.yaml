@@ -1,0 +1,696 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Funds
+  description: Funds API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/funds/refundletters: 
+   post: 
+    operationId: CreateRefundLetters
+    tags: 
+     - Funds
+    summary: Create Refund Letters
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RefundLettersSearchDTO'
+    responses: 
+     '200': 
+      description: RefundLetters Created successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/RefundLettersListDTO'
+  /finance/funds/reinsurancerequestletters: 
+   post: 
+    operationId: CreateReinsuranceFundingRequestLetters
+    tags: 
+     - Funds
+    summary: Create Reinsurance Funding Request Letters
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReinsuranceFundingRequestLettersSearchDTO'
+    responses: 
+     '200': 
+      description: ReInsuranceFundingRequest created successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReinsuranceFundingRequestLettersListDTO'
+  /finance/funds/insufficientfundaccount: 
+   get: 
+    operationId: GetAccountsWithInsufficientFunds
+    tags: 
+     - Funds
+    summary: Get Accounts With Insufficient Funds
+    description: Description of path
+    responses: 
+     '200': 
+      description: AccountsWithInsufficientFunds retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AccountsWithInsufficientFundsListDTO'
+  /finance/funds/transactions: 
+   get: 
+    operationId: GetTransactionsForFunding
+    tags: 
+     - Funds
+    summary: Get Transaction For Funding
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AccountIDQueryParam'
+     - $ref: '#/components/parameters/DateQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: TransactionsForFunding retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/TransactionsForFundingListDTO'
+  /finance/funds/letters: 
+   post: 
+    operationId: CreateFundingLetters
+    tags: 
+     - Funds
+    summary: Create Funding Letters
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIDQueryParam'
+    responses: 
+     '200': 
+      description: FundingLetters created successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/funds/letterrecords: 
+   get: 
+    operationId: GetFundingLetterRecords
+    tags: 
+     - Funds
+    summary: Get Funding Letter Records
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIDQueryParam'
+    responses: 
+     '200': 
+      description: FundingLetterRecords retrieved successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/FundingLetterRecordsListDTO'
+components: 
+  schemas: 
+   AccountsWithInsufficientFundsListDTO: 
+    title : AccountsWithInsufficientFundsListDTO
+    type: object
+    properties: 
+     AccountID: 
+      type: integer
+      nullable: true
+     CheckRunAmount: 
+      type: string
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     AvailableBalance: 
+      type: string
+      nullable: true
+     AdditionalFundingRequired: 
+      type: string
+      nullable: true
+     CurrentBalance: 
+      type: string
+      nullable: true
+     LastFundingRequest: 
+      type: string
+      format: date-time
+      nullable: true
+     ReserveAmount: 
+      type: string
+      nullable: true
+   ReinsuranceFundingRequestLettersSearchDTO: 
+    title : ReinsuranceFundingRequestLettersSearchDTO
+    type: object
+    properties: 
+     UtilizationIds  : 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     ReinsurancePolicyIds: 
+      type: string
+      nullable: true
+     PreviewOnly: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ReinsuranceFundingRequestLettersListDTO: 
+    title : ReinsuranceFundingRequestLettersListDTO
+    type: object
+    properties: 
+     ReinsUtilRowId: 
+      type: integer
+     ReinsuranceUtilizationId: 
+      type: integer
+     ClaimId: 
+      type: integer
+     ClaimNumber: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberMiddleName: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     CheckID: 
+      type: integer
+      nullable: true
+     PostingRecordId: 
+      type: integer
+     ReinsurancePolicyId: 
+      type: integer
+     ReinsurancePolicyName: 
+      type: string
+      nullable: true
+     AmtApplied: 
+      type: string
+     AmtAggregate: 
+      type: string
+     AmtExcluded: 
+      type: string
+     AmtAggregateExcluded: 
+      type: string
+     UtilizationType: 
+      type: string
+     UtilizationStatus: 
+      type: string
+     FundingType: 
+      type: string
+      nullable: true
+     FundingStatus: 
+      type: string
+      nullable: true
+     FundingAmount: 
+      type: string
+      nullable: true
+     FundingLetterType: 
+      type: string
+      nullable: true
+     AggregateReimbursementReportId: 
+      type: integer
+      nullable: true
+     AggregateReimbursementReportName: 
+      type: string
+      nullable: true
+     MemberReimbursementReportId: 
+      type: integer
+      nullable: true
+     MemberReimbursementReportName: 
+      type: string
+      nullable: true
+     LetterType: 
+      type: string
+      nullable: true
+     LetterRequestedAmt: 
+      type: string
+      nullable: true
+     FundingLetterRecordId: 
+      type: integer
+      nullable: true
+     ParentAccountID: 
+      type: integer
+      nullable: true
+     SpecificReimbursementFileByDays: 
+      type: integer
+      nullable: true
+     AggregateReimbursementFileByDays int: 
+      type: integer
+      nullable: true
+     FundingRequestThreshold: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+   RefundLettersSearchDTO: 
+    title : RefundLettersSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     PreviewOnly: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     EntityTypeFilter: 
+      type: string
+      nullable: true
+     NumberOfTimesPrinted: 
+      type: integer
+      nullable: true
+     DaysAged: 
+      type: integer
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     LetterNumber: 
+      type: integer
+      nullable: true
+     CreationDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     CreationDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckedRecords: 
+      type: string
+      nullable: true
+   RefundLettersListDTO: 
+    title : RefundLettersListDTO
+    type: object
+    properties: 
+     RecordID: 
+      type: integer
+     ParentAccountID: 
+      type: integer
+     Amount: 
+      type: string
+     RecordTypeCode: 
+      type: string
+     ReferenceNumber : 
+      type: integer
+     CreationDate: 
+      type: string
+      format: date-time
+     GroupId: 
+      type: integer
+     EntityTypeCode: 
+      type: string
+     Notes: 
+      type: string
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ProcessedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     PaymentClass : 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     GracePeriodForRefund: 
+      type: integer
+      nullable: true
+     OwedAmount: 
+      type: integer
+      nullable: true
+     DateRefundExpected: 
+      type: string
+      format: date-time
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     CompanyEIN: 
+      type: string
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorAddress: 
+      type: string
+      nullable: true
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorCountryCode : 
+      type: string
+      nullable: true
+     PayToName: 
+      type: string
+      nullable: true
+     PayToAddress1 : 
+      type: string
+      nullable: true
+     PayToAddress2 : 
+      type: string
+      nullable: true
+     PayToCity : 
+      type: string
+      nullable: true
+     PayToState: 
+      type: string
+      nullable: true
+     PayToZip: 
+      type: string
+      nullable: true
+     PayToCountryCode: 
+      type: string
+      nullable: true
+     PayToPhone: 
+      type: string
+      nullable: true
+     NumberOfPreviousLetters: 
+      type: integer
+      nullable: true
+     DateInitialLetterOutput: 
+      type: string
+      format: date-time
+      nullable: true
+     DateOfLastLetterOutput: 
+      type: string
+      format: date-time
+      nullable: true
+     DaysSinceLastLetterOutput: 
+      type: integer
+   TransactionsForFundingListDTO: 
+    title : TransactionsForFundingListDTO
+    type: object
+    properties: 
+     ProcessType: 
+      type: string
+      nullable: true
+     ProcessTypeCode: 
+      type: string
+      nullable: true
+     XactTypeCode: 
+      type: string
+      nullable: true
+     TransactionType: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     RecordTypeCode: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: integer
+      nullable: true
+     CheckNumber: 
+      type: integer
+      nullable: true
+     VoidDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReserveAmount: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorNumber: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     DepositNumber: 
+      type: string
+      nullable: true
+     CheckDate: 
+      type: string
+      format: date-time
+      nullable: true
+     VoidReason: 
+      type: string
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+   FundingLetterRecordsListDTO: 
+    title : FundingLetterRecordsListDTO
+    type: object
+    properties: 
+     JobDetailId: 
+      type: integer
+     JobId: 
+      type: integer
+     StepId: 
+      type: integer
+     CheckId: 
+      type: integer
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+     DetailStatus : 
+      type: string
+      nullable: true
+     RecordID: 
+      type: integer
+      nullable: true
+     ParentAccountID: 
+      type: integer
+      nullable: true
+     RecordTypeCode: 
+      type: string
+      nullable: true
+     RecordStatusCode: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     ReferenceID: 
+      type: integer
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcessedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     VoidDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     NumberOfDetails: 
+      type: integer
+      nullable: true
+     CashAccount: 
+      type: string
+      nullable: true
+     FundingRequestReportPath: 
+      type: string
+      nullable: true
+     FundingRequestReportId: 
+      type: integer
+      nullable: true
+     FundingRequestReportExportType: 
+      type: string
+      nullable: true
+     EmailRequest: 
+      type: string
+      nullable: true
+     PrintRequest: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+  parameters: 
+   AccountIDQueryParam: 
+    in: query
+    name: AccountID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DateQueryParam: 
+    in: query
+    name: Date
+    required: false
+    schema: 
+     type: string
+     format: date-time
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   JobIDQueryParam: 
+    in: query
+    name: JobID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
