@@ -1,0 +1,753 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Document
+  description: Servers
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /attachmentv2/processdocumentrequests: 
+   post: 
+    operationId: ProcessDocumentRequests
+    tags: 
+     - Document Request
+    summary: Process Document Requests
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Process Document Request Retreived Successfully 
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcessDocumentRequestListDTO'
+  /attachmentv2/confirmdocumentrequests: 
+   post: 
+    operationId: ConfirmDocumentRecord
+    tags: 
+     - Document Record
+    summary: Confirm Document Record
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/RecordIdQueryParam'
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/StatusCodeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Confirm Document Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /attachmentv2/documentrequests: 
+   post: 
+    operationId: GetDocumentRequests
+    tags: 
+     - Document Request
+    summary: Get Document Request
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Document Request Retreived Successfully 
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DocumentRequestListDTO'
+   get: 
+    operationId: GetDocumentRequestRecords
+    tags: 
+     - Document Request Record
+    summary: Get Document Request Record
+    description: Description of path
+    responses: 
+     '200': 
+      description: Document Request Records Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DocumentRequestRecordListDTO'
+components: 
+  schemas: 
+   ProcessDocumentRequestListDTO: 
+    title : ProcessDocumentRequestListDTO
+    type: object
+    properties: 
+     RecordId: 
+      type: integer
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordTypeName: 
+      type: string
+      nullable: true
+     CreationDate: 
+      type: string
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     RecordStatusName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     DocumentType: 
+      type: string
+      nullable: true
+     DocumentTypeName: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     ReportId: 
+      type: integer
+      nullable: true
+     ReportName: 
+      type: string
+      nullable: true
+     ReportPath: 
+      type: string
+      nullable: true
+     NumberOfClaims: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     FilePath: 
+      type: string
+      nullable: true
+     SuppressionReason: 
+      type: string
+      nullable: true
+     SuppressionReasonName: 
+      type: string
+      nullable: true
+     ClaimID: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorInfo: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+     JobFulfillmentMethodCode: 
+      type: string
+      nullable: true
+     FulfillmentMethod: 
+      type: string
+      nullable: true
+     EmailNotification: 
+      type: string
+      nullable: true
+     MemberEOBPreference: 
+      type: string
+      nullable: true
+     CollateImages: 
+      type: string
+      nullable: true
+     CoversheetGroupingCode: 
+      type: string
+      nullable: true
+     CoversheetGrouping: 
+      type: string
+      nullable: true
+     DocumentRequestId: 
+      type: integer
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     TaxNumber: 
+      type: string
+      nullable: true
+   DocumentRequestRecordSearchDTO: 
+    title : DocumentRequestRecordSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     ReferringEntity: 
+      type: string
+      nullable: true
+     Step: 
+      type: string
+      nullable: true
+     FulfilledByJobId: 
+      type: integer
+      nullable: true
+     ReturnLatest: 
+      type: string
+      format: documentrequestid
+      default: "N"
+      nullable: true
+     Usage: 
+      type: string
+      default: "|NORMAL|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   DocumentRequestRecordListDTO: 
+    title : DocumentRequestRecordListDTO
+    type: object
+    properties: 
+     RecordId: 
+      type: integer
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordTypeName: 
+      type: string
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     RecordStatusName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     DocumentType: 
+      type: string
+      nullable: true
+     DocumentTypeName: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     ReferringProviderId: 
+      type: integer
+      nullable: true
+     ReferringOfficeId: 
+      type: integer
+      nullable: true
+     ReportId: 
+      type: integer
+      nullable: true
+     ReportName: 
+      type: string
+      nullable: true
+     ReportPath: 
+      type: string
+      nullable: true
+     NumberOfClaims: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     JobStatus: 
+      type: string
+      nullable: true
+     JobStatusName: 
+      type: string
+      nullable: true
+     JobDetailId: 
+      type: integer
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     FilePath: 
+      type: string
+      nullable: true
+     FulfillmentMethod: 
+      type: string
+      nullable: true
+     FulfillmentMethodName: 
+      type: string
+      nullable: true
+     JobFulfillmentMethodCode: 
+      type: string
+      nullable: true
+     JobFulfillmentMethod: 
+      type: string
+      nullable: true
+     FulfillmentID: 
+      type: string
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     FulfillmentStatus: 
+      type: string
+      nullable: true
+     FulfillmentStatusName: 
+      type: string
+      nullable: true
+     FulfilledAt: 
+      type: string
+      format: date-time
+      nullable: true
+     FulfilledBy: 
+      type: integer
+      nullable: true
+     FulfilledByName: 
+      type: string
+      nullable: true
+     SuppressionReason: 
+      type: string
+      nullable: true
+     SuppressionReasonName: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorInfo: 
+      type: string
+      nullable: true
+     ClaimRedirectAddressId: 
+      type: integer
+      nullable: true
+     ClaimRedirectAddressName: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      default: "Ready"
+     MemberEOBPreference: 
+      type: string
+      default: "PRO"
+      nullable: true
+     EmailNotification: 
+      type: string
+      nullable: true
+     CollateImages: 
+      type: string
+      nullable: true
+     CoversheetGroupingCode: 
+      type: string
+      nullable: true
+     CoversheetGrouping: 
+      type: string
+      nullable: true
+     DocumentRequestId: 
+      type: integer
+      nullable: true
+   DocumentRequestListDTO: 
+    title : DocumentRequestListDTO
+    type: object
+    properties: 
+     DocumentRequestId: 
+      type: integer
+      nullable: true
+     RequestNumber: 
+      type: string
+      nullable: true
+     DocumentType: 
+      type: string
+     DocumentTypeName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     RecordId: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     JobDetailid: 
+      type: integer
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+     StatusName: 
+      type: string
+      nullable: true
+     RequestedAt: 
+      type: string
+      format: date-time
+     RequestedBy: 
+      type: integer
+      nullable: true
+     RequestedByName: 
+      type: string
+      nullable: true
+     FulfillmentMethod: 
+      type: string
+     FulfillmentMethodName: 
+      type: string
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     FulfilledAt: 
+      type: string
+      nullable: true
+     FulfilledBy: 
+      type: integer
+      nullable: true
+     FulfilledByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ClaimNumber: 
+      type: string
+     ClaimStatus: 
+      type: string
+      nullable: true
+     ClaimStatusName: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+     FormTypeName: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     SourceTypeName: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     PaymentClassName: 
+      type: string
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      nullable: true
+     ServiceDateTo: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     SubsciberNumber: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     VendorName : 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorCounty: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     VendorCountryCode: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     VendorClass: 
+      type: string
+      nullable: true
+     VendorClassName: 
+      type: string
+      nullable: true
+     VendorSubClass: 
+      type: string
+      nullable: true
+     VendorSubClassName: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     MethodOfPaymentName: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     LOB: 
+      type: string
+      nullable: true
+     LOBName: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     ReportId: 
+      type: integer
+      nullable: true
+     ReportName: 
+      type: string
+      nullable: true
+     ReportPath: 
+      type: string
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|INIT|"
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   RecordIdQueryParam: 
+    in: query
+    name: RecordId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   StatusCodeQueryParam: 
+    in: query
+    name: StatusCode
+    required: false
+    schema: 
+     type: string
+     default: "PRT"
+    description: description of parameter passed
