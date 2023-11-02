@@ -1,0 +1,1125 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: CheckPackages
+  description: CheckPackages API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/checkpackages: 
+   post: 
+    operationId: GetCheckPackages
+    tags: 
+     - CheckPackages
+    summary: Get CheckPackages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CheckPackageSearchDTO'
+    responses: 
+     '200': 
+      description: CheckPackages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CheckPackageListDTO'
+  /finance/checkpackage: 
+   put: 
+    operationId: UpdateCheckPackage
+    tags: 
+     - CheckPackages
+    summary: Update CheckPackage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CheckPackageDTO'
+    responses: 
+     '200': 
+      description: CheckPackage updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   post: 
+    operationId: AddCheckPackage
+    tags: 
+     - CheckPackages
+    summary: Add CheckPackage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CheckPackageDTO'
+    responses: 
+     '200': 
+      description: CheckPackage added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/createcheckpackage: 
+   post: 
+    operationId: CreateChecksForPackage
+    tags: 
+     - CheckPackages
+    summary: Create Check For Package
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/CheckPackageIdQueryParam'
+     - $ref: '#/components/parameters/PreviewOnlyQueryParam'
+    responses: 
+     '200': 
+      description: CheckPackage created successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CheckForPackageListDTO'
+  /finance/checkpackageentitymap: 
+   get: 
+    operationId: GetCheckPackageEntityMap
+    tags: 
+     - CheckPackages
+    summary: Get CheckPackageEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CheckPackageIdQueryParam'
+     - $ref: '#/components/parameters/CheckPackageEntityMapIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: CheckPackageEntityMap retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CheckPackageEntityMapListDTO'
+   post: 
+    operationId: AddCheckPackageEntityMap
+    tags: 
+     - CheckPackages
+    summary: Add CheckPackageEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CheckPackageEntityMapDTO'
+    responses: 
+     '200': 
+      description: CheckPackageEntityMap added successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateCheckPackageEntityMap
+    tags: 
+     - CheckPackages
+    summary: Update CheckPackageEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CheckPackageEntityMapDTO'
+    responses: 
+     '200': 
+      description: CheckPackageEntityMap updated successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   CheckPackageDTO: 
+    title : CheckPackageDTO
+    type: object
+    properties: 
+     CheckPackageName: 
+      type: string
+      nullable: true
+     LastRunDate: 
+      type: string
+      nullable: true
+     IncrementPeriodType: 
+      type: string
+      nullable: true
+     IncrementPeriodValue: 
+      type: integer
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     CheckType: 
+      type: string
+      nullable: true
+     CheckBatchType: 
+      type: string
+      nullable: true
+     OverpaymentRecoveryMode: 
+      type: string
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     InputBatchClass: 
+      type: string
+      nullable: true
+     InputBatchSubclass: 
+      type: string
+      nullable: true
+     VendorClass: 
+      type: string
+      nullable: true
+     VendorSubclass: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     ZeroDollarCheckOption: 
+      type: string
+      nullable: true
+     SuppressCheckDetail: 
+      type: string
+      nullable: true
+     EmailVendorPayment: 
+      type: string
+      nullable: true
+     SuppressEOBForMembers: 
+      type: string
+      nullable: true
+     EmailMemberEOB: 
+      type: string
+      nullable: true
+     UserEmailList: 
+      type: string
+      nullable: true
+     CheckOnlyReportId: 
+      type: integer
+      nullable: true
+     CheckDetailReportId: 
+      type: integer
+      nullable: true
+     ZeroDollarCheckReportId: 
+      type: integer
+      nullable: true
+     CSVReportId: 
+      type: integer
+      nullable: true
+     EFTReportId: 
+      type: integer
+      nullable: true
+     Hierarchy1: 
+      type: string
+      nullable: true
+     Hierarchy2: 
+      type: string
+      nullable: true
+     Hierarchy3: 
+      type: string
+      nullable: true
+     Hierarchy4: 
+      type: string
+      nullable: true
+     ClientNumber: 
+      type: string
+      nullable: true
+     IncludeEFTsInABFFile: 
+      type: string
+      nullable: true
+     MultipleClaimsOnEOBs: 
+      type: string
+      nullable: true
+     CheckAmountOperator: 
+      type: string
+      nullable: true
+     CheckAmountLimit: 
+      type: string
+      nullable: true
+     PostingAmountOperator: 
+      type: string
+      nullable: true
+     PostingAmountLimit: 
+      type: string
+      nullable: true
+     DelayEOBCreation: 
+      type: string
+      nullable: true
+     PaymentCurrency: 
+      type: string
+      nullable: true
+     CheckDateUsage: 
+      type: string
+      nullable: true
+     CheckDateMailingDays: 
+      type: integer
+      nullable: true
+     NonMedical835Action: 
+      type: string
+      nullable: true
+     ABFOutputFileTransform: 
+      type: integer
+      nullable: true
+     EFTOutputFileTransform: 
+      type: integer
+      nullable: true
+     CSVOutputFileTransform: 
+      type: integer
+      nullable: true
+     EmailConfigurationID: 
+      type: integer
+      nullable: true
+     CashAccount835FileMethod: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     CheckPackageID: 
+      type: integer
+      nullable: true
+   CheckPackageSearchDTO: 
+    title : CheckPackageSearchDTO
+    type: object
+    properties: 
+     CheckPackageId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     CheckPackageName: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BYCHECKPACKAGEID|"
+      nullable: true
+   CheckPackageListDTO: 
+    title : CheckPackageListDTO
+    type: object
+    properties: 
+     CheckPackageID: 
+      type: integer
+     CheckPackageName: 
+      type: string
+      nullable: true
+     LastRunDate: 
+      type: string
+      format: date-time
+     NextRunDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NextScheduledRunDate: 
+      type: string
+      nullable: true
+     IncrementPeriodType: 
+      type: string
+     IncrementPeriodValue: 
+      type: integer
+     Precedence: 
+      type: integer
+     CheckType: 
+      type: string
+     CheckBatchType: 
+      type: string
+      nullable: true
+     OverpaymentRecoveryMode: 
+      type: string
+      nullable: true
+     FulfillmentType: 
+      type: string
+     EntityType: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     InputBatchClass: 
+      type: string
+      nullable: true
+     InputBatchSubclass: 
+      type: string
+      nullable: true
+     VendorClass: 
+      type: string
+      nullable: true
+     VendorSubclass: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     ZeroDollarCheckOption: 
+      type: string
+      nullable: true
+     SuppressCheckDetail: 
+      type: string
+      nullable: true
+     EmailVendorPayment: 
+      type: string
+      nullable: true
+     SuppressEOBForMembers: 
+      type: string
+      nullable: true
+     EmailMemberEOB: 
+      type: string
+      nullable: true
+     UserEmailList: 
+      type: string
+      nullable: true
+     CheckAmountOperator: 
+      type: string
+      nullable: true
+     CheckAmountLimit: 
+      type: string
+      nullable: true
+     PostingAmountOperator: 
+      type: string
+      nullable: true
+     PostingAmountLimit: 
+      type: string
+      nullable: true
+     DelayEOBCreation: 
+      type: string
+      nullable: true
+     PaymentCurrency: 
+      type: string
+      nullable: true
+     PaymentCurrencyName: 
+      type: string
+      nullable: true
+     Hierarchy1: 
+      type: string
+      nullable: true
+     Hierarchy2: 
+      type: string
+      nullable: true
+     Hierarchy3: 
+      type: string
+      nullable: true
+     Hierarchy4: 
+      type: string
+      nullable: true
+     ClientNumber: 
+      type: string
+      nullable: true
+     IncludeEFTsInABFFile: 
+      type: string
+      nullable: true
+     MultipleClaimsOnEOBs: 
+      type: string
+      nullable: true
+     CheckOnlyReportId: 
+      type: integer
+      nullable: true
+     CheckDetailReportId: 
+      type: integer
+      nullable: true
+     ZeroDollarCheckReportId: 
+      type: integer
+      nullable: true
+     CSVReportId: 
+      type: integer
+      nullable: true
+     EFTReportId: 
+      type: integer
+      nullable: true
+     CheckOnlyReportPath: 
+      type: string
+      nullable: true
+     CheckDetailReportPath: 
+      type: string
+      nullable: true
+     ZeroDollarCheckReportPath: 
+      type: string
+      nullable: true
+     LastupdatedAt: 
+      type: string
+      format: date-time
+     LastupdatedBy: 
+      type: integer
+     CheckAmountOperatorName: 
+      type: string
+      nullable: true
+     PostingAmountOperatorName: 
+      type: string
+      nullable: true
+     CheckTypeName: 
+      type: string
+      nullable: true
+     CheckBatchTypeName: 
+      type: string
+      nullable: true
+     OverpaymentRecoveryModeName: 
+      type: string
+      nullable: true
+     FulfillmentTypeName: 
+      type: string
+      nullable: true
+     LastupdatedByName: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     OpenCheckRun: 
+      type: string
+      nullable: true
+     SourceTypeName: 
+      type: string
+      nullable: true
+     FormTypeName: 
+      type: string
+      nullable: true
+     VendorClassName: 
+      type: string
+      nullable: true
+     VendorSubclassName: 
+      type: string
+      nullable: true
+     MethodOfPaymentName: 
+      type: string
+      nullable: true
+     ZeroDollarCheckOptionName: 
+      type: string
+      nullable: true
+     SuppressCheckDetailName: 
+      type: string
+      nullable: true
+     EmailVendorPaymentName: 
+      type: string
+      nullable: true
+     SuppressEOBForMembersName: 
+      type: string
+      nullable: true
+     EmailMemberEOBName: 
+      type: string
+      nullable: true
+     Hierarchy1Name: 
+      type: string
+      nullable: true
+     Hierarchy2Name: 
+      type: string
+      nullable: true
+     Hierarchy3Name: 
+      type: string
+      nullable: true
+     Hierarchy4Name: 
+      type: string
+      nullable: true
+     IncludeEFTsInABFFileName: 
+      type: string
+      nullable: true
+     MultipleClaimsOnEOBsName: 
+      type: string
+      nullable: true
+     DelayEOBCreationName: 
+      type: string
+      nullable: true
+     CheckDateUsage: 
+      type: string
+      nullable: true
+     CheckDateUsageName: 
+      type: string
+      nullable: true
+     CheckDateMailingDays: 
+      type: integer
+      nullable: true
+     NonMedical835Action: 
+      type: string
+      nullable: true
+     CashAccount835FileMethod: 
+      type: string
+      nullable: true
+     CashAccount835FileMethodName: 
+      type: string
+      nullable: true
+     ABFOutputFileTransform: 
+      type: integer
+      nullable: true
+     ABFOutputFileTransformName: 
+      type: string
+      nullable: true
+     EFTOutputFileTransform: 
+      type: integer
+      nullable: true
+     EFTOutputFileTransformName: 
+      type: string
+      nullable: true
+     CSVOutputFileTransform: 
+      type: integer
+      nullable: true
+     CSVOutputFileTransformName: 
+      type: string
+      nullable: true
+     EmailConfigurationID: 
+      type: integer
+      nullable: true
+     EmailConfigurationName: 
+      type: string
+      nullable: true
+   CheckPackageEntityMapListDTO: 
+    title : CheckPackageEntityMapListDTO
+    type: object
+    properties: 
+     CheckPackageEntityMapId: 
+      type: integer
+     CheckPackageId: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityId: 
+      type: integer
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastupdatedBy: 
+      type: integer
+     LastupdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     CashAccountID: 
+      type: integer
+     CashAccountName: 
+      type: string
+      nullable: true
+     CheckNumberingOption: 
+      type: string
+      nullable: true
+     CheckBatchType: 
+      type: string
+      nullable: true
+   CheckPackageEntityMapDTO: 
+    title : CheckPackageEntityMapDTO
+    type: object
+    properties: 
+     CheckPackageEntityMapID: 
+      type: integer
+      nullable: true
+     CheckPackageId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CashAccountID: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   CheckForPackageListDTO: 
+    title : CheckForPackageListDTO
+    type: object
+    properties: 
+     CashAccountId: 
+      type: integer
+     RecordID: 
+      type: integer
+     OtherRecordID: 
+      type: integer
+      nullable: true
+     ParentAccountID: 
+      type: integer
+     Amount: 
+      type: string
+     RecordType: 
+      type: string
+     RecordStatus: 
+      type: string
+     ReferenceNumber : 
+      type: integer
+     CreationDate: 
+      type: string
+      format: date-time
+     GroupId: 
+      type: integer
+      nullable: true
+     EntityTypeCode: 
+      type: string
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     FormTypeCode: 
+      type: string
+      nullable: true
+     SourceTypeCode: 
+      type: string
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     StatementCoversFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     StatementCoversTo: 
+      type: string
+      format: date-time
+      nullable: true
+     EOBAction: 
+      type: string
+      nullable: true
+     ProcessedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     CashAccountName: 
+      type: string
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     RecordTypeName: 
+      type: string
+      nullable: true
+     RecordStatusName: 
+      type: string
+      nullable: true
+     PaymentMethod: 
+      type: string
+      nullable: true
+     ClaimEOBAction: 
+      type: string
+      nullable: true
+     ManualInterest: 
+      type: string
+     ClaimInitiallyPaidZero: 
+      type: string
+     AutoInterestExists: 
+      type: string
+     InterestOnAdjustments: 
+      type: string
+     ClaimPaidAlready: 
+      type: string
+     IncludeInCheckRun: 
+      type: string
+     JobDetailId: 
+      type: integer
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+     PaymentClassCode: 
+      type: string
+      nullable: true
+     LOBCode: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     InputBatchClass: 
+      type: string
+      nullable: true
+     InputBatchSubclass: 
+      type: string
+      nullable: true
+     LOB: 
+      type: string
+      nullable: true
+     VendorClassName: 
+      type: string
+      nullable: true
+     VendorSubClassName: 
+      type: string
+      nullable: true
+     CheckBatchType: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorClass: 
+      type: string
+      nullable: true
+     VendorSubclass: 
+      type: string
+      nullable: true
+     GracePeriodForRefund: 
+      type: integer
+      nullable: true
+     DateRefundExpected: 
+      type: string
+      format: date-time
+      nullable: true
+     VendorAddress1 : 
+      type: string
+      nullable: true
+     VendorAddress2 : 
+      type: string
+      nullable: true
+     VendorCity : 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     VendorCountryCode: 
+      type: string
+      nullable: true
+     VendorCounty: 
+      type: string
+      nullable: true
+     WaitingForRefund: 
+      type: string
+      nullable: true
+     PaymentCurrency: 
+      type: string
+      nullable: true
+     PaymentCurrencyName: 
+      type: string
+      nullable: true
+     CheckDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PayToName: 
+      type: string
+      nullable: true
+     PayToAddress1 : 
+      type: string
+      nullable: true
+     PayToAddress2 : 
+      type: string
+      nullable: true
+     PayToCity : 
+      type: string
+      nullable: true
+     PayToState: 
+      type: string
+      nullable: true
+     PayToZip: 
+      type: string
+      nullable: true
+     PayToCountryCode: 
+      type: string
+      nullable: true
+     PayToCounty: 
+      type: string
+      nullable: true
+     PayToPhone: 
+      type: string
+      nullable: true
+     CheckRunStatus: 
+      type: string
+      nullable: true
+     ExclusionReason: 
+      type: string
+      nullable: true
+     Funded: 
+      type: string
+      nullable: true
+     CheckGroup: 
+      type: integer
+      nullable: true
+     EstimatedCheckAmount: 
+      type: string
+      nullable: true
+     GroupEmailEOBCode: 
+      type: string
+      nullable: true
+     GroupEmailEOB: 
+      type: string
+      nullable: true
+     EmailEOB: 
+      type: string
+      nullable: true
+     VendorSuppressCheckDetailCode: 
+      type: string
+      nullable: true
+     VendorSuppressCheckDetail: 
+      type: string
+      nullable: true
+     SuppressCheckDetail: 
+      type: string
+      nullable: true
+     GroupSuppressEOBCode: 
+      type: string
+      nullable: true
+     GroupSuppressEOB: 
+      type: string
+      nullable: true
+     PatientLiability: 
+      type: string
+      nullable: true
+     VendorSuppressEOBCode: 
+      type: string
+      nullable: true
+     VendorSuppressEOB: 
+      type: string
+      nullable: true
+     SuppressEOB: 
+      type: string
+      nullable: true
+     SuppressionReason: 
+      type: string
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     ProviderNumber : 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeAddress: 
+      type: string
+      nullable: true
+     OfficeCity: 
+      type: string
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     RiskGroupSubclassName: 
+      type: string
+      nullable: true
+     HospitalNumber : 
+      type: string
+      nullable: true
+     HospitalName: 
+      type: string
+      nullable: true
+     HospitalNPI: 
+      type: string
+      nullable: true
+     CapitationType: 
+      type: string
+      nullable: true
+     CapitationTypeCode : 
+      type: string
+      nullable: true
+     BrokerId: 
+      type: integer
+      nullable: true
+     BrokerName: 
+      type: string
+      nullable: true
+     BrokerTypeCode: 
+      type: string
+      nullable: true
+     BrokerNumber: 
+      type: string
+      nullable: true
+     BrokerType: 
+      type: string
+      nullable: true
+     Commission: 
+      type: string
+      nullable: true
+     UnitTypeCode: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     NumberOfMembers : 
+      type: integer
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     PaymentPackageName: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     CheckRecordId: 
+      type: integer
+      nullable: true
+     MemberEOBPreference: 
+      type: string
+      nullable: true
+     ForwardingBalanceRecord: 
+      type: string
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     IncludedInPreviousForwardingBalance: 
+      type: string
+      nullable: true
+  parameters: 
+   CheckPackageIdQueryParam: 
+    in: query
+    name: CheckPackageId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CheckPackageEntityMapIdQueryParam: 
+    in: query
+    name: CheckPackageEntityMapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PreviewOnlyQueryParam: 
+    in: query
+    name: PreviewOnly
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
