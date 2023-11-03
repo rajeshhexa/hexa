@@ -1,0 +1,275 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: BillingRefunds
+  description: BillingRefunds API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/createbillingrefunds: 
+   post: 
+    operationId: CreateBillingRefunds
+    tags: 
+     - Billing Refunds
+    summary: Create billing refunds
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingRefundCreateDTO'
+    responses: 
+     '200': 
+      description: BillingRefunds created successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillingRefundCreateListDTO'
+  /finance/billingrefunds: 
+   get: 
+    operationId: GetBillingRefunds
+    tags: 
+     - Billing Refunds
+    summary: Get billing refunds
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/RecordIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: BillingRefunds retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillingRefundListDTO'
+   put: 
+    operationId: UpdateBillingRefunds
+    tags: 
+     - Billing Refunds
+    summary: Update billing refunds
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingRefundDTO'
+    responses: 
+     '200': 
+      description: BillingRefunds updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   BillingRefundCreateDTO: 
+    title : BillingRefundCreateDTO
+    type: object
+    properties: 
+     JobID: 
+      type: integer
+      nullable: true
+     BillingRefundDetails: 
+      type: string
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     RefundType: 
+      type: string
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     RefundCreationDate: 
+      type: string
+      nullable: true
+     ExternalPaymentNumber: 
+      type: string
+      nullable: true
+     ExternalPaymentDate: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   BillingRefundCreateListDTO: 
+    title : BillingRefundCreateListDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordTypeName: 
+      type: string
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     BillingStatus: 
+      type: string
+      nullable: true
+     BillingStatusName: 
+      type: string
+      nullable: true
+     PaymentStatus: 
+      type: string
+      nullable: true
+     PaymentStatusName: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+   BillingRefundDTO: 
+    title : BillingRefundDTO
+    type: object
+    properties: 
+     BillingRefundRecordId: 
+      type: integer
+      nullable: true
+     RefundType: 
+      type: string
+      format: date-time
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     RefundCreationDate: 
+      type: string
+      nullable: true
+     ExternalPaymentNumber: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     ExternalPaymentDate: 
+      type: string
+      format: date-time
+      nullable: true
+   BillingRefundListDTO: 
+    title : BillingRefundListDTO
+    type: object
+    properties: 
+     BillingRefundRecordID: 
+      type: integer
+      nullable: true
+     BillingRefundNumber: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: string
+      nullable: true
+     RecordTypeCode: 
+      type: string
+      nullable: true
+     RefundTypeCode: 
+      type: string
+      nullable: true
+     MethodOfRefundCode: 
+      type: string
+      nullable: true
+     RecordStatusCode: 
+      type: string
+      nullable: true
+     PaymentStatusCode: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     RefundDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     VoidDate: 
+      type: string
+      format: date-time
+      nullable: true
+     VoidReason: 
+      type: string
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     PaymentRecordID: 
+      type: integer
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     ReconciliationID: 
+      type: integer
+      nullable: true
+     ExternalPaymentNumber: 
+      type: string
+      nullable: true
+     ExternalPaymentDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcessedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RefundType: 
+      type: string
+      nullable: true
+     MethodOfRefund: 
+      type: string
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     PaymentStatus: 
+      type: string
+      nullable: true
+     ReconciliationNumber: 
+      type: string
+      nullable: true
+     BillingRefundDetailId: 
+      type: integer
+      nullable: true
+     RecordID: 
+      type: integer
+      nullable: true
