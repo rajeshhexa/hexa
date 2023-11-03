@@ -1,0 +1,685 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: CheckPackages
+  description: CheckPackages API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/contracts: 
+   post: 
+    operationId: GetProviderContracts
+    tags: 
+     - Providers
+    summary: Get Provider Contracts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderContractsSearchDTO'
+    responses: 
+     '200': 
+      description: ProviderContract retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderContractsListDTO'
+  /provider/pickingsummary: 
+   post: 
+    operationId: GetProviderPickingSummary
+    tags: 
+     - Providers
+    summary: Get ProviderPicking Summary
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderPickingSummarySearchDTO'
+    responses: 
+     '200': 
+      description: ProviderPickingSummary updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   ProviderContractsSearchDTO: 
+    title : ProviderContractsSearchDTO
+    type: object
+    properties: 
+     ContractID: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     ProviderContractID: 
+      type: integer
+      nullable: true
+     ProviderContractClass: 
+      type: string
+      nullable: true
+     ProviderContractSubclass: 
+      type: string
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      nullable: true
+     PanelStatus: 
+      type: string
+      nullable: true
+     ExceptionFeeScheduleId: 
+      type: integer
+      nullable: true
+     ExceptionCapitationRateId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ContractEffectiveOnOrAfter: 
+      type: string
+      format: date-time
+      nullable: true
+     PanelAsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     NetworkId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   ProviderContractsListDTO: 
+    title : ProviderContractsListDTO
+    type: object
+    properties: 
+     ProviderId: 
+      type: integer
+      nullable: true
+     ProviderContractID: 
+      type: integer
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderNPI: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+     ContractName: 
+      type: string
+      nullable: true
+     ContractNumber: 
+      type: string
+     ContractDescription: 
+      type: string
+      nullable: true
+     ContractType: 
+      type: string
+      nullable: true
+     ContractTypeName: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+     VendorNumber: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNPI: 
+      type: string
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     HospitalName: 
+      type: string
+      nullable: true
+     HospitalNPI: 
+      type: string
+      nullable: true
+     ExceptionFeeScheduleId: 
+      type: integer
+      nullable: true
+     ExceptionFeeScheduleName: 
+      type: string
+      nullable: true
+     DisplayExceptionFeeScheduleName: 
+      type: string
+      nullable: true
+     ExceptionFeeScheduleDescription: 
+      type: string
+      nullable: true
+     ExceptionCapitationRateId: 
+      type: integer
+      nullable: true
+     ExceptionCapitationRateName: 
+      type: string
+      nullable: true
+     DisplayExceptionCapitationRateName: 
+      type: string
+      nullable: true
+     ExceptionCapitationRateDesc: 
+      type: string
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     DisplayRiskGroupName: 
+      type: string
+      nullable: true
+     RiskGroupDescription: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     RiskGroupSubclassName: 
+      type: string
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeAddress1: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     PanelStatus: 
+      type: string
+     StatusOfPanel: 
+      type: string
+      nullable: true
+     PanelSize: 
+      type: integer
+      nullable: true
+     PanelAgeFrom: 
+      type: integer
+      nullable: true
+     PanelAgeTo: 
+      type: integer
+      nullable: true
+     PanelDescription: 
+      type: string
+      nullable: true
+     PanelDescriptionName: 
+      type: string
+      nullable: true
+     PanelGender: 
+      type: string
+     PanelGenderName: 
+      type: string
+      nullable: true
+     PanelWeight: 
+      type: integer
+      nullable: true
+     ProviderContractClass: 
+      type: string
+      nullable: true
+     ProviderContractClassName: 
+      type: string
+      nullable: true
+     ProviderContractSubclass: 
+      type: string
+      nullable: true
+     ProviderContractSubclassName: 
+      type: string
+      nullable: true
+     InheritOption: 
+      type: string
+     InheritOptionName: 
+      type: string
+      nullable: true
+     AutoAssignOption: 
+      type: string
+     AutoAssignOptionName: 
+      type: string
+      nullable: true
+     ReferralWaiver: 
+      type: string
+     ShowInWebDirectory: 
+      type: string
+     CapitationRateID: 
+      type: integer
+      nullable: true
+     CurrentPanel: 
+      type: integer
+      nullable: true
+     ProviderCategoryLevel: 
+      type: string
+     ProviderCategoryLevelName: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     TermReason: 
+      type: string
+      nullable: true
+     ActionCode: 
+      type: integer
+      nullable: true
+     COBWaiver: 
+      type: string
+      nullable: true
+     AllowPanelAssignment: 
+      type: string
+     AllowPanelAssignmentName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     AsOfDate: 
+      type: string
+      format: date-time
+     ContractEffectiveOnOrAfter: 
+      type: string
+      format: date-time
+     PanelAsOfDate: 
+      type: string
+      format: date-time
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     NetworkId: 
+      type: integer
+      nullable: true
+     Network1: 
+      type: string
+      nullable: true
+     Network2: 
+      type: string
+      nullable: true
+     Network3: 
+      type: string
+      nullable: true
+     Networks: 
+      type: string
+      nullable: true
+     PanelSizeCalculationMethod: 
+      type: string
+     FuturePCPLookbackPeriod: 
+      type: integer
+      nullable: true
+   ProviderPickingSummarySearchDTO: 
+    title : ProviderPickingSummarySearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     AnalysisMode: 
+      type: string
+      nullable: true
+     PickedEIN: 
+      type: string
+      nullable: true
+     PickedGroupBy: 
+      type: string
+      nullable: true
+     SubmittedGroupBy: 
+      type: string
+      nullable: true
+     CurrentGroupBy: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     DateReceivedFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceivedTo: 
+      type: string
+      format: date-time
+      nullable: true
+     TypeOfChangeCode: 
+      type: string
+      nullable: true
+     MinimumNumberOfClaims: 
+      type: integer
+      nullable: true
+     ReturnNonMatchingClaimsOnly: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ProviderPickingSummaryListDTO: 
+    title : ProviderPickingSummaryListDTO
+    type: object
+    properties: 
+     AnalysisMode: 
+      type: string
+      nullable: true
+     PickedGroupBy: 
+      type: string
+      nullable: true
+     SubmittedGroupBy: 
+      type: string
+      nullable: true
+     CurrentGroupBy: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     DateReceivedFrom: 
+      type: string
+      nullable: true
+     DateReceivedTo: 
+      type: string
+      nullable: true
+     TypeOfChangeCode: 
+      type: string
+      nullable: true
+     TypeOfChange: 
+      type: string
+      nullable: true
+     MinimumNumberOfClaims: 
+      type: integer
+      nullable: true
+     ReturnNonMatchingClaimsOnly: 
+      type: string
+      nullable: true
+     PickedProviderID: 
+      type: integer
+      nullable: true
+     PickedProviderNumber: 
+      type: string
+      nullable: true
+     PickedProviderNPI: 
+      type: string
+      nullable: true
+     PickedProviderLastName: 
+      type: string
+      nullable: true
+     PickedProviderFirstName: 
+      type: string
+      nullable: true
+     PickedOfficeID: 
+      type: integer
+      nullable: true
+     PickedOfficeNumber: 
+      type: string
+      nullable: true
+     PickedOfficeName: 
+      type: string
+      nullable: true
+     PickedOfficeAddress1: 
+      type: string
+      nullable: true
+     PickedOfficeAddress2: 
+      type: string
+      nullable: true
+     PickedOfficeCity: 
+      type: string
+      nullable: true
+     PickedOfficeState: 
+      type: string
+      nullable: true
+     PickedOfficeZip: 
+      type: string
+      nullable: true
+     PickedVendorID: 
+      type: integer
+      nullable: true
+     PickedVendorNumber: 
+      type: string
+      nullable: true
+     PickedVendorNPI: 
+      type: string
+      nullable: true
+     PickedVendorName: 
+      type: string
+      nullable: true
+     PickedEIN: 
+      type: string
+      nullable: true
+     PickedCorporationName: 
+      type: string
+      nullable: true
+     PickedVendorAddress1: 
+      type: string
+      nullable: true
+     PickedVendorAddress2: 
+      type: string
+      nullable: true
+     PickedVendorCity: 
+      type: string
+      nullable: true
+     PickedVendorState: 
+      type: string
+      nullable: true
+     PickedVendorZip: 
+      type: string
+      nullable: true
+     PickedPayToAddress1: 
+      type: string
+      nullable: true
+     PickedPayToAddress2: 
+      type: string
+      nullable: true
+     PickedPayToCity: 
+      type: string
+      nullable: true
+     PickedPayToState: 
+      type: string
+      nullable: true
+     PickedPayToZip: 
+      type: string
+      nullable: true
+     SubmittedProviderInfo: 
+      type: string
+      nullable: true
+     SubmittedProviderNumber: 
+      type: string
+      nullable: true
+     SubmittedProviderNPI: 
+      type: string
+      nullable: true
+     SubmittedOfficeNumber: 
+      type: string
+      nullable: true
+     SubmittedFacilityInfo: 
+      type: string
+      nullable: true
+     SubmittedVendorInfo: 
+      type: string
+      nullable: true
+     SubmittedTaxNumber: 
+      type: string
+      nullable: true
+     SubmittedVendorNumberQualifier: 
+      type: string
+      nullable: true
+     SubmittedVendorNumber: 
+      type: string
+      nullable: true
+     SubmittedPayToInfo: 
+      type: string
+      nullable: true
+     CurrentProviderID: 
+      type: integer
+      nullable: true
+     CurrentProviderNumber: 
+      type: string
+      nullable: true
+     CurrentProviderNPI: 
+      type: string
+      nullable: true
+     CurrentProviderLastName: 
+      type: string
+      nullable: true
+     CurrentProviderFirstName: 
+      type: string
+      nullable: true
+     CurrentOfficeID: 
+      type: integer
+      nullable: true
+     CurrentOfficeNumber: 
+      type: string
+      nullable: true
+     CurrentOfficeName: 
+      type: string
+      nullable: true
+     CurrentOfficeAddress1: 
+      type: string
+      nullable: true
+     CurrentOfficeAddress2: 
+      type: string
+      nullable: true
+     CurrentOfficeCity: 
+      type: string
+      nullable: true
+     CurrentOfficeState: 
+      type: string
+      nullable: true
+     CurrentOfficeZip: 
+      type: string
+      nullable: true
+     CurrentVendorID: 
+      type: integer
+      nullable: true
+     CurrentVendorNumber: 
+      type: string
+      nullable: true
+     CurrentVendorNPI: 
+      type: string
+      nullable: true
+     CurrentVendorName: 
+      type: string
+      nullable: true
+     CurrentEIN: 
+      type: string
+      nullable: true
+     CurrentCorporationName: 
+      type: string
+      nullable: true
+     CurrentVendorAddress1: 
+      type: string
+      nullable: true
+     CurrentVendorAddress2: 
+      type: string
+      nullable: true
+     CurrentVendorCity: 
+      type: string
+      nullable: true
+     CurrentVendorState: 
+      type: string
+      nullable: true
+     CurrentVendorZip: 
+      type: string
+      nullable: true
+     CurrentPayToAddress1: 
+      type: string
+      nullable: true
+     CurrentPayToAddress2: 
+      type: string
+      nullable: true
+     CurrentPayToCity: 
+      type: string
+      nullable: true
+     CurrentPayToState: 
+      type: string
+      nullable: true
+     CurrentPayToZip: 
+      type: string
+      nullable: true
+     NumberOfClaimsNotAutoPicked: 
+      type: integer
+      nullable: true
+     PercentageOfTotalClaimsNotAutoPicked: 
+      type: number
+      nullable: true
+     NumberOfClaimsChangedInMeditrac: 
+      type: integer
+      nullable: true
+     PercentageOfTotalClaimsChangedInMeditrac: 
+      type: number
+      nullable: true
