@@ -1,0 +1,298 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Rate
+  description: Rate API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/capitation/rate: 
+   post: 
+    operationId: AddCapitationRates
+    tags: 
+     - Rate
+    summary: Add CaptationRates
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RatesDTO'
+    responses: 
+     '200': 
+      description: CaptationRates added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateCapitationRates
+    tags: 
+     - Rate
+    summary: Update CaptationRates
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RatesDTO'
+    responses: 
+     '200': 
+      description: CaptationRates updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/capitation/ratedetails: 
+   get: 
+    operationId: GetCapitationRateDetails
+    tags: 
+     - Rate
+    summary: Get CaptationRatesDetails
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/CapitationRateIdQueryParam'
+     - $ref: '#/components/parameters/CapitationRateDetailIDQueryParam'
+    responses: 
+     '200': 
+      description: CaptationRates retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CaptationRatesDetailsListDTO'
+   post: 
+    operationId: AddCapitationRateDetails
+    tags: 
+     - Rate
+    summary: Add CaptationRatesDetails
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CaptationRatesDetailsDTO'
+    responses: 
+     '200': 
+      description: CaptationRatesDetails added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateCapitationRateDetails
+    tags: 
+     - Rate
+    summary: Update CaptationRatesDetails
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CaptationRatesDetailsDTO'
+    responses: 
+     '200': 
+      description: CaptationRatesDetails updated successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   RatesDTO: 
+    title : RatesDTO
+    type: object
+    properties: 
+     CapitationRateName: 
+      type: string
+      nullable: true
+     CapitationRateDescription: 
+      type: string
+      nullable: true
+     CapitationType : 
+      type: string
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CapitationRateId: 
+      type: integer
+      nullable: true
+   CaptationRatesDetailsListDTO: 
+    title : CaptationRatesDetailsListDTO
+    type: object
+    properties: 
+     CapitationRateDetailID: 
+      type: integer
+      nullable: true
+     CapitationRateId: 
+      type: integer
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     GenderName: 
+      type: string
+      nullable: true
+     AidCodeId: 
+      type: integer
+      nullable: true
+     AidCode: 
+      type: string
+      nullable: true
+     AidCodeCategoryCode: 
+      type: string
+      nullable: true
+     AidCodeCategory: 
+      type: string
+      nullable: true
+     AidCodeSubCategoryCode: 
+      type: string
+      nullable: true
+     AidCodeSubCategory: 
+      type: string
+      nullable: true
+     SpecialtyId: 
+      type: integer
+      nullable: true
+     SpecialtyName: 
+      type: string
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     RateType: 
+      type: string
+      nullable: true
+     RateTypeName: 
+      type: string
+      nullable: true
+     RateValue: 
+      type: string
+      nullable: true
+     RateCoverageType: 
+      type: string
+      nullable: true
+     RateCoverageTypeName: 
+      type: string
+      nullable: true
+     QualifierId: 
+      type: integer
+      nullable: true
+     QualifierName: 
+      type: string
+      nullable: true
+     QualifierType: 
+      type: string
+      nullable: true
+     QualifierPlanId: 
+      type: integer
+      nullable: true
+     QualifierPlanName: 
+      type: string
+      nullable: true
+     EffectiveDate : 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy : 
+      type: string
+      nullable: true
+     LastUpdatedAt : 
+      type: string
+      format: date-time
+      nullable: true
+   CaptationRatesDetailsDTO: 
+    title : CaptationRatesDetailsDTO
+    type: object
+    properties: 
+     CapitationRateId: 
+      type: integer
+      nullable: true
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     AidCodeId: 
+      type: integer
+      nullable: true
+     SpecialtyId: 
+      type: integer
+      nullable: true
+     TierItemId : 
+      type: integer
+      nullable: true
+     RateType: 
+      type: string
+      nullable: true
+     RateValue: 
+      type: string
+      nullable: true
+     RateCoverageType: 
+      type: string
+      nullable: true
+     QualifierId: 
+      type: integer
+      nullable: true
+     EffectiveDate : 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CapitationRateDetailId: 
+      type: integer
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   CapitationRateIdQueryParam: 
+    in: query
+    name: CapitationRateId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CapitationRateDetailIDQueryParam: 
+    in: query
+    name: CapitationRateDetailID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
