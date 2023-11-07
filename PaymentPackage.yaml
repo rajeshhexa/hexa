@@ -1,0 +1,470 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Payment Packages
+  description: Payment Packages
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/paymentpackage: 
+   post: 
+    operationId: AddPaymentPackage
+    tags: 
+     - Payment Package
+    summary: Add Payment Package
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageDTO'
+    responses: 
+     '200': 
+      description: Payment Package Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdatePaymentPackage
+    tags: 
+     - Payment Package
+    summary: Update Payment Package
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageDTO'
+    responses: 
+     '200': 
+      description: Payment Package Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/paymentpackagemapping: 
+   post: 
+    operationId: AddPaymentPackageMapping
+    tags: 
+     - Payment Package
+    summary: Add Payment Package Mapping
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageMappingDTO'
+    responses: 
+     '200': 
+      description: Payment Package Mapping Addd Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdatePaymentPackageMapping
+    tags: 
+     - Payment Package
+    summary: Update Payment Package Mapping
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageMappingDTO'
+    responses: 
+     '200': 
+      description: Payment Package Mapping Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeletePaymentPackageMapping
+    tags: 
+     - Payment Package
+    summary: Delete Payment Package Mapping
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PaymentPackageMappingIdQueryParam'
+    responses: 
+     '200': 
+      description: Payment Package Mapping Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/paymentpackagemappings: 
+   post: 
+    operationId: GetPaymentPackageMappings
+    tags: 
+     - Payment Package
+    summary: Get Payment Package Mapping
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageMappingSearchDTO'
+    responses: 
+     '200': 
+      description: Payment Package Mapping Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PaymentPackageMappingListDTO'
+  /finance/paymentpackages: 
+   post: 
+    operationId: GetPaymentPackages
+    tags: 
+     - Payment Package
+    summary: Get Payment Packages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageSearchDTO'
+    responses: 
+     '200': 
+      description: Success
+  /finance/paymentpackage/posting: 
+   post: 
+    operationId: CreatePaymentPackagePosting
+    tags: 
+     - Payment Package
+    summary: Create Payment Package Posting
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/CapitationJobDetailsIdQueryParam'
+    responses: 
+     '200': 
+      description: Payment Package Posting Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/paymentpackage/aggregatesummary: 
+   post: 
+    operationId: PaymentPackageAggregateSummary
+    tags: 
+     - Payment Package
+    summary: Payment Package Aggregate Summary
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentPackageAggregateSummarySearchDTO'
+    responses: 
+     '200': 
+      description: Success
+components: 
+  schemas: 
+   PaymentPackageDTO: 
+    title : PaymentPackageDTO
+    type: object
+    properties: 
+     PaymentPackageName: 
+      type: string
+      nullable: true
+     PaymentPackageDescription: 
+      type: string
+      nullable: true
+     PaymentType: 
+      type: string
+      nullable: true
+     PaymentFreqType: 
+      type: string
+      nullable: true
+     LastPostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CutoffDay: 
+      type: integer
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+   PaymentPackageMappingDTO: 
+    title : PaymentPackageMappingDTO
+    type: object
+    properties: 
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     RetroactiveAddLimit: 
+      type: integer
+      nullable: true
+     RetroactiveTermLimit: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     CapitationRateId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PaymentPackageMappingId: 
+      type: integer
+      nullable: true
+   PaymentPackageMappingSearchDTO: 
+    title : PaymentPackageMappingSearchDTO
+    type: object
+    properties: 
+     PaymentPackageMappingId: 
+      type: integer
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     PaymentPackageName: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+   PaymentPackageMappingListDTO: 
+    title : PaymentPackageMappingListDTO
+    type: object
+    properties: 
+     PaymentPackageMappingId: 
+      type: integer
+      description: 
+     PaymentPackageId: 
+      type: integer
+     PaymentPackageName: 
+      type: string
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+     EntityName: 
+      type: string
+      nullable: true
+     EntityNumber: 
+      type: string
+      nullable: true
+     RetroactiveAddLimit: 
+      type: integer
+     RetroactiveTermLimit: 
+      type: integer
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     CapitationRateId: 
+      type: integer
+      nullable: true
+     CapitationRateName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   PaymentPackageSearchDTO: 
+    title : PaymentPackageSearchDTO
+    type: object
+    properties: 
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     PaymentPackageName: 
+      type: string
+      nullable: true
+     PaymentType: 
+      type: string
+      nullable: true
+     LastPostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   PaymentPackageListDTO: 
+    title : PaymentPackageListDTO
+    type: object
+    properties: 
+     PaymentPackageId: 
+      type: integer
+     PaymentPackageName: 
+      type: string
+     PaymentPackageDescription: 
+      type: string
+      nullable: true
+     PaymentType: 
+      type: string
+     PaymentTypeName: 
+      type: string
+      nullable: true
+     PaymentFreqType: 
+      type: string
+     PaymentFreqName: 
+      type: string
+      nullable: true
+     LastPostDate: 
+      type: string
+      format: date-time
+     NextPostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CutoffDay: 
+      type: integer
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   PaymentPackageAggregateSummarySearchDTO: 
+    title : PaymentPackageAggregateSummarySearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     PackageEntityType: 
+      type: string
+      nullable: true
+     PackageEntityId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     PostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ShowGroupSummary: 
+      type: string
+      nullable: true
+     ReturnResultsAsXml: 
+      type: string
+      nullable: true
+     ReturnStatus: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   PaymentPackageAggregateSummaryListDTO: 
+    title : PaymentPackageAggregateSummaryListDTO
+    type: object
+    properties: 
+     PostingDate: 
+      type: string
+     ReinsurancePolicy: 
+      type: string
+     Group: 
+      type: string
+      nullable: true
+     RecordId: 
+      type: integer
+      nullable: true
+     MonthlyAttachmentPoint: 
+      type: number
+      nullable: true
+     YTDAttachmentPoint: 
+      type: number
+      nullable: true
+     ManuallyUpdated: 
+      type: string
+     Employee and Children: 
+      type: string
+      nullable: true
+     Employee and Spouse: 
+      type: string
+      nullable: true
+     Family: 
+      type: string
+      nullable: true
+     Individual: 
+      type: string
+      nullable: true
+  parameters: 
+   PaymentPackageMappingIdQueryParam: 
+    in: query
+    name: PaymentPackageMappingId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CapitationJobDetailsIdQueryParam: 
+    in: query
+    name: CapitationJobDetailsId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
