@@ -1,0 +1,859 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Entity API
+  description: Entity API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/categories: 
+   post: 
+    operationId: GetBnfCategories
+    tags: 
+     - Category
+    summary: Get BnfCategories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BnfCategoriesSearchDTO'
+    responses: 
+     '200': 
+      description: BnfCategories retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BnfCategoriesListDTO'
+  /benefit/category: 
+   post: 
+    operationId: AddBnfCategory
+    tags: 
+     - Category
+    summary: Add BnfCategory
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BnfCategoryDTO'
+    responses: 
+     '200': 
+      description: BnfCategory added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateBnfCategory
+    tags: 
+     - Category
+    summary: Update BnfCategory
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BnfCategoryDTO'
+    responses: 
+     '200': 
+      description: BnfCategory deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/removecategory: 
+   post: 
+    operationId: DeleteBnfCategory
+    tags: 
+     - Category
+    summary: Delete BnfCategory
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BnfCategoryDTO'
+    responses: 
+     '200': 
+      description: BnfCategory updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/copycategories: 
+   post: 
+    operationId: CopyBnfCategories
+    tags: 
+     - Category
+    summary: Copy BnfCategories
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CopyBnfCategoriesDTO'
+    responses: 
+     '200': 
+      description: BnfCategories copied successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/categoryhistory: 
+   get: 
+    operationId: GetBenefitCategoriesHistory
+    tags: 
+     - Category
+    summary: Get BenefitCategories History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BenefitCategoryIdQueryParam'
+    responses: 
+     '200': 
+      description: Benefit Categories History retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitCategoriesHistoryListDTO'
+  /benefit/category/restriction: 
+   get: 
+    operationId: GetBenefitCategoryRestrictions
+    tags: 
+     - Category
+    summary: Get Benefit Category Restriction
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BenefitCategoryIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Benefit Category Restriction retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitCategoryRestrictionListDTO'
+   post: 
+    operationId: AddBenefitCategoryRestriction
+    tags: 
+     - Category
+    summary: Add Benefit Category Restriction
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitCategoryRestrictionDTO'
+    responses: 
+     '200': 
+      description: Benefit Category Restriction added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateBenefitCategoryRestriction
+    tags: 
+     - Category
+    summary: Update Benefit Category Restriction
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitCategoryRestrictionDTO'
+    responses: 
+     '200': 
+      description: Benefit Category Restriction updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/category/removerestriction: 
+   post: 
+    operationId: DeleteBenefitCategoryRestriction
+    tags: 
+     - Category
+    summary: Delete Benefit Category Restriction
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitCategoryRestrictionDTO'
+    responses: 
+     '200': 
+      description: Benefit Category Restriction deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   BnfCategoryDTO: 
+    title : BnfCategoryDTO
+    type: object
+    properties: 
+     BnfCategoryType: 
+      type: string
+      nullable: true
+     BnfCategoryLevel: 
+      type: integer
+      nullable: true
+     ParentID: 
+      type: integer
+      nullable: true
+     PlanID: 
+      type: integer
+      nullable: true
+     BnfCategoryName: 
+      type: string
+      nullable: true
+     RateType: 
+      type: string
+      nullable: true
+     Self: 
+      type: string
+      nullable: true
+     Spouse: 
+      type: string
+      nullable: true
+     Child: 
+      type: string
+      nullable: true
+     Other: 
+      type: string
+      nullable: true
+     AgeType: 
+      type: string
+      nullable: true
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     ContinuousCoveragePeriod: 
+      type: integer
+      nullable: true
+     MinimumCoveragePeriod: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     AddToExistingGroupMappings: 
+      type: string
+      nullable: true
+     ExpenseAccountType: 
+      type: string
+      nullable: true
+     ExpenseAccountSubType: 
+      type: string
+      nullable: true
+     AppliedLevel: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SummaryOfBenefitsDisplayStatus: 
+      type: string
+      nullable: true
+     IncludeInReinsurance: 
+      type: string
+      nullable: true
+     ServiceTypeCode: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     BenefitsReportClass: 
+      type: string
+      nullable: true
+     BenefitsReportSubClass: 
+      type: string
+      nullable: true
+     COBConsideration: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   BenefitCategoryRestrictionDTO: 
+    title : BenefitCategoryRestrictionDTO
+    type: object
+    properties: 
+     BenefitCategoryID: 
+      type: integer
+      nullable: true
+     LiabilityLevelID: 
+      type: integer
+      nullable: true
+     OverrideLiabilityLevelID: 
+      type: integer
+      nullable: true
+     PreEstimateReq: 
+      type: string
+      nullable: true
+     PreEstimateAmt: 
+      type: string
+      nullable: true
+     AuthReq: 
+      type: string
+      nullable: true
+     AuthorizationAmount: 
+      type: string
+      nullable: true
+     RefReq: 
+      type: string
+      nullable: true
+     ReferralAmount: 
+      type: string
+      nullable: true
+     TotalChargesOver: 
+      type: string
+      nullable: true
+     ChargePerLineOver: 
+      type: string
+      nullable: true
+     AutoDeny: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     MinEnrollmentPeriod: 
+      type: integer
+      nullable: true
+     MaxEnrollmentPeriod: 
+      type: integer
+      nullable: true
+     EnrollmentPeriodType: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PenaltyType: 
+      type: string
+      nullable: true
+     PenaltyAmount: 
+      type: string
+      nullable: true
+     WhoToPenalize: 
+      type: string
+      nullable: true
+     PrimaryCareRestrictions: 
+      type: string
+      nullable: true
+   BenefitCategoryRestrictionListDTO: 
+    title : BenefitCategoryRestrictionListDTO
+    type: object
+    properties: 
+     BenefitCategoryRestrictionID: 
+      type: integer
+     BenefitCategoryID: 
+      type: integer
+     LiabilityLevelID: 
+      type: integer
+      nullable: true
+     LiabilityLevel: 
+      type: string
+      nullable: true
+     OverrideLiabilityLevelID: 
+      type: integer
+      nullable: true
+     OverrideLiabilityLevel: 
+      type: string
+      nullable: true
+     PreEstimateReq: 
+      type: string
+     PreEstimateRequired: 
+      type: string
+      nullable: true
+     PreEstimateAmt: 
+      type: string
+      nullable: true
+     AuthReq: 
+      type: string
+     AuthRequired: 
+      type: string
+      nullable: true
+     AuthorizationAmount  : 
+      type: string
+      nullable: true
+     RefReq : 
+      type: string
+     RefRequired: 
+      type: string
+      nullable: true
+     ReferralAmount: 
+      type: string
+      nullable: true
+     TotalChargesOver: 
+      type: string
+      nullable: true
+     ChargePerLineOver: 
+      type: string
+      nullable: true
+     AutoDeny: 
+      type: string
+     ExplanationID: 
+      type: integer
+      nullable: true
+     ExplanationAbbreviation: 
+      type: string
+      nullable: true
+     MinEnrollmentPeriod: 
+      type: integer
+      nullable: true
+     MaxEnrollmentPeriod: 
+      type: integer
+      nullable: true
+     EnrollmentPeriodType: 
+      type: string
+      nullable: true
+     EnrollmentPeriodTypeName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     PenaltyType: 
+      type: string
+      nullable: true
+     PenaltyTypeName: 
+      type: string
+      nullable: true
+     PenaltyAmount: 
+      type: string
+      nullable: true
+     WhoToPenalize: 
+      type: string
+      nullable: true
+     WhoToPenalizeName: 
+      type: string
+      nullable: true
+     PrimaryCareRestrictions: 
+      type: string
+     PrimaryCareRestrictionsName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date
+      nullable: true
+   CopyBnfCategoriesDTO: 
+    title : CopyBnfCategoriesDTO
+    type: object
+    properties: 
+     SourceBnfId: 
+      type: integer
+      nullable: true
+     NewParentLevel: 
+      type: integer
+      nullable: true
+     NewParentID: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     BnfCategoryType: 
+      type: string
+      nullable: true
+     AddToExistingGroupMappings: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   BnfCategoriesSearchDTO: 
+    title : BnfCategoriesSearchDTO
+    type: object
+    properties: 
+     SessionID: 
+      type: integer
+      nullable: true
+     BnfCategoryID: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     BnfCategoryName: 
+      type: string
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     LiabilityPackageItemLevelMapId: 
+      type: integer
+      nullable: true
+   BnfCategoriesListDTO: 
+    title : BnfCategoriesListDTO
+    type: object
+    properties: 
+     BnfCategoryID: 
+      type: integer
+      nullable: true
+     BnfCategoryType: 
+      type: string
+     BnfCategoryLevel: 
+      type: integer
+      nullable: true
+     ParentID: 
+      type: integer
+      nullable: true
+     ParentName: 
+      type: string
+      nullable: true
+     PlanID: 
+      type: integer
+      nullable: true
+     BnfCategoryName: 
+      type: string
+     RateType: 
+      type: string
+      nullable: true
+     Self: 
+      type: string
+     Spouse: 
+      type: string
+     Child: 
+      type: string
+     Other: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AgeType: 
+      type: string
+      nullable: true
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     ContinuousCoveragePeriod: 
+      type: integer
+      nullable: true
+     MinimumCoveragePeriod: 
+      type: integer
+      nullable: true
+     SummaryOfBenefitsDisplayStatus: 
+      type: string
+      nullable: true
+     GraduatingBenefits: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     ChildType: 
+      type: string
+      nullable: true
+     RateUnitType: 
+      type: string
+      nullable: true
+     RateUnitValue: 
+      type: string
+      nullable: true
+     BnfCategoryNameWithRate: 
+      type: string
+      nullable: true
+     ExpenseAccountType: 
+      type: string
+      nullable: true
+     ExpenseAccountSubType: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     BnfCategoryWithLiability: 
+      type: string
+      nullable: true
+     LiabilityEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LiabilityExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LiabilityMapped: 
+      type: string
+      nullable: true
+     AppliedLevel: 
+      type: string
+      nullable: true
+     AppliedLevelName: 
+      type: string
+      nullable: true
+     IncludeInReinsurance: 
+      type: string
+      nullable: true
+     IncludeInReinsuranceName: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceTypeCode: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     BenefitsReportClass: 
+      type: string
+      nullable: true
+     BenefitsReportSubClass: 
+      type: string
+      nullable: true
+     COBConsideration: 
+      type: string
+      nullable: true
+   BenefitCategoriesHistoryListDTO: 
+    title : BenefitCategoriesHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+      nullable: true
+     ChangeDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeType: 
+      type: integer
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     UserId: 
+      type: integer
+      nullable: true
+     BnfCategoryID: 
+      type: integer
+      nullable: true
+     BnfCategoryType: 
+      type: string
+      nullable: true
+     BnfCategoryLevel: 
+      type: integer
+      nullable: true
+     ParentID: 
+      type: integer
+      nullable: true
+     PlanID: 
+      type: integer
+      nullable: true
+     BnfCategoryName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     RateType: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Self: 
+      type: string
+      nullable: true
+     Spouse: 
+      type: string
+      nullable: true
+     Child: 
+      type: string
+      nullable: true
+     Other: 
+      type: string
+      nullable: true
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     ContinuousCoveragePeriod: 
+      type: integer
+      nullable: true
+     MinimumCoveragePeriod: 
+      type: integer
+      nullable: true
+     ExpenseAccountType: 
+      type: string
+      nullable: true
+     ExpenseAccountSubType: 
+      type: string
+      nullable: true
+     AppliedLevel: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+     SummaryOfBenefitsDisplayStatus: 
+      type: string
+      nullable: true
+     IncludeInReinsurance: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceTypeCode: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     BenefitsReportClass: 
+      type: string
+      nullable: true
+     BenefitsReportSubClass: 
+      type: string
+      nullable: true
+     COBConsideration: 
+      type: string
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+  parameters: 
+   BenefitCategoryIdQueryParam: 
+    in: query
+    name: BenefitCategoryId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   BenefitCategoryIDQueryParam: 
+    in: query
+    name: BenefitCategoryID
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
