@@ -1,0 +1,849 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Capitation
+  description: Capitation
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/capitation/jobdetail: 
+   post: 
+    operationId: AddCapitationJobDetail
+    tags: 
+     - Capitation
+    summary: Add Capitation Job Detail
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CapitationJobDetailDTO'
+    responses: 
+     '200': 
+      description: Capitation Job Detail Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateCapitationJobDetails
+    tags: 
+     - Capitation
+    summary: Update Capitation Job Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CapitationJobDetailDTO'
+    responses: 
+     '200': 
+      description: Capitation Job Detail Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/capitation/post: 
+   post: 
+    operationId: PostCapitation
+    tags: 
+     - Capitation
+    summary: Post Capitation
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CapitationDTO'
+    responses: 
+     '200': 
+      description: 
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/capitation/job/end: 
+   post: 
+    operationId: EndCapitationJob
+    tags: 
+     - Capitation
+    summary: End Capitation Job
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: 
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/capitation/job: 
+   post: 
+    operationId: AddCapitationJob
+    tags: 
+     - Capitation
+    summary: Add Capitation Job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CapitationJobDTO'
+    responses: 
+     '200': 
+      description: Capitation Job Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateCapitationJob
+    tags: 
+     - Capitation
+    summary: Update Capitation Job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CapitationJobDTO'
+    responses: 
+     '200': 
+      description: Capitation Job Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/capitation/jobs: 
+   post: 
+    operationId: GetCapitationJobs
+    tags: 
+     - Capitation
+    summary: Get Capitation Jobs
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CapitationJobSearchDTO'
+    responses: 
+     '200': 
+      description: Capitation Jobs Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CapitationJobListDTO'
+  /finance/capitation/jobdetails: 
+   post: 
+    operationId: GetCapitationJobDetails
+    tags: 
+     - Capitation
+    summary: Get Capitation Job Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CapitationJobDetailSearchDTO'
+    responses: 
+     '200': 
+      description: Capitation Job Details Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CapitationJobDetailListDTO'
+  /finance/voidcapitation: 
+   post: 
+    operationId: VoidCapitation
+    tags: 
+     - Capitation
+    summary: Void Capitation
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CapitationJobDetailsIdQueryParam'
+     - $ref: '#/components/parameters/ContractIDQueryParam'
+     - $ref: '#/components/parameters/RiskGroupVendorMapIDQueryParam'
+     - $ref: '#/components/parameters/AsOfDayQueryParam'
+     - $ref: '#/components/parameters/DebugQueryParam'
+    responses: 
+     '200': 
+      description: Success
+components: 
+  schemas: 
+   CapitationJobDetailDTO: 
+    title : CapitationJobDetailDTO
+    type: object
+    properties: 
+     JobID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Step: 
+      type: string
+      nullable: true
+     DetailStatus: 
+      type: string
+      default: "OPN"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     JobDetailId: 
+      type: integer
+      nullable: true
+     DetailMessage: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|NORMAL|"
+      nullable: true
+   CapitationDTO: 
+    title : CapitationDTO
+    type: object
+    properties: 
+     ContractID: 
+      type: integer
+      nullable: true
+     RiskGroupVendorMapID: 
+      type: integer
+      nullable: true
+     AsOfDay: 
+      type: string
+      nullable: true
+     PreviewOnly: 
+      type: string
+      default: "N"
+      nullable: true
+     PostWithoutRecords: 
+      type: string
+      default: "N"
+      nullable: true
+     CapitationJobId: 
+      type: integer
+      nullable: true
+     CapitationJobDetailsId: 
+      type: integer
+      nullable: true
+     CapitationJobMode: 
+      type: string
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     ReturnRecordsToBeCreated: 
+      type: string
+      default: "N"
+      nullable: true
+     Usage: 
+      type: string
+      default: "|NORMAL|"
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+   CapitationJobDTO: 
+    title : CapitationJobDTO
+    type: object
+    properties: 
+     JobName: 
+      type: string
+      nullable: true
+     JobDescription: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     Step: 
+      type: string
+      default: "CRT"
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      default: "OPN"
+      nullable: true
+     JobMode: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PostWithoutRecords: 
+      type: string
+      nullable: true
+     PostDateStart: 
+      type: string
+      format: date-time
+      nullable: true
+     PostDateEnd: 
+      type: string
+      format: date-time
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractType: 
+      type: string
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     RiskGroupVendorClass: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubClass: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupSubClass: 
+      type: string
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+     JobID: 
+      type: integer
+      nullable: true
+     VoidReason: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|UPDATEINFO|"
+      nullable: true
+     Force: 
+      type: string
+      default: "N"
+      nullable: true
+     SetStep: 
+      type: string
+      default: "N"
+      nullable: true
+   CapitationJobSearchDTO: 
+    title : CapitationJobSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   CapitationJobListDTO: 
+    title : CapitationJobListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      description: 
+     JobNumber: 
+      type: string
+     JobName: 
+      type: string
+     JobDescription: 
+      type: string
+      nullable: true
+     JobTypeCode: 
+      type: string
+     JobType: 
+      type: string
+      nullable: true
+     ProcessingStatusCode: 
+      type: string
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     StepCode: 
+      type: string
+     Step: 
+      type: string
+      nullable: true
+     CreatedBy: 
+      type: integer
+     CreatedByName: 
+      type: string
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+     DateCompleted: 
+      type: string
+      nullable: true
+     TimeElapsed: 
+      type: number
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+     JobMode: 
+      type: string
+     JobModeName: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     ContractType: 
+      type: string
+      nullable: true
+     ContractTypeName: 
+      type: string
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     RiskGroupVendorClass: 
+      type: string
+      nullable: true
+     RiskGroupVendorClassName: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubClass: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubClassName: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubClass: 
+      type: string
+      nullable: true
+     RiskGroupSubClassName: 
+      type: string
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      nullable: true
+     PostWithoutRecords: 
+      type: string
+      nullable: true
+     PostDateStart: 
+      type: string
+      nullable: true
+     PostDateEnd: 
+      type: string
+      nullable: true
+   CapitationJobDetailSearchDTO: 
+    title : CapitationJobDetailSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|NORMAL|"
+      nullable: true
+     OnlyOpenDetails: 
+      type: string
+      default: "N"
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Step: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   CapitationJobDetailListDTO: 
+    title : CapitationJobDetailListDTO
+    type: object
+    properties: 
+     JobDetailId: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     Step: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      nullable: true
+     DetailStatus: 
+      type: string
+      nullable: true
+     DetailMessage: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     ContractDescription: 
+      type: string
+      nullable: true
+     ContractNotes: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Negotiated: 
+      type: string
+      nullable: true
+     PricingMode: 
+      type: string
+      nullable: true
+     ToPay: 
+      type: integer
+      nullable: true
+     PreEstExpUnits: 
+      type: string
+      nullable: true
+     PreEstExpUnitType: 
+      type: integer
+      nullable: true
+     RVSMultiplier: 
+      type: number
+      nullable: true
+     CapitationRateId: 
+      type: integer
+      nullable: true
+     CapitationRateName: 
+      type: string
+      nullable: true
+     LastPostedDate: 
+      type: string
+      format: date-time
+      nullable: true
+      format: date-time
+      nullable: true
+     RetroactiveAddLimit: 
+      type: integer
+      nullable: true
+     RetroactiveTermLimit: 
+      type: integer
+      nullable: true
+     PostingCutoffDay: 
+      type: integer
+      nullable: true
+     CapitationCurrentPeriod : 
+      type: string
+      format: date-time
+      nullable: true
+     UseHCPCSWhenFindFeeSchedule: 
+      type: string
+      nullable: true
+     FeeScheduleSearchCriteria: 
+      type: string
+      nullable: true
+     ApplyCopayPerSchedule: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     SuppressPayment: 
+      type: string
+      nullable: true
+     ProviderInheritsMemberPayment: 
+      type: string
+      nullable: true
+     ContractType: 
+      type: string
+      nullable: true
+     ContractTypeName: 
+      type: string
+      nullable: true
+     RiskGroupVendorMapId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     Capitation: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     RiskGroupVendorClass: 
+      type: string
+      nullable: true
+     RiskGroupVendorClassName: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubclass: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubclassName: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     RiskGroupSubclassName: 
+      type: string
+      nullable: true
+     RetroAddPeriod: 
+      type: integer
+      nullable: true
+     RetroTermPeriod: 
+      type: integer
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     PaymentPackageName: 
+      type: string
+      nullable: true
+     PaymentPackageDescription: 
+      type: string
+      nullable: true
+     PaymentType: 
+      type: string
+      nullable: true
+     PaymentTypeName: 
+      type: string
+      nullable: true
+     PaymentFreqType: 
+      type: string
+      nullable: true
+     PaymentFreqName: 
+      type: string
+      nullable: true
+     LastPostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NextPostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CutoffDay: 
+      type: integer
+      nullable: true
+     StepKey: 
+      type: string
+      nullable: true
+     NumberOfItems: 
+      type: integer
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     WizardStepName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     LastPostedDate: 
+      type: string
+      format: date-time
+      nullable: true
+      format: date-time
+      nullable: true
+     RetroAddPeriod: 
+      type: integer
+      nullable: true
+     RetroTermPeriod: 
+      type: integer
+      nullable: true
+     RetroPeriod: 
+      type: integer
+      nullable: true
+     RiskGroupVendorMapId: 
+      type: integer
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     EntityEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EntityExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CapitationJobDetailsIdQueryParam: 
+    in: query
+    name: CapitationJobDetailsId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ContractIDQueryParam: 
+    in: query
+    name: ContractID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   RiskGroupVendorMapIDQueryParam: 
+    in: query
+    name: RiskGroupVendorMapID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AsOfDayQueryParam: 
+    in: query
+    name: AsOfDay
+    required: false
+    schema: 
+     type: string
+     format: date-time
+    description: description of parameter passed
+   DebugQueryParam: 
+    in: query
+    name: Debug
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
