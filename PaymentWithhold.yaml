@@ -1,0 +1,511 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: PaymentWithhold
+  description: PaymentWithhold
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/payment/withholdhistory: 
+   post: 
+    operationId: GetPaymentWithholdsHistory
+    tags: 
+     - Payment Withhold
+    summary: Get Payment Withhold History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/PaymentWithholdIdQueryParam'
+    responses: 
+     '200': 
+      description: Payment Withhold History Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PaymentWithholdHistoryListDTO'
+  /finance/payment/withhold: 
+   post: 
+    operationId: AddPaymentWithhold
+    tags: 
+     - Payment Withhold
+    summary: Add PaymentWithhold 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWithholdDTO'
+    responses: 
+     '200': 
+      description: Payment Withhold Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdatePaymentWithhold
+    tags: 
+     - Payment Withhold
+    summary: Update PaymentWithhold
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWithholdDTO'
+    responses: 
+     '200': 
+      description: Payment Withhold Updated Successfullly
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/payment/withholdrecords: 
+   post: 
+    operationId: GetPaymentWithholdsRecords  
+    tags: 
+     - Payment Withhold
+    summary: Get Payment Withhold Records
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWithholdRecordSearchDTO'
+    responses: 
+     '200': 
+      description: Payment Withhold Record Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PaymentWithholdRecordListDTO'
+  /finance/paymentwithholds: 
+   post: 
+    operationId: GetPaymentWithholds
+    tags: 
+     - Payment Withhold
+    summary: Get Payment Withhold
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWithholdSearchDTO'
+    responses: 
+     '200': 
+      description: Payment Withhold Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PaymentWithholdListDTO'
+components: 
+  schemas: 
+   PaymentWithholdDTO: 
+    title : PaymentWithholdDTO
+    type: object
+    properties: 
+     ExternalWithholdNumber: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DateToApplyWithhold: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     LineOfBusiness: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: string
+      nullable: true
+     WithholdAction: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     VendorToPayId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     PaymentWithholdId: 
+      type: integer
+      nullable: true
+   PaymentWithholdHistoryListDTO: 
+    title : PaymentWithholdHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+      description: 
+     ChangeAt: 
+      type: string
+      format: date-time
+     ChangeType: 
+      type: string
+     ProcedureName: 
+      type: string
+     PaymentWithholdId: 
+      type: integer
+      description: 
+     WithholdNumber: 
+      type: string
+      nullable: true
+     ExternalWithholdNumber: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     DateToApplyWithhold: 
+      type: string
+      nullable: true
+     LineOfBusiness: 
+      type: string
+      nullable: true
+     WithholdAction: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     NewVendorName: 
+      type: string
+      nullable: true
+     NewVendorNumber: 
+      type: string
+      nullable: true
+     CreatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     EntityName: 
+      type: string
+      nullable: true
+     EntityNumber: 
+      type: string
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: string
+      nullable: true
+     CreatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   PaymentWithholdRecordSearchDTO: 
+    title : PaymentWithholdRecordSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     PaymentWithholdId: 
+      type: integer
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+   PaymentWithholdRecordListDTO: 
+    title : PaymentWithholdRecordListDTO
+    type: object
+    properties: 
+     ClaimNumber: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReleaseDate: 
+      type: string
+      format: date-time
+      nullable: true
+     VoidDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     PaymentWithholdRecordMapId: 
+      type: integer
+      nullable: true
+     WithholdRecordId: 
+      type: integer
+      nullable: true
+     WithholdToPayRecordId: 
+      type: integer
+      nullable: true
+     Capitation: 
+      type: string
+      nullable: true
+   PaymentWithholdSearchDTO: 
+    title : PaymentWithholdSearchDTO
+    type: object
+    properties: 
+     PaymentWithholdId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   PaymentWithholdListDTO: 
+    title : PaymentWithholdListDTO
+    type: object
+    properties: 
+     PaymentWithholdId: 
+      type: integer
+      description: 
+     WithholdNumber: 
+      type: string
+      nullable: true
+     ExternalWithholdNumber: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      description: 
+     EntityType: 
+      type: string
+     UnitType: 
+      type: string
+     UnitTypeName: 
+      type: string
+     UnitValue: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     DateToApplyWithhold: 
+      type: string
+     DateToApplyWithholdName: 
+      type: string
+     CompanyId: 
+      type: integer
+      nullable: true
+     LineOfBusiness: 
+      type: string
+      nullable: true
+     LineOfBusinessName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     WithholdAction: 
+      type: string
+     WithholdActionName: 
+      type: string
+     Precedence: 
+      type: integer
+      description: 
+     VendorToPayId: 
+      type: integer
+      nullable: true
+     CreatedAt: 
+      type: string
+      nullable: true
+     CreatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     EntityNumber: 
+      type: string
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     VendorToPayName: 
+      type: string
+      nullable: true
+     VendorToPayNumber: 
+      type: string
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|Init|"
+    description: description of parameter passed
+   PaymentWithholdIdQueryParam: 
+    in: query
+    name: PaymentWithholdId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
