@@ -1,0 +1,509 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: FinancialProcess
+  description: FinancialProcess
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/cashaccount/financialprocesses: 
+   post: 
+    operationId: GetCashAccountFinancialProcess
+    tags: 
+     - Financial Process
+    summary: Get Cash Account Financial Process
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CashAccountFinancialProcessSearchDTO'
+    responses: 
+     '200': 
+      description: Cash Account Financial Process Successfully Retreived
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CashAccountFinancialProcessListDTO'
+  /finance/cashaccount/financialprocess: 
+   post: 
+    operationId: AddCashAccountFinancialProcess
+    tags: 
+     - Financial Process
+    summary: Add Cash Account Financial Process
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CashAccountFinancialProcessDTO'
+    responses: 
+     '200': 
+      description:  Cash Account Financial Process Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   CashAccountFinancialProcessSearchDTO: 
+    title : CashAccountFinancialProcessSearchDTO
+    type: object
+    properties: 
+     CompanyId: 
+      type: integer
+      nullable: true
+     CashAccountId: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     FinancialProcess: 
+      type: string
+      nullable: true
+     CheckType: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+     Debug: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   AccountHistoryListDTO: 
+    title : AccountHistoryListDTO
+    type: object
+    properties: 
+     ChangeDate: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     UserId: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     AccountID: 
+      type: integer
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     AccountNumber: 
+      type: string
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     AccountType: 
+      type: string
+      nullable: true
+     AccountTypeName: 
+      type: string
+      nullable: true
+     CreditLimit: 
+      type: number
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     PaymentMethod: 
+      type: string
+      nullable: true
+     PaymentMethodName: 
+      type: string
+      nullable: true
+     BankAccountNumber: 
+      type: string
+      nullable: true
+     RoutingNumber: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     CreationDate: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     FractionalRoutingNumber: 
+      type: string
+      nullable: true
+     BankCode: 
+      type: string
+      nullable: true
+     BankName: 
+      type: string
+      nullable: true
+     BankAccountType: 
+      type: string
+      nullable: true
+     BankAccountTypeName: 
+      type: string
+      nullable: true
+     BankAddress1: 
+      type: string
+      nullable: true
+     BankAddress2: 
+      type: string
+      nullable: true
+     BankCity: 
+      type: string
+      nullable: true
+     BankState: 
+      type: string
+      nullable: true
+     BankZip: 
+      type: string
+      nullable: true
+     BankZipSearch: 
+      type: string
+      nullable: true
+     BankZipCodeId: 
+      type: integer
+      nullable: true
+     BankCounty: 
+      type: string
+      nullable: true
+     BankCountryCode: 
+      type: string
+      nullable: true
+     BankCountryISOCode2: 
+      type: string
+      nullable: true
+     BankCountryISOCode3: 
+      type: string
+      nullable: true
+     BankLATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     BankLONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     MICRFormat: 
+      type: string
+      nullable: true
+     SecondaryFractionalRoutingNumber: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     SubClassName: 
+      type: string
+      nullable: true
+     CheckNumberingOption: 
+      type: string
+      nullable: true
+     CheckNumberingOptionName: 
+      type: string
+      nullable: true
+     EFTProcessing: 
+      type: string
+      nullable: true
+     EFTProcessingName: 
+      type: string
+      nullable: true
+     StartCheckNumber: 
+      type: integer
+      nullable: true
+     EndCheckNumber: 
+      type: integer
+      nullable: true
+     CurrentCheckNumber: 
+      type: integer
+      nullable: true
+     CheckNumberPrefix: 
+      type: string
+      nullable: true
+     CheckNumberLength: 
+      type: integer
+      nullable: true
+     CheckBatchType: 
+      type: string
+      nullable: true
+     CheckBatchTypeName: 
+      type: string
+      nullable: true
+     OverPaymentRecoveryMode: 
+      type: string
+      nullable: true
+     OverPaymentRecoveryModeName: 
+      type: string
+      nullable: true
+     ZeroDollarCheckReportId: 
+      type: integer
+      nullable: true
+     ZeroDollarCheckReport: 
+      type: string
+      nullable: true
+     ChecksDepositReportId: 
+      type: integer
+      nullable: true
+     ChecksDepositReport: 
+      type: string
+      nullable: true
+     ClaimCheckReportId: 
+      type: integer
+      nullable: true
+     ClaimCheckReport: 
+      type: string
+      nullable: true
+     ClaimCheckOnlyReportId: 
+      type: integer
+      nullable: true
+     ClaimCheckOnlyReport: 
+      type: string
+      nullable: true
+     ClaimCheckCSVReportId: 
+      type: integer
+      nullable: true
+     ClaimCheckCSVReport: 
+      type: string
+      nullable: true
+     CapitationCheckReportId: 
+      type: integer
+      nullable: true
+     CapitationCheckReport: 
+      type: string
+      nullable: true
+     CapitationCheckOnlyReportId: 
+      type: integer
+      nullable: true
+     CapitationCheckOnlyReport: 
+      type: string
+      nullable: true
+     CapitationCheckCSVReportId: 
+      type: integer
+      nullable: true
+     CapitationCheckCSVReport: 
+      type: string
+      nullable: true
+     ZeroDollarCapitationCheckReportId: 
+      type: integer
+      nullable: true
+     ZeroDollarCapitationCheckReport: 
+      type: string
+      nullable: true
+     BrokerCheckReportId: 
+      type: integer
+      nullable: true
+     BrokerCheckReport: 
+      type: string
+      nullable: true
+     BrokerCheckOnlyReportId: 
+      type: integer
+      nullable: true
+     BrokerCheckOnlyReport: 
+      type: string
+      nullable: true
+     BrokerCheckCSVReportId: 
+      type: integer
+      nullable: true
+     BrokerCheckCSVReport: 
+      type: string
+      nullable: true
+     ZeroDollarBrokerCheckReportId: 
+      type: integer
+      nullable: true
+     ZeroDollarBrokerCheckReport: 
+      type: string
+      nullable: true
+     ReinsuranceCheckReportId: 
+      type: integer
+      nullable: true
+     ReinsuranceCheckReport: 
+      type: string
+      nullable: true
+     ReinsuranceCheckOnlyReportId: 
+      type: integer
+      nullable: true
+     ReinsuranceCheckOnlyReport: 
+      type: string
+      nullable: true
+     ReinsuranceCheckCSVReportId: 
+      type: integer
+      nullable: true
+     ReinsuranceCheckCSVReport: 
+      type: string
+      nullable: true
+     ZeroDollarReinsuranceCheckReportId: 
+      type: integer
+      nullable: true
+     ZeroDollarReinsuranceCheckReport: 
+      type: string
+      nullable: true
+     FundingAccount: 
+      type: string
+      nullable: true
+     FundingAccountName: 
+      type: string
+      nullable: true
+     FundingFulfillment: 
+      type: string
+      nullable: true
+     FundingFulfillmentName: 
+      type: string
+      nullable: true
+     RequestFundingForAllCheckRuns: 
+      type: string
+      nullable: true
+     RequestFundingForAllCheckRunsName: 
+      type: string
+      nullable: true
+     FundingRequestReportId: 
+      type: integer
+      nullable: true
+     FundingRequestReportName: 
+      type: string
+      nullable: true
+     EFTReportId: 
+      type: integer
+      nullable: true
+     EFTReport: 
+      type: string
+      nullable: true
+     BillingRefundCheckOnlyReportId: 
+      type: integer
+      nullable: true
+     BillingRefundCheckOnlyReport: 
+      type: string
+      nullable: true
+     BillingRefundCheckReportId: 
+      type: integer
+      nullable: true
+     BillingRefundCheckReport: 
+      type: string
+      nullable: true
+     BillingRefundCheckCSVReportId: 
+      type: integer
+      nullable: true
+     BillingRefundCheckCSVReport: 
+      type: string
+      nullable: true
+   CashAccountFinancialProcessListDTO: 
+    title : CashAccountFinancialProcessListDTO
+    type: object
+    properties: 
+     CashAccountFinancialProcessId: 
+      type: integer
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     CashAccountID: 
+      type: integer
+      nullable: true
+     CashAccountName: 
+      type: string
+      nullable: true
+     FinancialProcess: 
+      type: string
+      nullable: true
+     FinancialProcessName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     AvailableBalance: 
+      type: number
+      nullable: true
+     CurrentBalance: 
+      type: number
+      nullable: true
+     FundingAccountCode: 
+      type: string
+      nullable: true
+     FundingAccount: 
+      type: string
+      nullable: true
+   CashAccountFinancialProcessDTO: 
+    title : CashAccountFinancialProcessDTO
+    type: object
+    properties: 
+     CompanyID: 
+      type: integer
+      nullable: true
+     CashAccountID: 
+      type: integer
+      nullable: true
+     FinancialProcess: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
