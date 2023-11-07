@@ -1,0 +1,379 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Claim
+  description: Claim
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims/open: 
+   post: 
+    operationId: PostAllOpenClaims
+    tags: 
+     - Claim
+    summary: Post All Open Claims
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/OpenClaimSearchDTO'
+    responses: 
+     '200': 
+      description: Open Claims Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/OpenClaimListDTO'
+  /claim/idfornumber: 
+   post: 
+    operationId: GetClaimIdForNumber
+    tags: 
+     - Claim
+    summary: Get Claim ID for Number
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimIdForNumberSearchDTO'
+    responses: 
+     '200': 
+      description: Claim ID For Number Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimIdForNumberListDTO'
+  /claim/processsubmission: 
+   post: 
+    operationId: ProcessClaimSubmission
+    tags: 
+     - Claim
+    summary: Process Claim Submission
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimSubmissionDTO'
+    responses: 
+     '200': 
+      description: Claim Submission Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   OpenClaimSearchDTO: 
+    title : OpenClaimSearchDTO
+    type: object
+    properties: 
+     CompanyId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Preview: 
+      type: string
+      nullable: true
+     ScheduledJobID: 
+      type: integer
+      nullable: true
+     Pause: 
+      type: integer
+      nullable: true
+   OpenClaimListDTO: 
+    title : OpenClaimListDTO
+    type: object
+    properties: 
+     ClaimNumber: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     FormTypeCode: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     SourceTypeCode: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     ErrorMessage: 
+      type: string
+      nullable: true
+   ClaimSubmissionDTO: 
+    title : ClaimSubmissionDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     PaymentWizardJobId: 
+      type: integer
+      nullable: true
+     ClaimSubmissionId: 
+      type: integer
+      nullable: true
+     SubmissionStatus : 
+      type: string
+      nullable: true
+     SubmissionType: 
+      type: string
+      nullable: true
+     ResubmissionNumber: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ClaimRecordId: 
+      type: integer
+      nullable: true
+     FrequencyType: 
+      type: string
+      nullable: true
+     MemberRecordId: 
+      type: integer
+      nullable: true
+     ProviderRecordId: 
+      type: integer
+      nullable: true
+     SumToPayMember: 
+      type: number
+      nullable: true
+     SumToPayProvider: 
+      type: number
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     TransactionReferenceNumber: 
+      type: string
+      nullable: true
+     TransactionReferenceQualifier: 
+      type: string
+      nullable: true
+     TransactionAcknowledgementCode: 
+      type: string
+      nullable: true
+     TechnicalErrorCode: 
+      type: string
+      nullable: true
+     TechnicalErrorDescription: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ClaimIdForNumberSearchDTO: 
+    title : ClaimIdForNumberSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ClaimID: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     SourceNumber: 
+      type: string
+      nullable: true
+     ExternalClaimNumber: 
+      type: string
+      nullable: true
+     PatientAccountNumber: 
+      type: string
+      nullable: true
+     RadiographReferenceNumber: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     ReturnDetails: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   ClaimIdForNumberListDTO: 
+    title : ClaimIdForNumberListDTO
+    type: object
+    properties: 
+     ClaimId: 
+      type: integer
+      description: 
+     ClaimNumber: 
+      type: string
+     ClaimType: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+     ServiceDateTo: 
+      type: string
+      format: date-time
+     DateReceived : 
+      type: string
+      format: date-time
+     TotalCharges: 
+      type: number
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberDateOfBirth: 
+      type: string
+      format: date-time
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     ExternalClaimEditing: 
+      type: string
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     ExternalClaimNumber: 
+      type: string
+      nullable: true
+     PatientAccountNumber: 
+      type: string
+      nullable: true
+     ReturnDetails: 
+      type: string
+      nullable: true
+     RadiographReferenceNumber: 
+      type: string
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
