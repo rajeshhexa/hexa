@@ -1,0 +1,233 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: SalesTaxRate
+  description: SalesTaxRate
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/salestaxrates: 
+   post: 
+    operationId: GetSalesTaxRates
+    tags: 
+     - SalesTaxRate
+    summary: Add Sales Tax Rate
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SalesTaxRateSearchDTO'
+    responses: 
+     '200': 
+      description: Sales Tax Rate Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/SalesTaxRateListDTO'
+  /finance/salestaxrate: 
+   put: 
+    operationId: UpdateSalesTaxRate
+    tags: 
+     - SalesTaxRate
+    summary: Get Sales Tax Rate
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SalesTaxRateDTO'
+    responses: 
+     '200': 
+      description: Sales Tax Rate Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   post: 
+    operationId: AddSalesTaxRate
+    tags: 
+     - SalesTaxRate
+    summary: Update Sales Tax Rate
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SalesTaxRateDTO'
+    responses: 
+     '200': 
+      description: Sales Tax Rate Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   SalesTaxRateDTO: 
+    title : SalesTaxRateDTO
+    type: object
+    properties: 
+     SalesTaxType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     ZipCode: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     TaxRate: 
+      type: number
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     LocationToUse: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SalesTaxRateId: 
+      type: integer
+      nullable: true
+   SalesTaxRateSearchDTO: 
+    title : SalesTaxRateSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: "|SEARCH|"
+      nullable: true
+     SalesTaxRateID: 
+      type: integer
+      nullable: true
+     SalesTaxType: 
+      type: string
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     ZipCode: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+   SalesTaxRateListDTO: 
+    title : SalesTaxRateListDTO
+    type: object
+    properties: 
+     SalesTaxRateID: 
+      type: integer
+      nullable: true
+     SalesTaxType: 
+      type: string
+     EntityID: 
+      type: integer
+      nullable: true
+     Entity: 
+      type: string
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     ZipCode: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     ExplanationAbbreviation: 
+      type: string
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     LocationToUse: 
+      type: string
+     TaxRate: 
+      type: number
+      description: 
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
