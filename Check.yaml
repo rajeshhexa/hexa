@@ -1,0 +1,390 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Check
+  description: Check
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/checks: 
+   post: 
+    operationId: GetChecks
+    tags: 
+     - Check
+    summary: Get Checks
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CheckSearchDTO'
+    responses: 
+     '200': 
+      description: Check Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CheckListDTO'
+  /finance/check: 
+   post: 
+    operationId: AddCheck
+    tags: 
+     - Check
+    summary: Add Check
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CheckDTO'
+    responses: 
+     '200': 
+      description: Check Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   CheckSearchDTO: 
+    title : CheckSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     CashAccountID: 
+      type: integer
+      nullable: true
+     CheckDateFrom: 
+      type: string
+      nullable: true
+     CheckDateTo: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     DepositId: 
+      type: integer
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+   CheckListDTO: 
+    title : CheckListDTO
+    type: object
+    properties: 
+     CheckId: 
+      type: integer
+     CheckNumber: 
+      type: string
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+      nullable: true
+     CashAccountId: 
+      type: integer
+      nullable: true
+     CashAccountName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     VendorAccountId: 
+      type: integer
+      nullable: true
+     BnfAccountId: 
+      type: integer
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorAddress1: 
+      type: string
+      nullable: true
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     PayToName: 
+      type: string
+      nullable: true
+     PayToAddress1 : 
+      type: string
+      nullable: true
+     PayToAddress2 : 
+      type: string
+      nullable: true
+     PayToCity : 
+      type: string
+      nullable: true
+     PayToState: 
+      type: string
+      nullable: true
+     PayToZip: 
+      type: string
+      nullable: true
+     PayToCountryCode: 
+      type: string
+      nullable: true
+     PayToCounty: 
+      type: string
+      nullable: true
+     PayToPhone: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     SubscriberName: 
+      type: string
+      nullable: true
+     RecordId: 
+      type: integer
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckStatus: 
+      type: string
+     CheckStatusName: 
+      type: string
+      nullable: true
+     DateVoided: 
+      type: string
+      format: date-time
+      nullable: true
+     VoidReason: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+      description: 
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ClaimID: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     DetailPDFExists: 
+      type: string
+      nullable: true
+     CheckDetailLocation: 
+      type: string
+      nullable: true
+     CheckPDFDetailName: 
+      type: string
+      nullable: true
+     CheckPrinterEscapePath : 
+      type: string
+      nullable: true
+     ClaimCheckReportId: 
+      type: integer
+      nullable: true
+     CapitationCheckReportId : 
+      type: integer
+      nullable: true
+     BrokerCheckReportId : 
+      type: integer
+      nullable: true
+     BillingRefundCheckReportId : 
+      type: integer
+      nullable: true
+     ZeroDollarCheckReportId: 
+      type: integer
+      nullable: true
+     ZeroDollarCapitationCheckReportId: 
+      type: integer
+      nullable: true
+     ZeroDollarBrokerCheckReportId: 
+      type: integer
+      nullable: true
+     ClaimCheckReportPath: 
+      type: string
+      nullable: true
+     CapitationCheckReportPath : 
+      type: string
+      nullable: true
+     BrokerCheckReportPath : 
+      type: string
+      nullable: true
+     BillingRefundCheckReportPath : 
+      type: string
+      nullable: true
+     ZeroDollarCheckReportPath: 
+      type: string
+      nullable: true
+     ZeroDollarCapitationCheckReportPath: 
+      type: string
+      nullable: true
+     ZeroDollarBrokerCheckReportPath: 
+      type: string
+      nullable: true
+     OtherCheckReportPath: 
+      type: string
+      nullable: true
+     OtherCheckReportId: 
+      type: integer
+      nullable: true
+     DepositId: 
+      type: integer
+      nullable: true
+     DepositNumber: 
+      type: string
+      nullable: true
+     DepositDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DepositType: 
+      type: string
+      nullable: true
+     DepositTypeName: 
+      type: string
+      nullable: true
+     DepositAmount: 
+      type: number
+      nullable: true
+     DepositNotes: 
+      type: string
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordTypeName: 
+      type: string
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     RecordStatusName: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     FulfillmentTypeName: 
+      type: string
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     JobStatus: 
+      type: string
+      nullable: true
+     JobStatusName: 
+      type: string
+      nullable: true
+   CheckDTO: 
+    title : CheckDTO
+    type: object
+    properties: 
+     CheckNumber: 
+      type: string
+      nullable: true
+     DepositNumber: 
+      type: string
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     CashAccountId: 
+      type: integer
+      nullable: true
+     VendorAccountId: 
+      type: integer
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BnfAccountId: 
+      type: integer
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckStatus: 
+      type: string
+      nullable: true
+     CheckType: 
+      type: string
+      nullable: true
+     DepositId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
