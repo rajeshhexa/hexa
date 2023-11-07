@@ -1,0 +1,207 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Deposits
+  description: Deposits
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/deposit: 
+   post: 
+    operationId: AddDeposit
+    tags: 
+     - Deposit
+    summary: Add Deposit
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DepositDTO'
+    responses: 
+     '200': 
+      description: 
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateDeposit
+    tags: 
+     - Deposit
+    summary: Update Deposit
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DepositDTO'
+    responses: 
+     '200': 
+      description: 
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/deposits: 
+   post: 
+    operationId: GetDeposits
+    tags: 
+     - Deposit
+    summary: Get Deposits
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DepositSearchDTO'
+    responses: 
+     '200': 
+      description: 
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DepositListDTO'
+components: 
+  schemas: 
+   DepositDTO: 
+    title : DepositDTO
+    type: object
+    properties: 
+     DepositNumber : 
+      type: string
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     DepositDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DepositType: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     CashAccountId: 
+      type: integer
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     DepositID: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   DepositSearchDTO: 
+    title : DepositSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: '|ALL|"
+      nullable: true
+     DepositId: 
+      type: integer
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     DepositNumber: 
+      type: string
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateTo : 
+      type: string
+      format: date-time
+      nullable: true
+   DepositListDTO: 
+    title : DepositListDTO
+    type: object
+    properties: 
+     DepositId: 
+      type: integer
+      nullable: true
+     DepositNumber: 
+      type: string
+      nullable: true
+     DepositDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DepositType: 
+      type: string
+      nullable: true
+     DepositTypeName: 
+      type: string
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     TotalChecks: 
+      type: integer
+      nullable: true
+     TotalCheckAmount: 
+      type: number
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     CashAccountId: 
+      type: integer
+      nullable: true
+     CashAccountName: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     StatusName: 
+      type: string
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     ChecksDepositReportId: 
+      type: integer
+      nullable: true
+     ChecksDepositReportPath: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateTo: 
+      type: string
+      nullable: true
