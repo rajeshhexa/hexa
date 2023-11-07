@@ -1,0 +1,864 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Vendor API
+  description: Vendor API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /vendor/getvendors: 
+   post: 
+    operationId: GetVendors
+    tags: 
+     - Vendors
+    summary: Get Vendors
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/VendorSearchDTO'
+    responses: 
+     '200': 
+      description: Vendors retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/VendorListDTO'
+  /vendor: 
+   put: 
+    operationId: UpdateVendor
+    tags: 
+     - Vendors
+    summary: Update Vendor
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/VendorDTO'
+    responses: 
+     '200': 
+      description: Vendor updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /vendor/history: 
+   get: 
+    operationId: GetVendorsHistory
+    tags: 
+     - Vendors
+    summary: Get Vendors History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/VendorIdQueryParam'
+    responses: 
+     '200': 
+      description: VendorsHistory retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/VendorsHistoryListDTO'
+components: 
+  schemas: 
+   VendorSearchDTO: 
+    title : VendorSearchDTO
+    type: object
+    properties: 
+     VendorID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorType: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     NPI: 
+      type: string
+      nullable: true
+     VendorNameSearched: 
+      type: string
+      nullable: true
+     VendorNumberSearched: 
+      type: string
+      nullable: true
+     VendorEINSearched: 
+      type: string
+      nullable: true
+     VendorTypeSearched: 
+      type: string
+      nullable: true
+     CorporationId: 
+      type: integer
+      nullable: true
+     BrokerId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     AccountID: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+   VendorListDTO: 
+    title : VendorListDTO
+    type: object
+    properties: 
+     VendorId: 
+      type: integer
+      description: 
+     CorporationId: 
+      type: integer
+     VendorNumber: 
+      type: string
+     VendorName: 
+      type: string
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+     State: 
+      type: string
+     Zip: 
+      type: string
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     VendorAddress1: 
+      type: string
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+     VendorState: 
+      type: string
+     VendorZip: 
+      type: string
+     OverrideDuplicateAddress: 
+      type: string
+     VendorZipCodeId: 
+      type: integer
+      nullable: true
+     VendorNameSearched: 
+      type: string
+      nullable: true
+     VendorNumberSearched: 
+      type: string
+      nullable: true
+     VendorEINSearched: 
+      type: string
+      nullable: true
+     VendorTypeSearched: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     VendorType: 
+      type: string
+     VendorTypeName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LegalName: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     NPI: 
+      type: string
+      nullable: true
+     AllowInvalidNPI: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+     ProviderId: 
+      type: integer
+      nullable: true
+     WebAccess: 
+      type: string
+      nullable: true
+     AccessCode: 
+      type: string
+      nullable: true
+     SuppressEOBForMembers: 
+      type: string
+     SuppressCheckDetail: 
+      type: string
+     PaymentCurrency: 
+      type: string
+     BankName: 
+      type: string
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     RoutingNumber: 
+      type: string
+      nullable: true
+     AccountNumber: 
+      type: string
+      nullable: true
+     VendorClass: 
+      type: string
+      nullable: true
+     VendorSubclass: 
+      type: string
+      nullable: true
+     GracePeriodForRefund: 
+      type: integer
+     LocationCode: 
+      type: string
+      nullable: true
+     PayToName: 
+      type: string
+      nullable: true
+     PayToAddress1: 
+      type: string
+      nullable: true
+     PayToAddress2: 
+      type: string
+      nullable: true
+     PayToCity: 
+      type: string
+      nullable: true
+     PayToState: 
+      type: string
+      nullable: true
+     PayToZip: 
+      type: string
+      nullable: true
+     PayToCountryCode: 
+      type: string
+      nullable: true
+     PayToCounty: 
+      type: string
+      nullable: true
+     PayToPhone: 
+      type: string
+      nullable: true
+     PayToEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PayToExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     WebUserId: 
+      type: integer
+      nullable: true
+     WebUserName: 
+      type: string
+      nullable: true
+     WebUserFullName: 
+      type: string
+      nullable: true
+     WebUserEmail: 
+      type: string
+      nullable: true
+   AlternateAddressDTO: 
+    title : AlternateAddressDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     AlternateAddressTypeCode: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     Phone: 
+      type: string
+      nullable: true
+     SpecialInstructions: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+   AlternateAddressHistorySearchDTO: 
+    title : AlternateAddressHistorySearchDTO
+    type: object
+    properties: 
+     AlternateAddressID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   AlternateAddressHistoryListDTO: 
+    title : AlternateAddressHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+      nullable: true
+     AlternateAddressID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     AlternateAddressTypeCode: 
+      type: string
+      nullable: true
+     AlternateAddressType: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     Phone: 
+      type: string
+      nullable: true
+     SpecialInstructions: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     ZipSearch: 
+      type: string
+      nullable: true
+   AlternateAddressReturnDTO: 
+    title : AlternateAddressReturnDTO
+    type: object
+    properties: 
+     AlternateAddressID: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   VendorDTO: 
+    title : VendorDTO
+    type: object
+    properties: 
+     VendorId: 
+      type: integer
+      nullable: true
+     CorporationId: 
+      type: integer
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     OverrideDuplicateAddress: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     VendorType: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     NPI: 
+      type: string
+      nullable: true
+     AllowInvalidNPI: 
+      type: string
+      nullable: true
+     WebAccess: 
+      type: string
+      nullable: true
+     LocationCode: 
+      type: string
+      nullable: true
+     SuppressEOBForMembers: 
+      type: string
+      nullable: true
+     SuppressCheckDetail: 
+      type: string
+      nullable: true
+     PaymentCurrency: 
+      type: string
+      nullable: true
+     RoutingNumber: 
+      type: string
+      nullable: true
+     BankName: 
+      type: string
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     AccountNumber: 
+      type: string
+      nullable: true
+     VendorClass: 
+      type: string
+      nullable: true
+     VendorSubclass: 
+      type: string
+      nullable: true
+     GracePeriodForRefund: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   VendorsHistoryListDTO: 
+    title : VendorsHistoryListDTO
+    type: object
+    properties: 
+     VendorId: 
+      type: integer
+      nullable: true
+     CorporationId: 
+      type: integer
+      nullable: true
+     CorporationName: 
+      type: string
+      nullable: true
+     AccountNumber: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     MethodOfPaymentName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     LocationRefCode: 
+      type: string
+      nullable: true
+     VendorType: 
+      type: string
+      nullable: true
+     VendorTypeName: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     NPI: 
+      type: string
+      nullable: true
+     AccessCode: 
+      type: string
+      nullable: true
+     WebAccess: 
+      type: string
+      nullable: true
+     LocationCode: 
+      type: string
+      nullable: true
+     AllowInvalidNPI: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      nullable: true
+     LONGITUDE: 
+      type: number
+      nullable: true
+     ZipSearch: 
+      type: string
+      nullable: true
+     SuppressEOBForMembers: 
+      type: string
+      nullable: true
+     SuppressCheckDetail: 
+      type: string
+      nullable: true
+     PaymentCurrency: 
+      type: string
+      nullable: true
+     RoutingNumber: 
+      type: string
+      nullable: true
+     BankName: 
+      type: string
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     VendorClass: 
+      type: string
+      nullable: true
+     VendorClassName: 
+      type: string
+      nullable: true
+     VendorSubclass: 
+      type: string
+      nullable: true
+     VendorSubclassName: 
+      type: string
+      nullable: true
+     GracePeriodForRefund: 
+      type: integer
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     OverrideDuplicateAddress: 
+      type: string
+      nullable: true
+     DeletedDuplicateVendor: 
+      type: string
+      nullable: true
+  parameters: 
+   VendorIdQueryParam: 
+    in: query
+    name: VendorId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
