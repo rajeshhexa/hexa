@@ -1,0 +1,448 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/liability/items: 
+   Post: 
+    operationId: GetLiabilityItems
+    tags: 
+     - Liability Item
+    summary: Get Liability Items
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LiabilityItemsSearchDTO'
+    responses: 
+     '200': 
+      description: Liability Items Retrieved Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LiabilityItemsListDTO'
+  /benefit/liability/item: 
+   Post: 
+    operationId: AddLiabilityItem
+    tags: 
+     - Liability Item
+    summary: Add Liability Items
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/liabilityitemDTO'
+    responses: 
+     '200': 
+      description: Liability Item Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateLiabilityItem
+    tags: 
+     - Liability Item
+    summary: Update Liability Items
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/liabilityitemDTO'
+    responses: 
+     '200': 
+      description: Liability Item Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Delete: 
+    operationId: DeleteLiabilityItems
+    tags: 
+     - Liability Item
+    summary: Delete Liablity Iteams
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LiabilityItemidParam'
+     - $ref: '#/components/parameters/PlanIdParam'
+    responses: 
+     '200': 
+      description: Liability Item Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/liability/schedulemap: 
+   Post: 
+    operationId: AddLiabilityScheduleMap
+    tags: 
+     - Liability Item
+    summary: Add Laibility Schedule Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/liabilityschedulemapSearchDTO'
+    responses: 
+     '200': 
+      description: Liability Schedule map Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Delete: 
+    operationId: DeleteLiabilityScheduleMap
+    tags: 
+     - Liability Item
+    summary: Delete Liability Schedule Map
+    description: Description of path
+    responses: 
+     '200': 
+      description: Liability Schedule map Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/liability/loadschedule: 
+   Post: 
+    operationId: LoadLiabilityScheduleFromBatch
+    tags: 
+     - Liability Item
+    summary: Load Liability Schedule From Batch
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LoadLiabilityScheduleFromBatchSearchDTO'
+    responses: 
+     '200': 
+      description: Liability Schedule From Batch Loaded Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LoadLiabilityScheduleFromBatchListDTO'
+components: 
+  schemas: 
+   LiabilityItemsSearchDTO: 
+    title : LiabilityItemsSearchDTO
+    type: object
+    properties: 
+     LiabilityTypeId: 
+      type: integer
+      nullable: true
+     LiabilityItemID: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     ProcessType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE2|"
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   LiabilityItemsListDTO: 
+    title : LiabilityItemsListDTO
+    type: object
+    properties: 
+     LiabilityItemId: 
+      type: integer
+     Planid: 
+      type: integer
+      nullable: true
+     LiabilityItemName: 
+      type: string
+     LiabilityDescription: 
+      type: string
+     LiabilityTypeId: 
+      type: integer
+     LiabilityTypeName: 
+      type: string
+      nullable: true
+     ProcessType: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     UnitTypeName: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: number
+      nullable: true
+     AuthorizationUnitValue: 
+      type: number
+      nullable: true
+     MaximumPerOccurrence: 
+      type: number
+      nullable: true
+     PeriodType: 
+      type: string
+      nullable: true
+     PeriodTypeName: 
+      type: string
+      nullable: true
+     PeriodValue: 
+      type: number
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     IndividualTypeName: 
+      type: string
+      nullable: true
+     Other: 
+      type: string
+      nullable: true
+     DefaultVal: 
+      type: string
+     ByTierItem: 
+      type: string
+     DisplayStatus: 
+      type: string
+     DisplayStatusName: 
+      type: string
+      nullable: true
+     LimitExplanationID: 
+      type: integer
+      nullable: true
+     LimitExplanationAbbreviation: 
+      type: string
+      nullable: true
+     LimitExplanation: 
+      type: string
+      nullable: true
+     StepDownLiabilityItemId: 
+      type: integer
+      nullable: true
+     StepDownProcessOrder: 
+      type: number
+      nullable: true
+     StepDownLimitType: 
+      type: string
+      nullable: true
+     StepDownLiabilityItemName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: datetime
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+   liabilityitemDTO: 
+    title : liabilityitemDTO
+    type: object
+    properties: 
+     LiabilityItemid: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     LiabilityItemName: 
+      type: string
+      nullable: true
+     LiabilityDescription: 
+      type: string
+      nullable: true
+     LiabilityTypeId: 
+      type: integer
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: number
+      nullable: true
+     PeriodType: 
+      type: string
+      nullable: true
+     PeriodValue: 
+      type: number
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     Other: 
+      type: string
+      nullable: true
+     DefaultVal: 
+      type: string
+      default: "N"
+      nullable: true
+     ByTierItem: 
+      type: string
+      default: "N"
+      nullable: true
+     DisplayStatus: 
+      type: string
+      default: "ALL"
+      nullable: true
+     LimitExplanationID: 
+      type: integer
+      nullable: true
+     UpdateAllItems: 
+      type: string
+      default: "Y"
+      nullable: true
+     StepDownLiabilityItemId: 
+      type: integer
+      nullable: true
+     StepDownProcessOrder: 
+      type: number
+      nullable: true
+     StepDownLimitType: 
+      type: string
+      nullable: true
+     AuthorizationUnitValue: 
+      type: number
+      nullable: true
+     MaximumPerOccurrence: 
+      type: number
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   liabilityschedulemapSearchDTO: 
+    title : liabilityschedulemapSearchDTO
+    type: object
+    properties: 
+     LiabilityItemId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     Units: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   LoadLiabilityScheduleFromBatchSearchDTO: 
+    title : LoadLiabilityScheduleFromBatchSearchDTO
+    type: object
+    properties: 
+     LiabilityItemId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     Units: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+   LoadLiabilityScheduleFromBatchListDTO: 
+    title : LoadLiabilityScheduleFromBatchListDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+     EntityName: 
+      type: string
+     RelationshipCode: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+     Units: 
+      type: string
+   deleteliabilityschedulemapSearchDTO: 
+    title : deleteliabilityschedulemapSearchDTO
+    type: object
+    properties: 
+     LiabilityItemId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+  parameters: 
+   LiabilityItemidParam: 
+    in: query
+    name: LiabilityItemid
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PlanIdParam: 
+    in: query
+    name: PlanId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
