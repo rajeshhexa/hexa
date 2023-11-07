@@ -1,0 +1,1317 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Finance Bill
+  description: Finance Bill API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/bill/paymentjobs: 
+   get: 
+    operationId: GetBillPaymentJobs
+    tags: 
+     - bill
+    summary: Get Bill Payment Jobs
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/ProcessingStatusQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Bill Payment Jobs Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillPaymentJobsListDTO'
+  /finance/bill/paymentjob: 
+   post: 
+    operationId: AddBillPaymentJob
+    tags: 
+     - bill
+    summary: Add Bill Payment Job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillPaymentJobsDTO'
+    responses: 
+     '200': 
+      description: Bill Payment Job Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateBillPaymentJob
+    tags: 
+     - bill
+    summary: Update Bill Payment Job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillPaymentJobsDTO'
+    responses: 
+     '200': 
+      description: Bill Payment Job Updated Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/bill/voidpaymentjob: 
+   get: 
+    operationId: VoidBillPaymentJob
+    tags: 
+     - bill
+    summary: Void Bill Payment Job
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/SourceQueryParam'
+     - $ref: '#/components/parameters/VoidReason QueryParam'
+    responses: 
+     '200': 
+      description: Bill Payment Job Voided Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/bill/paymentfiles: 
+   get: 
+    operationId: GetBillPaymentFiles
+    tags: 
+     - bill
+    summary: Get Bill Payment Files
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Bill Payment Files Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillPaymentFilesListDTO'
+  /finance/bill/paymentfile: 
+   get: 
+    operationId: AddBillPaymentFile
+    tags: 
+     - bill
+    summary: Add Bill Payment File
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/FileNameQueryParam'
+     - $ref: '#/components/parameters/InputTypeQueryParam'
+    responses: 
+     '200': 
+      description: Bill Payment File Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/bill/paymentdetails: 
+   post: 
+    operationId: GetBillPaymentDetails
+    tags: 
+     - bill
+    summary: Get Bill Payment Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillPaymentDetailsSearchDTO'
+    responses: 
+     '200': 
+      description: Bill Payment Details Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillPaymentDetailsListDTO'
+   get: 
+    operationId: UpdateBillPaymentDetails
+    tags: 
+     - bill
+    summary: Update Bill Payment Details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/FileIdQueryParam'
+    responses: 
+     '200': 
+      description: Bill Payment Details Updated Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/bill/premium/create: 
+   post: 
+    operationId: CreatePremiumBills
+    tags: 
+     - bill
+    summary: Create Premium Bills
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CreatePremiumBillsSearchDTO'
+    responses: 
+     '200': 
+      description: Premium Bills Created Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CreatePremiumBillsListDTO'
+  /finance/bill/premium: 
+   post: 
+    operationId: PostPremiumBills
+    tags: 
+     - bill
+    summary: Post Premium Bills
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PostPremiumBillsDTO'
+    responses: 
+     '200': 
+      description: Premium Bills Posted Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/bill/records: 
+   post: 
+    operationId: GetBillRecords
+    tags: 
+     - bill
+    summary: Get Bill Records
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillRecordSearchDTO'
+    responses: 
+     '200': 
+      description: Bill Records Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillRecordListDTO'
+  /finance/bill/voidrecords: 
+   post: 
+    operationId: VoidBillingRecords
+    tags: 
+     - bill
+    summary: Void Billing Records
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingRecordDTO'
+    responses: 
+     '200': 
+      description: Billing Records Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/bill/entityrefund: 
+   post: 
+    operationId: GetBillingEntitiesForRefund
+    tags: 
+     - bill
+    summary: Get Billing Entities For Refund
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingEntityRefundSearchDTO'
+    responses: 
+     '200': 
+      description: Billing Entities For Refund Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillingEntityRefundListDTO'
+components: 
+  schemas: 
+   BillRecordSearchDTO: 
+    title : BillRecordSearchDTO
+    type: object
+    properties: 
+     BillPackageId: 
+      type: integer
+      nullable: true
+     BillingEntityID: 
+      type: integer
+      nullable: true
+     PostDate: 
+      type: string
+      format: date-time
+      nullable: true
+     BillStatus: 
+      type: string
+      nullable: true
+     BillDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     BillDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     BillNumber: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     OutputFormatType: 
+      type: string
+      nullable: true
+     JobID: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     BillingEntityType: 
+      type: string
+      nullable: true
+     BillingEntityClass: 
+      type: string
+      nullable: true
+     BillingEntitySubclass: 
+      type: string
+      nullable: true
+     VoidMode: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   BillRecordListDTO: 
+    title : BillRecordListDTO
+    type: object
+    properties: 
+     RecordID: 
+      type: integer
+     ParentAccountID: 
+      type: integer
+     RecordTypeCode: 
+      type: string
+     RecordType: 
+      type: string
+      nullable: true
+     RefundTypeCode: 
+      type: string
+      nullable: true
+     RefundType: 
+      type: string
+      nullable: true
+     MethodOfRefundCode: 
+      type: string
+      nullable: true
+     MethodOfRefund: 
+      type: string
+      nullable: true
+     MethodOfPaymentCode: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     PaymentSubMethodCode: 
+      type: string
+      nullable: true
+     PaymentSubMethod: 
+      type: string
+      nullable: true
+     PaymentStatusCode: 
+      type: string
+      nullable: true
+     PaymentStatus: 
+      type: string
+      nullable: true
+     ExternalPaymentNumber: 
+      type: string
+      nullable: true
+     ExternalPaymentDate: 
+      type: string
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     RemainingAmount: 
+      type: number
+      nullable: true
+     TotalAmount: 
+      type: number
+      nullable: true
+     PreviousBalance: 
+      type: number
+      nullable: true
+     OpenAmount: 
+      type: number
+      nullable: true
+     RecordStatusCode: 
+      type: string
+     RecordStatus: 
+      type: string
+      nullable: true
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: integer
+     JobId: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+     ProcessedDate: 
+      type: string
+      format: date-time
+     VoidDate: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedByID: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     BillId: 
+      type: integer
+      nullable: true
+     BillNumber: 
+      type: string
+      nullable: true
+     DateDue: 
+      type: string
+      nullable: true
+     DateDueForTermination: 
+      type: string
+      nullable: true
+     VoidReason: 
+      type: string
+      nullable: true
+     UserReportId: 
+      type: integer
+      nullable: true
+     UserReportName: 
+      type: string
+      nullable: true
+     UserReportPath: 
+      type: string
+      nullable: true
+     ExportType: 
+      type: string
+      nullable: true
+     BillCSVReportId: 
+      type: integer
+      nullable: true
+     BillCSVReportName: 
+      type: string
+      nullable: true
+     BillCSVReportPath: 
+      type: string
+      nullable: true
+     BillingEntityID: 
+      type: integer
+     BillingEntityName: 
+      type: string
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingReferenceId: 
+      type: integer
+      nullable: true
+     BillTypeCode: 
+      type: string
+      nullable: true
+     BillType: 
+      type: string
+      nullable: true
+     PDFDocumentId: 
+      type: integer
+      nullable: true
+     PDFFilePath: 
+      type: string
+      nullable: true
+     PrintZeroDollarBill: 
+      type: string
+      nullable: true
+     CashAccountName: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     DepositNumber: 
+      type: string
+      nullable: true
+     CheckTypeCode: 
+      type: string
+      nullable: true
+     CheckType: 
+      type: string
+      nullable: true
+     ReconciliationId: 
+      type: integer
+      nullable: true
+     BillingEntityClass: 
+      type: string
+      nullable: true
+     BillingEntitySubclass: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     Subclass: 
+      type: string
+      nullable: true
+     BillingEntityTypeCode: 
+      type: string
+      nullable: true
+     BillingEntityType: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+   BillingRecordDTO: 
+    title : BillingRecordDTO
+    type: object
+    properties: 
+     JobID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     VoidMode: 
+      type: string
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+   BillingEntityRefundSearchDTO: 
+    title : BillingEntityRefundSearchDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     BillType: 
+      type: string
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     BillingCycle: 
+      type: string
+      nullable: true
+     BillingCycleType: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     CreationJobId: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     RefundType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     RefundCreationFromDate: 
+      type: string
+      nullable: true
+     RefundCreationToDate: 
+      type: string
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordCreationFromDate: 
+      type: string
+      nullable: true
+     RecordCreationToDate: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   BillingEntityRefundListDTO: 
+    title : BillingEntityRefundListDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     BillingEntityDescription: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     BillType: 
+      type: string
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     BillingCycle: 
+      type: string
+      nullable: true
+     BillingCycleType: 
+      type: string
+      nullable: true
+     PostingCutoffDay: 
+      type: integer
+      nullable: true
+     NextPostDateStart: 
+      type: string
+      nullable: true
+     NextPostDateEnd: 
+      type: string
+      nullable: true
+     AutoReconcile: 
+      type: string
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     SubClassName: 
+      type: string
+      nullable: true
+     BillTypeName: 
+      type: string
+      nullable: true
+     BillingModeName: 
+      type: string
+      nullable: true
+     BillingCycleName: 
+      type: string
+      nullable: true
+     BillingCycleTypeName: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     AutoReconcileName: 
+      type: string
+      nullable: true
+     FulfillmentTypeName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     EstimatedRefundAmount: 
+      type: number
+      nullable: true
+     RefundAmount: 
+      type: number
+      nullable: true
+     RecordID: 
+      type: integer
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordCreationDate: 
+      type: string
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     RecordTypeName: 
+      type: string
+      nullable: true
+     RowIntoXML: 
+      type: string
+      nullable: true
+     BillingRefundRecordID: 
+      type: integer
+      nullable: true
+     BillingRefundNumber: 
+      type: string
+      nullable: true
+     MethodOfRefund: 
+      type: string
+      nullable: true
+     RefundType: 
+      type: string
+      nullable: true
+     BillingStatus: 
+      type: string
+      nullable: true
+     PaymentStatus: 
+      type: string
+      nullable: true
+     ProcessedDate: 
+      type: string
+      nullable: true
+     RefundCreationDate: 
+      type: string
+      nullable: true
+     VoidDate: 
+      type: string
+      nullable: true
+     PaymentRecordID: 
+      type: integer
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     MethodOfRefundName: 
+      type: string
+      nullable: true
+     RefundTypeName: 
+      type: string
+      nullable: true
+     BillingStatusName: 
+      type: string
+      nullable: true
+     PaymentStatusName: 
+      type: string
+      nullable: true
+     Chk: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+   BillPaymentJobsListDTO: 
+    title : BillPaymentJobsListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+     JobNumber: 
+      type: integer
+     JobName: 
+      type: string
+     JobDescription: 
+      type: string
+      nullable: true
+     JobProcessingStatusCode: 
+      type: string
+     JobProcessingStatus: 
+      type: string
+      nullable: true
+     JobStep: 
+      type: string
+     JobStepName: 
+      type: string
+      nullable: true
+     CreatedBy: 
+      type: integer
+     CreatedByName: 
+      type: string
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+     DateCompleted: 
+      type: string
+      format: date-time
+      nullable: true
+     TimeElapsed: 
+      type: number
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     Notes: 
+      type: string
+      nullable: true
+     ErrorFileName: 
+      type: string
+      nullable: true
+     NumberTimesProcessed: 
+      type: integer
+      nullable: true
+   BillPaymentJobsDTO: 
+    title : BillPaymentJobsDTO
+    type: object
+    properties: 
+     JobID: 
+      type: integer
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     JobDescription: 
+      type: string
+      nullable: true
+     Step: 
+      type: string
+      default: "CRT"
+     ProcessingStatus: 
+      type: string
+      default: "OPN"
+     AutoCreateEligibilityInquiry: 
+      type: string
+      default: "OPT"
+     InterchangeId: 
+      type: integer
+      nullable: true
+     ErrorFileName: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|UPDATESTEP|"
+      nullable: true
+   BillPaymentFilesListDTO: 
+    title : BillPaymentFilesListDTO
+    type: object
+    properties: 
+     BillPaymentFileID: 
+      type: integer
+     JobId: 
+      type: integer
+      nullable: true
+     FileStatusCode: 
+      type: string
+      nullable: true
+     FileStatus: 
+      type: string
+      nullable: true
+     FileName: 
+      type: string
+     InputTypeCode: 
+      type: string
+     InputType: 
+      type: string
+      nullable: true
+     DateInput: 
+      type: string
+      format: date-time
+     TotalRecords: 
+      type: integer
+      nullable: true
+     TotalPayment: 
+      type: string
+      nullable: true
+     LastupdatedBy: 
+      type: string
+     LastupdatedAt: 
+      type: string
+      format: date-time
+   BillPaymentDetailsSearchDTO: 
+    title : BillPaymentDetailsSearchDTO
+    type: object
+    properties: 
+     BillPaymentFileID: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     BillPaymentRecordID: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      format: string
+      default: "|ForBillPaymentJob|"
+      nullable: true
+   BillPaymentDetailsListDTO: 
+    title : BillPaymentDetailsListDTO
+    type: object
+    properties: 
+     BillPaymentFileId: 
+      type: integer
+      nullable: true
+     JobID: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: number
+      nullable: true
+     CurrentStatus: 
+      type: string
+      nullable: true
+     CurrentStatusName: 
+      type: string
+      nullable: true
+     ErrorMsgForCheck: 
+      type: string
+      nullable: true
+     ErrorMsgForIndividualPayment: 
+      type: string
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     CheckDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckAmount: 
+      type: string
+      nullable: true
+     PaymentMethodCode: 
+      type: string
+      nullable: true
+     CashAccountName: 
+      type: string
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberSSN: 
+      type: integer
+      nullable: true
+     InsurancePolicyNumber: 
+      type: string
+      nullable: true
+     PremiumAmountDetail: 
+      type: string
+      nullable: true
+     CoveragePeriodEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CoveragePeriodExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ScanLine: 
+      type: string
+      nullable: true
+     UpdateIndividualPaymentDetails: 
+      type: string
+      nullable: true
+     BillPaymentRecordDetailId: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ErrorMessage: 
+      type: string
+      nullable: true
+   CreatePremiumBillsSearchDTO: 
+    title : CreatePremiumBillsSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|NORMAL|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   CreatePremiumBillsListDTO: 
+    title : CreatePremiumBillsListDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillAmount: 
+      type: string
+      nullable: true
+     FulfillmentTypeCode: 
+      type: string
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     OutputFormatTypeCode: 
+      type: string
+      nullable: true
+     OutputFormatType: 
+      type: string
+      nullable: true
+     BillReportID: 
+      type: integer
+      nullable: true
+     BillReport: 
+      type: string
+      nullable: true
+     BillCSVReportId: 
+      type: integer
+      nullable: true
+     BillCSVReport: 
+      type: string
+      nullable: true
+     RegularPost: 
+      type: integer
+      nullable: true
+     RegularPostAmount: 
+      type: string
+      nullable: true
+     RegularPostAdjustment: 
+      type: integer
+      nullable: true
+     RegularPostAdjustmentAmount: 
+      type: string
+      nullable: true
+     InitialClaimFeeRecords: 
+      type: integer
+      nullable: true
+     InitialClaimFeeTotalAmount: 
+      type: string
+      nullable: true
+     ClaimAdjustments: 
+      type: integer
+      nullable: true
+     ClaimAdjustmentsTotalAmount: 
+      type: string
+      nullable: true
+     ClaimReversals: 
+      type: integer
+      nullable: true
+     ClaimReversalsTotalAmount: 
+      type: string
+      nullable: true
+     RetroAdd: 
+      type: integer
+      nullable: true
+     RetroAddAmount: 
+      type: string
+      nullable: true
+     RetroTerm: 
+      type: integer
+      nullable: true
+     RetroTermAmount: 
+      type: string
+      nullable: true
+     GroupRiderPost: 
+      type: integer
+      nullable: true
+     GroupRiderPostAmount: 
+      type: string
+      nullable: true
+     GroupRiderAdjustment: 
+      type: integer
+      nullable: true
+     GroupRiderAdjustmentAmount: 
+      type: string
+      nullable: true
+     GroupRiderRetroAdd: 
+      type: integer
+      nullable: true
+     GroupRiderRetroAddAmount: 
+      type: string
+      nullable: true
+     GroupRiderRetroTerm: 
+      type: integer
+      nullable: true
+     GroupRiderRetroTermAmount: 
+      type: string
+      nullable: true
+     MemberRiderPost: 
+      type: integer
+      nullable: true
+     MemberRiderPostAmount: 
+      type: string
+      nullable: true
+     MemberRiderAdjustment: 
+      type: integer
+      nullable: true
+     MemberRiderAdjustmentAmount: 
+      type: string
+      nullable: true
+     MemberRiderRetroAdd: 
+      type: integer
+      nullable: true
+     MemberRiderRetroAddAmount: 
+      type: string
+      nullable: true
+     MemberRiderRetroTerm: 
+      type: integer
+      nullable: true
+     MemberRiderRetroTermAmount: 
+      type: string
+      nullable: true
+     GroupQualifierPost: 
+      type: integer
+      nullable: true
+     GroupQualifierPostAmount: 
+      type: string
+      nullable: true
+     GroupQualifierAdjustment: 
+      type: integer
+      nullable: true
+     GroupQualifierAdjustmentAmount: 
+      type: string
+      nullable: true
+     GroupQualifierRetroAdd: 
+      type: integer
+      nullable: true
+     GroupQualifierRetroAddAmount: 
+      type: string
+      nullable: true
+     GroupQualifierRetroTerm: 
+      type: integer
+      nullable: true
+     GroupQualifierRetroTermAmount: 
+      type: string
+      nullable: true
+     MemberQualifierPost: 
+      type: integer
+      nullable: true
+     MemberQualifierPostAmount: 
+      type: string
+      nullable: true
+     MemberQualifierAdjustment: 
+      type: integer
+      nullable: true
+     MemberQualifierAdjustmentAmount: 
+      type: string
+      nullable: true
+     MemberQualifierRetroAdd: 
+      type: integer
+      nullable: true
+     MemberQualifierRetroAddAmount: 
+      type: string
+      nullable: true
+     MemberQualifierRetroTerm: 
+      type: integer
+      nullable: true
+     MemberQualifierRetroTermAmount: 
+      type: string
+      nullable: true
+     GroupFlatRate: 
+      type: integer
+      nullable: true
+     GroupFlatRateAmount: 
+      type: string
+      nullable: true
+     Total: 
+      type: integer
+      nullable: true
+     TotalAmount: 
+      type: string
+      nullable: true
+   PostPremiumBillsDTO: 
+    title : PostPremiumBillsDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     RetroMonthForAdjustment: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: int
+     SPName: 
+      type: string
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProcessingStatusQueryParam: 
+    in: query
+    name: ProcessingStatus
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|BYJOBID|"
+    description: description of parameter passed
+   SourceQueryParam: 
+    in: query
+    name: Source
+    required: false
+    schema: 
+     type: string
+     default: "JOBHISTORY"
+    description: description of parameter passed
+   VoidReason QueryParam: 
+    in: query
+    name: VoidReason 
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   FileNameQueryParam: 
+    in: query
+    name: FileName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   InputTypeQueryParam: 
+    in: query
+    name: InputType
+    required: false
+    schema: 
+     type: string
+     default: "CSV"
+    description: description of parameter passed
+   FileIdQueryParam: 
+    in: query
+    name: FileId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
