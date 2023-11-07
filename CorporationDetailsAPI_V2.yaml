@@ -1,0 +1,414 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Finance Corporation Details
+  description: Finance Corporation Details API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/corporationdetails: 
+   post: 
+    operationId: GetCorporationDetails
+    tags: 
+     - corporationdetails
+    summary: Get Corporation Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CorporationDetailsSearchDTO'
+    responses: 
+     '200': 
+      description: Corporation Details Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CorporationDetailsListDTO'
+   put: 
+    operationId: UpdateCorporationDetails
+    tags: 
+     - corporationdetails
+    summary: Update Corporation Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CorporationDetailsDTO'
+    responses: 
+     '200': 
+      description: Corporation Details Update Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/corporationdetail: 
+   post: 
+    operationId: AddCorporationDetails
+    tags: 
+     - corporationdetails
+    summary: Add Corporation Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CorporationDetailsDTO'
+    responses: 
+     '200': 
+      description: Corporation Details Added Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/corporationhistory: 
+   post: 
+    operationId: GetCorporationsHistory
+    tags: 
+     - corporationdetails
+    summary: Get Corporations History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CorporationIdParam'
+    responses: 
+     '200': 
+      description: Corporation History Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CorporationsHistoryListDTO'
+  /finance/corporationdetailshistory: 
+   post: 
+    operationId: GetCorporationDetailsHistory
+    tags: 
+     - corporationdetails
+    summary: Get Corporation Details History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CorporationDetailIDParam'
+     - $ref: '#/components/parameters/UsageParam'
+     - $ref: '#/components/parameters/ResultCountParam'
+    responses: 
+     '200': 
+      description: Corporation Details History Retrieved Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CorporationsHistoryDetailsListDTO'
+components: 
+  schemas: 
+   CorporationDetailsSearchDTO: 
+    title : CorporationDetailsSearchDTO
+    type: object
+    properties: 
+     CorporationID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     CorporationDetailID: 
+      type: integer
+      nullable: true
+   CorporationDetailsListDTO: 
+    title : CorporationDetailsListDTO
+    type: object
+    properties: 
+     CorporationDetailId: 
+      type: integer
+     CorporationId: 
+      type: integer
+     OtherName: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+     State: 
+      type: string
+     Zip: 
+      type: string
+     County: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: string
+      nullable: true
+     LONGITUDE: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   CorporationDetailsDTO: 
+    title : CorporationDetailsDTO
+    type: object
+    properties: 
+     CorporationDetailId: 
+      type: integer
+      nullable: true
+     CorporationID: 
+      type: integer
+      nullable: true
+     OtherName: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+   CorporationsHistoryListDTO: 
+    title : CorporationsHistoryListDTO
+    type: object
+    properties: 
+     CorporationId: 
+      type: integer
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     EINType: 
+      type: string
+      nullable: true
+     EINTypeName: 
+      type: string
+      nullable: true
+     LegalName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangeAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+   ProcedureCategoryHistoryListDTO: 
+    title : ProcedureCategoryHistoryListDTO
+    type: object
+    properties: 
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangeAt: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     CorporationDetailId: 
+      type: integer
+      nullable: true
+     CorporationId: 
+      type: integer
+      nullable: true
+     OtherName : 
+      type: string
+      nullable: true
+     Address1 : 
+      type: string
+      nullable: true
+     Address2 : 
+      type: string
+      nullable: true
+     City : 
+      type: string
+      nullable: true
+     State : 
+      type: string
+      nullable: true
+     Zip : 
+      type: integer
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: string
+      nullable: true
+     LONGITUDE: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     LastUpdatedAt : 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+  parameters: 
+   CorporationIdParam: 
+    in: query
+    name: CorporationId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CorporationDetailIDParam: 
+    in: query
+    name: CorporationDetailID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ResultCountParam: 
+    in: query
+    name: ResultCount
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
