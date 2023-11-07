@@ -1,0 +1,427 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: AdditionalContact
+  description: AdditionalContact API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/additionalcontacts: 
+   post: 
+    operationId: GetAdditionalContact
+    tags: 
+     - AdditionalContact
+    summary: Get AdditionalContact
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AdditionalContactSearchDTO'
+    responses: 
+     '200': 
+      description: AdditionalContact retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AdditionalContactListDTO'
+  /finance/additionalcontact: 
+   post: 
+    operationId: AddAdditionalContact
+    tags: 
+     - AdditionalContact
+    summary: Add AdditionalContact
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AdditionalContactDTO'
+    responses: 
+     '200': 
+      description: AdditionalContact added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateAdditionalContact
+    tags: 
+     - AdditionalContact
+    summary: Update AdditionalContact
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AdditionalContactDTO'
+    responses: 
+     '200': 
+      description: AdditionalContact updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteAdditionalContact
+    tags: 
+     - AdditionalContact
+    summary: Delete AdditionalContact
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AdditionalContactIDQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: AdditionalContact deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/additionalcontacthistory: 
+   get: 
+    operationId: GetAdditionalContactsHistory
+    tags: 
+     - AdditionalContactsHistory
+    summary: Get AdditionalContactsHistory
+    description: Description of path
+    responses: 
+     '200': 
+      description: AdditionalContactsHistory retreived successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AdditionalContactHistoryListDTO'
+components: 
+  schemas: 
+   AdditionalContactDTO: 
+    title : AdditionalContactDTO
+    type: object
+    properties: 
+     OfficeID: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     Subclass: 
+      type: string
+      nullable: true
+     SubclassName: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Title: 
+      type: integer
+      nullable: true
+     TitleName: 
+      type: integer
+      nullable: true
+     Department: 
+      type: string
+      nullable: true
+     Phone: 
+      type: integer
+      nullable: true
+     Extension: 
+      type: integer
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AdditionalContactID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   AdditionalContactSearchDTO: 
+    title : AdditionalContactSearchDTO
+    type: object
+    properties: 
+     OfficeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     Subclass: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Title: 
+      type: string
+      nullable: true
+     Department: 
+      type: string
+      nullable: true
+     Phone: 
+      type: string
+      nullable: true
+     Extension: 
+      type: string
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   AdditionalContactHistorySearchDTO: 
+    title : AdditionalContactHistorySearchDTO
+    type: object
+    properties: 
+     AdditionalContactId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   AdditionalContactListDTO: 
+    title : AdditionalContactListDTO
+    type: object
+    properties: 
+     AdditionalContactId: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     Class: 
+      type: string
+     ClassName: 
+      type: string
+      nullable: true
+     Subclass: 
+      type: string
+     SubclassName: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+     Title: 
+      type: integer
+      nullable: true
+     TitleName: 
+      type: integer
+      nullable: true
+     Department: 
+      type: string
+      nullable: true
+     DepartmentName: 
+      type: string
+      nullable: true
+     Phone: 
+      type: integer
+      nullable: true
+     Extension: 
+      type: integer
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   AdditionalContactHistoryListDTO: 
+    title : AdditionalContactHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+     ChangedBy: 
+      type: integer
+     ChangeAt: 
+      type: string
+      format: date-time
+     ChangeTypeCode: 
+      type: string
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+     AdditionalContactId: 
+      type: integer
+     EntityId: 
+      type: integer
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     Class: 
+      type: string
+     ClassName: 
+      type: string
+      nullable: true
+     Subclass: 
+      type: string
+     SubclassName: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+     Title: 
+      type: string
+      nullable: true
+     TitleName: 
+      type: string
+      nullable: true
+     Department: 
+      type: string
+      nullable: true
+     DepartmentName: 
+      type: string
+      nullable: true
+     Phone: 
+      type: string
+      nullable: true
+     Extension: 
+      type: string
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+  parameters: 
+   AdditionalContactIDQueryParam: 
+    in: query
+    name: AdditionalContactID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
