@@ -1,0 +1,926 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: PaymentWizardDetails
+  description: PaymentWizardDetails API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/paymentwizard/steps: 
+   get: 
+    operationId: GetPaymentWizardStep
+    tags: 
+     - PaymentWizardDetails
+    summary: Get PaymentWizardStep
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/StepIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: PaymentWizardStep retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PaymentWizardStepListDTO'
+  /finance/paymentwizard/refundletterrecords: 
+   post: 
+    operationId: GetPaymentWizardRefundLetterRecords
+    tags: 
+     - PaymentWizardDetails
+    summary: Get PaymentWizardRefundLetterRecords
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWizardRefundLetterRecordsSearchDTO'
+    responses: 
+     '200': 
+      description: PaymentWizardRefundLetterRecords retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PaymentWizardRefundLetterRecordsListDTO'
+  /finance/paymentwizard/estimates: 
+   post: 
+    operationId: GetEstimatesForPaymentWizard
+    tags: 
+     - PaymentWizardDetails
+    summary: Get EstimatesForPaymentWizard
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EstimatesForPaymentWizardSearchDTO'
+    responses: 
+     '200': 
+      description: EstimatesForPaymentWizard retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EstimatesForPaymentWizardListDTO'
+  /finance/paymentwizard/estimatejob: 
+   post: 
+    operationId: AddEstimateToPaymentWizardJob
+    tags: 
+     - PaymentWizardDetails
+    summary: Add EstimateToPaymentWizardJob
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/DocumentRequestIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: EstimateToPaymentWizardJob added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /finance/paymentwizard/redirectaddress: 
+   get: 
+    operationId: GetRedirectAddressForPaymentWizard
+    tags: 
+     - PaymentWizardDetails
+    summary: Get RedirectAddressForPaymentWizard
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/ReturnDupClaimsQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/SPNameQueryParam'
+    responses: 
+     '200': 
+      description: RedirectAddressForPaymentWizard retrieved successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/RedirectAddressForPaymentWizardListDTO'
+  /finance/paymentwizard/claimredirect: 
+   post: 
+    operationId: AddClaimRedirectToPaymentWizardJob
+    tags: 
+     - PaymentWizardDetails
+    summary: Add ClaimRedirectToPaymentWizardJob
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/DocumentRequestIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: ClaimRedirectToPaymentWizardJob added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   PaymentWizardStepListDTO: 
+    title : PaymentWizardStepListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+     ProcessStepId: 
+      type: integer
+     EntityType: 
+      type: string
+     NumberOfItems: 
+      type: integer
+     UserMessage: 
+      type: string
+      nullable: true
+     ProcessOrder: 
+      type: number
+      nullable: true
+     StepKey: 
+      type: string
+      nullable: true
+     PresetOption: 
+      type: string
+      nullable: true
+   PaymentWizardRefundLetterRecordsSearchDTO: 
+    title : PaymentWizardRefundLetterRecordsSearchDTO
+    type: object
+    properties: 
+     ReferenceID: 
+      type: integer
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     StartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     RecordId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BYJOBID|"
+      nullable: true
+     ReturnStatus: 
+      type: string
+      default: "Y"
+      nullable: true
+   PaymentWizardRefundLetterRecordsListDTO: 
+    title : PaymentWizardRefundLetterRecordsListDTO
+    type: object
+    properties: 
+     JobDetailId: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     DetailType : 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     DetailStatus : 
+      type: string
+      nullable: true
+     RefundLetterNumber: 
+      type: integer
+      nullable: true
+     RecordID: 
+      type: integer
+      nullable: true
+     ParentAccountID: 
+      type: integer
+      nullable: true
+     RecordTypeCode: 
+      type: string
+      nullable: true
+     RecordStatusCode: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     ReferenceID: 
+      type: integer
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcessedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     VoidDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     CashAccountID: 
+      type: integer
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     DetailRecordID: 
+      type: integer
+      nullable: true
+     DetailRecordTypeCode: 
+      type: string
+      nullable: true
+     DetailRecordStatusCode: 
+      type: string
+      nullable: true
+     DetailAmount: 
+      type: string
+      nullable: true
+     DetailCreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DetailEntityTypeCode: 
+      type: string
+      nullable: true
+     DetailNotes: 
+      type: string
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     CompanyEIN: 
+      type: string
+      nullable: true
+     CompanyAddress: 
+      type: string
+      nullable: true
+     CompanyAddress2: 
+      type: string
+      nullable: true
+     CompanyCity: 
+      type: string
+      nullable: true
+     CompanyZip: 
+      type: string
+      nullable: true
+     CompanyState: 
+      type: string
+      nullable: true
+     CompanyCounty: 
+      type: string
+      nullable: true
+     CompanyCountryCode : 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     GracePeriodForRefund: 
+      type: integer
+      nullable: true
+     OwedAmount: 
+      type: string
+      nullable: true
+     DateRefundExpected: 
+      type: string
+      format: date-time
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     RecordEntityType: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorAccountName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorAddress: 
+      type: string
+      nullable: true
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorCounty: 
+      type: string
+      nullable: true
+     VendorCountryCode : 
+      type: string
+      nullable: true
+     PayToName: 
+      type: string
+      nullable: true
+     PayToAddress1 : 
+      type: string
+      nullable: true
+     PayToAddress2 : 
+      type: string
+      nullable: true
+     PayToCity : 
+      type: string
+      nullable: true
+     PayToState: 
+      type: string
+      nullable: true
+     PayToZip: 
+      type: string
+      nullable: true
+     PayToCountryCode: 
+      type: string
+      nullable: true
+     PayToPhone: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     PaymentMethod: 
+      type: string
+      nullable: true
+     NumberOfDetails: 
+      type: integer
+      nullable: true
+     RefundLetterReportId: 
+      type: integer
+      nullable: true
+     RefundLetterReportPath: 
+      type: string
+      nullable: true
+     NumberOfLetters: 
+      type: integer
+      nullable: true
+     DateInitialLetterOutput: 
+      type: string
+      format: date-time
+      nullable: true
+     DaysSinceInitialLetterOutput: 
+      type: integer
+      nullable: true
+     DateOfLastLetterOutput: 
+      type: string
+      format: date-time
+      nullable: true
+   EstimatesForPaymentWizardSearchDTO: 
+    title : EstimatesForPaymentWizardSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     DateStart: 
+      type: string
+      format: date-time
+      nullable: true
+     DateEnd: 
+      type: string
+      format: date-time
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     ReturnDupClaims: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     ReturnStatus: 
+      type: string
+      nullable: true
+   EstimatesForPaymentWizardListDTO: 
+    title : EstimatesForPaymentWizardListDTO
+    type: object
+    properties: 
+     ClaimId: 
+      type: integer
+     ClaimNumber: 
+      type: string
+     ClaimStatusCode: 
+      type: string
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ReceivedDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ReceivedDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     BasePlanID: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: string
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+      format: date-time
+     ClaimType: 
+      type: string
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     PCPId: 
+      type: integer
+      nullable: true
+     PrintPCPProviderPreEstimates: 
+      type: string
+      nullable: true
+     PCPPreEstimateReportId: 
+      type: integer
+      nullable: true
+     ProviderPreEstimateReportId: 
+      type: integer
+      nullable: true
+     MemberPreEstimateReportId: 
+      type: integer
+      nullable: true
+     PCPPreEstimateReportPath: 
+      type: string
+      nullable: true
+     ProviderPreEstimateReportPath: 
+      type: string
+      nullable: true
+     MemberPreEstimateReportPath: 
+      type: string
+      nullable: true
+     PayProvider: 
+      type: string
+      nullable: true
+     PayMember: 
+      type: string
+      nullable: true
+     ActionCodes: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     VendorName : 
+      type: string
+      nullable: true
+     VendorNumber : 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     RadiographReferenceNumber: 
+      type: string
+      nullable: true
+     DocumentRequestID: 
+      type: integer
+      nullable: true
+     RecordId: 
+      type: integer
+      nullable: true
+     FulfillmentMethod: 
+      type: string
+      nullable: true
+     FulfillmentMethodName: 
+      type: string
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     DocumentEntityType: 
+      type: string
+      nullable: true
+     DocumentEntityTypeName: 
+      type: string
+      nullable: true
+     InputBatchID: 
+      type: integer
+      nullable: true
+     InputBatchClass: 
+      type: string
+      nullable: true
+   RedirectAddressForPaymentWizardListDTO: 
+    title : RedirectAddressForPaymentWizardListDTO
+    type: object
+    properties: 
+     RiskGroupID: 
+      type: integer
+      nullable: true
+     RiskGroupName: 
+      type: string
+     RiskGroupDescription: 
+      type: string
+      nullable: true
+     Capitation: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubclassName: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ClaimStatusCode: 
+      type: string
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     BasePlanID: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     VendorName : 
+      type: string
+      nullable: true
+     VendorNumber : 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     RadiographReferenceNumber: 
+      type: string
+      nullable: true
+     AlternateAddressName: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Phone: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: integer
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      nullable: true
+     LONGITUDE: 
+      type: number
+      nullable: true
+     DocumentRequestID: 
+      type: integer
+      nullable: true
+     FulfillmentMethod: 
+      type: string
+      nullable: true
+     FulfillmentMethodName: 
+      type: string
+      nullable: true
+     DocumentEntityType: 
+      type: string
+      nullable: true
+     DocumentEntityTypeName: 
+      type: string
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   StepIdQueryParam: 
+    in: query
+    name: StepId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|BTJOBID|"
+    description: description of parameter passed
+   DocumentRequestIdQueryParam: 
+    in: query
+    name: DocumentRequestId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ReturnDupClaimsQueryParam: 
+    in: query
+    name: ReturnDupClaims
+    required: false
+    schema: 
+     type: string
+     default: "Y"
+    description: description of parameter passed
+   SPNameQueryParam: 
+    in: query
+    name: SPName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
