@@ -1,0 +1,377 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Contract
+  description: Contract API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /contract: 
+   post: 
+    operationId: AddContract
+    tags: 
+     - Contract
+    summary: Add Contract
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContractDTO'
+    responses: 
+     '200': 
+      description: Contract added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateContract
+    tags: 
+     - Contract
+    summary: Update Contract
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContractDTO'
+    responses: 
+     '200': 
+      description: Contract updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /contract/history: 
+   get: 
+    operationId: GetContractsHistory
+    tags: 
+     - Contract
+    summary: Get ContractsHistory
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ContractIdQueryParam'
+    responses: 
+     '200': 
+      description: ContractHistory retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContractsHistoryListDTO'
+components: 
+  schemas: 
+   ContractDTO: 
+    title : ContractDTO
+    type: object
+    properties: 
+     ContractNumber: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     ContractDescription: 
+      type: string
+      nullable: true
+     ContractNotes: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Negotiated: 
+      type: string
+      nullable: true
+     PricingMode: 
+      type: string
+      nullable: true
+     ToPay: 
+      type: string
+      nullable: true
+     PreEstExpUnits: 
+      type: integer
+      nullable: true
+     PreEstExpUnitType: 
+      type: string
+      nullable: true
+     RVSMultiplier: 
+      type: string
+      nullable: true
+     CapitationRateId: 
+      type: integer
+      nullable: true
+     LastPostedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RetroactiveAddLimit: 
+      type: integer
+      nullable: true
+     RetroactiveTermLimit: 
+      type: integer
+      nullable: true
+     PostingCutoffDay: 
+      type: integer
+      nullable: true
+     UseHCPCSWhenFindFeeSchedule: 
+      type: string
+      default: "N"
+      nullable: true
+     FeeScheduleSearchCriteria: 
+      type: string
+      default: "SRV"
+      nullable: true
+     ApplyCopayPerSchedule: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      default: "REG"
+      nullable: true
+     SuppressPayment: 
+      type: string
+      default: "N"
+      nullable: true
+     ProviderInheritsMemberPayment: 
+      type: string
+      default: "Y"
+      nullable: true
+     ContractType: 
+      type: string
+      nullable: true
+     PanelSizeEnforcement: 
+      type: string
+      nullable: true
+     PanelSizeCalculationMethod: 
+      type: string
+      nullable: true
+     FuturePCPLookbackPeriod: 
+      type: integer
+      nullable: true
+     PrimaryPCPLookbackPeriod: 
+      type: integer
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     MoneyLimitProcessingOrder: 
+      type: string
+      default: "ALI"
+      nullable: true
+     PanelOverrideAllowance: 
+      type: string
+      default: "AGP"
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     UpdateUsage: 
+      type: string
+      default: "|NORMAL|"
+      nullable: true
+   ContractsHistoryListDTO: 
+    title : ContractsHistoryListDTO
+    type: object
+    properties: 
+     ChangedBy                 : 
+      type: integer
+      nullable: true
+     ChangedAt                    : 
+      type: string
+      nullable: true
+     ChangeTypeCode : 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName                            : 
+      type: string
+     ContractId                           : 
+      type: integer
+      nullable: true
+     ContractNumber                       : 
+      type: string
+      nullable: true
+     ContractName           : 
+      type: string
+      nullable: true
+     ContractDescription                     : 
+      type: string
+      nullable: true
+     ContractNotes                       : 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate                         : 
+      type: string
+      nullable: true
+     PlaceOfService                          : 
+      type: string
+      nullable: true
+     PlaceOfServiceCode          : 
+      type: string
+      nullable: true
+     FeeScheduleId               : 
+      type: integer
+      nullable: true
+     Discount                                : 
+      type: number
+      nullable: true
+     Withhold                                : 
+      type: number
+      nullable: true
+     Negotiated                         : 
+      type: string
+      nullable: true
+     NegotiatedCode               : 
+      type: string
+      nullable: true
+     PricingMode                          : 
+      type: string
+      nullable: true
+     PricingModeCode                         : 
+      type: string
+      nullable: true
+     ToPay                           : 
+      type: string
+      nullable: true
+     ToPayCode                              : 
+      type: string
+      nullable: true
+     PreEstimateExpUnits                     : 
+      type: integer
+      nullable: true
+     PreEstimateExpUnitType                 : 
+      type: string
+      nullable: true
+     PreEstimateExpUnitTypeCode              : 
+      type: string
+      nullable: true
+     CapitationRateId                    : 
+      type: integer
+      nullable: true
+     CapitationRate: 
+      type: string
+      nullable: true
+     ExplanationID                        : 
+      type: integer
+      nullable: true
+     LastPostedDate                       : 
+      type: string
+      nullable: true
+     RetroactiveAddLimit          : 
+      type: integer
+      nullable: true
+     RetroactiveTermLimit                    : 
+      type: integer
+      nullable: true
+     PostingCutoffDay: 
+      type: integer
+      nullable: true
+     UseHCPCSWhenAdjudicationFindsFeeSchedule: 
+      type: string
+      nullable: true
+     FeeScheduleSearchCriteria               : 
+      type: string
+      nullable: true
+     FeeScheduleSearchCriteriaCode            : 
+      type: string
+     ApplyCopayPerSchedule                   : 
+      type: string
+      nullable: true
+     ApplyCopayPerScheduleCode           : 
+      type: string
+      nullable: true
+     PaymentClass                           : 
+      type: string
+      nullable: true
+     PaymentClassCode                      : 
+      type: string
+      nullable: true
+     SuppressPayment                     : 
+      type: string
+      nullable: true
+     SuppressPaymentCode                  : 
+      type: string
+      nullable: true
+     ProviderInheritsMemberPayment          : 
+      type: string
+      nullable: true
+     ProviderInheritsMemberPaymentCode       : 
+      type: string
+      nullable: true
+     ContractType                       : 
+      type: string
+      nullable: true
+     ContractTypeCode                     : 
+      type: string
+      nullable: true
+     PanelSizeEnforcement: 
+      type: string
+      nullable: true
+     PanelSizeEnforcementCode: 
+      type: string
+      nullable: true
+     PanelSizeCalculationMethod: 
+      type: string
+      nullable: true
+     PanelSizeCalculationMethodCode: 
+      type: string
+     FuturePCPLookbackPeriod: 
+      type: integer
+      nullable: true
+     PrimaryPCPLookbackPeriod: 
+      type: integer
+      nullable: true
+     MoneyLimitProcessingOrder: 
+      type: string
+      nullable: true
+     MoneyLimitProcessingOrderCode: 
+      type: string
+      nullable: true
+     PanelOverrideAllowance: 
+      type: string
+      nullable: true
+     PanelOverrideAllowanceCode: 
+      type: string
+      nullable: true
+     LastUpdatedBy                    : 
+      type: integer
+      nullable: true
+     LastUpdatedAt                           : 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+  parameters: 
+   ContractIdQueryParam: 
+    in: query
+    name: ContractId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
