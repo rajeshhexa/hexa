@@ -1,0 +1,265 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ContractMap
+  description: ContractMap API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/contractmap: 
+   post: 
+    operationId: AddProviderContractMap
+    tags: 
+     - ProviderContractMap
+    summary: Add ProviderContractMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContractMapDTO'
+    responses: 
+     '200': 
+      description: ProviderContractMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateProviderContractMap
+    tags: 
+     - ProviderContractMap
+    summary: Update ProviderContractMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContractMapDTO'
+    responses: 
+     '200': 
+      description: ProviderContractMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /provider/contract/entitymap: 
+   post: 
+    operationId: AddProviderContractEntityMap
+    tags: 
+     - ProviderContractMap
+    summary: Add ProviderContractEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderContractEntityMapDTO'
+    responses: 
+     '200': 
+      description: ProviderContractEntityMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateProviderContractEntityMap
+    tags: 
+     - ProviderContractMap
+    summary: Update ProviderContractEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderContractEntityMapDTO'
+    responses: 
+     '200': 
+      description: ProviderContractEntityMap updated successfully
+      content: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteProviderContractEntityMap
+    tags: 
+     - ProviderContractMap
+    summary: Delete ProviderContractEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderContractEntityMapIDQueryParam'
+     - $ref: '#/components/parameters/ProviderContractIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: ProviderContractEntityMap deleted successfully
+      content: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   ContractMapDTO: 
+    title : ContractMapDTO
+    type: object
+    properties: 
+     ProviderId: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ExceptionFeeScheduleId: 
+      type: integer
+      nullable: true
+     ExceptionCapitationRateId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     AllowPanelAssignment: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     PanelStatus: 
+      type: string
+      default: "OPN"
+      nullable: true
+     PanelSize: 
+      type: integer
+      nullable: true
+     PanelAgeFrom: 
+      type: integer
+      nullable: true
+     PanelAgeTo: 
+      type: integer
+      nullable: true
+     PanelDescription: 
+      type: string
+      nullable: true
+     PanelGender: 
+      type: string
+      default: "Any"
+      nullable: true
+     PanelWeight: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProviderCategoryLevel: 
+      type: string
+      default: "STD"
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     COBWaiver: 
+      type: string
+      default: "N"
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     ProviderContractClass: 
+      type: string
+      nullable: true
+     ProviderContractSubclass: 
+      type: string
+      nullable: true
+     InheritOption: 
+      type: string
+      default: "INH"
+      nullable: true
+     ReferralWaiver: 
+      type: string
+      default: "N"
+      nullable: true
+     AutoAssignOption: 
+      type: string
+      default: "AAA"
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      default: "Y"
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     ProviderContractId: 
+      type: integer
+      nullable: true
+   ProviderContractEntityMapDTO: 
+    title : ProviderContractEntityMapDTO
+    type: object
+    properties: 
+     ProviderContractId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ProviderContractEntityMapID: 
+      type: integer
+      nullable: true
+  parameters: 
+   ProviderContractEntityMapIDQueryParam: 
+    in: query
+    name: ProviderContractEntityMapID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProviderContractIDQueryParam: 
+    in: query
+    name: ProviderContractID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|BYPROVIDERCONTRACTENTITYMAPID|"
+    description: description of parameter passed
