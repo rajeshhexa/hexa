@@ -1,0 +1,464 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Finance Levy API
+  description: Finance Levy  API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/levies: 
+   post: 
+    operationId: GetLevies
+    tags: 
+     - Levy
+    summary: Get Levies
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LeviesSearchDTO'
+    responses: 
+     '200': 
+      description: Levies retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LeviesListDTO'
+  /finance/levyrecords: 
+   post: 
+    operationId: GetLevyRecords
+    tags: 
+     - Levy
+    summary: Get Levy Records
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LevyRecordsSearchDTO'
+    responses: 
+     '200': 
+      description: Levy Records retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LevyRecordsListDTO'
+  /finance/levieshistory: 
+   get: 
+    operationId: GetLeviesHistory
+    tags: 
+     - Levy
+    summary: Get Levies History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LevyId QueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Levies History retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LeviesHistoryListDTO'
+  /finance/levy: 
+   post: 
+    operationId: AddLevy
+    tags: 
+     - Levy
+    summary: Add Levy
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LevyDTO'
+    responses: 
+     '200': 
+      description: Levy added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateLevy
+    tags: 
+     - Levy
+    summary: Update Levy
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LevyDTO'
+    responses: 
+     '200': 
+      description: Levy updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   LeviesSearchDTO: 
+    title : LeviesSearchDTO
+    type: object
+    properties: 
+     LevyId: 
+      type: integer
+      nullable: true
+     CorporationId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BYCORPORATIONID|"
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   LeviesListDTO: 
+    title : LeviesListDTO
+    type: object
+    properties: 
+     LevyId: 
+      type: integer
+      description: 
+     CorporationId: 
+      type: integer
+      description: 
+     LevyNumber: 
+      type: integer
+      nullable: true
+     ExternalLevyNumber: 
+      type: integer
+      description: 
+     VendorToPayId: 
+      type: integer
+      description: 
+     UnitType: 
+      type: string
+     UnitValue: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     Precedence: 
+      type: integer
+      description: 
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      description: 
+     LastUpdatedAt: 
+      type: string
+      format: date
+      nullable: true
+     CorporationLegalName: 
+      type: string
+      nullable: true
+     VendorToPayNumber: 
+      type: integer
+      nullable: true
+     VendorToPayName: 
+      type: string
+      nullable: true
+     UnitTypeName: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     SubClassName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     TotalPaidToDate: 
+      type: string
+      nullable: true
+   LevyRecordsSearchDTO: 
+    title : LevyRecordsSearchDTO
+    type: object
+    properties: 
+     LevyId: 
+      type: integer
+      nullable: true
+     StartDate : 
+      type: string
+      nullable: true
+     EndDate: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|LEVYTOPAY|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   LevyRecordsListDTO: 
+    title : LevyRecordsListDTO
+    type: object
+    properties: 
+     LevyId: 
+      type: integer
+      description: 
+     RecordID : 
+      type: integer
+      description: 
+     ReferenceNumber: 
+      type: integer
+      description: 
+     RecordTypeCode: 
+      type: string
+     RecordStatusCode: 
+      type: string
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+     ParentAccountID : 
+      type: integer
+      description: 
+     CreationDate: 
+      type: string
+      format: date
+      nullable: true
+     ProcessedDate: 
+      type: string
+      format: date
+      nullable: true
+     VoidDate: 
+      type: string
+      format: date
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     MethodOfPaymentCode: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      description: 
+     LastUpdatedAt: 
+      type: string
+      format: date
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     EntityType : 
+      type: string
+      nullable: true
+     MethodOfPayment  : 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LeviedVendorRecordId  : 
+      type: integer
+      nullable: true
+     LeviedVendorAccountId: 
+      type: integer
+      nullable: true
+     LeviedVendorName  : 
+      type: string
+      nullable: true
+     LeviedVendorNumber: 
+      type: integer
+      nullable: true
+     LeviedCheckId : 
+      type: integer
+      nullable: true
+     LeviedCheckNumber : 
+      type: integer
+      nullable: true
+     LeviedCheckAmount: 
+      type: string
+      nullable: true
+     LeviedCheckStatusCode: 
+      type: string
+      nullable: true
+     LeviedCheckStatus: 
+      type: string
+      nullable: true
+     PaidCheckNumber: 
+      type: integer
+      nullable: true
+     PaidCheckAmount : 
+      type: string
+      nullable: true
+   LeviesHistoryListDTO: 
+    title : LeviesHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+      description: 
+     ChangedBy: 
+      type: integer
+      description: 
+     ChangeAt : 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+     ProcedureName : 
+      type: string
+     LevyId: 
+      type: integer
+      description: 
+     CorporationId: 
+      type: integer
+      description: 
+     LevyNumber: 
+      type: integer
+      nullable: true
+     ExternalLevyNumber  : 
+      type: integer
+      description: 
+     VendorToPayId: 
+      type: integer
+      description: 
+     UnitType: 
+      type: string
+     UnitValue: 
+      type: string
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+      description: 
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      description: 
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     CorporationLegalName: 
+      type: string
+      nullable: true
+     VendorToPayNumber: 
+      type: integer
+      nullable: true
+     VendorToPayName: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+   LevyDTO: 
+    title : LevyDTO
+    type: object
+    properties: 
+     LevyId: 
+      type: integer
+      nullable: true
+     CorporationId: 
+      type: integer
+      nullable: true
+     ExternalLevyNumber: 
+      type: string
+      nullable: true
+     VendorToPayId: 
+      type: integer
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   LevyId QueryParam: 
+    in: query
+    name: LevyId 
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+     default: "|Init|"
+    description: description of parameter passed
