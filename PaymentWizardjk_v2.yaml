@@ -1,0 +1,525 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Payment Wizard API
+  description: Finance Payment Wizard API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/paymentwizard/jobs: 
+   post: 
+    operationId: GetPaymentWizardJobs
+    tags: 
+     - Payment Wizard Job
+    summary: Get payment wizard job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWizardJobSearchDTO'
+    responses: 
+     '200': 
+      description: Payment wizard jobs retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PaymentWizardJobListDTO'
+  /finance/paymentwizard/job: 
+   post: 
+    operationId: AddPaymentWizardJob
+    tags: 
+     - Payment Wizard Job
+    summary: Add payment wizard job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWizardJobDTO'
+    responses: 
+     '200': 
+      description: Payment wizard job added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdatePaymentWizardJob
+    tags: 
+     - Payment Wizard Job
+    summary: Update payment wizard job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWizardJobDTO'
+    responses: 
+     '200': 
+      description: Payment wizard job updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/paymentwizard/voidjob: 
+   post: 
+    operationId: VoidPaymentWizardJob
+    tags: 
+     - Payment Wizard Job
+    summary: Void payment wizard job
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/SourceQueryParam'
+     - $ref: '#/components/parameters/VoidReasonQueryParam'
+    responses: 
+     '200': 
+      description: Payment wizard job void successful
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/paymentwizard/pausejob: 
+   post: 
+    operationId: PausePaymentWizardJob
+    tags: 
+     - Payment Wizard Job
+    summary: Pause payment wizard job
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobTypeQueryParam'
+     - $ref: '#/components/parameters/JobIdQueryParam'
+    responses: 
+     '200': 
+      description: Payment wizard job paused successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/paymentwizard/endjob: 
+   post: 
+    operationId: EndPaymentWizardJob
+    tags: 
+     - Payment Wizard Job
+    summary: End payment wizard job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EndPaymentWizardJobDTO'
+    responses: 
+     '200': 
+      description: Payment wizard job ended successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/estimatepaymentwizardjob: 
+   post: 
+    operationId: AddEstimateToPaymentWizardJob
+    tags: 
+     - Payment Wizard Job
+    summary: Add Estimate To Payment Wizard Job
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/DocumentRequestIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Estimate To Payment Wizard Job added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/paymentwizardjobdetail: 
+   put: 
+    operationId: UpdatePaymentWizardJobDetail
+    tags: 
+     - Payment Wizard Job
+    summary: Update Payment Wizard Job Detail
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ PaymentWizardJobDetailDTO'
+    responses: 
+     '200': 
+      description: Payment Wizard Job Detail updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   PaymentWizardJobDetailDTO: 
+    title : PaymentWizardJobDetailDTO
+    type: object
+    properties: 
+     JobDetailId: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     RecordId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BYJOBDETAILID|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   PaymentWizardJobSearchDTO: 
+    title : PaymentWizardJobSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     CashAccountId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BYJOBID|"
+      nullable: true
+   PaymentWizardJobListDTO: 
+    title : PaymentWizardJobListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      description: 
+     JobNumber: 
+      type: string
+     JobName: 
+      type: string
+     JobDescription: 
+      type: string
+      nullable: true
+     JobTypeCode: 
+      type: string
+   PaymentWizardJobDTO: 
+    title : PaymentWizardJobDTO
+    type: object
+    properties: 
+     JobName: 
+      type: string
+      nullable: true
+     JobDescription: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     CheckPackageId: 
+      type: integer
+      nullable: true
+     DateStart : 
+      type: string
+      format: date-time
+      nullable: true
+     DateEnd : 
+      type: string
+      format: date-time
+      nullable: true
+     CashAccountId: 
+      type: integer
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     MoneyLimitMax: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     LOB: 
+      type: string
+      nullable: true
+     CheckType: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     CheckBatchType: 
+      type: string
+      nullable: true
+     OverpaymentRecoveryMode: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     PaymentClass: 
+      type: string
+      nullable: true
+     InputBatchClass: 
+      type: string
+      nullable: true
+     InputBatchSubclass: 
+      type: string
+      nullable: true
+     VendorClass: 
+      type: string
+      nullable: true
+     VendorSubclass: 
+      type: string
+      nullable: true
+     MethodOfPayment: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     ZeroDollarCheckOption: 
+      type: string
+      nullable: true
+     StartingCheckNumber: 
+      type: string
+      nullable: true
+     SuppressCheckDetail: 
+      type: string
+      nullable: true
+     EmailVendorPayment: 
+      type: string
+      nullable: true
+     SuppressEOBForMembers: 
+      type: string
+      nullable: true
+     EmailMemberEOB: 
+      type: string
+      nullable: true
+     UserEmailList: 
+      type: string
+      nullable: true
+     CheckDetailReportId : 
+      type: integer
+      nullable: true
+     CheckOnlyReportId : 
+      type: integer
+      nullable: true
+     ZeroDollarCheckReportId : 
+      type: integer
+      nullable: true
+     CSVReportId: 
+      type: integer
+      nullable: true
+     EFTReportId: 
+      type: integer
+      nullable: true
+     Hierarchy1: 
+      type: string
+      nullable: true
+     Hierarchy2: 
+      type: string
+      nullable: true
+     Hierarchy3: 
+      type: string
+      nullable: true
+     Hierarchy4: 
+      type: string
+      nullable: true
+     ClientNumber: 
+      type: string
+      nullable: true
+     IncludeEFTsInABFFile: 
+      type: string
+      nullable: true
+     MultipleClaimsOnEOBs: 
+      type: string
+      nullable: true
+     RefundLetterReportId: 
+      type: integer
+      nullable: true
+     PaymentCurrency: 
+      type: string
+      nullable: true
+     CheckDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckAmountOperator: 
+      type: string
+      nullable: true
+     CheckAmountLimit: 
+      type: string
+      nullable: true
+     PostingAmountOperator: 
+      type: string
+      nullable: true
+     PostingAmountLimit: 
+      type: string
+      nullable: true
+     DelayEOBCreation: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     CheckDateUsage: 
+      type: string
+      default: "N"
+      nullable: true
+     DocumentType: 
+      type: string
+      nullable: true
+     FulfillmentMethod: 
+      type: string
+      nullable: true
+     NonMedical835Action: 
+      type: string
+      nullable: true
+     CashAccount835FileMethod: 
+      type: string
+      nullable: true
+     PaymentPackageId: 
+      type: integer
+      nullable: true
+     PostingDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RiskGroupID: 
+      type: integer
+      nullable: true
+     RedirectAddressID: 
+      type: integer
+      nullable: true
+     CoversheetReportID: 
+      type: integer
+      nullable: true
+     ABFOutputFileTransform: 
+      type: integer
+      nullable: true
+     EFTOutputFileTransform: 
+      type: integer
+      nullable: true
+     CSVOutputFileTransform: 
+      type: integer
+      nullable: true
+     EmailConfigurationID: 
+      type: integer
+      nullable: true
+     Collate: 
+      type: string
+      nullable: true
+   EndPaymentWizardJobDTO: 
+    title : EndPaymentWizardJobDTO
+    type: object
+    properties: 
+     JobType: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     EmailSubject: 
+      type: string
+      nullable: true
+     Message: 
+      type: string
+      nullable: true
+     SendNotification: 
+      type: string
+      nullable: true
+     StepId: 
+      type: integer
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SourceQueryParam: 
+    in: query
+    name: Source
+    required: false
+    schema: 
+     type: string
+     default: "JOBHISTORY"
+    description: description of parameter passed
+   VoidReasonQueryParam: 
+    in: query
+    name: VoidReason
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   JobTypeQueryParam: 
+    in: query
+    name: JobType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   DocumentRequestIdQueryParam: 
+    in: query
+    name: DocumentRequestId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
