@@ -1,0 +1,279 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Payment API
+  description: Payment API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/payment/qualifierentitymaps: 
+   post: 
+    operationId: GetPaymentQualifierEntityMap
+    tags: 
+     - Payment Qualifier Entity Map
+    summary: Get Payment Qualifier Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentQualifierEntityMapSearchDTO'
+    responses: 
+     '200': 
+      description: Payment Qualifier Entity Map retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentQualifierEntityMapListDTO'
+  /finance/payment/qualifierentitymap: 
+   post: 
+    operationId: AddPaymentQualifierEntityMap
+    tags: 
+     - Payment Qualifier Entity Map
+    summary: Add Payment Qualifier Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentQualifierEntityMapDTO'
+    responses: 
+     '200': 
+      description: Payment Qualifier Entity Map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdatePaymentQualifierEntityMap
+    tags: 
+     - Payment Qualifier Entity Map
+    summary: Update Payment Qualifier Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentQualifierEntityMapDTO'
+    responses: 
+     '200': 
+      description: Payment Qualifier Entity Map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/payment/removequalifierentitymap: 
+   post: 
+    operationId: DeletePaymentQualifierEntityMap
+    tags: 
+     - Payment Qualifier Entity Map
+    summary: Delete Payment Qualifier Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentQualifierEntityMapDTO'
+    responses: 
+     '200': 
+      description: Payment Qualifier Entity Map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/payment/qualifierentitymaphistory: 
+   post: 
+    operationId: GetPaymentQualifierEntityMapHistory
+    tags: 
+     - Payment Qualifier Entity Map
+    summary: Get Payment Qualifier Entity Map History
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentQualifierEntityMapHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Payment Qualifier Entity Map History retieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentQualifierEntityMapHistoryListDTO'
+components: 
+  schemas: 
+   PaymentQualifierEntityMapSearchDTO: 
+    title : PaymentQualifierEntityMapSearchDTO
+    type: object
+    properties: 
+     PaymentQualifierCode: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|INIT|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   PaymentQualifierEntityMapListDTO: 
+    title : PaymentQualifierEntityMapListDTO
+    type: object
+    properties: 
+     PaymentQualifierEntityId : 
+      type: integer
+      description: 
+     PaymentQualifierCode: 
+      type: string
+     PaymentQualifierName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      description: 
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate : 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   PaymentQualifierEntityMapDTO: 
+    title : PaymentQualifierEntityMapDTO
+    type: object
+    properties: 
+     PaymentQualifierCode: 
+      type: string
+      nullable: true
+     PaymentQualifierEntityId : 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   PaymentQualifierEntityMapHistorySearchDTO: 
+    title : PaymentQualifierEntityMapHistorySearchDTO
+    type: object
+    properties: 
+     PaymentQualifierEntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Usage  : 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   PaymentQualifierEntityMapHistoryListDTO: 
+    title : PaymentQualifierEntityMapHistoryListDTO
+    type: object
+    properties: 
+     HistoryId: 
+      type: integer
+      description: 
+      nullable: true
+     PaymentQualifierEntityId: 
+      type: integer
+      description: 
+      nullable: true
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      nullable: true
+      nullable: true
+     ChangeTypeCode : 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     PaymentQualifierCode: 
+      type: string
+      nullable: true
+     PaymentQualifierName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      description: 
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
