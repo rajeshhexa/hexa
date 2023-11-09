@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Payment Wizard API
+  description: Finance Payment Wizard API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/paymentwizard/jobs: 
+   post: 
+    operationId: GetPaymentWizardJobs
+    tags: 
+     - Payment Wizard Job
+    summary: Get payment wizard job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWizardJobSearchDTO'
+    responses: 
+     '200': 
+      description: Payment wizard jobs retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PaymentWizardJobListDTO'
+  /finance/paymentwizard/job: 
+   post: 
+    operationId: AddPaymentWizardJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWizardJobDTO'
+    responses: 
+     '200': 
+      description: Payment wizard job added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdatePaymentWizardJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PaymentWizardJobDTO'
+    responses: 
+     '200': 
+      description: Payment wizard job updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/paymentwizard/voidjob: 
+   null: 
+    operationId: VoidPaymentWizardJob
+    description: Description of path
