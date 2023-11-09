@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Payment Wizard API
+  description: Finance Payment Wizard API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /finance/estimatepaymentwizardjob: 
+   post: 
+    operationId: AddEstimateToPaymentWizardJob
+    tags: 
+     - Payment Wizard Job
+    summary: Add Estimate To Payment Wizard Job
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/DocumentRequestIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Estimate To Payment Wizard Job added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /finance/paymentwizardjobdetail: 
+   put: 
+    operationId: UpdatePaymentWizardJobDetail
+    tags: 
+     - Payment Wizard Job
+    summary: Update Payment Wizard Job Detail
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ PaymentWizardJobDetailDTO'
+    responses: 
+     '200': 
+      description: Payment Wizard Job Detail updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   PaymentWizardJobDetailDTO: 
+    title : PaymentWizardJobDetailDTO
+    type: object
+    properties: 
+     JobDetailId: 
+      type: integer
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     RecordId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|BYJOBDETAILID|"
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DocumentRequestIdQueryParam: 
+    in: query
+    name: DocumentRequestId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
