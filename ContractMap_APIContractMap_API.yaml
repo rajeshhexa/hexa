@@ -1,0 +1,1001 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ContractMap
+  description: ContractMap API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/contractmap: 
+   post: 
+    operationId: AddProviderContractMap
+    tags: 
+     - ProviderContractMap
+    summary: Add ProviderContractMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContractMapDTO'
+    responses: 
+     '200': 
+      description: ProviderContractMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateProviderContractMap
+    tags: 
+     - ProviderContractMap
+    summary: Update ProviderContractMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContractMapDTO'
+    responses: 
+     '200': 
+      description: ProviderContractMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /provider/contractmap/history: 
+   get: 
+    operationId: GetProviderContractMapHistory
+    tags: 
+     - ProviderContractMap
+    summary: Get ProviderContractMapHistory
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ProviderContractIdQueryParam'
+     - $ref: '#/components/parameters/ProviderIdQueryParam'
+     - $ref: '#/components/parameters/OfficeIdQueryParam'
+    responses: 
+     '200': 
+      description: ProviderContractMapHistory retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderContractMapHistoryListDTO'
+  /provider/contract/entitymap: 
+   post: 
+    operationId: AddProviderContractEntityMap
+    tags: 
+     - ProviderContractMap
+    summary: Add ProviderContractEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderContractEntityMapDTO'
+    responses: 
+     '200': 
+      description: ProviderContractEntityMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateProviderContractEntityMap
+    tags: 
+     - ProviderContractMap
+    summary: Update ProviderContractEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderContractEntityMapDTO'
+    responses: 
+     '200': 
+      description: ProviderContractEntityMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteProviderContractEntityMap
+    tags: 
+     - ProviderContractMap
+    summary: Delete ProviderContractEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderContractEntityMapIDQueryParam'
+     - $ref: '#/components/parameters/ProviderContractIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: ProviderContractEntityMap deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /provider/contract/entitymaphistory: 
+   get: 
+    operationId: GetProviderContractEntityMapHistory
+    tags: 
+     - ProviderContractMap
+    summary: Get ProviderContractEntityMapHistory
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ProviderContractIdQueryParam'
+    responses: 
+     '200': 
+      description: ProviderContractEntityMapHistory retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderContractEntityMapHistoryListDTO'
+  /provider/loadcontracts: 
+   post: 
+    operationId: LoadProviderContracts
+    tags: 
+     - ProviderContractMap
+    summary: Load ProviderContracts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LoadProviderContractsSearchDTO'
+    responses: 
+     '200': 
+      description: ProviderContract loaded successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LoadProviderContractsListDTO'
+  /provider/contract/termmaps: 
+   get: 
+    operationId: TermProviderContractMaps
+    tags: 
+     - ProviderContractMap
+    summary: TermProviderContractMaps
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderIdQueryParam'
+     - $ref: '#/components/parameters/AsOfDateQueryParam'
+     - $ref: '#/components/parameters/TerminationReasonQueryParam'
+    responses: 
+     '200': 
+      description: ProviderContractMaps terminated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /provider/contract/transfervendor: 
+   post: 
+    operationId: TransferVendorProviderContracts
+    tags: 
+     - ProviderContractMap
+    summary: Transfer VendorProviderContracts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TransferVendorProviderContractsDTO'
+    responses: 
+     '200': 
+      description: VendorProviderContracts transfered successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   ContractMapDTO: 
+    title : ContractMapDTO
+    type: object
+    properties: 
+     ProviderId: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ExceptionFeeScheduleId: 
+      type: integer
+      nullable: true
+     ExceptionCapitationRateId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     AllowPanelAssignment: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     PanelStatus: 
+      type: string
+      default: "OPN"
+      nullable: true
+     PanelSize: 
+      type: integer
+      nullable: true
+     PanelAgeFrom: 
+      type: integer
+      nullable: true
+     PanelAgeTo: 
+      type: integer
+      nullable: true
+     PanelDescription: 
+      type: string
+      nullable: true
+     PanelGender: 
+      type: string
+      default: "Any"
+      nullable: true
+     PanelWeight: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProviderCategoryLevel: 
+      type: string
+      default: "STD"
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     COBWaiver: 
+      type: string
+      default: "N"
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     ProviderContractClass: 
+      type: string
+      nullable: true
+     ProviderContractSubclass: 
+      type: string
+      nullable: true
+     InheritOption: 
+      type: string
+      default: "INH"
+      nullable: true
+     ReferralWaiver: 
+      type: string
+      default: "N"
+      nullable: true
+     AutoAssignOption: 
+      type: string
+      default: "AAA"
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      default: "Y"
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     ProviderContractId: 
+      type: integer
+      nullable: true
+   ProviderContractEntityMapDTO: 
+    title : ProviderContractEntityMapDTO
+    type: object
+    properties: 
+     ProviderContractId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ProviderContractEntityMapID: 
+      type: integer
+      nullable: true
+   ProviderContractMapHistoryListDTO: 
+    title : ProviderContractMapHistoryListDTO
+    type: object
+    properties: 
+     ProviderId: 
+      type: integer
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     ExceptionFeeScheduleId: 
+      type: integer
+      nullable: true
+     ExceptionFeeScheduleName: 
+      type: string
+      nullable: true
+     ExceptionCapitationRateId: 
+      type: integer
+      nullable: true
+     ExceptionCapitationRateName: 
+      type: string
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     PanelStatus: 
+      type: string
+      nullable: true
+     PanelStatusName: 
+      type: string
+      nullable: true
+     PanelSize: 
+      type: integer
+      nullable: true
+     PanelAgeFrom: 
+      type: integer
+      nullable: true
+     PanelAgeTo: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProviderCategoryLevel: 
+      type: string
+      nullable: true
+     ProviderCategoryLevelName: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     TerminationReasonName: 
+      type: string
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProviderContractId: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     COBWaiver: 
+      type: string
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     HospitalName: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     HospitalNPI: 
+      type: string
+      nullable: true
+     AllowPanelAssignment: 
+      type: string
+      nullable: true
+     HistoryID: 
+      type: integer
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     PanelDescription: 
+      type: string
+      nullable: true
+     PanelDescriptionName: 
+      type: string
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      nullable: true
+     ProviderContractClass: 
+      type: string
+      nullable: true
+     ProviderContractClassName: 
+      type: string
+      nullable: true
+     ProviderContractSubclass: 
+      type: string
+      nullable: true
+     ProviderContractSubclassName: 
+      type: string
+      nullable: true
+     PanelGender: 
+      type: string
+      nullable: true
+     PanelGenderName: 
+      type: string
+      nullable: true
+     PanelWeight: 
+      type: integer
+      nullable: true
+     ReferralWaiver: 
+      type: string
+      nullable: true
+     InheritOption: 
+      type: string
+      nullable: true
+     InheritOptionName: 
+      type: string
+      nullable: true
+     AutoAssignOption: 
+      type: string
+      nullable: true
+     AutoAssignOptionName: 
+      type: string
+      nullable: true
+   ProviderContractEntityMapHistoryListDTO: 
+    title : ProviderContractEntityMapHistoryListDTO
+    type: object
+    properties: 
+     ProviderContractEntityMapId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     ProviderContractId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   TransferVendorProviderContractsDTO: 
+    title : TransferVendorProviderContractsDTO
+    type: object
+    properties: 
+     SourceProviderContractId: 
+      type: integer
+      nullable: true
+     SourceTerminationReason: 
+      type: string
+      nullable: true
+     SourcePanelStatus: 
+      type: string
+      nullable: true
+     SourcePanelDescription: 
+      type: string
+      nullable: true
+     TargetVendorId: 
+      type: integer
+      nullable: true
+     TargetEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+   LoadProviderContractsSearchDTO: 
+    title : LoadProviderContractsSearchDTO
+    type: object
+    properties: 
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     PrimaryOffice: 
+      type: string
+      nullable: true
+     CreateProviderOfficeMapping: 
+      type: string
+      nullable: true
+     ProviderSundayStart: 
+      type: string
+      nullable: true
+     ProviderSundayEnd: 
+      type: string
+      nullable: true
+     ProviderMondayStart: 
+      type: string
+      nullable: true
+     ProviderMondayEnd: 
+      type: string
+      nullable: true
+     ProviderTuesdayStart: 
+      type: string
+      nullable: true
+     ProviderTuesdayEnd: 
+      type: string
+      nullable: true
+     ProviderWednesdayStart: 
+      type: string
+      nullable: true
+     ProviderWednesdayEnd: 
+      type: string
+      nullable: true
+     ProviderThursdayStart: 
+      type: string
+      nullable: true
+     ProviderThursdayEnd: 
+      type: string
+      nullable: true
+     ProviderFridayStart: 
+      type: string
+      nullable: true
+     ProviderFridayEnd: 
+      type: string
+      nullable: true
+     ProviderSaturdayStart: 
+      type: string
+      nullable: true
+     ProviderSaturdayEnd: 
+      type: string
+      nullable: true
+     ProviderTotalOfficeHours: 
+      type: string
+      nullable: true
+     ExceptionFeeScheduleName: 
+      type: string
+      nullable: true
+     ExceptionCapitationRateName: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     ProviderContractId: 
+      type: integer
+      nullable: true
+     PanelStatus: 
+      type: string
+      nullable: true
+     PanelSize: 
+      type: integer
+      nullable: true
+     PanelAgeFrom: 
+      type: integer
+      nullable: true
+     PanelAgeTo: 
+      type: integer
+      nullable: true
+     PanelDescription: 
+      type: string
+      nullable: true
+     PanelGender: 
+      type: string
+      nullable: true
+     PanelWeight: 
+      type: integer
+      nullable: true
+     ProviderContractClass: 
+      type: string
+      nullable: true
+     ProviderContractSubclass: 
+      type: string
+      nullable: true
+     InheritOption: 
+      type: string
+      nullable: true
+     ReferralWaiver: 
+      type: string
+      nullable: true
+     AutoAssignOption: 
+      type: string
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProviderCategoryLevel: 
+      type: string
+      nullable: true
+     COBWaiver: 
+      type: string
+      nullable: true
+     AllowPanelAssignment: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     CustomAttributes: 
+      type: string
+      nullable: true
+     ProviderContractMappedEntities: 
+      type: string
+      nullable: true
+     XMLDataString: 
+      type: string
+      nullable: true
+     LoadUsage: 
+      type: string
+      nullable: true
+   LoadProviderContractsListDTO: 
+    title : LoadProviderContractsListDTO
+    type: object
+    properties: 
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     PrimaryOffice: 
+      type: string
+      nullable: true
+     CreateProviderOfficeMapping: 
+      type: string
+      nullable: true
+     ExceptionFeeScheduleName: 
+      type: string
+      nullable: true
+     ExceptionCapitationRateName: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     ProviderContractId: 
+      type: integer
+      nullable: true
+     PanelStatus: 
+      type: string
+      nullable: true
+     PanelSize: 
+      type: integer
+      nullable: true
+     PanelAgeFrom: 
+      type: integer
+      nullable: true
+     PanelAgeTo: 
+      type: integer
+      nullable: true
+     PanelDescription: 
+      type: string
+      nullable: true
+     PanelGender: 
+      type: string
+      nullable: true
+     PanelWeight: 
+      type: integer
+      nullable: true
+     ProviderContractClass: 
+      type: string
+      nullable: true
+     ProviderContractSubclass: 
+      type: string
+      nullable: true
+     InheritOption: 
+      type: string
+      nullable: true
+     ReferralWaiver: 
+      type: string
+      nullable: true
+     AutoAssignOption: 
+      type: string
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProviderCategoryLevel: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     CobWaiver: 
+      type: string
+      nullable: true
+     AllowPanelAssignment: 
+      type: string
+      nullable: true
+     CustomAttributes: 
+      type: string
+      nullable: true
+     ProviderContractMappedEntities: 
+      type: string
+      nullable: true
+     ProviderSundayStart: 
+      type: string
+      nullable: true
+     ProviderSundayEnd: 
+      type: string
+      nullable: true
+     ProviderMondayStart: 
+      type: string
+      nullable: true
+     ProviderMondayEnd: 
+      type: string
+      nullable: true
+     ProviderTuesdayStart: 
+      type: string
+      nullable: true
+     ProviderTuesdayEnd: 
+      type: string
+      nullable: true
+     ProviderWednesdayStart: 
+      type: string
+      nullable: true
+     ProviderWednesdayEnd: 
+      type: string
+      nullable: true
+     ProviderThursdayStart: 
+      type: string
+      nullable: true
+     ProviderThursdayEnd: 
+      type: string
+      nullable: true
+     ProviderFridayStart: 
+      type: string
+      nullable: true
+     ProviderFridayEnd: 
+      type: string
+      nullable: true
+     ProviderSaturdayStart: 
+      type: string
+      nullable: true
+     ProviderSaturdayEnd: 
+      type: string
+      nullable: true
+     ProviderTotalOfficeHours: 
+      type: string
+      nullable: true
+     LoadUsage: 
+      type: string
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|Init|"
+    description: description of parameter passed
+   ProviderContractIdQueryParam: 
+    in: query
+    name: ProviderContractId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProviderIdQueryParam: 
+    in: query
+    name: ProviderId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   OfficeIdQueryParam: 
+    in: query
+    name: OfficeId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProviderContractEntityMapIDQueryParam: 
+    in: query
+    name: ProviderContractEntityMapID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProviderContractIDQueryParam: 
+    in: query
+    name: ProviderContractID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AsOfDateQueryParam: 
+    in: query
+    name: AsOfDate
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   TerminationReasonQueryParam: 
+    in: query
+    name: TerminationReason
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
