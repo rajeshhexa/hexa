@@ -1,0 +1,254 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Network
+  description: Network API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/network: 
+   post: 
+    operationId: AddNetwork
+    tags: 
+     - Network
+    summary: Add Network
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NetworkDTO'
+    responses: 
+     '200': 
+      description: Network added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateNetwork
+    tags: 
+     - Network
+    summary: Update Network
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NetworkDTO'
+    responses: 
+     '200': 
+      description: Network updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteNetwork
+    tags: 
+     - Network
+    summary: Delete Network
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NetworkIDQueryParam'
+    responses: 
+     '200': 
+      description: Network deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /provider/network/entitymap: 
+   get: 
+    operationId: GetNetworkEntityMap
+    tags: 
+     - Network
+    summary: Get NetworkEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NetworkIDQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/EffectiveDateQueryParam'
+     - $ref: '#/components/parameters/ExpirationDateQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: NetworkEntityMap retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/NetworkEntityMapListDTO'
+   post: 
+    operationId: AddNetworkEntityMap
+    tags: 
+     - Network
+    summary: Add NetworkEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NetworkEntityMapDTO'
+    responses: 
+     '200': 
+      description: NetworkEntityMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateNetworkEntityMap
+    tags: 
+     - Network
+    summary: Update NetworkEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NetworkEntityMapDTO'
+    responses: 
+     '200': 
+      description: NetworkEntityMap updated successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteNetworkEntityMap
+    tags: 
+     - Network
+    summary: Delete NetworkEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NetworkEntityMapIDQueryParam'
+    responses: 
+     '200': 
+      description: NetworkEntityMap deleted successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   NetworkEntityMapDTO: 
+    title : NetworkEntityMapDTO
+    type: object
+    properties: 
+     NetworkID: 
+      type: integer
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     NetworkEntityMapID: 
+      type: integer
+      nullable: true
+   NetworkDTO: 
+    title : NetworkDTO
+    type: object
+    properties: 
+     NetworkID: 
+      type: integer
+      nullable: true
+     NetworkName: 
+      type: string
+      nullable: true
+     NetworkCode: 
+      type: string
+      nullable: true
+     ShowExternally: 
+      type: string
+      nullable: true
+   NetworkEntityMapListDTO: 
+    title : NetworkEntityMapListDTO
+    type: object
+    properties: 
+     NetworkEntityMapID: 
+      type: integer
+      nullable: true
+     NetworkID: 
+      type: integer
+      nullable: true
+     EntityID: 
+      type: integer
+     EntityType: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+  parameters: 
+   NetworkIDQueryParam: 
+    in: query
+    name: NetworkID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   EffectiveDateQueryParam: 
+    in: query
+    name: EffectiveDate
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ExpirationDateQueryParam: 
+    in: query
+    name: ExpirationDate
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   NetworkEntityMapIDQueryParam: 
+    in: query
+    name: NetworkEntityMapID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
