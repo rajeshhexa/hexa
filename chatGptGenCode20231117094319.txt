@@ -1,0 +1,54 @@
+@Controller
+public class EventController {
+  
+  @Autowired
+  private EventService eventService;
+
+  @GetMapping("/events/{eventId}")
+  public ResponseEntity<Event> getEventDetails(@PathVariable String eventId) {
+    Event event = eventService.getEventDetails(eventId);
+    return ResponseEntity.ok(event);
+  }
+
+  @PostMapping("/events/{eventId}")
+  public ResponseEntity<Event> updateEventDetails(@PathVariable String eventId, @RequestBody Event event) {
+    Event updatedEvent = eventService.updateEventDetails(eventId, event);
+    return ResponseEntity.ok(updatedEvent);
+  }
+}
+
+@Service
+public class EventService {
+
+  @Autowired
+  private EventDAO eventDAO;
+
+  public Event getEventDetails(String eventId) {
+    return eventDAO.getEvent(eventId);
+  }
+
+  public Event updateEventDetails(String eventId, Event event) {
+    return eventDAO.updateEvent(eventId, event);
+  }
+}
+
+@Repository
+public class EventDAO {
+
+  public Event getEvent(String eventId) {
+    // code to retrieve event from database
+  }
+
+  public Event updateEvent(String eventId, Event event) {
+    // code to update event in database
+  }
+}
+
+public class Event {
+
+  private String eventId;
+  private String eventName;
+  private String eventDate;
+
+  // getters and setters
+}
