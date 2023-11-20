@@ -1,0 +1,237 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: User
+  description: User API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/user/connect: 
+   post: 
+    operationId: ConnectUser_v3
+    tags: 
+     - User
+    summary: Connect User
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ConnectUserV3DTO'
+    responses: 
+     '200': 
+      description: User connected successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /provider/user/disconnect: 
+   post: 
+    operationId: DisconectUser
+    tags: 
+     - User
+    summary: Disconnect User
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/DisconnectUserIDQueryParam'
+     - $ref: '#/components/parameters/ImpersonationUserIdQueryParam'
+    responses: 
+     '200': 
+      description: User disconnected successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /provider/user/customattributes: 
+   post: 
+    operationId: GetCustomAttributes_V2
+    tags: 
+     - User
+    summary: Get CustomAttributes_V2
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CustomAttributes_V2SearchDTO'
+    responses: 
+     '200': 
+      description: CustomAtrributes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CustomAttributes_V2ListDTO'
+components: 
+  schemas: 
+   ConnectUserV3DTO: 
+    title : ConnectUserV3DTO
+    type: object
+    properties: 
+     Username: 
+      type: string
+      nullable: true
+     Password: 
+      type: string
+      nullable: true
+     RoleName: 
+      type: string
+      nullable: true
+     AppName: 
+      type: string
+      nullable: true
+     Version: 
+      type: string
+      nullable: true
+     ApplicationKey: 
+      type: string
+      nullable: true
+     SessionTimeout: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ComputerName: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     LicenseMode: 
+      type: string
+      default: 'DB'
+      nullable: true
+     NumberOfLicensedSeats: 
+      type: integer
+      nullable: true
+     Port: 
+      type: integer
+      nullable: true
+     RunFromCommandLine: 
+      type: string
+      nullable: true
+     IsSingleSignOn: 
+      type: string
+      nullable: true
+     Sid: 
+      type: string
+      nullable: true
+     DomainName: 
+      type: string
+      nullable: true
+     TraceFlag: 
+      type: integer
+      nullable: true
+     OverrideAppName: 
+      type: string
+      nullable: true
+   CustomAttributes_V2SearchDTO: 
+    title : CustomAttributes_V2SearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     AttributeID: 
+      type: string
+      nullable: true
+     ShowDisabled: 
+      type: string
+      nullable: true
+     Category: 
+      type: string
+      nullable: true
+     DataType: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     EntityParentType: 
+      type: string
+      nullable: true
+     AttributeName: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   CustomAttributes_V2ListDTO: 
+    title : CustomAttributes_V2ListDTO
+    type: object
+    properties: 
+     AttributeID: 
+      type: integer
+     AttributeName: 
+      type: string
+     Category: 
+      type: string
+     DataType: 
+      type: string
+      nullable: true
+     DataTypeName: 
+      type: string
+      nullable: true
+     ListName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     Disabled: 
+      type: string
+     MaxLength: 
+      type: integer
+      nullable: true
+     MinLength: 
+      type: integer
+      nullable: true
+     SearchField: 
+      type: string
+      nullable: true
+     EditMask: 
+      type: string
+      nullable: true
+     UpdatedBy: 
+      type: string
+     UpdatedAt: 
+      type: string
+      format: date-time
+     UseAdvancedFiltering: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     EntityParentType: 
+      type: string
+      nullable: true
+     EntityAttributeMapId: 
+      type: integer
+      nullable: true
+  parameters: 
+   DisconnectUserIDQueryParam: 
+    in: query
+    name: DisconnectUserID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ImpersonationUserIdQueryParam: 
+    in: query
+    name: ImpersonationUserId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
