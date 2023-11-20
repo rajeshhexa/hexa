@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: HSP
+  description: HSP API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/hsp/licencekey: 
+   post: 
+    operationId: GetHSPLicencekey
+    tags: 
+     - HSP
+    summary: Get HSPLicencekey
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/HSPLicencekeySearchDTO'
+    responses: 
+     '200': 
+      description: HSPLicencekey retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   HSPLicencekeySearchDTO: 
+    title : HSPLicencekeySearchDTO
+    type: object
+    properties: 
+     ApplicationName: 
+      type: string
+      nullable: true
+     OverrideAppName: 
+      type: string
+      nullable: true
+     DatabaseName: 
+      type: string
+      nullable: true
+     ServerName: 
+      type: string
+      nullable: true
+     TraceFlag: 
+      type: integer
+      nullable: true
