@@ -1,0 +1,762 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Providers
+  description: Providers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /providersv2: 
+   post: 
+    operationId: GetProviders_V2
+    tags: 
+     - Provider
+    summary: Get Provider
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderSearchDTO'
+    responses: 
+     '200': 
+      description: Providers retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderListDTO'
+  /provider: 
+   post: 
+    operationId: AddProvider
+    tags: 
+     - Provider
+    summary: Add Provider
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderDTO'
+    responses: 
+     '200': 
+      description: Providers added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateProvider
+    tags: 
+     - Provider
+    summary: Update Provider
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderDTO'
+    responses: 
+     '200': 
+      description: Providers updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /providershistory: 
+   get: 
+    operationId: GetProvidersHistory
+    tags: 
+     - Provider
+    summary: Get Provider History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderIdQueryParam'
+    responses: 
+     '200': 
+      description: ProvidersHistory retreived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProvidersHistoryListDTO'
+  /provider/contract: 
+   delete: 
+    operationId: DeleteContractFromProvider
+    tags: 
+     - Provider
+    summary: Delete ContractFromProvider
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderContractIDQueryParam'
+    responses: 
+     '200': 
+      description: ContractFromProvider deleted successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   ProviderSearchDTO: 
+    title : ProviderSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     SpecialtyCode: 
+      type: string
+      nullable: true
+   ProviderListDTO: 
+    title : ProviderListDTO
+    type: object
+    properties: 
+     ProviderID: 
+      type: integer
+      nullable: true
+     ProviderNumber: 
+      type: string
+     HospitalID: 
+      type: integer
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+     FirstName: 
+      type: string
+      nullable: true
+     MiddleInitial: 
+      type: string
+      nullable: true
+     Title: 
+      type: string
+      nullable: true
+     Suffix: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     MatchByOffice: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     ProviderType: 
+      type: string
+      nullable: true
+     DEANumber: 
+      type: string
+      nullable: true
+     UPIN: 
+      type: string
+      nullable: true
+     NPI: 
+      type: string
+      nullable: true
+     AllowInvalidNPI: 
+      type: string
+      nullable: true
+     OverrideDuplicateProvider: 
+      type: string
+      nullable: true
+     MedicareId: 
+      type: string
+      nullable: true
+     MedicaidId: 
+      type: string
+      nullable: true
+     FederalId: 
+      type: string
+      nullable: true
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     MaidenName: 
+      type: string
+      nullable: true
+     Birthplace: 
+      type: string
+      nullable: true
+     Nationality: 
+      type: string
+      nullable: true
+     Citizenship: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Sex: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      nullable: true
+     NCPDPNumber: 
+      type: string
+      nullable: true
+     ProviderDirectoryListingName: 
+      type: string
+      nullable: true
+     ShowInPrintedDirectory: 
+      type: string
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      nullable: true
+     AccessCode: 
+      type: string
+      nullable: true
+     ProviderTitle: 
+      type: string
+      nullable: true
+     FormatCode: 
+      type: string
+      nullable: true
+     FormatCodeName: 
+      type: string
+      nullable: true
+     EPSDT: 
+      type: string
+      nullable: true
+     STP: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedByID: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     AllowRAAccessOnWeb: 
+      type: string
+      nullable: true
+     Hospital: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorAddress1: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     WheelchairAccess: 
+      type: string
+      nullable: true
+     AvailableAfterHours: 
+      type: string
+      nullable: true
+     NumberOfPhysicians: 
+      type: string
+      nullable: true
+     TotalOfficeHours: 
+      type: string
+      nullable: true
+     FacilityOperatingNumber: 
+      type: string
+      nullable: true
+     PermanentFacilityID: 
+      type: string
+      nullable: true
+     PrimaryOffice: 
+      type: string
+      nullable: true
+     AllowPanelAssignment: 
+      type: string
+      nullable: true
+     AllowPanelAssignmentName: 
+      type: string
+      nullable: true
+     PanelStatus: 
+      type: string
+      nullable: true
+     PanelSize: 
+      type: integer
+      nullable: true
+     PanelAgeFrom: 
+      type: integer
+      nullable: true
+     PanelAgeTo: 
+      type: integer
+      nullable: true
+     PanelDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CredentialDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NextCredentialDate: 
+      type: string
+      nullable: true
+     LastCredentialDate: 
+      type: string
+      nullable: true
+     CredentialingStatus: 
+      type: string
+      nullable: true
+     PrimaryState: 
+      type: string
+      nullable: true
+     PrimaryLicenseNumber: 
+      type: string
+      nullable: true
+   ProviderDTO: 
+    title : ProviderDTO
+    type: object
+    properties: 
+     LastName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderType: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     MiddleInitial: 
+      type: string
+      nullable: true
+     Title: 
+      type: string
+      nullable: true
+     Suffix: 
+      type: string
+      nullable: true
+     DEANumber: 
+      type: string
+      nullable: true
+     UPIN: 
+      type: string
+      nullable: true
+     NPI: 
+      type: string
+      nullable: true
+     AllowInvalidNPI: 
+      type: string
+      default: 'N'
+      nullable: true
+     OverrideDuplicateProvider: 
+      type: string
+      default: 'N'
+      nullable: true
+     MedicareId: 
+      type: string
+      nullable: true
+     MedicaidId: 
+      type: string
+      nullable: true
+     FederalId: 
+      type: string
+      nullable: true
+     Nationality: 
+      type: string
+      nullable: true
+     Citizenship: 
+      type: string
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Sex: 
+      type: string
+      nullable: true
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     MaidenName: 
+      type: string
+      nullable: true
+     Birthplace: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     MatchByOffice: 
+      type: string
+      default: 'N'
+      nullable: true
+     NCPDPNumber: 
+      type: string
+      nullable: true
+     ProviderDirectoryListingName: 
+      type: string
+      nullable: true
+     ShowInPrintedDirectory: 
+      type: string
+      default: Y'
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      default: Y'
+      nullable: true
+     CredentialDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NextCredentialDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastCredentialDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CredentialingStatus: 
+      type: string
+      nullable: true
+     PrimaryState: 
+      type: string
+      nullable: true
+     PrimaryLicenseNumber: 
+      type: string
+      nullable: true
+     ProviderTitle: 
+      type: string
+      nullable: true
+     FormatCode: 
+      type: string
+      nullable: true
+     EPSDT: 
+      type: string
+      default: 'N'
+      nullable: true
+     STP: 
+      type: string
+      default: 'N'
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     AllowRAAccessOnWeb: 
+      type: string
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     Hospital: 
+      type: string
+      default: 'N'
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|Usage1|"
+      nullable: true
+     UpdateUsage: 
+      type: string
+      nullable: true
+   ProvidersHistoryListDTO: 
+    title : ProvidersHistoryListDTO
+    type: object
+    properties: 
+     ProviderID: 
+      type: integer
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     MiddleInitial: 
+      type: string
+      nullable: true
+     Title: 
+      type: string
+      nullable: true
+     ProviderType: 
+      type: string
+      nullable: true
+     ProviderTypeName: 
+      type: string
+      nullable: true
+     DEANumber: 
+      type: string
+      nullable: true
+     UPIN: 
+      type: string
+      nullable: true
+     NPI: 
+      type: string
+      nullable: true
+     MedicareId: 
+      type: string
+      nullable: true
+     MedicaidId: 
+      type: string
+      nullable: true
+     FederalId: 
+      type: integer
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Sex: 
+      type: string
+      nullable: true
+     MaidenName: 
+      type: string
+      nullable: true
+     Birthplace: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     Nationality: 
+      type: string
+      nullable: true
+     Citizenship: 
+      type: string
+      nullable: true
+     MatchByOffice: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     AccessCode: 
+      type: string
+      nullable: true
+     EPSDT: 
+      type: string
+      nullable: true
+     STP: 
+      type: string
+      nullable: true
+     ProviderTitle: 
+      type: string
+      nullable: true
+     FormatCode: 
+      type: string
+      nullable: true
+     FormatCodeRef: 
+      type: string
+      nullable: true
+     AllowInvalidNPI: 
+      type: string
+      nullable: true
+     OverrideDuplicateProvider: 
+      type: string
+      nullable: true
+     Suffix: 
+      type: string
+      nullable: true
+     NCPDPNumber: 
+      type: string
+      nullable: true
+     ProviderDirectoryListingName: 
+      type: string
+      nullable: true
+     ShowInPrintedDirectory: 
+      type: string
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      nullable: true
+     CredentialingStatus: 
+      type: string
+      nullable: true
+     CredentialingStatusCode: 
+      type: string
+      nullable: true
+     CredentialDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NextCredentialDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastCredentialDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PrimaryState: 
+      type: string
+      nullable: true
+     PrimaryLicenseNumber: 
+      type: string
+      nullable: true
+     AllowRAAccessOnWeb: 
+      type: string
+      nullable: true
+     Hospital: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     DeletedDuplicateProvider: 
+      type: string
+      nullable: true
+  parameters: 
+   ProviderIdQueryParam: 
+    in: query
+    name: ProviderId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProviderContractIDQueryParam: 
+    in: query
+    name: ProviderContractID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
