@@ -1,0 +1,181 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: AdditionalServicesEntityMap
+  description: AdditionalServicesEntityMap API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/additionalservices/entitymap: 
+   get: 
+    operationId: GetAdditionalServicesEntityMap
+    tags: 
+     - AdditionalServicesEntityMap
+    summary: Get AdditionalServicesEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/EntityIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: AdditionalServicesEntityMap retreived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AdditionalServicesEntityMapListDTO'
+   post: 
+    operationId: AddAdditionalServicesEntityMap
+    tags: 
+     - AdditionalServicesEntityMap
+    summary: Add AdditionalServicesEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AdditionalServicesEntityMapDTO'
+    responses: 
+     '200': 
+      description: AdditionalServicesEntityMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateAdditionalServicesEntityMap
+    tags: 
+     - AdditionalServicesEntityMap
+    summary: Update AdditionalServicesEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AdditionalServicesEntityMapDTO'
+    responses: 
+     '200': 
+      description: AdditionalServicesEntityMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteAdditionalServicesEntityMap
+    tags: 
+     - AdditionalServicesEntityMap
+    summary: Delete AdditionalServicesEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AdditionalServicesEntityIDQueryParam'
+    responses: 
+     '200': 
+      description: AdditionalServicesEntityMap deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   AdditionalServicesEntityMapListDTO: 
+    title : AdditionalServicesEntityMapListDTO
+    type: object
+    properties: 
+     AdditionalServicesEntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     AdditionalServicesCode: 
+      type: string
+      nullable: true
+     AdditionalServices: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     LastupdatedBy: 
+      type: string
+     LastupdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   AdditionalServicesEntityMapDTO: 
+    title : AdditionalServicesEntityMapDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     AdditionalServicesCode: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      default: 01/01/1900'
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      default: 12/31/9999'
+      nullable: true
+     AdditionalServicesEntityID: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   EntityIDQueryParam: 
+    in: query
+    name: EntityID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   FlagQueryParam: 
+    in: query
+    name: Flag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AdditionalServicesEntityIDQueryParam: 
+    in: query
+    name: AdditionalServicesEntityID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
