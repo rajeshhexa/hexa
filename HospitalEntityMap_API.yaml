@@ -1,0 +1,322 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: HospitalEntityMap
+  description: HospitalEntityMap API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/hostipital/entitymaps: 
+   post: 
+    operationId: GetHospitalEntityMap
+    tags: 
+     - HospitalEntityMap
+    summary: Get HospitalEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/HospitalEntityMapSearchDTO'
+    responses: 
+     '200': 
+      description: HospitalEntityMap retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/HospitalEntityMapListDTO'
+  /provider/hostipital/entitymap: 
+   post: 
+    operationId: AddHospitalEntityMap
+    tags: 
+     - HospitalEntityMap
+    summary: Add HospitalEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/HospitalEntityMapDTO'
+    responses: 
+     '200': 
+      description: HospitalEntityMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateHospitalEntityMap
+    tags: 
+     - HospitalEntityMap
+    summary: Update HospitalEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/HospitalEntityMapDTO'
+    responses: 
+     '200': 
+      description: HospitalEntityMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteHospitalEntityMap
+    tags: 
+     - HospitalEntityMap
+    summary: Delete HospitalEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/HospitalEntityIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/SPNameQueryParam'
+    responses: 
+     '200': 
+      description: HospitalEntityMap deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /provider/hostipital/entitymaphistory: 
+   post: 
+    operationId: GetHospitalEntityMapHistory
+    tags: 
+     - HospitalEntityMap
+    summary: Get HospitalEntityMapHistory
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/HospitalEntityMapHistorySearchDTO'
+    responses: 
+     '200': 
+      description: HospitalEntityMapHistory retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/HospitalEntityMapHistoryListDTO'
+components: 
+  schemas: 
+   HospitalEntityMapSearchDTO: 
+    title : HospitalEntityMapSearchDTO
+    type: object
+    properties: 
+     HospitalId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   HospitalEntityMapListDTO: 
+    title : HospitalEntityMapListDTO
+    type: object
+    properties: 
+     HospitalEntityId: 
+      type: integer
+     HospitalId: 
+      type: integer
+     HospitalName: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     HospitalNPI: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   HospitalEntityMapDTO: 
+    title : HospitalEntityMapDTO
+    type: object
+    properties: 
+     HospitalId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     HospitalEntityId: 
+      type: integer
+      nullable: true
+   HospitalEntityMapHistorySearchDTO: 
+    title : HospitalEntityMapHistorySearchDTO
+    type: object
+    properties: 
+     HospitalEntityId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   HospitalEntityMapHistoryListDTO: 
+    title : HospitalEntityMapHistoryListDTO
+    type: object
+    properties: 
+     HistoryId: 
+      type: integer
+      nullable: true
+     HospitalEntityId: 
+      type: integer
+      nullable: true
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     HospitalId: 
+      type: integer
+      nullable: true
+     HospitalName: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     HospitalNPI: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+  parameters: 
+   HospitalEntityIdQueryParam: 
+    in: query
+    name: HospitalEntityId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SPNameQueryParam: 
+    in: query
+    name: SPName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
