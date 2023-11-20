@@ -1,0 +1,275 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: CoveringProviderGroup
+  description: CoveringProviderGroup API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/groupcovers: 
+   get: 
+    operationId: GetCoveringProviderGroups
+    tags: 
+     - CoveringProviderGroup
+    summary: Get CoveringProviderGroups
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: CoveringProviderGroups retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CoveringProviderGroupListDTO'
+  /provider/groupcover: 
+   post: 
+    operationId: AddCoveringProviderGroup
+    tags: 
+     - CoveringProviderGroup
+    summary: Add CoveringProviderGroup
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CoveringProviderGroupNameQueryParam'
+     - $ref: '#/components/parameters/CoveringProviderGroupDescriptionQueryParam'
+    responses: 
+     '200': 
+      description: CoveringProviderGroup added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateCoveringProviderGroup
+    tags: 
+     - CoveringProviderGroup
+    summary: Update CoveringProviderGroup
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CoveringProviderGroupIDQueryParam'
+     - $ref: '#/components/parameters/CoveringProviderGroupNameQueryParam'
+     - $ref: '#/components/parameters/CoveringProviderGroupDescriptionQueryParam'
+    responses: 
+     '200': 
+      description: CoveringProviderGroup updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteCoveringProviderGroup
+    tags: 
+     - CoveringProviderGroup
+    summary: Delete CoveringProviderGroup
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CoveringProviderGroupIDQueryParam'
+    responses: 
+     '200': 
+      description: CoveringProviderGroup deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /provider/groupcover/providermap: 
+   get: 
+    operationId: GetCoveringProviderGroupProviderMap
+    tags: 
+     - CoveringProviderGroup
+    summary: Get CoveringProviderGroupProviderMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CoveringProviderGroupIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ProviderIDQueryParam'
+    responses: 
+     '200': 
+      description: CoveringProviderGroupProviderMap retreived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CoveringProviderGroupProviderMapListDTO'
+   post: 
+    operationId: AddCoveringProviderGroupProviderMap
+    tags: 
+     - CoveringProviderGroup
+    summary: Add CoveringProviderGroupProviderMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CoveringProviderGroupProviderMapDTO'
+    responses: 
+     '200': 
+      description: CoveringProviderGroupProviderMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateCoveringProviderGroupProviderMap
+    tags: 
+     - CoveringProviderGroup
+    summary: Update CoveringProviderGroupProviderMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CoveringProviderGroupProviderMapDTO'
+    responses: 
+     '200': 
+      description: CoveringProviderGroupProviderMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteCoveringProviderGroupProviderMap
+    tags: 
+     - CoveringProviderGroup
+    summary: Delete CoveringProviderGroupProviderMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/CoveringProviderGroupMapIDQueryParam'
+    responses: 
+     '200': 
+      description: CoveringProviderGroupProviderMap deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   CoveringProviderGroupProviderMapDTO: 
+    title : CoveringProviderGroupProviderMapDTO
+    type: object
+    properties: 
+     CoveringProviderGroupMapID: 
+      type: integer
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CoveringProviderGroupID: 
+      type: integer
+      nullable: true
+   CoveringProviderGroupListDTO: 
+    title : CoveringProviderGroupListDTO
+    type: object
+    properties: 
+     CoveringProviderGroupID: 
+      type: integer
+      nullable: true
+     CoveringProviderGroupName: 
+      type: string
+     CoveringProviderGroupDescription: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   CoveringProviderGroupProviderMapListDTO: 
+    title : CoveringProviderGroupProviderMapListDTO
+    type: object
+    properties: 
+     ProviderID: 
+      type: integer
+     ProviderName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     CoveringProviderGroupMapID: 
+      type: integer
+      nullable: true
+     CoveringProviderGroupID: 
+      type: integer
+      nullable: true
+     CoveringProviderGroupName: 
+      type: string
+      nullable: true
+     CoveringProviderGroupDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   CoveringProviderGroupNameQueryParam: 
+    in: query
+    name: CoveringProviderGroupName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   CoveringProviderGroupDescriptionQueryParam: 
+    in: query
+    name: CoveringProviderGroupDescription
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   CoveringProviderGroupIDQueryParam: 
+    in: query
+    name: CoveringProviderGroupID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProviderIDQueryParam: 
+    in: query
+    name: ProviderID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CoveringProviderGroupMapIDQueryParam: 
+    in: query
+    name: CoveringProviderGroupMapID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
