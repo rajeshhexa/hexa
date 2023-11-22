@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ProcedureCodeGroupingException
+  description: ProcedureCodeGroupingException
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/ambulatoryprocedurecode/groupingexceptions: 
+   post: 
+    operationId: GetAmbulatoryProcedureCodeGroupingExceptions
+    tags: 
+     - Ambulatory Procedure Code Group
+    summary: Get Ambulatory Procedure Code Grouping Exception
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ContractIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Ambulatory Procedure Code Grouping Exception Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProcedureCodeGroupingExceptionListDTO'
+  /provider/ambulatoryprocedurecode/groupingexception: 
+   post: 
+    operationId: AddAmbulatoryProcedureCodeGroupingException
+    tags: 
+     - Ambulatory Procedure Code Group
+    summary: Add Ambulatory Procedure Code Grouping Exception
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodeGroupingExceptionDTO'
+    responses: 
+     '200': 
+      description: Ambulatory Procedure Code Grouping Exception Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateAmbulatoryProcedureCodeGroupingException
+    tags: 
+     - Ambulatory Procedure Code Group
+    summary: Update Ambulatory Procedure Code Groupouping Except
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcedureCodeGroupingExceptionDTO'
+    responses: 
+     '200': 
+      description: Ambulatory Procedure Code Grouping Exception Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteAmbulatoryProcedureCodeGroupingException
+    tags: 
+     - Ambulatory Procedure Code Group
+    summary: Delete Ambulatory Procedure Code Groupouping Except
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AmbulatoryProcedureCodeGroupingExceptionIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Ambulatory Procedure Code Grouping Exception Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   ProcedureCodeGroupingExceptionDTO: 
+    title : ProcedureCodeGroupingExceptionDTO
+    type: object
+    properties: 
+     ContractId: 
+      type: integer
+      nullable: true
+     ProcedureCodeId: 
+      type: integer
+      nullable: true
+     PaymentGroupCode: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     AmbulatoryProcedureCodeGroupingExceptionId: 
+      type: integer
+      nullable: true
+   ProcedureCodeGroupingExceptionListDTO: 
+    title : ProcedureCodeGroupingExceptionListDTO
+    type: object
+    properties: 
+     AmbulatoryProcedureCodeGroupingExceptionId: 
+      type: integer
+      description: 
+     ContractId: 
+      type: integer
+     ProcedureCodeId: 
+      type: integer
+     ProcedureCode: 
+      type: string
+     ProcedureCodeType: 
+      type: string
+     ProcedureCodeTypeName: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+     PaymentGroupCode: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   AmbulatoryProcedureCodeGroupingExceptionIdQueryParam: 
+    in: query
+    name: AmbulatoryProcedureCodeGroupingExceptionId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ContractIdQueryParam: 
+    in: query
+    name: ContractId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
