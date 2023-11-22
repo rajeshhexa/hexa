@@ -1,0 +1,370 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Risk Group
+  description: Risk Group
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/riskgroup: 
+   post: 
+    operationId: AddRiskGroup
+    tags: 
+     - Risk Group
+    summary: Add Risk Group
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RiskGroupDTO'
+    responses: 
+     '200': 
+      description: Risk Group Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateRiskGroup
+    tags: 
+     - Risk Group
+    summary: Update Risk Group
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RiskGroupDTO'
+    responses: 
+     '200': 
+      description: Risk Group Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /provider/riskgroup/entitymaps: 
+   post: 
+    operationId: GetRiskGroupEntityMap
+    tags: 
+     - Risk Group
+    summary: Get Risk Group Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RiskGroupEntitySearchDTO'
+    responses: 
+     '200': 
+      description: Risk Group Entity Map Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/RiskGroupEntityListDTO'
+  /provider/riskgroup/entitymap: 
+   post: 
+    operationId: AddRiskGroupEntityMap
+    tags: 
+     - Risk Group
+    summary: Add Risk Group Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RiskGroupEntityDTO'
+    responses: 
+     '200': 
+      description: Risk Group Entity Map Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateRiskGroupEntityMap
+    tags: 
+     - Risk Group
+    summary: Update Risk Group Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RiskGroupEntityDTO'
+    responses: 
+     '200': 
+      description: Risk Group Entity Map Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   RiskGroupDTO: 
+    title : RiskGroupDTO
+    type: object
+    properties: 
+     RiskGroupName: 
+      type: string
+      nullable: true
+     RiskGroupDescription: 
+      type: string
+      nullable: true
+     Capitation: 
+      type: string
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     ClaimRedirectFulfillmentMethod: 
+      type: string
+      nullable: true
+     ClaimRedirectAddressId: 
+      type: integer
+      nullable: true
+     ClaimRedirectRule: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     RiskGroupID: 
+      type: integer
+      nullable: true
+   RiskGroupEntityDTO: 
+    title : RiskGroupEntityDTO
+    type: object
+    properties: 
+     RiskGroupID: 
+      type: integer
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     CapitationRateId: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     RiskGroupVendorClass: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubClass: 
+      type: string
+      nullable: true
+     RetroAddPeriod: 
+      type: integer
+      nullable: true
+     RetroTermPeriod: 
+      type: integer
+      nullable: true
+     PostingCutoffDay: 
+      type: integer
+      nullable: true
+     LastPostedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+     RiskgroupVendorMapID: 
+      type: integer
+      nullable: true
+   RiskGroupEntitySearchDTO: 
+    title : RiskGroupEntitySearchDTO
+    type: object
+    properties: 
+     RiskGroupID: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastPostedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Capitation: 
+      type: string
+      nullable: true
+     RiskGroupVendorClass: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubClass: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupSubClass: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   RiskGroupEntityListDTO: 
+    title : RiskGroupEntityListDTO
+    type: object
+    properties: 
+     RiskGroupVendorMapId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     Capitation: 
+      type: string
+      nullable: true
+     CapitationRateId: 
+      type: integer
+     CapitationRateName: 
+      type: string
+      nullable: true
+     CapitationCurrentPeriod: 
+      type: string
+      format: date-time
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     RiskGroupVendorClass: 
+      type: string
+      nullable: true
+     RiskGroupVendorClassName: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubclass: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubclassName: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     RiskGroupSubclassName: 
+      type: string
+      nullable: true
+     RetroAddPeriod: 
+      type: integer
+     RetroTermPeriod: 
+      type: integer
+     PostingCutoffDay: 
+      type: integer
+     LastPostedDate: 
+      type: string
+      format: date-time
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
