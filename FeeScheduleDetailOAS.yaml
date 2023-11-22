@@ -1,0 +1,329 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Account
+  description: Account
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+   /contract/feescheduledetails: 
+   post: 
+    operationId: AddFeeScheduleDetails
+    tags: 
+     - Fee Schedule Details
+    summary: Add Fee Schedule Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FeeScheduleDetailDTO'
+    responses: 
+     '200': 
+      description: Fee Schedule Details Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateFeeScheduleDetails
+    tags: 
+     - Fee Schedule Details
+    summary: Update Fee Schedule Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FeeScheduleDetailDTO'
+    responses: 
+     '200': 
+      description: Fee Schedule Details Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteFeeScheduleDetails
+    tags: 
+     - Fee Schedule Details
+    summary: Delete Fee Schedule Details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/FeeScheduleDetailIdQueryParam'
+     - $ref: '#/components/parameters/SeqIdQueryParam'
+     - $ref: '#/components/parameters/BatchIdQueryParam'
+     - $ref: '#/components/parameters/RaiserrorQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: Fee Schedule Details Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   FeeScheduleDetailDTO: 
+    title : FeeScheduleDetailDTO
+    type: object
+    properties: 
+     FeeScheduleId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     ClaimType: 
+      type: string
+      nullable: true
+     PlaceOfService: 
+      type: string
+      nullable: true
+     FeeType: 
+      type: string
+      nullable: true
+     FeeAmount: 
+      type: string
+      nullable: true
+     MaxUnitsToPay: 
+      type: string
+      nullable: true
+     MaxAmountToPay: 
+      type: number
+      nullable: true
+     IncidentalServiceFeeType: 
+      type: string
+      nullable: true
+     IncidentalServiceFee: 
+      type: string
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+     Modifier2: 
+      type: string
+      nullable: true
+     Modifier3: 
+      type: string
+      nullable: true
+     Modifier4: 
+      type: string
+      nullable: true
+     Withhold: 
+      type: string
+      nullable: true
+     Discount: 
+      type: string
+      nullable: true
+     DiscountType: 
+      type: string
+      nullable: true
+     PatientDiscount: 
+      type: string
+      nullable: true
+     PatientDiscountType: 
+      type: string
+      nullable: true
+     LimitType: 
+      type: string
+      nullable: true
+     LimitStart: 
+      type: number
+      nullable: true
+     LimitEnd: 
+      type: number
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     ProcessType: 
+      type: string
+      nullable: true
+     ActionCodeID: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     COBDiscount: 
+      type: number
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+     Tooth: 
+      type: string
+      nullable: true
+     AgeType: 
+      type: string
+      nullable: true
+     AgeFrom: 
+      type: integer
+      nullable: true
+     AgeTo: 
+      type: integer
+      nullable: true
+     AnesthesiaEstimatedUnits: 
+      type: string
+      nullable: true
+     AnesthesiaInterval: 
+      type: integer
+      nullable: true
+     AnesthesiaRoundingPrecision: 
+      type: string
+      nullable: true
+     AnesthesiaRoundingCutoff: 
+      type: integer
+      nullable: true
+     Region: 
+      type: string
+      nullable: true
+     DenyServiceLine: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     AppliedAmount: 
+      type: number
+      nullable: true
+     AdditionalAmount: 
+      type: number
+      nullable: true
+     AdditionalAmount2: 
+      type: number
+      nullable: true
+     Negotiated: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ZipCodeFrom: 
+      type: string
+      nullable: true
+     ZipCodeTo: 
+      type: string
+      nullable: true
+     GlobalFeeType: 
+      type: string
+      nullable: true
+     GlobalDaysBefore: 
+      type: integer
+      nullable: true
+     GlobalDaysAfter: 
+      type: integer
+      nullable: true
+     ALOS: 
+      type: number
+      nullable: true
+     GLOS: 
+      type: number
+      nullable: true
+     ServiceCategoryId: 
+      type: integer
+      nullable: true
+     StopLossLimitAmount: 
+      type: number
+      nullable: true
+     AdditionalCodeType: 
+      type: string
+      nullable: true
+     AdditionalCode: 
+      type: string
+      nullable: true
+     TaxableItem: 
+      type: string
+      nullable: true
+     ICDCodeConsideration: 
+      type: string
+      nullable: true
+     PerDiemStartDay: 
+      type: integer
+      nullable: true
+     RecoveryMethodologyCode: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     AdditionalAmountFeeType: 
+      type: string
+      nullable: true
+     AdditionalAmount2FeeType: 
+      type: string
+      nullable: true
+     ModifierReductionAction: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: string
+      nullable: true
+  parameters: 
+   FeeScheduleDetailIdQueryParam: 
+    in: query
+    name: FeeScheduleDetailId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SeqIdQueryParam: 
+    in: query
+    name: SeqId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   BatchIdQueryParam: 
+    in: query
+    name: BatchId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   RaiserrorQueryParam: 
+    in: query
+    name: Raiserror
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   FlagQueryParam: 
+    in: query
+    name: Flag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
