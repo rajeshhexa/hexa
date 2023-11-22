@@ -1,0 +1,349 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Supervising Provider Map
+  description: Supervising Provider Map
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/supervisingmaps: 
+   post: 
+    operationId: GetSupervisingProviderMap
+    tags: 
+     - Supervising Provider Map
+    summary: Get Supervising Provider Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/SupervisedProviderIdQueryParam'
+     - $ref: '#/components/parameters/SupervisingProviderIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Supervising Provider Map Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/SupervisingProviderMapListDTO'
+  /provider/supervisingmap: 
+   post: 
+    operationId: AddSupervisingProviderMap
+    tags: 
+     - Supervising Provider Map
+    summary: Add Supervising Provider Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SupervisingProviderMapDTO'
+    responses: 
+     '200': 
+      description: Supervising Provider Map Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteSupervisingProviderMap
+    tags: 
+     - Supervising Provider Map
+    summary: Delete Supervising Provider Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/SupervisingProviderMapIdQueryParam'
+    responses: 
+     '200': 
+      description: Supervising Provider Map Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateSupervisingProviderMap
+    tags: 
+     - Supervising Provider Map
+    summary: Update Supervising Provider Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SupervisingProviderMapDTO'
+    responses: 
+     '200': 
+      description: Supervising Provider Map Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   SupervisingProviderMapListDTO: 
+    title : SupervisingProviderMapListDTO
+    type: object
+    properties: 
+     SupervisingProviderID: 
+      type: integer
+     SupervisingProviderName: 
+      type: string
+      nullable: true
+     SupervisingProviderNumber: 
+      type: string
+      nullable: true
+     SupervisingProviderNPI: 
+      type: string
+      nullable: true
+     SupervisingOfficeID: 
+      type: integer
+      nullable: true
+     SupervisingOfficeNumber: 
+      type: string
+      nullable: true
+     SupervisingOfficeName: 
+      type: string
+      nullable: true
+     SupervisingOfficeAddress1: 
+      type: string
+      nullable: true
+     SupervisingOfficeCity: 
+      type: string
+      nullable: true
+     SupervisingOfficeState: 
+      type: string
+      nullable: true
+     SupervisingOfficeZip: 
+      type: string
+      nullable: true
+     SupervisedProviderID: 
+      type: integer
+      nullable: true
+     SupervisedProviderName: 
+      type: string
+      nullable: true
+     SupervisedProviderNumber: 
+      type: string
+      nullable: true
+     SupervisedProviderNPI: 
+      type: string
+      nullable: true
+     SupervisingProviderMapId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   SupervisingProviderMapDTO: 
+    title : SupervisingProviderMapDTO
+    type: object
+    properties: 
+     SupervisedProviderId: 
+      type: integer
+      nullable: true
+     SupervisingProviderId: 
+      type: integer
+      nullable: true
+     SupervisingOfficeId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SupervisingProviderMapId: 
+      type: integer
+      nullable: true
+   ProviderOfficeMapListDTO: 
+    title : ProviderOfficeMapListDTO
+    type: object
+    properties: 
+     ProviderOfficeMapID: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     PrimaryOffice: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     PrimaryOfficeName: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     ProviderLastNameFirst: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderNPI: 
+      type: string
+      nullable: true
+     ProviderGender: 
+      type: string
+      nullable: true
+     ProviderPrimaryLanguage: 
+      type: string
+      nullable: true
+     ProviderPrimarySpecialty: 
+      type: string
+      nullable: true
+     Hospital: 
+      type: string
+      nullable: true
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     SundayStart: 
+      type: string
+      nullable: true
+     SundayEnd: 
+      type: string
+      nullable: true
+     MondayStart: 
+      type: string
+      nullable: true
+     MondayEnd: 
+      type: string
+      nullable: true
+     TuesdayStart: 
+      type: string
+      nullable: true
+     TuesdayEnd: 
+      type: string
+      nullable: true
+     WednesdayStart: 
+      type: string
+      nullable: true
+     WednesdayEnd: 
+      type: string
+      nullable: true
+     ThursdayStart: 
+      type: string
+      nullable: true
+     ThursdayEnd: 
+      type: string
+      nullable: true
+     FridayStart: 
+      type: string
+      nullable: true
+     FridayEnd: 
+      type: string
+      nullable: true
+     SaturdayStart: 
+      type: string
+      nullable: true
+     SaturdayEnd: 
+      type: string
+      nullable: true
+     TotalOfficeHours: 
+      type: string
+      nullable: true
+     WheelchairAccess: 
+      type: string
+      nullable: true
+     PublicTransportationAccess: 
+      type: string
+      nullable: true
+  parameters: 
+   SupervisedProviderIdQueryParam: 
+    in: query
+    name: SupervisedProviderId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SupervisingProviderIdQueryParam: 
+    in: query
+    name: SupervisingProviderId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   SupervisingProviderMapIdQueryParam: 
+    in: query
+    name: SupervisingProviderMapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
