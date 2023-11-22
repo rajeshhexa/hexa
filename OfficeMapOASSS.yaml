@@ -1,0 +1,872 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Office Map
+  description: Office Map
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/officemap: 
+   post: 
+    operationId: AddProviderOfficeMap
+    tags: 
+     - Office Map
+    summary: Add Provider Office Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderOfficeMapDTO'
+    responses: 
+     '200': 
+      description: Provider Office Map Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateProviderOfficeMap
+    tags: 
+     - Office Map
+    summary: Update Provider Office Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderOfficeMapDTO'
+    responses: 
+     '200': 
+      description: Provider Office Map Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteProviderOfficeMap
+    tags: 
+     - Office Map
+    summary: Delete Provider Office Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderIdQueryParam'
+     - $ref: '#/components/parameters/OfficeIdQueryParam'
+    responses: 
+     '200': 
+      description: Provider Office Map Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /provider/officemaphistory: 
+   post: 
+    operationId: GetProviderOfficeMapHistory
+    tags: 
+     - Office Map
+    summary: Get Provider Office Map History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/OfficeIDQueryParam'
+     - $ref: '#/components/parameters/ProviderIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Provider Office Map History Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderOfficeMapHistoryListDTO'
+  /provider/officemaps: 
+   post: 
+    operationId: GetProviderOfficeMaps
+    tags: 
+     - Office Map
+    summary: Get Provider Office Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderIdQueryParam'
+     - $ref: '#/components/parameters/OfficeIDQueryParam'
+     - $ref: '#/components/parameters/VendorIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/SortByQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: Provider Office Maps Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderOfficeMapListDTO'
+  /provider/office: 
+   put: 
+    operationId: UpdateOffice
+    tags: 
+     - Office Map
+    summary: Update Office
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/OfficeDTO'
+    responses: 
+     '200': 
+      description: Office Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /provider/officehistory: 
+   post: 
+    operationId: GetOfficesHistory
+    tags: 
+     - Office Map
+    summary: Get Offices History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/OfficeIdQueryParam'
+    responses: 
+     '200': 
+      description: Office Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/OfficeHistoryListDTO'
+components: 
+  schemas: 
+   ProviderOfficeMapDTO: 
+    title : ProviderOfficeMapDTO
+    type: object
+    properties: 
+     OfficeId: 
+      type: integer
+      nullable: true
+     PrimaryOffice: 
+      type: string
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     SundayStart: 
+      type: string
+      nullable: true
+     SundayEnd: 
+      type: string
+      nullable: true
+     MondayStart: 
+      type: string
+      nullable: true
+     MondayEnd: 
+      type: string
+      nullable: true
+     TuesdayStart: 
+      type: string
+      nullable: true
+     TuesdayEnd: 
+      type: string
+      nullable: true
+     WednesdayStart: 
+      type: string
+      nullable: true
+     WednesdayEnd: 
+      type: string
+      nullable: true
+     ThursdayStart: 
+      type: string
+      nullable: true
+     ThursdayEnd: 
+      type: string
+      nullable: true
+     FridayStart: 
+      type: string
+      nullable: true
+     FridayEnd: 
+      type: string
+      nullable: true
+     SaturdayStart: 
+      type: string
+      nullable: true
+     SaturdayEnd: 
+      type: string
+      nullable: true
+     TotalOfficeHours: 
+      type: string
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+   ProviderOfficeMapHistoryListDTO: 
+    title : ProviderOfficeMapHistoryListDTO
+    type: object
+    properties: 
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProviderOfficeMapID: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     PrimaryOffice: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     SundayStart: 
+      type: string
+      nullable: true
+     SundayEnd: 
+      type: string
+      nullable: true
+     MondayStart: 
+      type: string
+      nullable: true
+     MondayEnd: 
+      type: string
+      nullable: true
+     TuesdayStart: 
+      type: string
+      nullable: true
+     TuesdayEnd: 
+      type: string
+      nullable: true
+     WednesdayStart: 
+      type: string
+      nullable: true
+     WednesdayEnd: 
+      type: string
+      nullable: true
+     ThursdayStart: 
+      type: string
+      nullable: true
+     ThursdayEnd: 
+      type: string
+      nullable: true
+     FridayStart: 
+      type: string
+      nullable: true
+     FridayEnd: 
+      type: string
+      nullable: true
+     SaturdayStart: 
+      type: string
+      nullable: true
+     SaturdayEnd: 
+      type: string
+      nullable: true
+     TotalOfficeHours: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+   ProviderOfficeMapListDTO: 
+    title : ProviderOfficeMapListDTO
+    type: object
+    properties: 
+     ProviderOfficeMapID: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+     ProviderID: 
+      type: integer
+     PrimaryOffice: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     PrimaryOfficeName: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     ProviderLastNameFirst: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderNPI: 
+      type: string
+      nullable: true
+     ProviderGender: 
+      type: string
+      nullable: true
+     ProviderPrimaryLanguage: 
+      type: string
+      nullable: true
+     ProviderPrimarySpecialty: 
+      type: string
+      nullable: true
+     Hospital: 
+      type: string
+      nullable: true
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     SundayStart: 
+      type: string
+      nullable: true
+     SundayEnd: 
+      type: string
+      nullable: true
+     MondayStart: 
+      type: string
+      nullable: true
+     MondayEnd: 
+      type: string
+      nullable: true
+     TuesdayStart: 
+      type: string
+      nullable: true
+     TuesdayEnd: 
+      type: string
+      nullable: true
+     WednesdayStart: 
+      type: string
+      nullable: true
+     WednesdayEnd: 
+      type: string
+      nullable: true
+     ThursdayStart: 
+      type: string
+      nullable: true
+     ThursdayEnd: 
+      type: string
+      nullable: true
+     FridayStart: 
+      type: string
+      nullable: true
+     FridayEnd: 
+      type: string
+      nullable: true
+     SaturdayStart: 
+      type: string
+      nullable: true
+     SaturdayEnd: 
+      type: string
+      nullable: true
+     TotalOfficeHours: 
+      type: string
+      nullable: true
+     WheelchairAccess: 
+      type: string
+      nullable: true
+     PublicTransportationAccess: 
+      type: string
+      nullable: true
+   OfficeDTO: 
+    title : OfficeDTO
+    type: object
+    properties: 
+     OfficeId: 
+      type: integer
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     OverrideDuplicateAddress: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     ContactExt: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     WheelchairAccess: 
+      type: string
+      nullable: true
+     ShowInWebDirectory: 
+      type: string
+      nullable: true
+     AvailableAfterHours: 
+      type: string
+      nullable: true
+     TotalOfficeHours: 
+      type: string
+      nullable: true
+     NumberOfPhysicians: 
+      type: integer
+      nullable: true
+     FacilityOperatingNumber: 
+      type: string
+      nullable: true
+     PermanentFacilityID: 
+      type: string
+      nullable: true
+     SundayStart: 
+      type: string
+      nullable: true
+     SundayEnd: 
+      type: string
+      nullable: true
+     MondayStart: 
+      type: string
+      nullable: true
+     MondayEnd: 
+      type: string
+      nullable: true
+     TuesdayStart: 
+      type: string
+      nullable: true
+     TuesdayEnd: 
+      type: string
+      nullable: true
+     WednesdayStart: 
+      type: string
+      nullable: true
+     WednesdayEnd: 
+      type: string
+      nullable: true
+     ThursdayStart: 
+      type: string
+      nullable: true
+     ThursdayEnd: 
+      type: string
+      nullable: true
+     FridayStart: 
+      type: string
+      nullable: true
+     FridayEnd: 
+      type: string
+      nullable: true
+     SaturdayStart: 
+      type: string
+      nullable: true
+     SaturdayEnd: 
+      type: string
+      nullable: true
+     ContractingProviderID: 
+      type: integer
+      nullable: true
+     AfterHoursContactMethod: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     NPI: 
+      type: string
+      nullable: true
+     AllowInvalidNPI: 
+      type: string
+      nullable: true
+     AllowRAAccessOnWeb: 
+      type: string
+      nullable: true
+     WheelchairAccessibilityLevel: 
+      type: string
+      nullable: true
+     PublicTransportationAccess: 
+      type: string
+      nullable: true
+     PublicTransportationLevel: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     Debug: 
+      type: integer
+      nullable: true
+   OfficeHistoryListDTO: 
+    title : OfficeHistoryListDTO
+    type: object
+    properties: 
+     OfficeID           : 
+      type: integer
+      nullable: true
+     OfficeNumber                        : 
+      type: string
+      nullable: true
+     OfficeName                                                : 
+      type: string
+      nullable: true
+     Address1                                                            : 
+      type: string
+      nullable: true
+     Address2                                   : 
+      type: string
+      nullable: true
+     City                                                      : 
+      type: string
+      nullable: true
+     State                                                               : 
+      type: string
+      nullable: true
+     Zip                                                                            : 
+      type: string
+      nullable: true
+     County                                                                          : 
+      type: string
+      nullable: true
+     ContactName                                                                   : 
+      type: string
+      nullable: true
+     ContactPhone                                                                   : 
+      type: string
+      nullable: true
+     ContactExt                                                                    : 
+      type: string
+      nullable: true
+     ContactEmail                                                : 
+      type: string
+      nullable: true
+     ContactFax                                            : 
+      type: string
+      nullable: true
+     WheelchairAccess                 : 
+      type: string
+      nullable: true
+     WheelchairAccessibilityLevel: 
+      type: string
+      nullable: true
+     PublicTransportationAccess: 
+      type: string
+      nullable: true
+     PublicTransportationLevel: 
+      type: string
+      nullable: true
+     ShowInWebDirectory                                                              : 
+      type: string
+      nullable: true
+     AvailableAfterHours                                                            : 
+      type: string
+      nullable: true
+     NumberOfPhysicians                                             : 
+      type: integer
+      nullable: true
+     TotalOfficeHours                                                      : 
+      type: string
+      nullable: true
+     FacilityOperatingNumber                                                    : 
+      type: string
+      nullable: true
+     PermanentFacilityID                                                       : 
+      type: string
+      nullable: true
+     Notes                                                                     : 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     SundayStart                                                                  : 
+      type: string
+      nullable: true
+     SundayEnd                                                               : 
+      type: string
+      nullable: true
+     MondayStart                                                                 : 
+      type: string
+      nullable: true
+     MondayEnd                                                                  : 
+      type: string
+      nullable: true
+     TuesdayStart                                                                  : 
+      type: string
+      nullable: true
+     TuesdayEnd                                                                     : 
+      type: string
+      nullable: true
+     WednesdayStart                                                                 : 
+      type: string
+      nullable: true
+     WednesdayEnd                                                                 : 
+      type: string
+      nullable: true
+     ThursdayStart                                                               : 
+      type: string
+      nullable: true
+     ThursdayEnd                                                                : 
+      type: string
+      nullable: true
+     FridayStart                                                                     : 
+      type: string
+      nullable: true
+     FridayEnd                                                                      : 
+      type: string
+      nullable: true
+     SaturdayStart                                                                  : 
+      type: string
+      nullable: true
+     SaturdayEnd                                                                     : 
+      type: string
+      nullable: true
+     NPI                                                                             : 
+      type: string
+      nullable: true
+     AccessCode                                                                     : 
+      type: string
+      nullable: true
+     ContractingProvider                                                : 
+      type: integer
+      nullable: true
+     ContractingProviderName: 
+      type: string
+      nullable: true
+     AfterHoursContactMethod                                               : 
+      type: string
+      nullable: true
+     AfterHoursContactMethodName: 
+      type: string
+      nullable: true
+     AllowInvalidNPI                                                        : 
+      type: string
+      nullable: true
+     ZipCodeId                                                                     : 
+      type: integer
+      nullable: true
+     CountryCode                                                                   : 
+      type: string
+      nullable: true
+     CountryName: 
+      type: string
+      nullable: true
+     CountryISOCode2                            : 
+      type: string
+      nullable: true
+     CountryISOCode3                         : 
+      type: string
+      nullable: true
+     LATITUDE               : 
+      type: number
+      nullable: true
+     LONGITUDE              : 
+      type: number
+      nullable: true
+     ZipSearch                                               : 
+      type: string
+      nullable: true
+     OverrideDuplicateAddress                         : 
+      type: string
+      nullable: true
+     AllowRAAccessOnWeb: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     DeletedDuplicateOffice: 
+      type: string
+      nullable: true
+  parameters: 
+   ProviderIdQueryParam: 
+    in: query
+    name: ProviderId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   OfficeIdQueryParam: 
+    in: query
+    name: OfficeId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   OfficeIDQueryParam: 
+    in: query
+    name: OfficeID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   VendorIDQueryParam: 
+    in: query
+    name: VendorID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SortByQueryParam: 
+    in: query
+    name: SortBy
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   FlagQueryParam: 
+    in: query
+    name: Flag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
