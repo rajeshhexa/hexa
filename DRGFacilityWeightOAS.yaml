@@ -1,0 +1,184 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: DRGFacilityWeight
+  description: DRGFacilityWeight
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/drg/facilityweights: 
+   post: 
+    operationId: GetDRGFacilityWeight
+    tags: 
+     - DRG Facility Weight
+    summary: Get DRG Facility Weight
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/OfficeIDQueryParam'
+     - $ref: '#/components/parameters/DRGFacilityWeightIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ResultCountQueryParam'
+    responses: 
+     '200': 
+      description: DRG Facility Weight Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DRGFacilityWeightListDTO'
+  /provider/drg/facilityweight: 
+   post: 
+    operationId: AddDRGFacilityWeight
+    tags: 
+     - DRG Facility Weight
+    summary: Add DRG Facility Weight
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DRGFacilityWeightDTO'
+    responses: 
+     '200': 
+      description: DRG Facility Weight Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateDRGFacilityWeight
+    tags: 
+     - DRG Facility Weight
+    summary: Update DRG Facility Weight
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DRGFacilityWeightDTO'
+    responses: 
+     '200': 
+      description: DRG Facility Weight Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   DRGFacilityWeightListDTO: 
+    title : DRGFacilityWeightListDTO
+    type: object
+    properties: 
+     DRGFacilityWeightId: 
+      type: integer
+     OfficeId: 
+      type: integer
+     Comments: 
+      type: string
+     CostToChargeRatio: 
+      type: number
+     LaborBaseRate: 
+      type: number
+     NonLaborBaseRate: 
+      type: number
+     WageIndexFactor: 
+      type: number
+     MedicalEducationFactor: 
+      type: number
+     DisproportionateShareFactor: 
+      type: number
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedName: 
+      type: string
+      nullable: true
+   DRGFacilityWeightDTO: 
+    title : DRGFacilityWeightDTO
+    type: object
+    properties: 
+     OfficeId: 
+      type: integer
+      nullable: true
+     Comments: 
+      type: string
+      nullable: true
+     CostToChargeRatio: 
+      type: number
+      nullable: true
+     LaborBaseRate: 
+      type: number
+      nullable: true
+     NonLaborBaseRate: 
+      type: number
+      nullable: true
+     WageIndexFactor: 
+      type: number
+      nullable: true
+     MedicalEducationFactor: 
+      type: number
+      nullable: true
+     DisproportionateShareFactor: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     DRGFacilityWeightId: 
+      type: integer
+      nullable: true
+  parameters: 
+   OfficeIDQueryParam: 
+    in: query
+    name: OfficeID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DRGFacilityWeightIdQueryParam: 
+    in: query
+    name: DRGFacilityWeightId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ResultCountQueryParam: 
+    in: query
+    name: ResultCount
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
