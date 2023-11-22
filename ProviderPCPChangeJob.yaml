@@ -1,0 +1,384 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ProviderPCPChangeJob
+  description: ProviderPCPChangeJob
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/pcp/changejob: 
+   post: 
+    operationId: AddProviderPCPChangeJob
+    tags: 
+     - Provider PCP ChangeJob
+    summary: Add Provider PCP ChangeJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderPCPChangeJobDTO'
+    responses: 
+     '200': 
+      description: Provider PCP ChangeJob Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /provider/pcp/changejobdetails: 
+   post: 
+    operationId: GetProviderPCPChangeJobDetails
+    tags: 
+     - Provider PCP ChangeJob
+    summary: Get Provider PCP ChangeJob Details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderPCPChangeJobIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Provider PCP ChangeJob Details Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderPCPChangeJobDetailListDTO'
+  /provider/pcp/changejobs: 
+   post: 
+    operationId: GetProviderPCPChangeJobs
+    tags: 
+     - Provider PCP ChangeJob
+    summary: Get Provider PCP ChangeJobs 
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderContractIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Provider PCP ChangeJobs Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderPCPChangeJobListDTO'
+components: 
+  schemas: 
+   ProviderPCPChangeJobDTO: 
+    title : ProviderPCPChangeJobDTO
+    type: object
+    properties: 
+     OriginalProviderContractId: 
+      type: integer
+      nullable: true
+     NewProviderContractId: 
+      type: integer
+      nullable: true
+     OverridePCPPanel: 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     SuppressIDCardReq: 
+      type: string
+      nullable: true
+     ManuallySelectedContract: 
+      type: string
+      nullable: true
+     DateOfMove: 
+      type: string
+      format: date-time
+      nullable: true
+     PCPChangeReasonCode: 
+      type: string
+      nullable: true
+     ContactReasonId: 
+      type: integer
+      nullable: true
+   ProviderPCPChangeJobDetailListDTO: 
+    title : ProviderPCPChangeJobDetailListDTO
+    type: object
+    properties: 
+     ProviderPCPChangeJobDetailId  Id_t            not null,: 
+      type: integer
+      nullable: true
+     ProviderPCPChangeJobId: 
+      type: integer
+     OriginalMemberPCPMapId : 
+      type: integer
+      nullable: true
+     NewMemberPCPMapId: 
+      type: integer
+      nullable: true
+     MemberFirstName : 
+      type: string
+      nullable: true
+     MemberLastName : 
+      type: string
+      nullable: true
+     WasChangeSuccessful : 
+      type: string
+     ErrorMessage: 
+      type: string
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     AddedBy: 
+      type: integer
+      nullable: true
+     AddedByName    : 
+      type: string
+      nullable: true
+     AddedAt: 
+      type: string
+      nullable: true
+     TermedBy: 
+      type: integer
+      nullable: true
+     TermedByName: 
+      type: string
+      nullable: true
+     TermedAt: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     ManuallyAssigned: 
+      type: string
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     SocialSecurityNumber: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: string
+      nullable: true
+     PrecedenceName: 
+      type: string
+      nullable: true
+     NewContractId: 
+      type: integer
+      nullable: true
+     NewContractName: 
+      type: string
+      nullable: true
+     NewContractNumber: 
+      type: string
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     RiskGroupID: 
+      type: integer
+      nullable: true
+     HospitalID: 
+      type: integer
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+   ProviderPCPChangeJobListDTO: 
+    title : ProviderPCPChangeJobListDTO
+    type: object
+    properties: 
+     ProviderPCPChangeJobId: 
+      type: integer
+      nullable: true
+     PCPChangeReasonCode: 
+      type: string
+      nullable: true
+     PCPChangeReasonName   : 
+      type: string
+      nullable: true
+     ContactReasonId   : 
+      type: integer
+      nullable: true
+     ContactReasonName: 
+      type: string
+      nullable: true
+     OriginalProviderId: 
+      type: integer
+      nullable: true
+     OriginalProviderContractId : 
+      type: integer
+      nullable: true
+     OriginalProviderFirstName  : 
+      type: string
+      nullable: true
+     OriginalProviderLastName: 
+      type: string
+      nullable: true
+     OriginalProviderNumber     : 
+      type: string
+      nullable: true
+     OriginalContractId    : 
+      type: integer
+      nullable: true
+     OriginalContractName        : 
+      type: string
+      nullable: true
+     OriginalContractNumber      : 
+      type: string
+      nullable: true
+     OriginalOfficeId: 
+      type: integer
+      nullable: true
+     OriginalOfficeName: 
+      type: string
+      nullable: true
+     OriginalOfficeNumber    : 
+      type: string
+      nullable: true
+     OriginalRiskGroupId: 
+      type: integer
+      nullable: true
+     OriginalRiskGroupName: 
+      type: string
+      nullable: true
+     OriginalRiskGroupNumber: 
+      type: string
+      nullable: true
+     OriginalHospitalId: 
+      type: integer
+      nullable: true
+     OriginalHospitalName: 
+      type: string
+      nullable: true
+     OriginalHospitalNumber: 
+      type: string
+      nullable: true
+     OriginalHospitalNPI: 
+      type: string
+      nullable: true
+     OriginalProviderContractNumber: 
+      type: string
+      nullable: true
+     NewProviderId: 
+      type: integer
+      nullable: true
+     NewProviderContractId   : 
+      type: integer
+      nullable: true
+     NewProviderFirstName: 
+      type: string
+      nullable: true
+     NewProviderLastName        : 
+      type: string
+      nullable: true
+     NewProviderNumber         : 
+      type: string
+      nullable: true
+     NewOfficeId: 
+      type: integer
+      nullable: true
+     NewOfficeName: 
+      type: string
+      nullable: true
+     NewOfficeNumber           : 
+      type: string
+      nullable: true
+     NewRiskGroupId: 
+      type: integer
+      nullable: true
+     NewRiskGroupName: 
+      type: string
+      nullable: true
+     NewRiskGroupNumber: 
+      type: string
+      nullable: true
+     NewHospitalId: 
+      type: integer
+      nullable: true
+     NewHospitalName: 
+      type: string
+      nullable: true
+     NewHospitalNumber: 
+      type: string
+      nullable: true
+     NewHospitalNPI: 
+      type: string
+      nullable: true
+     NewProviderContractNumber: 
+      type: string
+      nullable: true
+     DateOfMove: 
+      type: string
+      format: date-time
+     OverridePCPPanel: 
+      type: string
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+     SuppressIDCardReq: 
+      type: string
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     ManuallySelectedContract: 
+      type: string
+  parameters: 
+   ProviderPCPChangeJobIdQueryParam: 
+    in: query
+    name: ProviderPCPChangeJobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ProviderContractIdQueryParam: 
+    in: query
+    name: ProviderContractId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
