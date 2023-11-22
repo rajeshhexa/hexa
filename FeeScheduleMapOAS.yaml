@@ -1,0 +1,743 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: FeeScheduleMap
+  description: FeeScheduleMap
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /contract/feeschedulemap: 
+   post: 
+    operationId: GetContractFeeScheduleMap
+    tags: 
+     - Fee Schedule Map
+    summary: Get Contract Fee Schedule Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ContractIDQueryParam'
+     - $ref: '#/components/parameters/ContractFeeScheduleMapIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Contract Fee Schedule Map Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ContractFeeScheduleMapListDTO'
+   put: 
+    operationId: UpdateContractFeeScheduleMap
+    tags: 
+     - Fee Schedule Map
+    summary: Update Contract Fee Schedule Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContractFeeScheduleMapDTO'
+    responses: 
+     '200': 
+      description: Contract Fee Schedule Map Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteContractFeeScheduleMap
+    tags: 
+     - Fee Schedule Map
+    summary: Delete Contract Fee Schedule Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ContractFeeScheduleMapIDQueryParam'
+    responses: 
+     '200': 
+      description: Contract Fee Schedule Map Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   /contract/feeschedulemap/percentagemap: 
+   put: 
+    operationId: UpdateContractFeeSchedulePercentageMap
+    tags: 
+     - Fee Schedule Map
+    summary: Update Contract Fee Schedule Percentage Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ContractFeeSchedulePercentageMapDTO'
+    responses: 
+     '200': 
+      description: Contract Fee Schedule Percent Map Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   ContractFeeScheduleMapListDTO: 
+    title : ContractFeeScheduleMapListDTO
+    type: object
+    properties: 
+     ContractFeeScheduleMapID: 
+      type: integer
+      description: 
+     ContractID: 
+      type: integer
+      description: 
+     ContractName: 
+      type: string
+      nullable: true
+     FeeScheduleId: 
+      type: integer
+      description: 
+     FeeScheduleName: 
+      type: string
+      nullable: true
+     FeeScheduleDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     ClaimCategoryCode: 
+      type: string
+      nullable: true
+     ClaimCategory: 
+      type: string
+      nullable: true
+     PaySource: 
+      type: string
+      nullable: true
+     PaySourceDescription: 
+      type: string
+      nullable: true
+     PlaceOfService: 
+      type: string
+      nullable: true
+     PlaceOfServiceName: 
+      type: string
+      nullable: true
+     Discount: 
+      type: string
+      nullable: true
+     FeeScheduleMultiplier: 
+      type: string
+      nullable: true
+     FeeScheduleWithhold: 
+      type: string
+      nullable: true
+     Withhold: 
+      type: string
+      nullable: true
+     Region: 
+      type: string
+      nullable: true
+     RegionName: 
+      type: string
+      nullable: true
+     LineOfBusiness: 
+      type: string
+      nullable: true
+     LineOfBusinessName: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: string
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     ActionNumber: 
+      type: string
+      nullable: true
+     ProviderRestrictionName: 
+      type: string
+      nullable: true
+     GlobalFeeProviderOffice: 
+      type: string
+      nullable: true
+     GlobalFeeProviderOfficeName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule1Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule1Name: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule1Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule1Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule2Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule2Name: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule2Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule2Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule3Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule3Name: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule3Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule3Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule4Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule4Name: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule4Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule4Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule5Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule5Name: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule5Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule5Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule6Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule6Name: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule6Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule6Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule7Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule7Name: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule7Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule7Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule8Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule8Name: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule8Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule8Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule9Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule9Name: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule9Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule9Withhold: 
+      type: string
+      nullable: true
+     ProcedureNotFoundAction: 
+      type: string
+     ActionForProcedureNotFound: 
+      type: string
+      nullable: true
+     DenialExplanationId: 
+      type: integer
+      nullable: true
+     DenialExplanationAbbreviation: 
+      type: string
+      nullable: true
+     PayPercentOfTotalCharges: 
+      type: string
+      nullable: true
+     PayPercentOfTotalChargesWithhold: 
+      type: string
+      nullable: true
+     ModifierReductionScheduleId: 
+      type: integer
+      nullable: true
+     ModifierReductionScheduleName: 
+      type: string
+      nullable: true
+     PricingMethodologyCode: 
+      type: string
+      nullable: true
+     PricingMethodology: 
+      type: string
+      nullable: true
+     FeeScheduleLineOfBusinessCode: 
+      type: string
+      nullable: true
+     FeeScheduleLineOfBusiness: 
+      type: string
+      nullable: true
+     SurgicalPaymentMethodCode: 
+      type: string
+      nullable: true
+     SurgicalPaymentMethod: 
+      type: string
+      nullable: true
+     SurgicalProcedureRankingMethodCode: 
+      type: string
+      nullable: true
+     SurgicalProcedureRankingMethod: 
+      type: string
+      nullable: true
+     SurgicalReduction1: 
+      type: string
+      nullable: true
+     SurgicalReduction2: 
+      type: string
+      nullable: true
+     SurgicalReduction3: 
+      type: string
+      nullable: true
+     SurgicalReduction4: 
+      type: string
+      nullable: true
+     SurgicalReduction5: 
+      type: string
+      nullable: true
+     SurgicalReductionRemaining: 
+      type: string
+      nullable: true
+     SurgicalReductionType: 
+      type: string
+      nullable: true
+     SurgicalReductionTypeName: 
+      type: string
+      nullable: true
+     StopLossType: 
+      type: string
+      nullable: true
+     StopLossTypeName: 
+      type: string
+      nullable: true
+     StopLossThreshold: 
+      type: string
+      nullable: true
+     StopLossUnitValue: 
+      type: string
+      nullable: true
+     StopLossExplanationID: 
+      type: integer
+      nullable: true
+     StopLossExplanationAbbreviation: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     ThirdPartyPriceUsage: 
+      type: string
+      nullable: true
+     ThirdPartyPriceUsageName: 
+      type: string
+      nullable: true
+     ClaimLevelInstitutionalCarveOutMethodology: 
+      type: string
+      nullable: true
+     ClaimLevelInstitutionalCarveOutMethodologyName: 
+      type: string
+      nullable: true
+     ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule1ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule2ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule3ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule4ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule5ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule6ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule7ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule8ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule9ModifierReductionAction: 
+      type: string
+      nullable: true
+     ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule1ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule2ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule3ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule4ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule5ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule6ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule7ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule8ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule9ModifierReductionActionName: 
+      type: string
+      nullable: true
+     SecondaryFeeScheduleLastUpdatedBy: 
+      type: string
+      nullable: true
+     SecondaryFeeScheduleLastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     SecondaryFeeScheduleLastUpdatedByName: 
+      type: string
+      nullable: true
+   ContractFeeScheduleMapDTO: 
+    title : ContractFeeScheduleMapDTO
+    type: object
+    properties: 
+     ContractID: 
+      type: integer
+      nullable: true
+     FeeScheduleID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     ClaimCategoryCode: 
+      type: string
+      nullable: true
+     PlaceOfService: 
+      type: string
+      nullable: true
+     Discount: 
+      type: string
+      nullable: true
+     FeeScheduleWithhold: 
+      type: string
+      nullable: true
+     Withhold: 
+      type: string
+      nullable: true
+     Region: 
+      type: string
+      nullable: true
+     LineOfBusiness: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: string
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     GlobalFeeProviderOffice: 
+      type: string
+      nullable: true
+     PaySource: 
+      type: string
+      nullable: true
+     ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule1Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule1Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule1Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule1ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule2Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule2Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule2Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule2ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule3Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule3Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule3Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule3ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule4Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule4Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule4Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule4ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule5Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule5Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule5Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule5ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule6Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule6Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule6Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule6ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule7Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule7Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule7Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule7ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule8Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule8Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule8Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule8ModifierReductionAction: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule9Id: 
+      type: integer
+      nullable: true
+     SecondaryFeeSchedule9Percent: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule9Withhold: 
+      type: string
+      nullable: true
+     SecondaryFeeSchedule9ModifierReductionAction: 
+      type: string
+      nullable: true
+     ProcedureNotFoundAction: 
+      type: string
+      nullable: true
+     DenialExplanationId: 
+      type: integer
+      nullable: true
+     PayPercentOfTotalCharges: 
+      type: string
+      nullable: true
+     PayPercentOfTotalChargesWithhold: 
+      type: string
+      nullable: true
+     ModifierReductionScheduleId: 
+      type: integer
+      nullable: true
+     SurgicalPaymentMethodCode: 
+      type: string
+      nullable: true
+     SurgicalProcedureRankingMethodCode: 
+      type: string
+      nullable: true
+     SurgicalReduction1: 
+      type: string
+      nullable: true
+     SurgicalReduction2: 
+      type: string
+      nullable: true
+     SurgicalReduction3: 
+      type: string
+      nullable: true
+     SurgicalReduction4: 
+      type: string
+      nullable: true
+     SurgicalReduction5: 
+      type: string
+      nullable: true
+     SurgicalReductionRemaining: 
+      type: string
+      nullable: true
+     SurgicalReductionType: 
+      type: string
+      nullable: true
+     StopLossType: 
+      type: string
+      nullable: true
+     StopLossThreshold: 
+      type: string
+      nullable: true
+     StopLossUnitValue: 
+      type: string
+      nullable: true
+     StopLossExplanationID: 
+      type: integer
+      nullable: true
+     ThirdPartyPriceUsage: 
+      type: string
+      nullable: true
+     ClaimLevelInstitutionalCarveOutMethodology: 
+      type: string
+      nullable: true
+     ContractFeeScheduleMapID: 
+      type: integer
+      nullable: true
+   ContractFeeSchedulePercentageMapDTO: 
+    title : ContractFeeSchedulePercentageMapDTO
+    type: object
+    properties: 
+     ContractSliceID: 
+      type: integer
+      nullable: true
+     ContractID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     FeeSchedulePercentage: 
+      type: string
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+  parameters: 
+   ContractIDQueryParam: 
+    in: query
+    name: ContractID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ContractFeeScheduleMapIdQueryParam: 
+    in: query
+    name: ContractFeeScheduleMapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ContractFeeScheduleMapIDQueryParam: 
+    in: query
+    name: ContractFeeScheduleMapID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
