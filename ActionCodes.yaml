@@ -1,0 +1,413 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Group Action Codes API
+  description: Group Action Codes API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /groups/actioncodes: 
+   post: 
+    operationId: GetActionCodes
+    tags: 
+     - Group Action Codes
+    summary: Get Action Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ActionCodesSearchDTO'
+    responses: 
+     '200': 
+      description: Group action codes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ActionCodesListDTO'
+  /groups/actioncodes/forentity: 
+   put: 
+    operationId: GetActionCodesForEntity
+    tags: 
+     - Group Action Codes
+    summary: Get action codes for entity
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: Group action codes for entity retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ActionCodesForEntityListDTO'
+  /groups/actioncodes/entitymaphistory: 
+   delete: 
+    operationId: GetActionEntityMapHistory
+    tags: 
+     - Group Action Codes
+    summary: Get action entity map history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: Group action entity map history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ActionEntityMapHistoryListDTO'
+  /groups/actioncodes/remomveforentity: 
+   get: 
+    operationId: DeleteActionCodeFromEntity
+    tags: 
+     - Group Action Codes
+    summary: Delete action code from entity
+    description: Description of path
+    responses: 
+     '200': 
+      description: Group action code from entity  deleted successully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   ActionCodesSearchDTO: 
+    title : ActionCodesSearchDTO
+    type: object
+    properties: 
+     Product: 
+      type: string
+      nullable: true
+     ActionCodeID: 
+      type: integer
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     ActionCodeType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     Owner: 
+      type: string
+      nullable: true
+     ClientExplanation: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     FormName: 
+      type: string
+      nullable: true
+     ActionCodeStatus: 
+      type: string
+      nullable: true
+   ActionCodesListDTO: 
+    title : ActionCodesListDTO
+    type: object
+    properties: 
+     ActionCodeId: 
+      type: integer
+     ProductName: 
+      type: string
+     Precedence: 
+      type: integer
+     ActionCode: 
+      type: string
+     ActionNumber: 
+      type: string
+     ActionCodeName: 
+      type: string
+     NodeDisplay: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     ActionCodeType: 
+      type: string
+     Owner: 
+      type: string
+     ClientExplanation: 
+      type: integer
+     ContactReasonId: 
+      type: integer
+      nullable: true
+     ContactReasonName: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     AdditionalIndividualCode: 
+      type: string
+      nullable: true
+     ActionCodeStatus: 
+      type: string
+     Status: 
+      type: string
+      nullable: true
+     CategoryLevel: 
+      type: integer
+      nullable: true
+     AllowOverride: 
+      type: string
+     HasEntities: 
+      type: string
+      nullable: true
+     ActionCodeClass: 
+      type: string
+      nullable: true
+     OverridePermissionId: 
+      type: integer
+      nullable: true
+     OverridePermission: 
+      type: string
+      nullable: true
+     ExternalRepricingAction: 
+      type: string
+   ActionCodesForEntityListDTO: 
+    title : ActionCodesForEntityListDTO
+    type: object
+    properties: 
+     ActionEntityMapId: 
+      type: integer
+     ActionCodeId: 
+      type: integer
+     ActionCodeType: 
+      type: string
+     ActionCode: 
+      type: string
+     ActionNumber: 
+      type: string
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     ActionCodeDescription: 
+      type: string
+      nullable: true
+     AllowOverride: 
+      type: string
+     EntityType: 
+      type: string
+     EntityID: 
+      type: integer
+     Description: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     DateType: 
+      type: string
+      nullable: true
+     DateTypeName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   ActionEntityMapHistoryListDTO: 
+    title : ActionEntityMapHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+     ChangedById: 
+      type: integer
+     ChangedDate: 
+      type: string
+      format: date-time
+     ChangeType: 
+      type: string
+     ProcedureName: 
+      type: string
+     ActionEntityMapId: 
+      type: integer
+     ActionCodeId: 
+      type: integer
+     ActionCodeType: 
+      type: string
+     ActionCode: 
+      type: string
+     ActionNumber: 
+      type: string
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     ActionCodeDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DateType: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     EntityID: 
+      type: integer
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: string
+      nullable: true
+   ActionCodeFromEntityDeleteDTO: 
+    title : ActionCodeFromEntityDeleteDTO
+    type: object
+    properties: 
+     ActionEntityMapId: 
+      type: integer
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     ActionCodeType: 
+      type: string
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     ActionNumber: 
+      type: string
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     ActionCodeDescription: 
+      type: string
+      nullable: true
+     AllowOverride: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     DateType: 
+      type: string
+      nullable: true
+     DateTypeName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+  parameters: 
+   EntityIdQueryParam: 
+    in: query
+    name: EntityId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   FlagQueryParam: 
+    in: query
+    name: Flag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
