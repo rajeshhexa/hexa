@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ClaimFilling
+  description: ClaimFilling API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/timelyfilling/fillingterm: 
+   post: 
+    operationId: AddClaimFilingTerm
+    tags: 
+     - ClaimFilingTerm
+    summary: Add ClaimFilingTerm
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimFilingTermDTO'
+    responses: 
+     '200': 
+      description: ClaimFilingTerm added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateClaimFilingTerm
+    tags: 
+     - ClaimFilingTerm
+    summary: Update ClaimFilingTerm
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimFilingTermDTO'
+    responses: 
+     '200': 
+      description: ClaimFilingTerm updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteClaimFilingTerm
+    tags: 
+     - ClaimFilingTerm
+    summary: Delete ClaimFilingTerm
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimFilingTermIDQueryParam'
+    responses: 
+     '200': 
+      description: ClaimFilingTerm deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/timelyfilling/delayreasonmap: 
+   null: 
+    operationId: GetClaimFilingDelayReasonMap
+    tags: 
+     - ClaimFilingTerm
+    summary: Get ClaimFilingDelayReasonMap
+    description: Description of path
