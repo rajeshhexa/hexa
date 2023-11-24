@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ModifierReductionSchedule
+  description: ModifierReductionSchedule API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/modifierreductionschedules: 
+   get: 
+    operationId: GetModifierReductionSchedules
+    tags: 
+     - ModifierReductionSchedule
+    summary: Get ModifierReductionSchedules
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: ModifierReductionSchedules retreived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ModifierReductionSchedulesListDTO'
+  /claim/modifierreductionschedule: 
+   null: 
+    operationId: AddModifierReductionSchedule
+    tags: 
+     - ModifierReductionSchedule
+    summary: Add ModifierReductionSchedule
+    description: Description of path
