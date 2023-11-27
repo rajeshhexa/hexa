@@ -1,0 +1,494 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Brokers
+  description: Brokers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /fulfillments: 
+   get: 
+    operationId: GetFulfillments
+    tags: 
+     - fulfullment
+    summary: Get Fulfullment
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/FulfillmentEntityIDQueryParam'
+     - $ref: '#/components/parameters/FulfillmentEntityTypeQueryParam'
+     - $ref: '#/components/parameters/FulfillmentIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Fulfillment retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/FulfillmentLiistDTO'
+  /fulfillment: 
+   post: 
+    operationId: AddFulfillment
+    tags: 
+     - fulfullment
+    summary: Add Fulfullment
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FulfillmentDTO'
+    responses: 
+     '200': 
+      description: Fulfillment added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateFulfillment
+    tags: 
+     - fulfullment
+    summary: Update Fulfullment
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FulfillmentDTO'
+    responses: 
+     '200': 
+      description: Fulfillment Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /fulfullment//removefulfillment: 
+   delete: 
+    operationId: DeleteFulfillment
+    tags: 
+     - fulfullment
+    summary: Delete Fulfullment
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/FulfillmentIdQueryParam'
+    responses: 
+     '200': 
+      description: Fulfillment Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /fulfillment/availablefulfillmentmethods: 
+   post: 
+    operationId: GetAvailableFulfillmentMethods
+    tags: 
+     - fulfullment
+    summary: Get Available Fulfullment Methods
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AvailableFulfillmentMethodsSearchDTO'
+    responses: 
+     '200': 
+      description: Available Fulfillment Methods retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AvailableFulfillmentMethodsListDTO'
+  /fulfillment/availablefulfillmentmethod: 
+   post: 
+    operationId: AddAvailableFulfillmentMethods
+    tags: 
+     - fulfullment
+    summary: Add Available Fulfullment Methods
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AvailableFulfillmentMethodsDTO'
+    responses: 
+     '200': 
+      description: Available Fulfillment Methods added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateAvailableFulfillmentMethods
+    tags: 
+     - fulfullment
+    summary: Update Available Fulfullment Methods
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AvailableFulfillmentMethodsDTO'
+    responses: 
+     '200': 
+      description: Available Fulfillment Methods Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /fulfillment/removeavailablefulfillmentmethod: 
+   delete: 
+    operationId: DeleteAvailableFulfillmentMethods
+    tags: 
+     - fulfullment
+    summary: Delete Available Fulfullment Methods
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AvailableFulfillmentMethodIdQueryParam'
+    responses: 
+     '200': 
+      description: Available Fulfillment Methods Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /fulfullment/fulfillmentmethods: 
+   post: 
+    operationId: GetFulfillmentMethods
+    tags: 
+     - fulfullment
+    summary: Get Fulfullment Methods
+    description:  
+    parameters: 
+     - $ref: '#/components/parameters/EntityTypeCodeQueryParam'
+     - $ref: '#/components/parameters/GroupIdQueryParam'
+     - $ref: '#/components/parameters/ClaimScreenQueryParam'
+     - $ref: '#/components/parameters/DocumentTypeQueryParam'
+    responses: 
+     '200': 
+      description: Fulfillment Methods retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/fulfillmentmethodsListDTO'
+  /fulfillment/availablefulfillmentmethodsdocumenttypes: 
+   post: 
+    operationId: GetAvailableFulfillmentMethodsDocumentTypes
+    tags: 
+     - fulfullment
+    summary: Get Available Fulfillment Methods 
+Document Types
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EntityTypeCodeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Available Fulfillment Method Document Types retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/availablefulfillmentmethodsdocumenttypesListDTO'
+components: 
+  schemas: 
+   FulfillmentListDTO: 
+    title : FulfillmentListDTO
+    type: object
+    properties: 
+     FulfillmentId: 
+      type: integer
+      nullable: true
+     FulfillmentEntityID: 
+      type: integer
+      nullable: true
+     DocumentType: 
+      type: string
+      nullable: true
+     DocumentTypeName: 
+      type: string
+      nullable: true
+     Method: 
+      type: string
+      nullable: true
+     MethodName: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     EmailAddress: 
+      type: string
+      nullable: true
+     EmailFrequency: 
+      type: string
+      nullable: true
+     EmailFrequencyName: 
+      type: string
+      nullable: true
+     FaxNumber: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+   FulfillmentDTO: 
+    title : FulfillmentDTO
+    type: object
+    properties: 
+     FulFillmentEntityId: 
+      type: integer
+      nullable: true
+     FulFillmentEntityType: 
+      type: string
+      nullable: true
+     DocumentType: 
+      type: string
+      nullable: true
+     Method: 
+      type: string
+      nullable: true
+     FaxNumber: 
+      type: string
+      nullable: true
+     EmailAddress: 
+      type: string
+      nullable: true
+     EmailFrequency: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+   AvailableFulfillmentMethodsSearchDTO: 
+    title : AvailableFulfillmentMethodsSearchDTO
+    type: object
+    properties: 
+     AvailableFulfillmentMethodId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     DocumentTypeCode: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      format: string
+      default: "|All|"
+      nullable: true
+   AvailableFulfillmentMethodsListDTO: 
+    title : AvailableFulfillmentMethodsListDTO
+    type: object
+    properties: 
+     AvailableFulfillmentMethodID: 
+      type: integer
+      nullable: true
+     DocumentTypeCode: 
+      type: string
+      format: string
+     DocumentTypeName: 
+      type: string
+      nullable: true
+     EntityTypeCode: 
+      type: string
+      format: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     FulfillmentMethodCode: 
+      type: string
+      format: string
+     FulfillmentMethodName: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     UseAsDefault: 
+      type: string
+      format: string
+     UseAsDefaultName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     FulfillmentID: 
+      type: integer
+      nullable: true
+     Email: 
+      type: string
+      nullable: true
+     Fax: 
+      type: string
+      nullable: true
+   AvailableFulfillmentMethodsDTO: 
+    title : AvailableFulfillmentMethodsDTO
+    type: object
+    properties: 
+     DebugFlag: 
+      type: integer
+      nullable: true
+     DocumentTypeCode: 
+      type: string
+      nullable: true
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     FulfillmentMethodCode: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     UseAsDefault: 
+      type: string
+      format: string
+      default: "N"
+      nullable: true
+   fulfillmentmethodsListDTO: 
+    title : fulfillmentmethodsListDTO
+    type: object
+    properties: 
+     Code: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+   availablefulfillmentmethodsdocumenttypesListDTO: 
+    title : availablefulfillmentmethodsdocumenttypesListDTO
+    type: object
+    properties: 
+     Code: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+  parameters: 
+   FulfillmentEntityIDQueryParam: 
+    in: query
+    name: FulfillmentEntityID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   FulfillmentEntityTypeQueryParam: 
+    in: query
+    name: FulfillmentEntityType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   FulfillmentIDQueryParam: 
+    in: query
+    name: FulfillmentID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|Normal|"
+    description: description of parameter passed
+   FulfillmentIdQueryParam: 
+    in: query
+    name: FulfillmentId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AvailableFulfillmentMethodIdQueryParam: 
+    in: query
+    name: AvailableFulfillmentMethodId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeCodeQueryParam: 
+    in: query
+    name: EntityTypeCode
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   GroupIdQueryParam: 
+    in: query
+    name: GroupId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ClaimScreenQueryParam: 
+    in: query
+    name: ClaimScreen
+    required: false
+    schema: 
+     type: string
+     default: "N"
+    description: description of parameter passed
+   DocumentTypeQueryParam: 
+    in: query
+    name: DocumentType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
