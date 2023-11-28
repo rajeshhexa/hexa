@@ -1,0 +1,513 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Reimbursement API
+  description: Group Reimbursement API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /groups/reimbursement/forentity: 
+   post: 
+    operationId: GetReimbursementsForEntity
+    tags: 
+     - Reiumbursements
+    summary: Get reimbursements for entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReimbursementForEntitySearchDTO'
+    responses: 
+     '200': 
+      description: Reimbursements for retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReimbursementForEntityListDTO'
+  /groups/reimburesement/entitymap: 
+   post: 
+    operationId: AddReimbursementEntityMap
+    tags: 
+     - Reiumbursements
+    summary: Add reimbursement entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReimbursementEntityMapDTO'
+    responses: 
+     '200': 
+      description: Reibursement entity map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /groups/reiumbrusement/fromentity: 
+   delete: 
+    operationId: DeleteReimbursementsFromEntity
+    tags: 
+     - Reiumbursements
+    summary: Delete reimbursement from entity
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/RowIDQueryParam'
+    responses: 
+     '200': 
+      description: Reimbursement from entity deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/billingwizard/entitymap: 
+   post: 
+    operationId: GetBillingEntityMap
+    tags: 
+     - Reiumbursements
+    summary: Get billing entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BillingEntityMapSearchDTO'
+    responses: 
+     '200': 
+      description: Billing entity map retrieved successully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BillingEntityMapListDTO'
+components: 
+  schemas: 
+   ReimbursementForEntitySearchDTO: 
+    title : ReimbursementForEntitySearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     RowID: 
+      type: integer
+      nullable: true
+   ReimbursementForEntityListDTO: 
+    title : ReimbursementForEntityListDTO
+    type: object
+    properties: 
+     RowID: 
+      type: integer
+      nullable: true
+     ReimbursementId: 
+      type: integer
+     ReimbursementCode: 
+      type: string
+      nullable: true
+     ReimbursementType: 
+      type: string
+      nullable: true
+     ReimbursementTypeName: 
+      type: string
+      nullable: true
+     ReimbursementName: 
+      type: string
+     ReimbursementNodeName: 
+      type: string
+      nullable: true
+     ReimbursementDescription: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+     Precedence: 
+      type: number
+      nullable: true
+     WhoToPay: 
+      type: string
+      nullable: true
+     WhoToPayName: 
+      type: string
+      nullable: true
+     FeeScheduleId: 
+      type: integer
+      nullable: true
+     FeeScheduleName: 
+      type: string
+      nullable: true
+     RepricingContractID: 
+      type: integer
+      nullable: true
+     RepricingContractName: 
+      type: string
+      nullable: true
+     ExternalRepricingRejectionIndicator: 
+      type: string
+      nullable: true
+     ExternalRepricingRejectionIndicatorName: 
+      type: string
+      nullable: true
+     FallThroughTransformId: 
+      type: integer
+      nullable: true
+     FallThroughTransformName: 
+      type: string
+      nullable: true
+     RepricedAmountAction: 
+      type: string
+      nullable: true
+     RepricedAmountActionName: 
+      type: string
+      nullable: true
+     ReimbursementContractID: 
+      type: integer
+      nullable: true
+     ReimbursementContractName: 
+      type: string
+      nullable: true
+     InNetwork: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     InterchangeID: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     ProviderAssignment: 
+      type: string
+      nullable: true
+     ProviderAssignmentName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     Selected: 
+      type: integer
+      nullable: true
+   ReimbursementEntityMapDTO: 
+    title : ReimbursementEntityMapDTO
+    type: object
+    properties: 
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     ReimbursementType: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Precedence: 
+      type: number
+      nullable: true
+     WhoToPay: 
+      type: string
+      nullable: true
+     FeeScheduleId: 
+      type: integer
+      nullable: true
+     RepricingContractId: 
+      type: integer
+      nullable: true
+     ExternalRepricingRejectionIndicator: 
+      type: string
+      nullable: true
+     FallThroughTransformId: 
+      type: integer
+      nullable: true
+     RepricedAmountAction: 
+      type: string
+      nullable: true
+     ReimbursementContractId: 
+      type: integer
+      nullable: true
+     InNetwork: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     InterchangeID: 
+      type: integer
+      nullable: true
+     ProviderAssignment: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   BillingEntityMapSearchDTO: 
+    title : BillingEntityMapSearchDTO
+    type: object
+    properties: 
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PostingRecordsExist: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   BillingEntityMapListDTO: 
+    title : BillingEntityMapListDTO
+    type: object
+    properties: 
+     BillingEntityMapId: 
+      type: integer
+     BillingEntityId: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+     PaidThroughDate: 
+      type: string
+      format: date-time
+      nullable: true
+     InvoicePaidThroughDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     BillingMethodology: 
+      type: string
+      nullable: true
+     BillingMethodologyName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     NextPostDateStart: 
+      type: string
+      format: date-time
+     NextPostDateEnd: 
+      type: string
+      format: date-time
+     CloseOutDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SelfPosted: 
+      type: string
+     SelfPostedName: 
+      type: string
+      nullable: true
+     AnniversaryDate: 
+      type: string
+      format: date-time
+      nullable: true
+     HistoryId: 
+      type: integer
+      nullable: true
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     PostingStatus: 
+      type: string
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     LastName: 
+      type: string
+      nullable: true
+     FirstName: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     RenewalDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     EmailAddress: 
+      type: string
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     BillingModeName: 
+      type: string
+      nullable: true
+     ClaimBillingMode: 
+      type: string
+      nullable: true
+     ClaimBillingModeName: 
+      type: string
+      nullable: true
+     ARAccountId: 
+      type: integer
+     ARAccountNumber: 
+      type: string
+      nullable: true
+     ARAccountName: 
+      type: string
+      nullable: true
+     IncomeAccountId: 
+      type: integer
+     IncomeAccountNumber: 
+      type: string
+      nullable: true
+     IncomeAccountName: 
+      type: string
+      nullable: true
+     BrokerExpenseAccountId: 
+      type: integer
+      nullable: true
+     BrokerExpenseAccountNumber: 
+      type: string
+      nullable: true
+     BrokerExpenseAccountName: 
+      type: string
+      nullable: true
+     BillingRefundExpenseAccountId: 
+      type: integer
+      nullable: true
+     BillingRefundExpenseAccountNumber: 
+      type: string
+      nullable: true
+     BillingRefundExpenseAccountName: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     PostingRecordsExist: 
+      type: string
+     ReferenceNumber: 
+      type: string
+      nullable: true
+  parameters: 
+   RowIDQueryParam: 
+    in: query
+    name: RowID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
