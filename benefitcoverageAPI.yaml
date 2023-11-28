@@ -1,0 +1,350 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Benefit Coverage API
+  description: Benefit Coverage API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/coverages: 
+   post: 
+    operationId: GetBenefitCoverages
+    tags: 
+     - BenefitCoverage
+    summary: Get benefit coverages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitCoverageSearchDTO'
+    responses: 
+     '200': 
+      description: Benefit coverages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BenefitCoverageListDTO'
+  /benefit/coverage: 
+   post: 
+    operationId: AddBenefitCoverage
+    tags: 
+     - BenefitCoverage
+    summary: Add benefit coverage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitCoverageDTO'
+    responses: 
+     '200': 
+      description: Benefit coverages added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateBenefitCoverage
+    tags: 
+     - BenefitCoverage
+    summary: Update benefit coverage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitCoverageDTO'
+    responses: 
+     '200': 
+      description: Benefit coverage updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/coverages/history: 
+   get: 
+    operationId: GetBenefitCoveragesHistory
+    tags: 
+     - BenefitCoverage
+    summary: Get benefit coverages history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BenefitCoverageIdQueryParam'
+    responses: 
+     '200': 
+      description: Benefit coverages history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BenefitCoveragesHistoryListDTO'
+components: 
+  schemas: 
+   BenefitCoverageSearchDTO: 
+    title : BenefitCoverageSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     CoverageEntityId: 
+      type: integer
+      nullable: true
+     CoverageEntityType: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      default: "CSV"
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     BenefitCoverageId: 
+      type: integer
+      nullable: true
+     BasePlanId: 
+      type: integer
+      nullable: true
+     Level: 
+      type: string
+      nullable: true
+     ReturnRidersAndQualifiers: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   BenefitCoverageListDTO: 
+    title : BenefitCoverageListDTO
+    type: object
+    properties: 
+     BenefitCoverageId: 
+      type: integer
+     EntityId: 
+      type: integer
+     EntityTypeId: 
+      type: integer
+     CoverageEntityId: 
+      type: integer
+     CoverageEntityType: 
+      type: string
+     CoverageType: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     TerminationReason: 
+      type: string
+      nullable: true
+     TerminationReasonName: 
+      type: string
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     TierCode: 
+      type: string
+      nullable: true
+     TierAsOfDate: 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+     AppliedLevel: 
+      type: string
+      nullable: true
+     AppliedLevelName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: integer
+      nullable: true
+   BenefitCoverageDTO: 
+    title : BenefitCoverageDTO
+    type: object
+    properties: 
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     CoverageEntityId: 
+      type: integer
+      nullable: true
+     CoverageEntityType: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     BenefitCoverageId: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     TierAsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcedureCaller: 
+      type: string
+      nullable: true
+   BenefitCoveragesHistoryListDTO: 
+    title : BenefitCoveragesHistoryListDTO
+    type: object
+    properties: 
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+     ChangeType: 
+      type: string
+      nullable: true
+     ChangeEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     BenefitCoverageId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityTypeId  : 
+      type: integer
+      nullable: true
+     CoverageEntityId: 
+      type: integer
+      nullable: true
+     CoverageEntityType: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     TerminationReasonName: 
+      type: string
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     TierCode: 
+      type: string
+      nullable: true
+     TierAsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     UserName: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+  parameters: 
+   BenefitCoverageIdQueryParam: 
+    in: query
+    name: BenefitCoverageId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
