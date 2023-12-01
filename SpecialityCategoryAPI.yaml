@@ -1,0 +1,232 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Provider Speciality Category API
+  description: Provider Speciality Category API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/speciality/categories: 
+   get: 
+    operationId: GetProviderSpecialtyCategories
+    tags: 
+     - Provider Speciality Category
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderSpecialtyCategoryIdQueryParam'
+     - $ref: '#/components/parameters/ParentIDQueryParam'
+     - $ref: '#/components/parameters/DisplayStatusQueryParam'
+     - $ref: '#/components/parameters/CategoryNameQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Speciality categories retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderSpecialtyCategoriesListDTO'
+  /provider/speciality/category: 
+   post: 
+    operationId: AddProviderSpecialtyCategory
+    tags: 
+     - Provider Speciality Category
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderSpecialtyCategoryDTO'
+    responses: 
+     '200': 
+      description: Speciality category added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateProviderSpecialtyCategory
+    tags: 
+     - Provider Speciality Category
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderSpecialtyCategoryDTO'
+    responses: 
+     '200': 
+      description: Speciality category updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteProviderSpecialtyCategory
+    tags: 
+     - Provider Speciality Category
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderSpecialtyCategoryIdQueryParam'
+    responses: 
+     '200': 
+      description: Speciality category deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /provider/speciality/categorieshistory: 
+   get: 
+    operationId: GetProviderSpecialtyCategories_History
+    tags: 
+     - Provider Speciality Category
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderSpecialtyCategoryIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Speciality category history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderSpecialtyCategoryHistotyListDTO'
+components: 
+  schemas: 
+   ProviderSpecialtyCategoriesListDTO: 
+    title : ProviderSpecialtyCategoriesListDTO
+    type: object
+    properties: 
+     ProviderSpecialtyCategoryID: 
+      type: integer
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     DisplayStatus: 
+      type: string
+      nullable: true
+     DisplayStatusSort: 
+      type: integer
+      nullable: true
+     SortKey: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   ProviderSpecialtyCategoryDTO: 
+    title : ProviderSpecialtyCategoryDTO
+    type: object
+    properties: 
+     ProviderSpecialtyCategoryID: 
+      type: integer
+      nullable: true
+     ParentID: 
+      type: integer
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     DisplayStatus: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: integer
+      nullable: true
+     ApplyToCategoryChildren: 
+      type: string
+      nullable: true
+   ProviderSpecialtyCategoryHistotyListDTO: 
+    title : ProviderSpecialtyCategoryHistotyListDTO
+    type: object
+    properties: 
+     ChangedBy: 
+      type: integer
+      description: 
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeTypeCode: 
+      type: string
+     ChangeType: 
+      type: string
+      nullable: true
+     HistoryID: 
+      type: integer
+     ParentID: 
+      type: integer
+     ProviderSpecialtyCategoryID: 
+      type: integer
+     CategoryName: 
+      type: string
+     DisplayStatusCode: 
+      type: string
+     DisplayStatus: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: integer
+      nullable: true
+     LastUpdatedByCode: 
+      type: string
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   ProviderSpecialtyCategoryIdQueryParam: 
+    in: query
+    name: ProviderSpecialtyCategoryId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ParentIDQueryParam: 
+    in: query
+    name: ParentID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DisplayStatusQueryParam: 
+    in: query
+    name: DisplayStatus
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   CategoryNameQueryParam: 
+    in: query
+    name: CategoryName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
