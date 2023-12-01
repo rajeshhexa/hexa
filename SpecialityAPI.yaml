@@ -1,0 +1,477 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Attachement V2 API
+  description: Attachment API V2
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /providers/speciality: 
+   get: 
+    operationId: GetSpecialtyForProvider
+    tags: 
+     - Speciality For Provider
+    summary: Get Speciality for provider
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderIDQueryParam'
+     - $ref: '#/components/parameters/SpecialtyIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+     - $ref: '#/components/parameters/AsOfDateQueryParam'
+    responses: 
+     '200': 
+      description: Speciality for provider retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/SpecialtyForProviderListDTO'
+   post: 
+    operationId: AddSpecialtyForProvider
+    tags: 
+     - Speciality For Provider
+    summary: Add Speciality for provider
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SpecialtyForProviderDTO'
+    responses: 
+     '200': 
+      description: Speciality for provider added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateSpecialtyForProvider
+    tags: 
+     - Speciality For Provider
+    summary: Update Speciality for provider
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/SpecialtyForProviderDTO'
+    responses: 
+     '200': 
+      description: Speciality for provider updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteSpecialtyForProvider
+    tags: 
+     - Speciality For Provider
+    summary: Delete Speciality for provider
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderSpecialtyMapIdQueryParam'
+    responses: 
+     '200': 
+      description: Speciality for provider deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /providers/specialitieshistory: 
+   get: 
+    operationId: GetProviderSpecialtiesMapHistory
+    tags: 
+     - Speciality For Provider
+    summary: Get Speciality provider map history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderSpecialtyMapIdQueryParam'
+     - $ref: '#/components/parameters/ProviderIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Speciality map history for providers retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderSpecialtiesMapHistoryListDTO'
+  /provider/taxonomycodes/speciality: 
+   put: 
+    operationId: UpdateProviderSpecialty
+    tags: 
+     - Provider Speciality
+    summary: Update provider speciality
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderSpecialtyDTO'
+    responses: 
+     '200': 
+      description: Provider speciality updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /providers/taxonomycodes/speciality/history: 
+   get: 
+    operationId: GetProviderSpecialtiesHistory
+    tags: 
+     - Provider Speciality
+    summary: Get provider speciality history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ProviderSpecialtyIDQueryParam'
+    responses: 
+     '200': 
+      description: Provider speciality history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderSpecialtyHistoryListDTO'
+components: 
+  schemas: 
+   SpecialtyForProviderDTO: 
+    title : SpecialtyForProviderDTO
+    type: object
+    properties: 
+     ProviderId: 
+      type: integer
+      nullable: true
+     PrimarySpecialty: 
+      type: string
+      nullable: true
+     InformationalOnly: 
+      type: string
+      nullable: true
+     SpecialtyId: 
+      type: integer
+      nullable: true
+     Certified: 
+      type: string
+      nullable: true
+     SignificantTraditionalProvider: 
+      type: string
+      nullable: true
+     MinimumPatientAge: 
+      type: integer
+      nullable: true
+     MaximumPatientAge: 
+      type: integer
+      nullable: true
+     PatientGender: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PrimaryCare: 
+      type: string
+      nullable: true
+     ProviderSpecialtyMapId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   SpecialtyForProviderListDTO: 
+    title : SpecialtyForProviderListDTO
+    type: object
+    properties: 
+     ProviderSpecialtyMapId: 
+      type: integer
+      description: 
+     ProviderId: 
+      type: integer
+      nullable: true
+     SpecialtyId: 
+      type: integer
+     SpecialtyName: 
+      type: string
+     SpecialtyNameTaxonomy: 
+      type: string
+      nullable: true
+     SpecialtyDescription: 
+      type: string
+      nullable: true
+     DisplayName: 
+      type: string
+      nullable: true
+     TaxonomyCode: 
+      type: string
+      nullable: true
+     SignificantTraditionalProvider: 
+      type: string
+      nullable: true
+     MinimumPatientAge: 
+      type: integer
+      nullable: true
+     MaximumPatientAge: 
+      type: integer
+      nullable: true
+     PatientGender: 
+      type: string
+     PrimarySpecialty: 
+      type: string
+     InformationalOnly: 
+      type: string
+     Certified: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     PrimaryCare: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+   ProviderSpecialtiesMapHistoryListDTO: 
+    title : ProviderSpecialtiesMapHistoryListDTO
+    type: object
+    properties: 
+     ProviderSpecialtyMapId: 
+      type: integer
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProviderId: 
+      type: integer
+     PrimarySpecialty: 
+      type: string
+     SpecialtyName: 
+      type: string
+      nullable: true
+     InformationalOnly: 
+      type: string
+     SpecialtyId: 
+      type: integer
+     Certified: 
+      type: integer
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     SignificantTraditionalProvider: 
+      type: string
+      nullable: true
+     TaxonomyCode: 
+      type: string
+      nullable: true
+     MinimumPatientAge: 
+      type: integer
+      nullable: true
+     MaximumPatientAge: 
+      type: integer
+      nullable: true
+     PatientGender: 
+      type: string
+      nullable: true
+     PatientGenderCode: 
+      type: string
+      nullable: true
+     PrimaryCare: 
+      type: string
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+   ProviderSpecialtyDTO: 
+    title : ProviderSpecialtyDTO
+    type: object
+    properties: 
+     ProviderSpecialtyID: 
+      type: integer
+      nullable: true
+     DisplayName: 
+      type: string
+      nullable: true
+     SpecialtyStatus: 
+      type: string
+      nullable: true
+     AlternateCode1: 
+      type: string
+      nullable: true
+     AlternateCode2: 
+      type: string
+      nullable: true
+     SpecialtyDescription: 
+      type: string
+      nullable: true
+     CertificationBoard: 
+      type: string
+      nullable: true
+     PrimaryCare: 
+      type: string
+      nullable: true
+     ApplyToSpecialtyChildren: 
+      type: string
+      nullable: true
+   ProviderSpecialtyHistoryListDTO: 
+    title : ProviderSpecialtyHistoryListDTO
+    type: object
+    properties: 
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+     ProviderSpecialtyID: 
+      type: integer
+     SpecialtyName: 
+      type: string
+     SpecialtyDescription: 
+      type: string
+      nullable: true
+     DisplayName: 
+      type: string
+      nullable: true
+     ParentID: 
+      type: integer
+      nullable: true
+     SpecialtyStatus: 
+      type: string
+      nullable: true
+     SpecialtyStatusCode: 
+      type: string
+     TaxonomyCode: 
+      type: string
+      nullable: true
+     AlternateCode1: 
+      type: string
+      nullable: true
+     AlternateCode2: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     CertificationBoardCode: 
+      type: string
+      nullable: true
+     CertificationBoard: 
+      type: string
+      nullable: true
+     PrimaryCare: 
+      type: string
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+  parameters: 
+   ProviderIDQueryParam: 
+    in: query
+    name: ProviderID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SpecialtyIDQueryParam: 
+    in: query
+    name: SpecialtyID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   FlagQueryParam: 
+    in: query
+    name: Flag
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   AsOfDateQueryParam: 
+    in: query
+    name: AsOfDate
+    required: false
+    schema: 
+     type: string
+     format: date-time
+    description: description of parameter passed
+   ProviderSpecialtyMapIdQueryParam: 
+    in: query
+    name: ProviderSpecialtyMapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProviderIdQueryParam: 
+    in: query
+    name: ProviderId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProviderSpecialtyIDQueryParam: 
+    in: query
+    name: ProviderSpecialtyID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
