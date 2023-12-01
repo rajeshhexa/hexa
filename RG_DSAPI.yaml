@@ -1,0 +1,426 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Providers Risk Group Delegate Services API
+  description: Providers Risk Group Delegate Services API V2
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /provider/riskgroup/delegatedservice: 
+   get: 
+    operationId: GetRiskGroupDelegatedService
+    tags: 
+     - Risk Group Delegated Service
+    summary: Get risk group delegated service
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/RiskGroupIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/SPNameQueryParam'
+    responses: 
+     '200': 
+      description: Risk Group delegated service retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/RiskGroupDelegatedServiceListDTO'
+   post: 
+    operationId: AddRiskGroupDelegatedService
+    tags: 
+     - Risk Group Delegated Service
+    summary: Add risk group delegated service
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RiskGroupDelegatedServiceDTO'
+    responses: 
+     '200': 
+      description: Risk Group delegated service added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateRiskGroupDelegatedService
+    tags: 
+     - Risk Group Delegated Service
+    summary: Update risk group delegated service
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/RiskGroupDelegatedServiceDTO'
+    responses: 
+     '200': 
+      description: Risk Group delegated service updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteRiskGroupDelegatedService
+    tags: 
+     - Risk Group Delegated Service
+    summary: Delete risk group delegated service
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/RiskGroupDelegatedServiceIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/SPNameQueryParam'
+    responses: 
+     '200': 
+      description: Risk Group delegated service deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /provider/riskgroup/delegatedservice/history: 
+   get: 
+    operationId: GetRiskGroupDelegatedServiceHistory
+    tags: 
+     - Risk Group Delegated Service
+    summary: Get risk group delegated service history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/RiskGroupDelegatedServiceIdQueryParam'
+     - $ref: '#/components/parameters/RiskGroupIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/SPNameQueryParam'
+    responses: 
+     '200': 
+      description: Risk Group delegated service history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/RiskGroupDelegatedServiceHistoryListDTO'
+  /provider/riskgroup/vendormaphistory: 
+   get: 
+    operationId: GetRiskGroupVendorMapHistory
+    tags: 
+     - Risk Group Delegated Service
+    summary: Get risk group vendor map history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/RiskGroupVendorMapIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/SPNameQueryParam'
+    responses: 
+     '200': 
+      description: Risk Group vendor map history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/RiskGroupVendorMapHistoryListDTO'
+components: 
+  schemas: 
+   RiskGroupDelegatedServiceListDTO: 
+    title : RiskGroupDelegatedServiceListDTO
+    type: object
+    properties: 
+     RiskGroupDelegatedServiceId: 
+      type: integer
+      description: 
+     RiskGroupId: 
+      type: integer
+     ServiceCategoryId: 
+      type: integer
+     ServiceCategoryName: 
+      type: string
+      nullable: true
+     DenialExplanationId: 
+      type: integer
+     ExplanationAbbreviation: 
+      type: string
+      nullable: true
+     ClaimRedirectAddressOverrideId: 
+      type: integer
+      nullable: true
+     ClaimRedirectAddressOverrideName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   RiskGroupDelegatedServiceDTO: 
+    title : RiskGroupDelegatedServiceDTO
+    type: object
+    properties: 
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     ServiceCategoryId: 
+      type: integer
+      nullable: true
+     DenialExplanationId: 
+      type: integer
+      nullable: true
+     ClaimRedirectAddressOverrideId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     RiskGroupDelegatedServiceid: 
+      type: integer
+      nullable: true
+   RiskGroupVendorMapHistoryListDTO: 
+    title : RiskGroupVendorMapHistoryListDTO
+    type: object
+    properties: 
+     HistoryId: 
+      type: integer
+      nullable: true
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeType: 
+      type: string
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     RiskGroupVendorMapId: 
+      type: integer
+      nullable: true
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     CapitationRateId: 
+      type: integer
+      nullable: true
+     CapitationRateName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     RiskGroupVendorClass: 
+      type: string
+      nullable: true
+     RiskGroupVendorClassName: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubclass: 
+      type: string
+      nullable: true
+     RiskGroupVendorSubclassName: 
+      type: string
+      nullable: true
+     RetroAddPeriod: 
+      type: integer
+      nullable: true
+     RetroTermPeriod: 
+      type: integer
+      nullable: true
+     PostingCutoffDay: 
+      type: integer
+      nullable: true
+     LastPostedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+   RiskGroupDelegatedServiceHistoryListDTO: 
+    title : RiskGroupDelegatedServiceHistoryListDTO
+    type: object
+    properties: 
+     HistoryId: 
+      type: integer
+     RiskGroupDelegatedServiceId: 
+      type: integer
+     RiskGroupId: 
+      type: integer
+      nullable: true
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeType: 
+      type: string
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ServiceCategoryId: 
+      type: integer
+     ServiceCategoryName: 
+      type: string
+      nullable: true
+     DenialExplanationId: 
+      type: integer
+     DenialExplanation: 
+      type: string
+      nullable: true
+     ClaimRedirectAddressOverrideId: 
+      type: integer
+      nullable: true
+     ClaimRedirectAddressOverride: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+  parameters: 
+   RiskGroupIdQueryParam: 
+    in: query
+    name: RiskGroupId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SPNameQueryParam: 
+    in: query
+    name: SPName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   RiskGroupDelegatedServiceIdQueryParam: 
+    in: query
+    name: RiskGroupDelegatedServiceId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   RiskGroupVendorMapIdQueryParam: 
+    in: query
+    name: RiskGroupVendorMapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
