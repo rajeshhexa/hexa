@@ -1,0 +1,284 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ReadJudicationWizard
+  description: ReadJudicationWizard API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/readjudicationwizard/jobs: 
+   post: 
+    operationId: GetReadJudicationWizardJobs
+    tags: 
+     - ReadJudicationWizardJob
+    summary: Get ReadJudicationWizardJobs
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReadJudicationWizardJobSearchDTO'
+    responses: 
+     '200': 
+      description: ReadJudicationWizardJobs retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReadJudicationWizardJobListDTO'
+  /claim/readjudicationwizard/job: 
+   post: 
+    operationId: AddReadJudicationWizardJob
+    tags: 
+     - ReadJudicationWizardJob
+    summary: Add ReadJudicationWizardJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReadJudicationWizardJobDTO'
+    responses: 
+     '200': 
+      description: ReadJudicationWizardJob added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateReadJudicationWizardJob
+    tags: 
+     - ReadJudicationWizardJob
+    summary: Update ReadJudicationWizardJob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReadJudicationWizardJobDTO'
+    responses: 
+     '200': 
+      description: ReadJudicationWizardJob updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/readjudicationwizard/trackprogress: 
+   post: 
+    operationId: TrackProgress
+    tags: 
+     - ReadJudicationWizardJob
+    summary: Track Progress
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TrackProgressDTO'
+    responses: 
+     '200': 
+      description: Progress tracked successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   ReadJudicationWizardJobSearchDTO: 
+    title : ReadJudicationWizardJobSearchDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     JobStep: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     ProcessedFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcessedTo: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ReadJudicationWizardJobListDTO: 
+    title : ReadJudicationWizardJobListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     JobDescription: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     JobTypeName: 
+      type: string
+      nullable: true
+     JobStep: 
+      type: string
+      nullable: true
+     JobStepName: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     ProcessingOptionsType: 
+      type: string
+      nullable: true
+     ProcessingOptionsTypeName: 
+      type: string
+      nullable: true
+     CreatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     CreatedBy: 
+      type: integer
+      nullable: true
+     CreatedByName: 
+      type: string
+      nullable: true
+     CompletedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     SubClassName: 
+      type: string
+      nullable: true
+     CanClose: 
+      type: string
+      nullable: true
+     CanVoid: 
+      type: string
+      nullable: true
+     HasDetails: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcessedFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcessedTo: 
+      type: string
+      format: date-time
+      nullable: true
+   ReadJudicationWizardJobDTO: 
+    title : ReadJudicationWizardJobDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: '|UPDATE|'
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     JobStep: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     JobDescription: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     ProcessingOptionsType: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+   TrackProgressDTO: 
+    title : TrackProgressDTO
+    type: object
+    properties: 
+     CurrentCount: 
+      type: integer
+      nullable: true
+     TotalCount: 
+      type: integer
+      nullable: true
+     ProcedureStepId: 
+      type: integer
+      nullable: true
+     ProgressMessage: 
+      type: string
+      nullable: true
+     ModValue: 
+      type: integer
+      nullable: true
