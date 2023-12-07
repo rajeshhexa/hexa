@@ -1,0 +1,275 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ProviderPickingStatics
+  description: ProviderPickingStatics API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/providerpickingstatics/vendorspecialmatches: 
+   get: 
+    operationId: GetProviderVendorSpecialMatches
+    tags: 
+     - ProviderVendorSpecialMatches
+    summary: Get ProviderVendorSpecialMatches
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/FederalIdWithoutDashQueryParam'
+     - $ref: '#/components/parameters/ResultCountQueryParam'
+    responses: 
+     '200': 
+      description: ProviderVendorSpecialMatches retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ProviderVendorSpecialMatchesListDTO'
+  /claim/providerpickingstatics/vendorspecialmatch: 
+   post: 
+    operationId: AddProviderVendorSpecialMatch
+    tags: 
+     - ProviderVendorSpecialMatches
+    summary: Add ProviderVendorSpecialMatch
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderVendorSpecialMatchDTO'
+    responses: 
+     '200': 
+      description: ProviderVendorSpecialMatch added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateProviderVendorSpecialMatch
+    tags: 
+     - ProviderVendorSpecialMatches
+    summary: Update ProviderVendorSpecialMatch
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProviderVendorSpecialMatchDTO'
+    responses: 
+     '200': 
+      description: ProviderVendorSpecialMatch updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   ProviderVendorSpecialMatchDTO: 
+    title : ProviderVendorSpecialMatchDTO
+    type: object
+    properties: 
+     VendorId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     VendorLike: 
+      type: string
+      nullable: true
+     FacilityLike: 
+      type: string
+      nullable: true
+     ProviderLike: 
+      type: string
+      nullable: true
+     OverrideProviderPickingPends: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MatchType: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     PlaceOfService: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     MatchId: 
+      type: integer
+      nullable: true
+   ProviderVendorSpecialMatchesListDTO: 
+    title : ProviderVendorSpecialMatchesListDTO
+    type: object
+    properties: 
+     MatchId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+     EIN: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorNPI: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorAddress1: 
+      type: string
+      nullable: true
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     VendorZipPlus4: 
+      type: string
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderNPI: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeNPI: 
+      type: string
+      nullable: true
+     OfficeAddress1: 
+      type: string
+      nullable: true
+     OfficeAddress2: 
+      type: string
+      nullable: true
+     OfficeCity: 
+      type: string
+      nullable: true
+     OfficeState: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     VendorLike: 
+      type: string
+      nullable: true
+     FacilityLike: 
+      type: string
+      nullable: true
+     ProviderLike: 
+      type: string
+      nullable: true
+     OverrideProviderPickingPends: 
+      type: string
+     OverrideProviderPickingPendsName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     MatchType: 
+      type: string
+      nullable: true
+     MatchTypeName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastupdatedBy: 
+      type: string
+     FormType: 
+      type: string
+      nullable: true
+     FormTypeName: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+     PlaceOfService: 
+      type: string
+      nullable: true
+     PlaceOfServiceName: 
+      type: string
+      nullable: true
+     FederalIdWithoutDash: 
+      type: string
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   FederalIdWithoutDashQueryParam: 
+    in: query
+    name: FederalIdWithoutDash
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ResultCountQueryParam: 
+    in: query
+    name: ResultCount
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
