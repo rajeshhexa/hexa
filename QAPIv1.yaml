@@ -1,0 +1,22 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Groups Qualifier Items API
+  description: Groups Qualifier Items API API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /groups/qualifieritems: 
+   post: 
+    operationId: GetQualifierItem
+    tags: 
+     - QualifierItem
+    summary: Get qualifier items
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/QualifierItemSearchDTO'
