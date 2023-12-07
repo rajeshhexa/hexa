@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Groups Qualifier Items API
+  description: Groups Qualifier Items API API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /groups/qualifieritems: 
+   post: 
+    operationId: GetQualifierItem
+    tags: 
+     - QualifierItem
+    summary: Get qualifier items
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/QualifierItemSearchDTO'
+    responses: 
+     '200': 
+      description: Qualifier Items retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/QualifierItemsListDTO'
+  /groups/qualifieritem: 
+   post: 
+    operationId: AddQualifierItem
+    tags: 
+     - QualifierItem
+    summary: Add qualifier item
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/QualifierItemDTO'
+    responses: 
+     '200': 
+      description: Qualifier Item added succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateQualifierItem
+    tags: 
+     - QualifierItem
+    summary: Update qualifier item
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/QualifierItemDTO'
+    responses: 
+     '200': 
+      description: Qualifier Item updated succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   QualifierItemSearchDTO: 
+    title : QualifierItemSearchDTO
+    type: object
+    properties: 
+     QualifierTypeId: 
+      type: integer
+      nullable: true
+     QualifierItemID: 
+      type: integer
+      nullable: true
+     QualifierItemName: 
+      type: string
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   QualifierItemsListDTO: 
+    title : QualifierItemsListDTO
+    type: object
+    properties: 
+     QualifierItemId: 
+      type: integer
+      nullable: true
+     Planid: 
+      type: integer
+      nullable: true
+     QualifierItemName: 
+      type: string
+     QualifierDescription: 
+      type: string
+     QualifierTypeId: 
+      type: integer
+      nullable: true
+     QualifierType: 
+      type: string
+      nullable: true
+     Unittype: 
+      type: string
+     UnitValue: 
+      type: number
+      nullable: true
+     DefaultVal: 
+      type: string
+     AppliedLevel: 
+      type: string
+     AppliedLevelName: 
+      type: string
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+   QualifierItemDTO: 
+    title : QualifierItemDTO
+    type: object
+    properties: 
+     QualifierItemid: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     QualifierItemName: 
+      type: string
+      nullable: true
+     QualifierDescription: 
+      type: string
+      nullable: true
+     QualifierTypeId: 
+      type: integer
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: number
+      nullable: true
+     DefaultVal: 
+      type: string
+      nullable: true
+     AppliedLevel: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+  parameters: 
+   QualifierItemidQueryParam: 
+    in: query
+    name: QualifierItemid
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PlanIdQueryParam: 
+    in: query
+    name: PlanId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
