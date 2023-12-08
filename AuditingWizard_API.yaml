@@ -1,0 +1,335 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: AuditingWizard
+  description: AuditingWizard API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims/auditingwizard/audits: 
+   get: 
+    operationId: GetAudits
+    tags: 
+     - AuditingWizard
+    summary: Get Audits
+    description: Description of path
+    responses: 
+     '200': 
+      description: Audits retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AuditListDTO'
+  /claims/auditingwizard/audit: 
+   put: 
+    operationId: UpdateAudit
+    tags: 
+     - AuditingWizard
+    summary: Update Audit
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AuditIDQueryParam'
+     - $ref: '#/components/parameters/CloseAuditQueryParam'
+     - $ref: '#/components/parameters/ReopenAuditQueryParam'
+     - $ref: '#/components/parameters/AuditClosedDateQueryParam'
+    responses: 
+     '200': 
+      description: Audit updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claims/auditingwizard/audit/details: 
+   get: 
+    operationId: GetAuditDetails
+    tags: 
+     - AuditingWizard
+    summary: Get AuditDetails
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AuditIDQueryParam'
+     - $ref: '#/components/parameters/AuditOrderQueryParam'
+     - $ref: '#/components/parameters/AuditDetailIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: AuditDetails retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AuditDetailsListDTO'
+components: 
+  schemas: 
+   AuditSearchDTO: 
+    title : AuditSearchDTO
+    type: object
+    properties: 
+     AuditID: 
+      type: integer
+      nullable: true
+     AuditingPackageName: 
+      type: string
+      nullable: true
+     StartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AuditStatusCode: 
+      type: string
+      nullable: true
+     AuditNumber: 
+      type: string
+      nullable: true
+     AuditName: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   AuditListDTO: 
+    title : AuditListDTO
+    type: object
+    properties: 
+     AuditID: 
+      type: integer
+     AuditNumber: 
+      type: string
+     AuditName: 
+      type: string
+      nullable: true
+     AuditStatus: 
+      type: string
+      nullable: true
+     AuditStatusCode: 
+      type: string
+     AuditClosedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AuditReportPath: 
+      type: string
+      nullable: true
+     AuditReportPathID: 
+      type: integer
+      nullable: true
+     AuditingPackageID: 
+      type: integer
+     AuditingPackageName: 
+      type: string
+     StartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DetailStatusCode: 
+      type: string
+      nullable: true
+     DetailStatus: 
+      type: string
+      nullable: true
+     NumberOfClaims: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     AuditCreatedByID: 
+      type: integer
+      nullable: true
+     AuditCreatedBy: 
+      type: string
+      nullable: true
+     AuditCreatedDate: 
+      type: string
+      format: date-time
+      nullable: true
+   ReadJudicationWizardJobDTO: 
+    title : ReadJudicationWizardJobDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     JobStep: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     JobName: 
+      type: string
+      nullable: true
+     JobDescription: 
+      type: string
+      nullable: true
+     JobType: 
+      type: string
+      nullable: true
+     ProcessingOptionsType: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+   AuditDetailsListDTO: 
+    title : AuditDetailsListDTO
+    type: object
+    properties: 
+     AuditDetailID: 
+      type: integer
+     AuditingPackageID: 
+      type: integer
+      nullable: true
+     ClaimID: 
+      type: integer
+     ClaimNumber: 
+      type: string
+     DetailStatus: 
+      type: string
+      nullable: true
+     Score: 
+      type: integer
+      nullable: true
+     Result: 
+      type: string
+      nullable: true
+     Comment1: 
+      type: string
+      nullable: true
+     Comment2: 
+      type: string
+      nullable: true
+     Comment3: 
+      type: string
+      nullable: true
+     Remarks: 
+      type: string
+      nullable: true
+     AuditOrder: 
+      type: integer
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     UserIdFilter: 
+      type: integer
+      nullable: true
+     UserIdFilterName: 
+      type: string
+      nullable: true
+     ReasonShortcut: 
+      type: string
+      nullable: true
+     ReasonName: 
+      type: string
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     EventIndividual: 
+      type: string
+      nullable: true
+     ReOpenClaim: 
+      type: string
+      nullable: true
+     WorkGroupId: 
+      type: integer
+      nullable: true
+     WorkGroupName: 
+      type: string
+      nullable: true
+     AssignToUserId: 
+      type: integer
+      nullable: true
+     AssignToUserName: 
+      type: string
+      nullable: true
+     AssignmentReason: 
+      type: string
+      nullable: true
+     AssignmentReasonName: 
+      type: string
+      nullable: true
+     AssignmentReasonNotes: 
+      type: string
+      nullable: true
+  parameters: 
+   AuditIDQueryParam: 
+    in: query
+    name: AuditID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CloseAuditQueryParam: 
+    in: query
+    name: CloseAudit
+    required: false
+    schema: 
+     type: string
+     default: 'N'
+    description: description of parameter passed
+   ReopenAuditQueryParam: 
+    in: query
+    name: ReopenAudit
+    required: false
+    schema: 
+     type: string
+     default: 'N'
+    description: description of parameter passed
+   AuditClosedDateQueryParam: 
+    in: query
+    name: AuditClosedDate
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   AuditOrderQueryParam: 
+    in: query
+    name: AuditOrder
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AuditDetailIDQueryParam: 
+    in: query
+    name: AuditDetailID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: '|GETALLDETAILS|'
+    description: description of parameter passed
