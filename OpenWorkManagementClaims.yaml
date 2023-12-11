@@ -1,0 +1,16 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: OpenWorkManagementClaims
+  description: OpenWorkManagementClaims API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/openworkmanagement/work/pending: 
+   null: 
+    operationId: GetPendedWork
+    tags: 
+     - OpenWorkManagementClaims
+    summary: Get PendedWork
+    description: Description of path
