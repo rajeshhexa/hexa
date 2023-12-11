@@ -1,0 +1,577 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: OpenWorkManagementClaims
+  description: OpenWorkManagementClaims API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/openworkmanagement/work/pending: 
+   post: 
+    operationId: GetPendedWork
+    tags: 
+     - OpenWorkManagementClaims
+    summary: Get PendedWork
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PendedWorkSearchDTO'
+    responses: 
+     '200': 
+      description: PendedWork retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PendedWorkListDTO'
+  /claim/openworkmanagement/users/pollingoptions: 
+   get: 
+    operationId: GetUserPollingOptions
+    tags: 
+     - OpenWorkManagementClaims
+    summary: Get UserPollingOptions
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/WorkGroupTypeCodeQueryParam'
+     - $ref: '#/components/parameters/UserPollingOptionIDQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: UserPollingOptions retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/UserPollingOptionsListDTO'
+  /claim/openworkmanagement/users/pollingoption: 
+   put: 
+    operationId: UpdateUserPollingOption
+    tags: 
+     - OpenWorkManagementClaims
+    summary: Update UserPollingOption
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UserPollingOptionDTO'
+    responses: 
+     '200': 
+      description: UserPollingOptions updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/openworkmanagement/workgroup/reapplytransform: 
+   post: 
+    operationId: ReapplyTransformForWorkGroup
+    tags: 
+     - OpenWorkManagementClaims
+    summary: Reapply TransformForWorkGroup
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/WorkGroupIDQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: TransformForWorkGroup reapplied successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   PendedWorkSearchDTO: 
+    title : PendedWorkSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     AssignedToID: 
+      type: integer
+      nullable: true
+     StartWorkDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EndWorkDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReturnAdditionalColumns: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   PendedWorkListDTO: 
+    title : PendedWorkListDTO
+    type: object
+    properties: 
+     PendedWorkID: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityID: 
+      type: integer
+     WorkGroupID: 
+      type: integer
+     WorkGroupName: 
+      type: string
+      nullable: true
+     WorkGroupAbbreviation: 
+      type: string
+      nullable: true
+     AssignmentTypeCode: 
+      type: string
+     AssignmentType: 
+      type: string
+      nullable: true
+     OriginalDateAssigned: 
+      type: string
+      format: date-time
+     DateAssigned: 
+      type: string
+      format: date-time
+      nullable: true
+     AssignedToID: 
+      type: integer
+      nullable: true
+     AssignedTo: 
+      type: string
+      nullable: true
+     AssignmentReasonCode: 
+      type: string
+      nullable: true
+     AssignmentReason: 
+      type: string
+      nullable: true
+     AssignmentReasonNotes: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     DateToWork: 
+      type: string
+      format: date-time
+      nullable: true
+     DateDue: 
+      type: string
+      nullable: true
+     CompletionAssignmentTypeCode: 
+      type: string
+      nullable: true
+     CompletionAssignmentType: 
+      type: string
+      nullable: true
+     CompletionWorkGroupID: 
+      type: integer
+      nullable: true
+     CompletionWorkGroupName: 
+      type: string
+      nullable: true
+     CompletionWorkGroupAbbreviation: 
+      type: string
+      nullable: true
+     PreviousWorkGroupName: 
+      type: string
+      nullable: true
+     FirstTimeAddedToWorkGroup: 
+      type: string
+      nullable: true
+     LockEdited: 
+      type: string
+      nullable: true
+     DateCompleted: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     ClaimID: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     ClaimType: 
+      type: string
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     StatusName: 
+      type: string
+      nullable: true
+     AuthorizationID: 
+      type: integer
+      nullable: true
+     CurrentVersion: 
+      type: integer
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     AuthorizationNumber: 
+      type: string
+      nullable: true
+     AuthorizationTypeCode: 
+      type: string
+      nullable: true
+     ExternalClaimNumber: 
+      type: string
+      nullable: true
+     LongTermCareId: 
+      type: integer
+      nullable: true
+     PharmacyEntryId: 
+      type: integer
+      nullable: true
+     ScreeningVisitId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupType: 
+      type: string
+      nullable: true
+     GroupLineOfBusiness: 
+      type: string
+      nullable: true
+     GroupLineOfBusinessName: 
+      type: string
+      nullable: true
+     GroupProductLine: 
+      type: string
+      nullable: true
+     GroupProductLineName: 
+      type: string
+      nullable: true
+     GroupCoverage: 
+      type: string
+      nullable: true
+     GroupCoverageName: 
+      type: string
+      nullable: true
+     GroupProductType: 
+      type: string
+      nullable: true
+     GroupProductTypeName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberAddress1: 
+      type: string
+      nullable: true
+     MemberAddress2: 
+      type: string
+      nullable: true
+     MemberCity: 
+      type: string
+      nullable: true
+     MemberState: 
+      type: string
+      nullable: true
+     MemberCounty: 
+      type: string
+      nullable: true
+     MemberZip: 
+      type: string
+      nullable: true
+     MemberZipSearch: 
+      type: string
+      nullable: true
+     MemberRegion: 
+      type: string
+      nullable: true
+     MemberRegionName: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderType: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     ProviderNPI: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeNPI: 
+      type: string
+      nullable: true
+     OfficeAddress1: 
+      type: string
+      nullable: true
+     OfficeAddress2: 
+      type: string
+      nullable: true
+     OfficeCity: 
+      type: string
+      nullable: true
+     OfficeState: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     OfficeZipSearch: 
+      type: string
+      nullable: true
+     OfficeRegion: 
+      type: string
+      nullable: true
+     OfficeRegionName: 
+      type: string
+      nullable: true
+     OfficeCounty: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNPI: 
+      type: string
+      nullable: true
+     VendorAddress1: 
+      type: string
+      nullable: true
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     VendorCountryCode: 
+      type: string
+      nullable: true
+     CorporationId: 
+      type: integer
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     EINType: 
+      type: string
+      nullable: true
+     EINTypeName: 
+      type: string
+      nullable: true
+   UserPollingOptionsListDTO: 
+    title : UserPollingOptionsListDTO
+    type: object
+    properties: 
+     UserPollingOptionID: 
+      type: integer
+     UserID: 
+      type: integer
+     WorkGroupTypeCode: 
+      type: string
+     WorkGroupType: 
+      type: string
+      nullable: true
+     WorkFromAnyWorkGroupCode: 
+      type: string
+     WorkFromAnyWorkGroup: 
+      type: string
+      nullable: true
+     PendToSameWorkGroupCode: 
+      type: string
+     PendToSameWorkGroup: 
+      type: string
+      nullable: true
+     SelectWorkGroupToPollFromCode: 
+      type: string
+     SelectWorkGroupToPollFrom: 
+      type: string
+      nullable: true
+     PollingOrderCode: 
+      type: string
+     PollingOrder: 
+      type: string
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   UserPollingOptionDTO: 
+    title : UserPollingOptionDTO
+    type: object
+    properties: 
+     UserPollingOptionID: 
+      type: integer
+      nullable: true
+     WorkFromAnyWorkGroupCode: 
+      type: string
+      nullable: true
+     PendToSameWorkGroupCode: 
+      type: string
+      nullable: true
+     SelectWorkGroupToPollFromCode: 
+      type: string
+      nullable: true
+     PollingOrderCode: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   WorkGroupTypeCodeQueryParam: 
+    in: query
+    name: WorkGroupTypeCode
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UserPollingOptionIDQueryParam: 
+    in: query
+    name: UserPollingOptionID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   WorkGroupIDQueryParam: 
+    in: query
+    name: WorkGroupID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
