@@ -1,0 +1,899 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: AuditingPackage
+  description: AuditingPackage API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims/auditingpackages: 
+   get: 
+    operationId: GetAuditingPackages
+    tags: 
+     - AuditingPackage
+    summary: Get AuditingPackage
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AuditingPackageIdQueryParam'
+     - $ref: '#/components/parameters/AuditingPackageNameQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: AuditingPackage retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ AuditingPackageListDTO'
+  /claims/auditingpackage: 
+   post: 
+    operationId: AddAuditingPackage
+    tags: 
+     - AuditingPackage
+    summary: Add AuditingPackage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ AuditingPackageDTO'
+    responses: 
+     '200': 
+      description: AuditingPackage added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateAuditingPackage
+    tags: 
+     - AuditingPackage
+    summary: Update AuditingPackage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ AuditingPackageDTO'
+    responses: 
+     '200': 
+      description: AuditingPackage updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteAuditingPackage
+    tags: 
+     - AuditingPackage
+    summary: Delete AuditingPackage
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AuditingPackageIDQueryParam'
+    responses: 
+     '200': 
+      description: AuditingPackage deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claims/auditingpackage/detailsentity: 
+   get: 
+    operationId: GetAuditingPackageDetailsEntity
+    tags: 
+     - AuditingPackage
+    summary: Get AuditingPackageDetailsEntity
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AuditingPackageIDQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: AuditingPackage retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ AuditingPackageDetailsEntityListDTO'
+  /claims/auditingpackage/detailsentitymap: 
+   post: 
+    operationId: AddAuditingPackageDetailsEntityMap
+    tags: 
+     - AuditingPackage
+    summary: Add AuditingPackageDetailsEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ AuditingPackageDetailsEntityDTO'
+    responses: 
+     '200': 
+      description: AuditingPackageDetailsEntity added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteAuditingPackageDetailsEntityMap
+    tags: 
+     - AuditingPackage
+    summary: Delete AuditingPackageDetailsEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AuditingPackageIdQueryParam'
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+    responses: 
+     '200': 
+      description: AuditingPackageDetailsEntity deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /claims/auditingpackage/eamappers: 
+   get: 
+    operationId: GetEAMapperAll_IDs
+    tags: 
+     - AuditingPackage
+    summary: Get EAMapperAll_IDs
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EntityParentTypeQueryParam'
+     - $ref: '#/components/parameters/EntityParentIDQueryParam'
+    responses: 
+     '200': 
+      description: EAMapperAll_IDs retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EAMapperAllIDsListDTO'
+   post: 
+    operationId: AddEAMapper
+    tags: 
+     - AuditingPackage
+    summary: Add EAMapper
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EAMapperDTO'
+    responses: 
+     '200': 
+      description: EAMapper added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateEAMapper
+    tags: 
+     - AuditingPackage
+    summary: Update EAMapper
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EAMapperDTO'
+    responses: 
+     '200': 
+      description: EAMapper updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteEAMapper
+    tags: 
+     - AuditingPackage
+    summary: Delete EAMapper
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AttributeIDQueryParam'
+     - $ref: '#/components/parameters/EntityParentTypeQueryParam'
+     - $ref: '#/components/parameters/EntityParentIDQueryParam'
+     - $ref: '#/components/parameters/EntityParentCodeQueryParam'
+    responses: 
+     '200': 
+      description: EAMapper deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+    AuditingPackageDTO: 
+    title :  AuditingPackageDTO
+    type: object
+    properties: 
+     AuditingPackageID: 
+      type: integer
+      nullable: true
+     AuditingPackageName: 
+      type: string
+      nullable: true
+     DateToUse: 
+      type: string
+      nullable: true
+     StartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AutoIncrementAuditDatesIdFilter: 
+      type: string
+      nullable: true
+     IncludePreviouslyAuditedRecords: 
+      type: string
+      nullable: true
+     IncludeHistoryClaimsFilter: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     NumberOfClaims: 
+      type: integer
+      nullable: true
+     ClaimUnit: 
+      type: string
+      nullable: true
+     ScoringMethod: 
+      type: string
+      nullable: true
+     MinimumAmountPaid: 
+      type: string
+      nullable: true
+     MinimumTotalAmount: 
+      type: string
+      nullable: true
+     GroupIDFilter: 
+      type: integer
+      nullable: true
+     UserIDFilter: 
+      type: integer
+      nullable: true
+     UserContextFilter: 
+      type: string
+      nullable: true
+     ReimbursementIDFilter: 
+      type: integer
+      nullable: true
+     ClassFilter: 
+      type: string
+      nullable: true
+     AuditReportPathID: 
+      type: integer
+      nullable: true
+     AuditPeriod: 
+      type: integer
+      nullable: true
+     AuditUnit: 
+      type: string
+      nullable: true
+     ClaimTypeFilter: 
+      type: string
+      nullable: true
+     ProviderIDFilter: 
+      type: integer
+      nullable: true
+     OfficeIDFilter: 
+      type: integer
+      nullable: true
+     ExplanationIDFilter: 
+      type: integer
+      nullable: true
+     ServiceCategoryIDFilter: 
+      type: integer
+      nullable: true
+     DiagnosisCodeIDFilter: 
+      type: integer
+      nullable: true
+     DiagnosisCategoryIDFilter: 
+      type: integer
+      nullable: true
+     ProcedureCategoryIDFilter: 
+      type: integer
+      nullable: true
+     VendorIDFilter: 
+      type: integer
+      nullable: true
+     MemberCoverageIDFilter: 
+      type: integer
+      nullable: true
+     LineOfBusinessIdFilter: 
+      type: string
+      nullable: true
+     ProductLineIdFilter: 
+      type: string
+      nullable: true
+     ProductTypeIdFilter: 
+      type: string
+      nullable: true
+     CoverageIdFilter: 
+      type: string
+      nullable: true
+     PlaceOfServiceIdFilter: 
+      type: string
+      nullable: true
+     SourceTypeIdFilter: 
+      type: string
+      nullable: true
+     ContractIdFilter: 
+      type: integer
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     COBClaimsIdFilter: 
+      type: string
+      nullable: true
+     ClaimStatusIdFilter: 
+      type: string
+      nullable: true
+     ClaimCategoryIdFilter: 
+      type: string
+      nullable: true
+     PaymentStatusIdFilter: 
+      type: string
+      nullable: true
+     HoldPaymentFilter: 
+      type: string
+      nullable: true
+     ClaimPaymentsFilter: 
+      type: string
+      nullable: true
+     AdjudicationEfficiency: 
+      type: string
+      nullable: true
+     FailureContactReasonID: 
+      type: string
+      nullable: true
+     REOPENCLAIM: 
+      type: string
+      nullable: true
+     EVENTINDIVIDUAL: 
+      type: string
+      nullable: true
+     WorkGroupId: 
+      type: integer
+      nullable: true
+     AssignToUserId: 
+      type: integer
+      nullable: true
+     AssignmentReason: 
+      type: string
+      nullable: true
+     AssignmentReasonNotes: 
+      type: string
+      nullable: true
+    AuditingPackageListDTO: 
+    title :  AuditingPackageListDTO
+    type: object
+    properties: 
+     AuditingPackageId: 
+      type: integer
+     AuditingPackageName: 
+      type: string
+     AuditScoringMethodCode: 
+      type: string
+      nullable: true
+     AuditScoringMethod: 
+      type: string
+      nullable: true
+     UserDefinedCustomFilterProcedure: 
+      type: string
+      nullable: true
+     DateToUse: 
+      type: string
+     DateToUseName: 
+      type: string
+      nullable: true
+     StartDate: 
+      type: string
+      format: date-time
+     EndDate: 
+      type: string
+      format: date-time
+     AutoIncrementAuditDatesIdFilter: 
+      type: string
+     AutoIncrementAuditDates: 
+      type: string
+      nullable: true
+     IncludeHistoryClaimsFilter: 
+      type: string
+      nullable: true
+     IncludeHistoryClaims: 
+      type: string
+      nullable: true
+     IncludePreviouslyAuditedRecords: 
+      type: string
+      nullable: true
+     IncludePreviouslyAuditedRecordsName: 
+      type: string
+      nullable: true
+     AuditPeriod: 
+      type: integer
+     AuditUnit: 
+      type: string
+     AuditUnitName: 
+      type: string
+      nullable: true
+     HoldPaymentFilter: 
+      type: string
+      nullable: true
+     HoldPaymentName: 
+      type: string
+      nullable: true
+     UserName: 
+      type: string
+      nullable: true
+     UserIDFilter: 
+      type: integer
+      nullable: true
+     ClaimPaymentsFilter: 
+      type: string
+      nullable: true
+     ClaimPayments: 
+      type: string
+      nullable: true
+     UserContextFilter: 
+      type: string
+      nullable: true
+     UserContext: 
+      type: string
+      nullable: true
+     NumberOfClaims: 
+      type: integer
+      nullable: true
+     ClaimUnit: 
+      type: string
+     ClaimUnitName: 
+      type: string
+      nullable: true
+     GroupIDFilter: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     PlaceOfServiceIdFilter: 
+      type: string
+      nullable: true
+     PlaceOfService: 
+      type: string
+      nullable: true
+     ExplanationIDFilter: 
+      type: integer
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     ProviderIDFilter: 
+      type: integer
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     OfficeIDFilter: 
+      type: integer
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     MinimumTotalAmount: 
+      type: string
+      nullable: true
+     MinimumAmountPaid: 
+      type: string
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     ClaimStatusIdFilter: 
+      type: string
+      nullable: true
+     ContractIdFilter: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     DiagnosisCodeIDFilter: 
+      type: integer
+      nullable: true
+     DiagnosisCode: 
+      type: string
+      nullable: true
+     ScoringMethod: 
+      type: string
+     ReimbursementIDFilter: 
+      type: integer
+      nullable: true
+     Reimbursement: 
+      type: string
+      nullable: true
+     ClassFilter: 
+      type: string
+      nullable: true
+     AuditReportPath: 
+      type: string
+      nullable: true
+     AuditReportPathID: 
+      type: integer
+      nullable: true
+     ClaimTypeFilter: 
+      type: string
+      nullable: true
+     ClaimType: 
+      type: string
+      nullable: true
+     ServiceCategoryIdFilter: 
+      type: integer
+      nullable: true
+     ServiceCategory: 
+      type: string
+      nullable: true
+     DiagnosisCategoryIDFilter: 
+      type: integer
+      nullable: true
+     DiagnosisCategory: 
+      type: string
+      nullable: true
+     ProcedureCategoryIdFilter: 
+      type: integer
+      nullable: true
+     ProcedureCategory: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorIDFilter: 
+      type: integer
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     MemberCoverageIDFilter: 
+      type: integer
+      nullable: true
+     LineOfBusiness: 
+      type: string
+      nullable: true
+     LineOfBusinessIdFilter: 
+      type: string
+      nullable: true
+     ProductLineIdFilter: 
+      type: string
+      nullable: true
+     ProductLine: 
+      type: string
+      nullable: true
+     ProductTypeIdFilter: 
+      type: string
+      nullable: true
+     ProductType: 
+      type: string
+      nullable: true
+     CoverageIdFilter: 
+      type: string
+      nullable: true
+     Coverage: 
+      type: string
+      nullable: true
+     SourceTypeIdFilter: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     LiabilityLevelId: 
+      type: integer
+      nullable: true
+     LiabilityLevel: 
+      type: string
+      nullable: true
+     COBClaimsIdFilter: 
+      type: string
+      nullable: true
+     COBClaims: 
+      type: string
+      nullable: true
+     ClaimCategory: 
+      type: string
+      nullable: true
+     ClaimCategoryIdFilter: 
+      type: string
+      nullable: true
+     PaymentStatus: 
+      type: string
+      nullable: true
+     PaymentStatusIdFilter: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     FormTypeName: 
+      type: string
+      nullable: true
+     AdjudicationEfficiency: 
+      type: string
+      nullable: true
+     AdjudicationEfficiencyName: 
+      type: string
+      nullable: true
+     UserFilterSQLProcedure: 
+      type: string
+      nullable: true
+     LastupdatedBy: 
+      type: string
+     LastupdatedAt: 
+      type: string
+      format: date-time
+     FailureContactReasonID: 
+      type: integer
+      nullable: true
+     ReasonName: 
+      type: string
+      nullable: true
+     UserIDFilterName: 
+      type: string
+      nullable: true
+     REOPENCLAIM: 
+      type: string
+      nullable: true
+     EVENTINDIVIDUAL: 
+      type: string
+      nullable: true
+     WorkGroupId: 
+      type: integer
+      nullable: true
+     AssignToUserId: 
+      type: integer
+      nullable: true
+     AssignmentReason: 
+      type: string
+      nullable: true
+     AssignmentReasonNotes: 
+      type: string
+      nullable: true
+    AuditingPackageDetailsEntityListDTO: 
+    title :  AuditingPackageDetailsEntityListDTO
+    type: object
+    properties: 
+     AuditingPackageId: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityId: 
+      type: integer
+     ProcedureCode: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedByID: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     AuditingPackageDetailsEntityMapId: 
+      type: integer
+    AuditingPackageDetailsEntityDTO: 
+    title :  AuditingPackageDetailsEntityDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     AdditionalServicesCode: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+   EAMapperAllIDsListDTO: 
+    title : EAMapperAllIDsListDTO
+    type: object
+    properties: 
+     AttributeID: 
+      type: integer
+     AttributeName: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     CACategory: 
+      type: string
+      nullable: true
+     DataType: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+     EntityParentID: 
+      type: string
+     Required: 
+      type: string
+     SortKey: 
+      type: string
+      nullable: true
+     ForeColor: 
+      type: string
+      nullable: true
+     BackColor: 
+      type: string
+      nullable: true
+     FontStyle: 
+      type: string
+      nullable: true
+     Category: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     Status: 
+      type: string
+      nullable: true
+     Disabled: 
+      type: string
+      nullable: true
+     DisplayAsOfDate: 
+      type: string
+     CustomAttributesCategoryID: 
+      type: integer
+      nullable: true
+   EAMapperDTO: 
+    title : EAMapperDTO
+    type: object
+    properties: 
+     AttributeID: 
+      type: integer
+      nullable: true
+     EntityParentType: 
+      type: string
+      nullable: true
+     Required: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: string
+      nullable: true
+     EntityParentID: 
+      type: integer
+      nullable: true
+     EntityParentCode: 
+      type: string
+      nullable: true
+     ForeColor: 
+      type: string
+      default: 000000'
+      nullable: true
+     BackColor: 
+      type: string
+      default: FFFFFF'
+      nullable: true
+     FontStyle: 
+      type: string
+      default: REG'
+      nullable: true
+     CustomAttributesCategoryID: 
+      type: integer
+      nullable: true
+     DisplayAsOfDate: 
+      type: string
+      default: 'N'
+      nullable: true
+  parameters: 
+   AuditingPackageIdQueryParam: 
+    in: query
+    name: AuditingPackageId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AuditingPackageNameQueryParam: 
+    in: query
+    name: AuditingPackageName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: '|USAGE1|'
+    description: description of parameter passed
+   AuditingPackageIDQueryParam: 
+    in: query
+    name: AuditingPackageID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   EntityIdQueryParam: 
+    in: query
+    name: EntityId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityParentTypeQueryParam: 
+    in: query
+    name: EntityParentType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   EntityParentIDQueryParam: 
+    in: query
+    name: EntityParentID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AttributeIDQueryParam: 
+    in: query
+    name: AttributeID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityParentCodeQueryParam: 
+    in: query
+    name: EntityParentCode
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
