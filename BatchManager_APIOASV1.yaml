@@ -1,0 +1,409 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: BatchManager
+  description: BatchManager API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/batchmanager/outputbatch: 
+   post: 
+    operationId: GetClaimsForOutputBatch
+    tags: 
+     - BatchManager
+    summary: Get ClaimsForOutputBatch
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimsForOutputBatchSearchDTO'
+    responses: 
+     '200': 
+      description: ClaimsForOutputBatch retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimsForOutputBatchListDTO'
+components: 
+  schemas: 
+   ClaimsForOutputBatchListDTO: 
+    title : ClaimsForOutputBatchListDTO
+    type: object
+    properties: 
+     InputBatchId: 
+      type: integer
+      nullable: true
+     ClaimId: 
+      type: integer
+     ClaimNumber: 
+      type: string
+     ClaimStatusCode: 
+      type: string
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     Queue: 
+      type: integer
+      nullable: true
+     PendedReason: 
+      type: string
+      nullable: true
+     PendedDescription: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     FormSubtype: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ReceivedDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ReceivedDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     DatePaid: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     PCPId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     ClaimType: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     EIN: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ExternalClaimEditing: 
+      type: string
+      nullable: true
+     EOBReportPath: 
+      type: string
+      nullable: true
+     MemberClaimSummaryReportPath: 
+      type: string
+      nullable: true
+     ProviderClaimSummaryReportPath: 
+      type: string
+      nullable: true
+     PCPPreEstimateReportPath: 
+      type: string
+      nullable: true
+     ProviderPreEstimateReportPath: 
+      type: string
+      nullable: true
+     MemberPreEstimateReportPath: 
+      type: string
+      nullable: true
+     RPCCoverSheetReportPath: 
+      type: string
+      nullable: true
+     CaseId: 
+      type: integer
+      nullable: true
+     CaseType: 
+      type: string
+      nullable: true
+     CaseNumber: 
+      type: string
+      nullable: true
+     EOBReportId: 
+      type: integer
+      nullable: true
+     MemberClaimSummaryReportID: 
+      type: integer
+      nullable: true
+     ProviderClaimSummaryReportID: 
+      type: integer
+      nullable: true
+     PCPPreEstimateReportId: 
+      type: integer
+      nullable: true
+     ProviderPreEstimateReportId: 
+      type: integer
+      nullable: true
+     MemberPreEstimateReportId: 
+      type: integer
+      nullable: true
+     RPCCoverSheetReportId: 
+      type: integer
+      nullable: true
+     PayProvider: 
+      type: string
+      nullable: true
+     PayMember: 
+      type: string
+      nullable: true
+     ActionCodes: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     FeeScheduleId: 
+      type: integer
+      nullable: true
+     MaxReimbursementID: 
+      type: integer
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     OutputBatchClaims: 
+      type: string
+      nullable: true
+     ReturnDupClaims: 
+      type: string
+      nullable: true
+     ShowDetails: 
+      type: string
+      nullable: true
+     OutputBatchType: 
+      type: string
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     SourceNumber: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     GroupType: 
+      type: string
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+     ProviderContractNumber: 
+      type: string
+      nullable: true
+     PrintPCPProviderPreEstimates: 
+      type: string
+     SelectAll: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     WorkGroupName: 
+      type: string
+      nullable: true
+     ErrorMessage: 
+      type: string
+      nullable: true
+   ClaimsForOutputBatchSearchDTO: 
+    title : ClaimsForOutputBatchSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ClaimXML: 
+      type: string
+      nullable: true
+     OutputBatchType: 
+      type: string
+      nullable: true
+     ReceivedDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ReceivedDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     CaseNumber: 
+      type: string
+      nullable: true
+     CaseId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     SourceNumber: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     FormSubtype: 
+      type: string
+      nullable: true
+     ClaimType: 
+      type: string
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     ShowDetails: 
+      type: string
+      nullable: true
+     OutputBatchClaims: 
+      type: string
+      nullable: true
+     ReturnDupClaims: 
+      type: string
+      nullable: true
+     SelectAll: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     FeeScheduleId: 
+      type: integer
+      nullable: true
+     InterchangeID: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
