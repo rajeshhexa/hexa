@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: PlaceOfServiceRules
+  description: PlaceOfServiceRules API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims/ub/placeofservicerules: 
+   get: 
+    operationId: GetPlaceOfServiceRules
+    tags: 
+     - PlaceOfServiceRules
+    summary: Get PlaceOfServiceRules
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PlaceOfServiceRuleIDQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: PlaceOfServiceRules retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PlaceOfServiceRulesListDTO'
+   post: 
+    operationId: AddPlaceOfServiceRules
+    tags: 
+     - PlaceOfServiceRules
+    summary: Add PlaceOfServiceRules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PlaceOfServiceRulesDTO'
+    responses: 
+     '200': 
+      description: PlaceOfServiceRules added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdatePlaceOfServiceRules
+    tags: 
+     - PlaceOfServiceRules
+    summary: Update PlaceOfServiceRules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PlaceOfServiceRulesDTO'
+    responses: 
+     '200': 
+      description: PlaceOfServiceRules updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeletePlaceOfServiceRules
+    tags: 
+     - PlaceOfServiceRules
+    summary: Delete PlaceOfServiceRules
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/PlaceOfServiceRuleIDQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/RaiserrorQueryParam'
+    responses: 
+     '200': 
+      description: PlaceOfServiceRules deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   PlaceOfServiceRulesListDTO: 
+    title : PlaceOfServiceRulesListDTO
+    type: object
+    properties: 
+     PlaceOfServiceRuleID: 
+      type: integer
+      nullable: true
+     PlaceOfService: 
+      type: string
+      nullable: true
+     TypeOfBillFrom: 
+      type: string
+     TypeOfBillTo: 
+      type: string
+     RevCodeFrom: 
+      type: string
+      nullable: true
+     RevCodeTo: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: number
+     ExplanationId: 
+      type: integer
+      nullable: true
+     Explanation: 
+      type: string
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   PlaceOfServiceRulesDTO: 
+    title : PlaceOfServiceRulesDTO
+    type: object
+    properties: 
+     PlaceOfServiceRuleID: 
+      type: integer
+      nullable: true
+     PlaceOfService: 
+      type: string
+      nullable: true
+     TypeOfBillFrom: 
+      type: string
+      nullable: true
+     TypeOfBillTo: 
+      type: string
+      nullable: true
+     RevCodeFrom: 
+      type: string
+      nullable: true
+     RevCodeTo: 
+      type: string
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Precedence: 
+      type: number
+      nullable: true
+  parameters: 
+   PlaceOfServiceRuleIDQueryParam: 
+    in: query
+    name: PlaceOfServiceRuleID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   RaiserrorQueryParam: 
+    in: query
+    name: Raiserror
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
