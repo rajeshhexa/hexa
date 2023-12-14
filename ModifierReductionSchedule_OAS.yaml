@@ -1,0 +1,335 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ModifierReductionSchedule
+  description: ModifierReductionSchedule API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/modifierreductionschedules: 
+   get: 
+    operationId: GetModifierReductionSchedules
+    tags: 
+     - ModifierReductionSchedule
+    summary: Get ModifierReductionSchedules
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: ModifierReductionSchedules retreived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ModifierReductionSchedulesListDTO'
+  /claim/modifierreductionschedule: 
+   post: 
+    operationId: AddModifierReductionSchedule
+    tags: 
+     - ModifierReductionSchedule
+    summary: Add ModifierReductionSchedule
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/NameQueryParam'
+     - $ref: '#/components/parameters/DescriptionQueryParam'
+    responses: 
+     '200': 
+      description: ModifierReductionSchedule added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateModifierReductionSchedule
+    tags: 
+     - ModifierReductionSchedule
+    summary: Update ModifierReductionSchedule
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ModifierReductionScheduleIdQueryParam'
+     - $ref: '#/components/parameters/NameQueryParam'
+     - $ref: '#/components/parameters/DescriptionQueryParam'
+    responses: 
+     '200': 
+      description: ModifierReductionSchedule updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/modifierreductionschedule/finddetails: 
+   get: 
+    operationId: FindModifierReductionScheduleDetails
+    tags: 
+     - ModifierReductionSchedule
+    summary: Find ModifierReductionScheduleDetails
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ModifierReductionScheduleIdQueryParam'
+     - $ref: '#/components/parameters/ModifierQueryParam'
+     - $ref: '#/components/parameters/ProcedureCodeFromQueryParam'
+     - $ref: '#/components/parameters/ProcedureCodeToQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: ModifierReductionScheduleDetails Retrived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/FindModifierReductionScheduleDetailsListDTO'
+  /claim/modifierreductionschedule/details: 
+   get: 
+    operationId: GetModifierReductionScheduleDetails
+    tags: 
+     - ModifierReductionSchedule
+    summary: Get ModifierReductionScheduleDetails
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ModifierReductionScheduleIdQueryParam'
+     - $ref: '#/components/parameters/ModifierReductionScheduleDetailIdQueryParam'
+    responses: 
+     '200': 
+      description: ModifierReductionScheduleDetails Retrived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ModifierReductionScheduleDetailsListDTO'
+   post: 
+    operationId: AddModifierReductionScheduleDetail
+    tags: 
+     - ModifierReductionSchedule
+    summary: Add ModifierReductionScheduleDetail
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierReductionScheduleDetailDTO'
+    responses: 
+     '200': 
+      description: ModifierReductionScheduleDetails added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateModifierReductionScheduleDetail
+    tags: 
+     - ModifierReductionSchedule
+    summary: Update ModifierReductionScheduleDetail
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ModifierReductionScheduleDetailDTO'
+    responses: 
+     '200': 
+      description: ModifierReductionScheduleDetails updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   ModifierReductionSchedulesListDTO: 
+    title : ModifierReductionSchedulesListDTO
+    type: object
+    properties: 
+     ModifierReductionScheduleId: 
+      type: integer
+     Name: 
+      type: string
+     Description: 
+      type: string
+     System: 
+      type: string
+     LastUpdatedByUser: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   ModifierReductionScheduleDetailsListDTO: 
+    title : ModifierReductionScheduleDetailsListDTO
+    type: object
+    properties: 
+     ModifierReductionScheduleDetailId: 
+      type: integer
+     ModifierReductionScheduleId: 
+      type: integer
+     Modifier: 
+      type: string
+     ProcedureCodeFrom: 
+      type: string
+     ProcedureCodeTo: 
+      type: string
+     Type: 
+      type: string
+     Value: 
+      type: number
+     Informational: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     ExplanationId: 
+      type: integer
+      nullable: true
+     LastUpdatedByUser: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   FindModifierReductionScheduleDetailsListDTO: 
+    title : FindModifierReductionScheduleDetailsListDTO
+    type: object
+    properties: 
+     ModifierReductionScheduleDetailId: 
+      type: integer
+     ModifierReductionScheduleId: 
+      type: integer
+     Modifier: 
+      type: string
+     ProcedureCodeFrom: 
+      type: string
+     ProcedureCodeTo: 
+      type: string
+     Type: 
+      type: string
+     TypeOfValue: 
+      type: string
+      nullable: true
+     Value: 
+      type: number
+     Informational: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     ExplanationId: 
+      type: integer
+      nullable: true
+     ExplanationAbbreviation: 
+      type: string
+      nullable: true
+     LastUpdatedByUser: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   ModifierReductionScheduleDetailDTO: 
+    title : ModifierReductionScheduleDetailDTO
+    type: object
+    properties: 
+     ModifierReductionScheduleDetailId: 
+      type: integer
+      nullable: true
+     ModifierReductionScheduleId: 
+      type: integer
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+     ProcedureCodeFrom: 
+      type: string
+      nullable: true
+     ProcedureCodeTo: 
+      type: string
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     Value: 
+      type: number
+      nullable: true
+     Informational: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   NameQueryParam: 
+    in: query
+    name: Name
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   DescriptionQueryParam: 
+    in: query
+    name: Description
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ModifierReductionScheduleIdQueryParam: 
+    in: query
+    name: ModifierReductionScheduleId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ModifierQueryParam: 
+    in: query
+    name: Modifier
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ProcedureCodeFromQueryParam: 
+    in: query
+    name: ProcedureCodeFrom
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ProcedureCodeToQueryParam: 
+    in: query
+    name: ProcedureCodeTo
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ModifierReductionScheduleDetailIdQueryParam: 
+    in: query
+    name: ModifierReductionScheduleDetailId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
