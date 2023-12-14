@@ -1,0 +1,177 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ClaimDuplicateCheckRules
+  description: ClaimDuplicateCheckRules API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims/duplicatecheckrules: 
+   get: 
+    operationId: GetClaimDuplicateCheckRules
+    tags: 
+     - ClaimDuplicateCheckRules
+    summary: Get ClaimDuplicateCheckRules
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/DuplicateCheckRuleIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: ClaimDuplicateCheckRules retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimDuplicateCheckRulesListDTO'
+   post: 
+    operationId: AddClaimDuplicateCheckRules
+    tags: 
+     - ClaimDuplicateCheckRules
+    summary: Add ClaimDuplicateCheckRules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimDuplicateCheckRulesDTO'
+    responses: 
+     '200': 
+      description: ClaimDuplicateCheckRules added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateClaimDuplicateCheckRules
+    tags: 
+     - ClaimDuplicateCheckRules
+    summary: Update ClaimDuplicateCheckRules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimDuplicateCheckRulesDTO'
+    responses: 
+     '200': 
+      description: ClaimDuplicateCheckRules updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteClaimDuplicateCheckRules
+    tags: 
+     - ClaimDuplicateCheckRules
+    summary: Delete ClaimDuplicateCheckRules
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/DuplicateCheckRuleIdQueryParam'
+    responses: 
+     '200': 
+      description: ClaimDuplicateCheckRules deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   ClaimDuplicateCheckRulesListDTO: 
+    title : ClaimDuplicateCheckRulesListDTO
+    type: object
+    properties: 
+     DuplicateCheckRuleId: 
+      type: integer
+      nullable: true
+     ProcedureCodeFrom   : 
+      type: string
+     ProcedureCodeTo   : 
+      type: string
+     ExcludeFromDupChecking: 
+      type: string
+     ExcludeFromDupCheckingName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     PlanId: 
+      type: integer
+     PlanName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   ClaimDuplicateCheckRulesDTO: 
+    title : ClaimDuplicateCheckRulesDTO
+    type: object
+    properties: 
+     DebugFlag: 
+      type: integer
+      nullable: true
+     DuplicateCheckRuleId: 
+      type: integer
+      nullable: true
+     ProcedureCodeFrom   : 
+      type: string
+      nullable: true
+     ProcedureCodeTo: 
+      type: string
+      nullable: true
+     ExcludeFromDupChecking: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     LoadUsage: 
+      type: string
+      nullable: true
+  parameters: 
+   DuplicateCheckRuleIdQueryParam: 
+    in: query
+    name: DuplicateCheckRuleId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default:  '|All|'
+    description: description of parameter passed
