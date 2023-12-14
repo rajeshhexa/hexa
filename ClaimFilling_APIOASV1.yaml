@@ -1,0 +1,247 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ClaimFilling
+  description: ClaimFilling API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/timelyfilling/fillingterm: 
+   post: 
+    operationId: AddClaimFilingTerm
+    tags: 
+     - ClaimFilingTerm
+    summary: Add ClaimFilingTerm
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimFilingTermDTO'
+    responses: 
+     '200': 
+      description: ClaimFilingTerm added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateClaimFilingTerm
+    tags: 
+     - ClaimFilingTerm
+    summary: Update ClaimFilingTerm
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimFilingTermDTO'
+    responses: 
+     '200': 
+      description: ClaimFilingTerm updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteClaimFilingTerm
+    tags: 
+     - ClaimFilingTerm
+    summary: Delete ClaimFilingTerm
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimFilingTermIDQueryParam'
+    responses: 
+     '200': 
+      description: ClaimFilingTerm deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/timelyfilling/delayreasonmap: 
+   get: 
+    operationId: GetClaimFilingDelayReasonMap
+    tags: 
+     - ClaimFilingTerm
+    summary: Get ClaimFilingDelayReasonMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimFilingTermIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: ClaimFilingDelayReasonMap Retrived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimFilingDelayReasonMapListDTO'
+   post: 
+    operationId: AddClaimFilingDelayReasonMap
+    tags: 
+     - ClaimFilingTerm
+    summary: Add ClaimFilingDelayReasonMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimFilingTermIDQueryParam'
+     - $ref: '#/components/parameters/DelayReasonCodeQueryParam'
+     - $ref: '#/components/parameters/DelayReasonActionQueryParam'
+     - $ref: '#/components/parameters/ExplanationIDQueryParam'
+    responses: 
+     '200': 
+      description: ClaimFilingDelayReasonMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: DeleteClaimFilingDelayReasonMap
+    tags: 
+     - ClaimFilingTerm
+    summary: Delete ClaimFilingDelayReasonMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimFilingTermIDQueryParam'
+     - $ref: '#/components/parameters/ClaimFilingDelayReasonIDQueryParam'
+    responses: 
+     '200': 
+      description: ClaimFilingDelayReasonMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   ClaimFilingTermDTO: 
+    title : ClaimFilingTermDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ClaimFilingTermID: 
+      type: integer
+      nullable: true
+     LimitType: 
+      type: string
+      nullable: true
+     FeeReductionType: 
+      type: string
+      nullable: true
+     FeeReductionValue: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     MemberFilingLimit: 
+      type: integer
+      nullable: true
+     ProviderFilingLimit: 
+      type: integer
+      nullable: true
+     ClaimFilingAction: 
+      type: string
+      nullable: true
+     FilingRulePrecedence: 
+      type: string
+      nullable: true
+   ClaimFilingDelayReasonMapListDTO: 
+    title : ClaimFilingDelayReasonMapListDTO
+    type: object
+    properties: 
+     ClaimFilingTermID: 
+      type: integer
+      nullable: true
+     ClaimFilingDelayReasonID: 
+      type: integer
+      nullable: true
+     DelayReasonCode: 
+      type: string
+      nullable: true
+     DelayReasonName: 
+      type: string
+      nullable: true
+     DelayReasonAction: 
+      type: string
+      nullable: true
+     DelayReasonActionName: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     ExplanationAbbreviation: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   ClaimFilingTermIDQueryParam: 
+    in: query
+    name: ClaimFilingTermID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: '|USAGE1|'
+    description: description of parameter passed
+   DelayReasonCodeQueryParam: 
+    in: query
+    name: DelayReasonCode
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   DelayReasonActionQueryParam: 
+    in: query
+    name: DelayReasonAction
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ExplanationIDQueryParam: 
+    in: query
+    name: ExplanationID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ClaimFilingDelayReasonIDQueryParam: 
+    in: query
+    name: ClaimFilingDelayReasonID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
