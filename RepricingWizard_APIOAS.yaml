@@ -1,0 +1,214 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: RepricingWizard
+  description: RepricingWizard API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/repricingwizard: 
+   post: 
+    operationId: GetClaimsForRepricingOutput
+    tags: 
+     - RepricingWizard
+    summary: Get ClaimsForRepricingOutput
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimsForRepricingOutputSearchDTO'
+    responses: 
+     '200': 
+      description: ClaimsForRepricingOutput retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimsForRepricingOutputListDTO'
+  /claim/repricingwizard/openclaims: 
+   post: 
+    operationId: PostAllOpenRepricingClaims
+    tags: 
+     - RepricingWizard
+    summary: Post AllOpenRepricingClaims
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AllOpenRepricingClaimsSearchDTO'
+    responses: 
+     '200': 
+      description: AllOpenRepricingClaims added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AllOpenRepricingClaimsListDTO'
+components: 
+  schemas: 
+   ClaimsForRepricingOutputSearchDTO: 
+    title : ClaimsForRepricingOutputSearchDTO
+    type: object
+    properties: 
+     OutputType: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     InterchangeID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     DateReceivedFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceivedTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ExternalClaimNumber: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default:  '|FOROUTPUT|'
+      nullable: true
+   ClaimsForRepricingOutputListDTO: 
+    title : ClaimsForRepricingOutputListDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ExternalClaimNumber: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     ClaimStatusCode: 
+      type: string
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusCode: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     AdjustedClosedDate: 
+      type: string
+      format: date-time
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     InputBatchID: 
+      type: integer
+      nullable: true
+     SourceTypeCode: 
+      type: string
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     RPCCoverSheetReportPath: 
+      type: string
+      nullable: true
+     RPCCoverSheetReportID: 
+      type: integer
+      nullable: true
+     SavingsAmount: 
+      type: string
+      nullable: true
+     ChargedAmount: 
+      type: string
+      nullable: true
+     PaidAmount: 
+      type: string
+      nullable: true
+   AllOpenRepricingClaimsSearchDTO: 
+    title : AllOpenRepricingClaimsSearchDTO
+    type: object
+    properties: 
+     GroupId: 
+      type: integer
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Preview: 
+      type: string
+      default: 'N'
+      nullable: true
+   AllOpenRepricingClaimsListDTO: 
+    title : AllOpenRepricingClaimsListDTO
+    type: object
+    properties: 
+     ClaimNumber: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     ErrorMessage: 
+      type: string
+      nullable: true
