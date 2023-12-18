@@ -1,0 +1,337 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ClaimReimbursementSelectionLog
+  description: ClaimReimbursementSelectionLog
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/dental/selectionlog/reimbursement: 
+   get: 
+    operationId: GetClaimReimbursementSelectionLog
+    tags: 
+     - ClaimReimbursementSelectionLog
+    summary: Get Claim Reimbursement Selection Log
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ClaimIDQueryParam'
+     - $ref: '#/components/parameters/AdjustmentVersionQueryParam'
+    responses: 
+     '200': 
+      description: Claim Reimbursement Selection Log Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimReimbursementSelectionLogListDTO'
+  /claim/dental/selectionlog/authorization: 
+   get: 
+    operationId: GetClaimAuthorizationSelectionLog
+    tags: 
+     - ClaimReimbursementSelectionLog
+    summary: Get Claim Authorization Selection Log
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ClaimIDQueryParam'
+     - $ref: '#/components/parameters/AdjustmentVersionQueryParam'
+    responses: 
+     '200': 
+      description: Get Claim Authorization Selection Log Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimAuthorizationSelectionLogListDTO'
+components: 
+  schemas: 
+   ClaimReimbursementSelectionLogListDTO: 
+    title : ClaimReimbursementSelectionLogListDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+     AdjustmentVersion: 
+      type: integer
+     LineNumber: 
+      type: integer
+     ReimbursementID: 
+      type: integer
+     ReimbursementName: 
+      type: string
+      nullable: true
+     ReimbursementEntityRowID: 
+      type: integer
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: number
+     ResultCode: 
+      type: string
+     Result: 
+      type: string
+      nullable: true
+     ResultDescription: 
+      type: string
+      nullable: true
+     ResultType: 
+      type: string
+      nullable: true
+     ContractID: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     RepricedFeeCode: 
+      type: string
+      nullable: true
+     RepricedFeeCodeName: 
+      type: string
+      nullable: true
+     RepricedRejectCode: 
+      type: string
+      nullable: true
+     RepricedRejectCodeName: 
+      type: string
+      nullable: true
+     AmtRepriced: 
+      type: number
+      nullable: true
+     LineRepricedFeeCode: 
+      type: string
+      nullable: true
+     SuppliedUCR: 
+      type: number
+      nullable: true
+     RepricingOrganizationNumber: 
+      type: string
+      nullable: true
+     Reconsider: 
+      type: string
+     LastUpdatedByID: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   ClaimAuthorizationSelectionLogListDTO: 
+    title : ClaimAuthorizationSelectionLogListDTO
+    type: object
+    properties: 
+     LogID: 
+      type: integer
+     ClaimID: 
+      type: integer
+     AdjustmentVersion: 
+      type: integer
+     LineNumber: 
+      type: integer
+     AuthorizationID: 
+      type: integer
+     AuthorizationNumber: 
+      type: string
+      nullable: true
+     AuthorizationVersion: 
+      type: integer
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     StatusName: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     ExternalAuthorizationNumber: 
+      type: string
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     ApprovedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ApprovedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     GlobalAuthorization: 
+      type: string
+      nullable: true
+     ServiceID: 
+      type: integer
+      nullable: true
+     ServiceLineNumber: 
+      type: integer
+      nullable: true
+     ServiceProviderID: 
+      type: integer
+      nullable: true
+     ServiceProviderNumber: 
+      type: string
+      nullable: true
+     ServiceProviderName: 
+      type: string
+      nullable: true
+     ServiceAllowCoveringProvider: 
+      type: string
+      nullable: true
+     ServiceOfficeID: 
+      type: integer
+      nullable: true
+     ServiceOfficeNumber: 
+      type: string
+      nullable: true
+     ServiceOfficeName: 
+      type: string
+      nullable: true
+     ServiceAllowAnyOffice: 
+      type: string
+      nullable: true
+     ServiceVendorID: 
+      type: integer
+      nullable: true
+     ServiceVendorNumber: 
+      type: string
+      nullable: true
+     ServiceVendorName: 
+      type: string
+      nullable: true
+     ServiceCorporationID: 
+      type: integer
+      nullable: true
+     ServiceCorporationEIN: 
+      type: string
+      nullable: true
+     ServiceCorporationLegalName: 
+      type: string
+      nullable: true
+     ServiceSpecialtyCategoryID: 
+      type: integer
+      nullable: true
+     ServiceSpecialtyCategoryName: 
+      type: string
+      nullable: true
+     ServicePlaceOfService: 
+      type: string
+      nullable: true
+     ServicePlaceOfServiceName: 
+      type: string
+      nullable: true
+     ServiceApprovedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceApprovedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AuthorizationServiceDetailID: 
+      type: integer
+      nullable: true
+     ServiceDetailID: 
+      type: integer
+      nullable: true
+     ServiceDetailLineNumber: 
+      type: integer
+      nullable: true
+     ServiceDetailServiceDetailTypeCode: 
+      type: string
+      nullable: true
+     ServiceDetailServiceDetailType: 
+      type: string
+      nullable: true
+     ServiceDetailServiceDetailName: 
+      type: string
+      nullable: true
+     ServiceDetailServiceDetailCode: 
+      type: string
+      nullable: true
+     ServiceDetailPlaceOfService: 
+      type: string
+      nullable: true
+     ServiceDetailPlaceOfServiceName: 
+      type: string
+      nullable: true
+     ServiceDetailModifier: 
+      type: string
+      nullable: true
+     ServiceDetailModifierName: 
+      type: string
+      nullable: true
+     ServiceDetailApprovedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDetailApprovedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ResultCode: 
+      type: string
+      nullable: true
+     Result: 
+      type: string
+      nullable: true
+     ResultDescription: 
+      type: string
+      nullable: true
+     ResultType: 
+      type: string
+      nullable: true
+     Ignore: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     LastUpdatedByID: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ClaimIDQueryParam: 
+    in: query
+    name: ClaimID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AdjustmentVersionQueryParam: 
+    in: query
+    name: AdjustmentVersion
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
