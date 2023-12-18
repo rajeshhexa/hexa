@@ -1,0 +1,313 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ServiceRestrictionPackageEntityMap
+  description: ServiceRestrictionPackageEntityMap API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/servicerestrictionpackage: 
+   post: 
+    operationId: AddServiceRestrictionPackage
+    tags: 
+     - ServiceRestrictionPackage
+    summary: Add Service Restriction Package
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceRestrictionPackageDTO'
+    responses: 
+     '200': 
+      description: Service Restriction Package Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateServiceRestrictionPackage
+    tags: 
+     - ServiceRestrictionPackage
+    summary: Update Service Restriction Package
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceRestrictionPackageDTO'
+    responses: 
+     '200': 
+      description: Service Restriction Package Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   get: 
+    operationId: GetServiceRestrictionPackages
+    tags: 
+     - ServiceRestrictionPackage
+    summary: Get Service Restriction Package
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Service Restriction Package Retrieved Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ServicerRestrictionPackageListDTO'
+  /entity/servicerestrictionpackage/entitymap: 
+   post: 
+    operationId: AddServiceRestrictionPackageEntityMap
+    tags: 
+     - ServiceRestrictionPackageEntityMap
+    summary: Add ServiceRestrictionPackageEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceRestrictionPackageEntityMapDTO'
+    responses: 
+     '200': 
+      description: ServiceRestrictionPackageEntityMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateServiceRestrictionPackageEntityMap
+    tags: 
+     - ServiceRestrictionPackageEntityMap
+    summary: Update ServiceRestrictionPackageEntityMap
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceRestrictionPackageEntityMapDTO'
+    responses: 
+     '200': 
+      description: ServiceRestrictionPackageEntityMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteServiceRestrictionPackageEntityMap
+    tags: 
+     - ServiceRestrictionPackageEntityMap
+    summary: Delete ServiceRestrictionPackageEntityMap
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MapIdQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: ServiceRestrictionPackageEntityMap deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /entity/servicerestrictionpackage/entitymap/history: 
+   get: 
+    operationId: GetServiceRestrictionPackageEntityMapHistory
+    tags: 
+     - ServiceRestrictionPackageEntityMap
+    summary: Get ServiceRestrictionPackageEntityMapHistory
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MapIdQueryParam'
+     - $ref: '#/components/parameters/ServiceRestrictionPackageIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: ServiceRestrictionPackageEntityMapHistory retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ServiceRestrictionPackageEntityMapHistoryListDTO'
+components: 
+  schemas: 
+   ServiceRestrictionPackageEntityMapDTO: 
+    title : ServiceRestrictionPackageEntityMapDTO
+    type: object
+    properties: 
+     MapId: 
+      type: integer
+      nullable: true
+     ServiceRestrictionPackageId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     Excluded: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ServiceRestrictionPackageEntityMapHistoryListDTO: 
+    title : ServiceRestrictionPackageEntityMapHistoryListDTO
+    type: object
+    properties: 
+     HistoryId: 
+      type: integer
+     ChangedBy: 
+      type: integer
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeType: 
+      type: string
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+     MapId: 
+      type: integer
+     ServiceRestrictionPackageId: 
+      type: integer
+     ServiceRestrictionPackageName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     EntityId: 
+      type: integer
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     Excluded: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   ServiceRestrictionPackageDTO: 
+    title : ServiceRestrictionPackageDTO
+    type: object
+    properties: 
+     ServiceRestrictionPackageID: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+   ServicerRestrictionPackageListDTO: 
+    title : ServicerRestrictionPackageListDTO
+    type: object
+    properties: 
+     ServiceRestrictionPackageId: 
+      type: integer
+     Name: 
+      type: string
+     Description: 
+      type: string
+     Type: 
+      type: string
+     TypeName: 
+      type: string
+      nullable: true
+     System: 
+      type: string
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   MapIdQueryParam: 
+    in: query
+    name: MapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ServiceRestrictionPackageIdQueryParam: 
+    in: query
+    name: ServiceRestrictionPackageId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: |Updated|'
+    description: description of parameter passed
