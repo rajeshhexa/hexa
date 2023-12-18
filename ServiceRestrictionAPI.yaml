@@ -1,0 +1,323 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Service Restriction
+  description: Service Restriction
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/servicerestriction: 
+   post: 
+    operationId: AddServiceRestriction
+    tags: 
+     - Service Restriction
+    summary: Add Service Restriction
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceRestrictionDTO'
+    responses: 
+     '200': 
+      description: Service Restriction Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateServiceRestriction
+    tags: 
+     - Service Restriction
+    summary: Update Service Restriction
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceRestrictionDTO'
+    responses: 
+     '200': 
+      description: Service Restriction Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /claim/servicerestrictions: 
+   post: 
+    operationId: GetServiceRestrictions
+    tags: 
+     - Service Restriction
+    summary: Get Service Restrictions
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceRestrictionSearchDTO'
+    responses: 
+     '200': 
+      description: Service Restriction Retrieved Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ServiceRestrictionListDTO'
+  /claim/servicerestriction/history: 
+   post: 
+    operationId: GetServiceRestrictionHistory
+    tags: 
+     - Service Restriction
+    summary: Get Service Restriction History
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ServiceRestrictionIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ResultCountQueryParam'
+    responses: 
+     '200': 
+      description: Service Restriction History Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ServiceRestrictionHistoryListDTO'
+components: 
+  schemas: 
+   ServiceRestrictionDTO: 
+    title : ServiceRestrictionDTO
+    type: object
+    properties: 
+     ServiceRestrictionPackageID: 
+      type: integer
+      nullable: true
+     ServiceRestrictionId: 
+      type: integer
+      nullable: true
+     ServiceClassId: 
+      type: integer
+      nullable: true
+     RestrictionClassId: 
+      type: integer
+      nullable: true
+     CodeClassId: 
+      type: integer
+      nullable: true
+     RestrictionType: 
+      type: string
+      nullable: true
+     RestrictionCount: 
+      type: integer
+      nullable: true
+     PerCode: 
+      type: string
+      nullable: true
+     PaidPreviouslyDateUsage: 
+      type: string
+      nullable: true
+     UseForPreEstimate: 
+      type: string
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     ReplacementProcedureCode: 
+      type: string
+      nullable: true
+     ReplacementCodeForPricing: 
+      type: string
+      nullable: true
+     ReplacementModifier: 
+      type: string
+      nullable: true
+     ApplyToDeniedServiceLine: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     PeriodLimit: 
+      type: integer
+      nullable: true
+     PeriodType: 
+      type: string
+      nullable: true
+     PeriodValue: 
+      type: integer
+      nullable: true
+     EntityRestriction: 
+      type: string
+      nullable: true
+     DenialExplanationId: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   ServiceRestrictionSearchDTO: 
+    title : ServiceRestrictionSearchDTO
+    type: object
+    properties: 
+     ServiceClassId: 
+      type: integer
+      nullable: true
+     RestrictionClassId: 
+      type: integer
+      nullable: true
+     CodeClassId: 
+      type: integer
+      nullable: true
+     RestrictionType: 
+      type: string
+      nullable: true
+     ServiceRestrictionId: 
+      type: integer
+      nullable: true
+     ServiceRestrictionPackageID: 
+      type: integer
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   ServiceRestrictionHistoryListDTO: 
+    title : ServiceRestrictionHistoryListDTO
+    type: object
+    properties: 
+     ChangedBy: 
+      type: string
+     ChangeAt: 
+      type: string
+      format: date-time
+     ChangeType: 
+      type: string
+     ProcedureName: 
+      type: string
+     ServiceClass: 
+      type: string
+      nullable: true
+     RestrictionClass: 
+      type: string
+      nullable: true
+     CodeClass: 
+      type: string
+      nullable: true
+     RestrictionType: 
+      type: string
+      nullable: true
+     RestrictionCount: 
+      type: integer
+      nullable: true
+     PerCode: 
+      type: string
+      nullable: true
+     PerCodeName: 
+      type: string
+      nullable: true
+     PaidPreviouslyDateUsage: 
+      type: string
+      nullable: true
+     PaidPreviouslyDateUsageName: 
+      type: string
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     UseForPreEstimate: 
+      type: string
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     AgeRangeBegin: 
+      type: integer
+      nullable: true
+     AgeRangeEnd: 
+      type: integer
+      nullable: true
+     ReplacementProcedureCode: 
+      type: string
+      nullable: true
+     ReplacementModifier: 
+      type: string
+      nullable: true
+     ApplyToDeniedServiceLine: 
+      type: string
+     ServiceRestrictionPackage: 
+      type: string
+     FormType: 
+      type: string
+      nullable: true
+     PeriodLimit: 
+      type: integer
+      nullable: true
+     PeriodType: 
+      type: string
+      nullable: true
+     PeriodValue: 
+      type: integer
+      nullable: true
+     EntityRestriction: 
+      type: string
+      nullable: true
+     DenialExplanation: 
+      type: string
+      nullable: true
+     UseReplacementCodeForPricingOnly: 
+      type: string
+  parameters: 
+   ServiceRestrictionIDQueryParam: 
+    in: query
+    name: ServiceRestrictionID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ResultCountQueryParam: 
+    in: query
+    name: ResultCount
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
