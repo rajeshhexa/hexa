@@ -1,0 +1,244 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Claim ActionCodeMap
+  description: Claim ActionCodeMap
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/dental/actioncodemap: 
+   get: 
+    operationId: GetClaimActionCodeMap
+    tags: 
+     - Claim Action CodeMap
+    summary: Get Claim Action Code Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimIDQueryParam'
+     - $ref: '#/components/parameters/AdjustmentVersionQueryParam'
+     - $ref: '#/components/parameters/ReturnProcessingStatus QueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/DebugFlag QueryParam'
+    responses: 
+     '200': 
+      description: Claim Action CodeMap Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimActionCodeMapListDTO'
+   post: 
+    operationId: AddClaimActionCodeMap
+    tags: 
+     - Claim Action CodeMap
+    summary: Add Claim Action Code Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimActionCodeMapDTO'
+    responses: 
+     '200': 
+      description: Claim Action CodeMap Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateClaimActionCodeMap
+    tags: 
+     - Claim Action CodeMap
+    summary: Update Claim Action Code Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimActionCodeMapDTO'
+    responses: 
+     '200': 
+      description: Claim Action CodeMap Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   ClaimActionCodeMapDTO: 
+    title : ClaimActionCodeMapDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     Owner: 
+      type: string
+      nullable: true
+     ActionEntityMapId: 
+      type: integer
+      nullable: true
+     AddedFrom: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     ClaimActionCodeMapId: 
+      type: integer
+      nullable: true
+     OverriddenCheckBox: 
+      type: string
+      nullable: true
+     Overridden: 
+      type: string
+      nullable: true
+     OverrideReason: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   ClaimActionCodeMapListDTO: 
+    title : ClaimActionCodeMapListDTO
+    type: object
+    properties: 
+     ClaimActionCodeMapId: 
+      type: integer
+     ActionCodeId: 
+      type: integer
+     ActionCodeTypeCode: 
+      type: string
+     ActionCode: 
+      type: string
+     ActionCodeName: 
+      type: string
+      nullable: true
+     ActionCodeDescription: 
+      type: string
+      nullable: true
+     AllowOverride: 
+      type: string
+     ClaimId: 
+      type: integer
+     AdjustmentVersion: 
+      type: integer
+     LineNumber : 
+      type: integer
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     Overridden: 
+      type: string
+     OverriddenCheckBox: 
+      type: string
+      nullable: true
+     OverrideReason: 
+      type: string
+      nullable: true
+     ActionEntityMapId: 
+      type: integer
+      nullable: true
+     InitialVersionApplied: 
+      type: integer
+      nullable: true
+     InitialDateApplied: 
+      type: string
+      format: date-time
+      nullable: true
+     AddedFromCode: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     OverridePermissionId: 
+      type: integer
+      nullable: true
+     ClaimHasActionCodes: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     ActionCodeType: 
+      type: string
+      nullable: true
+     AddedFrom: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityDescription: 
+      type: string
+      nullable: true
+  parameters: 
+   ClaimIDQueryParam: 
+    in: query
+    name: ClaimID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AdjustmentVersionQueryParam: 
+    in: query
+    name: AdjustmentVersion
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ReturnProcessingStatus QueryParam: 
+    in: query
+    name: ReturnProcessingStatus 
+    required: false
+    schema: 
+     type: string
+     default: |N|'
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   DebugFlag QueryParam: 
+    in: query
+    name: DebugFlag 
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
