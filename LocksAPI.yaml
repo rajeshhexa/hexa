@@ -1,0 +1,342 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Claims Dental Locks API
+  description: Claims Dental Locks API API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims/dental/locks: 
+   get: 
+    operationId: GetLocks
+    tags: 
+     - DentalLocks
+    summary: Get locks
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/LockIdQueryParam'
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Claim Locks retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LocksListDTO'
+  /claims/dental/lock: 
+   post: 
+    operationId: AddLock
+    tags: 
+     - DentalLocks
+    summary: Add locks
+    description: Description of path
+    responses: 
+     '200': 
+      description: Claim Lock added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteLock
+    tags: 
+     - DentalLocks
+    summary: Delete locks
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LockIdQueryParam'
+    responses: 
+     '200': 
+      description: Claim Lock deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claims/dental/locks/history: 
+   get: 
+    operationId: GetLocksHistory
+    tags: 
+     - DentalLocks
+    summary: Get locks history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LockIdQueryParam'
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Claim locks history successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LocksHistoryListDTO'
+components: 
+  schemas: 
+   LocksListDTO: 
+    title : LocksListDTO
+    type: object
+    properties: 
+     LockId: 
+      type: integer
+     EntityId: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     LockNumber: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     Reason: 
+      type: string
+     ReasonName: 
+      type: string
+      nullable: true
+     ExternalNumber: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     SubClassName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     AddedBy: 
+      type: integer
+     AddedByName: 
+      type: string
+      nullable: true
+     AddedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   ClaimCodeDTO: 
+    title : ClaimCodeDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     CodeType: 
+      type: string
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     CodeQualifier: 
+      type: string
+      nullable: true
+     POAIndicator: 
+      type: string
+      nullable: true
+     DateRecorded: 
+      type: string
+      nullable: true
+     DateThrough: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     FieldNumber: 
+      type: string
+      nullable: true
+     Sequence: 
+      type: integer
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   LocksDTO: 
+    title : LocksDTO
+    type: object
+    properties: 
+     LockId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     Reason: 
+      type: string
+      nullable: true
+     ExternalNumber: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   LocksHistoryListDTO: 
+    title : LocksHistoryListDTO
+    type: object
+    properties: 
+     HistoryId: 
+      type: integer
+     ChangedBy: 
+      type: integer
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeTypeCode: 
+      type: string
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+     LockId: 
+      type: integer
+     EntityId: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     LockNumber: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     Reason: 
+      type: string
+     ReasonName: 
+      type: string
+      nullable: true
+     ExternalNumber: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     SubClassName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     AddedBy: 
+      type: integer
+     AddedByName: 
+      type: string
+      nullable: true
+     AddedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   LockIdQueryParam: 
+    in: query
+    name: LockId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityIdQueryParam: 
+    in: query
+    name: EntityId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
