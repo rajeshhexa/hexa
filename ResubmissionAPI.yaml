@@ -1,0 +1,487 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Resubmission
+  description: Resubmission
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims/resubmission/submissions: 
+   post: 
+    operationId: GetClaimSubmissions
+    tags: 
+     - Resubmission
+    summary: Get Claim Submissions
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimSubmissionSearchDTO'
+    responses: 
+     '200': 
+      description: Claim Submission Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimSubmissionListDTO'
+  /claims/resubmission/submission: 
+   put: 
+    operationId: UpdateClaimSubmission
+    tags: 
+     - Resubmission
+    summary: Update Claim Submissions
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimSubmissionDTO'
+    responses: 
+     '200': 
+      description: Claim Submission Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   post: 
+    operationId: ProcessClaimSubmission
+    tags: 
+     - Resubmission
+    summary: Process Claim Submission
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ProcessClaimSubmissionDTO'
+    responses: 
+     '200': 
+      description: Process Claim Submission Successful
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   ClaimSubmissionSearchDTO: 
+    title : ClaimSubmissionSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ClaimSubmissionId: 
+      type: integer
+      nullable: true
+     DateOutputFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateOutputTo: 
+      type: string
+      format: date-time
+      nullable: true
+     BatchType: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     RemarkCode: 
+      type: string
+      nullable: true
+     RejectionCode: 
+      type: string
+      nullable: true
+     ErrorCode: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     SubmissionStatus: 
+      type: string
+      nullable: true
+     SubmissionType: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     InterchangeID: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ClaimSubmissionListDTO: 
+    title : ClaimSubmissionListDTO
+    type: object
+    properties: 
+     ClaimSubmissionId: 
+      type: integer
+     ClaimSubmissionNumber: 
+      type: string
+      nullable: true
+     ClaimID: 
+      type: integer
+     InterchangeId: 
+      type: integer
+     OutputBatchID: 
+      type: integer
+      nullable: true
+     OutputBatchType: 
+      type: string
+      nullable: true
+     OutputBatchTypeName: 
+      type: string
+      nullable: true
+     OutputBatchStatus: 
+      type: string
+      nullable: true
+     OutputBatchStatusName: 
+      type: string
+      nullable: true
+     ExportFileName: 
+      type: string
+      nullable: true
+     OutputDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OutputAdjustmentVersion: 
+      type: integer
+      nullable: true
+     SequenceNumber: 
+      type: integer
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     ClaimRecordId: 
+      type: integer
+     DoNotSendReason: 
+      type: string
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     InputAdjustmentVersion: 
+      type: integer
+      nullable: true
+     SubmissionInputDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TransactionReferenceQualifier: 
+      type: string
+      nullable: true
+     TransactionReferenceNumber: 
+      type: string
+      nullable: true
+     TransactionAcknowledgementCode: 
+      type: string
+      nullable: true
+     TechnicalErrorCode: 
+      type: string
+      nullable: true
+     TechnicalErrorCodeName: 
+      type: string
+      nullable: true
+     TechnicalErrorDescription: 
+      type: string
+      nullable: true
+     ResubmissionNumber: 
+      type: string
+      nullable: true
+     RejectionDetailCodes: 
+      type: string
+      nullable: true
+     PayerName: 
+      type: string
+      nullable: true
+     SubmissionType: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     SubmissionStatus: 
+      type: string
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     SubmissionLastUpdatedBy: 
+      type: integer
+      nullable: true
+     SubmissionLastUpdatedByName: 
+      type: string
+      nullable: true
+     SubmissionLastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     DoNotSendReasonName: 
+      type: string
+      nullable: true
+     SubmissionTypeName: 
+      type: string
+      nullable: true
+     SubmissionStatusName: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     CheckDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     FulfillmentTypeName: 
+      type: string
+      nullable: true
+     JobStatus: 
+      type: string
+      nullable: true
+     JobStatusName: 
+      type: string
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     SuppressionReason: 
+      type: string
+      nullable: true
+     SuppressionReasonName: 
+      type: string
+      nullable: true
+     ExternalBatchNumber: 
+      type: string
+      nullable: true
+     FrequencyType: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   ClaimSubmissionDTO: 
+    title : ClaimSubmissionDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ClaimSubmissionId: 
+      type: integer
+      nullable: true
+     DoNotSendReason: 
+      type: string
+      nullable: true
+     SubmissionStatus: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     TransactionReferenceQualifier: 
+      type: string
+      nullable: true
+     TechnicalErrorCode: 
+      type: string
+      nullable: true
+     TechnicalErrorDescription: 
+      type: string
+      nullable: true
+     TransactionAcknowledgementCode: 
+      type: string
+      nullable: true
+     ResubmissionNumber: 
+      type: string
+      nullable: true
+     InputAdjustmentVersion: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ProcessClaimSubmissionDTO: 
+    title : ProcessClaimSubmissionDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     PaymentWizardJobId: 
+      type: integer
+      nullable: true
+     ClaimSubmissionId: 
+      type: integer
+      nullable: true
+     SubmissionStatus : 
+      type: string
+      nullable: true
+     SubmissionType: 
+      type: string
+      nullable: true
+     ResubmissionNumber: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ClaimRecordId: 
+      type: integer
+      nullable: true
+     FrequencyType: 
+      type: string
+      nullable: true
+     MemberRecordId: 
+      type: integer
+      nullable: true
+     ProviderRecordId: 
+      type: integer
+      nullable: true
+     SumToPayMember: 
+      type: number
+      nullable: true
+     SumToPayProvider: 
+      type: number
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     InterchangeName: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     TransactionReferenceNumber: 
+      type: string
+      nullable: true
+     TransactionReferenceQualifier: 
+      type: string
+      nullable: true
+     TransactionAcknowledgementCode: 
+      type: string
+      nullable: true
+     TechnicalErrorCode: 
+      type: string
+      nullable: true
+     TechnicalErrorDescription: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
