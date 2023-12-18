@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Claims Dental Codes API
+  description: Claims Dental Codes API API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims/dental/locks: 
+   get: 
+    operationId: GetLocks
+    tags: 
+     - ClaimLocks
+    summary: Get claim locks
+    description: Description of path
+    responses: 
+     '200': 
+      description: Success
+  /claims/dental/lock: 
+   post: 
+    operationId: AddLock
+    tags: 
+     - ClaimLocks
+    summary: Add claim lock
+    description: Description of path
+    responses: 
+     '200': 
+      description: Success
+   null: 
+    operationId: DeleteLock
+    tags: 
+     - ClaimLocks
+    summary: Delete claim lock
+    description: Description of path
