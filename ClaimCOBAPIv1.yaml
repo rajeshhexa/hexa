@@ -1,0 +1,554 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ClaimCOB
+  description: ClaimCOB
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/dental/cob: 
+   post: 
+    operationId: AddClaimCob
+    tags: 
+     - ClaimCOB
+    summary: Add Claim Cob
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimCobDTO'
+    responses: 
+     '200': 
+      description: Claim Job Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   get: 
+    operationId: GetClaimCOB
+    tags: 
+     - ClaimCOB
+    summary: Get Claim Cob
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ClaimIdQueryParam'
+     - $ref: '#/components/parameters/COBIndicatorQueryParam'
+     - $ref: '#/components/parameters/AdjustmentVersion QueryParam'
+    responses: 
+     '200': 
+      description: Claim Cob Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimCobListDTO'
+   /claim/dental/cob/details: 
+   post: 
+    operationId: AddClaimCobDetails
+    tags: 
+     - ClaimCOB
+    summary: Add Claim Cob Details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimCobDetailsDTO'
+    responses: 
+     '200': 
+      description: Claim Job Details Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /claim/dental/cob/details: 
+   get: 
+    operationId: GetClaimCOBDetails
+    tags: 
+     - ClaimCOB
+    summary: Get Claim Cob Details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/COBIndicatorQueryParam'
+     - $ref: '#/components/parameters/ClaimIdQueryParam'
+     - $ref: '#/components/parameters/AdjustmentVersion QueryParam'
+    responses: 
+     '200': 
+      description: Claim Cob Details Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimCobDetailsListDTO'
+components: 
+  schemas: 
+   ClaimCobDTO: 
+    title : ClaimCobDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     COBIndicator: 
+      type: string
+      nullable: true
+     RemittanceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AmtBilled: 
+      type: number
+      nullable: true
+     AmtAllowed: 
+      type: number
+      nullable: true
+     AmtDeductible: 
+      type: number
+      nullable: true
+     AmtCopay: 
+      type: number
+      nullable: true
+     AmtCoinsurance: 
+      type: number
+      nullable: true
+     AmtOtherPatientLiability: 
+      type: number
+      nullable: true
+     AmtRemainingPatientLiability: 
+      type: number
+      nullable: true
+     AmtPaid: 
+      type: number
+      nullable: true
+     AmtSequestration: 
+      type: number
+      nullable: true
+     AmtContractAdjustment: 
+      type: number
+      nullable: true
+     AmtDenied: 
+      type: number
+      nullable: true
+     AmtNonCovered: 
+      type: number
+      nullable: true
+     PayerId: 
+      type: integer
+      nullable: true
+     PayerNumberQualifier: 
+      type: string
+      nullable: true
+     PayerNumber: 
+      type: string
+      nullable: true
+     RelationshipToSubscriberCode: 
+      type: string
+      nullable: true
+     PayerGroupNumber: 
+      type: string
+      nullable: true
+     PayerEmpName: 
+      type: string
+      nullable: true
+     InsuranceTypeCode: 
+      type: string
+      nullable: true
+     ClaimFilingIndicatorCode: 
+      type: string
+      nullable: true
+     PolicyHolderFirstName: 
+      type: string
+      nullable: true
+     PolicyHolderLastName: 
+      type: string
+      nullable: true
+     PolicyHolderMiddleName: 
+      type: string
+      nullable: true
+     PolicyHolderNameSuffix: 
+      type: string
+      nullable: true
+     PayerMemberNumber: 
+      type: string
+      nullable: true
+     PolicyHolderAddress1: 
+      type: string
+      nullable: true
+     PolicyHolderAddress2: 
+      type: string
+      nullable: true
+     PolicyHolderCity: 
+      type: string
+      nullable: true
+     PolicyHolderState: 
+      type: string
+      nullable: true
+     PolicyHolderZip: 
+      type: string
+      nullable: true
+     PolicyHolderCountryCode: 
+      type: string
+      nullable: true
+     PolicyHolderSSN: 
+      type: string
+      nullable: true
+     PayerName: 
+      type: string
+      nullable: true
+     PayerAddress1: 
+      type: string
+      nullable: true
+     PayerAddress2: 
+      type: string
+      nullable: true
+     PayerCity: 
+      type: string
+      nullable: true
+     PayerState: 
+      type: string
+      nullable: true
+     PayerZip: 
+      type: string
+      nullable: true
+     PayerCountryCode: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   ClaimCobDetailsDTO: 
+    title : ClaimCobDetailsDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     COBIndicator: 
+      type: string
+      nullable: true
+     RemittanceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AmtBilled: 
+      type: number
+      nullable: true
+     AmtAllowed: 
+      type: number
+      nullable: true
+     AmtDeductible: 
+      type: number
+      nullable: true
+     AmtCopay: 
+      type: number
+      nullable: true
+     AmtCoinsurance: 
+      type: number
+      nullable: true
+     AmtOtherPatientLiability: 
+      type: number
+      nullable: true
+     AmtRemainingPatientLiability: 
+      type: number
+      nullable: true
+     AmtPaid: 
+      type: number
+      nullable: true
+     AmtSequestration: 
+      type: number
+      nullable: true
+     AmtContractAdjustment: 
+      type: number
+      nullable: true
+     AmtDenied: 
+      type: number
+      nullable: true
+     AmtNonCovered: 
+      type: number
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   ClaimCobListDTO: 
+    title : ClaimCobListDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+     AdjustmentVersion: 
+      type: integer
+     COBIndicator: 
+      type: string
+     RemittanceDate: 
+      type: string
+      format: date-time
+     AmtBilled: 
+      type: number
+      nullable: true
+     AmtAllowed: 
+      type: number
+      nullable: true
+     AmtDeductible: 
+      type: number
+      nullable: true
+     AmtCopay: 
+      type: number
+      nullable: true
+     AmtCoinsurance: 
+      type: number
+      nullable: true
+     AmtOtherPatientLiability: 
+      type: number
+      nullable: true
+     AmtRemainingPatientLiability: 
+      type: number
+      nullable: true
+     AmtPaid: 
+      type: number
+      nullable: true
+     AmtSequestration: 
+      type: number
+      nullable: true
+     AmtContractAdjustment: 
+      type: number
+      nullable: true
+     AmtDenied: 
+      type: number
+      nullable: true
+     AmtNonCovered: 
+      type: number
+      nullable: true
+     PayerId: 
+      type: integer
+      nullable: true
+     Payer: 
+      type: string
+      nullable: true
+     PayerNumberQualifier: 
+      type: string
+      nullable: true
+     PayerNumber: 
+      type: string
+      nullable: true
+     RelationshipToSubscriberCode: 
+      type: string
+      nullable: true
+     PayerGroupNumber: 
+      type: string
+      nullable: true
+     PayerEmpName: 
+      type: string
+      nullable: true
+     InsuranceTypeCode: 
+      type: string
+      nullable: true
+     ClaimFilingIndicatorCode: 
+      type: string
+      nullable: true
+     PolicyHolderFirstName: 
+      type: string
+      nullable: true
+     PolicyHolderLastName: 
+      type: string
+      nullable: true
+     PolicyHolderMiddleName: 
+      type: string
+      nullable: true
+     PolicyHolderNameSuffix: 
+      type: string
+      nullable: true
+     PayerMemberNumber: 
+      type: string
+      nullable: true
+     PolicyHolderAddress1: 
+      type: string
+      nullable: true
+     PolicyHolderAddress2: 
+      type: string
+      nullable: true
+     PolicyHolderCity: 
+      type: string
+      nullable: true
+     PolicyHolderState: 
+      type: string
+      nullable: true
+     PolicyHolderZip: 
+      type: string
+      nullable: true
+     PolicyHolderCountryCode: 
+      type: string
+      nullable: true
+     PolicyHolderSSN: 
+      type: string
+      nullable: true
+     PayerName: 
+      type: string
+      nullable: true
+     PayerAddress1: 
+      type: string
+      nullable: true
+     PayerAddress2: 
+      type: string
+      nullable: true
+     PayerCity: 
+      type: string
+      nullable: true
+     PayerState: 
+      type: string
+      nullable: true
+     PayerZip: 
+      type: string
+      nullable: true
+     PayerCountryCode: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   ClaimCobDetailsListDTO: 
+    title : ClaimCobDetailsListDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+     AdjustmentVersion: 
+      type: integer
+     LineNumber: 
+      type: integer
+     COBIndicator: 
+      type: string
+     ProcedureCode: 
+      type: string
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     Tooth: 
+      type: string
+      nullable: true
+     HCPCSRates: 
+      type: string
+      nullable: true
+     RemittanceDate: 
+      type: string
+      format: date-time
+      nullable: true
+     AmtBilled: 
+      type: number
+      nullable: true
+     AmtAllowed: 
+      type: number
+      nullable: true
+     AmtDeductible: 
+      type: number
+      nullable: true
+     AmtCopay: 
+      type: number
+      nullable: true
+     AmtCoinsurance: 
+      type: number
+      nullable: true
+     AmtOtherPatientLiability : 
+      type: number
+      nullable: true
+     AmtRemainingPatientLiability: 
+      type: number
+      nullable: true
+     AmtPaid: 
+      type: number
+      nullable: true
+     AmtSequestration: 
+      type: number
+      nullable: true
+     AmtContractAdjustment: 
+      type: number
+      nullable: true
+     AmtDenied: 
+      type: number
+      nullable: true
+     AmtNonCovered: 
+      type: number
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: |USAGE1|'
+    description: description of parameter passed
+   ClaimIdQueryParam: 
+    in: query
+    name: ClaimId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   COBIndicatorQueryParam: 
+    in: query
+    name: COBIndicator
+    required: false
+    schema: 
+     type: string
+     default: |PRI|'
+    description: description of parameter passed
+   AdjustmentVersion QueryParam: 
+    in: query
+    name: AdjustmentVersion 
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
