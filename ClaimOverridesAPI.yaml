@@ -1,0 +1,590 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Claim Overrides
+  description: Claim Overrides
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/dental/overrides: 
+   post: 
+    operationId: AddClaimOverrides
+    tags: 
+     - Claim Overrides
+    summary: Add Claim Overrides
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimOverrideDTO'
+    responses: 
+     '200': 
+      description: Claim Override Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /claim/dental/overridesfromtransform: 
+   get: 
+    operationId: GetClaimOverridesFromTransform
+    tags: 
+     - Claim Overrides
+    summary: Get Claim Overrides From Transform
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/ClaimIdQueryParam'
+     - $ref: '#/components/parameters/AdjustmentVersion QueryParam'
+    responses: 
+     '200': 
+      description: Claim Override From Transform Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimOverrideFromTransformListDTO'
+components: 
+  schemas: 
+   ClaimOverrideDTO: 
+    title : ClaimOverrideDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     OverrideContractId: 
+      type: integer
+      nullable: true
+     OverrideEpisodeAuthorizationId: 
+      type: integer
+      nullable: true
+     ServiceCategoryId: 
+      type: integer
+      nullable: true
+     OverrideLiabilityLevelId: 
+      type: integer
+      nullable: true
+     OverrideBenefitCategoryId: 
+      type: integer
+      nullable: true
+     OverrideServiceRestriction: 
+      type: string
+      nullable: true
+     OverrideLateFiling: 
+      type: string
+      nullable: true
+     OverrideDuplicateChecking: 
+      type: string
+      nullable: true
+     OverridePreEstimateNeeded: 
+      type: string
+      nullable: true
+     OverrideReferralNeeded: 
+      type: string
+      nullable: true
+     OverrideAuthorizationNeeded: 
+      type: string
+      nullable: true
+     OverrideMedicalCaseReview: 
+      type: string
+      nullable: true
+     DenyClaim: 
+      type: string
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+     ExplanationId2: 
+      type: integer
+      nullable: true
+     ExplanationId3: 
+      type: integer
+      nullable: true
+     ServiceDateReplacedWith: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideDenialOfRelatedProcedures: 
+      type: string
+      nullable: true
+     OverridePreExisting: 
+      type: string
+      nullable: true
+     OverridePrimaryCareRestriction: 
+      type: string
+      nullable: true
+     OverrideCOBProcessing: 
+      type: string
+      nullable: true
+     OverrideDelegatedRule: 
+      type: string
+      nullable: true
+     OverridePaymentClassWith: 
+      type: string
+      nullable: true
+     OverrideSuppressPaymentWith: 
+      type: string
+      nullable: true
+     OverrideGlobalFee: 
+      type: string
+      nullable: true
+     OverrideClaimEditing: 
+      type: string
+      nullable: true
+     OverrideClaimPricing: 
+      type: string
+      nullable: true
+     OverrideDenialAction: 
+      type: string
+      nullable: true
+     OverrideAllowedAmount: 
+      type: number
+      nullable: true
+     OverrideAmtToPay: 
+      type: number
+      nullable: true
+     OverrideAmtToPayMember: 
+      type: number
+      nullable: true
+     OverrideAmtCoPay: 
+      type: number
+      nullable: true
+     OverrideAmtCoInsurance: 
+      type: number
+      nullable: true
+     OverrideAmtDeductible: 
+      type: number
+      nullable: true
+     OverrideAmtPatientLiability: 
+      type: number
+      nullable: true
+     OverrideAmtOutOfPocket: 
+      type: number
+      nullable: true
+     OverrideMaxVisits: 
+      type: number
+      nullable: true
+     OverrideMaxUnits: 
+      type: number
+      nullable: true
+     OverrideMaxDollars: 
+      type: number
+      nullable: true
+     OverrideAmtPreExistingApplied: 
+      type: number
+      nullable: true
+     OverrideLiabilityPackageIdHistory: 
+      type: integer
+      nullable: true
+     OverrideAmtToPenalizeMember: 
+      type: number
+      nullable: true
+     OverrideAmtToPenalizeProvider: 
+      type: number
+      nullable: true
+     DeductibleAmt: 
+      type: number
+      nullable: true
+     CoinsuranceAmt: 
+      type: number
+      nullable: true
+     CoPaymentAmt: 
+      type: number
+      nullable: true
+     OtherPatientAmt: 
+      type: number
+      nullable: true
+     OverrideStepDownLiabilityStepNumber: 
+      type: integer
+      nullable: true
+     OverrideAmtMoneyLimitApplied: 
+      type: number
+      nullable: true
+     OverrideSalesTaxRate: 
+      type: string
+      nullable: true
+     OverrideSalesTaxAmount: 
+      type: number
+      nullable: true
+     OverrideFilingDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideFilingReductionAmount: 
+      type: number
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     OverrideAllowedUnits: 
+      type: number
+      nullable: true
+     OverrideGender: 
+      type: string
+      nullable: true
+     OverrideDOB: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideRelationshipCode: 
+      type: string
+      nullable: true
+     OverrideWithholdPercentage: 
+      type: number
+      nullable: true
+     OverrideWithholdAmount: 
+      type: number
+      nullable: true
+     OverrideExclusiveOrLiability: 
+      type: string
+      nullable: true
+     OverrideAmtRecovery: 
+      type: number
+      nullable: true
+     OverrideAuthorizationId: 
+      type: integer
+      nullable: true
+     OverrideAuthServiceLineNumber: 
+      type: integer
+      nullable: true
+     OverrideAuthServiceDetailLineNumber: 
+      type: integer
+      nullable: true
+     OverrideModifier1: 
+      type: string
+      nullable: true
+     OverrideModifier2: 
+      type: string
+      nullable: true
+     OverrideModifier3: 
+      type: string
+      nullable: true
+     OverrideModifier4: 
+      type: string
+      nullable: true
+     OverrideQualityAdjustmentPercentage: 
+      type: number
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   ClaimOverrideFromTransformListDTO: 
+    title : ClaimOverrideFromTransformListDTO
+    type: object
+    properties: 
+     ClaimId: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     ProcedureCode: 
+      type: string
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     Tooth: 
+      type: string
+      nullable: true
+     HCPCSRates: 
+      type: string
+      nullable: true
+     ServiceCategoryId: 
+      type: integer
+      nullable: true
+     ServiceCategoryName: 
+      type: string
+      nullable: true
+     OverrideServiceRestriction: 
+      type: string
+      nullable: true
+     OverrideLateFiling: 
+      type: string
+      nullable: true
+     OverrideDuplicateChecking: 
+      type: string
+      nullable: true
+     OverridePreEstimateNeeded: 
+      type: string
+      nullable: true
+     OverrideReferralNeeded: 
+      type: string
+      nullable: true
+     OverrideAuthorizationNeeded: 
+      type: string
+      nullable: true
+     OverrideMedicalCaseReview: 
+      type: string
+      nullable: true
+     DenyLine: 
+      type: string
+      nullable: true
+     ExplanationId: 
+      type: integer
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     ExplanationId2: 
+      type: integer
+      nullable: true
+     Explanation2: 
+      type: string
+      nullable: true
+     ExplanationId3: 
+      type: integer
+      nullable: true
+     Explanation3: 
+      type: string
+      nullable: true
+     DeductibleAmt: 
+      type: number
+      nullable: true
+     CoinsuranceAmt: 
+      type: number
+      nullable: true
+     CoPaymentAmt: 
+      type: number
+      nullable: true
+     OtherPatientAmt: 
+      type: number
+      nullable: true
+     ServiceDateReplacedWith: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideDenialOfRelatedProcedures: 
+      type: string
+      nullable: true
+     OverridePreExisting: 
+      type: string
+      nullable: true
+     OverridePrimaryCareRestriction: 
+      type: string
+      nullable: true
+     OverrideCOBProcessing: 
+      type: string
+      nullable: true
+     OverrideDelegatedRule: 
+      type: string
+      nullable: true
+     OverridePaymentClassWith: 
+      type: string
+      nullable: true
+     OverrideSuppressPaymentWith: 
+      type: string
+      nullable: true
+     OverrideGlobalFee: 
+      type: string
+      nullable: true
+     OverrideClaimEditing: 
+      type: string
+      nullable: true
+     OverrideClaimPricing: 
+      type: string
+      nullable: true
+     OverrideDenialAction: 
+      type: string
+      nullable: true
+     OverrideContractId : 
+      type: integer
+      nullable: true
+     OverrideContractName: 
+      type: string
+      nullable: true
+     OverrideLiabilityLevelId : 
+      type: integer
+      nullable: true
+     OverrideLiabilityLevelName: 
+      type: string
+      nullable: true
+     OverrideBenefitCategoryId : 
+      type: integer
+      nullable: true
+     OverrideBenefitCategoryName : 
+      type: string
+      nullable: true
+     OverrideAllowedAmount : 
+      type: number
+      nullable: true
+     OverrideAmtToPay: 
+      type: number
+      nullable: true
+     OverrideAmtToPayMember : 
+      type: number
+      nullable: true
+     OverrideAmtCoPay : 
+      type: number
+      nullable: true
+     OverrideAmtCoInsurance : 
+      type: number
+      nullable: true
+     OverrideAmtDeductible : 
+      type: number
+      nullable: true
+     OverrideAmtPatientLiability: 
+      type: number
+      nullable: true
+     OverrideAmtOutOfPocket: 
+      type: number
+      nullable: true
+     OverrideMaxVisits : 
+      type: number
+      nullable: true
+     OverrideMaxUnits : 
+      type: number
+      nullable: true
+     OverrideMaxDollars : 
+      type: number
+      nullable: true
+     OverrideLiabilityPackageIdHistory: 
+      type: integer
+      nullable: true
+     OverrideAmtToPenalizeMember: 
+      type: number
+      nullable: true
+     OverrideAmtToPenalizeProvider: 
+      type: number
+      nullable: true
+     OverrideStepDownLiabilityStepNumber: 
+      type: integer
+      nullable: true
+     OverrideAmtMoneyLimitApplied: 
+      type: number
+      nullable: true
+     OverrideEpisodeAuthorization: 
+      type: string
+      nullable: true
+     OverrideEpisodeAuthorizationId: 
+      type: integer
+      nullable: true
+     OverrideAmtPreExistingApplied: 
+      type: number
+      nullable: true
+     OverrideAllowedUnits: 
+      type: number
+      nullable: true
+     OverrideSalesTaxRate: 
+      type: string
+      nullable: true
+     OverrideSalesTaxAmount: 
+      type: number
+      nullable: true
+     OverrideFilingDate: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideFilingReductionAmount: 
+      type: number
+      nullable: true
+     OverrideGender: 
+      type: string
+      nullable: true
+     OverrideDOB: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideRelationshipCode: 
+      type: string
+      nullable: true
+     OverrideWithholdPercentage: 
+      type: number
+      nullable: true
+     OverrideWithholdAmount: 
+      type: number
+      nullable: true
+     OverrideExclusiveOrLiability                YesNo_t null,: 
+      type: string
+      nullable: true
+     OverrideAmtRecovery: 
+      type: number
+      nullable: true
+     OverrideAuthorizationId: 
+      type: integer
+      nullable: true
+     OverrideAuthServiceLineNumber: 
+      type: integer
+      nullable: true
+     OverrideAuthServiceDetailLineNumber: 
+      type: integer
+      nullable: true
+     OverrideModifier1: 
+      type: string
+      nullable: true
+     OverrideModifier2: 
+      type: string
+      nullable: true
+     OverrideModifier3: 
+      type: string
+      nullable: true
+     OverrideModifier4: 
+      type: string
+      nullable: true
+     OverrideQualityAdjustmentPercentage: 
+      type: number
+      nullable: true
+     PreAdjudicationTransform: 
+      type: string
+      nullable: true
+     PostAdjudicationTransform: 
+      type: string
+      nullable: true
+     Disabled: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: '|USAGE1|'
+    description: description of parameter passed
+   ClaimIdQueryParam: 
+    in: query
+    name: ClaimId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AdjustmentVersion QueryParam: 
+    in: query
+    name: AdjustmentVersion 
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
