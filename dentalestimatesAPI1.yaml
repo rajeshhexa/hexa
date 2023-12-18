@@ -1,0 +1,302 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Claims Dental Estimate API
+  description: Claims Dental Estimate API API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/dentalestimate/benefitexplanation: 
+   post: 
+    operationId: GetClaimExplanations
+    tags: 
+     - ClaimDentalEstimate
+    summary: Get claim explanations
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimExplanationsSearchDTO'
+    responses: 
+     '200': 
+      description: Claim explanations retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimExplanationsListDTO'
+  /claim/dentalestimate/explanation: 
+   get: 
+    operationId: GetExplanationofBenefits
+    tags: 
+     - ClaimDentalEstimate
+    summary: Get explanation of benefits
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/AdjustmentVersionQueryParam'
+     - $ref: '#/components/parameters/CrystalReportQueryParam'
+    responses: 
+     '200': 
+      description: Explanations of benefits retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/dentalestimate/documentrequest: 
+   post: 
+    operationId: AddDocumentRequestForEstimates
+    tags: 
+     - ClaimDentalEstimate
+    summary: Add document request for estimate
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/FulfillmentIDQueryParam'
+     - $ref: '#/components/parameters/RecordIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Document request for estimates added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   ClaimExplanationsListDTO: 
+    title : ClaimExplanationsListDTO
+    type: object
+    properties: 
+     ClaimId: 
+      type: integer
+     AdjustmentVersion: 
+      type: integer
+     Line: 
+      type: integer
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     Parameter1: 
+      type: string
+      nullable: true
+     Parameter2: 
+      type: string
+      nullable: true
+     Parameter3: 
+      type: string
+      nullable: true
+     Parameter4: 
+      type: string
+      nullable: true
+     Parameter5: 
+      type: string
+      nullable: true
+     DateProcessed: 
+      type: string
+      format: date-time
+      nullable: true
+     Queue: 
+      type: integer
+      nullable: true
+     Override: 
+      type: integer
+      nullable: true
+     Overridden: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     Abbreviation: 
+      type: string
+      nullable: true
+     ExplanationCode: 
+      type: string
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     ShortExplanation: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     ExplanationPrecedence: 
+      type: number
+      nullable: true
+     AllowOverride: 
+      type: string
+      nullable: true
+     EnableAllowOverride: 
+      type: string
+      nullable: true
+     OverridePermissionId: 
+      type: integer
+      nullable: true
+     PermittedToOverride: 
+      type: string
+      nullable: true
+     Severity: 
+      type: string
+      nullable: true
+     ExplanationCategoryId: 
+      type: integer
+      nullable: true
+     ExplanationCategoryType: 
+      type: string
+      nullable: true
+     AllowUserExplanation: 
+      type: string
+      nullable: true
+     ExplanationCategoryTypeName: 
+      type: string
+      nullable: true
+     ExplanationCategoryName: 
+      type: string
+      nullable: true
+     ExplanationCategoryDescription: 
+      type: string
+      nullable: true
+     ExplanationCategoryPrecedence: 
+      type: number
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     ActionCodeType: 
+      type: string
+      nullable: true
+     ActionNumber: 
+      type: string
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     Icon: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Entity: 
+      type: string
+      nullable: true
+     FastTrackField: 
+      type: string
+      nullable: true
+   ClaimExplanationsSearchDTO: 
+    title : ClaimExplanationsSearchDTO
+    type: object
+    properties: 
+     ClaimId: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     OutputType: 
+      type: string
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     ExplanationCategoryType: 
+      type: string
+      nullable: true
+     EnableAllowOverride: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     COBIndicator: 
+      type: string
+      nullable: true
+     OrderByColumns: 
+      type: string
+      nullable: true
+   ExplanationofBenefitsListDTO: 
+    title : ExplanationofBenefitsListDTO
+    type: object
+    properties: 
+     TotalCharge: 
+      type: string
+      nullable: true
+     TotalBenefits: 
+      type: string
+      nullable: true
+     Allowed: 
+      type: string
+      nullable: true
+     Deductible: 
+      type: string
+      nullable: true
+     CoPay: 
+      type: string
+      nullable: true
+     CoInsurance: 
+      type: string
+      nullable: true
+     COB: 
+      type: string
+      nullable: true
+     AmtPatientLiability: 
+      type: string
+      nullable: true
+     AmtToPayWithHoldToPayMember: 
+      type: string
+      nullable: true
+     AmtNotCovered: 
+      type: string
+      nullable: true
+     PrimaryFeeAllowed: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     SalesTaxAmount: 
+      type: string
+      nullable: true
