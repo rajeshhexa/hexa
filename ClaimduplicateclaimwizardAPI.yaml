@@ -1,0 +1,951 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: DuplicateClaimWizard
+  description: DuplicateClaimWizard
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/duplicateclaimwizard/details: 
+   post: 
+    operationId: GetClaimDetails
+    tags: 
+     - Duplicate Claim Wizard
+    summary: Get Claim Details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimIdQueryParam'
+     - $ref: '#/components/parameters/AdjustmentVersionQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: Claim Details Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimDetailsListDTO'
+  /claim/duplicateclaimwizard/dupmatches: 
+   post: 
+    operationId: GetPossibleDupMatches
+    tags: 
+     - Duplicate Claim Wizard
+    summary: Get Possible Dup Matches
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimIdQueryParam'
+     - $ref: '#/components/parameters/LineNumberQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/TraceFlagQueryParam'
+    responses: 
+     '200': 
+      description: Possible Dup Matches Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PossibleDupMatchesListDTO'
+  /claim/duplicateclaimwizard/pendingwork: 
+   post: 
+    operationId: AddPendedWork
+    tags: 
+     - Duplicate Claim Wizard
+    summary: Add Pended Work
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PendedWorkDTO'
+    responses: 
+     '200': 
+      description: Pended Work Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /claim/duplicateclaimwizard/removeobjectinuse: 
+   post: 
+    operationId: DeleteObjectInUse
+    tags: 
+     - Duplicate Claim Wizard
+    summary: Delete Object In Use
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DeleteObjectInUseDTO'
+    responses: 
+     '200': 
+      description: Object In Use Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/duplicateclaimwizard/matches: 
+   delete: 
+    operationId: DeleteDuplicateClaimMatches
+    tags: 
+     - Duplicate Claim Wizard
+    summary: Delete Duplicate Claim Matches
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimIdQueryParam'
+     - $ref: '#/components/parameters/LineNumberQueryParam'
+     - $ref: '#/components/parameters/DupTypeQueryParam'
+    responses: 
+     '200': 
+      description: Duplicate Claim Matches Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /claim/duplicateclaimwizard/pollbyworkgroup: 
+   post: 
+    operationId: PollForClaimsByWorkGroup
+    tags: 
+     - Duplicate Claim Wizard
+    summary: Poll For Claims By Work Group
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimsByWorkGroupSearchDTO'
+    responses: 
+     '200': 
+      description: Poll For Claims By Work Group Successful
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimsByWorkGroupListDTO'
+components: 
+  schemas: 
+   PendedWorkDTO: 
+    title : PendedWorkDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     AssignmentTypeCode: 
+      type: string
+      nullable: true
+     DateAssigned: 
+      type: string
+      format: date-time
+      nullable: true
+     AssignedToID: 
+      type: integer
+      nullable: true
+     AssignmentReasonCode: 
+      type: string
+      nullable: true
+     AssignmentReasonNotes: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     DateToWork: 
+      type: string
+      format: date-time
+      nullable: true
+     DateDue: 
+      type: string
+      format: date-time
+      nullable: true
+     AssignToUser: 
+      type: string
+      nullable: true
+     CheckForPendToSameWorkGroup: 
+      type: string
+      nullable: true
+     AssignToAdjustmentWorkGroup: 
+      type: string
+      nullable: true
+     AddToDatabase: 
+      type: string
+      nullable: true
+     LockId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   DeleteObjectInUseDTO: 
+    title : DeleteObjectInUseDTO
+    type: object
+    properties: 
+     EntityTypeId: 
+      type: integer
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   ClaimDetailsListDTO: 
+    title : ClaimDetailsListDTO
+    type: object
+    properties: 
+     LineType: 
+      type: string
+     ClaimID: 
+      type: integer
+     AdjustmentVersion: 
+      type: integer
+     LineNumber: 
+      type: integer
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+     ServiceDateTo: 
+      type: string
+      format: date-time
+     PlaceOfService: 
+      type: string
+      nullable: true
+     TypeOfService: 
+      type: string
+      nullable: true
+     ProcedureCode: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+     Modifier2: 
+      type: string
+      nullable: true
+     Modifier3: 
+      type: string
+      nullable: true
+     Modifier4: 
+      type: string
+      nullable: true
+     DiagnosisPtrs: 
+      type: string
+      nullable: true
+     DiagnosisPtr1: 
+      type: string
+      nullable: true
+     DiagnosisPtr2: 
+      type: string
+      nullable: true
+     DiagnosisPtr3: 
+      type: string
+      nullable: true
+     DiagnosisPtr4: 
+      type: string
+      nullable: true
+     DiagnosisPtr5: 
+      type: string
+      nullable: true
+     DiagnosisPtr6: 
+      type: string
+      nullable: true
+     DiagnosisPtr7: 
+      type: string
+      nullable: true
+     DiagnosisPtr8: 
+      type: string
+      nullable: true
+     UnitAmount: 
+      type: number
+      nullable: true
+     Amount: 
+      type: number
+      nullable: true
+     BilledCurrencyAmount: 
+      type: string
+      nullable: true
+     AmountMaximumAllowed: 
+      type: number
+      nullable: true
+     AmtRepriced: 
+      type: number
+      nullable: true
+     SuppliedUCR: 
+      type: number
+      nullable: true
+     FeeCode: 
+      type: string
+      nullable: true
+     RepricingOrganizationNumber: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     ServiceUnits: 
+      type: number
+      nullable: true
+     EPSDTPlan: 
+      type: string
+      nullable: true
+     EMG: 
+      type: string
+      nullable: true
+     COB: 
+      type: number
+      nullable: true
+     SOC: 
+      type: number
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     HCPCSRates: 
+      type: string
+      nullable: true
+     NonCoveredCharges: 
+      type: number
+      nullable: true
+     Tooth: 
+      type: string
+      nullable: true
+     Surface: 
+      type: string
+      nullable: true
+     DMEDays: 
+      type: number
+      nullable: true
+     DMERentalPrice: 
+      type: number
+      nullable: true
+     DMEPurchasePrice: 
+      type: number
+      nullable: true
+     DMERentalFrequency: 
+      type: string
+      nullable: true
+     LineItemControlNumber: 
+      type: string
+      nullable: true
+     RenderingProviderId: 
+      type: integer
+      nullable: true
+     RenderingProviderNumber: 
+      type: string
+      nullable: true
+     RenderingProviderNumberQualifier: 
+      type: string
+      nullable: true
+     RelatedProcedureEditStatus: 
+      type: string
+      nullable: true
+     ClaimEditingStatus: 
+      type: string
+      nullable: true
+     ClaimPricingService: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     AllowedUnits: 
+      type: number
+      nullable: true
+     AmtCharged: 
+      type: number
+      nullable: true
+     AmtDisallowed: 
+      type: number
+      nullable: true
+     AmtOverContract: 
+      type: number
+      nullable: true
+     AmtFeeAllowed: 
+      type: number
+      nullable: true
+     AmtDiscount: 
+      type: number
+      nullable: true
+     AmtWithhold: 
+      type: number
+      nullable: true
+     AmtEligible: 
+      type: number
+      nullable: true
+     AmtCopay: 
+      type: number
+      nullable: true
+     AmtCoinsurance: 
+      type: number
+      nullable: true
+     AmtDeductible: 
+      type: number
+      nullable: true
+     AmtCOB: 
+      type: number
+      nullable: true
+     AmtSOCApplied: 
+      type: number
+      nullable: true
+     AmtStopLoss: 
+      type: number
+      nullable: true
+     AmtExceedMax: 
+      type: number
+      nullable: true
+     AmtCovered: 
+      type: number
+      nullable: true
+     VisitsCovered: 
+      type: integer
+      nullable: true
+     AmtPrevPaidProv: 
+      type: number
+      nullable: true
+     AmtToPay: 
+      type: number
+      nullable: true
+     AmtToPayMember: 
+      type: number
+      nullable: true
+     PrimaryFeeAllowed: 
+      type: number
+      nullable: true
+     PrimaryPatientLiability: 
+      type: number
+      nullable: true
+     ProductCodeQualifier: 
+      type: string
+      nullable: true
+     ProductCodeQualifierName: 
+      type: string
+      nullable: true
+     ProductCode: 
+      type: string
+      nullable: true
+     ProductQuantity: 
+      type: number
+      nullable: true
+     ProductUnitOfMeasure: 
+      type: string
+      nullable: true
+     ProductUnitOfMeasureName: 
+      type: string
+      nullable: true
+     AuthorizationId: 
+      type: integer
+      nullable: true
+     ReferralId: 
+      type: integer
+      nullable: true
+     ServiceCategoryId: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     FeeScheduleId: 
+      type: integer
+      nullable: true
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     ReimbursementDescription: 
+      type: string
+      nullable: true
+     ProviderCapacity: 
+      type: string
+      nullable: true
+     BenefitCategoryId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     Savings: 
+      type: number
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     DupFlag: 
+      type: string
+      nullable: true
+     DupStatus: 
+      type: string
+      nullable: true
+     AmtEpisode: 
+      type: number
+      nullable: true
+     EpisodeAuthorizationId: 
+      type: integer
+      nullable: true
+     EpisodeAuthorizationNumber: 
+      type: string
+      nullable: true
+     AuthorizationNumber: 
+      type: string
+      nullable: true
+     AuthorizationNumberType: 
+      type: string
+      nullable: true
+     OtherCoverageCode: 
+      type: string
+      nullable: true
+     LevelOfService: 
+      type: string
+      nullable: true
+     RestrictionsMetIndicator: 
+      type: string
+      nullable: true
+     PrescriberID: 
+      type: integer
+      nullable: true
+     PrescriberNumber: 
+      type: string
+      nullable: true
+     PrescriberNumberQualifier: 
+      type: string
+      nullable: true
+     PharmacistID: 
+      type: integer
+      nullable: true
+     PharmacistNumber: 
+      type: string
+      nullable: true
+     PharmacistNumberQualifier: 
+      type: string
+      nullable: true
+     PrescriptionNumber: 
+      type: string
+      nullable: true
+     PrescriptionNumberQualifier: 
+      type: string
+      nullable: true
+     RefillNumber: 
+      type: integer
+      nullable: true
+     DateWritten: 
+      type: string
+      format: date-time
+     SubmissionClarificationCode: 
+      type: string
+      nullable: true
+     PrescriptionOrigin: 
+      type: string
+      nullable: true
+     PharmacyServiceType: 
+      type: string
+      nullable: true
+     SpecPackIndicator: 
+      type: string
+      nullable: true
+     DaysSupply: 
+      type: integer
+      nullable: true
+     DispenseAsWritten: 
+      type: string
+      nullable: true
+     ReasonForServiceCode: 
+      type: string
+      nullable: true
+     ProfessionalServiceCode: 
+      type: string
+      nullable: true
+     ResultOfServiceCode: 
+      type: string
+      nullable: true
+     LevelOfEffortCode: 
+      type: string
+      nullable: true
+     DosageFormCode: 
+      type: string
+      nullable: true
+     DispensingUnit: 
+      type: string
+      nullable: true
+     RouteOfAdministrationCode: 
+      type: string
+      nullable: true
+     IngredientComponentCount: 
+      type: integer
+      nullable: true
+     CompoundCode: 
+      type: string
+      nullable: true
+     UsualAndCustomaryCharge: 
+      type: number
+      nullable: true
+     BasisOfCost: 
+      type: string
+      nullable: true
+     IngredientTotalCharges: 
+      type: number
+      nullable: true
+     DispensingFeeSubmitted: 
+      type: number
+      nullable: true
+     ProfessionalServiceFeeSubmitted: 
+      type: number
+      nullable: true
+     IncentiveAmountSubmitted: 
+      type: number
+      nullable: true
+     OtherAmountSubmitted: 
+      type: number
+      nullable: true
+     ProcessForApprovedIngredients: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     SalesTaxRateId: 
+      type: integer
+      nullable: true
+     SalesTaxAmount: 
+      type: number
+      nullable: true
+     AmtReduction: 
+      type: number
+      nullable: true
+     VendorAddress1: 
+      type: string
+      nullable: true
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     VendorEIN: 
+      type: string
+      nullable: true
+     ProcedureCodeID: 
+      type: integer
+      nullable: true
+   PossibleDupMatchesListDTO: 
+    title : PossibleDupMatchesListDTO
+    type: object
+    properties: 
+     ClaimId : 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     SubscriberContractId : 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     AdjustmentReason: 
+      type: string
+      nullable: true
+     AdjustmentReasonCode: 
+      type: string
+      nullable: true
+     AdjustmentReasonCodeName: 
+      type: string
+      nullable: true
+     ProcedureCode: 
+      type: string
+      nullable: true
+     AmtCharged: 
+      type: number
+      nullable: true
+     AmtPaid: 
+      type: number
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     ProviderLastName : 
+      type: string
+      nullable: true
+     ProviderFirstName : 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberNumber : 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     Tooth: 
+      type: string
+      nullable: true
+     Surface: 
+      type: string
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+     AmtToPay: 
+      type: number
+      nullable: true
+     AmtToPayMember: 
+      type: number
+      nullable: true
+     HCPCSRates: 
+      type: string
+      nullable: true
+     VendorAddress1: 
+      type: string
+      nullable: true
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     VendorEIN: 
+      type: string
+      nullable: true
+   ClaimsByWorkGroupSearchDTO: 
+    title : ClaimsByWorkGroupSearchDTO
+    type: object
+    properties: 
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     LockClaim: 
+      type: string
+      nullable: true
+     AssignmentTypeCode: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     PollingUserID: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   ClaimsByWorkGroupListDTO: 
+    title : ClaimsByWorkGroupListDTO
+    type: object
+    properties: 
+     ClaimId: 
+      type: integer
+     ClaimNumber: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     WorkGroupID: 
+      type: integer
+     WorkGroupName: 
+      type: string
+     WorkGroupAbbreviation: 
+      type: string
+     DaysOverdue: 
+      type: integer
+      nullable: true
+     WorkGroupPriority: 
+      type: number
+      nullable: true
+     DefaultButtonBar: 
+      type: string
+      nullable: true
+     DefaultStyleSheet: 
+      type: integer
+      nullable: true
+     ExternalClaimEditing: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     ImageName: 
+      type: string
+      nullable: true
+     Location: 
+      type: string
+      nullable: true
+  parameters: 
+   ClaimIdQueryParam: 
+    in: query
+    name: ClaimId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AdjustmentVersionQueryParam: 
+    in: query
+    name: AdjustmentVersion
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   FlagQueryParam: 
+    in: query
+    name: Flag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   LineNumberQueryParam: 
+    in: query
+    name: LineNumber
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   TraceFlagQueryParam: 
+    in: query
+    name: TraceFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   DupTypeQueryParam: 
+    in: query
+    name: DupType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
