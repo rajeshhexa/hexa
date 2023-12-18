@@ -1,0 +1,440 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Claims Dental Codes API
+  description: Claims Dental Codes API API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/dental/codes: 
+   get: 
+    operationId: GetClaimCodes
+    tags: 
+     - ClaimCodes
+    summary: Get claim codes
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ClaimIdQueryParam'
+     - $ref: '#/components/parameters/AdjustmentVersionQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/CodeTypeQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: Get claim codes
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ClaimCodesListDTO'
+   post: 
+    operationId: AddClaimCodes
+    tags: 
+     - ClaimCodes
+    summary: Add claim codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ClaimCodeDTO'
+    responses: 
+     '200': 
+      description: Add claim codes
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   ClaimCodesListDTO: 
+    title : ClaimCodesListDTO
+    type: object
+    properties: 
+     ClaimId: 
+      type: integer
+     AdjustmentVersion: 
+      type: integer
+     Code1: 
+      type: string
+      nullable: true
+     Code2: 
+      type: string
+      nullable: true
+     Code3: 
+      type: string
+      nullable: true
+     Code4: 
+      type: string
+      nullable: true
+     Code5: 
+      type: string
+      nullable: true
+     Code6: 
+      type: string
+      nullable: true
+     Code7: 
+      type: string
+      nullable: true
+     Code8: 
+      type: string
+      nullable: true
+     Code9: 
+      type: string
+      nullable: true
+     Code10: 
+      type: string
+      nullable: true
+     Code11: 
+      type: string
+      nullable: true
+     Code12: 
+      type: string
+      nullable: true
+     Code13: 
+      type: string
+      nullable: true
+     Code14: 
+      type: string
+      nullable: true
+     Code15: 
+      type: string
+      nullable: true
+     Code16: 
+      type: string
+      nullable: true
+     Code17: 
+      type: string
+      nullable: true
+     Code18: 
+      type: string
+      nullable: true
+     Code19: 
+      type: string
+      nullable: true
+     Code20: 
+      type: string
+      nullable: true
+     Code21: 
+      type: string
+      nullable: true
+     Code22: 
+      type: string
+      nullable: true
+     Code23: 
+      type: string
+      nullable: true
+     Code24: 
+      type: string
+      nullable: true
+     CodeQual1: 
+      type: string
+      nullable: true
+     CodeQual2: 
+      type: string
+      nullable: true
+     CodeQual3: 
+      type: string
+      nullable: true
+     CodeQual4: 
+      type: string
+      nullable: true
+     CodeQual5: 
+      type: string
+      nullable: true
+     CodeQual6: 
+      type: string
+      nullable: true
+     CodeQual7: 
+      type: string
+      nullable: true
+     CodeQual8: 
+      type: string
+      nullable: true
+     CodeQual9: 
+      type: string
+      nullable: true
+     CodeQual10: 
+      type: string
+      nullable: true
+     CodeQual11: 
+      type: string
+      nullable: true
+     CodeQual12: 
+      type: string
+      nullable: true
+     CodeQual13: 
+      type: string
+      nullable: true
+     CodeQual14: 
+      type: string
+      nullable: true
+     CodeQual15: 
+      type: string
+      nullable: true
+     CodeQual16: 
+      type: string
+      nullable: true
+     CodeQual17: 
+      type: string
+      nullable: true
+     CodeQual18: 
+      type: string
+      nullable: true
+     CodeQual19: 
+      type: string
+      nullable: true
+     CodeQual20: 
+      type: string
+      nullable: true
+     CodeQual21: 
+      type: string
+      nullable: true
+     CodeQual22: 
+      type: string
+      nullable: true
+     CodeQual23: 
+      type: string
+      nullable: true
+     CodeQual24: 
+      type: string
+      nullable: true
+     CodePOA1: 
+      type: string
+      nullable: true
+     CodePOA2: 
+      type: string
+      nullable: true
+     CodePOA3: 
+      type: string
+      nullable: true
+     CodePOA4: 
+      type: string
+      nullable: true
+     CodePOA5: 
+      type: string
+      nullable: true
+     CodePOA6: 
+      type: string
+      nullable: true
+     CodePOA7: 
+      type: string
+      nullable: true
+     CodePOA8: 
+      type: string
+      nullable: true
+     CodePOA9: 
+      type: string
+      nullable: true
+     CodePOA10: 
+      type: string
+      nullable: true
+     CodePOA11: 
+      type: string
+      nullable: true
+     CodePOA12: 
+      type: string
+      nullable: true
+     CodePOA13: 
+      type: string
+      nullable: true
+     CodePOA14: 
+      type: string
+      nullable: true
+     CodePOA15: 
+      type: string
+      nullable: true
+     CodePOA16: 
+      type: string
+      nullable: true
+     CodePOA17: 
+      type: string
+      nullable: true
+     CodePOA18: 
+      type: string
+      nullable: true
+     CodePOA19: 
+      type: string
+      nullable: true
+     CodePOA20: 
+      type: string
+      nullable: true
+     CodePOA21: 
+      type: string
+      nullable: true
+     CodePOA22: 
+      type: string
+      nullable: true
+     CodePOA23: 
+      type: string
+      nullable: true
+     CodePOA24: 
+      type: string
+      nullable: true
+     PrinDiagCode: 
+      type: string
+      nullable: true
+     PrinDiagQual: 
+      type: string
+      nullable: true
+     PrinDiagPOAIndicator: 
+      type: string
+      nullable: true
+     PrinDiagName: 
+      type: string
+      nullable: true
+     AdmDiagCode: 
+      type: string
+      nullable: true
+     AdmDiagQual: 
+      type: string
+      nullable: true
+     AdmDiagName: 
+      type: string
+      nullable: true
+     ECode: 
+      type: string
+      nullable: true
+     ECodeQual: 
+      type: string
+      nullable: true
+     ECodeName: 
+      type: string
+      nullable: true
+     ECodePOAIndicator: 
+      type: string
+      nullable: true
+     DRG: 
+      type: string
+      nullable: true
+     PrinProcCode: 
+      type: string
+      nullable: true
+     PrinProcDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ProcCode1: 
+      type: string
+      nullable: true
+     ProcCode2: 
+      type: string
+      nullable: true
+     ProcCode3: 
+      type: string
+      nullable: true
+     ProcCode4: 
+      type: string
+      nullable: true
+     ProcCode5: 
+      type: string
+      nullable: true
+     POAIndicator: 
+      type: string
+      nullable: true
+     PatientReasonForVisit1: 
+      type: string
+      nullable: true
+     PatientReasonForVisit2: 
+      type: string
+      nullable: true
+     PatientReasonForVisit3: 
+      type: string
+      nullable: true
+     PatientReasonForVisit1Qual: 
+      type: string
+      nullable: true
+     PatientReasonForVisit2Qual: 
+      type: string
+      nullable: true
+     PatientReasonForVisit3Qual: 
+      type: string
+      nullable: true
+     ClaimID: 
+      type: integer
+     AdjustmentVersion: 
+      type: integer
+     CodeType: 
+      type: string
+     Code: 
+      type: string
+     CodeQualifier: 
+      type: string
+      nullable: true
+     POAIndicator: 
+      type: string
+      nullable: true
+     DateRecorded: 
+      type: string
+      format: date-time
+      nullable: true
+     DateThrough: 
+      type: string
+      format: date-time
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     FieldNumber: 
+      type: string
+      nullable: true
+     Sequence: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+   ClaimCodeDTO: 
+    title : ClaimCodeDTO
+    type: object
+    properties: 
+     ClaimID: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     CodeType: 
+      type: string
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     CodeQualifier: 
+      type: string
+      nullable: true
+     POAIndicator: 
+      type: string
+      nullable: true
+     DateRecorded: 
+      type: string
+      format: date-time
+      nullable: true
+     DateThrough: 
+      type: string
+      format: date-time
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     FieldNumber: 
+      type: string
+      nullable: true
+     Sequence: 
+      type: integer
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
