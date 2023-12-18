@@ -1,0 +1,326 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Network Reimbursement
+  description: Network Reimbursement
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/networkreimbursementcontract: 
+   post: 
+    operationId: GetNetworkReimbursementContracts
+    tags: 
+     - Network Reimbursement Contract
+    summary: Get Network Reimbursement Contracts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NetworkReimbursementContractSearchDTO'
+    responses: 
+     '200': 
+      description: Network Reimbursement Contracts Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/NetworkReimbursementContractListDTO'
+   put: 
+    operationId: UpdateNetworkReimbursementContract
+    tags: 
+     - Network Reimbursement Contract
+    summary: Update Network Reimbursement Contract
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NetworkReimbursementContractDTO'
+    responses: 
+     '200': 
+      description: Network Reimbursement Contract Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteNetworkReimbursementContract
+    tags: 
+     - Network Reimbursement Contract
+    summary: Delete Network Reimbursement Contract
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/IdentityIdQueryParam'
+    responses: 
+     '200': 
+      description: Network Reimbursement Contract Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /claim/networkreimbursementcontract/entity: 
+   post: 
+    operationId: GetNetworkReimbursementContractsForEntity
+    tags: 
+     - Network Reimbursement Contract
+    summary: Get Network Reimbursement Contracts For Entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/NetworkReimbursementContractForEntitySearchDTO'
+    responses: 
+     '200': 
+      description: Network Reimbursement Contract For Entity Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/NetworkReimbursementContractForEntityListDTO'
+components: 
+  schemas: 
+   NetworkReimbursementContractSearchDTO: 
+    title : NetworkReimbursementContractSearchDTO
+    type: object
+    properties: 
+     IdentityId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     NetworkName: 
+      type: string
+      nullable: true
+     RepricingOrganizationNumber: 
+      type: string
+      nullable: true
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     ReimbursementName: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractNumber: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|Search|"
+      nullable: true
+   NetworkReimbursementContractListDTO: 
+    title : NetworkReimbursementContractListDTO
+    type: object
+    properties: 
+     IdentityId: 
+      type: integer
+     NetworkName: 
+      type: string
+     RepricingOrganizationNumber: 
+      type: string
+     ReimbursementId: 
+      type: integer
+     ReimbursementName: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+     ContractNumber: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     PaymentType: 
+      type: string
+      nullable: true
+     PaymentTypeName: 
+      type: string
+      nullable: true
+     PaymentAmount: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   NetworkReimbursementContractDTO: 
+    title : NetworkReimbursementContractDTO
+    type: object
+    properties: 
+     NetworkName: 
+      type: string
+      nullable: true
+     RepricingOrganizationNumber: 
+      type: string
+      nullable: true
+     ReimbursementId: 
+      type: integer
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     VendorID: 
+      type: integer
+      nullable: true
+     PaymentType: 
+      type: string
+      nullable: true
+     PaymentAmount: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     IdentityId: 
+      type: integer
+      nullable: true
+   NetworkReimbursementContractForEntitySearchDTO: 
+    title : NetworkReimbursementContractForEntitySearchDTO
+    type: object
+    properties: 
+     IdentityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|ByIdentityId|"
+      nullable: true
+   NetworkReimbursementContractForEntityListDTO: 
+    title : NetworkReimbursementContractForEntityListDTO
+    type: object
+    properties: 
+     IdentityId: 
+      type: integer
+     NetworkName: 
+      type: string
+     RepricingOrganizationNumber: 
+      type: string
+     ReimbursementId: 
+      type: integer
+     ReimbursementName: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+     ContractNumber: 
+      type: string
+      nullable: true
+     ContractName: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     PaymentType: 
+      type: string
+      nullable: true
+     PaymentTypeName: 
+      type: string
+      nullable: true
+     PaymentAmount: 
+      type: number
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityNumber: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     MappingEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MappingExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+  parameters: 
+   IdentityIdQueryParam: 
+    in: query
+    name: IdentityId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
