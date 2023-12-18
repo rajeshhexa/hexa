@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Claims Dental Locks API
+  description: Claims Dental Locks API API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims/dental/locks: 
+   get: 
+    operationId: GetLocks
+    tags: 
+     - DentalLocks
+    summary: Get locks
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/LockIdQueryParam'
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Claim Locks retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LocksListDTO'
+  /claims/dental/lock: 
+   post: 
+    operationId: AddLock
+    tags: 
+     - DentalLocks
+    summary: Add locks
+    description: Description of path
+    responses: 
+     '200': 
+      description: Claim Lock added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   null: 
+    operationId: DeleteLock
+    tags: 
+     - DentalLocks
+    summary: Delete locks
+    description: Description of path
