@@ -1,0 +1,446 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Bundling Rule
+  description: Bundling Rule
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/paymentrule/bundlingrules: 
+   post: 
+    operationId: GetBundlingRules
+    tags: 
+     - Bundling Rules
+    summary: Get Bundling Rules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BundlingRuleSearchDTO'
+    responses: 
+     '200': 
+      description: Bundling Rules Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BundlingRuleListDTO'
+  /claim/paymentrule/bundlingrule: 
+   post: 
+    operationId: GetBundlingRuleCodeMap
+    tags: 
+     - Bundling Rules
+    summary: Get Bundling Rule Code Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BundlingRuleIdQueryParam'
+     - $ref: '#/components/parameters/BundlingCodeTypeQueryParam'
+     - $ref: '#/components/parameters/usageQueryParam'
+    responses: 
+     '200': 
+      description: Bundling Rule Code Map Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BundlingRuleCodeMapListDTO'
+   put: 
+    operationId: UpdateBundlingRule
+    tags: 
+     - Bundling Rules
+    summary: Update Bundling Rule
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BundlingRuleDTO'
+    responses: 
+     '200': 
+      description: Bundling Rule Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteBundlingRule
+    tags: 
+     - Bundling Rules
+    summary: Delete Bundling Rule
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BundlingRuleIDQueryParam'
+    responses: 
+     '200': 
+      description: Bundling Rule Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /claim/paymentrule/bundlingcodemap: 
+   delete: 
+    operationId: DeleteBundlingCodeMap
+    tags: 
+     - Bundling Rules
+    summary: Delete Bundling Code Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/BundlingRuleIDQueryParam'
+     - $ref: '#/components/parameters/BundlingCodeTypeQueryParam'
+     - $ref: '#/components/parameters/SequenceNumberQueryParam'
+     - $ref: '#/components/parameters/ProcedureCodeQueryParam'
+    responses: 
+     '200': 
+      description: Bundling Code Map Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   post: 
+    operationId: AddBundlingRuleCodeMap
+    tags: 
+     - Bundling Rules
+    summary: Add Bundling Rule Code Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BundlingRuleCodeMapDTO'
+    responses: 
+     '200': 
+      description: Bundling Rule Code Map Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /claim/paymentrule/conflictingbundlingrules: 
+   post: 
+    operationId: GetConflictingBundlingRules
+    tags: 
+     - Bundling Rules
+    summary: Get Conflicting Bundling Rules
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ConflictingBundlingRuleSearchDTO'
+    responses: 
+     '200': 
+      description: Conflicting Bundling Rules Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ConflictingBundlingRulesListDTO'
+components: 
+  schemas: 
+   BundlingRuleSearchDTO: 
+    title : BundlingRuleSearchDTO
+    type: object
+    properties: 
+     BundlingRuleId: 
+      type: integer
+      nullable: true
+     BundlingRuleType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ProcedureCode: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     BundlingRuleName: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     Precedence: 
+      type: number
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+   BundlingRuleDTO: 
+    title : BundlingRuleDTO
+    type: object
+    properties: 
+     BundlingRuleName: 
+      type: string
+      nullable: true
+     BundlingRuleType: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: number
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     BundlingAction: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     BundlingRuleId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   BundlingRuleListDTO: 
+    title : BundlingRuleListDTO
+    type: object
+    properties: 
+     BundlingRuleId: 
+      type: integer
+     BundlingRuleName: 
+      type: string
+     BundlingRuleType: 
+      type: string
+     BundlingRuleTypeName: 
+      type: string
+     Precedence: 
+      type: number
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     BundlingAction: 
+      type: string
+     BundlingActionName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     ProcedureCode: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+   BundlingRuleCodeMapListDTO: 
+    title : BundlingRuleCodeMapListDTO
+    type: object
+    properties: 
+     BundlingRuleId: 
+      type: integer
+     SequenceNumber: 
+      type: integer
+      nullable: true
+     BundlingCodeType: 
+      type: string
+     ProcedureCode: 
+      type: string
+     Units: 
+      type: number
+      nullable: true
+     Tooth: 
+      type: string
+      nullable: true
+     ToothName: 
+      type: string
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+     ModifierName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   BundlingRuleCodeMapDTO: 
+    title : BundlingRuleCodeMapDTO
+    type: object
+    properties: 
+     BundlingRuleId: 
+      type: integer
+      nullable: true
+     BundlingCodeType: 
+      type: string
+      nullable: true
+     SequenceNumber: 
+      type: integer
+      nullable: true
+     ProcedureCode: 
+      type: string
+      nullable: true
+     Units: 
+      type: number
+      nullable: true
+     Tooth: 
+      type: string
+      nullable: true
+     Modifier: 
+      type: string
+      nullable: true
+   ConflictingBundlingRuleSearchDTO: 
+    title : ConflictingBundlingRuleSearchDTO
+    type: object
+    properties: 
+     CurrentBundlingRuleId: 
+      type: integer
+      nullable: true
+     CurrentPrecedence: 
+      type: number
+      nullable: true
+     CurrentEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CurrentExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SamePrecedence: 
+      type: string
+      default: "Y"
+      nullable: true
+     CurrentProcedureCode: 
+      type: string
+      nullable: true
+   ConflictingBundlingRulesListDTO: 
+    title : ConflictingBundlingRulesListDTO
+    type: object
+    properties: 
+     BundlingRuleId: 
+      type: integer
+     BundlingRuleName: 
+      type: string
+     BundlingRuleTypeCode: 
+      type: string
+     BundlingRuleType: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: number
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     ActionCodeId: 
+      type: integer
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     BundlingAction: 
+      type: string
+     BundlingActionName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     UserId: 
+      type: integer
+     LastUpdatedBy : 
+      type: string
+      nullable: true
+     LastUpdatedAt : 
+      type: string
+      nullable: true
+  parameters: 
+   BundlingRuleIdQueryParam: 
+    in: query
+    name: BundlingRuleId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   BundlingCodeTypeQueryParam: 
+    in: query
+    name: BundlingCodeType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   usageQueryParam: 
+    in: query
+    name: usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   BundlingRuleIDQueryParam: 
+    in: query
+    name: BundlingRuleID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   SequenceNumberQueryParam: 
+    in: query
+    name: SequenceNumber
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ProcedureCodeQueryParam: 
+    in: query
+    name: ProcedureCode
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
