@@ -1,0 +1,244 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Service Class
+  description: Service Class
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claim/restrictionclasses/serviceclass: 
+   post: 
+    operationId: AddServiceClass
+    tags: 
+     - Service Class
+    summary: Add Service Class
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceClassDTO'
+    responses: 
+     '200': 
+      description: Service Class Added Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateServiceClass
+    tags: 
+     - Service Class
+    summary: Update Service Class
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceClassDTO'
+    responses: 
+     '200': 
+      description: Service Class Updated Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteServiceClass
+    tags: 
+     - Service Class
+    summary: Delete Service Class
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ServiceClassIDQueryParam'
+    responses: 
+     '200': 
+      description: Service Class Deleted Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /claim/restrictionclasses/serviceclasses: 
+   post: 
+    operationId: GetServiceClasses
+    tags: 
+     - Service Class
+    summary: Get Service Classes
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ServiceClassIdQueryParam'
+     - $ref: '#/components/parameters/ServiceClassTypeQueryParam'
+     - $ref: '#/components/parameters/ServiceClassNameQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/FlagQueryParam'
+    responses: 
+     '200': 
+      description: Service Class Retreived Successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ServiceClassListDTO'
+  /claim/restrictionclasses/serviceclass/codemap: 
+   post: 
+    operationId: AddServiceClassCodeMap
+    tags: 
+     - Service Class Code Map
+    summary: Add Service Class Code Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ServiceClassCodeMapDTO'
+    responses: 
+     '200': 
+      description: 
+      content: 
+       application/json: 
+        schema: 
+   put: 
+    operationId: DeleteServiceClassCodeMap
+    tags: 
+     - Service Class Code Map
+    summary: Delete Service Class Code Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ServiceClassIDQueryParam'
+     - $ref: '#/components/parameters/CodeQueryParam'
+    responses: 
+     '200': 
+      description: 
+      content: 
+       application/json: 
+        schema: 
+   get: 
+    operationId: GetServiceClassCodeMap
+    tags: 
+     - Service Class Code Map
+    summary: Get Service Class Code Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ServiceClassIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: 
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ServiceClassCodeMapListDTO'
+components: 
+  schemas: 
+   ServiceClassDTO: 
+    title : ServiceClassDTO
+    type: object
+    properties: 
+     ServiceClassId: 
+      type: integer
+      nullable: true
+     ServiceClassName: 
+      type: string
+      nullable: true
+     ServiceClassType: 
+      type: string
+      nullable: true
+   ServiceClassListDTO: 
+    title : ServiceClassListDTO
+    type: object
+    properties: 
+     ServiceClassId: 
+      type: integer
+     ServiceClassName: 
+      type: string
+     ServiceClassType: 
+      type: string
+     ServiceClassTypeName: 
+      type: string
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   ServiceClassCodeMapDTO: 
+    title : ServiceClassCodeMapDTO
+    type: object
+    properties: 
+     ServiceClassId: 
+      type: integer
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+   ServiceClassCodeMapListDTO: 
+    title : ServiceClassCodeMapListDTO
+    type: object
+    properties: 
+     ServiceClassId: 
+      type: integer
+     Code: 
+      type: string
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+  parameters: 
+   ServiceClassIDQueryParam: 
+    in: query
+    name: ServiceClassID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ServiceClassIdQueryParam: 
+    in: query
+    name: ServiceClassId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ServiceClassTypeQueryParam: 
+    in: query
+    name: ServiceClassType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ServiceClassNameQueryParam: 
+    in: query
+    name: ServiceClassName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   FlagQueryParam: 
+    in: query
+    name: Flag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CodeQueryParam: 
+    in: query
+    name: Code
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
