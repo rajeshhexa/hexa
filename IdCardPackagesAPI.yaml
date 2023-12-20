@@ -1,0 +1,467 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: IACardPackages
+  description: IACardPackages API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /idcard/idcardpackages: 
+   post: 
+    operationId: GetIDCardPackages
+    tags: 
+     - IDCardPackage
+    summary: Get ID Card Package
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IDCardPackagesSearchDTO'
+    responses: 
+     '200': 
+      description: IDCardPackages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/IDCardPackagesListDTO'
+  /idcard/idcardpackage: 
+   post: 
+    operationId: AddIDCardPackage
+    tags: 
+     - IDCardPackage
+    summary: Add ID Card Package
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IDCardPackagesDTO'
+    responses: 
+     '200': 
+      description: IDCardPackages added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Delete: 
+    operationId: DeleteIDCardPackage
+    tags: 
+     - IDCardPackage
+    summary: Delete ID Card Package
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/IDCardPackageIDQueryParam'
+    responses: 
+     '200': 
+      description: IDCardPackages deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateIDCardPackage
+    tags: 
+     - IDCardPackage
+    summary: Update ID Card Package
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IDCardPackagesDTO'
+    responses: 
+     '200': 
+      description: IDCardPackages updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /idcard/idcardpackagegroupmap: 
+   get: 
+    operationId: GetIDCardPackageGroupMap
+    tags: 
+     - IDCardPackage
+    summary: Get ID Card Package Group Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/IDCardPackageGroupMapIdQueryParam'
+     - $ref: '#/components/parameters/IDCardPackageIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: IDCardPackageGroupMap retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/IDCardPackageGroupMapListDTO'
+   post: 
+    operationId: AddIDCardPackageGroupMap
+    tags: 
+     - IDCardPackage
+    summary: Add ID Card Package Group Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IDCardPackageGroupMapDTO'
+    responses: 
+     '200': 
+      description: IDCardPackageGroupMap added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Delete: 
+    operationId: DeleteIDCardPackageGroupMap
+    tags: 
+     - IDCardPackage
+    summary: Delete ID Card Package Group Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/IDCardPackageGroupMapIDQueryParam'
+    responses: 
+     '200': 
+      description: IDCardPackageGroupMap deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateIDCardPackageGroupMap
+    tags: 
+     - IDCardPackage
+    summary: Update ID Card Package Group Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IDCardPackageGroupMapDTO'
+    responses: 
+     '200': 
+      description: IDCardPackageGroupMap updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /idcard/agingidcardpackage: 
+   get: 
+    operationId: GetAgingbyIDCardPackage
+    tags: 
+     - IDCardPackage
+    summary: Get Aging ID Card Package
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: AgingByIDCardPackage retrieved sucessfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AgingByIDCardPackageListDTO'
+components: 
+  schemas: 
+   IDCardPackagesDTO: 
+    title : IDCardPackagesDTO
+    type: object
+    properties: 
+     IDCardPackageID: 
+      type: integer
+      nullable: true
+     IDCardPackageName: 
+      type: string
+      nullable: true
+     IDCardReportID: 
+      type: integer
+      nullable: true
+     SendToDependents: 
+      type: string
+      default: "N"
+      nullable: true
+     SendToGroup: 
+      type: string
+      default: "N"
+      nullable: true
+     OutputToFile: 
+      type: string
+      default: "N"
+      nullable: true
+     WebUsage: 
+      type: string
+      default: "BTH"
+      nullable: true
+     PreviousCardGap: 
+      type: integer
+      nullable: true
+     MinimumGapInCoverage: 
+      type: integer
+      nullable: true
+     GenerateCardOnGroupChange: 
+      type: string
+      nullable: true
+     RequireRequestType: 
+      type: string
+      nullable: true
+     VoidIdCardsWhenTerminating: 
+      type: string
+      default: "NON"
+      nullable: true
+     OutputFileTransform: 
+      type: integer
+      nullable: true
+     Class: 
+      type: string
+      default: "DEF"
+      nullable: true
+     SubClass: 
+      type: string
+      default: "DEF"
+      nullable: true
+   IDCardPackagesSearchDTO: 
+    title : IDCardPackagesSearchDTO
+    type: object
+    properties: 
+     IDCardPackageId: 
+      type: integer
+      nullable: true
+     IDCardPackageName: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     GetCountAcrossSubGroups: 
+      type: string
+      default: "N"
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     Debugflag: 
+      type: integer
+      nullable: true
+   IDCardPackagesListDTO: 
+    title : IDCardPackagesListDTO
+    type: object
+    properties: 
+     IDCardPackageId: 
+      type: integer
+     IDCardPackageName: 
+      type: string
+     IDCardReportID: 
+      type: integer
+      nullable: true
+     IDCard: 
+      type: string
+      nullable: true
+     IDCardPath: 
+      type: string
+      nullable: true
+     SendToGroup: 
+      type: string
+     SendToDependents: 
+      type: string
+     OutputToFile: 
+      type: string
+     WebUsage: 
+      type: string
+     WebUsageName: 
+      type: string
+      nullable: true
+     PreviousCardGap: 
+      type: integer
+      nullable: true
+     IDCardPackageGroupMapID: 
+      type: integer
+      nullable: true
+     PackageEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PackageExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MinimumGapInCoverage: 
+      type: integer
+      nullable: true
+     GenerateCardOnGroupChange: 
+      type: string
+     RequireRequestType: 
+      type: string
+     LastupdatedBy: 
+      type: string
+     LastupdatedAt: 
+      type: string
+      format: date-time
+     NumberOfPendingRequests: 
+      type: integer
+      nullable: true
+     NumberOfCompletedRequests: 
+      type: integer
+      nullable: true
+     VoidIdCardsWhenTerminating: 
+      type: string
+     OutputFileTransform: 
+      type: integer
+      nullable: true
+     OutputFileTransformName: 
+      type: string
+      nullable: true
+     TotalPendingRequestsAcrossSubGroups: 
+      type: integer
+      nullable: true
+     TotalCompletedRequestsAcrossSubGroups: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+     SubClass: 
+      type: string
+     ClassName: 
+      type: string
+      nullable: true
+     SubClassName: 
+      type: string
+      nullable: true
+   IDCardPackageGroupMapDTO: 
+    title : IDCardPackageGroupMapDTO
+    type: object
+    properties: 
+     IDCardPackageGroupMapID: 
+      type: integer
+      nullable: true
+     IDCardPackageId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     PackageEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PackageExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+   IDCardPackageGroupMapListDTO: 
+    title : IDCardPackageGroupMapListDTO
+    type: object
+    properties: 
+     IDCardPackageId: 
+      type: integer
+     IDCardPackageGroupMapID: 
+      type: integer
+     GroupId: 
+      type: integer
+     PackageEffectiveDate: 
+      type: string
+      format: date-time
+     PackageExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     GroupName: 
+      type: string
+      nullable: true
+     NumberOfPendingRequests: 
+      type: integer
+      nullable: true
+     NumberOfCompletedRequests: 
+      type: integer
+      nullable: true
+   AgingByIDCardPackageListDTO: 
+    title : AgingByIDCardPackageListDTO
+    type: object
+    properties: 
+     IDCardPackageID: 
+      type: integer
+     IDCardPackageName: 
+      type: string
+      nullable: true
+     Total: 
+      type: integer
+     Age30: 
+      type: integer
+     Age1129: 
+      type: integer
+     Age10: 
+      type: integer
+      description: 
+  parameters: 
+   IDCardPackageIDQueryParam: 
+    in: query
+    name: IDCardPackageID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   IDCardPackageGroupMapIDQueryParam: 
+    in: query
+    name: IDCardPackageGroupMapID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   IDCardPackageGroupMapIdQueryParam: 
+    in: query
+    name: IDCardPackageGroupMapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   IDCardPackageIdQueryParam: 
+    in: query
+    name: IDCardPackageId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|USAGE|"
+    description: description of parameter passed
