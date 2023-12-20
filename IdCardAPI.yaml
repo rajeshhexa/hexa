@@ -1,0 +1,844 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: IdCard API
+  description: IdCard API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /idcard/processmap: 
+   get: 
+    operationId: GetIdCardProcessMap
+    tags: 
+     - IdCard
+    summary: Get Id Card Process Map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/IDCardProcessMapIDQueryParam'
+     - $ref: '#/components/parameters/IDCardPackageIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Id Card Process Map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IdCardProcessMapListDTO'
+   post: 
+    operationId: AddIdCardProcessMap
+    tags: 
+     - IdCard
+    summary: Add Id Card Process Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IdCardProcessMapDTO'
+    responses: 
+     '200': 
+      description: Id Card Process Map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateIdCardProcessMap
+    tags: 
+     - IdCard
+    summary: Update Id Card Process Map 
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IdCardProcessMapDTO'
+    responses: 
+     '200': 
+      description: Id Card Process Map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteIdCardProcessMap
+    tags: 
+     - IdCard
+    summary: Delete Id Card Process Map 
+    description: Description of path
+    responses: 
+     '200': 
+      description: Id Card Process Map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /idcard/requests: 
+   post: 
+    operationId: GetIdCardRequests
+    tags: 
+     - IdCard
+    summary: Get Id Card Requests
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IdCardRequestsSearchDTO'
+    responses: 
+     '200': 
+      description: Id Card Requests retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IdCardRequestsListDTO'
+  /idcard/request: 
+   post: 
+    operationId: AddIdCardRequest
+    tags: 
+     - IdCard
+    summary: Add Id Card Requests
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IdCardRequestsDTO'
+    responses: 
+     '200': 
+      description: Id Card Requests added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateIdCardRequest
+    tags: 
+     - IdCard
+    summary: Update Id Card Requests
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IdCardRequestsDTO'
+    responses: 
+     '200': 
+      description: Id Card Requests updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /idcard/regeneraterequestforgroup: 
+   post: 
+    operationId: RegenerateIdCardRequestsForGroup
+    tags: 
+     - IdCard
+    summary: Regenerate Id Card Request for Group
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IdCardRequestRegenernateForGroupSearchDTO'
+    responses: 
+     '200': 
+      description: Id Card Regenerate For group 
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/IdCardRequestRegenernateForGroupListDTO'
+components: 
+  schemas: 
+   IdCardProcessMapListDTO: 
+    title : IdCardProcessMapListDTO
+    type: object
+    properties: 
+     IDCardPackageId: 
+      type: integer
+      nullable: true
+     IDCardProcessMapID: 
+      type: integer
+      nullable: true
+     ProcessTypeCode: 
+      type: string
+     ContactReasonID: 
+      type: integer
+      nullable: true
+     IDCardLetterReportId: 
+      type: integer
+      nullable: true
+     ProcessType: 
+      type: string
+      nullable: true
+     ContactReason: 
+      type: string
+      nullable: true
+     LetterTemplateName: 
+      type: string
+      nullable: true
+     LetterTemplate: 
+      type: string
+      nullable: true
+     LastupdatedBy: 
+      type: string
+      nullable: true
+     LastupdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     NumberOfPendingRequests: 
+      type: integer
+      nullable: true
+   IdCardProcessMapDTO: 
+    title : IdCardProcessMapDTO
+    type: object
+    properties: 
+     IDCardPackageId: 
+      type: integer
+      nullable: true
+     ProcessTypeCode: 
+      type: string
+      nullable: true
+     ContactReasonID: 
+      type: integer
+      nullable: true
+     IDCardLetterReportId: 
+      type: integer
+      nullable: true
+     IDCardProcessMapID: 
+      type: integer
+      nullable: true
+     DeleteRequests: 
+      type: string
+      nullable: true
+   IdCardRequestsSearchDTO: 
+    title : IdCardRequestsSearchDTO
+    type: object
+    properties: 
+     IDCardPackageId: 
+      type: integer
+      nullable: true
+     ProcessTypeCode: 
+      type: string
+      nullable: true
+     IDCardRequestId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     OutputToFile: 
+      type: string
+      nullable: true
+     OutputBatchID: 
+      type: integer
+      nullable: true
+     UserReportId: 
+      type: integer
+      nullable: true
+     ReturnStatus: 
+      type: string
+      nullable: true
+     OnlyReturnLetters: 
+      type: string
+      nullable: true
+     RequestType: 
+      type: string
+      nullable: true
+     RequestedBy: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     DateFrom: 
+      type: string
+      nullable: true
+     DateTo: 
+      type: string
+      nullable: true
+     XMLFilter: 
+      type: string
+      nullable: true
+     IDCardPackageClassId: 
+      type: string
+      nullable: true
+     IDCardPackageSubClassId: 
+      type: string
+      nullable: true
+     PlanEffDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     PlanEffDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   IdCardRequestsListDTO: 
+    title : IdCardRequestsListDTO
+    type: object
+    properties: 
+     IDCardRequestID: 
+      type: integer
+      description: 
+     IDCardPackageID: 
+      type: integer
+      nullable: true
+     IDCardPackageName: 
+      type: string
+      nullable: true
+     ProcessTypeCode: 
+      type: string
+     ProcessType: 
+      type: string
+      nullable: true
+     DependentActiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SSN: 
+      type: string
+      nullable: true
+     MemberID: 
+      type: integer
+      description: 
+     MemberNumber: 
+      type: string
+      nullable: true
+     RxIdNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     SubscriberID: 
+      type: integer
+      nullable: true
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberMiddleName: 
+      type: string
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     SubscriberDOB: 
+      type: string
+      format: date-time
+      nullable: true
+     SubscriberGender: 
+      type: string
+      nullable: true
+     SubscriberLocationCode: 
+      type: string
+      nullable: true
+     SubscriberSSN: 
+      type: string
+      nullable: true
+     BenefitCoverageID: 
+      type: integer
+      description: 
+     MemberEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberProviderID: 
+      type: integer
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberMiddleName: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     MemberDOB: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberGender: 
+      type: string
+      nullable: true
+     MemberLocationCode: 
+      type: string
+      nullable: true
+     HouseHoldId: 
+      type: integer
+      nullable: true
+     HouseHoldLastName: 
+      type: string
+      nullable: true
+     HouseHoldFirstName: 
+      type: string
+      nullable: true
+     HouseholdMiddleName: 
+      type: string
+      nullable: true
+     HouseholdDOB: 
+      type: string
+      format: date-time
+      nullable: true
+     HouseholdGender: 
+      type: string
+      nullable: true
+     HouseholdSSN: 
+      type: string
+      nullable: true
+     HouseholdReferenceNumber: 
+      type: string
+      nullable: true
+     HouseholdRelationshipCode: 
+      type: string
+      nullable: true
+     HouseholdRelationshipName: 
+      type: string
+      nullable: true
+     HouseholdAddress1: 
+      type: string
+      nullable: true
+     HouseholdAddress2: 
+      type: string
+      nullable: true
+     HouseholdCity: 
+      type: string
+      nullable: true
+     HouseholdState: 
+      type: string
+      nullable: true
+     HouseholdZip: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      description: 
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     PCPID: 
+      type: integer
+      nullable: true
+     PCPNumber: 
+      type: string
+      nullable: true
+     PCPName: 
+      type: string
+      nullable: true
+     PCPEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PCPExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PCPContractNumber: 
+      type: string
+      nullable: true
+     PCPReimbursementID: 
+      type: integer
+      nullable: true
+     PCPContractID: 
+      type: integer
+      nullable: true
+     CapitationContractID: 
+      type: integer
+      nullable: true
+     SendToDependents: 
+      type: string
+      nullable: true
+     OutputToFile: 
+      type: string
+      nullable: true
+     WebUsage: 
+      type: string
+      nullable: true
+     IDCardAddress1: 
+      type: string
+      nullable: true
+     IDCardAddress2: 
+      type: string
+      nullable: true
+     IDCardCity: 
+      type: string
+      nullable: true
+     IDCardState: 
+      type: string
+      nullable: true
+     IDCardZip: 
+      type: string
+      nullable: true
+     OfficeID: 
+      type: integer
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     OfficeAddress1: 
+      type: string
+      nullable: true
+     OfficeAddress2: 
+      type: string
+      nullable: true
+     OfficeCity: 
+      type: string
+      nullable: true
+     OfficeState: 
+      type: string
+      nullable: true
+     OfficeZip: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     RiskGroupID: 
+      type: integer
+      nullable: true
+     RiskGroupName: 
+      type: string
+      nullable: true
+     RiskGroupNumber: 
+      type: string
+      nullable: true
+     RiskGroupClass: 
+      type: string
+      nullable: true
+     RiskGroupClassName: 
+      type: string
+      nullable: true
+     RiskGroupSubclass: 
+      type: string
+      nullable: true
+     RiskGroupSubclassName: 
+      type: string
+      nullable: true
+     HospitalID: 
+      type: integer
+      nullable: true
+     HospitalName: 
+      type: string
+      nullable: true
+     HospitalNumber: 
+      type: string
+      nullable: true
+     HospitalNPI: 
+      type: string
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     BasePlanID: 
+      type: integer
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     PlanEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TierID: 
+      type: integer
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     NetworkID: 
+      type: integer
+      nullable: true
+     NetworkName: 
+      type: string
+      nullable: true
+     IDCardLetterReportId: 
+      type: integer
+      nullable: true
+     IDCardReportId: 
+      type: integer
+      nullable: true
+     IDCardLetter: 
+      type: string
+      nullable: true
+     IDCardLetterPath: 
+      type: string
+      nullable: true
+     IdCardPath: 
+      type: string
+      nullable: true
+     IDCardComments: 
+      type: string
+      nullable: true
+     DocumentId: 
+      type: integer
+      nullable: true
+     FilePath: 
+      type: string
+      nullable: true
+     DocumentNumber: 
+      type: string
+      nullable: true
+     Dependents: 
+      type: string
+      nullable: true
+     RequestedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     RequestedBy: 
+      type: integer
+      description: 
+     RequestedName: 
+      type: string
+      nullable: true
+     ConfirmDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ConfirmedBy: 
+      type: integer
+      nullable: true
+     ConfirmedByName: 
+      type: string
+      nullable: true
+     MailDate: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     StatusName: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     NodeDisplay: 
+      type: string
+      nullable: true
+     MemberReimbursements: 
+      type: string
+      nullable: true
+     GroupReimbursements: 
+      type: string
+      nullable: true
+     MemberPrimaryLanguageCode: 
+      type: string
+      nullable: true
+     MemberPrimaryLanguage: 
+      type: string
+      nullable: true
+     MemberSpoken: 
+      type: string
+      nullable: true
+     MemberWritten: 
+      type: string
+      nullable: true
+     DependentsXML: 
+      type: string
+      nullable: true
+     RequestType: 
+      type: string
+      nullable: true
+     RequestTypeName: 
+      type: string
+      nullable: true
+     LiabilityPackageID: 
+      type: integer
+      nullable: true
+     LiabilityPackageName: 
+      type: string
+      nullable: true
+     InNetworkIndividualDeductible: 
+      type: number
+      nullable: true
+     InNetworkFamilyDeductible: 
+      type: number
+      nullable: true
+     InNetworkIndividualOutOfPocket: 
+      type: number
+      nullable: true
+     InNetworkFamilyOutOfPocket: 
+      type: number
+      nullable: true
+     OutOfNetworkIndividualDeductible: 
+      type: number
+      nullable: true
+     OutOfNetworkFamilyDeductible: 
+      type: number
+      nullable: true
+     OutOfNetworkIndividualOutOfPocket: 
+      type: number
+      nullable: true
+     OutOfNetworkFamilyOutOfPocket: 
+      type: number
+      nullable: true
+   IdCardRequestsDTO: 
+    title : IdCardRequestsDTO
+    type: object
+    properties: 
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     ProcessTypeCode: 
+      type: string
+      default: IDR
+      nullable: true
+     RequestType: 
+      type: string
+      nullable: true
+     IDCardRequestId: 
+      type: integer
+      nullable: true
+     VoidReason: 
+      type: string
+      nullable: true
+     IDCardRequestStatus: 
+      type: string
+      nullable: true
+     SetMailDateToConfirmDate: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   IdCardRequestRegenernateForGroupSearchDTO: 
+    title : IdCardRequestRegenernateForGroupSearchDTO
+    type: object
+    properties: 
+     IDCardRequestId: 
+      type: integer
+      nullable: true
+     VoidReason: 
+      type: string
+      nullable: true
+     IDCardRequestStatus: 
+      type: string
+      nullable: true
+     SetMailDateToConfirmDate: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   IdCardRequestRegenernateForGroupListDTO: 
+    title : IdCardRequestRegenernateForGroupListDTO
+    type: object
+    properties: 
+     MemberID: 
+      type: integer
+      description: 
+     MemberCoverageID: 
+      type: integer
+      description: 
+     SubscriberContractID: 
+      type: integer
+      description: 
+     GroupID: 
+      type: integer
+      description: 
+     MemberProviderID: 
+      type: integer
+      nullable: true
+     ProviderID: 
+      type: integer
+      nullable: true
+     BenefitCoverageID: 
+      type: integer
+      description: 
+     BenefitCoverageEffectiveDate: 
+      type: string
+     BenefitCoverageExpirationDate: 
+      type: string
+     RegenerationSuccessful: 
+      type: string
+      nullable: true
+  parameters: 
+   IDCardProcessMapIDQueryParam: 
+    in: query
+    name: IDCardProcessMapID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   IDCardPackageIdQueryParam: 
+    in: query
+    name: IDCardPackageId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
