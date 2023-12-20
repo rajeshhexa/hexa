@@ -1,0 +1,585 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Benefits Base Plan Jobs API
+  description: Benefits Base Plan Jobs API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /reinsurancepolicies: 
+   post: 
+    operationId: GetReinsurancePolicies
+    tags: 
+     - ReinsurancePolicy
+    summary: Get reinsurance policy
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReinsurancePolicySearchDTO'
+    responses: 
+     '200': 
+      description: Reinsurance policies retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReinsurancePolicyListDTO'
+  /reinsurancepolicy/utilizations: 
+   post: 
+    operationId: GetReinsurancePolicyUtilizations
+    tags: 
+     - ReinsurancePolicy
+    summary: Get reinsurance policy utilizations
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReinsurancePolicyUtilizationsSearchDTO'
+    responses: 
+     '200': 
+      description: Reinsurance policy utilizations retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReinsurancePolicyUtilizationsListDTO'
+components: 
+  schemas: 
+   ReinsurancePolicySearchDTO: 
+    title : ReinsurancePolicySearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ReinsurancePolicyName: 
+      type: string
+      nullable: true
+     ReinsurancePolicyNumber: 
+      type: string
+      nullable: true
+     ExternalPolicyNumber: 
+      type: string
+      nullable: true
+     PolicyPrecedenceCode: 
+      type: string
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     PolicyAsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReinsurancePolicyId: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   ReinsurancePolicyListDTO: 
+    title : ReinsurancePolicyListDTO
+    type: object
+    properties: 
+     ReinsurancePolicyId: 
+      type: integer
+     ReinsurancePolicyName: 
+      type: string
+     ReinsurancePolicyNumber: 
+      type: string
+     ExternalPolicyNumber: 
+      type: string
+      nullable: true
+     PolicyPrecedenceCode: 
+      type: string
+     PolicyPrecedenceName: 
+      type: string
+      nullable: true
+     AdditionalPolicyInternalNumber: 
+      type: string
+      nullable: true
+     AdditionalPolicyId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+     VendorNumber: 
+      type: string
+      nullable: true
+     VendorCorporationId: 
+      type: integer
+      nullable: true
+     VendorName: 
+      type: string
+      nullable: true
+     VendorAddress1: 
+      type: string
+      nullable: true
+     VendorAddress2: 
+      type: string
+      nullable: true
+     VendorCity: 
+      type: string
+      nullable: true
+     VendorState: 
+      type: string
+      nullable: true
+     VendorZip: 
+      type: string
+      nullable: true
+     VendorContactName: 
+      type: string
+      nullable: true
+     VendorContactPhone: 
+      type: string
+      nullable: true
+     VendorContactExt: 
+      type: string
+      nullable: true
+     VendorContactEmail: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     ClassName: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     SubClassName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     PolicyEffectiveDate: 
+      type: string
+      format: date-time
+     PolicyExpirationDate: 
+      type: string
+      format: date-time
+     ContactName: 
+      type: string
+      nullable: true
+     ContactPhone: 
+      type: string
+      nullable: true
+     ContactPhoneExt: 
+      type: string
+      nullable: true
+     ContactFax: 
+      type: string
+      nullable: true
+     ContactEmail: 
+      type: string
+      nullable: true
+     SpecificServiceDateFrom: 
+      type: string
+      format: date-time
+     SpecificServiceDateTo: 
+      type: string
+      format: date-time
+     SpecificPaidDateFrom: 
+      type: string
+      format: date-time
+     SpecificPaidDateTo: 
+      type: string
+      format: date-time
+     SpecificReimbursementFileByDays: 
+      type: integer
+      nullable: true
+     SpecificDeductibleType: 
+      type: string
+     SpecificDeductibleTypeName: 
+      type: string
+      nullable: true
+     SpecificDeductibleAmount: 
+      type: string
+     SpecificDeductibleAction: 
+      type: string
+      nullable: true
+     SpecificDeductibleActionName: 
+      type: string
+      nullable: true
+     SpecificMaximumRuninAmount: 
+      type: string
+      nullable: true
+     AggregatingSpecificDeductible: 
+      type: string
+      nullable: true
+     AggregateServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     AggregateServiceDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     AggregatePaidDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     AggregatePaidDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     AggregateReimbursementFileByDays: 
+      type: integer
+      nullable: true
+     AggregateDeductibleType: 
+      type: string
+      nullable: true
+     AggregateDeductibleTypeName: 
+      type: string
+      nullable: true
+     AggregateDeductibleAction: 
+      type: string
+      nullable: true
+     AggregateDeductibleActionName: 
+      type: string
+      nullable: true
+     AggregatePolicyCoverageMaximum: 
+      type: string
+      nullable: true
+     AggregateMaximumRuninAmount: 
+      type: string
+      nullable: true
+     AggregateAccomodation: 
+      type: string
+      nullable: true
+     AggregateAccomodationName: 
+      type: string
+      nullable: true
+     AggregateReimbursementReportId: 
+      type: integer
+      nullable: true
+     AggregateReimbursementReportName: 
+      type: string
+      nullable: true
+     AnnualAttachmentPoint: 
+      type: string
+      nullable: true
+     MonthlyGroupAttachmentPoint: 
+      type: string
+      nullable: true
+     MinimumAttachmentPoint: 
+      type: string
+      nullable: true
+     DomesticClaimMultiplier: 
+      type: string
+      nullable: true
+     DomesticMultiplierPaymentClass: 
+      type: string
+      nullable: true
+     DomesticMultiplierPaymentClassName: 
+      type: string
+      nullable: true
+     FundingRequestThreshold: 
+      type: string
+      nullable: true
+     MemberReimbursementReportId: 
+      type: integer
+      nullable: true
+     MemberReimbursementReportName: 
+      type: string
+      nullable: true
+     MemberWarningAmount: 
+      type: string
+      nullable: true
+     MemberWarningContactReasonId: 
+      type: integer
+      nullable: true
+     MemberWarningContactReasonName: 
+      type: string
+      nullable: true
+     HighDollarClaimAmount: 
+      type: string
+      nullable: true
+     HighDollarClaimContactReasonId: 
+      type: integer
+      nullable: true
+     HighDollarClaimContactReasonName: 
+      type: string
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     DeductibleActionThreshold: 
+      type: string
+      nullable: true
+   ReinsurancePolicyUtilizationsSearchDTO: 
+    title : ReinsurancePolicyUtilizationsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ReinsurancePolicyId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     UtilizationStatus: 
+      type: string
+      nullable: true
+     UtilizationType: 
+      type: string
+      nullable: true
+     FundingStatus: 
+      type: string
+      nullable: true
+     FundingType: 
+      type: string
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     UtilizationDateOption: 
+      type: string
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ReinsuranceUtilizationId: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   ReinsurancePolicyUtilizationsListDTO: 
+    title : ReinsurancePolicyUtilizationsListDTO
+    type: object
+    properties: 
+     ReinsuranceUtilizationId: 
+      type: integer
+     ReinsurancePolicyId: 
+      type: integer
+     ReinsurancePolicyNumber: 
+      type: string
+      nullable: true
+     ReinsurancePolicyName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     PostingRecordId: 
+      type: integer
+     ClaimId: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     ClaimType: 
+      type: string
+      nullable: true
+     CheckDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ClaimServiceFromDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ClaimServiceToDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PostingRecordAmount: 
+      type: string
+      nullable: true
+     AmtApplied: 
+      type: string
+     AmtAggregate: 
+      type: string
+     AmtExcluded: 
+      type: string
+     AmtAggregateExcluded: 
+      type: string
+     FundingAmount: 
+      type: string
+      nullable: true
+     UtilizationType: 
+      type: string
+      nullable: true
+     UtilizationTypeName: 
+      type: string
+      nullable: true
+     UtilizationStatus: 
+      type: string
+      nullable: true
+     UtilizationStatusName: 
+      type: string
+      nullable: true
+     FundingType: 
+      type: string
+      nullable: true
+     FundingTypeName: 
+      type: string
+      nullable: true
+     FundingStatus: 
+      type: string
+      nullable: true
+     FundingStatusName: 
+      type: string
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     PaidDate: 
+      type: string
+      nullable: true
+     ProcessedDate: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ManuallyUpdated: 
+      type: string
+     OverrideDeductibleAction: 
+      type: string
+      nullable: true
+     OverrideDeductibleActionName: 
+      type: string
+      nullable: true
+     SplitRecord: 
+      type: string
+     Notes: 
+      type: string
+      nullable: true
+     HistoryId: 
+      type: integer
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     JobId: 
+      type: integer
+      nullable: true
+     JobNumber: 
+      type: string
+      nullable: true
+     FulfillmentType: 
+      type: string
+      nullable: true
+     FulfillmentTypeName: 
+      type: string
+      nullable: true
+     JobStatus: 
+      type: string
+      nullable: true
+     JobStatusName: 
+      type: string
+      nullable: true
