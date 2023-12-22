@@ -1,0 +1,1731 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: MemberCoverage API
+  description: MemberCoverage API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member/membercoverages: 
+   post: 
+    operationId: GetMemberCoverage
+    tags: 
+     - Members
+    summary: Get member coverages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoverageSearchDTO'
+    responses: 
+     '200': 
+      description: Member coverages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoverageListDTO'
+  /member/membercoverage: 
+   put: 
+    operationId: UpdateMemberCoverage
+    tags: 
+     - Members
+    summary: Update member coverages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoverageDTO'
+    responses: 
+     '200': 
+      description: Alternate address deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/membercoverage/findmembercoverages: 
+   post: 
+    operationId: FindMemberCoverages
+    tags: 
+     - Members
+    summary: Find member coverage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FindMemberCoveragesDTO'
+    responses: 
+     '200': 
+      description: Find member coverages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/FindMemberCovergaesListDTO'
+  /member/membercoverage/terminatemembercoverages: 
+   post: 
+    operationId: TerminateMemberCoverages
+    tags: 
+     - Members
+    summary: Terminate member coverage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TerminateMemberCoverageDTO'
+    responses: 
+     '200': 
+      description: Terminate member coverages
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/membercoverage/unmergemembercoverage: 
+   post: 
+    operationId: UnmergeMemberCoverage
+    tags: 
+     - Members
+    summary: Unmerage member coverage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UnmergeMemberCoverageDTO'
+    responses: 
+     '200': 
+      description: Unmerge member coverage successful
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/membercoveragedetails: 
+   get: 
+    operationId: GetMemberCoverageDetails
+    tags: 
+     - Members
+    summary: Get member coverage details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIdQueryParam'
+    responses: 
+     '200': 
+      description: member coverage details retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoverageDetailsListDTO'
+   post: 
+    operationId: AddMemberCoverageDetails
+    tags: 
+     - Members
+    summary: Add member coverage details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoverageDetailsDTO'
+    responses: 
+     '200': 
+      description: member coverage details added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateMemberCoverageDetails
+    tags: 
+     - Members
+    summary: Update member coverage details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoverageDetailsDTO'
+    responses: 
+     '200': 
+      description: member coverage details updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteMemberCoverageDetails
+    tags: 
+     - Members
+    summary: Delete member coverage details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberCoverageDetailsIdQueryParam'
+    responses: 
+     '200': 
+      description: member coverage details deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/membercoveragedetails/membercoveragehistory: 
+   get: 
+    operationId: GetMemberCoverageHistory
+    tags: 
+     - Members
+    summary: Get member coverage history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberCoverageDetailsIdQueryParam'
+    responses: 
+     '200': 
+      description: Member coverage history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoverageHistoryListDTO'
+  /member/membercoverage/membercoveragehistory: 
+   get: 
+    operationId: GetMemberCoverageDetailsHistory
+    tags: 
+     - Members
+    summary: Get member coverage details history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberCoverageIdQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageDetailsIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Member coverage details history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoverageDetailsHistoryListDTO'
+  /member/membercoverage/membercoverageflag/get: 
+   post: 
+    operationId: GetMemberCoverageFlags
+    tags: 
+     - Members
+    summary: Get member coverage flags
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoveragesFlagsSearchDTO'
+    responses: 
+     '200': 
+      description: Member coverages flags retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoveragesFlagsListDTO'
+  /member/membercoverage/getbymembercoveragid: 
+   get: 
+    operationId: GetMemberCoveragebyMemberCoverageId
+    tags: 
+     - Members
+    summary: Get member coverages by member coverage id
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIDQueryParam'
+     - $ref: '#/components/parameters/ReturnStatusQueryParam'
+    responses: 
+     '200': 
+      description: Member coverages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoveragesByIdListDTO'
+  /member/membercoverage/getbymemberid: 
+   get: 
+    operationId: GetMemberCoveragebyMemberId
+    tags: 
+     - Members
+    summary: Get member coverages by member id
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIDQueryParam'
+     - $ref: '#/components/parameters/ReturnStatusQueryParam'
+    responses: 
+     '200': 
+      description: Member coverages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoveragesByIdListDTO'
+components: 
+  schemas: 
+   MemberCoverageDetailsDTO: 
+    title : MemberCoverageDetailsDTO
+    type: object
+    properties: 
+     MemberCoverageDetailsId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     PlanCoverageDescription: 
+      type: string
+      nullable: true
+     BenefitCode: 
+      type: string
+      nullable: true
+     StatusCode: 
+      type: string
+      nullable: true
+     SOCStatus: 
+      type: string
+      nullable: true
+     SOCAmount: 
+      type: string
+      nullable: true
+     SOCCertDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+   MemberCoverageHistoryListDTO: 
+    title : MemberCoverageHistoryListDTO
+    type: object
+    properties: 
+     HistoryId: 
+      type: integer
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ChangeTypeName: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     SubscriberContractId : 
+      type: integer
+      nullable: true
+     MemberId : 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberNumberMatch: 
+      type: string
+      nullable: true
+     PolicyNumber: 
+      type: string
+      nullable: true
+     PolicyNumberMatch: 
+      type: string
+      nullable: true
+     RxIdNumber: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     Relationship: 
+      type: string
+      nullable: true
+     PrimaryPolicyIndicator: 
+      type: string
+      nullable: true
+     PrimaryPolicyIndicatorCode: 
+      type: string
+      nullable: true
+     BasePlanID: 
+      type: integer
+      nullable: true
+     BasePlanName: 
+      type: string
+      nullable: true
+     MemberToPay: 
+      type: integer
+      nullable: true
+     MemberToPayName: 
+      type: string
+      nullable: true
+     SeparateOutOfNetworkIDCard: 
+      type: string
+      nullable: true
+     ActiveMemberSince: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     LastUpdatedBy : 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt : 
+      type: string
+      format: date-time
+      nullable: true
+   MemberCoverageDetailsHistoryListDTO: 
+    title : MemberCoverageDetailsHistoryListDTO
+    type: object
+    properties: 
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangedBy: 
+      type: integer
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+     MemberCoverageDetailsId: 
+      type: integer
+     MemberCoverageId: 
+      type: integer
+     PlanCoverageDescription: 
+      type: string
+      nullable: true
+     BenefitCode: 
+      type: string
+      nullable: true
+     BenefitCodeName: 
+      type: string
+      nullable: true
+     StatusCode: 
+      type: string
+      nullable: true
+     StatusCodeName: 
+      type: string
+      nullable: true
+     SOCStatus: 
+      type: string
+      nullable: true
+     SOCStatusName: 
+      type: string
+      nullable: true
+     SOCAmount: 
+      type: string
+      nullable: true
+     SOCCertDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+   MemberCoveragesFlagsSearchDTO: 
+    title : MemberCoveragesFlagsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: "|CoverageNodesBySubscontract|"
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     HouseHoldReferenceNumber: 
+      type: string
+      nullable: true
+     ResponsiblePartyId: 
+      type: integer
+      nullable: true
+     ReturnStatus: 
+      type: string
+      default: Y
+      nullable: true
+   MemberCoveragesFlagsListDTO: 
+    title : MemberCoveragesFlagsListDTO
+    type: object
+    properties: 
+     MemberCoverageID: 
+      type: integer
+     SubscriberContractId: 
+      type: integer
+     SubscriberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+     BasePlanId: 
+      type: integer
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     MemberCoverage: 
+      type: string
+     MemberNumber: 
+      type: string
+      nullable: true
+     RelationshipOrder: 
+      type: number
+     BenefitCoverageExists: 
+      type: string
+      nullable: true
+     RiderExists: 
+      type: string
+      nullable: true
+     MemberRiderExists: 
+      type: string
+      nullable: true
+     QualifierExists: 
+      type: string
+      nullable: true
+     MemberQualifierExists: 
+      type: string
+      nullable: true
+     PCPExists: 
+      type: string
+      nullable: true
+     ReimbursementExists: 
+      type: string
+      nullable: true
+     AlternateAddressExists: 
+      type: string
+      nullable: true
+     AidCodeExists: 
+      type: string
+      nullable: true
+     LanguageExists: 
+      type: string
+      nullable: true
+     COBExists: 
+      type: string
+      nullable: true
+     EDIXactExists: 
+      type: string
+      nullable: true
+     EDIParsedFileExists: 
+      type: string
+      nullable: true
+     IDCardRequestExists : 
+      type: string
+      nullable: true
+     DocumentationExists: 
+      type: string
+      nullable: true
+     ResponsiblePartyExists: 
+      type: string
+      nullable: true
+     PreExistingExists: 
+      type: string
+      nullable: true
+     EventExists: 
+      type: string
+      nullable: true
+     BillingEntityExists: 
+      type: string
+      nullable: true
+     MemberCoverageDetailsExists: 
+      type: string
+      nullable: true
+     RolePermissionExists: 
+      type: string
+      nullable: true
+     ClaimExists: 
+      type: string
+      nullable: true
+     UtilizationCounterExists: 
+      type: string
+      nullable: true
+     FinancialExists: 
+      type: string
+      nullable: true
+     AuthExists: 
+      type: string
+      nullable: true
+     ReferralExists: 
+      type: string
+      nullable: true
+     CaseExists: 
+      type: string
+      nullable: true
+     HistoryExists: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     ActiveMemberSince: 
+      type: string
+      format: date-time
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberZip: 
+      type: string
+      nullable: true
+     FulfillmentPreferenceExists: 
+      type: string
+      nullable: true
+     ApplicationsExists: 
+      type: string
+      nullable: true
+     EligibilityInqSubmissionExists: 
+      type: string
+      nullable: true
+   MemberCoveragesByIdListDTO: 
+    title : MemberCoveragesByIdListDTO
+    type: object
+    properties: 
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     MemberSex: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     Relationship: 
+      type: string
+      nullable: true
+     MemberToPay: 
+      type: integer
+      nullable: true
+     MemberToPayName: 
+      type: string
+      nullable: true
+     MemberEOBFulfillment: 
+      type: string
+      nullable: true
+     ActiveMemberSince: 
+      type: string
+      format: date-time
+      nullable: true
+     SeparateOutOfNetworkIDCard: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupRequireDentalDiagnosis: 
+      type: string
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     BasePlanId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     UseDateOfIncidentForAdjudication: 
+      type: string
+      nullable: true
+     MemberTreeViewMode: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NetworkId: 
+      type: integer
+      nullable: true
+     NetworkName: 
+      type: string
+      nullable: true
+     BasePlanBenefitCoverageId: 
+      type: integer
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberAddress1: 
+      type: string
+      nullable: true
+     SubscriberAddress2: 
+      type: string
+      nullable: true
+     SubscriberCity: 
+      type: string
+      nullable: true
+     SubscriberState: 
+      type: string
+      nullable: true
+     SubscriberCounty: 
+      type: string
+      nullable: true
+     SubscriberZip: 
+      type: string
+      nullable: true
+     SubscriberCountryCode: 
+      type: string
+      nullable: true
+     SubscriberLocationCode: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     TierAsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RxIdNumber: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+   MemberCoverageSearchDTO: 
+    title : MemberCoverageSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     UseLastNameSoundex: 
+      type: string
+      nullable: true
+     PatientLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     PatientFirstName: 
+      type: string
+      nullable: true
+     Last4SSN: 
+      type: string
+      nullable: true
+     SSNumber: 
+      type: string
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     InsuredGroupNumber1: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     InsuredNumber: 
+      type: string
+      nullable: true
+     NationalIndividualId: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     HouseHoldReferenceNumber: 
+      type: string
+      nullable: true
+     ResponsiblePartyId: 
+      type: integer
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     AllowPartialSearch: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ReturnStatus: 
+      type: string
+      nullable: true
+     ColumnList: 
+      type: string
+      nullable: true
+     CustomAttributeSearchXML: 
+      type: string
+      nullable: true
+   MemberCoverageListDTO: 
+    title : MemberCoverageListDTO
+    type: object
+    properties: 
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     RxIdNumber: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     MemberMiddleInitial: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     NationalIndividualId: 
+      type: string
+      nullable: true
+     SSNumber: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     Relationship: 
+      type: string
+      nullable: true
+     PrimaryPolicyIndicator: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     CompanyId: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupLOBCode: 
+      type: string
+      nullable: true
+     GroupLOB: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     TierCode: 
+      type: string
+      nullable: true
+     TierAsOfDate: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     TerminationReasonName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     BasePlanBenefitCoverageId: 
+      type: integer
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     NetworkId: 
+      type: integer
+      nullable: true
+     NetworkName: 
+      type: string
+      nullable: true
+     PatientLastName: 
+      type: string
+      nullable: true
+     PatientFirstName: 
+      type: string
+      nullable: true
+     PatientMiddleInitial: 
+      type: string
+      nullable: true
+     PatientHomePhone: 
+      type: string
+      nullable: true
+     PatientWorkPhone: 
+      type: string
+      nullable: true
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     PatientBirthDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PatientSex: 
+      type: string
+      nullable: true
+     PatientAddress: 
+      type: string
+      nullable: true
+     PatientAddress2: 
+      type: string
+      nullable: true
+     PatientCity: 
+      type: string
+      nullable: true
+     PatientState: 
+      type: string
+      nullable: true
+     PatientZip: 
+      type: string
+      nullable: true
+     PatientEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PatientExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     InsuredGroupNumber1: 
+      type: string
+      nullable: true
+     GroupType: 
+      type: string
+      nullable: true
+     Repricing: 
+      type: string
+      nullable: true
+     InsuredLastName: 
+      type: string
+      nullable: true
+     InsuredFirstName: 
+      type: string
+      nullable: true
+     InsuredMiddleInitial: 
+      type: string
+      nullable: true
+     InsuredAddress1: 
+      type: string
+      nullable: true
+     InsuredAddress2: 
+      type: string
+      nullable: true
+     InsuredCity: 
+      type: string
+      nullable: true
+     InsuredState: 
+      type: string
+      nullable: true
+     InsuredZip: 
+      type: string
+      nullable: true
+     InsuredCountryCode: 
+      type: string
+      nullable: true
+     InsuredLocationCode: 
+      type: string
+      nullable: true
+     InsuredNumber: 
+      type: string
+      nullable: true
+     HeadOfHouseHoldId: 
+      type: integer
+      nullable: true
+     ActiveMemberSince: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     MedicareContractId: 
+      type: string
+      nullable: true
+     MedicarePlanId: 
+      type: string
+      nullable: true
+     MemberWebAccess: 
+      type: string
+      nullable: true
+     GroupRequireDentalDiagnosis: 
+      type: string
+      nullable: true
+     BasePlanId: 
+      type: integer
+      nullable: true
+     UseLastNameSoundex: 
+      type: string
+      nullable: true
+     Permitted: 
+      type: string
+      nullable: true
+     UseDateOfIncidentForAdjudication: 
+      type: string
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     MedicareEntitlementReason: 
+      type: string
+      nullable: true
+     HireDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Volume: 
+      type: string
+      nullable: true
+     UsePrimaryOfficeDuringPCPAssignment: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     HouseHoldReferenceNumber: 
+      type: string
+      nullable: true
+     MemberTreeViewMode: 
+      type: string
+      nullable: true
+     EffectuationStatus: 
+      type: string
+      nullable: true
+   MemberCoverageDTO: 
+    title : MemberCoverageDTO
+    type: object
+    properties: 
+     BasePlanBenefitCoverageId: 
+      type: integer
+      nullable: true
+     MemberCoverageId : 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     RxIdNumber: 
+      type: string
+      nullable: true
+     Relationship: 
+      type: string
+      nullable: true
+     RelationshipCode : 
+      type: string
+      nullable: true
+     SeparateOutOfNetworkIDCard: 
+      type: string
+      nullable: true
+     PrimaryPolicyIndicator: 
+      type: string
+      nullable: true
+     ActiveMemberSince: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberToPay: 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     debug: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ParametersXml: 
+      type: string
+      nullable: true
+     ResultsXml: 
+      type: string
+      nullable: true
+   FindMemberCoverageDTO: 
+    title : FindMemberCoverageDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     RxIdNumber: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     UseLastNameSoundex: 
+      type: string
+      nullable: true
+     PatientLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     PatientFirstName: 
+      type: string
+      nullable: true
+     Last4SSN: 
+      type: string
+      nullable: true
+     SSNumber: 
+      type: string
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     SocialSecurityNumber: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     InsuredGroupNumber1: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     InsuredNumber: 
+      type: string
+      nullable: true
+     NationalIndividualId: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     HouseHoldReferenceNumber: 
+      type: string
+      nullable: true
+     ResponsiblePartyId: 
+      type: integer
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     VendorId: 
+      type: integer
+      nullable: true
+     AllowPartialSearch: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     MedicareContractID: 
+      type: string
+      nullable: true
+     MedicarePlanId: 
+      type: string
+      nullable: true
+     ResultPageNumber: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ReturnStatus: 
+      type: string
+      nullable: true
+     ColumnList: 
+      type: string
+      nullable: true
+     CustomAttributeSearchXML: 
+      type: string
+      nullable: true
+   FindMemberCovergaesListDTO: 
+    title : FindMemberCovergaesListDTO
+    type: object
+    properties: 
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberMiddleInitial: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     NationalIndividualId: 
+      type: string
+      nullable: true
+     SSNumber: 
+      type: string
+      nullable: true
+     DateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     Gender: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     HomePhone: 
+      type: string
+      nullable: true
+     Relationship: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberName: 
+      type: string
+      nullable: true
+     SubscriberDateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     SubscriberGender: 
+      type: string
+      nullable: true
+     SubscriberNumber: 
+      type: string
+      nullable: true
+     SubscriberPolicyNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupLineOfBusiness: 
+      type: string
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     HICN: 
+      type: string
+      nullable: true
+     MBI: 
+      type: string
+      nullable: true
+     HouseHoldReferenceNumber: 
+      type: string
+      nullable: true
+     UseDateOfIncidentForAdjudication: 
+      type: string
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     BasePlanBenefitCoverageId: 
+      type: integer
+      nullable: true
+     BasePlanId: 
+      type: integer
+      nullable: true
+     MedicareContractID: 
+      type: string
+      nullable: true
+     MedicarePlanID: 
+      type: string
+      nullable: true
+     RxIdNumber: 
+      type: string
+      nullable: true
+   TerminateMemberCoverageDTO: 
+    title : TerminateMemberCoverageDTO
+    type: object
+    properties: 
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     TerminateDependants: 
+      type: string
+      default: Y
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     ContactReasonID: 
+      type: integer
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+   UnmergeMemberCoverageDTO: 
+    title : UnmergeMemberCoverageDTO
+    type: object
+    properties: 
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     BasePlanId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: integer
+      nullable: true
+   MemberCoverageDetailsListDTO: 
+    title : MemberCoverageDetailsListDTO
+    type: object
+    properties: 
+     MemberCoverageDetailsId: 
+      type: integer
+      description: 
+     MemberCoverageId: 
+      type: integer
+     PlanCoverageDescription: 
+      type: string
+      nullable: true
+     BenefitCode: 
+      type: string
+      nullable: true
+     BenefitCodeName: 
+      type: string
+      nullable: true
+     StatusCode: 
+      type: string
+      nullable: true
+     StatusCodeName: 
+      type: string
+      nullable: true
+     SOCStatus: 
+      type: string
+      nullable: true
+     SOCStatusName: 
+      type: string
+      nullable: true
+     SOCAmount: 
+      type: string
+      nullable: true
+     SOCCertDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+  parameters: 
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+     default: "|Usage1|"
+    description: description of parameter passed
+   MemberCoverageIdQueryParam: 
+    in: query
+    name: MemberCoverageId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   MemberCoverageDetailsIdQueryParam: 
+    in: query
+    name: MemberCoverageDetailsId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   MemberCoverageIDQueryParam: 
+    in: query
+    name: MemberCoverageID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   ReturnStatusQueryParam: 
+    in: query
+    name: ReturnStatus
+    required: false
+    schema: 
+     type: string
+     default: Y
+    description: description of parameter passed
