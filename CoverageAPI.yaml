@@ -1,0 +1,277 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: MemberCoverage API
+  description: MemberCoverage API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member/membercoverages: 
+   post: 
+    operationId: GetMemberCoverage
+    tags: 
+     - Members
+    summary: Get member coverages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoverageSearchDTO'
+    responses: 
+     '200': 
+      description: Member coverages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoverageListDTO'
+  /member/membercoverage: 
+   put: 
+    operationId: UpdateMemberCoverage
+    tags: 
+     - Members
+    summary: Update member coverages
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoverageDTO'
+    responses: 
+     '200': 
+      description: Alternate address deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/membercoverage/findmembercoverages: 
+   post: 
+    operationId: FindMemberCoverages
+    tags: 
+     - Members
+    summary: Find member coverage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FindMemberCoveragesDTO'
+    responses: 
+     '200': 
+      description: Find member coverages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/FindMemberCovergaesListDTO'
+  /member/membercoverage/terminatemembercoverages: 
+   post: 
+    operationId: TerminateMemberCoverages
+    tags: 
+     - Members
+    summary: Terminate member coverage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TerminateMemberCoverageDTO'
+    responses: 
+     '200': 
+      description: Terminate member coverages
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/membercoverage/unmergemembercoverage: 
+   post: 
+    operationId: UnmergeMemberCoverage
+    tags: 
+     - Members
+    summary: Unmerage member coverage
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UnmergeMemberCoverageDTO'
+    responses: 
+     '200': 
+      description: Unmerge member coverage successful
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/membercoveragedetails: 
+   get: 
+    operationId: GetMemberCoverageDetails
+    tags: 
+     - Members
+    summary: Get member coverage details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIdQueryParam'
+    responses: 
+     '200': 
+      description: member coverage details retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoverageDetailsListDTO'
+   post: 
+    operationId: AddMemberCoverageDetails
+    tags: 
+     - Members
+    summary: Add member coverage details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoverageDetailsDTO'
+    responses: 
+     '200': 
+      description: member coverage details added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateMemberCoverageDetails
+    tags: 
+     - Members
+    summary: Update member coverage details
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoverageDetailsDTO'
+    responses: 
+     '200': 
+      description: member coverage details updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   delete: 
+    operationId: DeleteMemberCoverageDetails
+    tags: 
+     - Members
+    summary: Delete member coverage details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberCoverageDetailsIdQueryParam'
+    responses: 
+     '200': 
+      description: member coverage details deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/membercoveragedetails/membercoveragehistory: 
+   get: 
+    operationId: GetMemberCoverageHistory
+    tags: 
+     - Members
+    summary: Get member coverage history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberCoverageDetailsIdQueryParam'
+    responses: 
+     '200': 
+      description: Member coverage history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoverageHistoryListDTO'
+  /member/membercoverage/membercoveragehistory: 
+   get: 
+    operationId: GetMemberCoverageDetailsHistory
+    tags: 
+     - Members
+    summary: Get member coverage details history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberCoverageIdQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageDetailsIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Member coverage details history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoverageDetailsHistoryListDTO'
+  /member/membercoverage/membercoverageflag/get: 
+   post: 
+    operationId: GetMemberCoverageFlags
+    tags: 
+     - Members
+    summary: Get member coverage flags
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberCoveragesFlagsSearchDTO'
+    responses: 
+     '200': 
+      description: Member coverages flags retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoveragesFlagsListDTO'
+  /member/membercoverage/getbymembercoveragid: 
+   get: 
+    operationId: GetMemberCoveragebyMemberCoverageId
+    tags: 
+     - Members
+    summary: Get member coverages by member coverage id
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIDQueryParam'
+     - $ref: '#/components/parameters/ReturnStatusQueryParam'
+    responses: 
+     '200': 
+      description: Member coverages retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberCoveragesByIdListDTO'
+  /member/membercoverage/getbymemberid: 
+   null: 
+    operationId: GetMemberCoveragebyMemberId
+    tags: 
+     - Members
+    summary: Get member coverages by member id
+    description: Description of path
