@@ -1,0 +1,347 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Member Family API
+  description: Member_Family API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member/family/get: 
+   post: 
+    operationId: GetMemberFamily
+    tags: 
+     - Member
+    summary: Get member family
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/MemberFamilySearchDTO'
+    responses: 
+     '200': 
+      description: Member family retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberFamilyListDTO'
+  /member/family/changefamilygroup: 
+   post: 
+    operationId: ChangeFamilyGroup
+    tags: 
+     - Member
+    summary: Change family group
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FamilyGroupChangeDTO'
+    responses: 
+     '200': 
+      description: Family group changed successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/family/changefamilygroupjob: 
+   post: 
+    operationId: ChangeFamilyGroupJob
+    tags: 
+     - Member
+    summary: Change family group job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/FamilyGroupJobChangeDTO'
+    responses: 
+     '200': 
+      description: Change family group job added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /member/family/changefamilygroupjobdetails: 
+   post: 
+    operationId: ChangeFamilyGroupJobDetails
+    tags: 
+     - Member
+    summary: change family group job details
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ChangeFamilyGroupJobIdQueryParam'
+     - $ref: '#/components/parameters/CommandQueryParam'
+     - $ref: '#/components/parameters/MemberIdQueryParam'
+    responses: 
+     '200': 
+      description: Change family group job details added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/family/processchangefamilygroupjob: 
+   post: 
+    operationId: ProcessChangeFamilyGroupJob
+    tags: 
+     - Member
+    summary: Process change family group job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ChangeFamilyGroupJobDTO'
+    responses: 
+     '200': 
+      description: Process change family group job successful
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+components: 
+  schemas: 
+   MemberFamilySearchDTO: 
+    title : MemberFamilySearchDTO
+    type: object
+    properties: 
+     MemberNumber: 
+      type: string
+      nullable: true
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   MemberFamilyListDTO: 
+    title : MemberFamilyListDTO
+    type: object
+    properties: 
+     MemberCoverageId: 
+      type: integer
+      description: 
+     MemberId: 
+      type: integer
+     MemberNumber : 
+      type: string
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     EffectiveDate : 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate : 
+      type: string
+      format: date-time
+      nullable: true
+     LastName : 
+      type: string
+      nullable: true
+     FirstName : 
+      type: string
+      nullable: true
+     MiddleInitial : 
+      type: string
+      nullable: true
+     DateOfBirth : 
+      type: string
+      format: date-time
+      nullable: true
+     Gender : 
+      type: string
+      nullable: true
+     PolicyNumber: 
+      type: string
+      nullable: true
+     EmployerName: 
+      type: string
+      nullable: true
+     DependentViewWebOption: 
+      type: string
+      nullable: true
+     DependentViewWebOptionName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     BasePlanId: 
+      type: integer
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     RelationshipCode: 
+      type: string
+      nullable: true
+     Relationship: 
+      type: string
+      nullable: true
+     AppNumber: 
+      type: string
+      nullable: true
+     AddedBy: 
+      type: integer
+      nullable: true
+     AddedByName: 
+      type: string
+      nullable: true
+     AddedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     TermedBy: 
+      type: integer
+      nullable: true
+     TermedByName: 
+      type: string
+      nullable: true
+     TermedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   FamilyGroupChangeDTO: 
+    title : FamilyGroupChangeDTO
+    type: object
+    properties: 
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     NewGroupId: 
+      type: integer
+      nullable: true
+     NewTierItemId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TerminateCoverages: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     UserMsg: 
+      type: string
+      nullable: true
+     LogMsg: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     ParametersXml: 
+      type: string
+      nullable: true
+     ResultsXml: 
+      type: string
+      nullable: true
+   FamilyGroupJobChangeDTO: 
+    title : FamilyGroupJobChangeDTO
+    type: object
+    properties: 
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     NewGroupId: 
+      type: integer
+      nullable: true
+     NewTierItemId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     TerminateCoverages: 
+      type: string
+      nullable: true
+     TerminationReason: 
+      type: string
+      nullable: true
+     OverrideRetroEnrollmentEnforcement: 
+      type: string
+      nullable: true
+     OverrideTierRestrictions: 
+      type: string
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+   ChangeFamilyGroupJobDTO: 
+    title : ChangeFamilyGroupJobDTO
+    type: object
+    properties: 
+     ChangeFamilyGroupJobId: 
+      type: integer
+      nullable: true
+     ContactReasonID: 
+      type: integer
+      nullable: true
+     UserMsg: 
+      type: string
+      nullable: true
+     LogMsg: 
+      type: string
+      nullable: true
+  parameters: 
+   ChangeFamilyGroupJobIdQueryParam: 
+    in: query
+    name: ChangeFamilyGroupJobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CommandQueryParam: 
+    in: query
+    name: Command
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   MemberIdQueryParam: 
+    in: query
+    name: MemberId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
