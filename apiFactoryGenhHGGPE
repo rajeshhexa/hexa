@@ -1,0 +1,107 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(\"/v1\")
+public class DividendController {
+    
+    @Autowired
+    private DividendService dividendService;
+    
+    @GetMapping(\"/dividendDetails\")
+    public ResponseEntity<DividendDetailsResponse> getDividendDetails(@RequestParam String companyId, 
+                                                                      @RequestParam String date) {
+        DividendDetailsResponse dividendDetails = dividendService.getDividendDetails(companyId, date);
+        return new ResponseEntity<>(dividendDetails, HttpStatus.OK);
+    }
+    
+    @PostMapping(\"/submitDividendRequest\")
+    public ResponseEntity<Object> submitDividendRequest(@RequestBody DividendRequest dividendRequest) {
+        dividendService.submitDividendRequest(dividendRequest);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+    
+    @PutMapping(\"/updateDividendStatus\")
+    public ResponseEntity<DividendStatusResponse> updateDividendStatus(@RequestParam String requestId, 
+                                                                       @RequestBody DividendStatusUpdate statusUpdate) {
+        DividendStatusResponse updatedStatus = dividendService.updateDividendStatus(requestId, statusUpdate);
+        return new ResponseEntity<>(updatedStatus, HttpStatus.OK);
+    }
+}
+
+@Service
+public class DividendService {
+    
+    @Autowired
+    private DividendDao dividendDao;
+    
+    public DividendDetailsResponse getDividendDetails(String companyId, String date) {
+        // logic to retrieve dividend details from Dao
+        return dividendDao.getDividendDetails(companyId, date);
+    }
+    
+    public void submitDividendRequest(DividendRequest dividendRequest) {
+        // logic to handle submission of dividend request
+        dividendDao.submitDividendRequest(dividendRequest);
+    }
+    
+    public DividendStatusResponse updateDividendStatus(String requestId, DividendStatusUpdate statusUpdate) {
+        // logic to update dividend status in Dao
+        return dividendDao.updateDividendStatus(requestId, statusUpdate);
+    }
+}
+
+@Repository
+public class DividendDao {
+    
+    public DividendDetailsResponse getDividendDetails(String companyId, String date) {
+        // database operations to retrieve dividend details based on companyId and date
+        DividendDetailsResponse dividendDetails = new DividendDetailsResponse();
+        // populate dividendDetails from database
+        return dividendDetails;
+    }
+    
+    public void submitDividendRequest(DividendRequest dividendRequest) {
+        // database operations to store dividend request
+    }
+    
+    public DividendStatusResponse updateDividendStatus(String requestId, DividendStatusUpdate statusUpdate) {
+        // database operations to update dividend status based on requestId
+        DividendStatusResponse updatedStatus = new DividendStatusResponse();
+        // set updatedStatus from database
+        return updatedStatus;
+    }
+}
+
+public class DividendDetailsResponse {
+    private String dividendId;
+    private String companyId;
+    private String date;
+    private double amount;
+    
+    // getters and setters
+}
+
+public class DividendRequest {
+    private String companyId;
+    private String shareholderId;
+    private double amount;
+    private double income;
+    private String education;
+    
+    // getters and setters
+}
+
+public class DividendStatusUpdate {
+    private String status;
+    
+    // getters and setters
+}
+
+public class DividendStatusResponse {
+    private String status;
+    
+    // getters and setters
+}
