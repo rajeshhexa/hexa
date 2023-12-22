@@ -1,0 +1,387 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Member Language Entity Map API
+  description: Member_LanguageEntityMap API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member/languageentitymap: 
+   post: 
+    operationId: AddLanguagEntityMap
+    tags: 
+     - Member
+    summary: Add language entity map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LanguageEntityMapDTO'
+    responses: 
+     '200': 
+      description: Success
+   get: 
+    operationId: GetLanguagEntityMap
+    tags: 
+     - Member
+    summary: Get language entity map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EntityIDQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/LanguageUseQueryParam'
+    responses: 
+     '200': 
+      description: Language entity map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/LanguageEntityMapListDTO'
+   delete: 
+    operationId: DeleteLanguagEntityMap
+    tags: 
+     - Member
+    summary: Delete language entity map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EntityIDQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/LanguageQueryParam'
+     - $ref: '#/components/parameters/LanguageEntityMapIdQueryParam'
+    responses: 
+     '200': 
+      description: Language entity map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /member/languageentitymap/languagehistory: 
+   get: 
+    operationId: GetLanguageHistory
+    tags: 
+     - Member
+    summary: Get language history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/LanguageEntityIDQueryParam'
+     - $ref: '#/components/parameters/EntityIdQueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Language history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/LanguageHistoryListDTO'
+components: 
+  schemas: 
+   LanguageEntityMapDTO: 
+    title : LanguageEntityMapDTO
+    type: object
+    properties: 
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Language: 
+      type: string
+      nullable: true
+     LanguageUse: 
+      type: string
+      nullable: true
+     Spoken: 
+      type: string
+      nullable: true
+     Written: 
+      type: string
+      nullable: true
+     LevelOfProficiency: 
+      type: string
+      nullable: true
+   LanguageEntityMapListDTO: 
+    title : LanguageEntityMapListDTO
+    type: object
+    properties: 
+     LanguageEntityID: 
+      type: integer
+      description: 
+     Language: 
+      type: string
+     LanguageName: 
+      type: string
+      nullable: true
+     LanguageUse: 
+      type: string
+     Spoken: 
+      type: string
+      nullable: true
+     Written: 
+      type: string
+      nullable: true
+     LevelOfProficiency: 
+      type: string
+      nullable: true
+     LevelOfProficiencyName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   LanguageHistoryListDTO: 
+    title : LanguageHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+     ChangeType: 
+      type: string
+     ChangedBy: 
+      type: integer
+     ChangedAt: 
+      type: string
+      format: date-time
+     ProcedureName: 
+      type: string
+     LanguageEntityID: 
+      type: integer
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+     Language: 
+      type: string
+     LanguageName: 
+      type: string
+      nullable: true
+     LanguageUse: 
+      type: string
+     Spoken: 
+      type: string
+      nullable: true
+     Written: 
+      type: string
+      nullable: true
+     LevelOfProficiency: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     ChangedByName: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+   AlternateAddressHistorySearchDTO: 
+    title : AlternateAddressHistorySearchDTO
+    type: object
+    properties: 
+     AlternateAddressID: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+   AlternateAddressHistoryListDTO: 
+    title : AlternateAddressHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+      nullable: true
+     AlternateAddressID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     AlternateAddressTypeCode: 
+      type: string
+      nullable: true
+     AlternateAddressType: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     Phone: 
+      type: string
+      nullable: true
+     SpecialInstructions: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      nullable: true
+     ExpirationDate: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     CountryISOCode2: 
+      type: string
+      nullable: true
+     CountryISOCode3: 
+      type: string
+      nullable: true
+     LATITUDE: 
+      type: number
+      format: float
+      nullable: true
+     LONGITUDE: 
+      type: number
+      format: float
+      nullable: true
+     ZipSearch: 
+      type: string
+      nullable: true
+   AlternateAddressReturnDTO: 
+    title : AlternateAddressReturnDTO
+    type: object
+    properties: 
+     AlternateAddressID: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+  parameters: 
+   EntityIDQueryParam: 
+    in: query
+    name: EntityID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   LanguageUseQueryParam: 
+    in: query
+    name: LanguageUse
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   LanguageQueryParam: 
+    in: query
+    name: Language
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   LanguageEntityMapIdQueryParam: 
+    in: query
+    name: LanguageEntityMapId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   LanguageEntityIDQueryParam: 
+    in: query
+    name: LanguageEntityID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityIdQueryParam: 
+    in: query
+    name: EntityId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
