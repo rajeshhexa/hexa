@@ -1,0 +1,360 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Member Household API
+  description: Member_Household API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member/household/cobshistory/get: 
+   post: 
+    operationId: GetCobsHistory
+    tags: 
+     - Member
+    summary: Get cobs history
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/COBsHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Member COBs history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/COBsHistoryListDTO'
+  /member/household: 
+   post: 
+    operationId: GetMemberHousehold
+    tags: 
+     - Member
+    summary: Get member households
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberIdQueryParam'
+     - $ref: '#/components/parameters/HouseholdReferenceNumberQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Member households retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/MemberHouseholdListDTO'
+components: 
+  schemas: 
+   COBsHistorySearchDTO: 
+    title : COBsHistorySearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     RowID: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     COBType: 
+      type: string
+      nullable: true
+     RowIds: 
+      type: integer
+      nullable: true
+   COBsHistoryListDTO: 
+    title : COBsHistoryListDTO
+    type: object
+    properties: 
+     ChangedById: 
+      type: integer
+      nullable: true
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ChangeTypeCode: 
+      type: string
+      nullable: true
+     ChangeType: 
+      type: string
+      nullable: true
+     RowId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     SubscriberFirstName: 
+      type: string
+      nullable: true
+     SubscriberLastName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     COBType: 
+      type: string
+      nullable: true
+     COBPrecedenceCode: 
+      type: string
+      nullable: true
+     COBPrecedence: 
+      type: string
+      nullable: true
+     COBClass: 
+      type: string
+      nullable: true
+     COBClassName: 
+      type: string
+      nullable: true
+     COBSubClass: 
+      type: string
+      nullable: true
+     COBSubClassName: 
+      type: string
+      nullable: true
+     InternalPayerType: 
+      type: string
+      nullable: true
+     InternalPayerTypeName: 
+      type: string
+      nullable: true
+     PayerID: 
+      type: integer
+      nullable: true
+     PayerName: 
+      type: string
+      nullable: true
+     PayerTypeCode: 
+      type: string
+      nullable: true
+     PayerType: 
+      type: string
+      nullable: true
+     PayerNumber: 
+      type: string
+      format: date-time
+      nullable: true
+     PayerEmployerName: 
+      type: string
+      nullable: true
+     PayerGroupNumber: 
+      type: string
+      nullable: true
+     PayerMemberNumber: 
+      type: string
+      nullable: true
+     RelationshipToSubscriberCode: 
+      type: string
+      nullable: true
+     RelationshipToSubscriber: 
+      type: string
+      nullable: true
+     CoverageCode: 
+      type: string
+      nullable: true
+     Coverage: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DisplayName: 
+      type: string
+      nullable: true
+     TrackingNumberWithPayer: 
+      type: string
+      nullable: true
+     FileId: 
+      type: integer
+      nullable: true
+     InboundJobDetailId: 
+      type: integer
+      nullable: true
+     Import: 
+      type: string
+      nullable: true
+     CreatedBy: 
+      type: integer
+      nullable: true
+     CreatedByName: 
+      type: string
+      nullable: true
+     CreatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     Address1: 
+      type: string
+      nullable: true
+     Address2: 
+      type: string
+      nullable: true
+     City: 
+      type: string
+      nullable: true
+     State: 
+      type: string
+      nullable: true
+     County: 
+      type: string
+      nullable: true
+     Zip: 
+      type: string
+      nullable: true
+     ZipCodeId: 
+      type: integer
+      nullable: true
+     CountryCode: 
+      type: string
+      nullable: true
+     PolicyHolderLastName: 
+      type: string
+      nullable: true
+     PolicyHolderFirstName: 
+      type: string
+      nullable: true
+     PolicyHolderMiddleName: 
+      type: string
+      nullable: true
+     PolicyHolderNameSuffix: 
+      type: string
+      nullable: true
+     PolicyHolderSuffix: 
+      type: string
+      nullable: true
+     PolicyHolderSSN: 
+      type: string
+      nullable: true
+     PolicyHolderDOB: 
+      type: string
+      format: date-time
+      nullable: true
+     PolicyHolderPhone: 
+      type: string
+      nullable: true
+     PolicyHolderGender: 
+      type: string
+      nullable: true
+     PayerOrder: 
+      type: string
+      nullable: true
+     SequenceNumber: 
+      type: string
+      nullable: true
+     MACOBEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RxIDNumber: 
+      type: string
+      nullable: true
+     RxPCNNumber: 
+      type: string
+      nullable: true
+     RxBINNumber: 
+      type: string
+      nullable: true
+     RxGroupNumber: 
+      type: string
+      nullable: true
+     RxPhoneNumber: 
+      type: string
+      nullable: true
+     PAPNationalDrugCode1: 
+      type: string
+      nullable: true
+     PAPNationalDrugCode2: 
+      type: string
+      nullable: true
+     PAPNationalDrugCode3: 
+      type: string
+      nullable: true
+     PAPNationalDrugCode4: 
+      type: string
+      nullable: true
+     PAPNationalDrugCode5: 
+      type: string
+      nullable: true
+     MSPType: 
+      type: string
+      nullable: true
+     SupplementalType: 
+      type: string
+      nullable: true
+     ExternalIdNumber: 
+      type: string
+      nullable: true
+   MemberHouseholdListDTO: 
+    title : MemberHouseholdListDTO
+    type: object
+    properties: 
+     HouseHold: 
+      type: string
+     HouseholdReferenceNumber: 
+      type: string
+     ResponsiblePartyId: 
+      type: integer
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     ResponsiblePartyZip: 
+      type: string
+      nullable: true
+     EntityAccessRolePermission: 
+      type: string
+      nullable: true
+  parameters: 
+   MemberIdQueryParam: 
+    in: query
+    name: MemberId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   HouseholdReferenceNumberQueryParam: 
+    in: query
+    name: HouseholdReferenceNumber
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
