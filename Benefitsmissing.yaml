@@ -1,0 +1,535 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: BS Strcuryre
+  description: Servers
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/tiers: 
+   post: 
+    operationId: GetTiers
+    tags: 
+     - Tier
+    summary: Get Tier
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TierSearchDTO'
+    responses: 
+     '200': 
+      description: Tiers retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/TierListDTO'
+  /benefit/tier: 
+   Post: 
+    operationId: UpdateTier
+    tags: 
+     - Tier
+    summary: Update Tier
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TierDTO'
+    responses: 
+     '200': 
+      description: Tier Updated Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Delete: 
+    operationId: DeleteTier
+    tags: 
+     - Tier
+    summary: Delete Tier
+    description: Description of path
+    responses: 
+     '200': 
+      description: Tier Removed Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefit/structures: 
+   post: 
+    operationId: GetBenefitStructures
+    tags: 
+     - BenefitStructure
+    summary: Get benefit structure
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BenefitStructureSearchDTO'
+    responses: 
+     '200': 
+      description: Benefit structure retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BenefitStructureListDTO'
+  /benefit/capitationrates: 
+   get: 
+    operationId: GetCapitationRates
+    tags: 
+     - BenefitCapitation
+    summary: Get Capitation rates
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/UsageParam'
+     - $ref: '#/components/parameters/CapitationRateIdParam'
+     - $ref: '#/components/parameters/CapitationRateNameParam'
+     - $ref: '#/components/parameters/ResultCountParam'
+    responses: 
+     '200': 
+      description: Capitation rates retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CapitationRatesListDTO'
+components: 
+  schemas: 
+   TierDTO: 
+    title : TierDTO
+    type: object
+    properties: 
+     TierId: 
+      type: integer
+      nullable: true
+     MinSpouses: 
+      type: integer
+      nullable: true
+     MaxSpouses: 
+      type: integer
+      nullable: true
+     SpouseTierDecrement: 
+      type: integer
+      nullable: true
+     SpouseTierIncrement: 
+      type: integer
+      nullable: true
+     MinChildren: 
+      type: integer
+      nullable: true
+     MaxChildren: 
+      type: integer
+      nullable: true
+     ChildTierDecrement: 
+      type: integer
+      nullable: true
+     ChildTierIncrement: 
+      type: integer
+      nullable: true
+     MinOthers: 
+      type: integer
+      nullable: true
+     MaxOthers: 
+      type: integer
+      nullable: true
+     OtherTierDecrement: 
+      type: integer
+      nullable: true
+     OtherTierIncrement: 
+      type: integer
+      nullable: true
+     MinTotalDependents: 
+      type: integer
+      nullable: true
+     MaxTotalDependents: 
+      type: integer
+      nullable: true
+   CopyTierListDTO: 
+    title : CopyTierListDTO
+    type: object
+    properties: 
+     StructureID: 
+      type: integer
+     PlanId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     Type: 
+      type: string
+     ProcessType: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+     Description: 
+      type: string
+     SortKey: 
+      type: number
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+   DeleteTierSearchDTO: 
+    title : DeleteTierSearchDTO
+    type: object
+    properties: 
+     TierTypeId: 
+      type: integer
+      nullable: true
+     TierId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   TierSearchDTO: 
+    title : TierSearchDTO
+    type: object
+    properties: 
+     TierId: 
+      type: integer
+      nullable: true
+     TierTypeId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   TierListDTO: 
+    title : TierListDTO
+    type: object
+    properties: 
+     TierID: 
+      type: integer
+      nullable: true
+     TierTypeId: 
+      type: integer
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     TierItemName: 
+      type: string
+     TierCode: 
+      type: string
+      nullable: true
+     TierTypeName: 
+      type: string
+      nullable: true
+     TypeItemName: 
+      type: string
+      nullable: true
+     MinSpouses: 
+      type: integer
+      nullable: true
+     MaxSpouses: 
+      type: integer
+      nullable: true
+     SpouseTierDecrement: 
+      type: integer
+      nullable: true
+     SpouseTierDecrementName: 
+      type: string
+      nullable: true
+     SpouseTierIncrement: 
+      type: integer
+      nullable: true
+     SpouseTierIncrementName: 
+      type: string
+      nullable: true
+     MinChildren: 
+      type: integer
+      nullable: true
+     MaxChildren: 
+      type: integer
+      nullable: true
+     ChildTierDecrement: 
+      type: integer
+      nullable: true
+     ChildTierDecrementName: 
+      type: string
+      nullable: true
+     ChildTierIncrement: 
+      type: integer
+      nullable: true
+     ChildTierIncrementName: 
+      type: string
+      nullable: true
+     MinOthers: 
+      type: integer
+      nullable: true
+     MaxOthers: 
+      type: integer
+      nullable: true
+     OtherTierDecrement: 
+      type: integer
+      nullable: true
+     OtherTierDecrementName: 
+      type: string
+      nullable: true
+     OtherTierIncrement: 
+      type: integer
+      nullable: true
+     OtherTierIncrementName: 
+      type: string
+      nullable: true
+     MinTotalDependents: 
+      type: integer
+      nullable: true
+     MaxTotalDependents: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     RowId: 
+      type: integer
+   BenefitStructureSearchDTO: 
+    title : BenefitStructureSearchDTO
+    type: object
+    properties: 
+     PlanId: 
+      type: integer
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     StructureID: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ProcessType: 
+      type: string
+      nullable: true
+   BenefitStructureListDTO: 
+    title : BenefitStructureListDTO
+    type: object
+    properties: 
+     StructureID: 
+      type: integer
+      description: 
+     SourceId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     ProcessType: 
+      type: string
+      nullable: true
+     LiabilityCounterType: 
+      type: string
+      nullable: true
+     LiabilityCounterTypeName: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+     Description: 
+      type: string
+     BenefitCode: 
+      type: string
+      nullable: true
+     RateUnitType: 
+      type: string
+      nullable: true
+     RateUnitValue: 
+      type: string
+      nullable: true
+     BnfStructureNameWithRate: 
+      type: string
+      nullable: true
+     ProcessTypeName: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      description: 
+     EpisodeDays: 
+      type: integer
+      nullable: true
+     EpisodeMaxDollars: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+   CapitationRatesListDTO: 
+    title : CapitationRatesListDTO
+    type: object
+    properties: 
+     CapitationRateId: 
+      type: integer
+      nullable: true
+     CapitationRateName: 
+      type: string
+     CapitationRateDescription: 
+      type: string
+      nullable: true
+     CapitationType: 
+      type: string
+      nullable: true
+     CapitationTypeName: 
+      type: string
+      nullable: true
+     CompanyID: 
+      type: integer
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+  parameters: 
+   TierTypeIdParam: 
+    in: query
+    name: TierTypeId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PlanIdParam: 
+    in: query
+    name: PlanId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   CapitationRateIdParam: 
+    in: query
+    name: CapitationRateId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   CapitationRateNameParam: 
+    in: query
+    name: CapitationRateName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ResultCountParam: 
+    in: query
+    name: ResultCount
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
