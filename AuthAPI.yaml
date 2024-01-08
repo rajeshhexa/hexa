@@ -1,0 +1,1698 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Benefit Tiers
+  description: Benefit Tiers API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/tiers: 
+   post: 
+    operationId: GetTiers
+    tags: 
+     - Tier
+    summary: Get Tier
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TierSearchDTO'
+    responses: 
+     '200': 
+      description: Tiers retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/TierListDTO'
+  /benefit/tier: 
+   Post: 
+    operationId: UpdateTier
+    tags: 
+     - Tier
+    summary: Update Tier
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TierDTO'
+    responses: 
+     '200': 
+      description: Tier Updated Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   Delete: 
+    operationId: DeleteTier
+    tags: 
+     - Tier
+    summary: Delete Tier
+    description: Description of path
+    responses: 
+     '200': 
+      description: Tier Removed Succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /referrals: 
+   post: 
+    operationId: GetReferrals
+    tags: 
+     - Referral
+    summary: Get referrals
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ReferralSearchDTO'
+    responses: 
+     '200': 
+      description: Referrals retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ReferralListDTO'
+  /umauthorizations/authorizations: 
+   post: 
+    operationId: GetAuthorizations
+    tags: 
+     - Authorization
+    summary: Get authorizations
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AuthorizationSearchDTO'
+    responses: 
+     '200': 
+      description: Get authorizations
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AuthorizationListDTO'
+components: 
+  schemas: 
+   AuthorizationListDTO: 
+    title : AuthorizationListDTO
+    type: object
+    properties: 
+     EntityTypeID: 
+      type: integer
+      nullable: true
+     AuthorizationID: 
+      type: integer
+      nullable: true
+     AuthorizationNumber: 
+      type: string
+      nullable: true
+     Version: 
+      type: integer
+      nullable: true
+     CurrentVersion: 
+      type: integer
+      nullable: true
+     CurrentProcessingStatus: 
+      type: string
+      nullable: true
+     CurrentStatus: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     StatusName: 
+      type: string
+      nullable: true
+     StatusSubtype: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     ChangeReasonCode: 
+      type: string
+      nullable: true
+     ChangeReasonName: 
+      type: string
+      nullable: true
+     ChangeReason: 
+      type: string
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceivedFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceivedTo: 
+      type: string
+      format: date-time
+      nullable: true
+     RequestedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ApprovedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RequestedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ApprovedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LetterComments: 
+      type: string
+      nullable: true
+     LetterComments2: 
+      type: string
+      nullable: true
+     LetterComments3: 
+      type: string
+      nullable: true
+     AuthExplanationId: 
+      type: integer
+      nullable: true
+     AuthExplanation: 
+      type: string
+      nullable: true
+     AuthExplanationId2: 
+      type: integer
+      nullable: true
+     AuthExplanation2: 
+      type: string
+      nullable: true
+     AuthExplanationId3: 
+      type: integer
+      nullable: true
+     AuthExplanation3: 
+      type: string
+      nullable: true
+     ClaimExplanationId: 
+      type: integer
+      nullable: true
+     ClaimExplanation: 
+      type: string
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberHomePhone: 
+      type: string
+      nullable: true
+     MemberAddress1: 
+      type: string
+      nullable: true
+     MemberAddress2: 
+      type: string
+      nullable: true
+     MemberCity: 
+      type: string
+      nullable: true
+     MemberState: 
+      type: string
+      nullable: true
+     MemberZip: 
+      type: string
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     MemberBasePlanID: 
+      type: integer
+      nullable: true
+     MemberBasePlanName: 
+      type: string
+      nullable: true
+     MemberDateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     AuthorizationClass: 
+      type: string
+      nullable: true
+     AuthorizationClassName: 
+      type: string
+      nullable: true
+     AuthorizationTypeCode: 
+      type: string
+      nullable: true
+     AuthorizationTypeCodeName: 
+      type: string
+      nullable: true
+     PreviousAuthorizationID: 
+      type: integer
+      nullable: true
+     PreviousAuthorizationNumber: 
+      type: string
+      nullable: true
+     ExternalAuthorizationNumber: 
+      type: string
+      nullable: true
+     CaseID: 
+      type: integer
+      nullable: true
+     CaseType: 
+      type: string
+      nullable: true
+     CaseAdjustmentVersion: 
+      type: integer
+      nullable: true
+     CaseNumber: 
+      type: string
+      nullable: true
+     ExternalCaseNumber: 
+      type: string
+      nullable: true
+     CaseDateOfIncident: 
+      type: string
+      format: date-time
+      nullable: true
+     RequestingProviderID: 
+      type: integer
+      nullable: true
+     RequestingProviderNumber: 
+      type: string
+      nullable: true
+     RequestingProviderFirstName: 
+      type: string
+      nullable: true
+     RequestingProviderLastName: 
+      type: string
+      nullable: true
+     RequestingOfficeID: 
+      type: integer
+      nullable: true
+     RequestingOfficeNumber: 
+      type: string
+      nullable: true
+     RequestingOfficeName: 
+      type: string
+      nullable: true
+     RequestingOfficeAddress1: 
+      type: string
+      nullable: true
+     RequestingOfficeAddress2: 
+      type: string
+      nullable: true
+     RequestingOfficeCity: 
+      type: string
+      nullable: true
+     RequestingOfficeState: 
+      type: string
+      nullable: true
+     RequestingOfficeZip: 
+      type: string
+      nullable: true
+     AccidentDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LastMenstrualPeriodDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EstimatedDateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     OnsetOfSymptomsDate: 
+      type: string
+      format: date-time
+      nullable: true
+     RequestedMaxUnits: 
+      type: number
+      nullable: true
+     ApprovedMaxUnits: 
+      type: number
+      nullable: true
+     RequestedMaxVisits: 
+      type: integer
+      nullable: true
+     ApprovedMaxVisits: 
+      type: integer
+      nullable: true
+     RequestedMaxDollars: 
+      type: string
+      nullable: true
+     ApprovedMaxDollars: 
+      type: string
+      nullable: true
+     RequestedNegotiatedAmount: 
+      type: string
+      nullable: true
+     ApprovedNegotiatedAmount: 
+      type: string
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     AuthorizationImagePath: 
+      type: string
+      nullable: true
+     InputBatchID: 
+      type: integer
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     AssignedToUserID: 
+      type: integer
+      nullable: true
+     LastPolledAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     DateAuthorizationExported: 
+      type: string
+      format: date-time
+      nullable: true
+     DeterminationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     GlobalAuthorization: 
+      type: string
+      nullable: true
+     EpisodeAuthorization: 
+      type: string
+      nullable: true
+     CopyServiceDatesFromMain: 
+      type: string
+      nullable: true
+     CopyServiceDetailDatesFromMain: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedByUserName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ExcludeAuthID: 
+      type: integer
+      nullable: true
+     ApplyPenalty: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     OverrideTransform: 
+      type: string
+      nullable: true
+     OverrideTransformLastUpdatedBy: 
+      type: integer
+      nullable: true
+     OverrideTransformByName: 
+      type: string
+      nullable: true
+     OverrideTransformLastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     AuthorizationServiceID: 
+      type: integer
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     ServiceStatusCode: 
+      type: string
+      nullable: true
+     ServiceStatus: 
+      type: string
+      nullable: true
+     ServiceRequestedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceApprovedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceRequestedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceApprovedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceProviderID: 
+      type: integer
+      nullable: true
+     ServiceProviderNumber: 
+      type: string
+      nullable: true
+     ServiceProviderFirstName: 
+      type: string
+      nullable: true
+     ServiceProviderLastName: 
+      type: string
+      nullable: true
+     ServiceOfficeID: 
+      type: integer
+      nullable: true
+     ServiceOfficeNumber: 
+      type: string
+      nullable: true
+     ServiceOfficeName: 
+      type: string
+      nullable: true
+     ServiceOfficeAddress1: 
+      type: string
+      nullable: true
+     ServiceOfficeAddress2: 
+      type: string
+      nullable: true
+     ServiceOfficeCity: 
+      type: string
+      nullable: true
+     ServiceOfficeState: 
+      type: string
+      nullable: true
+     ServiceOfficeZip: 
+      type: string
+      nullable: true
+     ServiceVendorID: 
+      type: integer
+      nullable: true
+     ServiceVendorNumber: 
+      type: string
+      nullable: true
+     ServiceVendorName: 
+      type: string
+      nullable: true
+     ServiceVendorAddress1: 
+      type: string
+      nullable: true
+     ServiceVendorAddress2: 
+      type: string
+      nullable: true
+     ServiceVendorCity: 
+      type: string
+      nullable: true
+     ServiceVendorState: 
+      type: string
+      nullable: true
+     ServiceVendorZip: 
+      type: string
+      nullable: true
+     ServiceCorporationID: 
+      type: integer
+      nullable: true
+     ServiceCorporationEIN: 
+      type: string
+      nullable: true
+     ServiceCorporationEINType: 
+      type: string
+      nullable: true
+     ServiceCorporationEINTypeName: 
+      type: string
+      nullable: true
+     ServiceCorporationLegalName: 
+      type: string
+      nullable: true
+     ServiceSpecialtyCategoryID: 
+      type: integer
+      nullable: true
+     ServiceSpecialtyCategoryName: 
+      type: string
+      nullable: true
+     ServiceProviderRoleCode: 
+      type: string
+      nullable: true
+     ServiceAuthorizationTypeCode: 
+      type: string
+      nullable: true
+     ServiceTypeCode: 
+      type: string
+      nullable: true
+     ServiceTypeCodeName: 
+      type: string
+      nullable: true
+     ServiceRequestedMaxUnits: 
+      type: number
+      nullable: true
+     ServiceApprovedMaxUnits: 
+      type: number
+      nullable: true
+     ServiceRequestedMaxVisits: 
+      type: integer
+      nullable: true
+     ServiceApprovedMaxVisits: 
+      type: integer
+      nullable: true
+     ServiceRequestedMaxDollars: 
+      type: string
+      nullable: true
+     ServiceApprovedMaxDollars: 
+      type: string
+      nullable: true
+     ServiceRequestedNegotiatedAmount: 
+      type: string
+      nullable: true
+     ServiceApprovedNegotiatedAmount: 
+      type: string
+      nullable: true
+     ServiceServiceCategoryId: 
+      type: integer
+      nullable: true
+     ServiceServiceCategory: 
+      type: string
+      nullable: true
+     ServiceLiabilityLevelId: 
+      type: integer
+      nullable: true
+     ServiceLiabilityLevel: 
+      type: string
+      nullable: true
+     ServicePlaceOfService: 
+      type: string
+      nullable: true
+     ServicePlaceOfServiceName: 
+      type: string
+      nullable: true
+     ServiceAllowAnyOffice: 
+      type: string
+      nullable: true
+     ServiceAllowCoveringProvider: 
+      type: string
+      nullable: true
+     ServiceDetailLineNumber: 
+      type: integer
+      nullable: true
+     ServiceDetailStatusCode: 
+      type: string
+      nullable: true
+     ServiceDetailStatus: 
+      type: string
+      nullable: true
+     ServiceDetailRequestedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDetailApprovedEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDetailRequestedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDetailApprovedExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ServiceDetailTypeCode: 
+      type: string
+      nullable: true
+     ServiceDetailType: 
+      type: string
+      nullable: true
+     ServiceDetailID: 
+      type: integer
+      nullable: true
+     ServiceDetailName: 
+      type: string
+      nullable: true
+     ServiceDetailCode: 
+      type: string
+      nullable: true
+     ServiceDetailRequestedMaxUnits: 
+      type: number
+      nullable: true
+     ServiceDetailApprovedMaxUnits: 
+      type: number
+      nullable: true
+     ServiceDetailRequestedMaxVisits: 
+      type: integer
+      nullable: true
+     ServiceDetailApprovedMaxVisits: 
+      type: integer
+      nullable: true
+     ServiceDetailRequestedMaxDollars: 
+      type: string
+      nullable: true
+     ServiceDetailApprovedMaxDollars: 
+      type: string
+      nullable: true
+     ServiceDetailRequestedNegotiatedAmount: 
+      type: string
+      nullable: true
+     ServiceDetailApprovedNegotiatedAmount: 
+      type: string
+      nullable: true
+     ServiceDetailServiceCategoryId: 
+      type: integer
+      nullable: true
+     ServiceDetailServiceCategory: 
+      type: string
+      nullable: true
+     ServiceDetailLiabilityLevelId: 
+      type: integer
+      nullable: true
+     ServiceDetailLiabilityLevel: 
+      type: string
+      nullable: true
+     ServiceDetailPlaceOfService: 
+      type: string
+      nullable: true
+     ServiceDetailPlaceOfServiceName: 
+      type: string
+      nullable: true
+     ServiceDetailModifier: 
+      type: string
+      nullable: true
+     ServiceDetailModifierName: 
+      type: string
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     WorkGroupName: 
+      type: string
+      nullable: true
+     LastWorkedByUserName: 
+      type: string
+      nullable: true
+     LastWorkedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     GetAuthorizationDetails: 
+      type: string
+      nullable: true
+   TierDTO: 
+    title : TierDTO
+    type: object
+    properties: 
+     TierId: 
+      type: integer
+      nullable: true
+     MinSpouses: 
+      type: integer
+      nullable: true
+     MaxSpouses: 
+      type: integer
+      nullable: true
+     SpouseTierDecrement: 
+      type: integer
+      nullable: true
+     SpouseTierIncrement: 
+      type: integer
+      nullable: true
+     MinChildren: 
+      type: integer
+      nullable: true
+     MaxChildren: 
+      type: integer
+      nullable: true
+     ChildTierDecrement: 
+      type: integer
+      nullable: true
+     ChildTierIncrement: 
+      type: integer
+      nullable: true
+     MinOthers: 
+      type: integer
+      nullable: true
+     MaxOthers: 
+      type: integer
+      nullable: true
+     OtherTierDecrement: 
+      type: integer
+      nullable: true
+     OtherTierIncrement: 
+      type: integer
+      nullable: true
+     MinTotalDependents: 
+      type: integer
+      nullable: true
+     MaxTotalDependents: 
+      type: integer
+      nullable: true
+   CopyTierListDTO: 
+    title : CopyTierListDTO
+    type: object
+    properties: 
+     StructureID: 
+      type: integer
+     PlanId: 
+      type: integer
+      nullable: true
+     ParentId: 
+      type: integer
+      nullable: true
+     Type: 
+      type: string
+     ProcessType: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+     Description: 
+      type: string
+     SortKey: 
+      type: number
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+   DeleteTierSearchDTO: 
+    title : DeleteTierSearchDTO
+    type: object
+    properties: 
+     TierTypeId: 
+      type: integer
+      nullable: true
+     TierId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   TierSearchDTO: 
+    title : TierSearchDTO
+    type: object
+    properties: 
+     TierId: 
+      type: integer
+      nullable: true
+     TierTypeId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   TierListDTO: 
+    title : TierListDTO
+    type: object
+    properties: 
+     TierID: 
+      type: integer
+      nullable: true
+     TierTypeId: 
+      type: integer
+      nullable: true
+     TierItemId: 
+      type: integer
+      nullable: true
+     TierItemName: 
+      type: string
+     TierCode: 
+      type: string
+      nullable: true
+     TierTypeName: 
+      type: string
+      nullable: true
+     TypeItemName: 
+      type: string
+      nullable: true
+     MinSpouses: 
+      type: integer
+      nullable: true
+     MaxSpouses: 
+      type: integer
+      nullable: true
+     SpouseTierDecrement: 
+      type: integer
+      nullable: true
+     SpouseTierDecrementName: 
+      type: string
+      nullable: true
+     SpouseTierIncrement: 
+      type: integer
+      nullable: true
+     SpouseTierIncrementName: 
+      type: string
+      nullable: true
+     MinChildren: 
+      type: integer
+      nullable: true
+     MaxChildren: 
+      type: integer
+      nullable: true
+     ChildTierDecrement: 
+      type: integer
+      nullable: true
+     ChildTierDecrementName: 
+      type: string
+      nullable: true
+     ChildTierIncrement: 
+      type: integer
+      nullable: true
+     ChildTierIncrementName: 
+      type: string
+      nullable: true
+     MinOthers: 
+      type: integer
+      nullable: true
+     MaxOthers: 
+      type: integer
+      nullable: true
+     OtherTierDecrement: 
+      type: integer
+      nullable: true
+     OtherTierDecrementName: 
+      type: string
+      nullable: true
+     OtherTierIncrement: 
+      type: integer
+      nullable: true
+     OtherTierIncrementName: 
+      type: string
+      nullable: true
+     MinTotalDependents: 
+      type: integer
+      nullable: true
+     MaxTotalDependents: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     PlanId: 
+      type: integer
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     RowId: 
+      type: integer
+   ReferralSearchDTO: 
+    title : ReferralSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ReferralID: 
+      type: integer
+      nullable: true
+     ReferralNumber: 
+      type: string
+      nullable: true
+     ExternalReferralNumber: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     DateStart: 
+      type: string
+      format: date-time
+      nullable: true
+     DateEnd: 
+      type: string
+      format: date-time
+      nullable: true
+     LoginType: 
+      type: string
+      nullable: true
+     PrimaryCareProviderId: 
+      type: integer
+      nullable: true
+     PrimaryCareOfficeId: 
+      type: integer
+      nullable: true
+     ProviderSpecialtyID: 
+      type: integer
+      nullable: true
+     ProviderSpecialtyName: 
+      type: string
+      nullable: true
+     ProviderSpecialtyCategoryID: 
+      type: integer
+      nullable: true
+     ProviderSpecialtySubCategoryID: 
+      type: integer
+      nullable: true
+     TaxonomyCode: 
+      type: string
+      nullable: true
+     SpecialistProviderId: 
+      type: integer
+      nullable: true
+     PrimaryCareProviderLastName: 
+      type: string
+      nullable: true
+     PrimaryCareProviderFirstName: 
+      type: string
+      nullable: true
+     SpecialistLastName: 
+      type: string
+      nullable: true
+     SpecialistFirstName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     SourceType: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     ReferralStatus: 
+      type: string
+      nullable: true
+     AssignedToUserID: 
+      type: integer
+      nullable: true
+     ReferralPollingExclusionPeriod: 
+      type: integer
+      nullable: true
+     EmergencyReferral: 
+      type: string
+      nullable: true
+     ReferralDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ReferralDateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     AddLocking: 
+      type: integer
+      nullable: true
+   ReferralListDTO: 
+    title : ReferralListDTO
+    type: object
+    properties: 
+     ReferralID: 
+      type: integer
+     ReferralNumber: 
+      type: string
+      nullable: true
+     ExternalReferralNumber: 
+      type: string
+      nullable: true
+     FormType: 
+      type: string
+      nullable: true
+     EmergencyReferral: 
+      type: string
+      nullable: true
+     RadiographReferenceNumber: 
+      type: string
+      nullable: true
+     ExternalRadiographReferenceNumber: 
+      type: string
+      nullable: true
+     NumberOfRadiographsSent: 
+      type: integer
+      nullable: true
+     PrimaryCareProviderID: 
+      type: integer
+      nullable: true
+     PrimaryCareProviderLastName: 
+      type: string
+      nullable: true
+     PrimaryCareProviderFirstName: 
+      type: string
+      nullable: true
+     PrimaryCareProviderName: 
+      type: string
+      nullable: true
+     PrimaryCareProviderNumber: 
+      type: string
+      nullable: true
+     PrimaryCareOfficeId: 
+      type: integer
+      nullable: true
+     PrimaryCareOfficeName: 
+      type: string
+      nullable: true
+     PrimaryCareOfficeAddress: 
+      type: string
+      nullable: true
+     PrimaryCareOfficeCity: 
+      type: string
+      nullable: true
+     PrimaryCareOfficeState: 
+      type: string
+      nullable: true
+     PrimaryCareOfficeZip: 
+      type: string
+      nullable: true
+     ProviderSpecialtyCategoryID: 
+      type: integer
+      nullable: true
+     SpecialtyCategoryName: 
+      type: string
+      nullable: true
+     ProviderSpecialtySubCategoryID: 
+      type: integer
+      nullable: true
+     SpecialtySubcategoryName: 
+      type: string
+      nullable: true
+     ProviderSpecialtyID: 
+      type: integer
+      nullable: true
+     ProviderSpecialtyName: 
+      type: string
+      nullable: true
+     TaxonomyCode: 
+      type: string
+      nullable: true
+     SpecialistProviderID: 
+      type: integer
+      nullable: true
+     SpecialistLastName: 
+      type: string
+      nullable: true
+     SpecialistFirstName: 
+      type: string
+      nullable: true
+     SpecialistName: 
+      type: string
+      nullable: true
+     SpecialistNumber: 
+      type: string
+      nullable: true
+     SpecialistVendorID: 
+      type: integer
+      nullable: true
+     SpecialistVendorName: 
+      type: string
+      nullable: true
+     SpecialistVendorNumber: 
+      type: string
+      nullable: true
+     SpecialistOfficeID: 
+      type: integer
+      nullable: true
+     SpecialistOfficeName: 
+      type: string
+      nullable: true
+     SpecialistOfficeAddress: 
+      type: string
+      nullable: true
+     SpecialistOfficeCity: 
+      type: string
+      nullable: true
+     SpecialistOfficeState: 
+      type: string
+      nullable: true
+     SpecialistOfficeZip: 
+      type: string
+      nullable: true
+     SpecialistOfficePhone: 
+      type: string
+      nullable: true
+     DateOfReferral: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceived: 
+      type: string
+      format: date-time
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+     ReferralPeriodFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     ReferralPeriodTo: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     SubscriberContractID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberSex: 
+      type: string
+      nullable: true
+     MemberDateOfBirth: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberAddress1: 
+      type: string
+      nullable: true
+     MemberAddress2: 
+      type: string
+      nullable: true
+     MemberCity: 
+      type: string
+      nullable: true
+     MemberState: 
+      type: string
+      nullable: true
+     MemberZip: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberPolicyNumber: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     PCPReferralReportPath: 
+      type: string
+      nullable: true
+     ProviderReferralReportPath: 
+      type: string
+      nullable: true
+     MemberReferralReportPath: 
+      type: string
+      nullable: true
+     PCPPreEstimateReportPath: 
+      type: string
+      nullable: true
+     ProviderPreEstimateReportPath: 
+      type: string
+      nullable: true
+     MemberPreEstimateReportPath: 
+      type: string
+      nullable: true
+     PCPReferralReportID: 
+      type: integer
+      nullable: true
+     ProviderReferralReportID: 
+      type: integer
+      nullable: true
+     MemberReferralReportID: 
+      type: integer
+      nullable: true
+     PCPPreEstimateReportID: 
+      type: integer
+      nullable: true
+     ProviderPreEstimateReportID: 
+      type: integer
+      nullable: true
+     MemberPreEstimateReportID: 
+      type: integer
+      nullable: true
+     DocumentID: 
+      type: integer
+      nullable: true
+     ReferralImagePath: 
+      type: string
+      nullable: true
+     PreestimateID: 
+      type: integer
+      nullable: true
+     PreestimateVersion: 
+      type: integer
+      nullable: true
+     PreestimateNumber: 
+      type: string
+      nullable: true
+     PreestimateServiceDateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     PreestimateStatusCode: 
+      type: string
+      nullable: true
+     PreestimateStatus: 
+      type: string
+      nullable: true
+     PreestimateProcessingStatusCode: 
+      type: string
+      nullable: true
+     PreestimateProcessingStatus: 
+      type: string
+      nullable: true
+     PreestimateCanBePrinted: 
+      type: string
+      nullable: true
+     MaxVisits: 
+      type: integer
+      nullable: true
+     ConsultationWithTreatment: 
+      type: string
+      nullable: true
+     PrimaryDiagnosisCategoryID: 
+      type: integer
+      nullable: true
+     PrimaryDiagnosisCategoryName: 
+      type: string
+      nullable: true
+     SecondaryDiagnosisCategoryID: 
+      type: integer
+      nullable: true
+     SecondaryDiagnosisCategoryName: 
+      type: string
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     ReferralStatus: 
+      type: string
+      nullable: true
+     ReferralStatusName: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ProcessingStatusName: 
+      type: string
+      nullable: true
+     ExplanationID: 
+      type: integer
+      nullable: true
+     Explanation: 
+      type: string
+      nullable: true
+     InputBatchID: 
+      type: integer
+     SourceType: 
+      type: string
+     DateReferralExported: 
+      type: string
+      format: date-time
+      nullable: true
+     AssignedToUserID: 
+      type: integer
+      nullable: true
+     AssignedToName: 
+      type: string
+      nullable: true
+     LastPolledAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ReviewedBy: 
+      type: integer
+      nullable: true
+     ReviewedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ReviewedByName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     EntityTypeId: 
+      type: integer
+      nullable: true
+     LockedReferral: 
+      type: string
+      nullable: true
+     LockedByName: 
+      type: string
+      nullable: true
+     UsePrimaryOfficeDuringPCPAssignment: 
+      type: string
+      nullable: true
+   AuthorizationSearchDTO: 
+    title : AuthorizationSearchDTO
+    type: object
+    properties: 
+     AuthorizationID: 
+      type: integer
+      nullable: true
+     Version: 
+      type: integer
+      nullable: true
+     AuthorizationNumber: 
+      type: string
+      nullable: true
+     MemberID: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberCoverageID: 
+      type: integer
+      nullable: true
+     MemberFirstName: 
+      type: string
+      nullable: true
+     MemberLastName: 
+      type: string
+      nullable: true
+     WorkGroupID: 
+      type: integer
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     CaseID: 
+      type: integer
+      nullable: true
+     CaseNumber: 
+      type: string
+      nullable: true
+     Status: 
+      type: string
+      nullable: true
+     ProcessingStatus: 
+      type: string
+      nullable: true
+     ExcludeAuthID: 
+      type: integer
+      nullable: true
+     AssignedToUserID: 
+      type: integer
+      nullable: true
+     ServiceDetailTypeCode: 
+      type: string
+      nullable: true
+     ServiceDetailID: 
+      type: integer
+      nullable: true
+     ExclusionPeriod: 
+      type: integer
+      nullable: true
+     DateReceivedFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReceivedTo: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReviewedFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateReviewedTo: 
+      type: string
+      format: date-time
+      nullable: true
+     Class: 
+      type: string
+      nullable: true
+     SubClass: 
+      type: string
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     ExternalAuthorizationNumber: 
+      type: string
+      nullable: true
+     RequestingVendorID: 
+      type: integer
+      nullable: true
+     RequestingProviderNumber: 
+      type: string
+      nullable: true
+     RequestingProviderFirstName: 
+      type: string
+      nullable: true
+     RequestingProviderLastName: 
+      type: string
+      nullable: true
+     RequestingOfficeNumber: 
+      type: string
+      nullable: true
+     RequestingProviderId: 
+      type: integer
+      nullable: true
+     RequestingOfficeId: 
+      type: integer
+      nullable: true
+     ServiceVendorID: 
+      type: integer
+      nullable: true
+     ServiceProviderNumber: 
+      type: string
+      nullable: true
+     ServiceProviderFirstName: 
+      type: string
+      nullable: true
+     ServiceProviderLastName: 
+      type: string
+      nullable: true
+     ServiceProviderId: 
+      type: integer
+      nullable: true
+     ServiceOfficeId: 
+      type: integer
+      nullable: true
+     DateUsage: 
+      type: string
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     AddLocking: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     RaiseError: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     GlobalAuthorization: 
+      type: string
+      nullable: true
+     EpisodeAuthorization: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     GetAuthorizationDetails: 
+      type: string
+      nullable: true
+     ReturnMatchesOnly: 
+      type: string
+      nullable: true
+     AuthRole: 
+      type: string
+      nullable: true
+     ProviderFirstName: 
+      type: string
+      nullable: true
+     ProviderLastName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     ClaimId: 
+      type: integer
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     MasterOverride: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+  parameters: 
+   TierTypeIdParam: 
+    in: query
+    name: TierTypeId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   PlanIdParam: 
+    in: query
+    name: PlanId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
