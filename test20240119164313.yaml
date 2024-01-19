@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: test
+  description: xsaa
+servers: 
+  - url: http://localhost.com
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /getTest: 
+   get: 
+    operationId: getTest
+    tags: 
+     - getTag
+    summary: dfdsf
+    description: getDesc
+    parameters: 
+     - $ref: '#/components/parameters/idHeaderParam'
+    responses: 
+     '200': 
+      description: success
+      content: 
+       application/json: 
+        schema: 
+         type: string
+  /updateTest: 
+   put: 
+    operationId: updateTest
+    tags: 
+     - 
+    summary: sdfsfsdfs
+    description: sds
+    parameters: 
+     - $ref: '#/components/parameters/idHeaderParam'
+    responses: 
+     '200': 
+      description: sasds
+      content: 
+       application/json: 
+        schema: 
+         type: string
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  parameters: 
+   idHeaderParam: 
+    in: header
+    name: id
+    required: true
+    schema: 
+     type: number
+     default: ASa
+    description: asa
