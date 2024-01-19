@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: DemoTitle
+  description: desc
+servers: 
+  - url: url
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /demo: 
+   get: 
+    operationId: demo
+    tags: 
+     - tag
+    summary: sum
+    description: desc
+    parameters: 
+     - $ref: '#/components/parameters/HeaderDemoHeaderParam'
+    responses: 
+     '200': 
+      description: desc
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  parameters: 
+   HeaderDemoHeaderParam: 
+    in: header
+    name: HeaderDemo
+    required: false
+    schema: 
+     type: string
+     default: test
+    description: desc
