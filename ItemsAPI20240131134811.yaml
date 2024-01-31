@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: ItemsAPI
+  description: Items API
+servers: 
+  - url: https://test.com
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /items: 
+   get: 
+    operationId: listItems
+    tags: 
+     - items
+    summary: Get All Items
+    description: Get All Items
+    responses: 
+     '200': 
+      description: Items Retrieved
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/Item'
+  /items/{id}: 
+   get: 
+    operationId: listItemById
+    tags: 
+     - item
+    summary: Get Item By Id
+    description: Get Item By Id
+    parameters: 
+     - $ref: '#/components/parameters/idPathParam'
+    responses: 
+     '200': 
+      description: Item retrieved by Id
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/Item'
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  schemas: 
+   Item: 
+    title : Item
+    type: object
+    properties: 
+     itemId: 
+      type: string
+     ItemDetails: 
+      type: object
+      $ref: '#/components/schemas/ItemDetails'
+     ErrorResponseList: 
+      type: object
+      $ref: '#/components/schemas/ErrorResponseList'
+     Purchase: 
+      type: object
+      $ref: '#/components/schemas/Purchase'
+   ItemDetails: 
+    title : ItemDetails
+    type: object
+    properties: 
+     ItemCode: 
+      type: string
+     ItemCodeDescription: 
+      type: string
+     ManufacturerBrandCode: 
+      type: string
+     ManufacturerBrandDescription: 
+      type: string
+     GoodsColour: 
+      type: string
+     ModelNumber: 
+      type: string
+     SerialNumber: 
+      type: string
+     OperationalStatusCode: 
+      type: string
+     AllocatedSupplierAgentCode: 
+      type: string
+     AllocatedSupplierBranchCode: 
+      type: string
+     LastServiceDate: 
+      type: string
+     LastServiceTime: 
+      type: string
+     ItemCatCode: 
+      type: string
+     ManufacturerBrandGroupCode: 
+      type: string
+   Error: 
+    title : Error
+    type: object
+    properties: 
+     ErrorCode: 
+      type: string
+     ErrorDescription: 
+      type: string
+   ErrorResponseList: 
+    title : ErrorResponseList
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/components/schemas/Error'
+   Purchase: 
+    title : Purchase
+    type: object
+    properties: 
+     PriceCurrencyCode: 
+      type: string
+      minLength: 2
+     PurchaseDate: 
+      type: string
+     PurchaseTime: 
+      type: string
+     RecommendedPriceCurrencyCode: 
+      type: string
+     PurchaseRetailer: 
+      type: string
+     PurchasePrice: 
+      type: integer
+     RecommendedPrice: 
+      type: integer
+  parameters: 
+   idPathParam: 
+    in: path
+    name: id
+    required: true
+    schema: 
+     type: string
+     default: 1
+    description: Item Id
