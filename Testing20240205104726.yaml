@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Testing
+  description: desc
+servers: 
+  - url: 
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /test: 
+   get: 
+    operationId: test
+    tags: 
+     - t
+    summary: s
+    description: desc
+    parameters: 
+     - $ref: '#/components/parameters/TestParamHeaderParam'
+    responses: 
+     '200': 
+      description: desc
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+     '400': 
+      description: desc
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  parameters: 
+   TestParamHeaderParam: 
+    in: header
+    name: TestParam
+    required: false
+    schema: 
+     type: integer
+     default: 7
+    description: desc
