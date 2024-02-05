@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: test
+  description: test
+servers: 
+  - url: http://test.com
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /test: 
+   get: 
+    operationId: test
+    tags: 
+     - 
+    description: sas
+    parameters: 
+     - $ref: '#/components/parameters/testQueryParam'
+    responses: 
+     '200': 
+      description: test
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  parameters: 
+   testQueryParam: 
+    in: query
+    name: test
+    required: false
+    schema: 
+     type: string
+     default: 
+    description: test
