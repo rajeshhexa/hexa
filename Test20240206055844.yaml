@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Test
+  description: Desc
+servers: 
+  - url: http://test.com
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /getAllTest: 
+   get: 
+    operationId: GetAllTest
+    tags: 
+     - tag
+    summary: summary
+    description: get All Test
+    parameters: 
+     - $ref: '#/components/parameters/RequestHeaderHeaderParam'
+    responses: 
+     '200': 
+      description: Success
+      content: 
+       application/json: 
+        schema: 
+         type: string
+     '404': 
+      description: Not Found
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+  /getTestById: 
+   get: 
+    operationId: GetTestById
+    tags: 
+     - tag
+    summary: summary
+    description: Get Test by Test Id
+    parameters: 
+     - $ref: '#/components/parameters/RequestHeaderHeaderParam'
+    responses: 
+     '200': 
+      description: success
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  parameters: 
+   RequestHeaderHeaderParam: 
+    in: header
+    name: RequestHeader
+    required: false
+    schema: 
+     type: string
+     default: default
+    description: desc
