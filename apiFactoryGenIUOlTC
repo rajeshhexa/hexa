@@ -1,0 +1,91 @@
+Controller class:
+
+package com.example.demo.controller;
+
+import com.example.demo.model.CustomerDetails;
+import com.example.demo.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/customer")
+public class CustomerController {
+
+    private final CustomerService customerService;
+
+    @Autowired
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
+    @GetMapping
+    public ResponseEntity<CustomerDetails> getCustomerDetails() {
+        CustomerDetails customerDetails = customerService.getCustomerDetails();
+        return ResponseEntity.ok(customerDetails);
+    }
+
+    @PutMapping
+    public ResponseEntity<CustomerDetails> updateCustomerDetails(@RequestBody CustomerDetails customerDetails) {
+        CustomerDetails updatedCustomerDetails = customerService.updateCustomerDetails(customerDetails);
+        return ResponseEntity.ok(updatedCustomerDetails);
+    }
+}
+
+
+Service class:
+
+package com.example.demo.service;
+
+import com.example.demo.model.CustomerDetails;
+import com.example.demo.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CustomerService {
+
+    private final CustomerRepository customerRepository;
+
+    @Autowired
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
+    public CustomerDetails getCustomerDetails() {
+        // Add logic to retrieve customer details from the database
+    }
+
+    public CustomerDetails updateCustomerDetails(CustomerDetails customerDetails) {
+        // Add logic to update customer details in the database
+    }
+}
+
+
+DAO layer class:
+
+package com.example.demo.repository;
+
+import com.example.demo.model.CustomerDetails;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CustomerRepository {
+
+    // Add necessary methods to handle database operations for customer details
+}
+
+
+Model class:
+
+package com.example.demo.model;
+
+public class CustomerDetails {
+
+    private Integer id;
+    private String name;
+    private String email;
+    private String phone;
+    
+    // Getters and Setters for the fields
+}
