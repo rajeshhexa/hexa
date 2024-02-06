@@ -1,0 +1,137 @@
+code:
+
+@Controller
+@RequestMapping("/customers")
+public class CustomerController {
+
+    @Autowired
+    private CustomerService customerService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerResponse> getCustomer(@PathVariable("id") long id) {
+        CustomerResponse customer = customerService.getCustomer(id);
+        return ResponseEntity.ok(customer);
+    }
+
+    @PostMapping
+    public ResponseEntity<CustomerResponse> createCustomer(@RequestBody CustomerRequest customerRequest) {
+        CustomerResponse newCustomer = customerService.createCustomer(customerRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newCustomer);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CustomerResponse> updateCustomer(@PathVariable("id") long id,
+                                                           @RequestBody CustomerRequest customerRequest) {
+        CustomerResponse updatedCustomer = customerService.updateCustomer(id, customerRequest);
+        return ResponseEntity.ok(updatedCustomer);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable("id") long id) {
+        customerService.deleteCustomer(id);
+        return ResponseEntity.ok().build();
+    }
+}
+
+@Service
+public class CustomerService {
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    public CustomerResponse getCustomer(long id) {
+        // Retrieve customer from repository
+        Customer customer = customerRepository.findById(id);
+        // Convert customer model to response model and return
+        return convertToResponse(customer);
+    }
+
+    public CustomerResponse createCustomer(CustomerRequest customerRequest) {
+        // Convert request model to customer model
+        Customer newCustomer = convertToEntity(customerRequest);
+        // Save new customer to repository
+        Customer savedCustomer = customerRepository.save(newCustomer);
+        // Convert saved customer model to response model and return
+        return convertToResponse(savedCustomer);
+    }
+
+    public CustomerResponse updateCustomer(long id, CustomerRequest customerRequest) {
+        // Retrieve customer from repository
+        Customer customer = customerRepository.findById(id);
+        // Update customer fields with values from request model
+        customer.setName(customerRequest.getFirstName());
+        // Save updated customer to repository
+        Customer updatedCustomer = customerRepository.save(customer);
+        // Convert updated customer model to response model and return
+        return convertToResponse(updatedCustomer);
+    }
+
+    public void deleteCustomer(long id) {
+        // Delete customer from repository
+        customerRepository.delete(id);
+    }
+
+    private CustomerResponse convertToResponse(Customer customer) {
+        CustomerResponse customerResponse = new CustomerResponse();
+        customerResponse.setId(customer.getId());
+        customerResponse.setName(customer.getName());
+        customerResponse.setEmail(customer.getEmail());
+        customerResponse.setPhone(customer.getPhone());
+        return customerResponse;
+    }
+
+    private Customer convertToEntity(CustomerRequest customerRequest) {
+        Customer customer = new Customer();
+        customer.setName(customerRequest.getFirstName());
+        customer.setEmail(customerRequest.getEmail());
+        customer.setPhone(customerRequest.getPhone());
+        return customer;
+    }
+}
+
+@Repository
+public class CustomerRepository {
+
+    public Customer findById(long id) {
+        // Retrieve customer from database by id
+        // Replace with actual database query
+        return new Customer();
+    }
+
+    public Customer save(Customer customer) {
+        // Save customer to database
+        // Replace with actual save operation
+        return customer;
+    }
+
+    public void delete(long id) {
+        // Delete customer from database by id
+        // Replace with actual delete operation
+    }
+}
+
+public class Customer {
+    private long id;
+    private String name;
+    private String email;
+    private String phone;
+    
+    // Getters and setters
+}
+
+public class CustomerRequest {
+    private String firstName;
+    private String email;
+    private String phone;
+    
+    // Getters and setters
+}
+
+public class CustomerResponse {
+    private long id;
+    private String name;
+    private String email;
+    private String phone;
+    
+    // Getters and setters
+}
