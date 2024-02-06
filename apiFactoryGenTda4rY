@@ -1,0 +1,84 @@
+Controller class:
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/customer")
+public class CustomerController {
+
+    @Autowired
+    private CustomerService customerService;
+
+    @GetMapping
+    public ResponseEntity<CustomerDetails> getCustomerDetails() {
+        CustomerDetails customerDetails = customerService.getCustomerDetails();
+        return ResponseEntity.ok(customerDetails);
+    }
+
+    @PutMapping
+    public ResponseEntity<CustomerDetails> updateCustomerDetails(@RequestBody CustomerDetails customerDetails) {
+        CustomerDetails updatedCustomerDetails = customerService.updateCustomerDetails(customerDetails);
+        return ResponseEntity.ok(updatedCustomerDetails);
+    }
+
+}
+```
+
+Service class:
+
+```java
+import org.springframework.stereotype.Service;
+
+@Service
+public class CustomerService {
+
+    public CustomerDetails getCustomerDetails() {
+        // Logic for getting customer details from DAO layer and returning
+    }
+
+    public CustomerDetails updateCustomerDetails(CustomerDetails customerDetails) {
+        // Logic for updating customer details in DAO layer and returning the updated details
+    }
+
+}
+```
+
+DAO layer class:
+
+```java
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CustomerDAO {
+
+    public CustomerDetails getCustomerDetails() {
+        // Database query to retrieve customer details
+    }
+
+    public void updateCustomerDetails(CustomerDetails customerDetails) {
+        // Database update query to update customer details
+    }
+
+}
+```
+
+Model class:
+
+```java
+public class CustomerDetails {
+
+    private Integer id;
+    private String name;
+    private String email;
+    private String phone;
+    // Add respective fields for customer details
+
+    // Getters and setters for the fields
+
+}
+```
+Note: The above code assumes that you have already set up the necessary dependencies and configurations for a Spring Boot application.
