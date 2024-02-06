@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Demo
+  description: demoDesc
+servers: 
+  - url: http://demo.com
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /getAllDemo: 
+   get: 
+    operationId: GetAllDemo
+    tags: 
+     - Tag
+    summary: summary
+    description: Get All Demo
+    parameters: 
+     - $ref: '#/components/parameters/RequestHeaderHeaderParam'
+    responses: 
+     '200': 
+      description: success
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+  /saveDemoData: 
+   post: 
+    operationId: SaveDemoData
+    tags: 
+     - Tag
+    summary: summary
+    description: Save Demo Data
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/demo'
+    responses: 
+     '200': 
+      description: Success
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+     '404': 
+      description: not found
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  schemas: 
+   demo: 
+    title : demo
+    type: object
+    properties: 
+     descr: 
+      type: string
+  parameters: 
+   RequestHeaderHeaderParam: 
+    in: header
+    name: RequestHeader
+    required: false
+    schema: 
+     type: string
+     default: default
+    description: desc
