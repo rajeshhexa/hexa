@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Hello world
+  description: API description
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /helloworld: 
+   get: 
+    operationId: get_helloworld_1
+    tags: 
+     - helloworld
+    description: Description of path
+    responses: 
+     '200': 
+      description: get_helloworld_1
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_helloworld_1_200_res'
+components: 
+  schemas: 
+   get_helloworld_1_200_res: 
+    title : get_helloworld_1_200_res
+    type: object
+    properties: 
+     message: 
+      type: string
+      example: Hello world
