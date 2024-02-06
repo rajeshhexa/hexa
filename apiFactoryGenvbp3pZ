@@ -1,0 +1,180 @@
+Controller Class code:
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/voluntaryEvents")
+public class VoluntaryEventController {
+
+    @Autowired
+    private VoluntaryEventService voluntaryEventService;
+
+    @GetMapping
+    public ResponseEntity<VoluntaryEventListResponse> getVoluntaryEvents() {
+        VoluntaryEventListResponse response = voluntaryEventService.getVoluntaryEvents();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<VoluntaryEventResponse> createVoluntaryEvent(@RequestBody VoluntaryEvent voluntaryEvent) {
+        VoluntaryEventResponse response = voluntaryEventService.createVoluntaryEvent(voluntaryEvent);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{eventId}")
+    public ResponseEntity<VoluntaryEventResponse> updateVoluntaryEvent(@PathVariable String eventId, @RequestBody VoluntaryEvent voluntaryEvent) {
+        VoluntaryEventResponse response = voluntaryEventService.updateVoluntaryEvent(eventId, voluntaryEvent);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{eventId}")
+    public ResponseEntity<Void> deleteVoluntaryEvent(@PathVariable String eventId) {
+        voluntaryEventService.deleteVoluntaryEvent(eventId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/{eventId}/details")
+    public ResponseEntity<VoluntaryEventDetailsResponse> getEventDetails(@PathVariable String eventId) {
+        VoluntaryEventDetailsResponse response = voluntaryEventService.getEventDetails(eventId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/{eventId}/participants")
+    public ResponseEntity<EventParticipantsResponse> getEventParticipants(@PathVariable String eventId) {
+        EventParticipantsResponse response = voluntaryEventService.getEventParticipants(eventId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PatchMapping("/{eventId}/status")
+    public ResponseEntity<VoluntaryEventResponse> updateEventStatus(@PathVariable String eventId, @RequestBody EventStatusUpdate eventStatusUpdate) {
+        VoluntaryEventResponse response = voluntaryEventService.updateEventStatus(eventId, eventStatusUpdate);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+}
+```
+
+Service Class code:
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class VoluntaryEventService {
+
+    @Autowired
+    private VoluntaryEventRepository voluntaryEventRepository;
+
+    public VoluntaryEventListResponse getVoluntaryEvents() {
+        // implementation to retrieve all voluntary events from repository
+    }
+
+    public VoluntaryEventResponse createVoluntaryEvent(VoluntaryEvent voluntaryEvent) {
+        // implementation to create a new voluntary event in repository
+    }
+
+    public VoluntaryEventResponse updateVoluntaryEvent(String eventId, VoluntaryEvent voluntaryEvent) {
+        // implementation to update a voluntary event in repository
+    }
+
+    public void deleteVoluntaryEvent(String eventId) {
+        // implementation to delete a voluntary event from repository
+    }
+
+    public VoluntaryEventDetailsResponse getEventDetails(String eventId) {
+        // implementation to retrieve the details of a voluntary event from repository
+    }
+
+    public EventParticipantsResponse getEventParticipants(String eventId) {
+        // implementation to retrieve the participants of a voluntary event from repository
+    }
+
+    public VoluntaryEventResponse updateEventStatus(String eventId, EventStatusUpdate eventStatusUpdate) {
+        // implementation to update the status of a voluntary event in repository
+    }
+}
+```
+
+DAO Layer Class code:
+
+```java
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class VoluntaryEventRepository {
+
+    public VoluntaryEventListResponse getVoluntaryEvents() {
+        // implementation to retrieve all voluntary events from database
+    }
+
+    public VoluntaryEvent createVoluntaryEvent(VoluntaryEvent voluntaryEvent) {
+        // implementation to create a new voluntary event in database
+    }
+
+    public VoluntaryEvent updateVoluntaryEvent(String eventId, VoluntaryEvent voluntaryEvent) {
+        // implementation to update a voluntary event in database
+    }
+
+    public void deleteVoluntaryEvent(String eventId) {
+        // implementation to delete a voluntary event from database
+    }
+
+    public String getEventDetails(String eventId) {
+        // implementation to retrieve the details of a voluntary event from database
+    }
+
+    public List<String> getEventParticipants(String eventId) {
+        // implementation to retrieve the participants of a voluntary event from database
+    }
+
+    public VoluntaryEvent updateEventStatus(String eventId, String eventStatus) {
+        // implementation to update the status of a voluntary event in database
+    }
+}
+```
+
+Model Class code:
+
+```java
+public class VoluntaryEvent {
+    private String id;
+    private String name;
+    private String description;
+
+    // getters and setters
+}
+
+public class VoluntaryEventListResponse {
+    private List<VoluntaryEvent> events;
+
+    // getters and setters
+}
+
+public class VoluntaryEventResponse {
+    private VoluntaryEvent event;
+
+    // getters and setters
+}
+
+public class VoluntaryEventDetailsResponse {
+    private String eventDetails;
+
+    // getters and setters
+}
+
+public class EventParticipantsResponse {
+    private List<String> participants;
+
+    // getters and setters
+}
+
+public class EventStatusUpdate {
+    private String status;
+
+    // getters and setters
+}
+```
