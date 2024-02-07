@@ -1,0 +1,69 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: TestingDesignOnline
+  description: desc
+servers: 
+  - url: http://testing.com
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /getTestingData: 
+   get: 
+    operationId: GetTestingData
+    tags: 
+     - ta
+    summary: su
+    description: Get Testing Data
+    parameters: 
+     - $ref: '#/components/parameters/TestHeaderParam'
+    responses: 
+     '200': 
+      description: success
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+  /deleteTestingById: 
+   delete: 
+    operationId: DeleteTestingById
+    tags: 
+     - tag
+    summary: su
+    description: Delete Testing Data
+    parameters: 
+     - $ref: '#/components/parameters/TestHeaderParam'
+    responses: 
+     '200': 
+      description: Success
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+     '500': 
+      description: Internal Server erro
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  parameters: 
+   TestHeaderParam: 
+    in: header
+    name: Test
+    required: false
+    schema: 
+     type: integer
+     default: defaukt
+    description: desc
