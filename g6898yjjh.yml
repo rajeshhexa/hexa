@@ -1,0 +1,1466 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: EIC-Member-Maintenance-sapi
+  description: This system api provides the interface with Market Prominence.  It is also responsible for transforming response messages into the EnvisionRx common data model. 
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /member: 
+   post: 
+    operationId: post_member_1
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_1_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_1
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_1_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/search: 
+   post: 
+    operationId: post_member_search_2
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_search_2_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_search_2
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_search_2_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/MergePhone: 
+   post: 
+    operationId: post_member_MergePhone_3
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_MergePhone_3_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_MergePhone_3
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_MergePhone_3_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/MergeEmail: 
+   post: 
+    operationId: post_member_MergeEmail_4
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_MergeEmail_4_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_MergeEmail_4
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_MergeEmail_4_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}: 
+   get: 
+    operationId: get_member_nameId_5
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_5
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_5_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/billing: 
+   get: 
+    operationId: get_member_nameId_billing_6
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_billing_6
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_billing_6_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/notes: 
+   get: 
+    operationId: get_member_nameId_notes_7
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_notes_7
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_notes_7_200_res'
+     '500': 
+      description: Internal Server Error
+   post: 
+    operationId: post_member_nameId_notes_8
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_notes_8_req'
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_nameId_notes_8
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_notes_8_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/letters: 
+   get: 
+    operationId: get_member_nameId_letters_9
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_nameId_letters_9
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_nameId_letters_9_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/payment/lastvalidpayment/{altMemberId}: 
+   get: 
+    operationId: get_member_payment_lastvalidpayment_altMemberId_10
+    tags: 
+     - member
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/altMemberIdPathParam'
+     - $ref: '#/components/parameters/TenantIdentifierHeaderParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: get_member_payment_lastvalidpayment_altMemberId_10
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/get_member_payment_lastvalidpayment_altMemberId_10_200_res'
+     '404': 
+      description: Not found
+     '500': 
+      description: Internal Server Error
+  /member/app/pbp: 
+   post: 
+    operationId: post_member_app_pbp_11
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_app_pbp_11_req'
+    parameters: 
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_app_pbp_11
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_app_pbp_11_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/update_address: 
+   post: 
+    operationId: post_member_nameId_update_address_12
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_update_address_12_req'
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_nameId_update_address_12
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_update_address_12_200_res'
+     '500': 
+      description: Internal Server Error
+  /member/{nameId}/mergeContact: 
+   post: 
+    operationId: post_member_nameId_mergeContact_13
+    tags: 
+     - member
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_mergeContact_13_req'
+    parameters: 
+     - $ref: '#/components/parameters/nameIdPathParam'
+     - $ref: '#/components/parameters/client_idHeaderParam'
+     - $ref: '#/components/parameters/client_secretHeaderParam'
+    responses: 
+     '200': 
+      description: post_member_nameId_mergeContact_13
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/post_member_nameId_mergeContact_13_200_res'
+     '500': 
+      description: Internal Server Error
+components: 
+  schemas: 
+   post_member_1_200_res: 
+    title : post_member_1_200_res
+    type: object
+    properties: 
+     id: 
+      type: string
+      example: EIC4500974
+     rowsAffected: 
+      type: number
+      example: 0
+     lastUpdatedDate: 
+      type: string
+      format: date-time
+      example: Sat Jan 01 00:00:00 UTC 1
+     actionSetCount: 
+      type: number
+      example: 0
+     nextCardId: 
+      type: string
+     success: 
+      type: boolean
+     statusCode: 
+      type: number
+      example: 200
+     actionSetErrors: 
+      type: array
+      items: 
+       type: string
+     errors: 
+      type: array
+      items: 
+       type: string
+     truthTableErrors: 
+      type: array
+      items: 
+       type: string
+     userMessages: 
+      type: array
+      items: 
+       type: string
+   post_member_1_200_resactionSetErrorsArray: 
+    title : post_member_1_200_resactionSetErrorsArray
+    type: object
+    properties: 
+     actionSetErrors: 
+      type: string
+   post_member_1_200_reserrorsArray: 
+    title : post_member_1_200_reserrorsArray
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_1_200_restruthTableErrorsArray: 
+    title : post_member_1_200_restruthTableErrorsArray
+    type: object
+    properties: 
+     truthTableErrors: 
+      type: string
+   post_member_1_200_resuserMessagesArray: 
+    title : post_member_1_200_resuserMessagesArray
+    type: object
+    properties: 
+     userMessages: 
+      type: string
+   post_member_1_req: 
+    title : post_member_1_req
+    type: object
+    properties: 
+     source: 
+      type: string
+      example: WEB APP
+     planId: 
+      type: string
+      example: P00063355960
+     pbp: 
+      type: string
+      example: 014
+     groupId: 
+      type: string
+      example: 
+     planYear: 
+      type: string
+      example: 2020
+     receivedDate: 
+      type: string
+      example: Sun Feb 28 00:00:00 UTC 2016
+     effectiveDate: 
+      type: string
+      example: Fri May 01 00:00:00 UTC 2020
+     electionPeriod: 
+      type: string
+      example: S
+     lastName: 
+      type: string
+      example: Bean
+     firstName: 
+      type: string
+      example: Patrick
+     middleInitial: 
+      type: string
+      example: M
+     prefix: 
+      type: string
+      example: Mr.
+     dateOfBirth: 
+      type: string
+      example: Sat Feb 04 00:00:00 UTC 1950
+     gender: 
+      type: string
+      example: M
+     homePhoneNumber: 
+      type: string
+      example: 3301234565
+     altPhoneNumber: 
+      type: string
+      example: 3301234566
+     cellPhoneNumber: 
+      type: string
+      example: 3301234567
+     emailAddress: 
+      type: string
+      example: pbean@envisionrx.com
+     homeAddress: 
+      type: string
+      example: 123 Main St.
+     homeAddressLine2: 
+      type: string
+      example: Building A
+     homeCity: 
+      type: string
+      example: Twinsburg
+     homeState: 
+      type: string
+      example: OH
+     homeZipcode: 
+      type: string
+      example: 44087
+     mailingAddress: 
+      type: string
+      example: 123 mail st
+     mailingAddress2: 
+      type: string
+      example: mail a
+     mailingCity: 
+      type: string
+      example: Twinsburg
+     mailingState: 
+      type: string
+      example: OH
+     mailingZipcode: 
+      type: string
+      example: 44087
+     emergencyContactInd: 
+      type: string
+      example: Y
+     emergencyContactName: 
+      type: string
+      example: Nikki Emergency
+     emergencyContactPhoneNumber: 
+      type: string
+      example: 3301234567
+     emergencyContactRelation: 
+      type: string
+      example: Spouse
+     medicareClaimNumber: 
+      type: string
+      example: 487551230A
+     partAEffectiveDate: 
+      type: string
+      example: Mon Jul 01 00:00:00 UTC 2019
+     partBEffectiveDate: 
+      type: string
+      example: Mon Jul 01 00:00:00 UTC 2019
+     hasOtherRxCoverage: 
+      type: string
+      example: Y
+     otherRxCoverageName: 
+      type: string
+      example: Other
+     otherRxCoverageIdNumber: 
+      type: string
+      example: ID1234
+     otherRxCoverageGroupNumber: 
+      type: string
+      example: Group
+     isMovingIntoOutOfOrLivesLTCF: 
+      type: string
+      example: Y
+     longTermCareFacilityName: 
+      type: string
+      example: Nice Long Term Care Center
+     longTermCareFacilityAddress: 
+      type: string
+      example: 123 long st
+     longTermCareFacilityAddress2: 
+      type: string
+      example: long A
+     longTermCareFacilityCity: 
+      type: string
+      example: Twinsburg
+     longTermCareFacilityState: 
+      type: string
+      example: OH
+     longTermCareFacilityZipcode: 
+      type: string
+      example: 44087
+     longTermCareFacilityPhoneNumber: 
+      type: string
+      example: 3301234567
+     otherLanguage: 
+      type: string
+      example: English
+     IsAuthorizedRep: 
+      type: string
+      example: Y
+     authorizedRepName: 
+      type: string
+      example: Nikki Rep
+     authorizedRepPhone: 
+      type: string
+      example: 3301234567
+     authorizedRepRelation: 
+      type: string
+      example: Spouse
+     authorizedRepAddress: 
+      type: string
+      example: 123 Rep St
+     authorizedRepAddress2: 
+      type: string
+      example: Rep A
+     authorizedRepCity: 
+      type: string
+      example: Twinsburg
+     authorizedRepState: 
+      type: string
+      example: OH
+     authorizedRepZipcode: 
+      type: string
+      example: 44087
+     IsBroker: 
+      type: string
+      example: Y
+     brokerWritingCode: 
+      type: string
+      example: 009999
+     brokerDate: 
+      type: string
+      example: Thu Aug 01 00:00:00 UTC 2019
+     brokerLastName: 
+      type: string
+      example: Bean
+     brokerFirstName: 
+      type: string
+      example: Patrick
+     brokerPhone: 
+      type: string
+      example: 3301234567
+     brokerAttestationInd: 
+      type: string
+      example: Y
+     brokerAttestationType: 
+      type: string
+      example: IC
+     loginId: 
+      type: string
+      example: pbean
+     sepReason: 
+      type: string
+      example: LCC
+     ssaDeductInd: 
+      type: string
+      example: N
+     billingOption: 
+      type: string
+      example: Auto
+     altFormatRqst: 
+      type: string
+      example: Braille
+     selfWorkInd: 
+      type: string
+      example: Y
+     spouseWorkInd: 
+      type: string
+      example: Y
+   post_member_search_2_200_res: 
+    title : post_member_search_2_200_res
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+      example: 0
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   results: 
+    title : results
+    type: object
+    properties: 
+     nameId: 
+      type: string
+      example: N00063378045
+     firstName: 
+      type: string
+      example: Dana
+     lastName: 
+      type: string
+      example: Beaner
+     medicareId: 
+      type: string
+      example: 1D18KX3KR84 
+     memberId: 
+      type: string
+      example: EIC4500025
+     medicareStatus: 
+      type: string
+      example: 61- Pending Enroll
+     programId: 
+      type: string
+      example: M07
+     birthDate: 
+      type: string
+      format: date-time
+      example: Sun Jul 18 00:00:00 UTC 1954
+     phoneNumber: 
+      type: string
+      example: 7049570480
+     phoneType: 
+      type: string
+      example: Home
+     state: 
+      type: string
+      example: NC
+     pbpId: 
+      type: string
+      example: 008
+     effectiveDate: 
+      type: string
+      format: date-time
+      example: Mon Jul 01 00:00:00 UTC 2019
+   dataresultsArray: 
+    title : dataresultsArray
+    type: object
+    properties: 
+     results: 
+      type: object
+      $ref: '#/components/schemas/results'
+   data: 
+    title : data
+    type: object
+    properties: 
+     results: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/dataresultsArray'
+   post_member_search_2_200_reserrorsArray: 
+    title : post_member_search_2_200_reserrorsArray
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_search_2_req: 
+    title : post_member_search_2_req
+    type: object
+    properties: 
+     firstName: 
+      type: string
+      example: Dana
+     lastName: 
+      type: string
+      example: Beaner
+     birthDate: 
+      type: string
+      example: Sun Jul 18 00:00:00 UTC 1954
+     phoneNumber: 
+      type: string
+      example: 1234567890
+     state: 
+      type: string
+      example: OH
+     memberId: 
+      type: string
+      example: EIC4500033
+     medicareId: 
+      type: string
+      example: 487551234A
+     brokerWritingCodes: 
+      type: array
+      items: 
+       type: string
+     effectiveStartDate: 
+      type: string
+      example: Mon Jul 01 00:00:00 UTC 2019
+     effectiveEndDate: 
+      type: string
+      example: Wed Jul 01 00:00:00 UTC 2020
+   post_member_MergePhone_3_200_res: 
+    title : post_member_MergePhone_3_200_res
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: string
+      example: number
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/post_member_MergePhone_3_200_reserrorsArray'
+   errors: 
+    title : errors
+    type: object
+    properties: 
+     statusCode: 
+      type: string
+      example: string
+     message: 
+      type: string
+      example: string
+     topic: 
+      type: string
+      example: string
+     severityLevel: 
+      type: string
+      example: number
+     severity: 
+      type: string
+      example: string
+   post_member_MergePhone_3_200_reserrorsArray: 
+    title : post_member_MergePhone_3_200_reserrorsArray
+    type: object
+    properties: 
+     errors: 
+      type: object
+      $ref: '#/components/schemas/errors'
+   post_member_MergePhone_3_req: 
+    title : post_member_MergePhone_3_req
+    type: object
+    properties: 
+     nameId: 
+      type: string
+      example: N00063396487
+     type: 
+      type: string
+      example: home
+     phoneNumber: 
+      type: string
+      example: 1234567890
+     phoneExtension: 
+      type: string
+      example: 93
+     preferred: 
+      type: boolean
+     staffId: 
+      type: string
+      example: pben
+   post_member_MergeEmail_4_200_res: 
+    title : post_member_MergeEmail_4_200_res
+    type: object
+    properties: 
+     nameId: 
+      type: string
+      example: N00064199627
+     type: 
+      type: string
+      example: Home
+     emailAddress: 
+      type: string
+      example: mkumar1@envisionrx.com
+     preferred: 
+      type: boolean
+     staffId: 
+      type: string
+      example: pbean
+   post_member_MergeEmail_4_req: 
+    title : post_member_MergeEmail_4_req
+    type: object
+    properties: 
+     nameId: 
+      type: string
+      example: N00064199627
+     type: 
+      type: string
+      example: Home
+     emailAddress: 
+      type: string
+      example: mkumar@envisionrx.com
+     preferred: 
+      type: boolean
+     staffId: 
+      type: string
+      example: pbean
+   get_member_nameId_5_200_res: 
+    title : get_member_nameId_5_200_res
+    type: object
+    properties: 
+     MemberId: 
+      type: number
+      example: 1
+     PlanId: 
+      type: number
+      example: 6
+     PlanName: 
+      type: string
+      example: EnvisionRxPlus
+     GroupId: 
+      type: string
+      example: EICH
+     AltMemberId: 
+      type: string
+      example: EIC1
+     HICN: 
+      type: string
+      example: 123456782A
+     MBI: 
+      type: string
+     MedicareNumber: 
+      type: string
+      example: 123456782A
+     FirstName: 
+      type: string
+      example: TEST1
+     LastName: 
+      type: string
+      example: TEST2A
+     Prefix: 
+      type: string
+      example: MR.
+     MiddleInitial: 
+      type: string
+      example: A
+     Address1: 
+      type: string
+      example: 663 East Aurora Road
+     Address2: 
+      type: string
+     City: 
+      type: string
+      example: BROOKLYN
+     State: 
+      type: string
+      example: NY
+     ZipCode: 
+      type: string
+      example: 11208
+     MAddress1: 
+      type: string
+      example: Mailing Address
+     MAddress2: 
+      type: string
+     MCity: 
+      type: string
+      example: City
+     MState: 
+      type: string
+      example: OH
+     MZipCode: 
+      type: string
+      example: 44087
+     DOB: 
+      type: string
+      format: date-time
+      example: Tue Jan 01 00:00:00 UTC 1980
+     Gender: 
+      type: string
+      example: M
+     Email: 
+      type: string
+      example: aathithan@envisionrx.com
+     Phone: 
+      type: string
+      example: 724-488-0888
+     CellPhone: 
+      type: string
+      example: 752-826-5148
+     AltPhone: 
+      type: string
+      example: 751-653-9248
+     BWritingCode: 
+      type: string
+      example: ABCD123
+     PrimaryPharmacy: 
+      type: object
+      $ref: '#/components/schemas/PrimaryPharmacy'
+     Pharmacies: 
+      type: array
+      items: 
+       type: string
+     MonthlyPremium: 
+      type: number
+      example: 0
+     CurrentBalance: 
+      type: number
+      example: 0
+     EnrollmentDate: 
+      type: string
+      format: date-time
+      example: Tue Jun 21 00:00:00 UTC 2016
+     DisenrollmentDate: 
+      type: string
+     PbpCode: 
+      type: string
+      example: 003
+     PbpId: 
+      type: number
+      example: 0
+     Year: 
+      type: number
+      example: 2020
+     GreenEobReasonCode: 
+      type: number
+      example: 1
+     CMSConfirmationID: 
+      type: string
+     MailNABPs: 
+      type: string
+     IsBroker: 
+      type: boolean
+     BrokerAttestation: 
+      type: boolean
+     BrokerID: 
+      type: number
+      example: 69
+     Status: 
+      type: string
+      example: Active
+     EGWPDirectBill: 
+      type: boolean
+   PrimaryPharmacy: 
+    title : PrimaryPharmacy
+    type: object
+    properties: 
+     PharmacyId: 
+      type: number
+      example: 27181898
+     NABP: 
+      type: string
+      example: 3672070
+     ChainCode: 
+      type: string
+      example: 248
+     Name: 
+      type: string
+      example: GIANT EAGLE PHARMACY #6299
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+     PharmacyTypeId: 
+      type: number
+      example: 1
+     Phone: 
+      type: string
+      example: 330-468-3263
+     IsPrimary: 
+      type: boolean
+     IsPreferred: 
+      type: boolean
+     IsEPrescribing: 
+      type: boolean
+     IsEIC: 
+      type: boolean
+     IsEGWP: 
+      type: boolean
+     IsPreferredCC: 
+      type: boolean
+     Is90DayRetail: 
+      type: boolean
+     MemberPharmacyID: 
+      type: number
+      example: 6535
+     Distance: 
+      type: number
+      example: 0
+     Year: 
+      type: number
+      example: 0
+     PreferenceType: 
+      type: number
+      example: 0
+     IsBrokerPbp: 
+      type: boolean
+   Address: 
+    title : Address
+    type: object
+    properties: 
+     Latitude: 
+      type: string
+      example: 41.313958
+     Longitude: 
+      type: string
+      example: -81.529006
+     Address1: 
+      type: string
+      example: 290 EAST AURORA ROAD
+     Address2: 
+      type: string
+      example: 
+     City: 
+      type: string
+      example: NORTHFIELD
+     StateCode: 
+      type: string
+     ZipCode: 
+      type: string
+      example: 44067
+   get_member_nameId_5_200_resPharmaciesArray: 
+    title : get_member_nameId_5_200_resPharmaciesArray
+    type: object
+    properties: 
+     Pharmacies: 
+      type: string
+   get_member_nameId_billing_6_200_res: 
+    title : get_member_nameId_billing_6_200_res
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+      example: 0
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   get_member_nameId_billing_6_200_reserrorsArray: 
+    title : get_member_nameId_billing_6_200_reserrorsArray
+    type: object
+    properties: 
+     errors: 
+      type: string
+   get_member_nameId_notes_7_200_res: 
+    title : get_member_nameId_notes_7_200_res
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+      example: 0
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   get_member_nameId_notes_7_200_reserrorsArray: 
+    title : get_member_nameId_notes_7_200_reserrorsArray
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_nameId_notes_8_200_res: 
+    title : post_member_nameId_notes_8_200_res
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+      example: 0
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   post_member_nameId_notes_8_200_reserrorsArray: 
+    title : post_member_nameId_notes_8_200_reserrorsArray
+    type: object
+    properties: 
+     errors: 
+      type: string
+   post_member_nameId_notes_8_req: 
+    title : post_member_nameId_notes_8_req
+    type: object
+    properties: 
+     nameId: 
+      type: string
+      example: N00063396487
+     noteTypeId: 
+      type: string
+      example: Y00063388870
+     noteText: 
+      type: string
+      example: Test Member Note
+     createdBy: 
+      type: string
+      example: pbean
+   get_member_nameId_letters_9_200_res: 
+    title : get_member_nameId_letters_9_200_res
+    type: object
+    properties: 
+     MpStatusCode: 
+      type: number
+      example: 0
+     data: 
+      type: object
+      $ref: '#/components/schemas/data'
+     errors: 
+      type: array
+      items: 
+       type: string
+   get_member_nameId_letters_9_200_reserrorsArray: 
+    title : get_member_nameId_letters_9_200_reserrorsArray
+    type: object
+    properties: 
+     errors: 
+      type: string
+   Log: 
+    title : Log
+    type: object
+    properties: 
+     Id: 
+      type: number
+      example: 10209
+     MemberId: 
+      type: number
+      example: 1
+     CreatedDate: 
+      type: string
+      format: date-time
+      example: Fri Feb 21 15:36:20 UTC 2020
+     TransactionId: 
+      type: string
+      example: 035-0005765296
+     Approved: 
+      type: boolean
+     Origin: 
+      type: string
+   get_member_payment_lastvalidpayment_altMemberId_10_200_res: 
+    title : get_member_payment_lastvalidpayment_altMemberId_10_200_res
+    type: object
+    properties: 
+     Log: 
+      type: object
+      $ref: '#/components/schemas/Log'
+     NextPaymentAllowedIn: 
+      type: number
+      example: 0
+   post_member_app_pbp_11_200_res: 
+    title : post_member_app_pbp_11_200_res
+    type: object
+    properties: 
+     id: 
+      type: string
+      example: A00356788590
+     rowsAffected: 
+      type: number
+      example: 0
+     lastUpdatedDate: 
+      type: string
+      format: date-time
+      example: Sat Jan 01 00:00:00 UTC 1
+     actionSetCount: 
+      type: number
+      example: 0
+     nextCardId: 
+      type: string
+     success: 
+      type: boolean
+     statusCode: 
+      type: number
+      example: 400
+     actionSetErrors: 
+      type: array
+      items: 
+       type: string
+     errors: 
+      type: array
+      items: 
+       $ref: '#/components/schemas/post_member_app_pbp_11_200_reserrorsArray'
+     truthTableErrors: 
+      type: array
+      items: 
+       type: string
+     userMessages: 
+      type: array
+      items: 
+       type: string
+   post_member_app_pbp_11_200_resactionSetErrorsArray: 
+    title : post_member_app_pbp_11_200_resactionSetErrorsArray
+    type: object
+    properties: 
+     actionSetErrors: 
+      type: string
+   post_member_app_pbp_11_200_reserrorsArray: 
+    title : post_member_app_pbp_11_200_reserrorsArray
+    type: object
+    properties: 
+     errors: 
+      type: object
+      $ref: '#/components/schemas/errors'
+   post_member_app_pbp_11_200_restruthTableErrorsArray: 
+    title : post_member_app_pbp_11_200_restruthTableErrorsArray
+    type: object
+    properties: 
+     truthTableErrors: 
+      type: string
+   post_member_app_pbp_11_200_resuserMessagesArray: 
+    title : post_member_app_pbp_11_200_resuserMessagesArray
+    type: object
+    properties: 
+     userMessages: 
+      type: string
+   post_member_app_pbp_11_req: 
+    title : post_member_app_pbp_11_req
+    type: object
+    properties: 
+     nameId: 
+      type: string
+      example: N123456789
+     dateOfBirth: 
+      type: string
+      example: Mon Jan 02 00:00:00 UTC 1950
+     currentPackageId: 
+      type: string
+      example: P00063355844
+     effectiveDate: 
+      type: string
+      example: Fri Jan 01 00:00:00 UTC 2021
+     newPackageId: 
+      type: string
+      example: P00063403972
+     premiumWithholdType: 
+      type: string
+      example: D
+     signatureDate: 
+      type: string
+      example: Thu Oct 15 00:00:00 UTC 2020
+     receivedDate: 
+      type: string
+      example: Thu Oct 15 00:00:00 UTC 2020
+     electionPeriod: 
+      type: string
+      example: A
+     brokerAttestation: 
+      type: string
+      example: n
+     loginId: 
+      type: string
+      example: {{username}}
+   post_member_nameId_update_address_12_200_res: 
+    title : post_member_nameId_update_address_12_200_res
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: boolean
+     FaultException: 
+      type: object
+      $ref: '#/components/schemas/FaultException'
+   FaultException: 
+    title : FaultException
+    type: object
+    properties: 
+     Success: 
+      type: boolean
+     Exceptions: 
+      type: array
+      items: 
+       type: string
+     Errors: 
+      type: array
+      items: 
+       type: string
+     Warnings: 
+      type: array
+      items: 
+       type: string
+     Messages: 
+      type: array
+      items: 
+       type: string
+   FaultExceptionExceptionsArray: 
+    title : FaultExceptionExceptionsArray
+    type: object
+    properties: 
+     Exceptions: 
+      type: string
+   FaultExceptionErrorsArray: 
+    title : FaultExceptionErrorsArray
+    type: object
+    properties: 
+     Errors: 
+      type: string
+   FaultExceptionWarningsArray: 
+    title : FaultExceptionWarningsArray
+    type: object
+    properties: 
+     Warnings: 
+      type: string
+   FaultExceptionMessagesArray: 
+    title : FaultExceptionMessagesArray
+    type: object
+    properties: 
+     Messages: 
+      type: string
+   post_member_nameId_update_address_12_req: 
+    title : post_member_nameId_update_address_12_req
+    type: object
+    properties: 
+     nameId: 
+      type: string
+      example: N123456789
+     id: 
+      type: string
+      example: C00064191695
+     type: 
+      type: string
+      example: Authorized Rep
+     firstName: 
+      type: string
+      example: first
+     lastName: 
+      type: string
+      example: Last
+     relationship: 
+      type: string
+      example: Spouse
+     address1: 
+      type: string
+      example: 123 Contact St
+     address2: 
+      type: string
+      example: 
+     city: 
+      type: string
+      example: Twinsburg
+     state: 
+      type: string
+      example: OH
+     zip: 
+      type: string
+      example: 44087
+     county: 
+      type: string
+      example: 
+     companyName: 
+      type: string
+      example: 
+     phoneNumber: 
+      type: string
+      example: 3305557412
+     alternativePhoneNumber: 
+      type: string
+      example: 
+     startDate: 
+      type: string
+      format: date-time
+      example: Sat Oct 10 00:00:00 UTC 2020
+     endDate: 
+      type: string
+      format: date-time
+      example: Thu Oct 15 00:00:00 UTC 2020
+     staffId: 
+      type: string
+      example: {{username}}
+   post_member_nameId_mergeContact_13_200_res: 
+    title : post_member_nameId_mergeContact_13_200_res
+    type: object
+    properties: 
+     ResponseDetails: 
+      type: boolean
+     FaultException: 
+      type: object
+      $ref: '#/components/schemas/FaultException'
+   post_member_nameId_mergeContact_13_req: 
+    title : post_member_nameId_mergeContact_13_req
+    type: object
+    properties: 
+     nameId: 
+      type: string
+      example: N123456789
+     id: 
+      type: string
+      example: C00064191695
+     type: 
+      type: string
+      example: Authorized Rep
+     firstName: 
+      type: string
+      example: first
+     lastName: 
+      type: string
+      example: Last
+     relationship: 
+      type: string
+      example: Spouse
+     address1: 
+      type: string
+      example: 123 Contact St
+     address2: 
+      type: string
+      example: 
+     city: 
+      type: string
+      example: Twinsburg
+     state: 
+      type: string
+      example: OH
+     zip: 
+      type: string
+      example: 44087
+     county: 
+      type: string
+      example: 
+     companyName: 
+      type: string
+      example: 
+     phoneNumber: 
+      type: string
+      example: 3305557412
+     alternativePhoneNumber: 
+      type: string
+      example: 
+     startDate: 
+      type: string
+      example: Sat Oct 10 00:00:00 UTC 2020
+     endDate: 
+      type: string
+      example: Thu Oct 15 00:00:00 UTC 2020
+     staffId: 
+      type: string
+      example: {{username}}
+  parameters: 
+   client_idHeaderParam: 
+    in: header
+    name: client_id
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   client_secretHeaderParam: 
+    in: header
+    name: client_secret
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   nameIdPathParam: 
+    in: path
+    name: nameId
+    required: true
+    schema: 
+     type: string
+    description: description of parameter passed
+   altMemberIdPathParam: 
+    in: path
+    name: altMemberId
+    required: true
+    schema: 
+     type: string
+    description: Alt Member Id
+   TenantIdentifierHeaderParam: 
+    in: header
+    name: TenantIdentifier
+    required: true
+    schema: 
+     type: string
+     default: Xol4PiCv+fGHX6O9VLHEAchlamGPHWD0m56m/3+gDrPjkNm65Rnb0Q==
+    description: Tenant Identifier
