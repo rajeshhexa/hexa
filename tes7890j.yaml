@@ -1,0 +1,231 @@
+swagger: "2.0"
+info: 
+  title: Corporate Actions API V1
+  description: Corporate Actions API V1
+  version: 1.0.1
+host: www.apiexample.com
+basePath: /v1
+schemes: 
+  - https
+security: 
+  - BasicAuth: []
+paths: 
+  /corporateActions: 
+   post: 
+    tags: 
+     - corporateActions
+    description: Create Corporate Action
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - name: corporateActions
+       in: body
+       description: 
+       required: true
+       schema: 
+        $ref: '#/definitions/corporateActions'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/EntityResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+   get: 
+    tags: 
+     - corporateActions
+    description: Get All Corporate Actions
+    produces: 
+     - application/json
+     - application/xml
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/corporateActions'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+  /corporateActions: 
+   get: 
+    tags: 
+     - corporateActions
+    description: Get All Corporate Actions
+    produces: 
+     - application/json
+     - application/xml
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/corporateActions'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+   post: 
+    tags: 
+     - corporateActions
+    description: Create Corporate Action
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - name: corporateActions
+       in: body
+       description: 
+       required: true
+       schema: 
+        $ref: '#/definitions/corporateActions'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/EntityResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+  /corporateActions/{id}: 
+   get: 
+    tags: 
+     - corporateActions
+    description: Get Corporate Action By Id
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - $ref: '#/parameters/idParam'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/corporateActions'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+   delete: 
+    tags: 
+     - corporateActions
+    description: Delete Corporate Action By Id
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - $ref: '#/parameters/idParam'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/'
+   put: 
+    tags: 
+     - corporateActions
+    description: Update Corporate Action By Id
+    produces: 
+     - application/json
+     - application/xml
+    parameters: 
+     - name: corporateActions
+       in: body
+       description: 
+       required: true
+       schema: 
+        $ref: '#/definitions/corporateActions'
+     - $ref: '#/parameters/idParam'
+    responses: 
+     '200': 
+      description: Success
+      schema: 
+       $ref: '#/definitions/EntityResponse'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+      schema: 
+       $ref: '#/definitions/ErrorResponseList'
+definitions: 
+   ErrorResponseList: 
+    type: object
+    properties: 
+     Error: 
+      type: object
+      $ref: '#/definitions/Error'
+   affectedSecurities: 
+    type: object
+    properties: 
+     symbol: 
+      type: string
+     name: 
+      type: string
+     id: 
+      type: string
+     actionDetails: 
+      type: object
+      $ref: '#/definitions/actionDetails'
+     ISIN: 
+      type: string
+   EntityResponse: 
+    type: object
+    properties: 
+     message: 
+      type: string
+     statusCode: 
+      type: string
+   Error: 
+    type: object
+    properties: 
+     ErrorDescription: 
+      type: string
+     ErrorCode: 
+      type: string
+   actionDetails: 
+    type: object
+    properties: 
+     type: 
+      type: string
+     splitRatio: 
+      type: string
+   corporateActions: 
+    type: object
+    properties: 
+     exDate: 
+      type: string
+     affectedSecurities: 
+      type: object
+      $ref: '#/definitions/affectedSecurities'
+     recordDate: 
+      type: string
+     id: 
+      type: string
+     type: 
+      type: string
+     paymentDate: 
+      type: string
+     issuer: 
+      type: object
+      $ref: '#/definitions/issuer'
+   issuer: 
+    type: object
+    properties: 
+     name: 
+      type: string
+     tickerSymbol: 
+      type: string
+     id: 
+      type: string
+     ISIN: 
+      type: string
+parameters: 
+   idParam: 
+    in: path
+    name: id
+    type: string
+    required: true
+    description: Id of Corporate Action to get details
+securityDefinitions: 
+   BasicAuth: 
+    type: basic
