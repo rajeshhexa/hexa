@@ -1,0 +1,179 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Alternate_Address API
+  description: Alternate_Address API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /AlternateAddress/addalternateaddress: 
+   post: 
+    operationId: AddAlternateAddress
+    tags: 
+     - AlternateAddress
+    summary: Add alternate address
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressDTO'
+    responses: 
+     '200': 
+      description: Success
+  /AlternateAddress/updatealternateaddress: 
+   put: 
+    operationId: UpdateAlternateAddress
+    tags: 
+     - AlternateAddress
+    summary: Update alternate address
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressDTO'
+    responses: 
+     '200': 
+      description: Success
+  /AlternateAddress/deletealternateaddress/{AlternateAddressID}: 
+   delete: 
+    operationId: DeleteAlternateAddress
+    tags: 
+     - AlternateAddress
+    summary: Delete alternate address
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AlternateAddressIDPathParam'
+    responses: 
+     '200': 
+      description: Success
+  /AlternateAddress/getalternateaddresshistory: 
+   post: 
+    operationId: GetAlternateAddressHistory
+    tags: 
+     - AlternateAddress
+    summary: Get alternate address history
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Success
+  /AlternateAddress/getalternateaddress: 
+   post: 
+    operationId: GetAlternateAddress
+    tags: 
+     - AlternateAddress
+    summary: Get alternate address
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AlternateAddressSearchDTO'
+    responses: 
+     '200': 
+      description: Success
+components: 
+  schemas: 
+   AlternateAddressHistoryListDTO: 
+    title : AlternateAddressHistoryListDTO
+    type: object
+    properties: 
+     Zip: 
+      type: string
+     HistoryID: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LONGITUDE: 
+      type: number
+      format: float
+     ChangedAt: 
+      type: string
+      format: date-time
+     ZipSearch: 
+      type: string
+     County: 
+      type: string
+     ZipCodeId: 
+      type: integer
+     Name: 
+      type: string
+     EntityID: 
+      type: integer
+     AlternateAddressTypeCode: 
+      type: string
+     ChangeType: 
+      type: string
+     Phone: 
+      type: string
+     LastUpdatedByName: 
+      type: string
+     CountryCode: 
+      type: string
+     ChangedByName: 
+      type: string
+     LastUpdatedBy: 
+      type: integer
+     SpecialInstructions: 
+      type: string
+     ChangedBy: 
+      type: integer
+     Address2: 
+      type: string
+     Address1: 
+      type: string
+     City: 
+      type: string
+     EntityType: 
+      type: string
+     AlternateAddressType: 
+      type: string
+     ExpirationDate: 
+      type: string
+      format: date-time
+     State: 
+      type: string
+     CountryISOCode2: 
+      type: string
+     CountryISOCode3: 
+      type: string
+     LATITUDE: 
+      type: number
+      format: float
+     AlternateAddressID: 
+      type: integer
+     EffectiveDate: 
+      type: string
+      format: date-time
+   AlternateAddressReturnDTO: 
+    title : AlternateAddressReturnDTO
+    type: object
+    properties: 
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     AlternateAddressID: 
+      type: integer
+  parameters: 
+   AlternateAddressIDPathParam: 
+    in: path
+    name: AlternateAddressID
+    required: true
+    schema: 
+     type: integer
+     default: 
+    description: description of parameter passed
