@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: asas
+  description: asas
+servers: 
+  - url: 
+    description: API Server Description
+security: 
+  - BasicAuth: []
+paths: 
+  /test: 
+   get: 
+    operationId: test
+    tags: 
+     - 
+    description: 
+    responses: 
+     '200': 
+      description: sdsd
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/TestingModelData'
+components: 
+  securitySchemes: 
+   BasicAuth: 
+    type: http
+    scheme: basic
+  schemas: 
+   TestPublicDataModel: 
+    title : TestPublicDataModel
+    type: object
+    properties: 
+     PublicFieldName: 
+      type: string
+      default: 
+      example: 
+   TestingModelData: 
+    title : TestingModelData
+    type: object
+    properties: 
+     StrFieldName: 
+      type: string
+      description: desc
+      format: email
+      minLength: 1
+      maxLength: 9
+      default: p
+      example: e
