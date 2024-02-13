@@ -1,0 +1,261 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Attachement V2 API
+  description: Attachment API V2
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefit/eligibility/inquiryandresponse: 
+   get: 
+    operationId: GetEligibilityBenefitInquiryAndResponse
+    tags: 
+     - BenefitEligibility
+    summary: Get eligibility benefit inquiry and response
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/MemberCoverageIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Eligibility benefit inquiry and response retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EligibilityBenefitInquiryAndResponseListDTO'
+   post: 
+    operationId: AddEligibilityBenefitInquiryAndResponse
+    tags: 
+     - BenefitEligibility
+    summary: Add eligibility benefit inquiry and response
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EligibilityBenefitInquiryAndResponseDTO'
+    responses: 
+     '200': 
+      description: Eligibility benefit inquiry and response added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateEligibilityBenefitInquiryAndResponse
+    tags: 
+     - BenefitEligibility
+    summary: Update eligibility benefit inquiry and response
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EligibilityBenefitInquiryAndResponseDTO'
+    responses: 
+     '200': 
+      description: Eligibility benefit inquiry and response updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   delete: 
+    operationId: DeleteEligibilityBenefitInquiryAndResponse
+    tags: 
+     - BenefitEligibility
+    summary: Delete eligibility benefit inquiry and response
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EligibilityInqSubmissionIDQueryParam'
+    responses: 
+     '200': 
+      description: Eligibility benefit inquiry and response deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /benefit/eligibility/inquiryandresponse/history: 
+   get: 
+    operationId: GetEligibilityBenefitInquiryAndResponseHistory
+    tags: 
+     - BenefitEligibility
+    summary: Get eligibility benefit inquiry and response history
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EligibilityInqSubmissionIDQueryParam'
+     - $ref: '#/components/parameters/MemberCoverageIDQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Eligibility benefit inquiry and response history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EligibilityBenefitInquiryAndResponseHistoryListDTO'
+components: 
+  schemas: 
+   EligibilityBenefitInquiryAndResponseDTO: 
+    title : EligibilityBenefitInquiryAndResponseDTO
+    type: object
+    properties: 
+     EligibilityInqSubmissionID: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     SubmissionStatus: 
+      type: string
+      nullable: true
+     DoNotSendReason: 
+      type: string
+      nullable: true
+   EligibilityBenefitInquiryAndResponseListDTO: 
+    title : EligibilityBenefitInquiryAndResponseListDTO
+    type: object
+    properties: 
+     EligibilityInqSubmissionID: 
+      type: integer
+      description: 
+     EligibilityInqSubmissionNumber: 
+      type: string
+      nullable: true
+     OutputBatchId: 
+      type: integer
+      nullable: true
+     OutputDate: 
+      type: string
+      format: date-time
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+     InterChangeName: 
+      type: string
+      nullable: true
+     InputDate: 
+      type: string
+      format: date-time
+     SubmissionStatus: 
+      type: string
+     SubmissionStatusName: 
+      type: string
+      nullable: true
+     DoNotSendReason: 
+      type: string
+      nullable: true
+     DoNotSendReasonName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     RequestedBy: 
+      type: integer
+     RequestedByName: 
+      type: string
+      nullable: true
+     RequestedDate: 
+      type: string
+      format: date-time
+   EligibilityBenefitInquiryAndResponseHistoryListDTO: 
+    title : EligibilityBenefitInquiryAndResponseHistoryListDTO
+    type: object
+    properties: 
+     ChangedBy: 
+      type: integer
+     ChangedByName: 
+      type: string
+      nullable: true
+     ChangedAt: 
+      type: string
+      format: date-time
+     ChangeTypeCode: 
+      type: string
+     ChangeType: 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     EligibilityInqSubmissionID: 
+      type: integer
+     EligibilityInqSubmissionNumber: 
+      type: string
+      nullable: true
+     OutputBatchId: 
+      type: integer
+      nullable: true
+     OutputDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+     InterChangeName: 
+      type: string
+      nullable: true
+     InputDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SubmissionStatus: 
+      type: string
+     SubmissionStatusName: 
+      type: string
+      nullable: true
+     DoNotSendReason: 
+      type: string
+      nullable: true
+     DoNotSendReasonName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     RequestedBy: 
+      type: integer
+     RequestedByName: 
+      type: string
+      nullable: true
+     RequestedDate: 
+      type: string
+      format: date-time
