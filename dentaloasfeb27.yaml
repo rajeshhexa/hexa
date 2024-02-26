@@ -1,0 +1,2494 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Entity API
+  description: Entity API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /entity/dataforentity/get: 
+   post: 
+    operationId: GetDataForEntity
+    tags: 
+     - Entity
+    summary: Get data for entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DataForEntitySearchDTO'
+    responses: 
+     '200': 
+      description: Data for entity retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DataForEntityListDTO'
+  /entity/entitydata: 
+   post: 
+    operationId: AddEntityData
+    tags: 
+     - Entity
+    summary: Add entity data
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityDataDTO'
+    responses: 
+     '200': 
+      description: Entity data added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateEntityData
+    tags: 
+     - Entity
+    summary: Update entity data
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityDataDTO'
+    responses: 
+     '200': 
+      description: Entity data updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /entity/entitydata/delete: 
+   post: 
+    operationId: DeleteEntityData
+    tags: 
+     - Entity
+    summary: Delete entity data
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityDataRemoveDTO'
+    responses: 
+     '200': 
+      description: Entity data deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /entity/entityreferencecodemap/get: 
+   post: 
+    operationId: GetEntityReferenceCodeMap
+    tags: 
+     - Entity
+    summary: Get entity reference code map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityReferenceCodeMapSearchDTO'
+    responses: 
+     '200': 
+      description: Entity reference code map retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EntityReferenceCodeMapListDTO'
+  /entity/entityreferencecodemap: 
+   post: 
+    operationId: AddEntityReferenceCodeMap
+    tags: 
+     - Entity
+    summary: Add entity reference code map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityReferenceCodeMapDTO'
+    responses: 
+     '200': 
+      description: Entity reference code map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+   put: 
+    operationId: UpdateEntityReferenceCodeMap
+    tags: 
+     - Entity
+    summary: Update entity reference code map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityReferenceCodeMapDTO'
+    responses: 
+     '200': 
+      description: Entity reference code map updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /Entity/deleteentityreferencecodemap: 
+   delete: 
+    operationId: DeleteEntityReferenceCodeMap
+    tags: 
+     - Entity
+    summary: Delete entity reference code map
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/EntityReferenceCodeMapIDPathParam'
+    responses: 
+     '200': 
+      description: Entity reference code map deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /entity/entitytransforms/get: 
+   post: 
+    operationId: GetEntityTransforms
+    tags: 
+     - Entity
+    summary: Get entity transforms
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityTransformsSearchDTO'
+    responses: 
+     '200': 
+      description: Entity transforms retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EntityTransformsListDTO'
+  /entity/entityaccessbyrole/get: 
+   post: 
+    operationId: GetEntityAccessByRole
+    tags: 
+     - Entity
+    summary: Get entity access by role
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityAccessByRoleSearchDTO'
+    responses: 
+     '200': 
+      description: Entity access by role retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EntityAccessByRoleListDTO'
+  /entity/attributesv2: 
+   get: 
+    operationId: GetEntityAttributes_V2
+    tags: 
+     - Entity
+    summary: Get entity attributes v2
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/AttributeID QueryParam'
+     - $ref: '#/components/parameters/EntityTypeQueryParam'
+     - $ref: '#/components/parameters/EntityIDQueryParam'
+     - $ref: '#/components/parameters/AttributeNameQueryParam'
+    responses: 
+     '200': 
+      description: Entity Attributes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EntityAttributesv2ListDTO'
+  /entity/entityattribute: 
+   post: 
+    operationId: AddEntityAttributes
+    tags: 
+     - Entity
+    summary: Add entity attributes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityAttributesDTO'
+    responses: 
+     '200': 
+      description: Entity attributes added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /entity/attributesforentity/get: 
+   post: 
+    operationId: GetAttributesForEntity
+    tags: 
+     - Entity
+    summary: Get attributes for entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AttributesForEntitySearchDTO'
+    responses: 
+     '200': 
+      description: Attributes for entity retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AttributesForEntityListDTO'
+  /entity/customattributehistoryxmlforentity/get: 
+   post: 
+    operationId: GetCustomAttributeHistoryXMLForEntity
+    tags: 
+     - Entity
+    summary: Custom attributes history XML for entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CustomAttributeHistoryXMLForEntitySearchDTO'
+    responses: 
+     '200': 
+      description: Custom attributes history XML for entity retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          type: string
+  /entity/customattributes/get: 
+   post: 
+    operationId: GetCustomAttributes
+    tags: 
+     - Entity
+    summary: Get custom attributes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CustomAttributesSearchDTO'
+    responses: 
+     '200': 
+      description: Custom attributes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CustomAttributesListDTO'
+  /entity/customattributescategory/get: 
+   post: 
+    operationId: GetCustomAttributesCategory
+    tags: 
+     - Entity
+    summary: Get Custom Attributes Category
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/CustomAttributesCategorySearchDTO'
+    responses: 
+     '200': 
+      description: Custom Attributes Category retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/CustomAttributesCategoryListDTO'
+  /entity/actioncode/get: 
+   post: 
+    operationId: GetActionCodes
+    tags: 
+     - Entity
+    summary: Get Action Codes
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ActionCodesSearchDTO'
+    responses: 
+     '200': 
+      description: ActionCodes retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ActionCodesListDTO'
+  /entity/serviceretrictionpackageentitymap/get: 
+   post: 
+    operationId: GetServiceRestrictionPackageEntityMaps
+    tags: 
+     - Entity
+    summary: Get Entity Service Restriction Package
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/EntityServiceRestrictionPackageEntityMapsSearchDTO'
+    responses: 
+     '200': 
+      description: Entity Service Restriction Package retrived successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/EntityServiceRestrictionPackageEntityMapsListDTO'
+  /entity/actioncodefromentity: 
+   delete: 
+    operationId: DeleteActionCodeFromEntity
+    tags: 
+     - Entity
+    summary: Delete entity action code
+    description: Description of path
+    responses: 
+     '200': 
+      description: Action Code From Entity deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /entity/actioncodeforentity/get: 
+   post: 
+    operationId: GetActionCodesForEntity
+    tags: 
+     - Entity
+    summary: Get Action Codes from entity
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ActionCodesFromEntitySearchDTO'
+    responses: 
+     '200': 
+      description: Action Code From Entity retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/ActionCodesFromEntityListDTO'
+  /entity/explanationcodefromentity: 
+   delete: 
+    operationId: DeleteExplanationFromEntity
+    tags: 
+     - Entity
+    summary: Delete explanation code from entity
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/ExplanationEntityIDQueryParam'
+    responses: 
+     '200': 
+      description: Explanation Code From Entity deleted successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /entity/actionentitymap: 
+   post: 
+    operationId: AddActionEntityMap
+    tags: 
+     - Entity
+    summary: Add Action Entity Map
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/ActionEntityMapDTO'
+    responses: 
+     '200': 
+      description: Action Entity Map added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+         nullable: true
+  /accounts/exacts: 
+   post: 
+    operationId: GetAccountXacts
+    tags: 
+     - Account
+    summary: Get accounts exacts
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/AccountsExactsSearchDTO'
+    responses: 
+     '200': 
+      description: Accounts Xacts retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/AccountsExactsListDTO'
+  /dental/history: 
+   post: 
+    operationId: GetDentalHistory
+    tags: 
+     - DentalHistory
+    summary: Get dental history
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/DentalHistorySearchDTO'
+    responses: 
+     '200': 
+      description: Dental history retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/DentalHistoryListDTO'
+  /utilizationcounters: 
+   post: 
+    operationId: GetUtilizationCounters
+    tags: 
+     - UtilizationCounters
+    summary: Get utilization counters
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/UtilizationCountersSearchDTO'
+    responses: 
+     '200': 
+      description: Utilization counters retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/UtilizationCountersListDTO'
+  /premiumrecords: 
+   post: 
+    operationId: GetPremiumBillingRecords
+    tags: 
+     - Bill
+    summary: Get premium billing records
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/PremiumBillingRecordsSearchDTO'
+    responses: 
+     '200': 
+      description: Premium billing records retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/PremiumBillingRecordsListDTO'
+components: 
+  schemas: 
+   EntityTransformsListDTO: 
+    title : EntityTransformsListDTO
+    type: object
+    properties: 
+     EntityTransformId: 
+      type: integer
+     TransformType: 
+      type: string
+     TransformTypeName: 
+      type: string
+      nullable: true
+     TransformName: 
+      type: string
+     EntityType: 
+      type: string
+     EntityTypeName: 
+      type: string
+      nullable: true
+     ProductCode: 
+      type: string
+      nullable: true
+     ProductName: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     AsOfDate: 
+      type: string
+      nullable: true
+     ElementTransform: 
+      type: string
+     TestEntityXML: 
+      type: string
+      nullable: true
+     OutputType: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     ResultCount: 
+      type: integer
+      nullable: true
+   EntityAccessByRoleSearchDTO: 
+    title : EntityAccessByRoleSearchDTO
+    type: object
+    properties: 
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   EntityAccessByRoleListDTO: 
+    title : EntityAccessByRoleListDTO
+    type: object
+    properties: 
+     EntityAccessByRoleId: 
+      type: integer
+     EntityID: 
+      type: integer
+     EntityType: 
+      type: string
+      nullable: true
+     EntityTypeName: 
+      type: string
+      nullable: true
+     EntityName: 
+      type: string
+      nullable: true
+     ReadRoleId: 
+      type: integer
+     WriteAccess: 
+      type: integer
+      nullable: true
+     UpdateAccess: 
+      type: integer
+      nullable: true
+     ReadAccessName: 
+      type: string
+      nullable: true
+     WriteAccessName: 
+      type: string
+      nullable: true
+     UpdateAccessName: 
+      type: string
+      nullable: true
+     UserType: 
+      type: string
+      nullable: true
+     UserTypeName: 
+      type: string
+      nullable: true
+     CascadeRole: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      nullable: true
+   EntityAttributesDTO: 
+    title : EntityAttributesDTO
+    type: object
+    properties: 
+     AttributeID    : 
+      type: integer
+      nullable: true
+     AttributeValue : 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID   : 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TransactionId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   AttributesForEntitySearchDTO: 
+    title : AttributesForEntitySearchDTO
+    type: object
+    properties: 
+     EntityParentType : 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityParentId : 
+      type: integer
+      nullable: true
+     ContactStepId: 
+      type: integer
+      nullable: true
+     CustomAttributesCategoryID: 
+      type: integer
+      nullable: true
+     ReturnStatus: 
+      type: string
+      default: Y
+      nullable: true
+     Usage: 
+      type: string
+      default: "|ALL|"
+      nullable: true
+   AttributesForEntityListDTO: 
+    title : AttributesForEntityListDTO
+    type: object
+    properties: 
+     EntityAttributeMapperId: 
+      type: integer
+     AttributeID: 
+      type: integer
+     Required: 
+      type: string
+     SortKey: 
+      type: integer
+      nullable: true
+     CategoryName: 
+      type: string
+      nullable: true
+     CustomAttributesCategoryID: 
+      type: integer
+      nullable: true
+     ForeColor: 
+      type: string
+      nullable: true
+     BackColor: 
+      type: string
+      nullable: true
+     FontStyle: 
+      type: string
+      nullable: true
+     DisplayAsOfDate: 
+      type: string
+     AttributeName: 
+      type: string
+      nullable: true
+     AttributeCategory : 
+      type: string
+      nullable: true
+     AttributeDataType : 
+      type: string
+      nullable: true
+     AttributeListName: 
+      type: string
+      nullable: true
+     AttributeDescription : 
+      type: string
+      nullable: true
+     AttributeValue: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     MaxLength: 
+      type: integer
+      nullable: true
+     MinLength: 
+      type: integer
+      nullable: true
+     SearchField: 
+      type: string
+      nullable: true
+     EditMask: 
+      type: string
+      nullable: true
+     UseAdvancedFiltering: 
+      type: string
+      nullable: true
+     ControlIndex: 
+      type: string
+      nullable: true
+     QuestionNumber: 
+      type: integer
+      nullable: true
+     EntityCollectionName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+   CustomAttributeHistoryXMLForEntitySearchDTO: 
+    title : CustomAttributeHistoryXMLForEntitySearchDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     Category: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   CustomAttributesSearchDTO: 
+    title : CustomAttributesSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      default: "|NORMAL|"
+      nullable: true
+     AttributeID: 
+      type: string
+      nullable: true
+     ShowDisabled: 
+      type: string
+      nullable: true
+     Category: 
+      type: string
+      nullable: true
+     DataType: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     ReasonId: 
+      type: integer
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     EntityParentType: 
+      type: string
+      nullable: true
+     AttributeName: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   CustomAttributesListDTO: 
+    title : CustomAttributesListDTO
+    type: object
+    properties: 
+     AttributeID: 
+      type: integer
+     AttributeName: 
+      type: string
+     Category: 
+      type: string
+     DataType: 
+      type: string
+      nullable: true
+     DataTypeName: 
+      type: string
+      nullable: true
+     ListName: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     Disabled: 
+      type: string
+     MaxLength: 
+      type: integer
+      nullable: true
+     MinLength: 
+      type: integer
+      nullable: true
+     SearchField: 
+      type: string
+      nullable: true
+     EditMask: 
+      type: string
+      nullable: true
+     UpdatedBy: 
+      type: string
+     UpdatedAt: 
+      type: string
+      format: date-time
+     UseAdvancedFiltering: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     EntityParentType: 
+      type: string
+      nullable: true
+     EntityAttributeMapId: 
+      type: integer
+      nullable: true
+   CustomAttributesCategorySearchDTO: 
+    title : CustomAttributesCategorySearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     CustomAttributesCategoryID: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+   DataForEntitySearchDTO: 
+    title : DataForEntitySearchDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     SchemaType: 
+      type: string
+      nullable: true
+     NotesCategoryId: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|USAGE1|"
+      nullable: true
+   CustomAttributesCategoryListDTO: 
+    title : CustomAttributesCategoryListDTO
+    type: object
+    properties: 
+     CustomAttributesCategoryID: 
+      type: integer
+      nullable: true
+     SortKey: 
+      type: number
+      nullable: true
+     Name: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastupdatedById: 
+      type: integer
+     LastupdatedBy: 
+      type: string
+      nullable: true
+   ActionCodesSearchDTO: 
+    title : ActionCodesSearchDTO
+    type: object
+    properties: 
+     Product: 
+      type: string
+      nullable: true
+     ActionCodeID: 
+      type: integer
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     ActionCodeType: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     Precedence: 
+      type: integer
+      nullable: true
+     Owner: 
+      type: string
+      nullable: true
+     ClientExplanation: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     FormName: 
+      type: string
+      nullable: true
+     ActionCodeStatus: 
+      type: string
+      nullable: true
+   ActionCodesListDTO: 
+    title : ActionCodesListDTO
+    type: object
+    properties: 
+     ActionCodeId: 
+      type: integer
+     ProductName: 
+      type: string
+     Precedence: 
+      type: integer
+     ActionCode: 
+      type: string
+     ActionNumber: 
+      type: string
+     ActionCodeName: 
+      type: string
+     NodeDisplay: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     ActionCodeType: 
+      type: string
+     Owner: 
+      type: string
+     ClientExplanation: 
+      type: integer
+     ContactReasonId: 
+      type: integer
+      nullable: true
+     ContactReasonName: 
+      type: string
+      nullable: true
+     IndividualCode: 
+      type: string
+      nullable: true
+     AdditionalIndividualCode: 
+      type: string
+      nullable: true
+     ActionCodeStatus: 
+      type: string
+     Status: 
+      type: string
+      nullable: true
+     CategoryLevel: 
+      type: integer
+     AllowOverride: 
+      type: string
+     HasEntities: 
+      type: string
+      nullable: true
+     ActionCodeClass: 
+      type: string
+      nullable: true
+     OverridePermissionId: 
+      type: integer
+      nullable: true
+     OverridePermission: 
+      type: string
+      nullable: true
+     ExternalRepricingAction: 
+      type: string
+   EntityServiceRestrictionPackageEntityMapsSearchDTO: 
+    title : EntityServiceRestrictionPackageEntityMapsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     ServiceRestrictionPackageId: 
+      type: integer
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+   EntityServiceRestrictionPackageEntityMapsListDTO: 
+    title : EntityServiceRestrictionPackageEntityMapsListDTO
+    type: object
+    properties: 
+     ServiceRestrictionPackageId: 
+      type: integer
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     Type: 
+      type: string
+      nullable: true
+     TypeName: 
+      type: string
+      nullable: true
+     System: 
+      type: string
+      nullable: true
+     MapId: 
+      type: integer
+      nullable: true
+     Excluded: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+     GroupLevel: 
+      type: integer
+      nullable: true
+     InheritedFromParentGroup: 
+      type: string
+      nullable: true
+     ParentGroupId: 
+      type: integer
+      nullable: true
+     ParentGroupNumber: 
+      type: string
+      nullable: true
+     ContractId: 
+      type: integer
+      nullable: true
+     ContractName: 
+      type: string
+     ContractNumber: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedBy: 
+      type: integer
+      nullable: true
+     LastUpdatedByName: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     HasHistory: 
+      type: string
+      nullable: true
+   ActionCodesFromEntityRemoveDTO: 
+    title : ActionCodesFromEntityRemoveDTO
+    type: object
+    properties: 
+     ActionCodeId: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     SPName: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: string
+      nullable: true
+     BatchId: 
+      type: string
+      nullable: true
+     ActionEntityMapId: 
+      type: string
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   ActionCodesFromEntitySearchDTO: 
+    title : ActionCodesFromEntitySearchDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: string
+      nullable: true
+     Flag: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   ActionCodesFromEntityListDTO: 
+    title : ActionCodesFromEntityListDTO
+    type: object
+    properties: 
+     ActionEntityMapId: 
+      type: string
+     ActionCodeId: 
+      type: string
+     ActionCodeType: 
+      type: string
+     ActionCode: 
+      type: string
+     ActionNumber: 
+      type: string
+      nullable: true
+     ActionCodeName: 
+      type: string
+      nullable: true
+     ActionCodeDescription: 
+      type: string
+      nullable: true
+     AllowOverride: 
+      type: string
+     EntityType: 
+      type: string
+     EntityID: 
+      type: string
+     Description: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     DateType: 
+      type: string
+      nullable: true
+     DateTypeName: 
+      type: string
+      nullable: true
+     LastUpdatedById: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   ActionEntityMapHistorySearchDTO: 
+    title : ActionEntityMapHistorySearchDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     DebugFlag: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+   ActionEntityMapHistoryListDTO: 
+    title : ActionEntityMapHistoryListDTO
+    type: object
+    properties: 
+     HistoryID: 
+      type: integer
+     ChangedById: 
+      type: integer
+     ChangedDate: 
+      type: string
+      format: date
+      nullable: true
+     ChangeType: 
+      type: string
+     ActionCodeType  : 
+      type: string
+     ActionCode: 
+      type: string
+     ActionNumber: 
+      type: string
+      nullable: true
+     ActionCodeDescription: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     EntityType: 
+      type: string
+     EntityID: 
+      type: integer
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     ChangedBy: 
+      type: string
+      nullable: true
+   DataForEntityListDTO: 
+    title : DataForEntityListDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     SequenceNumber: 
+      type: integer
+      nullable: true
+     SchemaType: 
+      type: string
+      nullable: true
+     DataString: 
+      type: string
+      nullable: true
+     ShortDataString: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+      nullable: true
+     NotesCategoryId: 
+      type: integer
+      nullable: true
+     NotesCategoryName: 
+      type: string
+      nullable: true
+   ActionEntityMapDTO: 
+    title : ActionEntityMapDTO
+    type: object
+    properties: 
+     SessionId: 
+      type: integer
+      nullable: true
+     ActionCodeId: 
+      type: string
+      nullable: true
+     ActionCode: 
+      type: string
+      nullable: true
+     Owner: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId: 
+      type: integer
+      nullable: true
+     AllowSystemActionCodes: 
+      type: string
+      default: N
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+     TraceFlag: 
+      type: integer
+      nullable: true
+   EntityTypeElementMapSearchDTO: 
+    title : EntityTypeElementMapSearchDTO
+    type: object
+    properties: 
+     SessionID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     DataStructure: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default:  "|USAGE2|"
+      nullable: true
+     UserId: 
+      type: integer
+      nullable: true
+     status: 
+      type: integer
+      nullable: true
+     rowcount: 
+      type: integer
+      nullable: true
+     error: 
+      type: integer
+      nullable: true
+     SelectClause: 
+      type: string
+      nullable: true
+     FromClause: 
+      type: string
+      nullable: true
+     WhereClause1: 
+      type: string
+      nullable: true
+     Conjunction1: 
+      type: string
+      nullable: true
+     OrderByClause: 
+      type: string
+      nullable: true
+     internal: 
+      type: integer
+      nullable: true
+     ErrorMsg: 
+      type: string
+      nullable: true
+   EntityAttributesv2ListDTO: 
+    title : EntityAttributesv2ListDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+     EntityID: 
+      type: integer
+     AttributeID: 
+      type: integer
+     AttributeName: 
+      type: string
+     AttributeValue: 
+      type: string
+     UpdatedBy: 
+      type: string
+     UpdatedAt: 
+      type: string
+      format: date-time
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+   AccountsExactsSearchDTO: 
+    title : AccountsExactsSearchDTO
+    type: object
+    properties: 
+     AccountID: 
+      type: integer
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordID: 
+      type: integer
+      nullable: true
+     Month: 
+      type: string
+      nullable: true
+     Year: 
+      type: string
+      nullable: true
+     XactType: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     IncludeArchives: 
+      type: string
+      nullable: true
+   AccountsExactsListDTO: 
+    title : AccountsExactsListDTO
+    type: object
+    properties: 
+     AccountId: 
+      type: integer
+      nullable: true
+     AccountName: 
+      type: string
+      nullable: true
+     AccountTypeCode: 
+      type: string
+      nullable: true
+     AccountType: 
+      type: string
+      nullable: true
+     XactType: 
+      type: string
+      nullable: true
+     XactName: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+      nullable: true
+     BnfAccountId: 
+      type: integer
+      nullable: true
+     RemainingBalance: 
+      type: string
+      nullable: true
+     RecordID: 
+      type: integer
+     ReferenceNumber: 
+      type: integer
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordTypeName: 
+      type: string
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     RecordStatusName: 
+      type: string
+      nullable: true
+     CreationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     DateRecorded: 
+      type: string
+      format: date-time
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     CheckId: 
+      type: integer
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     DateCreated: 
+      type: string
+      format: date-time
+      nullable: true
+     DateVoided: 
+      type: string
+      format: date-time
+      nullable: true
+     VoidReason: 
+      type: string
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+   DentalHistorySearchDTO: 
+    title : DentalHistorySearchDTO
+    type: object
+    properties: 
+     MemberID: 
+      type: integer
+      nullable: true
+     Quadrant: 
+      type: string
+      nullable: true
+     Surface: 
+      type: string
+      nullable: true
+     Tooth: 
+      type: string
+      nullable: true
+     ProcedureDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Usage: 
+      type: string
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+   DentalHistoryListDTO: 
+    title : DentalHistoryListDTO
+    type: object
+    properties: 
+     ClaimId: 
+      type: integer
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+     ClaimNumber: 
+      type: string
+     ClaimStatusCode: 
+      type: string
+      nullable: true
+     ClaimStatus: 
+      type: string
+      nullable: true
+     LineNumber: 
+      type: integer
+      nullable: true
+     LineStatusCode: 
+      type: string
+      nullable: true
+     LineStatus: 
+      type: string
+      nullable: true
+     MemberId: 
+      type: integer
+     Tooth: 
+      type: string
+      nullable: true
+     Surface: 
+      type: string
+      nullable: true
+     ProcedureCode : 
+      type: string
+      nullable: true
+     ProcedureName: 
+      type: string
+      nullable: true
+     TypeOfService: 
+      type: string
+      nullable: true
+     TOSDescription: 
+      type: string
+      nullable: true
+     ProcedureDate : 
+      type: string
+      format: date-time
+      nullable: true
+     AmtCharged: 
+      type: string
+      nullable: true
+     AmtPaid: 
+      type: string
+      nullable: true
+     ProviderId: 
+      type: integer
+      nullable: true
+     ProviderName: 
+      type: string
+      nullable: true
+     ProviderNumber: 
+      type: string
+      nullable: true
+     OfficeId: 
+      type: integer
+      nullable: true
+     OfficeNumber: 
+      type: string
+      nullable: true
+     OfficeName: 
+      type: string
+      nullable: true
+     GroupId: 
+      type: integer
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     UtilizationDate: 
+      type: string
+      format: date-time
+     LastUpdatedAt : 
+      type: string
+      format: date-time
+     LastUpdatedBy : 
+      type: integer
+      nullable: true
+   UtilizationCountersSearchDTO: 
+    title : UtilizationCountersSearchDTO
+    type: object
+    properties: 
+     MemberId: 
+      type: integer
+      nullable: true
+     SubscriberContractId: 
+      type: integer
+      nullable: true
+     LiabilityTypeId: 
+      type: integer
+      nullable: true
+     LiabilityTypeName: 
+      type: string
+      nullable: true
+     PeriodStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PeriodEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     Flag: 
+      type: integer
+      nullable: true
+   UtilizationCountersListDTO: 
+    title : UtilizationCountersListDTO
+    type: object
+    properties: 
+     LiabilityItemRowID: 
+      type: integer
+      nullable: true
+     LiabilityItemId: 
+      type: integer
+      nullable: true
+     LiabilityItemName : 
+      type: string
+      nullable: true
+     LiabilityItemDescription : 
+      type: string
+      nullable: true
+     LiabilityTypeId: 
+      type: integer
+      nullable: true
+     LiabilityTypeName : 
+      type: string
+      nullable: true
+     LiabilityTypeDescription : 
+      type: string
+      nullable: true
+     CarryOverType: 
+      type: string
+      nullable: true
+     CarryOverTypeName: 
+      type: string
+      nullable: true
+     CarryOverPeriod: 
+      type: integer
+      nullable: true
+     IndividualType: 
+      type: string
+      nullable: true
+     UnitType: 
+      type: string
+      nullable: true
+     UnitValue: 
+      type: string
+      nullable: true
+     PeriodType: 
+      type: string
+      nullable: true
+     PeriodValue: 
+      type: number
+      nullable: true
+     PeriodTypeName: 
+      type: string
+      nullable: true
+     UnitsUsed: 
+      type: string
+      nullable: true
+     UnitsAvailable: 
+      type: string
+      nullable: true
+     DateUnitsAvailable: 
+      type: string
+      nullable: true
+     StepDownLiabilityItemId: 
+      type: integer
+      nullable: true
+     StepDownLiabilityItemName: 
+      type: string
+      nullable: true
+     StepDownLiabilityTypeName : 
+      type: string
+      nullable: true
+     StepDownProcessOrder: 
+      type: number
+      nullable: true
+     StepDownLimitType: 
+      type: string
+      nullable: true
+     StepDownLimitTypeName: 
+      type: string
+      nullable: true
+     ByTierItem: 
+      type: string
+      nullable: true
+     AsOfDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PeriodStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     PeriodEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     LiabilityTypeSourceId: 
+      type: integer
+      nullable: true
+     LiabilityPackageID: 
+      type: integer
+      nullable: true
+     LiabilityPackageName: 
+      type: string
+      nullable: true
+     MaximumPerOccurrence: 
+      type: number
+      nullable: true
+   EntityDataDTO: 
+    title : EntityDataDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     SequenceNumber: 
+      type: integer
+      nullable: true
+     SchemaType: 
+      type: string
+      nullable: true
+     DataString: 
+      type: string
+      nullable: true
+     ScreenName: 
+      type: string
+      nullable: true
+     NotesCategoryId: 
+      type: integer
+      nullable: true
+   PremiumBillingRecordsSearchDTO: 
+    title : PremiumBillingRecordsSearchDTO
+    type: object
+    properties: 
+     Usage: 
+      type: string
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     BillId: 
+      type: integer
+      nullable: true
+     BillRecordId: 
+      type: integer
+      nullable: true
+     BillingRecordId: 
+      type: integer
+      nullable: true
+     ReconciliationId: 
+      type: integer
+      nullable: true
+     DateFrom: 
+      type: string
+      format: date-time
+      nullable: true
+     DateTo: 
+      type: string
+      format: date-time
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     IncludeZeroDollarRecords: 
+      type: string
+      nullable: true
+     IncludeArchives: 
+      type: string
+      nullable: true
+     ReturnClaimRecords: 
+      type: string
+      nullable: true
+   PremiumBillingRecordsListDTO: 
+    title : PremiumBillingRecordsListDTO
+    type: object
+    properties: 
+     RecordID: 
+      type: integer
+     RecordTypeCode: 
+      type: string
+     ReferenceID: 
+      type: integer
+     RecordStatusCode: 
+      type: string
+     EntityTypeCode: 
+      type: string
+      nullable: true
+     Amount: 
+      type: string
+     PaymentMethodCode: 
+      type: string
+      nullable: true
+     PaymentMethod: 
+      type: string
+      nullable: true
+     PaymentSubMethodCode: 
+      type: string
+      nullable: true
+     PaymentSubMethod: 
+      type: string
+      nullable: true
+     ParentAccountID: 
+      type: integer
+     CreationDate: 
+      type: string
+      format: date-time
+     ProcessedDate: 
+      type: string
+      format: date-time
+     CheckId: 
+      type: integer
+      nullable: true
+     Notes: 
+      type: string
+      nullable: true
+     GroupID: 
+      type: integer
+      nullable: true
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     LastUpdatedById: 
+      type: integer
+     RateId: 
+      type: integer
+      nullable: true
+     BillingReferenceID: 
+      type: integer
+      nullable: true
+     MemberCoverageId: 
+      type: integer
+      nullable: true
+     MemberBenefitCoverageId: 
+      type: integer
+      nullable: true
+     CompanyID: 
+      type: integer
+     ReconciliationId: 
+      type: integer
+      nullable: true
+     RetroTermRecordId: 
+      type: integer
+      nullable: true
+     PayBrokerCommissions: 
+      type: string
+      nullable: true
+     RateUsageCode: 
+      type: string
+      nullable: true
+     RateUsage: 
+      type: string
+      nullable: true
+     VoidDate: 
+      type: string
+      format: date-time
+      nullable: true
+     TierId: 
+      type: integer
+      nullable: true
+     Tier: 
+      type: string
+      nullable: true
+     TierAsOfDate: 
+      type: string
+      format: date
+      nullable: true
+     Spouse: 
+      type: integer
+      nullable: true
+     Dependents: 
+      type: integer
+      nullable: true
+     Volume: 
+      type: string
+      nullable: true
+     BillingEntityId: 
+      type: integer
+      nullable: true
+     InvoiceRecordId: 
+      type: integer
+      nullable: true
+     BillId: 
+      type: integer
+      nullable: true
+     ParentRecordId: 
+      type: integer
+      nullable: true
+     RecordType: 
+      type: string
+      nullable: true
+     RecordStatus: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     ParentAccountName: 
+      type: string
+      nullable: true
+     ParentAccountType: 
+      type: string
+      nullable: true
+     GroupNumber: 
+      type: string
+      nullable: true
+     GroupName: 
+      type: string
+      nullable: true
+     LastUpdatedBy: 
+      type: string
+      nullable: true
+     RateTypeCode: 
+      type: string
+      nullable: true
+     RateType: 
+      type: string
+      nullable: true
+     AppliedLevelCode: 
+      type: string
+      nullable: true
+     AppliedLevel: 
+      type: string
+      nullable: true
+     CompanyName: 
+      type: string
+      nullable: true
+     MemberNumber: 
+      type: string
+      nullable: true
+     MemberName: 
+      type: string
+      nullable: true
+     ReconciliationNumber: 
+      type: string
+      nullable: true
+     ExternalReconciliationNumber: 
+      type: string
+      nullable: true
+     ReconciledById: 
+      type: integer
+      nullable: true
+     ReconciledBy: 
+      type: string
+      nullable: true
+     ReconciledAt: 
+      type: string
+      format: date-time
+      nullable: true
+     BillingEntityNumber: 
+      type: string
+      nullable: true
+     BillingEntityName: 
+      type: string
+      nullable: true
+     BillingMode: 
+      type: string
+      nullable: true
+     ClaimBillingMode: 
+      type: string
+      nullable: true
+     TierName: 
+      type: string
+      nullable: true
+     ReferenceNumber: 
+      type: integer
+      nullable: true
+     AdjustmentReasonCode: 
+      type: string
+      nullable: true
+     AdjustmentReason: 
+      type: string
+      nullable: true
+     CoveragePeriodStartDate: 
+      type: string
+      format: date-time
+      nullable: true
+     CoveragePeriodEndDate: 
+      type: string
+      format: date-time
+      nullable: true
+     NumberOfDaysCovered: 
+      type: integer
+      nullable: true
+     CheckNumber: 
+      type: string
+      nullable: true
+     DepositNumber: 
+      type: string
+      nullable: true
+     ExternalDepositNumber: 
+      type: string
+      nullable: true
+     CheckTypeCode: 
+      type: string
+      nullable: true
+     CheckType: 
+      type: string
+      nullable: true
+     BillNumber: 
+      type: string
+      nullable: true
+     BillDate: 
+      type: string
+      format: date-time
+      nullable: true
+     BillDueDate: 
+      type: string
+      format: date-time
+      nullable: true
+     BillAmount: 
+      type: string
+      nullable: true
+     BillOpenAmount: 
+      type: string
+      nullable: true
+     RateEntityType: 
+      type: string
+      nullable: true
+     RateEntityTypeName: 
+      type: string
+      nullable: true
+     RateEntityId: 
+      type: integer
+      nullable: true
+     RateEntityName: 
+      type: string
+      nullable: true
+     RateTypeEntityID: 
+      type: integer
+      nullable: true
+     RateTypeItem: 
+      type: string
+      nullable: true
+     QualifierName: 
+      type: string
+      nullable: true
+     RiderName: 
+      type: string
+      nullable: true
+     PlanID: 
+      type: integer
+      nullable: true
+     PlanName: 
+      type: string
+      nullable: true
+     ParentRecordType: 
+      type: string
+      nullable: true
+     ParentRecordStatus: 
+      type: string
+      nullable: true
+     ParentRecordAmount: 
+      type: string
+      nullable: true
+     AppliedAmount: 
+      type: string
+      nullable: true
+     BillBalance: 
+      type: string
+      nullable: true
+     UnreconciledAmount: 
+      type: string
+      nullable: true
+     ReconciledAmount: 
+      type: string
+      nullable: true
+     MethodOfRefundCode: 
+      type: string
+      nullable: true
+     MethodOfRefund: 
+      type: string
+      nullable: true
+     ClaimNumber: 
+      type: string
+      nullable: true
+     AdjustmentVersion: 
+      type: integer
+      nullable: true
+   EntityDataRemoveDTO: 
+    title : EntityDataRemoveDTO
+    type: object
+    properties: 
+     EntityType: 
+      type: string
+      nullable: true
+     EntityId: 
+      type: integer
+      nullable: true
+     SequenceNumber: 
+      type: integer
+      nullable: true
+     SchemaType: 
+      type: string
+      nullable: true
+     SeqId: 
+      type: integer
+      nullable: true
+     BatchId : 
+      type: integer
+      nullable: true
+     Raiserror: 
+      type: integer
+      nullable: true
+   EntityReferenceCodeMapSearchDTO: 
+    title : EntityReferenceCodeMapSearchDTO
+    type: object
+    properties: 
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     ReferenceCodeType: 
+      type: string
+      nullable: true
+     ReferenceCodeSubType: 
+      type: string
+      nullable: true
+     SecondaryReferenceCodeType: 
+      type: string
+      nullable: true
+     SecondaryReferenceCodeSubType: 
+      type: string
+      nullable: true
+     Usage: 
+      type: string
+      default: "|FORENTITY|"
+      nullable: true
+   EntityReferenceCodeMapDTO: 
+    title : EntityReferenceCodeMapDTO
+    type: object
+    properties: 
+     EntityID: 
+      type: integer
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     ReferenceCodeID: 
+      type: integer
+      nullable: true
+     SecondaryReferenceCodeID: 
+      type: integer
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EntityReferenceCodeMapID: 
+      type: integer
+      nullable: true
+   EntityReferenceCodeMapListDTO: 
+    title : EntityReferenceCodeMapListDTO
+    type: object
+    properties: 
+     EntityReferenceCodeMapID: 
+      type: integer
+      description: 
+     EntityID: 
+      type: integer
+     EntityType: 
+      type: string
+     ReferenceCodeID: 
+      type: integer
+     ReferenceCodeType: 
+      type: string
+      nullable: true
+     ReferenceCodeSubType: 
+      type: string
+      nullable: true
+     Code: 
+      type: string
+      nullable: true
+     Name: 
+      type: string
+      nullable: true
+     Description: 
+      type: string
+      nullable: true
+     ReferenceCodeEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     ReferenceCodeExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SecondaryReferenceCodeID: 
+      type: integer
+      nullable: true
+     SecondaryReferenceCodeType: 
+      type: string
+      nullable: true
+     SecondaryReferenceCodeSubType: 
+      type: string
+      nullable: true
+     SecondaryName: 
+      type: string
+      nullable: true
+     SecondaryCode: 
+      type: string
+      nullable: true
+     SecondaryDescription: 
+      type: string
+      nullable: true
+     SecondaryReferenceCodeEffectiveDate: 
+      type: string
+      format: date-time
+      nullable: true
+     SecondaryReferenceCodeExpirationDate: 
+      type: string
+      format: date-time
+      nullable: true
+     EffectiveDate: 
+      type: string
+      format: date-time
+     ExpirationDate: 
+      type: string
+      format: date-time
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedByID: 
+      type: integer
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+   EntityTransformsSearchDTO: 
+    title : EntityTransformsSearchDTO
+    type: object
+    properties: 
+     EntityTransformId: 
+      type: integer
+      nullable: true
+     TransformType: 
+      type: string
+      nullable: true
+     TransformName: 
+      type: string
+      nullable: true
+     EntityType: 
+      type: string
+      nullable: true
+     ProductCode: 
+      type: string
+      nullable: true
+     InterchangeId: 
+      type: integer
+      nullable: true
+     AsOfDate: 
+      type: string
+      nullable: true
+     ResultCount: 
+      type: integer
+      nullable: true
+     Usage: 
+      type: string
+      default: "|All|"
+      nullable: true
+  parameters: 
+   EntityReferenceCodeMapIDPathParam: 
+    in: path
+    name: EntityReferenceCodeMapID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AttributeID QueryParam: 
+    in: query
+    name: AttributeID 
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   EntityTypeQueryParam: 
+    in: query
+    name: EntityType
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   EntityIDQueryParam: 
+    in: query
+    name: EntityID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   AttributeNameQueryParam: 
+    in: query
+    name: AttributeName
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   ExplanationEntityIDQueryParam: 
+    in: query
+    name: ExplanationEntityID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
