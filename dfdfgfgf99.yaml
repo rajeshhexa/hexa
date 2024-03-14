@@ -1,0 +1,306 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Benefits Base Plan Jobs API
+  description: Benefits Base Plan Jobs API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /benefits/baseplan/jobs: 
+   get: 
+    operationId: GetBasePlanJobs
+    tags: 
+     - BaseplanJob
+    summary: Get baseplan job
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIDQueryParam'
+     - $ref: '#/components/parameters/GroupIdQueryParam'
+     - $ref: '#/components/parameters/UsageQueryParam'
+    responses: 
+     '200': 
+      description: Baseplan job retrieved succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/BaseplanJobListDTO'
+  /benefits/baseplan/job: 
+   post: 
+    operationId: AddBasePlanJob
+    tags: 
+     - BaseplanJob
+    summary: Add baselpan job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BaseplanJobDTO'
+    responses: 
+     '200': 
+      description: Baseplan job added succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateBasePlanJob
+    tags: 
+     - BaseplanJob
+    summary: Update baseplan job
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/BaseplanJobDTO'
+    responses: 
+     '200': 
+      description: Baseplan job updated succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+  /benefits/baseplan/job/process: 
+   post: 
+    operationId: ProcessBasePlanJob
+    tags: 
+     - BaseplanJob
+    summary: Process baseplan job
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/JobIdQueryParam'
+     - $ref: '#/components/parameters/OverrideRetroEnrollmentEnforcementQueryParam'
+     - $ref: '#/components/parameters/OverrideTierRestrictionsQueryParam'
+     - $ref: '#/components/parameters/DebugFlagQueryParam'
+    responses: 
+     '200': 
+      description: Baseplan job proccessed succesfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   BaseplanJobDTO: 
+    title : BaseplanJobDTO
+    type: object
+    properties: 
+     JobType: 
+      type: string
+     GroupId: 
+      type: integer
+     OriginalBasePlanId: 
+      type: integer
+     JobId: 
+      type: integer
+     JobName: 
+      type: string
+     JobDescription: 
+      type: string
+     OriginalEffectiveDate: 
+      type: string
+     OriginalExpirationDate: 
+      type: string
+     OriginalTerminationDate: 
+      type: string
+     OriginalTerminationReason: 
+      type: string
+     NewBasePlanId: 
+      type: integer
+     NewEffectiveDate: 
+      type: string
+     NewExpirationDate: 
+      type: string
+     NewTierTypeId: 
+      type: integer
+     NewTierTypeEffectiveDate: 
+      type: string
+     NewLiabilityPackageId: 
+      type: integer
+     ReOpenClaims: 
+      type: string
+     ProcessingStatus: 
+      type: string
+     GoToNextProcess: 
+      type: string
+     Usage: 
+      type: string
+   BaseplanJobListDTO: 
+    title : BaseplanJobListDTO
+    type: object
+    properties: 
+     JobId: 
+      type: integer
+     JobName: 
+      type: string
+     JobDescription: 
+      type: string
+     JobType: 
+      type: string
+     JobTypeName: 
+      type: string
+     ProcessingStatus: 
+      type: string
+     ProcessingStatusName: 
+      type: string
+     GroupId: 
+      type: integer
+     GroupName: 
+      type: string
+     GroupNumber: 
+      type: string
+     DateCreated: 
+      type: string
+      format: date-time
+     DateCompleted: 
+      type: string
+      format: date-time
+     TimeElapsed: 
+      type: number
+     CreatedById: 
+      type: integer
+     CreatedBy: 
+      type: string
+     OriginalBasePlanId: 
+      type: integer
+     OriginalPlanName: 
+      type: string
+     OriginalEffectiveDate: 
+      type: string
+      format: date-time
+     OriginalExpirationDate: 
+      type: string
+      format: date-time
+     OriginalTerminationDate: 
+      type: string
+      format: date-time
+     OriginalTerminationReason: 
+      type: string
+     OriginalTerminationReasonName: 
+      type: string
+     OriginalRealPlanId: 
+      type: integer
+     OriginalPlanCoverageEffDate: 
+      type: string
+      format: date-time
+     OriginalPlanCoverageExpDate: 
+      type: string
+      format: date-time
+     OriginalPlanTotalMembers: 
+      type: integer
+     NewBasePlanId: 
+      type: integer
+     NewPlanName: 
+      type: string
+     NewEffectiveDate: 
+      type: string
+      format: date-time
+     NewExpirationDate: 
+      type: string
+      format: date-time
+     NewTierTypeId: 
+      type: integer
+     NewTierTypeEffectiveDate: 
+      type: string
+      format: date-time
+     NewLiabilityPackageId: 
+      type: integer
+     ReOpenClaims: 
+      type: string
+     NewTierTypeName: 
+      type: string
+     NewLiabilityPackageName: 
+      type: string
+     RetroClaimActivityCode: 
+      type: string
+     RetroClaimActivity: 
+      type: string
+     UseStandardTimeSlicesCode: 
+      type: string
+     UseStandardTimeSlices: 
+      type: string
+     NumberOfAttempts: 
+      type: integer
+     TotalMembership: 
+      type: integer
+     NumberSucceeded: 
+      type: integer
+     PercentSucceeded: 
+      type: string
+     NumErrors: 
+      type: string
+     PercentErrors: 
+      type: string
+     NumAborted: 
+      type: integer
+     PercentAborted: 
+      type: string
+     IsAbortable: 
+      type: string
+     IsContinuable: 
+      type: string
+     LastUpdatedById: 
+      type: integer
+     LastUpdatedBy: 
+      type: string
+     LastUpdatedAt: 
+      type: string
+      format: date-time
+     Notes: 
+      type: string
+  parameters: 
+   JobIDQueryParam: 
+    in: query
+    name: JobID
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   GroupIdQueryParam: 
+    in: query
+    name: GroupId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   UsageQueryParam: 
+    in: query
+    name: Usage
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   JobIdQueryParam: 
+    in: query
+    name: JobId
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
+   OverrideRetroEnrollmentEnforcementQueryParam: 
+    in: query
+    name: OverrideRetroEnrollmentEnforcement
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   OverrideTierRestrictionsQueryParam: 
+    in: query
+    name: OverrideTierRestrictions
+    required: false
+    schema: 
+     type: string
+    description: description of parameter passed
+   DebugFlagQueryParam: 
+    in: query
+    name: DebugFlag
+    required: false
+    schema: 
+     type: integer
+    description: description of parameter passed
