@@ -1,0 +1,1025 @@
+openapi: 3.0.0
+info:
+  title: Entity API
+  description: Entity API V1
+  version: 1.0.0
+servers:
+- url: https://hexapi.example.com
+  description: API Server Description
+paths:
+  /entity/dataforentity:
+    post:
+      tags:
+      - Entity
+      summary: Get data for entity
+      description: Description of path
+      operationId: GetDataForEntity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataForEntitySearchDTO'
+        required: true
+      responses:
+        "200":
+          description: Data for entity retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataForEntityListDTO'
+  /entity/entitydata:
+    put:
+      tags:
+      - Entity
+      summary: Update entity data
+      description: Description of path
+      operationId: UpdateEntityData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityDataDTO'
+        required: true
+      responses:
+        "200":
+          description: Entity data updated successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+    post:
+      tags:
+      - Entity
+      summary: Add entity data
+      description: Description of path
+      operationId: AddEntityData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityDataDTO'
+        required: true
+      responses:
+        "200":
+          description: Entity data added successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+                nullable: true
+  /entity/entitydata/delete:
+    post:
+      tags:
+      - Entity
+      summary: Delete entity data
+      description: Description of path
+      operationId: DeleteEntityData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityDataRemoveDTO'
+        required: true
+      responses:
+        "200":
+          description: Entity data deleted successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+                nullable: true
+  /entity/loadentityreferencecodemap:
+    post:
+      tags:
+      - Entity
+      summary: Get entity reference code map
+      description: Description of path
+      operationId: GetEntityReferenceCodeMap
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityReferenceCodeMapSearchDTO'
+        required: true
+      responses:
+        "200":
+          description: Entity reference code map retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityReferenceCodeMapListDTO'
+  /entity/entityreferencecodemap:
+    post:
+      tags:
+      - Entity
+      summary: Add entity reference code map
+      description: Description of path
+      operationId: AddEntityReferenceCodeMap
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityReferenceCodeMapDTO'
+        required: true
+      responses:
+        "200":
+          description: Entity reference code map added successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+                nullable: true
+  /entity/entityreferencecodemap/{EntityReferenceCodeMapID}:
+    delete:
+      tags:
+      - Entity
+      summary: Delete entity reference code map
+      description: Description of path
+      operationId: DeleteEntityReferenceCodeMap
+      parameters:
+      - name: EntityReferenceCodeMapID
+        in: path
+        description: description of parameter passed
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Entity reference code map deleted successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+  /entity/entitytransforms:
+    post:
+      tags:
+      - Entity
+      summary: Get entity transforms
+      description: Description of path
+      operationId: GetEntityTransforms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTransformsSearchDTO'
+        required: true
+      responses:
+        "200":
+          description: Entity transforms retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EntityTransformsListDTO'
+  /entity/entityaccessbyrole:
+    post:
+      tags:
+      - Entity
+      summary: Get entity access by role
+      description: Description of path
+      operationId: GetEntityAccessByRole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityAccessByRoleSearchDTO'
+        required: true
+      responses:
+        "200":
+          description: Entity access by role retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityAccessByRoleListDTO'
+  /entity/entityattribute:
+    post:
+      tags:
+      - Entity
+      summary: Add entity attributes
+      description: Description of path
+      operationId: AddEntityAttributes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityAttributesDTO'
+        required: true
+      responses:
+        "200":
+          description: Entity attributes added successfully
+          content:
+            application/json:
+              schema:
+                type: integer
+                nullable: true
+  /entity/attributesforentity:
+    post:
+      tags:
+      - Entity
+      summary: Get attributes for entity
+      description: Description of path
+      operationId: GetAttributesForEntity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttributesForEntitySearchDTO'
+        required: true
+      responses:
+        "200":
+          description: Attributes for entity retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttributesForEntityListDTO'
+  /entity/customattributehistoryxmlforentity:
+    post:
+      tags:
+      - Entity
+      summary: Custom attributes history XML for entity
+      description: Description of path
+      operationId: GetCustomAttributeHistoryXMLForEntity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomAttributeHistoryXMLForEntitySearchDTO'
+        required: true
+      responses:
+        "200":
+          description: Custom attributes history XML for entity retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /entity/customattributes:
+    post:
+      tags:
+      - Entity
+      summary: Get custom attributes
+      description: Description of path
+      operationId: GetCustomAttributes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomAttributesSearchDTO'
+        required: true
+      responses:
+        "200":
+          description: Custom attributes retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomAttributesListDTO'
+  /entity/customattributescategory:
+    post:
+      tags:
+      - Entity
+      summary: Get Custom Attributes Category
+      description: Description of path
+      operationId: GetCustomAttributesCategory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomAttributesCategorySearchDTO'
+        required: true
+      responses:
+        "200":
+          description: Custom Attributes Category retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomAttributesCategoryListDTO'
+components:
+  schemas:
+    EntityTransformsListDTO:
+      title: EntityTransformsListDTO
+      type: object
+      properties:
+        EntityTransformId:
+          type: integer
+          nullable: true
+        TransformType:
+          type: string
+          nullable: true
+        TransformTypeName:
+          type: string
+          nullable: true
+        TransformName:
+          type: string
+          nullable: true
+        EntityType:
+          type: string
+          nullable: true
+        EntityTypeName:
+          type: string
+          nullable: true
+        ProductCode:
+          type: string
+          nullable: true
+        ProductName:
+          type: string
+          nullable: true
+        EffectiveDate:
+          type: string
+          format: date-time
+          nullable: true
+        ExpirationDate:
+          type: string
+          format: date-time
+          nullable: true
+        AsOfDate:
+          type: string
+          nullable: true
+        ElementTransform:
+          type: string
+          nullable: true
+        TestEntityXML:
+          type: string
+          nullable: true
+        OutputType:
+          type: string
+          nullable: true
+        LastUpdatedById:
+          type: integer
+          nullable: true
+        LastUpdatedBy:
+          type: string
+          nullable: true
+        LastUpdatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        ResultCount:
+          type: integer
+          nullable: true
+    EntityAccessByRoleSearchDTO:
+      title: EntityAccessByRoleSearchDTO
+      type: object
+      properties:
+        EntityId:
+          type: integer
+          nullable: true
+        EntityType:
+          type: string
+          nullable: true
+        MemberId:
+          type: integer
+          nullable: true
+        GroupId:
+          type: integer
+          nullable: true
+        Usage:
+          type: string
+          nullable: true
+        Flag:
+          type: integer
+          nullable: true
+    EntityAccessByRoleListDTO:
+      title: EntityAccessByRoleListTO
+      type: object
+      properties:
+        EntityAccessByRoleId:
+          type: integer
+          nullable: true
+        EntityID:
+          type: integer
+          nullable: true
+        EntityType:
+          type: string
+          nullable: true
+        EntityTypeName:
+          type: string
+          nullable: true
+        EntityName:
+          type: string
+          nullable: true
+        ReadRoleId:
+          type: integer
+          nullable: true
+        WriteAccess:
+          type: integer
+          nullable: true
+        UpdateAccess:
+          type: integer
+          nullable: true
+        ReadAccessName:
+          type: string
+          nullable: true
+        WriteAccessName:
+          type: string
+          nullable: true
+        UpdateAccessName:
+          type: string
+          nullable: true
+        UserType:
+          type: string
+          nullable: true
+        UserTypeName:
+          type: string
+          nullable: true
+        CascadeRole:
+          type: string
+          nullable: true
+        LastUpdatedBy:
+          type: integer
+          nullable: true
+        LastUpdatedByName:
+          type: string
+          nullable: true
+        LastUpdatedAt:
+          type: string
+          format: date-time
+          nullable: true
+    EntityAttributesDTO:
+      title: EntityAttributesDTO
+      type: object
+      properties:
+        AttributeID:
+          type: integer
+          nullable: true
+        AttributeValue:
+          type: string
+          nullable: true
+        EntityType:
+          type: string
+          nullable: true
+        EntityID:
+          type: integer
+          nullable: true
+        AsOfDate:
+          type: string
+          format: date-time
+          nullable: true
+        TransactionId:
+          type: integer
+          nullable: true
+        DebugFlag:
+          type: integer
+          nullable: true
+    AttributesForEntitySearchDTO:
+      title: AttributesForEntitySearchDTO
+      type: object
+      properties:
+        EntityParentType:
+          type: string
+          nullable: true
+        EntityType:
+          type: string
+          nullable: true
+        EntityID:
+          type: integer
+          nullable: true
+        EntityParentId:
+          type: integer
+          nullable: true
+        ContactStepId:
+          type: integer
+          nullable: true
+        CustomAttributesCategoryID:
+          type: integer
+          nullable: true
+        ReturnStatus:
+          type: string
+          nullable: true
+          default: "Y"
+        Usage:
+          type: string
+          nullable: true
+          default: '|ALL|'
+    AttributesForEntityListDTO:
+      title: AttributesForEntityListDTO
+      type: object
+      properties:
+        EntityAttributeMapperId:
+          type: integer
+          nullable: true
+        AttributeID:
+          type: integer
+          nullable: true
+        Required:
+          type: string
+          nullable: true
+        SortKey:
+          type: integer
+          nullable: true
+        CategoryName:
+          type: string
+          nullable: true
+        CustomAttributesCategoryID:
+          type: integer
+          nullable: true
+        ForeColor:
+          type: string
+          nullable: true
+        BackColor:
+          type: string
+          nullable: true
+        FontStyle:
+          type: string
+          nullable: true
+        DisplayAsOfDate:
+          type: string
+          nullable: true
+        AttributeName:
+          type: string
+          nullable: true
+        AttributeCategory:
+          type: string
+          nullable: true
+        AttributeDataType:
+          type: string
+          nullable: true
+        AttributeListName:
+          type: string
+          nullable: true
+        AttributeDescription:
+          type: string
+          nullable: true
+        AttributeValue:
+          type: string
+          nullable: true
+        AsOfDate:
+          type: string
+          format: date-time
+          nullable: true
+        MaxLength:
+          type: integer
+          nullable: true
+        MinLength:
+          type: integer
+          nullable: true
+        SearchField:
+          type: string
+          nullable: true
+        EditMask:
+          type: string
+          nullable: true
+        UseAdvancedFiltering:
+          type: string
+          nullable: true
+        ControlIndex:
+          type: string
+          nullable: true
+        QuestionNumber:
+          type: integer
+          nullable: true
+        EntityCollectionName:
+          type: string
+          nullable: true
+        LastUpdatedBy:
+          type: string
+          nullable: true
+        LastUpdatedAt:
+          type: string
+          format: date-time
+          nullable: true
+    CustomAttributeHistoryXMLForEntitySearchDTO:
+      title: CustomAttributeHistoryXMLForEntitySearchDTO
+      type: object
+      properties:
+        EntityType:
+          type: string
+          nullable: true
+        EntityId:
+          type: integer
+          nullable: true
+        Category:
+          type: string
+          nullable: true
+        DebugFlag:
+          type: integer
+          nullable: true
+    CustomAttributesSearchDTO:
+      title: CustomAttributesSearchDTO
+      type: object
+      properties:
+        Usage:
+          type: string
+          nullable: true
+          default: '|NORMAL|'
+        AttributeID:
+          type: string
+          nullable: true
+        ShowDisabled:
+          type: string
+          nullable: true
+        Category:
+          type: string
+          nullable: true
+        DataType:
+          type: string
+          nullable: true
+        IndividualCode:
+          type: string
+          nullable: true
+        ReasonId:
+          type: integer
+          nullable: true
+        Flag:
+          type: integer
+          nullable: true
+        EntityParentType:
+          type: string
+          nullable: true
+        AttributeName:
+          type: string
+          nullable: true
+        ResultCount:
+          type: integer
+          nullable: true
+    CustomAttributesListDTO:
+      title: CustomAttributesListDTO
+      type: object
+      properties:
+        AttributeID:
+          type: integer
+          nullable: true
+        AttributeName:
+          type: string
+          nullable: true
+        Category:
+          type: string
+          nullable: true
+        DataType:
+          type: string
+          nullable: true
+        DataTypeName:
+          type: string
+          nullable: true
+        ListName:
+          type: string
+          nullable: true
+        Description:
+          type: string
+          nullable: true
+        Disabled:
+          type: string
+          nullable: true
+        MaxLength:
+          type: integer
+          nullable: true
+        MinLength:
+          type: integer
+          nullable: true
+        SearchField:
+          type: string
+          nullable: true
+        EditMask:
+          type: string
+          nullable: true
+        UpdatedBy:
+          type: string
+          nullable: true
+        UpdatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        UseAdvancedFiltering:
+          type: string
+          nullable: true
+        IndividualCode:
+          type: string
+          nullable: true
+        EntityParentType:
+          type: string
+          nullable: true
+        EntityAttributeMapId:
+          type: integer
+          nullable: true
+    CustomAttributesCategorySearchDTO:
+      title: CustomAttributesCategorySearchDTO
+      type: object
+      properties:
+        Usage:
+          type: string
+          nullable: true
+        CustomAttributesCategoryID:
+          type: integer
+          nullable: true
+        Name:
+          type: string
+          nullable: true
+        Description:
+          type: string
+          nullable: true
+        SortKey:
+          type: number
+          nullable: true
+    DataForEntitySearchDTO:
+      title: DataForEntitySearchDTO
+      type: object
+      properties:
+        EntityType:
+          type: string
+          nullable: true
+        EntityId:
+          type: integer
+          nullable: true
+        SchemaType:
+          type: string
+          nullable: true
+        NotesCategoryId:
+          type: integer
+          nullable: true
+        Usage:
+          type: string
+          nullable: true
+          default: '|USAGE1|'
+    CustomAttributesCategoryListDTO:
+      title: CustomAttributesCategoryListDTO
+      type: object
+      properties:
+        CustomAttributesCategoryID:
+          type: integer
+          nullable: true
+        SortKey:
+          type: number
+          nullable: true
+        Name:
+          type: string
+          nullable: true
+        Description:
+          type: string
+          nullable: true
+        LastUpdatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        LastupdatedById:
+          type: integer
+          nullable: true
+        LastupdatedBy:
+          type: string
+          nullable: true
+    DataForEntityListDTO:
+      title: DataForEntityListDTO
+      type: object
+      properties:
+        EntityType:
+          type: string
+          nullable: true
+        EntityId:
+          type: integer
+          nullable: true
+        SequenceNumber:
+          type: integer
+          nullable: true
+        SchemaType:
+          type: string
+          nullable: true
+        DataString:
+          type: string
+          nullable: true
+        ShortDataString:
+          type: string
+          nullable: true
+        LastUpdatedBy:
+          type: string
+          nullable: true
+        LastUpdatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        NotesCategoryId:
+          type: integer
+          nullable: true
+        NotesCategoryName:
+          type: string
+          nullable: true
+    EntityDataDTO:
+      title: EntityDataDTO
+      type: object
+      properties:
+        EntityType:
+          type: string
+          nullable: true
+        EntityId:
+          type: integer
+          nullable: true
+        SequenceNumber:
+          type: integer
+          nullable: true
+        SchemaType:
+          type: string
+          nullable: true
+        DataString:
+          type: string
+          nullable: true
+        ScreenName:
+          type: string
+          nullable: true
+        NotesCategoryId:
+          type: integer
+          nullable: true
+    EntityDataRemoveDTO:
+      title: EntityDataRemoveDTO
+      type: object
+      properties:
+        EntityType:
+          type: string
+          nullable: true
+        EntityId:
+          type: integer
+          nullable: true
+        SequenceNumber:
+          type: integer
+          nullable: true
+        SchemaType:
+          type: string
+          nullable: true
+        SeqId:
+          type: integer
+          nullable: true
+        BatchId:
+          type: integer
+          nullable: true
+        Raiserror:
+          type: integer
+          nullable: true
+    EntityReferenceCodeMapSearchDTO:
+      title: EntityReferenceCodeMapSearchDTO
+      type: object
+      properties:
+        EntityID:
+          type: integer
+          nullable: true
+        EntityType:
+          type: string
+          nullable: true
+        ReferenceCodeType:
+          type: string
+          nullable: true
+        ReferenceCodeSubType:
+          type: string
+          nullable: true
+        SecondaryReferenceCodeType:
+          type: string
+          nullable: true
+        SecondaryReferenceCodeSubType:
+          type: string
+          nullable: true
+        Usage:
+          type: string
+          nullable: true
+          default: '|FORENTITY|'
+    EntityReferenceCodeMapDTO:
+      title: EntityReferenceCodeMapDTO
+      type: object
+      properties:
+        EntityID:
+          type: integer
+          nullable: true
+        EntityType:
+          type: string
+          nullable: true
+        ReferenceCodeID:
+          type: integer
+          nullable: true
+        SecondaryReferenceCodeID:
+          type: integer
+          nullable: true
+        EffectiveDate:
+          type: string
+          format: date-time
+          nullable: true
+        ExpirationDate:
+          type: string
+          format: date-time
+          nullable: true
+    EntityReferenceCodeMapListDTO:
+      title: EntityReferenceCodeMapListDTO
+      type: object
+      properties:
+        EntityReferenceCodeMapID:
+          type: integer
+          nullable: true
+        EntityID:
+          type: integer
+          nullable: true
+        EntityType:
+          type: string
+          nullable: true
+        ReferenceCodeID:
+          type: integer
+          nullable: true
+        ReferenceCodeType:
+          type: string
+          nullable: true
+        ReferenceCodeSubType:
+          type: string
+          nullable: true
+        Code:
+          type: string
+          nullable: true
+        Name:
+          type: string
+          nullable: true
+        Description:
+          type: string
+          nullable: true
+        ReferenceCodeEffectiveDate:
+          type: string
+          format: date-time
+          nullable: true
+        ReferenceCodeExpirationDate:
+          type: string
+          format: date-time
+          nullable: true
+        SecondaryReferenceCodeID:
+          type: integer
+          nullable: true
+        SecondaryReferenceCodeType:
+          type: string
+          nullable: true
+        SecondaryReferenceCodeSubType:
+          type: string
+          nullable: true
+        SecondaryName:
+          type: string
+          nullable: true
+        SecondaryCode:
+          type: string
+          nullable: true
+        SecondaryDescription:
+          type: string
+          nullable: true
+        SecondaryReferenceCodeEffectiveDate:
+          type: string
+          format: date-time
+          nullable: true
+        SecondaryReferenceCodeExpirationDate:
+          type: string
+          format: date-time
+          nullable: true
+        EffectiveDate:
+          type: string
+          format: date-time
+          nullable: true
+        ExpirationDate:
+          type: string
+          format: date-time
+          nullable: true
+        LastUpdatedBy:
+          type: string
+          nullable: true
+        LastUpdatedByID:
+          type: integer
+          nullable: true
+        LastUpdatedAt:
+          type: string
+          format: date-time
+          nullable: true
+    EntityTransformsSearchDTO:
+      title: EntityTransformsSearchDTO
+      type: object
+      properties:
+        EntityTransformId:
+          type: integer
+          nullable: true
+        TransformType:
+          type: string
+          nullable: true
+        TransformName:
+          type: string
+          nullable: true
+        EntityType:
+          type: string
+          nullable: true
+        ProductCode:
+          type: string
+          nullable: true
+        InterchangeId:
+          type: integer
+          nullable: true
+        AsOfDate:
+          type: string
+          nullable: true
+        ResultCount:
+          type: integer
+          nullable: true
+        Usage:
+          type: string
+          nullable: true
+          default: '|All|'
+  parameters:
+    EntityReferenceCodeMapIDPathParam:
+      name: EntityReferenceCodeMapID
+      in: path
+      description: description of parameter passed
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: integer
