@@ -1,0 +1,186 @@
+openapi: 3.0.0
+info:
+  title: Claims API
+  description: API for accessing claims information
+  version: 1.0.0
+servers:
+  - url: https://api.example.com/v1
+
+paths:
+  /claims/{claimId}:
+    get:
+      summary: Get claim by ID
+      parameters:
+        - name: claimId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single claim
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Claim'
+
+components:
+  schemas:
+    Claim:
+      type: object
+      properties:
+        claimId:
+          type: string
+        dateOfService:
+          type: string
+          format: date
+        status:
+          type: string
+        patient:
+          $ref: '#/components/schemas/Patient'
+        prescriber:
+          $ref: '#/components/schemas/Prescriber'
+        pharmacy:
+          $ref: '#/components/schemas/Pharmacy'
+        medication:
+          $ref: '#/components/schemas/Medication'
+        pricing:
+          $ref: '#/components/schemas/Pricing'
+        adjudication:
+          $ref: '#/components/schemas/Adjudication'
+        utilizationManagement:
+          $ref: '#/components/schemas/UtilizationManagement'
+    
+    Patient:
+      type: object
+      properties:
+        patientId:
+          type: string
+        name:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+        gender:
+          type: string
+        insurance:
+          $ref: '#/components/schemas/Insurance'
+    
+    Insurance:
+      type: object
+      properties:
+        planId:
+          type: string
+        policyNumber:
+          type: string
+        coverageStartDate:
+          type: string
+          format: date
+        coverageEndDate:
+          type: string
+          format: date
+          nullable: true
+    
+    Prescriber:
+      type: object
+      properties:
+        prescriberId:
+          type: string
+        name:
+          type: string
+        npi:
+          type: string
+        contactInformation:
+          $ref: '#/components/schemas/ContactInformation'
+    
+    Pharmacy:
+      type: object
+      properties:
+        pharmacyId:
+          type: string
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        contactInformation:
+          $ref: '#/components/schemas/ContactInformation'
+    
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+          nullable: true
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+    
+    ContactInformation:
+      type: object
+      properties:
+        phone:
+          type: string
+        fax:
+          type: string
+        email:
+          type: string
+    
+    Medication:
+      type: object
+      properties:
+        drugCode:
+          type: string
+        drugName:
+          type: string
+        strength:
+          type: string
+        quantity:
+          type: integer
+        daysSupply:
+          type: integer
+        dosageForm:
+          type: string
+        routeOfAdministration:
+          type: string
+    
+    Pricing:
+      type: object
+      properties:
+        totalCost:
+          type: number
+          format: float
+        insurancePaid:
+          type: number
+          format: float
+        patientPaid:
+          type: number
+          format: float
+        rebate:
+          type: number
+          format: float
+    
+    Adjudication:
+      type: object
+      properties:
+        adjudicationDate:
+          type: string
+          format: date
+        adjudicatedBy:
+          type: string
+        notes:
+          type: string
+    
+    UtilizationManagement:
+      type: object
+      properties:
+        priorAuthorizationRequired:
+          type: boolean
+        stepTherapyRequired:
+          type: boolean
+        quantityLimit:
+          type: integer
