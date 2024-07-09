@@ -9,6 +9,7 @@ servers:
 paths:
   /claims:
     get:
+      operationId: getAllClaims
       summary: Get all claims
       responses:
         '200':
@@ -19,7 +20,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Claim'
+                  type: object
     post:
+      operationId: createClaim
       summary: Create a new claim
       requestBody:
         required: true
@@ -27,6 +30,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Claim'
+              type: object
       responses:
         '201':
           description: Claim created successfully
@@ -34,12 +38,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Claim'
+                type: object
 
   /claims/{claimId}:
     get:
+      operationId: getClaimById
       summary: Get claim by ID
       parameters:
         - $ref: '#/components/parameters/ClaimId'
+          type: string
       responses:
         '200':
           description: A single claim
@@ -47,19 +54,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Claim'
+                type: object
     
     delete:
+      operationId: deleteClaimById
       summary: Delete claim by ID
       parameters:
         - $ref: '#/components/parameters/ClaimId'
+          type: string
       responses:
         '204':
           description: Claim deleted successfully
     
     patch:
+      operationId: updateClaimById
       summary: Update claim by ID
       parameters:
         - $ref: '#/components/parameters/ClaimId'
+          type: string
       requestBody:
         required: true
         content:
@@ -71,6 +83,7 @@ paths:
                   type: string
                 adjudication:
                   $ref: '#/components/schemas/Adjudication'
+                  type: object
       responses:
         '200':
           description: Claim updated successfully
@@ -78,6 +91,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Claim'
+                type: object
 
 components:
   parameters:
@@ -101,18 +115,25 @@ components:
           type: string
         patient:
           $ref: '#/components/schemas/Patient'
+          type: object
         prescriber:
           $ref: '#/components/schemas/Prescriber'
+          type: object
         pharmacy:
           $ref: '#/components/schemas/Pharmacy'
+          type: object
         medication:
           $ref: '#/components/schemas/Medication'
+          type: object
         pricing:
           $ref: '#/components/schemas/Pricing'
+          type: object
         adjudication:
           $ref: '#/components/schemas/Adjudication'
+          type: object
         utilizationManagement:
           $ref: '#/components/schemas/UtilizationManagement'
+          type: object
     
     Patient:
       type: object
@@ -128,6 +149,7 @@ components:
           type: string
         insurance:
           $ref: '#/components/schemas/Insurance'
+          type: object
     
     Insurance:
       type: object
@@ -155,6 +177,7 @@ components:
           type: string
         contactInformation:
           $ref: '#/components/schemas/ContactInformation'
+          type: object
     
     Pharmacy:
       type: object
@@ -165,8 +188,10 @@ components:
           type: string
         address:
           $ref: '#/components/schemas/Address'
+          type: object
         contactInformation:
           $ref: '#/components/schemas/ContactInformation'
+          type: object
     
     Address:
       type: object
