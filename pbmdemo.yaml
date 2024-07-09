@@ -99,9 +99,9 @@ components:
       name: claimId
       in: path
       required: true
+      description: claim Id req
       schema:
         type: string
-        description: claim Id req
 
   schemas:
     claim:
