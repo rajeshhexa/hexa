@@ -101,6 +101,7 @@ components:
       required: true
       schema:
         type: string
+        description: claim Id req
 
   schemas:
     claim:
