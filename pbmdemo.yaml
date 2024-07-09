@@ -19,7 +19,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Claim'
+                  $ref: '#/components/schemas/claim'
                   type: object
     post:
       operationId: createClaim
@@ -29,7 +29,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Claim'
+              $ref: '#/components/schemas/claim'
               type: object
       responses:
         '201':
@@ -37,7 +37,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Claim'
+                $ref: '#/components/schemas/claim'
                 type: object
 
   /claims/{claimId}:
@@ -45,7 +45,7 @@ paths:
       operationId: getClaimById
       summary: Get claim by ID
       parameters:
-        - $ref: '#/components/parameters/ClaimId'
+        - $ref: '#/components/parameters/claimId'
           type: string
       responses:
         '200':
@@ -53,14 +53,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Claim'
+                $ref: '#/components/schemas/claim'
                 type: object
     
     delete:
       operationId: deleteClaimById
       summary: Delete claim by ID
       parameters:
-        - $ref: '#/components/parameters/ClaimId'
+        - $ref: '#/components/parameters/claimId'
           type: string
       responses:
         '204':
@@ -70,7 +70,7 @@ paths:
       operationId: updateClaimById
       summary: Update claim by ID
       parameters:
-        - $ref: '#/components/parameters/ClaimId'
+        - $ref: '#/components/parameters/claimId'
           type: string
       requestBody:
         required: true
@@ -82,7 +82,7 @@ paths:
                 status:
                   type: string
                 adjudication:
-                  $ref: '#/components/schemas/Adjudication'
+                  $ref: '#/components/schemas/adjudication'
                   type: object
       responses:
         '200':
@@ -90,12 +90,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Claim'
+                $ref: '#/components/schemas/claim'
                 type: object
 
 components:
   parameters:
-    ClaimId:
+    claimId:
       name: claimId
       in: path
       required: true
@@ -103,7 +103,7 @@ components:
         type: string
 
   schemas:
-    Claim:
+    claim:
       type: object
       properties:
         claimId:
@@ -114,28 +114,28 @@ components:
         status:
           type: string
         patient:
-          $ref: '#/components/schemas/Patient'
+          $ref: '#/components/schemas/patient'
           type: object
         prescriber:
-          $ref: '#/components/schemas/Prescriber'
+          $ref: '#/components/schemas/prescriber'
           type: object
         pharmacy:
-          $ref: '#/components/schemas/Pharmacy'
+          $ref: '#/components/schemas/pharmacy'
           type: object
         medication:
-          $ref: '#/components/schemas/Medication'
+          $ref: '#/components/schemas/medication'
           type: object
         pricing:
-          $ref: '#/components/schemas/Pricing'
+          $ref: '#/components/schemas/pricing'
           type: object
         adjudication:
-          $ref: '#/components/schemas/Adjudication'
+          $ref: '#/components/schemas/adjudication'
           type: object
         utilizationManagement:
-          $ref: '#/components/schemas/UtilizationManagement'
+          $ref: '#/components/schemas/utilizationManagement'
           type: object
     
-    Patient:
+    patient:
       type: object
       properties:
         patientId:
@@ -148,10 +148,10 @@ components:
         gender:
           type: string
         insurance:
-          $ref: '#/components/schemas/Insurance'
+          $ref: '#/components/schemas/insurance'
           type: object
     
-    Insurance:
+    insurance:
       type: object
       properties:
         planId:
@@ -166,7 +166,7 @@ components:
           format: date
           nullable: true
     
-    Prescriber:
+    prescriber:
       type: object
       properties:
         prescriberId:
@@ -176,10 +176,10 @@ components:
         npi:
           type: string
         contactInformation:
-          $ref: '#/components/schemas/ContactInformation'
+          $ref: '#/components/schemas/contactInformation'
           type: object
     
-    Pharmacy:
+    pharmacy:
       type: object
       properties:
         pharmacyId:
@@ -187,13 +187,13 @@ components:
         name:
           type: string
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: '#/components/schemas/address'
           type: object
         contactInformation:
-          $ref: '#/components/schemas/ContactInformation'
+          $ref: '#/components/schemas/contactInformation'
           type: object
     
-    Address:
+    address:
       type: object
       properties:
         line1:
@@ -208,7 +208,7 @@ components:
         zip:
           type: string
     
-    ContactInformation:
+    contactInformation:
       type: object
       properties:
         phone:
@@ -218,7 +218,7 @@ components:
         email:
           type: string
     
-    Medication:
+    medication:
       type: object
       properties:
         drugCode:
@@ -236,7 +236,7 @@ components:
         routeOfAdministration:
           type: string
     
-    Pricing:
+    pricing:
       type: object
       properties:
         totalCost:
@@ -252,7 +252,7 @@ components:
           type: number
           format: float
     
-    Adjudication:
+    adjudication:
       type: object
       properties:
         adjudicationDate:
@@ -263,7 +263,7 @@ components:
         notes:
           type: string
     
-    UtilizationManagement:
+    utilizationManagement:
       type: object
       properties:
         priorAuthorizationRequired:
