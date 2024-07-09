@@ -9,6 +9,7 @@ servers:
 paths:
   /claims:
     get:
+      operationId: getclaimsGetAll
       summary: Get all claims
       responses:
         '200':
@@ -21,6 +22,7 @@ paths:
                   $ref: '#/components/schemas/Claim'
     post:
       summary: Create a new claim
+      operationId: postclaims
       requestBody:
         required: true
         content:
@@ -37,13 +39,10 @@ paths:
 
   /claims/{claimId}:
     get:
+      operationId: getclaimsById
       summary: Get claim by ID
       parameters:
-        - name: claimId
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ClaimId'
       responses:
         '200':
           description: A single claim
@@ -53,25 +52,19 @@ paths:
                 $ref: '#/components/schemas/Claim'
     
     delete:
+      operationId: deleteClaims
       summary: Delete claim by ID
       parameters:
-        - name: claimId
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ClaimId'
       responses:
         '204':
           description: Claim deleted successfully
     
     patch:
+      operationId: patchClaims
       summary: Update claim by ID
       parameters:
-        - name: claimId
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ClaimId'
       requestBody:
         required: true
         content:
@@ -92,6 +85,14 @@ paths:
                 $ref: '#/components/schemas/Claim'
 
 components:
+  parameters:
+    ClaimId:
+      name: claimId
+      in: path
+      required: true
+      schema:
+        type: string
+
   schemas:
     Claim:
       type: object
