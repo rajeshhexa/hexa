@@ -6,11 +6,17 @@ info:
 servers:
   - url: https://api.example.com/v1
 
+tags:
+  - name: claim
+    description: Operations related to claims
+
 paths:
   /claims:
     get:
       operationId: getAllClaims
       summary: Get all claims
+      tags:
+        - claim
       responses:
         '200':
           description: A list of claims
@@ -24,6 +30,8 @@ paths:
     post:
       operationId: createClaim
       summary: Create a new claim
+      tags:
+        - claim
       requestBody:
         required: true
         content:
@@ -44,6 +52,8 @@ paths:
     get:
       operationId: getClaimById
       summary: Get claim by ID
+      tags:
+        - claim
       parameters:
         - $ref: '#/components/parameters/claimId'
           type: string
@@ -59,6 +69,8 @@ paths:
     delete:
       operationId: deleteClaimById
       summary: Delete claim by ID
+      tags:
+        - claim
       parameters:
         - $ref: '#/components/parameters/claimId'
           type: string
@@ -69,6 +81,8 @@ paths:
     patch:
       operationId: updateClaimById
       summary: Update claim by ID
+      tags:
+        - claim
       parameters:
         - $ref: '#/components/parameters/claimId'
           type: string
