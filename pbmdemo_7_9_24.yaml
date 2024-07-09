@@ -1,0 +1,249 @@
+openapi: 3.0.0
+info: 
+  version: 1.0.0
+  title: Claims API
+  description: PBM Claims API V1
+servers: 
+  - url: https://hexapi.example.com
+    description: API Server Description
+paths: 
+  /claims: 
+   get: 
+    operationId: GetClaims
+    tags: 
+     - Claim
+    summary: Get claims
+    description: Description of path
+    responses: 
+     '200': 
+      description: Claims retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         type: array
+         items: 
+          $ref: '#/components/schemas/Claim'
+  /claim/id: 
+   get: 
+    operationId: GetClaimById
+    tags: 
+     - Claim
+    summary: Get claim by Id  
+    description: Description of path
+    parameters: 
+     - $ref: '#/components/parameters/claimIdQueryParam'
+    responses: 
+     '200': 
+      description: Claim for the given ID retrieved successfully
+      content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/Claim'
+  /claim: 
+   post: 
+    operationId: AddClaim
+    tags: 
+     - Claim
+    summary: Add Claim
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/Claim'
+    responses: 
+     '200': 
+      description: Claim added successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+   put: 
+    operationId: UpdateClaim
+    tags: 
+     - Claim
+    summary: Update Claim
+    description: Description of path
+    requestBody: 
+     required: true
+     content: 
+       application/json: 
+        schema: 
+         $ref: '#/components/schemas/Claim'
+    responses: 
+     '200': 
+      description: Claim updated successfully
+      content: 
+       application/json: 
+        schema: 
+         type: integer
+components: 
+  schemas: 
+   Pricing: 
+    title : Pricing
+    type: object
+    properties: 
+     totalCost: 
+      type: integer
+     insurancePaid: 
+      type: integer
+     patientPaid: 
+      type: integer
+     rebate: 
+      type: integer
+   Adjudication: 
+    title : Adjudication
+    type: object
+    properties: 
+     adjudicationDate: 
+      type: string
+      format: date-time
+     adjudicatedBy: 
+      type: string
+     notes: 
+      type: string
+   UtilizationManagement: 
+    title : UtilizationManagement
+    type: object
+    properties: 
+     priorAuthorizationRequired: 
+      type: boolean
+     stepTherapyRequired: 
+      type: boolean
+     quantityLimit: 
+      type: integer
+   Claim: 
+    title : Claim
+    type: object
+    properties: 
+     claimId: 
+      type: integer
+     dateOfService: 
+      type: integer
+     status: 
+      type: string
+     Patient: 
+      type: object
+      $ref: '#/components/schemas/Patient'
+     Prescriber: 
+      type: object
+      $ref: '#/components/schemas/Prescriber'
+     Pharmacy: 
+      type: object
+      $ref: '#/components/schemas/Pharmacy'
+     Medication: 
+      type: object
+      $ref: '#/components/schemas/Medication'
+     Pricing: 
+      type: object
+      $ref: '#/components/schemas/Pricing'
+     Adjudication: 
+      type: object
+      $ref: '#/components/schemas/Adjudication'
+     UtilizationManagement: 
+      type: object
+      $ref: '#/components/schemas/UtilizationManagement'
+   Patient: 
+    title : Patient
+    type: object
+    properties: 
+     patientId: 
+      type: integer
+     name: 
+      type: string
+     dateOfBirth: 
+      type: string
+      format: date-time
+     gender: 
+      type: string
+     Insurance: 
+      type: object
+      $ref: '#/components/schemas/Insurance'
+   Insurance: 
+    title : Insurance
+    type: object
+    properties: 
+     planId: 
+      type: integer
+     policyNumber: 
+      type: number
+     coverageStartDate: 
+      type: string
+      format: date-time
+     coverageEndDate: 
+      type: string
+      format: date-time
+   Prescriber: 
+    title : Prescriber
+    type: object
+    properties: 
+     prescriberId: 
+      type: integer
+     name: 
+      type: string
+     npi: 
+      type: number
+     ContactInformation: 
+      type: object
+      $ref: '#/components/schemas/ContactInformation'
+   ContactInformation: 
+    title : ContactInformation
+    type: object
+    properties: 
+     phone: 
+      type: number
+     email: 
+      type: string
+      format: email
+   Pharmacy: 
+    title : Pharmacy
+    type: object
+    properties: 
+     pharmacyId: 
+      type: integer
+     name: 
+      type: string
+     Address: 
+      type: object
+      $ref: '#/components/schemas/Address'
+   Address: 
+    title : Address
+    type: object
+    properties: 
+     line1: 
+      type: string
+     line2: 
+      type: string
+     city: 
+      type: string
+     state: 
+      type: string
+     zip: 
+      type: number
+   Medication: 
+    title : Medication
+    type: object
+    properties: 
+     drugCode: 
+      type: string
+     drugName: 
+      type: string
+     strength: 
+      type: string
+     quantity: 
+      type: integer
+     daysSupply: 
+      type: integer
+     dosageForm: 
+      type: string
+     routeOfAdministration: 
+      type: string
+  parameters: 
+   claimIdQueryParam: 
+    in: query
+    name: claimId
+    required: true
+    schema: 
+     type: integer
+    description: description of parameter passed
