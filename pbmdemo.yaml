@@ -1,12 +1,40 @@
 openapi: 3.0.0
 info:
   title: Claims API
-  description: API for accessing claims information
+  description: API for accessing and managing claims information
   version: 1.0.0
 servers:
   - url: https://api.example.com/v1
 
 paths:
+  /claims:
+    get:
+      summary: Get all claims
+      responses:
+        '200':
+          description: A list of claims
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Claim'
+    post:
+      summary: Create a new claim
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Claim'
+      responses:
+        '201':
+          description: Claim created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Claim'
+
   /claims/{claimId}:
     get:
       summary: Get claim by ID
@@ -19,6 +47,45 @@ paths:
       responses:
         '200':
           description: A single claim
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Claim'
+    
+    delete:
+      summary: Delete claim by ID
+      parameters:
+        - name: claimId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Claim deleted successfully
+    
+    patch:
+      summary: Update claim by ID
+      parameters:
+        - name: claimId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                adjudication:
+                  $ref: '#/components/schemas/Adjudication'
+      responses:
+        '200':
+          description: Claim updated successfully
           content:
             application/json:
               schema:
